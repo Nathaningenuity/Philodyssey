@@ -1397,6 +1397,9 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .spine.long .sp-t{font-size:.72rem}
 .spine.two .sp-t{white-space:normal;font-size:.74rem;text-align:start;overflow:hidden;max-width:calc(100% - 6px)}
 .wk-tags{display:flex;flex-wrap:wrap;gap:6px}
+.d-ftags{display:flex;flex-wrap:wrap;gap:4px 5px}#view .d-ftags button{font-size:.7rem;line-height:1.35;padding:2px 8px;min-height:0;letter-spacing:.01em}.d-ftags button{font:500 .74rem var(--font-body,inherit);padding:3px 9px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink-2);cursor:pointer}
+.d-ftags button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.d-fix{margin:4px 0 10px;color:var(--ink-2);font-size:.92rem}
 .wk-legend{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;font-size:.82rem}
 .wk-key{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--raised);color:var(--ink);font:inherit;cursor:pointer}
 .wk-key i{width:12px;height:12px;border-radius:3px;display:inline-block}
@@ -15198,9 +15201,7 @@ VIEWS.library = (arg) => {
     const groups = []; list.forEach(t => { const L = dKey(t.term)[0].toUpperCase(); if (!groups.length || groups[groups.length - 1].L !== L) groups.push({ L, items: [] }); groups[groups.length - 1].items.push(t); });
     if (libLetter === null || (libLetter && !groups.some(g => g.L === libLetter))) libLetter = groups.length ? groups[0].L : "";
     const fields = [...new Set(LIB.glossary.map(g => g.field).filter(Boolean))].sort();
-    const day = Math.floor(Date.now() / 864e5), tod = list.filter(g => g.more)[day % Math.max(1, list.filter(g => g.more).length)];
-    body = (tod && !libQuery ? '<div class="tod"><span class="eyebrow">Word of the day</span><div><b>' + esc(tod.term) + "</b>" + (tod.etym ? '<span class="d-et">' + esc(tod.etym) + "</span>" : "") + '</div><p class="read">' + esc(tod.def) + '</p><a class="linkish" href="#dictionary-' + slugT(tod.term) + '">Read the entry →</a></div>' : "") +
-      (fields.length ? '<div class="seg d-fields" role="group" aria-label="Field"><button class="chip" data-act="dField" data-f="" aria-pressed="' + !dField + '">All fields</button>' + fields.map(f => '<button class="chip" data-act="dField" data-f="' + esc(f) + '" aria-pressed="' + (dField === f) + '">' + esc(f) + "</button>").join("") + "</div>" : "") +
+    body = '<div id="libResults" hidden></div>' +
       '<p class="faint" id="dCount" role="status" aria-live="polite" style="margin:6px 0 0;font-size:.86rem"></p><div class="azbar" role="navigation" aria-label="Show one letter">' + '<button class="chip" data-act="libJump" data-l="">All</button>' + groups.map(g => '<button class="chip" data-act="libJump" data-l="' + esc(g.L) + '">' + esc(g.L) + "</button>").join("") + "</div>" +
       '<div id="libList">' + groups.map(g => '<div class="lgroup" id="lib-' + esc(g.L) + '"><div class="d-letter">' + esc(g.L) + "</div>" + g.items.map(dEntry).join("") + "</div>").join("") + "</div>";
   } else if (libTab === "experiments") {
@@ -15212,8 +15213,9 @@ VIEWS.library = (arg) => {
   }
   // filter in place (no re-render), so typing stays smooth and IME composition (e.g. Chinese input) isn't interrupted
   after.push(() => { libFilter(); const i = $("#libSearch"); if (i) i.addEventListener("input", () => { libQuery = i.value; libFilter(); }); });
-  return '<div class="wrap"><div class="col stack" style="--g:16px"><div class="stack" style="--g:8px"><span class="eyebrow">The Dictionary</span><h1>' + LIB.glossary.length + ' words philosophers use</h1><p class="muted read">Plain definitions first; open any entry for where the word comes from, how philosophers argue about it, and what it is often confused with. The thought experiments and schools live here too.</p></div>' +
-    '<input type="search" id="libSearch" placeholder="Search the dictionary" value="' + esc(libQuery) + '" aria-label="Search the dictionary">' +
+  return '<div class="wrap"><div class="col stack" style="--g:16px"><div class="stack" style="--g:8px"><span class="eyebrow">The Dictionary</span><h1>' + LIB.glossary.length + ' words philosophers use</h1></div>' +
+    '<div class="stack" style="--g:8px"><input type="search" id="libSearch" placeholder="Search a word, a thinker or an idea" value="' + esc(libQuery) + '" aria-label="Search the dictionary" autocomplete="off">' +
+    (libTab === "glossary" ? '<div class="d-ftags" role="group" aria-label="Field"><button data-act="dField" data-f="" aria-pressed="' + !dField + '">All</button>' + [...new Set(LIB.glossary.map(g => g.field).filter(Boolean))].sort().map(f => '<button data-act="dField" data-f="' + esc(f) + '" aria-pressed="' + (dField === f) + '">' + esc(f) + "</button>").join("") + "</div>" : "") + "</div>" +
     '<div class="tabs" role="tablist">' + [["glossary", "Dictionary (" + LIB.glossary.length + ")"], ["experiments", "Thought experiments (" + LIB.experiments.length + ")"], ["schools", "Schools (" + LIB.schools.length + ")"]].map(([k, n]) => '<button role="tab" aria-selected="' + (libTab === k) + '" data-act="libTab" data-k="' + k + '">' + n + "</button>").join("") + "</div>" + body + '<p class="muted" id="libNone" style="padding:20px 0" hidden></p></div></div>';
 };
 
@@ -15230,8 +15232,43 @@ function dEntry(t) {
       (arr(t.thinkers).filter(x => TH[x]).length ? '<div class="row" style="--g:6px"><span class="faint">Thinkers</span>' + arr(t.thinkers).filter(x => TH[x]).map(x => '<a class="chip" href="#thinker-' + x + '">' + esc(nameOf(x)) + "</a>").join("") + "</div>" : "") + "</details>" : "") + "</article>";
 }
 ACT.dField = el => { dField = el.dataset.f; $$('[data-act="dField"]').forEach(b => b.setAttribute("aria-pressed", String(b === el))); libLetter = ""; libFilter(); };
+// Dictionary search: a word is found by its name first, then by its tags (synonyms and close relatives);
+// a misspelling is corrected to the nearest word in the dictionary; definitions are searched only as a last resort.
+let D_IDX = null;
+const dNorm = t => dKey(t).replace(/[^a-z0-9\s-]/g, " ").replace(/\s+/g, " ").trim();
+function dIndex() { if (D_IDX) return D_IDX; const vocab = new Set();
+  D_IDX = { items: LIB.glossary.map(t => { const name = dNorm(String(t.term).replace(/\s*\(.*\)/, "")), full = dNorm(t.term), tags = arr(t.tags).concat(arr(t.aka)).map(dNorm).filter(Boolean);
+    const words = full.split(" "), twords = tags.flatMap(x => x.split(" ")); words.concat(twords).forEach(w => { if (w.length > 2) vocab.add(w); }); tags.forEach(x => vocab.add(x)); vocab.add(name);
+    return { t, name, full, words, tags, twords, def: " " + dNorm(t.def) + " " }; }) };
+  D_IDX.vocab = [...vocab]; return D_IDX; }
+function dScore(e, q) { let s = 0; const qs = q.split(" ");
+  if (e.name === q || e.full === q) s = 100; else if (e.name.startsWith(q + " ")) s = 90; else if (e.words.includes(q)) s = 84; else if (e.name.startsWith(q)) s = 80; else if (e.words.some(w => w.startsWith(q))) s = 76; else if (q.length > 3 && e.full.includes(q)) s = 62;
+  if (s < 70) { if (e.tags.includes(q)) s = Math.max(s, 72); else if (e.tags.some(x => x.startsWith(q))) s = Math.max(s, 58); else if (e.twords.some(w => w.startsWith(q))) s = Math.max(s, 48); else if (q.length > 3 && e.tags.some(x => x.includes(q))) s = Math.max(s, 38); }
+  if (!s && qs.length > 1 && qs.every(x => e.words.concat(e.twords).some(w => w.startsWith(x)))) s = 52;
+  return s; }
+function dEdit(a, b, max) { if (Math.abs(a.length - b.length) > max) return max + 1; let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) { const cur = [i]; let best = i; for (let j = 1; j <= b.length; j++) { cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); best = Math.min(best, cur[j]); } if (best > max) return max + 1; prev = cur; } return prev[b.length]; }
+function dCorrect(q) { const max = q.length <= 4 ? 1 : q.length <= 7 ? 2 : 3; let best = null, bd = max + 1;
+  dIndex().vocab.forEach(v => { const d = Math.min(dEdit(q, v, max), v.length > q.length ? dEdit(q, v.slice(0, q.length), max) + .5 : max + 1); if (d < bd || (d === bd && best && v.length < best.length)) { bd = d; best = v; } });
+  return bd <= max ? best : null; }
+function dSearch(q) { const I = dIndex(); const run = x => I.items.map(e => [e, dScore(e, x)]).filter(r => r[1] > 0);
+  let hits = run(q), fixed = null;
+  if (!hits.length) { fixed = dCorrect(q); if (fixed) hits = run(fixed); }
+  let loose = false; if (!hits.length) { const re = new RegExp("\\s" + q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")); hits = I.items.filter(e => re.test(e.def)).map(e => [e, 5]); loose = hits.length > 0; fixed = null; }
+  const top = hits.reduce((m, r) => Math.max(m, r[1]), 0); if (top >= 70) hits = hits.filter(r => r[1] >= 38);
+  hits.sort((a, b) => b[1] - a[1] || a[0].name.length - b[0].name.length);
+  return { hits: hits.map(r => r[0].t), fixed, loose }; }
 function libFilter() {
   const q = libQuery.trim().toLowerCase(); let shown = 0;
+  const box = $("#libResults"), listEl = $("#libList");
+  if (libTab === "glossary" && box && listEl) {
+    const qn = dNorm(q); $$("#view .d-ftags button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.f === dField)));
+    if (qn) { const r = dSearch(qn), L = r.hits.filter(t => !dField || t.field === dField).slice(0, 80);
+      box.innerHTML = (r.fixed ? '<p class="d-fix">Showing results for <b>' + esc(r.fixed) + "</b></p>" : r.loose && L.length ? '<p class="d-fix">No entry is called that; these mention it.</p>' : "") + L.map(dEntry).join("");
+      box.hidden = false; listEl.hidden = true; const az = $("#view .azbar"); if (az) az.hidden = true;
+      const m = $("#libNone"); if (m) { m.hidden = L.length > 0; m.textContent = "Nothing matches “" + libQuery.trim() + "”" + (dField ? " in " + dField : "") + "."; }
+      const dc = $("#dCount"); if (dc) dc.textContent = L.length ? L.length + (L.length === 1 ? " entry" : " entries") : ""; return; }
+    box.hidden = true; box.innerHTML = ""; listEl.hidden = false; }
   const qf = dKey(q); $$("#view [data-s]").forEach(el => { const ok = (!q || el.dataset.s.includes(qf) || el.dataset.s.includes(q)) && (!dField || !el.dataset.f || el.dataset.f === dField || !el.classList.contains("dterm")); el.hidden = !ok; if (ok) shown++; });
   $$("#view .lgroup").forEach(g => { g.hidden = !$$(".term", g).some(x => !x.hidden) || (!q && libLetter && g.id !== "lib-" + libLetter); });
   $$("#view .azbar .chip").forEach(c => c.setAttribute("aria-pressed", String(c.dataset.l === libLetter)));
