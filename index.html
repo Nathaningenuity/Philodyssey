@@ -15235,7 +15235,7 @@ ACT.dField = el => { dField = el.dataset.f; $$('[data-act="dField"]').forEach(b 
 // Dictionary search: a word is found by its name first, then by its tags (synonyms and close relatives);
 // a misspelling is corrected to the nearest word in the dictionary; definitions are searched only as a last resort.
 let D_IDX = null;
-const dNorm = t => dKey(t).replace(/[^a-z0-9\s-]/g, " ").replace(/\s+/g, " ").trim();
+const dNorm = t => dKey(t).replace(/['’]/g, "").replace(/[^a-z0-9\s-]/g, " ").replace(/\s+/g, " ").trim();
 function dIndex() { if (D_IDX) return D_IDX; const vocab = new Set();
   D_IDX = { items: LIB.glossary.map(t => { const name = dNorm(String(t.term).replace(/\s*\(.*\)/, "")), full = dNorm(t.term), tags = arr(t.tags).concat(arr(t.aka)).map(dNorm).filter(Boolean);
     const words = full.split(" "), twords = tags.flatMap(x => x.split(" ")); words.concat(twords).forEach(w => { if (w.length > 2) vocab.add(w); }); tags.forEach(x => vocab.add(x)); vocab.add(name);
@@ -15245,6 +15245,8 @@ function dScore(e, q) { let s = 0; const qs = q.split(" ");
   if (e.name === q || e.full === q) s = 100; else if (e.name.startsWith(q + " ")) s = 90; else if (e.words.includes(q)) s = 84; else if (e.name.startsWith(q)) s = 80; else if (e.words.some(w => w.startsWith(q))) s = 76; else if (q.length > 3 && e.full.includes(q)) s = 62;
   if (s < 70) { if (e.tags.includes(q)) s = Math.max(s, 72); else if (e.tags.some(x => x.startsWith(q))) s = Math.max(s, 58); else if (e.twords.some(w => w.startsWith(q))) s = Math.max(s, 48); else if (q.length > 3 && e.tags.some(x => x.includes(q))) s = Math.max(s, 38); }
   if (!s && qs.length > 1 && qs.every(x => e.words.concat(e.twords).some(w => w.startsWith(x)))) s = 52;
+  // among entries found only through their tags, favour the one whose name is closest to the query (taoism → Daoism), and ideas over people
+  if (s && s < 76) { if (dEdit(q, e.name, 2) <= 2) s += 10; if (e.t.field === "Philosophers") s -= 3; }
   return s; }
 function dEdit(a, b, max) { if (Math.abs(a.length - b.length) > max) return max + 1; let prev = Array.from({ length: b.length + 1 }, (_, i) => i);
   for (let i = 1; i <= a.length; i++) { const cur = [i]; let best = i; for (let j = 1; j <= b.length; j++) { cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); best = Math.min(best, cur[j]); } if (best > max) return max + 1; prev = cur; } return prev[b.length]; }
