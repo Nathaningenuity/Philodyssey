@@ -1391,6 +1391,16 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .spine:focus-visible{transform:translateY(-12px);outline:2px solid var(--lamp);outline-offset:2px}
 .spine.long .sp-t{font-size:.66rem}
 .spine.dim{opacity:.16;filter:grayscale(.8)}
+.subshelves{display:flex;flex-wrap:wrap;align-items:flex-end;gap:0 30px}.subshelf{margin-top:14px;max-width:100%}.subshelf h3{margin:0 0 2px;font:600 .74rem var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}.subshelf h3 .faint{font-weight:500}
+.shelf-rows{min-width:0}.shelf-rows .shelf-row{min-height:0;overflow:visible;padding:20px 6px 0}.shelf-rows .shelf-board{margin-bottom:8px}
+.spine .sp-t{font-size:.8rem;line-height:1.12;max-height:calc(100% - 82px);text-overflow:ellipsis}
+.spine.long .sp-t{font-size:.72rem}
+.spine.two .sp-t{white-space:normal;font-size:.74rem;text-align:start;overflow:hidden;max-width:calc(100% - 6px)}
+.wk-tags{display:flex;flex-wrap:wrap;gap:6px}
+.wk-legend{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;font-size:.82rem}
+.wk-key{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--raised);color:var(--ink);font:inherit;cursor:pointer}
+.wk-key i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.wk-key[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
 .wlist{display:grid;gap:30px}.wlist-era h2{font-size:1.35rem;margin:0 0 12px}
 .wgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:12px}
 .wcard{position:relative;display:flex;flex-direction:column;gap:3px;padding:14px 16px 14px 20px;border:1px solid var(--line);border-radius:12px;background:var(--raised);text-decoration:none;color:var(--ink);overflow:hidden}
@@ -15066,53 +15076,82 @@ ACT.thkTrad = el => { thkTrad = el.dataset.v; $$('[data-act="thkTrad"]').forEach
 /* =============================================================== WORKS (the archive) */
 const WORKS = (window.ATLAS_WORKS || []).slice().sort((a, b) => a.year - b.year);
 const WK = {}; WORKS.forEach(w => { WK[w.id] = w; });
-// works are shelved by the Stoa's eras: in the era where the Stoa stands their author, otherwise by date
+// works are shelved by the Stoa's eras, and inside each era on region and school shelves (ATLAS_WORK_SHELVES)
 const W_ERAS = LIB.eras.map(e => [e.id, e.name, e.start, e.end]);
+const W_SHELVES = window.ATLAS_WORK_SHELVES || {};
+const W_SHELF_ERA = {}; Object.keys(W_SHELVES).forEach(e => W_SHELVES[e].forEach(s => { W_SHELF_ERA[s.id] = e; }));
 const W_ERA_OF = (() => { const by = {}; LIB.eras.forEach(e => { arr(e.thinkers).concat(ERA_MORE[e.id] || []).forEach(id => { if (!(id in by)) by[id] = e.id; }); });
   const last = LIB.eras[LIB.eras.length - 1], out = {};
-  WORKS.forEach(w => { let e = w.author && by[w.author];
+  WORKS.forEach(w => { let e = W_SHELF_ERA[w.shelf] || (w.author && by[w.author]);
     if (!e) { const y = w.year, c = LIB.eras.filter(x => x.start <= y && (y < x.end || x === last)).sort((a, b) => Math.abs((a.start + a.end) / 2 - y) - Math.abs((b.start + b.end) / 2 - y));
       e = (c[0] || (y < LIB.eras[0].start ? LIB.eras[0] : last)).id; }
     out[w.id] = e; });
   return out; })();
 const wInEra = k => WORKS.filter(w => W_ERA_OF[w.id] === k).sort((a, b) => a.year - b.year);
+// the shelves of one era, in order; works without a known shelf go on a last "more" shelf
+const wShelvesOf = k => { const L = wInEra(k), S = (W_SHELVES[k] || []).map(s => ({ id: s.id, name: s.name, L: L.filter(w => w.shelf === s.id) }));
+  const known = new Set(S.map(s => s.id)), rest = L.filter(w => !known.has(w.shelf)); if (rest.length) S.push({ id: k + "-more", name: S.length ? "More from this era" : "", L: rest });
+  return S.filter(s => s.L.length); };
 const W_TOPICS = ["ethics", "politics", "metaphysics", "knowledge", "mind", "religion", "logic", "language", "science", "beauty", "life and death", "society", "self"];
 let wkView = "shelf", wkTopic = "", wkLevel = 0, wkQuery = "";
-function wColor(w) { const t = w.author && TH[w.author]; const tr = t && tradOf(t);
-  // cloth colours for spines and covers: light tradition colours are deepened so cream text stays readable
-  if (tr && tr.color && window.d3) { const c = d3.hsl(tr.color), k = wHash(w.author || w.id); c.h = (c.h + (k % 29) - 14 + 360) % 360; c.l = Math.max(.26, Math.min(c.l, .4) - (k % 9) / 100); /* dark enough for cream lettering */ if (c.s < .25) c.s = .3; return c.formatHex(); }
-  if (tr && tr.color) return tr.color; let h = 0; for (const c of w.id) h = (h * 31 + c.charCodeAt(0)) % 360; return "hsl(" + h + " 35% 45%)"; }
+// cloth colours: a book's main topic picks its colour, every one dark enough for cream lettering
+const W_TOPIC_COLOR = { ethics: "#8e2f2a", politics: "#2b4c7e", society: "#3d6a99", metaphysics: "#5b3a7e", knowledge: "#2e6a3f", mind: "#a0522d", self: "#7a5230", religion: "#8a6a1f", logic: "#4a5562", language: "#66652a", science: "#1d6b66", beauty: "#a3416a", "life and death": "#2f2a2e" };
+function wColor(w) { const base = W_TOPIC_COLOR[arr(w.topics)[0]] || "#5e5446", k = wHash(w.id);
+  if (!window.d3) return base; const c = d3.hsl(base); c.h = (c.h + (k % 13) - 6 + 360) % 360; c.l = Math.max(.2, Math.min(.42, c.l + ((k >> 4) % 9 - 4) / 100)); return c.formatHex(); }
 function wHash(s) { let h = 7; for (const c of s) h = (h * 33 + c.charCodeAt(0)) >>> 0; return h; }
 const wAuthor = w => w.author && TH[w.author] ? TH[w.author].name : w.authorName || "Unknown";
 const WLEVEL = ["", "Easy first read", "Needs patience", "Hard: best with a guide"];
 const wDots = w => "●".repeat(w.level || 1) + "○".repeat(3 - (w.level || 1));
 function wMatch(w) { const q = wkQuery.trim().toLowerCase();
   if (wkLevel === -1 && !(S.books || {})[w.id]) return false;
-  return (!wkTopic || arr(w.topics).includes(wkTopic)) && (wkLevel <= 0 || w.level === wkLevel) && (!q || (w.title + " " + wAuthor(w) + " " + (w.original || "") + " " + w.summary + " " + (w.why || "") + " " + (w.inside || "") + " " + arr(w.topics).join(" ")).toLowerCase().includes(q)); }
-function wSpine(w) { const hh = 150 + wHash(w.id) % 60 + (w.level || 1) * 8, ww = 30 + (w.level || 1) * 6 + wHash(w.id + "w") % 8, c = wColor(w);
-  return '<a class="spine' + (w.title.length > 24 ? " long" : "") + '" href="#works-' + esc(w.id) + '" data-w="' + esc(w.id) + '" style="--c:' + c + ";height:" + hh + "px;width:" + ww + 'px" title="' + esc(w.title + " · " + wAuthor(w) + " · " + yrTxt(w.year)) + '"><span class="sp-t">' + esc(w.title) + '</span><span class="sp-a">' + esc(shortName(TH[w.author] || { name: wAuthor(w) })) + "</span></a>"; }
+  return (!wkTopic || arr(w.topics).includes(wkTopic)) && (wkLevel <= 0 || w.level === wkLevel) && (!q || (wStrong(q) ? wHitStrong(w, q) : wHitText(w, q))); }
+// a search names a book, a thinker or a tag first; only when nothing does is it looked for in the descriptions
+const wHitStrong = (w, q) => (w.title + " " + wAuthor(w) + " " + (w.original || "") + " " + arr(w.topics).join(" ") + " | " + arr(w.tags).join(" | ")).toLowerCase().includes(q);
+const wHitText = (w, q) => (w.summary + " " + (w.why || "") + " " + (w.inside || "")).toLowerCase().includes(q);
+let wStrongQ = null, wStrongV = false; const wStrong = q => { if (q !== wStrongQ) { wStrongQ = q; wStrongV = WORKS.some(w => wHitStrong(w, q)); } return wStrongV; };
+// rough page count from the "length" note, so thicker books really are longer
+function wPages(w) { const s = String(w.length || "").replace(/,/g, ""); let m = s.match(/(\d+)\s*pages/); if (m) return +m[1];
+  if ((m = s.match(/(\d+)\s*lines/))) return Math.max(3, +m[1] / 30); if (/few pages/.test(s)) return 5;
+  return /paper|essay|letter|speech|lecture|sermon|poem/.test(String(w.form || "")) ? 25 : 200; }
+function wSpine(w) { const t = w.title, n = t.length, c = wColor(w);
+  let ww = Math.round(Math.max(24, Math.min(64, 16 + 7 * Math.log(wPages(w) + 1)))); if (n > 30) ww = Math.max(ww, 38);
+  // tall enough for the whole title: one line of lettering up to the tallest spine, then two lines on a wider spine
+  let cols = 1, hh = 128 + n * 8.8; if (hh > 340) { cols = 2; ww = Math.max(ww, 42); hh = 142 + Math.ceil(n / 2) * 10.4; }
+  hh = Math.round(Math.max(160, Math.min(350, hh)));
+  return '<a class="spine' + (cols > 1 ? " two" : "") + '" href="#works-' + esc(w.id) + '" data-w="' + esc(w.id) + '" style="--c:' + c + ";height:" + hh + "px;width:" + ww + 'px" title="' + esc(t + " · " + wAuthor(w) + " · " + yrTxt(w.year)) + '"><span class="sp-t">' + esc(t) + '</span><span class="sp-a">' + esc(shortName(TH[w.author] || { name: wAuthor(w) })) + "</span></a>"; }
+// pack each shelf's books into as many rows as the width needs, a board under every row
+function wRows() { $$("#view .subshelf").forEach(sh => { const box = $(".shelf-rows", sh); if (!box) return; const W = sh.parentElement.clientWidth - 12; if (W <= 0) return;
+  const books = $$(".spine", sh), rows = []; let row = [], used = 0;
+  books.forEach(b => { if (b.hidden) { (row.length ? row : rows[rows.length - 1] || row).push(b); return; } const w = parseFloat(b.style.width) + 3; if (row.some(x => !x.hidden) && used + w > W) { rows.push(row); row = []; used = 0; } row.push(b); used += w; });
+  if (row.length) rows.push(row);
+  const wide = Math.max(0, ...rows.map(r => r.filter(b => !b.hidden).reduce((t, b) => t + parseFloat(b.style.width) + 3, 0))); sh.style.width = Math.min(W + 12, Math.max(200, wide + 12)) + "px";
+  box.innerHTML = ""; rows.forEach(r => { const d = document.createElement("div"); d.className = "shelf-row"; r.forEach(b => d.appendChild(b)); const g = document.createElement("div"); g.className = "shelf-board"; box.appendChild(d); box.appendChild(g); }); }); }
+let wRowsT; window.addEventListener("resize", () => { clearTimeout(wRowsT); wRowsT = setTimeout(() => { if ($("#view .subshelf")) wRows(); }, 120); });
 function wCard(w) { return '<a class="wcard" href="#works-' + esc(w.id) + '" data-w="' + esc(w.id) + '"><span class="wc-bar" style="--c:' + wColor(w) + '"></span><span class="wc-yr">' + esc(yrTxt(w.year)) + '</span><b>' + esc(w.title) + '</b><span class="wc-au">' + esc(wAuthor(w)) + " · " + esc(w.form || "") + "</span><p>" + esc(w.summary) + '</p><span class="wc-lv">' + wDots(w) + " " + esc(WLEVEL[w.level || 1]) + "</span></a>"; }
 VIEWS.works = arg => {
   if (arg && WK[arg]) return workPage(WK[arg]);
   if (!WORKS.length) return '<div class="wrap stack"><span class="eyebrow">The Archive</span><h1>Works</h1><p class="muted">The archive is being catalogued.</p></div>';
-  const shelves = W_ERAS.map(([k, n, a, b]) => { const L = wInEra(k); return L.length ? '<section class="shelf" data-era="' + k + '"><header><h2>' + n + '</h2><span class="faint">' + L.length + " works · " + yrTxt(a) + "–" + (b >= 2000 ? "today" : yrTxt(b)) + '</span></header><div class="shelf-row">' + L.map(wSpine).join("") + '</div><div class="shelf-board"></div></section>' : ""; }).join("");
+  const shelves = W_ERAS.map(([k, n, a, b]) => { const L = wInEra(k); return L.length ? '<section class="shelf" data-era="' + k + '"><header><h2>' + n + '</h2><span class="faint">' + L.length + " works · " + yrTxt(a) + "–" + (b >= 2000 ? "today" : yrTxt(b)) + "</span></header><div class=\"subshelves\">" + wShelvesOf(k).map(s => '<div class="subshelf" data-shelf="' + esc(s.id) + '">' + (s.name ? "<h3>" + esc(s.name) + ' <span class="faint">' + s.L.length + "</span></h3>" : "") + '<div class="shelf-rows">' + s.L.map(wSpine).join("") + "</div></div>").join("") + "</div></section>" : ""; }).join("");
+  const legend = '<div class="wk-legend" role="group" aria-label="Colour shows the main topic"><span class="faint">Colour = main topic:</span>' + W_TOPICS.map(t => '<button class="wk-key" data-act="wkKey" data-t="' + esc(t) + '" aria-pressed="' + (wkTopic === t) + '"><i style="background:' + W_TOPIC_COLOR[t] + '"></i>' + esc(cap(t)) + "</button>").join("") + "</div>";
   const list = W_ERAS.map(([k, n, a, b]) => { const L = wInEra(k); return L.length ? '<section class="wlist-era" data-era="' + k + '"><h2>' + n + '</h2><div class="wgrid">' + L.map(wCard).join("") + "</div></section>" : ""; }).join("");
   after.push(wFilter);
   after.push(() => { const i = $("#wkSearch"); if (i) i.addEventListener("input", () => { wkQuery = i.value; wFilter(); }); const s = $("#wkTopic"); if (s) s.addEventListener("change", () => { wkTopic = s.value; wFilter(); }); });
   return '<div class="wrap stack" style="--g:20px"><div class="stack" style="--g:8px"><span class="eyebrow">The Archive</span><h1>' + WORKS.length + ' works that moved the argument</h1><p class="muted read" style="max-width:62ch">From the Upanishads to the trolley problem: what each book argues, why it still matters, and exactly where a beginner should start reading. Every spine opens a page.</p></div>' +
-    '<div class="wk-tools"><input type="search" id="wkSearch" placeholder="Search titles, authors, ideas" value="' + esc(wkQuery) + '" aria-label="Search the archive"><select id="wkTopic" aria-label="Topic"><option value="">Every topic</option>' + W_TOPICS.map(t => '<option value="' + t + '"' + (wkTopic === t ? " selected" : "") + ">" + cap(t) + "</option>").join("") + "</select>" +
+    '<div class="wk-tools"><input type="search" id="wkSearch" list="wkSuggest" placeholder="Find a book, a thinker or an idea (try “free will”)" value="' + esc(wkQuery) + '" aria-label="Search the archive"><datalist id="wkSuggest">' + [...new Set(WORKS.map(wAuthor).concat(WORKS.flatMap(w => arr(w.tags)), WORKS.map(w => w.title)))].sort((a, b) => a.localeCompare(b)).map(x => '<option value="' + esc(x) + '">').join("") + '</datalist><select id="wkTopic" aria-label="Topic"><option value="">Every topic</option>' + W_TOPICS.map(t => '<option value="' + t + '"' + (wkTopic === t ? " selected" : "") + ">" + cap(t) + "</option>").join("") + "</select>" +
     '<div class="seg" role="group" aria-label="Difficulty">' + [[0, "Any level"], [1, "Easy first reads"], [2, "Needs patience"], [3, "Hard"]].concat(Object.keys(S.books || {}).length ? [[-1, "★ My shelf (" + Object.keys(S.books).length + ")"]] : []).map(([v, n]) => '<button class="chip" data-act="wkLevel" data-v="' + v + '" aria-pressed="' + (wkLevel === v) + '">' + n + "</button>").join("") + "</div>" +
     '<div class="seg" role="group" aria-label="View"><button class="chip" data-act="wkView" data-v="shelf" aria-pressed="' + (wkView === "shelf") + '">Shelves</button><button class="chip" data-act="wkView" data-v="list" aria-pressed="' + (wkView === "list") + '">List</button></div></div>' +
     // a way in: eight short first reads, one sitting each, across 2,400 years
     (() => { const P = ["plato-apology", "epictetus-handbook", "laozi-daodejing", "descartes-discourse-on-method", "hume-standard-of-taste", "mill-on-liberty", "gettier-justified-true-belief", "nagel-what-is-it-like-to-be-a-bat"].map(id => WK[id]).filter(Boolean);
       return P.length > 3 ? '<section class="wk-start"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>Start with these</h2><span class="faint">Eight short first reads, each one an evening or less</span></div><div class="wk-start-row">' + P.map(w => '<a class="wk-mini" href="#works-' + esc(w.id) + '" style="--c:' + wColor(w) + '"><span class="wk-mini-cv"><span>' + esc(w.title) + '</span></span><b>' + esc(w.title) + "</b><span>" + esc(wAuthor(w)) + "</span><span class=\"faint\">" + esc(w.length) + "</span></a>").join("") + "</div></section>" : ""; })() +
-    '<p class="faint" id="wkCount" role="status" aria-live="polite"></p>' + (wkView === "shelf" ? '<div class="shelves">' + shelves + "</div>" : '<div class="wlist">' + list + "</div>") + "</div>";
+    '<p class="faint" id="wkCount" role="status" aria-live="polite"></p>' + (wkView === "shelf" ? legend + '<div class="shelves">' + shelves + "</div>" : '<div class="wlist">' + list + "</div>") + "</div>";
 };
 function wFilter() { let n = 0; const on = !!(wkQuery.trim() || wkTopic || wkLevel);
   $$("#view .shelves [data-w], #view .wlist [data-w]").forEach(el => { const ok = wMatch(WK[el.dataset.w]); el.hidden = !ok; if (ok) n++; });
-  $$("#view .shelf, #view .wlist-era").forEach(s => { s.hidden = !$$("[data-w]", s).some(x => !x.hidden); });
-  const st = $("#view .wk-start"); if (st) st.hidden = on;
+  $$("#view .subshelf, #view .shelf, #view .wlist-era").forEach(s => { s.hidden = !$$("[data-w]", s).some(x => !x.hidden); });
+  const st = $("#view .wk-start"); if (st) st.hidden = on; wRows(); $$('[data-act="wkKey"]').forEach(b => b.setAttribute("aria-pressed", String(b.dataset.t === wkTopic)));
   const c = $("#wkCount"); if (c) c.textContent = n === WORKS.length ? "" : n ? n + " of " + WORKS.length + " works match" : "Nothing in the archive matches" + (wkQuery.trim() ? " “" + wkQuery.trim() + "”" : "") + ". Try another word, or press / to search the whole site."; }
+ACT.wkTag = el => { wkQuery = el.dataset.t; wkTopic = ""; wkLevel = 0; wkView = "shelf"; location.hash = "#works"; };
+ACT.wkKey = el => { wkTopic = wkTopic === el.dataset.t ? "" : el.dataset.t; const s = $("#wkTopic"); if (s) s.value = wkTopic; wFilter(); };
 ACT.wkLevel = el => { wkLevel = +el.dataset.v; $$('[data-act="wkLevel"]').forEach(b => b.setAttribute("aria-pressed", String(b === el))); wFilter(); };
 ACT.bookMark = el => { S.books = S.books || {}; const id = el.dataset.id, v = el.dataset.v; if (S.books[id] === v) delete S.books[id]; else S.books[id] = v; save();
   $$('[data-act="bookMark"]').forEach(b => b.setAttribute("aria-pressed", String(S.books[id] === b.dataset.v))); toast(S.books[id] === "read" ? "On your shelf as read" : S.books[id] === "want" ? "Added to your want-to-read shelf" : "Taken off your shelf"); };
@@ -15133,6 +15172,7 @@ function workPage(w) {
   h += '<div class="tp-card tp-start tp-narrow"><span class="eyebrow">Where to start</span><p>' + esc(w.start) + "</p></div>";
   h += '<section class="tp-sec"><h2>What it argues</h2><p class="read wk-lead">' + esc(w.summary) + "</p></section>";
   if (w.line && w.line.text) h += '<figure class="tp-quote"><blockquote>' + esc(w.line.text) + "</blockquote><figcaption>" + esc([w.line.where, w.line.tr && !/original/i.test(w.line.tr) ? "tr. " + w.line.tr : ""].filter(Boolean).join(" · ")) + "</figcaption></figure>";
+  if (arr(w.tags).length) h += '<section class="tp-sec"><h3>Ideas in this book</h3><div class="wk-tags">' + arr(w.tags).map(t => '<button class="chip" data-act="wkTag" data-t="' + esc(t) + '">' + esc(t) + "</button>").join("") + "</div></section>";
   h += '<section class="tp-sec tp-two"><div><h3>Why it matters</h3><p class="read">' + esc(w.why) + '</p></div><div><h3>What is inside</h3><p class="read">' + esc(w.inside) + "</p></div></section>";
   if (rel.length) h += '<section class="tp-sec"><h3>Read it alongside</h3><div class="wgrid">' + rel.map(wCard).join("") + "</div></section>";
   h += '</div><aside class="tp-side"><div class="tp-card tp-start tp-wide"><span class="eyebrow">Where to start</span><p>' + esc(w.start) + "</p></div>";
