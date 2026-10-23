@@ -1349,15 +1349,15 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .gl-knob{position:absolute;left:0;top:2px;width:32px;height:32px;border-radius:50%;background:var(--ink);box-shadow:0 2px 6px rgba(0,0,0,.3)}.gl-track.hot{background:var(--crack-soft)}
 .gfind{border-left:3px solid var(--lamp);padding:4px 12px}.gfind p{margin:2px 0 0}
 .omap{width:100%;border-radius:14px;display:block}.oroute{fill:none;stroke:#f3e3b5;stroke-width:1.5;stroke-dasharray:4 4;opacity:.6}.oroute.done{stroke-dasharray:none;opacity:1;stroke:#E8B04A}
-.oisle ellipse{fill:#d8c79a;stroke:#8a6a3e}.oisle text{font-size:7px;fill:#f6eedb;text-anchor:middle}.oisle.past ellipse{fill:#b9a77a}.oisle.now ellipse{fill:#E8B04A;stroke:#fff;stroke-width:1.5}
+.oisle ellipse{fill:#d8c79a;stroke:#8a6a3e}.oisle{cursor:help}.oisle text{font-size:8px;font-weight:600;paint-order:stroke;stroke:#173f5c;stroke-width:2px;fill:#f6eedb;text-anchor:middle}.oisle.past ellipse{fill:#b9a77a}.oisle.now ellipse{fill:#E8B04A;stroke:#fff;stroke-width:1.5}
 .oship{font-size:16px;text-anchor:middle}
 .ometers{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:10px}.ometer{border:1px solid var(--line);border-radius:12px;background:var(--raised);padding:8px 12px;display:flex;flex-direction:column;gap:4px;min-width:0}
 .ocrew{font-size:1.5rem}.ocrewbar{height:6px;background:var(--line-2);border-radius:999px;overflow:hidden}.ocrewbar i{display:block;height:100%;background:#2e7d4f}
-.ogauge{width:100%;max-width:170px}.og-arc{fill:none;stroke:url(#ogg);stroke-width:8;stroke:var(--line)}.og-needle{stroke:var(--ink);stroke-width:3;stroke-linecap:round;transform-origin:60px 60px;transition:transform .6s cubic-bezier(.3,1.4,.5,1)}.ogauge text{font-size:8px;fill:var(--ink-3)}
+.ogauge{width:100%;max-width:170px}.og-arc{fill:none;stroke:url(#ogg);stroke-width:8;stroke-linecap:round}.og-needle{stroke:var(--ink);stroke-width:3;stroke-linecap:round;transform-origin:60px 60px;transition:transform .6s cubic-bezier(.3,1.4,.5,1)}.ogauge text{font-size:8px;fill:var(--ink-3)}
 .ostory{font-size:1.1rem}.oq{font-weight:600;margin:0}.ochoices{display:grid;gap:8px}
 .ochoice{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:2px;padding:12px 16px;border:1.5px solid var(--line);border-radius:12px;background:var(--raised)}.ochoice:hover,.ochoice:focus-visible{border-color:var(--lamp)}.ochoice span{color:var(--ink-2);font-size:.92rem}
 .oout{padding:12px 16px;border-radius:12px;background:var(--lapis-soft)}.oout p{margin:4px 0 0}.ofx{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.ofx span{font-size:.76rem;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--raised)}
-.olens{border-left:3px solid var(--lamp);padding:4px 12px}.olens p{margin:4px 0 0}.ohomer summary{cursor:pointer;color:var(--lapis)}
+.olens{border-left:3px solid var(--lamp);padding:4px 12px}.olens .eyebrow{display:flex;margin-bottom:4px}.olens p{margin:4px 0 0}.ohomer summary{cursor:pointer;color:var(--lapis)}
 .oscore{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}.oscore b{display:block;font-size:1.8rem}.oscore span{font-size:.8rem;color:var(--ink-3)}
 .obars{display:grid;gap:4px}.obars div{display:grid;grid-template-columns:120px 1fr 24px;gap:8px;align-items:center;font-size:.84rem}.obars i{height:10px;border-radius:999px;background:var(--lamp)}
 @media (max-width:560px){.ometers{grid-template-columns:1fr 1fr}.ometers .ometer:nth-child(2){grid-column:1/-1;order:3}.vtrack{height:150px}}
@@ -13738,16 +13738,18 @@ function gauntResult(L, dead) { L.done = true; const v = id => L.v[id], yes = id
 const ODY_THEORY = { consequences: "Consequences", duty: "Duty", virtue: "Virtue", care: "Care", self: "Self-interest", contract: "Fair agreement", faith: "Piety", wits: "Wits" };
 function odyState() { const O = window.ODYSSEY || {}; const L = S.lab.odyssey = S.lab.odyssey || {}; if (L.i == null) Object.assign(L, { i: 0, crew: (O.start || {}).crew || 45, mercy: 0, wits: 0, picks: [], seen: false }); return L; }
 function odyMap(O, L) { const st = O.stops || [];
-  const pts = st.map(s => [s.map.x * 4, s.map.y * 2.2]);
+  // spread the islands over the whole chart, whatever range the stop coordinates use
+  const xs = st.map(s => s.map.x), ys = st.map(s => s.map.y), x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+  const pts = st.map(s => [Math.round(34 + (s.map.x - x0) / ((x1 - x0) || 1) * 332), Math.round(26 + (s.map.y - y0) / ((y1 - y0) || 1) * 160)]);
   const path = pts.map((p, i) => (i ? "L" : "M") + p[0] + " " + p[1]).join(" ");
   const cur = Math.min(L.i, st.length - 1), sh = pts[cur] || [0, 0];
-  return '<svg class="omap" viewBox="0 0 400 220" aria-hidden="true"><defs><radialGradient id="osea" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#2b6e8f"/><stop offset="1" stop-color="#173f5c"/></radialGradient></defs><rect width="400" height="220" rx="14" fill="url(#osea)"/>' +
+  return '<svg class="omap" viewBox="0 0 400 220" aria-hidden="true"><defs><radialGradient id="osea" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#2b6e8f"/><stop offset="1" stop-color="#173f5c"/></radialGradient></defs><rect width="400" height="220" rx="14" fill="url(#osea)"/><path d="M0 0H400V12C330 30 300 8 240 18S120 4 60 20 0 10 0 10Z" fill="#c9b98c" opacity=".35"/><path d="M0 220H400V204C340 190 280 214 200 202S80 196 0 210Z" fill="#c9b98c" opacity=".35"/>' +
     '<path d="' + path + '" class="oroute"/>' + (L.i ? '<path d="' + pts.slice(0, L.i + 1).map((p, i) => (i ? "L" : "M") + p[0] + " " + p[1]).join(" ") + '" class="oroute done"/>' : "") +
-    st.map((s, i) => '<g class="oisle' + (i < L.i ? " past" : i === L.i ? " now" : "") + '"><ellipse cx="' + pts[i][0] + '" cy="' + pts[i][1] + '" rx="11" ry="7"/><text x="' + pts[i][0] + '" y="' + (pts[i][1] + 19) + '">' + esc(s.place) + "</text></g>").join("") +
+    st.map((s, i) => '<g class="oisle' + (i < L.i ? " past" : i === L.i ? " now" : "") + '"><title>' + esc((i + 1) + ". " + s.place) + '</title><ellipse cx="' + pts[i][0] + '" cy="' + pts[i][1] + '" rx="9" ry="6"/>' + (i === cur || i === 0 || i === st.length - 1 ? '<text x="' + pts[i][0] + '" y="' + (pts[i][1] + 17) + '">' + esc(s.place) + "</text>" : "") + "</g>").join("") +
     '<text class="oship" x="' + sh[0] + '" y="' + (sh[1] - 9) + '" style="--x:' + sh[0] + "px;--y:" + (sh[1] - 9) + 'px">⛵</text></svg>'; }
 function odyMeters(L, O) { const m = Math.max(-12, Math.min(12, L.mercy)), ang = m * 7;
   return '<div class="ometers"><div class="ometer"><span class="eyebrow">Crew</span><b class="ocrew">' + L.crew + '</b><div class="ocrewbar"><i style="width:' + Math.round(100 * L.crew / ((O.start || {}).crew || 45)) + '%"></i></div></div>' +
-    '<div class="ometer"><span class="eyebrow">Your heart</span><svg viewBox="0 0 120 66" class="ogauge"><path d="M10 60 A50 50 0 0 1 110 60" class="og-arc"/><line x1="60" y1="60" x2="60" y2="18" class="og-needle" style="transform:rotate(' + ang + 'deg)"/><text x="6" y="66">Ruthless</text><text x="114" y="66" text-anchor="end">Merciful</text></svg></div>' +
+    '<div class="ometer"><span class="eyebrow">Your heart</span><svg viewBox="0 0 120 76" class="ogauge"><defs><linearGradient id="ogg"><stop offset="0" stop-color="#b8432f"/><stop offset=".5" stop-color="#c9b98c"/><stop offset="1" stop-color="#2e7d4f"/></linearGradient></defs><path d="M10 60 A50 50 0 0 1 110 60" class="og-arc"/><line x1="60" y1="60" x2="60" y2="18" class="og-needle" style="transform:rotate(' + ang + 'deg)"/><text x="4" y="73">Ruthless</text><text x="116" y="73" text-anchor="end">Merciful</text></svg></div>' +
     '<div class="ometer"><span class="eyebrow">Wits</span><b>' + "★".repeat(Math.min(L.wits, 12)) + (L.wits ? "" : "–") + "</b></div></div>"; }
 function labOdyssey() { const O = window.ODYSSEY; if (!O || !O.stops) return labShell("The Odyssey", '<p class="muted">The voyage is being charted.</p>');
   const L = odyState(), st = O.stops, n = st.length;
@@ -13770,7 +13772,7 @@ function odyEnd(O, L) { L.done = true;
   const tally = {}; L.picks.forEach((p, i) => { const s = O.stops[i], c = s && s.choices.find(x => x.id === p); if (c) tally[c.lens.theory] = (tally[c.lens.theory] || 0) + 1; });
   const top = Object.entries(tally).sort((a, b) => b[1] - a[1]), prof = top[0] && (O.profiles || {})[top[0][0]];
   const homer = O.stops.filter((s, i) => s.homerChoice && L.picks[i] === s.homerChoice).length;
-  const score = L.crew * 10 + L.wits * 15 + (12 - Math.abs(L.mercy)) * 5; L.best = Math.max(L.best || 0, score);
+  const score = L.crew * 10 + L.wits * 15 + Math.max(0, 12 - Math.abs(L.mercy)) * 5; L.best = Math.max(L.best || 0, score);
   return '<div class="panel raised stack oend" style="--g:12px"><span class="eyebrow">Ithaca</span><h2>' + esc(end.title) + '</h2><p class="read">' + esc(end.text) + "</p>" +
     '<div class="oscore"><div><b>' + L.crew + '</b><span>crew home</span></div><div><b>' + L.wits + '</b><span>wits</span></div><div><b>' + score + '</b><span>points' + (L.best > score ? " · best " + L.best : "") + "</span></div></div>" +
     (prof ? '<div class="olens"><span class="eyebrow">Your captaincy</span><b>' + esc(prof.name) + '</b><p class="read">' + esc(prof.line) + "</p></div>" : "") +
