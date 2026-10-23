@@ -1332,6 +1332,11 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .drow.fresh .tablet{animation:dfresh .6s ease-out}@keyframes dfresh{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .darrows{position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:1}
 @media (max-width:760px){.darrows{display:none}}
+.pdrule{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px}.pdrule input[type=range]{flex:1;min-width:160px}
+.pdboard{display:grid;gap:4px}.pdboard div{display:grid;grid-template-columns:minmax(120px,190px) 1fr 44px;gap:8px;align-items:center;font-size:.86rem}.pdboard i{height:12px;border-radius:999px;background:var(--line)}.pdboard .me i{background:var(--lamp)}.pdboard .me span{font-weight:700}
+.pdvs{display:grid;gap:6px;margin-top:8px}.pdvs div{display:grid;grid-template-columns:150px 70px 1fr;gap:8px;font-size:.84rem;align-items:baseline}
+.pdlog{display:flex;flex-wrap:wrap;gap:4px}.pdlog span{display:flex;flex-direction:column;gap:2px;padding:4px;border-radius:8px;background:var(--surface)}.pdlog i{font-style:normal;font-size:1.1rem}
+@media (max-width:560px){.pdvs div{grid-template-columns:1fr 70px}.pdvs small{grid-column:1/-1}}
 .labgames{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}
 .gtile{display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:16px;text-decoration:none;color:#ECE7DA;background:linear-gradient(150deg,#1d3e5a,#0f2236);box-shadow:var(--shadow);transition:transform .2s}
 .gtile:hover{transform:translateY(-3px)}.gtile h3{color:#fff;margin:0}.gtile p{margin:0;color:#d9e2ea}.gtile .faint{color:#9fb3c4}.gemo{font-size:2rem}
@@ -13786,6 +13791,56 @@ ACT.odyPick = el => { const L = odyState(), s = window.ODYSSEY.stops[L.i], c = s
 ACT.odyNext = () => { const L = odyState(); L.i++; save(); render(true); window.scrollTo({ top: 0 }); };
 ACT.odyReset = () => { const b = (S.lab.odyssey || {}).best; S.lab.odyssey = { best: b }; odyState().seen = true; save(); render(true); };
 
+// The Harbour Bargain: an iterated prisoner's dilemma tournament (Axelrod, The Evolution of Cooperation, 1984).
+// Each meeting both captains trade fairly (C) or cheat (D). Payoffs: both fair 3 each, both cheat 1 each, cheat a fair trader 5 vs 0.
+const PD_PAY = { CC: [3, 3], CD: [0, 5], DC: [5, 0], DD: [1, 1] }, PD_ROUNDS = 100;
+const PD_BOTS = [
+  { k: "tft", n: "Tit for Tat", d: "Trades fair first, then copies whatever you did last time. Anatol Rapoport’s entry won Axelrod’s tournaments.", f: (me, op) => op.length ? op[op.length - 1] : "C" },
+  { k: "alld", n: "Always Cheat", d: "Cheats every time. Hobbes’s war of all against all, in one captain.", f: () => "D" },
+  { k: "allc", n: "Always Fair", d: "Trades fair every time, whatever you do.", f: () => "C" },
+  { k: "grudge", n: "The Grudger", d: "Fair until you cheat once, then cheats forever.", f: (me, op) => op.includes("D") ? "D" : "C" },
+  { k: "tf2t", n: "Tit for Two Tats", d: "Only punishes after you cheat twice in a row: more forgiving than Tit for Tat.", f: (me, op) => op.length > 1 && op[op.length - 1] === "D" && op[op.length - 2] === "D" ? "D" : "C" },
+  { k: "pavlov", n: "Pavlov", d: "Win-stay, lose-shift: repeats its last move if it did well, switches if it did badly.", f: (me, op) => { if (!me.length) return "C"; const l = me[me.length - 1] + op[op.length - 1]; return l === "CC" || l === "DC" ? me[me.length - 1] : me[me.length - 1] === "C" ? "D" : "C"; } },
+  { k: "joss", n: "Joss", d: "Like Tit for Tat, but sneakily cheats one time in ten.", f: (me, op, r) => r() < 0.1 ? "D" : op.length ? op[op.length - 1] : "C" },
+  { k: "rand", n: "The Gambler", d: "Flips a coin every time.", f: (me, op, r) => r() < 0.5 ? "C" : "D" }
+];
+function pdRng(seed) { let s = seed >>> 0; return () => { s = (s * 1664525 + 1013904223) >>> 0; return s / 4294967296; }; }
+function pdState() { const L = S.lab.pd = S.lab.pd || {}; L.rule = L.rule || { first: "C", afterC: "C", afterD: "D", forgive: 0 }; return L; }
+function pdMine(rule) { return (me, op, r) => { if (!op.length) return rule.first; const last = op[op.length - 1]; let m = last === "C" ? rule.afterC : rule.afterD; if (m === "D" && last === "D" && r() < rule.forgive / 100) m = "C"; return m; }; }
+function pdPlay(fa, fb, seed) { const r = pdRng(seed), a = [], b = []; let sa = 0, sb = 0;
+  for (let i = 0; i < PD_ROUNDS; i++) { const x = fa(a, b, r), y = fb(b, a, r); a.push(x); b.push(y); const p = PD_PAY[x + y]; sa += p[0]; sb += p[1]; } return [sa, sb, a, b]; }
+function pdTourney(rule) { const ent = [{ k: "you", n: "Your captain", f: pdMine(rule) }].concat(PD_BOTS), tot = {}; ent.forEach(e => tot[e.k] = 0);
+  const vs = {};
+  ent.forEach((A, i) => ent.forEach((B, j) => { if (j <= i) return; const [sa, sb] = pdPlay(A.f, B.f, 1000 + i * 31 + j); tot[A.k] += sa; tot[B.k] += sb; if (A.k === "you") vs[B.k] = [sa, sb]; }));
+  return { rank: ent.map(e => ({ k: e.k, n: e.n, s: tot[e.k] })).sort((a, b) => b.s - a.s), vs }; }
+function labPD() { const L = pdState(), R = L.rule, T = pdTourney(R), you = T.rank.findIndex(x => x.k === "you") + 1, max = T.rank[0].s, low = T.rank[T.rank.length - 1].s * 0.92;
+  L.best = Math.min(L.best || 99, you);
+  const sel = (key, label) => '<label class="pdrule"><span>' + label + '</span><span class="seg">' + [["C", "Trade fair"], ["D", "Cheat"]].map(([v, t]) => '<button class="chip" aria-pressed="' + (R[key] === v) + '" data-act="pdSet" data-k="' + key + '" data-v="' + v + '">' + t + "</button>").join("") + "</span></label>";
+  const name = R.first === "C" && R.afterC === "C" && R.afterD === "D" ? (R.forgive ? "Generous Tit for Tat" : "Tit for Tat") : R.afterC === "D" && R.afterD === "D" ? "Always Cheat" : R.afterC === "C" && R.afterD === "C" ? "Always Fair" : R.afterC === "D" && R.afterD === "C" ? "The Contrarian" : "Your own design";
+  let h = '<p class="read">Two captains meet at sea, a hundred times. Each time, each can <b>trade fair</b> or <b>cheat</b>. If both trade fair, both earn 3. If both cheat, both earn 1. Cheat someone who trades fair, and you take 5 while they get nothing. Cheating always pays more in a single meeting, yet two cheats end up poorer than two honest traders. Design your captain, then enter the tournament.</p>' +
+    '<div class="panel stack" style="--g:10px"><span class="eyebrow">Your captain’s rules</span>' + sel("first", "On the first meeting") + sel("afterC", "If they traded fair last time") + sel("afterD", "If they cheated last time") +
+    '<label class="pdrule"><span>Forgive a cheat, sometimes: <b id="pdF">' + R.forgive + '%</b></span><input type="range" min="0" max="50" step="5" value="' + R.forgive + '" id="pdForgive" aria-label="Chance of forgiving a cheat"></label><p class="faint" style="margin:0;font-size:.84rem">Your strategy: <b>' + esc(name) + "</b></p></div>" +
+    '<div class="panel raised stack" style="--g:8px"><span class="eyebrow">The tournament · everyone meets everyone, 100 times</span><h3>You finished ' + you + " of " + T.rank.length + (you === 1 ? " 🏆" : "") + "</h3>" +
+    '<div class="pdboard">' + T.rank.map((x, i) => '<div class="' + (x.k === "you" ? "me" : "") + '"><span>' + (i + 1) + ". " + esc(x.n) + '</span><i style="width:' + Math.round(100 * (x.s - low) / ((max - low) || 1)) + '%"></i><b>' + x.s + "</b></div>").join("") + "</div>" +
+    '<details><summary class="linkish">Your meetings, one by one</summary><div class="pdvs">' + PD_BOTS.map(b => '<div><span>vs ' + esc(b.n) + '</span><b>' + T.vs[b.k][0] + " – " + T.vs[b.k][1] + '</b><small class="faint">' + esc(b.d) + "</small></div>").join("") + "</div></details>" +
+    '<p class="read" style="margin:0">' + (you <= 2 ? "Robert Axelrod found the same in 1980: the winners were <b>nice</b> (never cheat first), <b>retaliating</b>, <b>forgiving</b> and <b>clear</b>. Cooperation can grow among selfish traders, without any sovereign to enforce it." : "Try what won Axelrod’s real tournaments in 1980: be nice (never cheat first), hit back when cheated, then forgive.") + "</p></div>" +
+    pdHandHTML(L) + '<div class="row"><a class="btn small" href="#thinker-hobbes">Hobbes on the war of all against all</a><a class="btn small ghost" href="#agora-inequality">Debates</a></div>';
+  after.push(() => { const r = $("#pdForgive"); if (r) { r.oninput = () => { $("#pdF").textContent = r.value + "%"; }; r.onchange = () => { pdState().rule.forgive = +r.value; save(); render(true); }; } });
+  L.done = true; return labShell("The harbour bargain", h); }
+// Play one hidden captain by hand for ten meetings, then guess who it was
+function pdHandHTML(L) { const H = L.hand;
+  if (!H) return '<div class="panel stack" style="--g:8px"><span class="eyebrow">Face a mystery captain</span><p class="read" style="margin:0">Ten meetings by hand against a captain whose strategy you don’t know. Then guess who it was.</p><div class="row"><button class="btn" data-act="pdHand">Meet a mystery captain</button></div></div>';
+  const bot = PD_BOTS.find(b => b.k === H.bot), you = H.a.reduce((s, x, i) => s + PD_PAY[x + H.b[i]][0], 0), them = H.a.reduce((s, x, i) => s + PD_PAY[x + H.b[i]][1], 0);
+  const log = '<div class="pdlog">' + H.a.map((x, i) => '<span title="Meeting ' + (i + 1) + '"><i class="' + x + '">' + (x === "C" ? "🤝" : "🗡️") + '</i><i class="' + H.b[i] + '">' + (H.b[i] === "C" ? "🤝" : "🗡️") + "</i></span>").join("") + "</div>";
+  if (H.a.length < 10) return '<div class="panel stack" style="--g:8px"><span class="eyebrow">Mystery captain · meeting ' + (H.a.length + 1) + ' of 10</span>' + log + '<p class="faint" style="margin:0">Top row you, bottom row them · you ' + you + " – " + them + '</p><div class="row"><button class="btn" data-act="pdMove" data-v="C">🤝 Trade fair</button><button class="btn ghost" data-act="pdMove" data-v="D">🗡️ Cheat</button></div></div>';
+  if (!H.guess) return '<div class="panel stack" style="--g:8px"><span class="eyebrow">Who was it?</span>' + log + '<p class="faint" style="margin:0">You ' + you + " – " + them + '</p><div class="row" style="--g:6px">' + PD_BOTS.map(b => '<button class="chip" data-act="pdGuess" data-v="' + b.k + '">' + esc(b.n) + "</button>").join("") + "</div></div>";
+  return '<div class="panel stack" style="--g:8px"><span class="eyebrow">' + (H.guess === H.bot ? "Spot on! ⭐" : "Not quite") + '</span>' + log + '<p class="read" style="margin:0">It was <b>' + esc(bot.n) + "</b>: " + esc(bot.d) + " You scored " + you + ", they scored " + them + '.</p><div class="row"><button class="btn small" data-act="pdHand">Another mystery captain</button></div></div>'; }
+ACT.pdSet = el => { pdState().rule[el.dataset.k] = el.dataset.v; save(); render(true); };
+ACT.pdHand = () => { const L = pdState(); L.hand = { bot: PD_BOTS[Math.floor(Math.random() * PD_BOTS.length)].k, a: [], b: [], seed: Math.floor(Math.random() * 1e6) }; save(); render(true); };
+ACT.pdMove = el => { const L = pdState(), H = L.hand, bot = PD_BOTS.find(b => b.k === H.bot), r = pdRng(H.seed + H.a.length * 7);
+  const y = bot.f(H.b.slice(), H.a.slice(), r); H.a.push(el.dataset.v); H.b.push(y); save(); render(true); };
+ACT.pdGuess = el => { const L = pdState(); L.hand.guess = el.dataset.v; if (el.dataset.v === L.hand.bot) L.stars = (L.stars || 0) + 1; save(); render(true); };
+
 VIEWS.lab = arg => {
   if (arg === "heap") return labHeap();
   if (arg === "ship") return labShip();
@@ -13794,9 +13849,11 @@ VIEWS.lab = arg => {
   if (arg === "odyssey") return labOdyssey();
   if (arg === "veil") return labVeil();
   if (arg === "gauntlet") return labGauntlet();
+  if (arg === "pd") return labPD();
   const games = [
     { k: "odyssey", t: "The Odyssey", e: "⛵", d: "Sail home from Troy through twelve of Homer’s islands. Every choice costs or saves your crew, and swings your heart between mercy and ruthlessness.", by: "Homer; inspired by EPIC: The Musical" },
     { k: "gauntlet", t: "The trolley gauntlet", e: "🚃", d: "Ten trolley cases, from the switch to the surgeon. Drag the lever, count the cost, then see which principles your choices follow.", by: "Foot, Thomson, Greene and others" },
+    { k: "pd", t: "The harbour bargain", e: "🤝", d: "Two captains, a hundred meetings: trade fair or cheat? Design a strategy, take on Tit for Tat in a tournament, and unmask a mystery captain.", by: "Hobbes; Robert Axelrod, 1984" },
     { k: "veil", t: "Behind the veil", e: "🎲", d: "Drag the bars to design a society, then be born into it at random. Did you protect the poorest, or gamble on being rich?", by: "John Rawls, 1971; John Harsanyi" }
   ];
   const tiles = [
