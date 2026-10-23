@@ -15251,7 +15251,7 @@ function dIndex() { if (D_IDX) return D_IDX; const vocab = new Set();
     return { t, name, full, words, tags, twords, def: " " + dNorm(t.def) + " " }; }) };
   D_IDX.vocab = [...vocab]; return D_IDX; }
 function dScore(e, q) { let s = 0; const qs = q.split(" ");
-  if (e.name === q || e.full === q) s = 100; else if (e.name.startsWith(q + " ")) s = 90; else if (e.words.includes(q)) s = 84; else if (e.name.startsWith(q)) s = 80; else if (e.words.some(w => w.startsWith(q))) s = 76; else if (q.length > 3 && e.full.includes(q)) s = 62;
+  if (e.name === q || e.full === q || (q.length <= 4 && e.tags.includes(q))) s = 100; else if (e.name.startsWith(q + " ")) s = 90; else if (e.words.includes(q)) s = 84; else if (e.name.startsWith(q)) s = 80; else if (e.words.some(w => w.startsWith(q))) s = 76; else if (q.length > 3 && e.full.includes(q)) s = 62;
   if (s < 70) { if (e.tags.includes(q)) s = Math.max(s, 72); else if (e.tags.some(x => x.startsWith(q))) s = Math.max(s, 58); else if (e.twords.some(w => w.startsWith(q))) s = Math.max(s, 48); else if (q.length > 3 && e.tags.some(x => x.includes(q))) s = Math.max(s, 38); }
   if (!s && qs.length > 1 && qs.every(x => e.words.concat(e.twords).some(w => w.startsWith(x)))) s = 52;
   // among entries found only through their tags, favour the one whose name is closest to the query (taoism → Daoism), and ideas over people
