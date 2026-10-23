@@ -11536,7 +11536,9 @@ const DEBATE_SURVEY = {
   evil: [["God", [["Atheism", 67, "no"], ["Theism", 19, "yes"], ["Other", 14]]]],
   god: [["God", [["Atheism", 67, "no"], ["Theism", 19, "yes"], ["Other", 14]]]],
   realism: [["Morality", [["Moral realism", 62, "yes"], ["Anti-realism", 26, "no"], ["Other", 12]]]],
-  skepticism: [["The external world", [["Non-sceptical realism", 80, "yes"], ["Idealism", 7], ["Scepticism", 5, "no"], ["Other", 8]]]]
+  skepticism: [["The external world", [["Non-sceptical realism", 80, "yes"], ["Idealism", 7], ["Scepticism", 5, "no"], ["Other", 8]]]],
+  experience: [["Would you plug in?", [["Yes", 13, "yes"], ["No", 77, "no"], ["Other", 10]]]],
+  timetravel: [["Is time travel possible?", [["Possible", 42, "yes"], ["Impossible", 41, "no"], ["Other", 17]]]]
 };
 function debateBoard(q, cs, stance, finished) { const sides = q.sides || {}, nm = k => sides[k] || (k === "yes" ? "Yes" : "No");
   const live = k => cs.filter(c => c.side === k && S.cards[c.id] === "accept" && DSTAT[c.id] !== "down").length;
