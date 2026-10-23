@@ -1293,7 +1293,7 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .cq-sofar{font-size:.84rem;color:var(--lapis);text-decoration:underline;text-underline-offset:3px}
 .cite{font-size:.78em;color:var(--ink-3);font-family:var(--font-ui);letter-spacing:.01em;white-space:nowrap}.sl-night .cite,.vy-hero .cite{color:var(--night-mute)}
 .linkbtn{all:unset;cursor:pointer;color:var(--lapis);text-decoration:underline;text-underline-offset:3px;font-weight:600}.linkbtn:focus-visible{outline:2px solid var(--lamp)}
-.dladder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:28px;row-gap:10px;grid-auto-rows:minmax(40px,auto);position:relative}
+.dladder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;row-gap:10px;grid-auto-rows:minmax(40px,auto);position:relative}
 .dladder::before{content:"";position:absolute;top:0;bottom:0;left:50%;border-left:1px dashed var(--line)}
 .dhead{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 4px;border-bottom:3px solid var(--line);position:sticky;top:58px;z-index:2;background:var(--bg)}
 .dhead.yes{grid-column:1;border-color:var(--lapis)}.dhead.no{grid-column:2;border-color:#7A5BA8}.dhead .side{font-size:.86rem;padding:3px 10px}
@@ -1314,6 +1314,24 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .dk{font-style:normal;display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;font-size:.68rem;font-weight:700;margin-right:3px}
 .dk.attacks{background:var(--crack-soft);color:var(--crack)}.dk.replies{background:var(--lapis-soft);color:var(--lapis)}.dk.supports{background:var(--lamp-soft);color:var(--thread)}
 .dlegend{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:.8rem;color:var(--ink-2)}.dlegend .dst{margin-right:2px}
+.dq-head{display:flex;flex-direction:column;gap:6px;max-width:760px}.dq-head h1{font-size:clamp(1.6rem,3.6vw,2.3rem);margin:2px 0 0}.dq-head p{margin:0}
+.dq-links{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:.84rem}.dq-links a{color:var(--ink-3)}
+.dq-begin{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:12px 16px;border:1.5px solid var(--lamp);border-radius:12px;background:var(--raised)}.dq-begin .eyebrow{flex-basis:100%}
+.side-btn.yes{border-color:var(--lapis);color:var(--lapis)}.side-btn.no{border-color:#7A5BA8;color:#7A5BA8}
+.dq-board{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}.dq-board.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}@media (max-width:760px){.dq-board.two{grid-template-columns:minmax(0,1fr)}}
+.dq-card{border:1px solid var(--line);border-radius:12px;background:var(--raised);padding:12px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.tug{display:flex;justify-content:space-between;gap:8px;font-size:.8rem}
+.tug-rope{position:relative;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--lapis),var(--line) 50%,#7A5BA8)}
+.tug-rope i{position:absolute;top:50%;width:18px;height:18px;border-radius:50%;background:var(--ink);border:3px solid var(--raised);transform:translate(-50%,-50%);transition:left .5s cubic-bezier(.3,1.4,.5,1);box-shadow:0 1px 4px rgba(0,0,0,.25)}
+.tug-v{margin:0;font-family:var(--font-read)}
+.svq{display:flex;flex-direction:column;gap:4px}.svt{font-size:.82rem;font-weight:600}
+.svbar{display:flex;height:22px;border-radius:6px;overflow:hidden;background:var(--line-2)}.svbar i{display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:700;font-style:normal;border-right:1px solid var(--raised)}
+.svk{display:flex;flex-wrap:wrap;gap:2px 12px;font-size:.74rem;color:var(--ink-2)}.svk i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px}
+.dq-mode{display:flex;gap:6px}
+.dq-next{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px;border:1px dashed var(--line);border-radius:12px}
+.drow.fresh .tablet{animation:dfresh .6s ease-out}@keyframes dfresh{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.darrows{position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:1}
+@media (max-width:760px){.darrows{display:none}}
 .qsides{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:2px 0 4px}.qsides .faint{font-size:.74rem}
 .xlink{all:unset;cursor:pointer;font-size:.82rem;color:var(--ink-3);text-decoration:underline dotted;text-underline-offset:3px}.xlink:hover{color:var(--ink)}
 .steel{border:1px dashed var(--lamp);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--lamp-soft)}.steel p{margin:0;font-size:.88rem}.steel textarea{min-height:60px}
@@ -11453,22 +11471,14 @@ function agoraQuestion(q) {
   const cs = AG.cards.filter(c => c.q === q.id);
   const ownHere = S.own.filter(o => o.q === q.id);
   const pred = S.predictions[q.id];
-  let h = '<div class="wrap stack" style="--g:22px"><a class="linkish" href="#agora">← All debates</a>' +
-    '<div class="ring stack" style="--g:12px"><span class="eyebrow" style="color:#E8B04A;align-self:center">The question</span><h1 class="ring-h">' + esc(q.title) + '</h1><p class="read" style="max-width:38em;margin:0 auto">' + esc(q.intro || "") + "</p>" +
-    semsFor("agora", q.id).map(x => '<p style="font-size:.86rem"><a style="color:#E8B04A" href="#seminar-' + esc(x.sid) + '">Run this as a discussion: the “' + esc(x.title) + '” seminar →</a></p>').join("") +
-    (q.compass && QM[q.compass] ? '<p style="font-size:.86rem"><a style="color:#E8B04A" href="#compass-' + q.compass + '">Your Compass answer: ' + esc(deepest(q.compass) ? deepest(q.compass).label : S.answers[q.compass] ? labelOf(q.compass, S.answers[q.compass].a) : "not answered yet") + "</a></p>" : "") + "</div>";
-  if (q.predict) {
-    if (pred == null) {
-      h += '<div class="panel raised stack col" style="--g:12px;width:100%"><span class="eyebrow">Predict before you read</span><p class="read" style="font-size:1.15rem">' + esc(q.predict.prompt) + '</p><div class="opts">' +
-        q.predict.options.map((o, i) => '<button class="opt" data-act="predict" data-q="' + q.id + '" data-i="' + i + '"><span class="box"></span><span>' + esc(o) + "</span></button>").join("") +
-        '</div><button class="linkish" data-act="predict" data-q="' + q.id + '" data-i="-1" style="align-self:flex-start">Skip the prediction</button></div>';
-      return h + "</div>";
-    }
-    h += '<div class="panel stack col" style="--g:8px;width:100%;background:var(--lapis-soft);border-color:transparent"><span class="eyebrow">The reveal</span>' +
-      (pred >= 0 ? '<p>You predicted: <b>' + esc(q.predict.options[pred]) + "</b></p>" : "") +
-      '<p class="read">' + esc(q.predict.reveal.replace(/^The (first|second|third|fourth)\.\s*/, (m, w) => "Answer: “" + q.predict.options[["first", "second", "third", "fourth"].indexOf(w)] + "”. ")) + "</p>" +
-      (q.predict.source ? '<p class="faint" style="font-size:.8rem">' + (/^Cards /.test(q.predict.source) ? "See the arguments below: " + q.predict.source.slice(6).split(/,\s*/).filter(id => CARDS[id]).map(id => '<a href="#agora-' + q.id + '" data-act="gotoCard" data-card="' + esc(id) + '">' + esc(CARDS[id].title) + "</a>").join(", ") : "Source: " + esc(q.predict.source)) + "</p>" : "") + "</div>";
-  }
+  const stance = (S.stance || {})[q.id], sides = q.sides || {};
+  const sideName = k => sides[k] || (k === "yes" ? "Yes" : "No");
+  let h = '<div class="wrap stack dq" style="--g:14px"><div class="dq-head"><a class="linkish" href="#agora">← All debates</a><h1>' + esc(q.title) + '</h1><p class="read">' + esc(q.intro || "") + "</p>" +
+    '<div class="dq-links">' + semsFor("agora", q.id).map(x => '<a href="#seminar-' + esc(x.sid) + '">Run it as a class discussion →</a>').join("") +
+    (q.compass && QM[q.compass] ? '<a href="#compass-' + q.compass + '">Your Compass answer: ' + esc(deepest(q.compass) ? deepest(q.compass).label : S.answers[q.compass] ? labelOf(q.compass, S.answers[q.compass].a) : "not answered yet") + "</a>" : "") + "</div></div>";
+  if (stance === undefined) h += '<div class="dq-begin"><span class="eyebrow">Before we begin</span><b>' + esc(q.stance || "Where do you stand on this right now?") + '</b><div class="row" style="--g:8px">' +
+    ["yes", "no"].map(k => '<button class="btn small side-btn ' + k + '" data-act="stance" data-q="' + q.id + '" data-v="' + k + '">' + esc(sideName(k)) + "</button>").join("") +
+    '<button class="btn small ghost" data-act="stance" data-q="' + q.id + '" data-v="unsure">Not sure yet</button><button class="linkish" data-act="stance" data-q="' + q.id + '" data-v="skip">Skip</button></div></div>';
   // build a debate tree: each card hangs under the first card it links to
   const ids = new Set(cs.map(c => c.id));
   const parent = {}; cs.forEach(c => { const l = (c.links || []).find(x => ids.has(x.target) && x.target !== c.id); if (l) parent[c.id] = l; });
@@ -11486,11 +11496,10 @@ function agoraQuestion(q) {
     const kidHTML = (kids[id] || []).sort((a, b) => orderIdx(a) - orderIdx(b)).map(k => node(k, parent[k] || (S.own.find(o => o.id === k) || {}))).join("");
     return '<div class="thread">' + tablet(id, rel) + (kidHTML ? '<div class="kids">' + kidHTML + "</div>" : "") + "</div>";
   };
-  h += verdictHTML(q, cs);
   // the argument map: a ladder with one column per side; each argument sits in its own side's column, in reading order,
   // so an objection visibly crosses to the other side and a reply crosses back
   DSTAT = dStatus(cs);
-  const sideOf = id => CARDS[id] ? CARDS[id].side : "own", sides = q.sides || {}, judged = cs.some(c => S.cards[c.id]);
+  const sideOf = id => CARDS[id] ? CARDS[id].side : "own", judged = cs.some(c => S.cards[c.id]);
   const rows = [], walked = new Set();
   const walk = (id, rel, d) => { if (walked.has(id)) return; walked.add(id); rows.push({ id, rel, d });
     (kids[id] || []).slice().sort((a, b) => orderIdx(a) - orderIdx(b)).forEach(k => walk(k, parent[k] || (S.own.find(o => o.id === k) || {}), d + 1)); };
@@ -11501,17 +11510,66 @@ function agoraQuestion(q) {
   // staggered placement: every card spans two grid rows; a card answering from the other side starts one row down,
   // halfway along the card before it, while a card on the same side waits for that column to be free
   let prev = 1, maxEnd = 2; const colEnd = { yes: 2, no: 2 };
-  const ladder = rows.map((r, i) => { const sd = sideOf(r.id), cls = sd === "yes" || sd === "no" ? sd : "mid"; let sep = "";
+  // round by round: the debate plays out one argument at a time
+  const RM = S.rounds || (S.rounds = {}), shown = RM[q.id] == null ? rows.length : Math.min(RM[q.id], rows.length), playing = RM[q.id] != null;
+  const ladder = rows.slice(0, shown).map((r, i) => { const sd = sideOf(r.id), cls = sd === "yes" || sd === "no" ? sd : "mid"; let sep = "";
     if (r.d === 0 && i) { sep = '<div class="dsep" style="--r:' + maxEnd + ' / span 1"><span>Another line of argument</span></div>'; prev = maxEnd; maxEnd++; colEnd.yes = colEnd.no = maxEnd; }
     let start = cls === "mid" ? maxEnd : Math.max(i && !(r.d === 0) ? prev + 1 : maxEnd, colEnd[cls]);
     prev = start; const end = start + 2; if (cls === "mid") colEnd.yes = colEnd.no = end; else colEnd[cls] = end; maxEnd = Math.max(maxEnd, end);
-    return sep + '<div class="drow ' + cls + '" style="--d:' + Math.min(r.d, 4) + ";--r:" + start + ' / span 2">' + tablet(r.id, r.rel) + "</div>"; }).join("");
-  h += '<section class="stack dmap" style="--g:12px;width:100%"><div class="row" style="justify-content:space-between"><h2>The argument map</h2><span class="faint">' + cs.length + " arguments</span></div>" + legend +
-    '<div class="dladder">' + head("yes") + head("no") + ladder + "</div></section>";
+    return sep + '<div class="drow ' + cls + (playing && i === shown - 1 ? " fresh" : "") + '" data-p="' + esc(r.rel && r.rel.target || "") + '" data-t="' + esc(r.rel && (r.rel.type || r.rel.rel) || "") + '" style="--d:' + Math.min(r.d, 4) + ";--r:" + start + ' / span 2">' + tablet(r.id, r.rel) + "</div>"; }).join("");
+  const board = debateBoard(q, cs, stance, playing && shown >= rows.length);
+  const modeBar = '<div class="dq-mode" role="group" aria-label="How to read the debate"><button class="chip" aria-pressed="' + playing + '" data-act="roundPlay" data-q="' + q.id + '">▶ Round by round</button><button class="chip" aria-pressed="' + !playing + '" data-act="roundAll" data-q="' + q.id + '">Whole map</button></div>';
+  const next = playing && shown < rows.length ? '<div class="dq-next"><span class="faint">Argument ' + shown + " of " + rows.length + '</span><button class="btn primary" data-act="roundNext" data-q="' + q.id + '">Next argument →</button><button class="linkish" data-act="roundAll" data-q="' + q.id + '">Show everything</button></div>' : "";
+  after.push(dArrows);
+  h += board + '<section class="stack dmap" style="--g:10px;width:100%"><div class="row" style="justify-content:space-between;align-items:center"><h2>The argument map</h2>' + modeBar + "</div>" + legend +
+    '<div class="dladder"><svg class="darrows" aria-hidden="true"></svg>' + head("yes") + head("no") + ladder + "</div>" + next + "</section>";
   h += ownCardForm(q, cs);
   return h + "</div>";
 }
 let DSTAT = {};
+// what philosophers think, from the 2020 PhilPapers Survey (target faculty; Bourget & Chalmers 2023), where a debate maps onto a survey question
+const DEBATE_SURVEY = {
+  killing: [["The switch case: pull the lever?", [["Pull", 63, "yes"], ["Don’t pull", 13, "no"], ["Other", 24]]], ["The footbridge: push the man?", [["Push", 22, "no"], ["Don’t push", 56, "yes"], ["Other", 22]]]],
+  freewill: [["Free will", [["Compatibilism", 59, "yes"], ["Libertarianism", 19, "yes"], ["No free will", 11, "no"], ["Other", 11]]]],
+  identity: [["Teletransporter: do you survive?", [["Survive", 35, "yes"], ["Die", 40, "no"], ["Other", 25]]], ["Personal identity", [["Psychological", 44, "yes"], ["Biological", 19, "no"], ["Further fact", 15, "no"], ["Other", 22]]]],
+  mind: [["Mind", [["Physicalism", 52, "yes"], ["Non-physicalism", 32, "no"], ["Other", 16]]]],
+  evil: [["God", [["Atheism", 67, "no"], ["Theism", 19, "yes"], ["Other", 14]]]],
+  god: [["God", [["Atheism", 67, "no"], ["Theism", 19, "yes"], ["Other", 14]]]],
+  realism: [["Morality", [["Moral realism", 62, "yes"], ["Anti-realism", 26, "no"], ["Other", 12]]]],
+  skepticism: [["The external world", [["Non-sceptical realism", 80, "yes"], ["Idealism", 7], ["Scepticism", 5, "no"], ["Other", 8]]]]
+};
+function debateBoard(q, cs, stance, finished) { const sides = q.sides || {}, nm = k => sides[k] || (k === "yes" ? "Yes" : "No");
+  const live = k => cs.filter(c => c.side === k && S.cards[c.id] === "accept" && DSTAT[c.id] !== "down").length;
+  const y = live("yes"), n = live("no"), tot = y + n, pos = tot ? Math.round(100 * n / tot) : 50;
+  const lean = !tot ? "" : y === n ? "even" : y > n ? "yes" : "no";
+  const start = stance === "yes" || stance === "no" ? nm(stance) : stance === "unsure" ? "Not sure" : "";
+  let verdict = !tot ? "Accept the arguments that convince you, and the rope will move." : lean === "even" ? "Dead level: the arguments you accept pull equally both ways." : "The arguments you accept pull toward “" + nm(lean) + "”.";
+  if (finished && tot && (stance === "yes" || stance === "no")) verdict = lean === stance ? "You held your ground: you began with “" + nm(stance) + "” and the arguments you accept still point there." : lean === "even" ? "You began with “" + nm(stance) + "”, and now you’re torn down the middle." : "You changed your mind: you began with “" + nm(stance) + "”, but the arguments you accept now point the other way.";
+  const tug = '<div class="dq-card"><span class="eyebrow">' + (finished ? "Final verdict" : "Tug of war") + '</span><div class="tug"><span class="side yes">' + esc(nm("yes")) + " · " + y + '</span><span class="side no">' + n + " · " + esc(nm("no")) + '</span></div><div class="tug-rope"><i style="left:' + pos + '%"></i></div><p class="tug-v">' + esc(verdict) + "</p>" + (start ? '<p class="faint" style="font-size:.8rem;margin:0">You started: ' + esc(start) + ' · <button class="linkish" data-act="stance" data-q="' + q.id + '" data-v="">change</button></p>' : "") + "</div>";
+  const sv = DEBATE_SURVEY[q.id], col = c => c === "yes" ? "var(--lapis)" : c === "no" ? "#7A5BA8" : "var(--line)";
+  const chart = sv ? '<div class="dq-card"><span class="eyebrow">What philosophers think</span>' + sv.map(([t, bars]) => '<div class="svq"><span class="svt">' + esc(t) + '</span><div class="svbar">' + bars.map(([l, v, c]) => '<i style="width:' + v + "%;background:" + col(c) + '" title="' + esc(l + ": " + v + "%") + '">' + (v >= 9 ? "<span>" + v + "%</span>" : "") + "</i>").join("") + '</div><div class="svk">' + bars.filter(b => b[0] !== "Other").map(([l, v, c]) => '<span><i style="background:' + col(c) + '"></i>' + esc(l) + " " + v + "%</span>").join("") + "</div></div>").join("") + '<p class="faint" style="font-size:.74rem;margin:2px 0 0">2020 PhilPapers Survey of philosophy faculty</p></div>' : "";
+  return '<div class="dq-board' + (chart ? " two" : "") + '">' + tug + chart + "</div>"; }
+// arrows from each card to the argument it answers, redrawn whenever the map changes size
+let dArrowsRO = null;
+function dArrows() { const L = $(".dladder"), svg = L && $("svg.darrows", L); if (!svg) return;
+  const draw = () => { const R = L.getBoundingClientRect(); svg.setAttribute("width", R.width); svg.setAttribute("height", R.height); let out = "";
+    const col = { attacks: "var(--crack)", replies: "var(--lapis)", supports: "var(--thread)" };
+    ["attacks", "replies", "supports"].forEach(t => { out += '<marker id="ah-' + t + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="' + col[t] + '"/></marker>'; });
+    out = "<defs>" + out + "</defs>";
+    $$(".drow[data-p]", L).forEach(d => { const p = d.dataset.p, tgt = p && document.getElementById("card-" + p), me = $(".tablet", d); if (!tgt || !me || !L.contains(tgt)) return;
+      const a = me.getBoundingClientRect(), b = tgt.getBoundingClientRect(), t = d.dataset.t || "attacks";
+      let sx, sy = a.top - R.top + 22, ex, ey = Math.min(b.top - R.top + 40, b.bottom - R.top - 20), c1, c2;
+      if (a.left > b.right - 4) { sx = a.left - R.left; ex = b.right - R.left; c1 = sx - 26; c2 = ex + 26; }
+      else if (a.right < b.left + 4) { sx = a.right - R.left; ex = b.left - R.left; c1 = sx + 26; c2 = ex - 26; }
+      else { sx = a.left - R.left; ex = b.left - R.left; c1 = Math.min(sx, ex) - 22; c2 = c1; }
+      out += '<path d="M' + sx + " " + sy + " C" + c1 + " " + sy + " " + c2 + " " + ey + " " + ex + " " + ey + '" fill="none" stroke="' + (col[t] || col.attacks) + '" stroke-width="1.8" stroke-dasharray="' + (t === "supports" ? "4 3" : "none") + '" marker-end="url(#ah-' + (col[t] ? t : "attacks") + ')" opacity=".75"/>'; });
+    svg.innerHTML = out; };
+  draw(); if (dArrowsRO) dArrowsRO.disconnect(); if (window.ResizeObserver) { dArrowsRO = new ResizeObserver(() => requestAnimationFrame(draw)); dArrowsRO.observe(L); } }
+ACT.stance = el => { S.stance = S.stance || {}; if (el.dataset.v === "") delete S.stance[el.dataset.q]; else S.stance[el.dataset.q] = el.dataset.v; save(); render(true); };
+ACT.roundPlay = el => { S.rounds = S.rounds || {}; S.rounds[el.dataset.q] = 1; save(); render(true); const m = $(".dmap"); if (m) setTimeout(() => window.scrollTo({ top: m.getBoundingClientRect().top + scrollY - 70 }), 30); };
+ACT.roundNext = el => { const q = el.dataset.q; S.rounds[q] = (S.rounds[q] || 1) + 1; save(); render(true); const f = $(".drow.fresh"); if (f) setTimeout(() => f.scrollIntoView({ block: "center", behavior: "smooth" }), 30); };
+ACT.roundAll = el => { if (S.rounds) delete S.rounds[el.dataset.q]; save(); render(true); };
+
 function dStatus(cs) { const att = {}; cs.forEach(c => (c.links || []).forEach(l => { if (l.type !== "supports" && l.target !== c.id) (att[l.target] = att[l.target] || []).push(c.id); }));
   const memo = {}, busy = new Set();
   const down = id => { if (id in memo) return memo[id]; if (busy.has(id)) return false; busy.add(id); const r = (att[id] || []).some(a => S.cards[a] === "accept" && !down(a)); busy.delete(id); return (memo[id] = r); };
@@ -11545,7 +11603,7 @@ function tablet(id, rel) {
     (c.conclusion ? "<p><b>So:</b> " + esc(c.conclusion) + "</p>" : "") + (c.source ? '<p class="src d-src">' + esc(c.source) + (c.status === "reconstruction" ? " · a reconstruction" : "") + "</p>" : "") + "</div></details>" +
     '<div class="row" style="justify-content:space-between;--g:8px"><div class="row" style="--g:6px">' + (c.author && c.author !== "anon" ? thinkerChip(c.author) : "") + '<span class="src">' + esc((() => { const src = c.source || "", nm = c.author && TH[c.author] ? TH[c.author].name : ""; return nm && src.startsWith(nm + ", ") ? src.slice(nm.length + 2) : src; })()) + (c.status === "reconstruction" ? ' · <span title="Our reconstruction of the argument in numbered steps, not a quotation" style="border-bottom:1px dotted">reconstruction</span>' : "") + "</span></div>" +
     (c.own ? '<button class="btn small ghost" data-act="delOwn" data-id="' + esc(id) + '">Delete</button>' :
-      '<div class="row" style="--g:6px"><button class="btn small' + (st === "accept" ? " lamp" : "") + '" aria-pressed="' + (st === "accept") + '" data-act="card" data-id="' + esc(id) + '" data-v="accept">Accept</button><button class="btn small ghost" aria-pressed="' + (st === "reject") + '" data-act="' + (st === "reject" ? "card" : "steelOpen") + '" data-id="' + esc(id) + '" data-v="reject">' + (st === "reject" ? "Rejected" : "Reject") + "</button></div>") +
+      '<div class="row" style="--g:6px"><button class="btn small' + (st === "accept" ? " lamp" : "") + '" aria-pressed="' + (st === "accept") + '" data-act="card" data-id="' + esc(id) + '" data-v="accept">Accept</button><button class="btn small ghost" aria-pressed="' + (st === "reject") + '" data-act="card" data-id="' + esc(id) + '" data-v="reject">' + (st === "reject" ? "Rejected" : "Reject") + "</button></div>") +
     "</div></article>";
 }
 // steelman before rejecting: a one-sentence fair statement of the argument, kept in the Logbook
