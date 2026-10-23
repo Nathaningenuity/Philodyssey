@@ -841,5 +841,6 @@
   /* ------------------------------------------------------------- start */
   const view = $("#view");
   if (view) new MutationObserver(onView).observe(view, { childList: true });
-  onView();
+  // the app has already rendered once before this file loaded: re-render if the current route is one of ours
+  if (P && myRoute()) P.render(false); else onView();
 })();
