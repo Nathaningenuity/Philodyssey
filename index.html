@@ -1293,14 +1293,14 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .cq-sofar{font-size:.84rem;color:var(--lapis);text-decoration:underline;text-underline-offset:3px}
 .cite{font-size:.78em;color:var(--ink-3);font-family:var(--font-ui);letter-spacing:.01em;white-space:nowrap}.sl-night .cite,.vy-hero .cite{color:var(--night-mute)}
 .linkbtn{all:unset;cursor:pointer;color:var(--lapis);text-decoration:underline;text-underline-offset:3px;font-weight:600}.linkbtn:focus-visible{outline:2px solid var(--lamp)}
-.dladder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:28px;row-gap:12px;position:relative}
+.dladder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:28px;row-gap:10px;grid-auto-rows:minmax(40px,auto);position:relative}
 .dladder::before{content:"";position:absolute;top:0;bottom:0;left:50%;border-left:1px dashed var(--line)}
 .dhead{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 4px;border-bottom:3px solid var(--line);position:sticky;top:58px;z-index:2;background:var(--bg)}
 .dhead.yes{grid-column:1;border-color:var(--lapis)}.dhead.no{grid-column:2;border-color:#7A5BA8}.dhead .side{font-size:.86rem;padding:3px 10px}
-.drow{min-width:0;margin-left:calc(var(--d,0) * 10px)}.drow.yes{grid-column:1}.drow.no{grid-column:2}.drow.mid{grid-column:1/-1;max-width:640px;justify-self:center;margin-left:0}
+.drow{min-width:0;margin-left:calc(var(--d,0) * 10px);grid-row:var(--r,auto);align-self:start}.dsep{grid-row:var(--r,auto)}.dhead{grid-row:1}.drow.yes{grid-column:1}.drow.no{grid-column:2}.drow.mid{grid-column:1/-1;max-width:640px;justify-self:center;margin-left:0}
 .dsep{grid-column:1/-1;display:flex;align-items:center;gap:10px;color:var(--ink-3);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;margin-top:10px}
 .dsep::before,.dsep::after{content:"";flex:1;border-top:1px solid var(--line)}
-@media (max-width:760px){.dladder{grid-template-columns:minmax(0,1fr)}.dladder::before{display:none}.dhead{display:none}.drow.yes,.drow.no{grid-column:1}.drow.yes{margin-right:18px}.drow.no{margin-left:calc(18px + var(--d,0) * 6px)}}
+@media (max-width:760px){.drow,.dsep{grid-row:auto}.dladder{grid-template-columns:minmax(0,1fr)}.dladder::before{display:none}.dhead{display:none}.drow.yes,.drow.no{grid-column:1}.drow.yes{margin-right:18px}.drow.no{margin-left:calc(18px + var(--d,0) * 6px)}}
 .dmap .tablet{padding:12px 14px;box-shadow:none;position:relative}
 .dmap .tablet.s-yes{border-left:4px solid var(--lapis)}.dmap .tablet.s-no{border-left:4px solid #7A5BA8}
 .dmap .thread{gap:8px}.dmap .thread .kids{margin-left:12px;padding-left:12px;border-left:2px dashed var(--line);gap:8px}
@@ -11498,8 +11498,14 @@ function agoraQuestion(q) {
   const head = k => { const L = cs.filter(c => c.side === k), up = L.filter(c => DSTAT[c.id] !== "rejected" && DSTAT[c.id] !== "down").length;
     return '<div class="dhead ' + k + '"><span class="side ' + k + '">' + esc(sides[k] || (k === "yes" ? "Yes" : "No")) + '</span><span class="faint">' + L.length + " arguments" + (judged ? " · " + up + " standing" : "") + "</span></div>"; };
   const legend = '<div class="dlegend"><span><i class="dk attacks">✕</i> Objection</span><span><i class="dk replies">↩</i> Reply</span><span><i class="dk supports">＋</i> Support</span><span><b class="dst stands">Standing</b> <b class="dst down">Knocked down</b> follow from the arguments you accept</span></div>';
-  const ladder = rows.map((r, i) => { const sd = sideOf(r.id), cls = sd === "yes" || sd === "no" ? sd : "mid";
-    return (r.d === 0 && i ? '<div class="dsep"><span>Another line of argument</span></div>' : "") + '<div class="drow ' + cls + '" style="--d:' + Math.min(r.d, 4) + '">' + tablet(r.id, r.rel) + "</div>"; }).join("");
+  // staggered placement: every card spans two grid rows; a card answering from the other side starts one row down,
+  // halfway along the card before it, while a card on the same side waits for that column to be free
+  let prev = 1, maxEnd = 2; const colEnd = { yes: 2, no: 2 };
+  const ladder = rows.map((r, i) => { const sd = sideOf(r.id), cls = sd === "yes" || sd === "no" ? sd : "mid"; let sep = "";
+    if (r.d === 0 && i) { sep = '<div class="dsep" style="--r:' + maxEnd + ' / span 1"><span>Another line of argument</span></div>'; prev = maxEnd; maxEnd++; colEnd.yes = colEnd.no = maxEnd; }
+    let start = cls === "mid" ? maxEnd : Math.max(i && !(r.d === 0) ? prev + 1 : maxEnd, colEnd[cls]);
+    prev = start; const end = start + 2; if (cls === "mid") colEnd.yes = colEnd.no = end; else colEnd[cls] = end; maxEnd = Math.max(maxEnd, end);
+    return sep + '<div class="drow ' + cls + '" style="--d:' + Math.min(r.d, 4) + ";--r:" + start + ' / span 2">' + tablet(r.id, r.rel) + "</div>"; }).join("");
   h += '<section class="stack dmap" style="--g:12px;width:100%"><div class="row" style="justify-content:space-between"><h2>The argument map</h2><span class="faint">' + cs.length + " arguments</span></div>" + legend +
     '<div class="dladder">' + head("yes") + head("no") + ladder + "</div></section>";
   h += ownCardForm(q, cs);
