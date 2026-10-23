@@ -1293,6 +1293,28 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .cq-sofar{font-size:.84rem;color:var(--lapis);text-decoration:underline;text-underline-offset:3px}
 .cite{font-size:.78em;color:var(--ink-3);font-family:var(--font-ui);letter-spacing:.01em;white-space:nowrap}.sl-night .cite,.vy-hero .cite{color:var(--night-mute)}
 .linkbtn{all:unset;cursor:pointer;color:var(--lapis);text-decoration:underline;text-underline-offset:3px;font-weight:600}.linkbtn:focus-visible{outline:2px solid var(--lamp)}
+.dladder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:28px;row-gap:12px;position:relative}
+.dladder::before{content:"";position:absolute;top:0;bottom:0;left:50%;border-left:1px dashed var(--line)}
+.dhead{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 4px;border-bottom:3px solid var(--line);position:sticky;top:58px;z-index:2;background:var(--bg)}
+.dhead.yes{grid-column:1;border-color:var(--lapis)}.dhead.no{grid-column:2;border-color:#7A5BA8}.dhead .side{font-size:.86rem;padding:3px 10px}
+.drow{min-width:0;margin-left:calc(var(--d,0) * 10px)}.drow.yes{grid-column:1}.drow.no{grid-column:2}.drow.mid{grid-column:1/-1;max-width:640px;justify-self:center;margin-left:0}
+.dsep{grid-column:1/-1;display:flex;align-items:center;gap:10px;color:var(--ink-3);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;margin-top:10px}
+.dsep::before,.dsep::after{content:"";flex:1;border-top:1px solid var(--line)}
+@media (max-width:760px){.dladder{grid-template-columns:minmax(0,1fr)}.dladder::before{display:none}.dhead{display:none}.drow.yes,.drow.no{grid-column:1}.drow.yes{margin-right:18px}.drow.no{margin-left:calc(18px + var(--d,0) * 6px)}}
+.dmap .tablet{padding:12px 14px;box-shadow:none;position:relative}
+.dmap .tablet.s-yes{border-left:4px solid var(--lapis)}.dmap .tablet.s-no{border-left:4px solid #7A5BA8}
+.dmap .thread{gap:8px}.dmap .thread .kids{margin-left:12px;padding-left:12px;border-left:2px dashed var(--line);gap:8px}
+.dmap .tablet .rel{font-size:.72rem;letter-spacing:.04em}.dmap .tablet .rel.replies{color:var(--lapis)}
+.dmap .tablet.st-down h3{text-decoration:line-through;text-decoration-color:var(--crack);text-decoration-thickness:2px}
+.dbadge{position:absolute;top:10px;right:12px}.dladder .tablet .src:not(.d-src){display:none}.dladder .premq .faint{display:none}.tablet .d-src{display:none}.dladder .tablet .d-src{display:block}.dmap .tablet .rel{text-transform:none;letter-spacing:0;font-size:.8rem}.dladder .tablet .side{display:none}
+@media (max-width:760px){.dladder .tablet .side{display:inline}.dbadge{position:static;align-self:flex-start;margin-bottom:-2px}.dmap .tablet:has(.dbadge) .row:first-of-type{padding-right:0}}
+.dmap .tablet:has(.dbadge) .row:first-of-type{padding-right:96px}
+.dst{font-size:.68rem;font-weight:700;letter-spacing:.02em;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.dst.stands{background:color-mix(in srgb,#2e7d4f 16%,transparent);color:#2e7d4f}.dst.down{background:var(--crack-soft);color:var(--crack)}
+.dk{font-style:normal;display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;font-size:.68rem;font-weight:700;margin-right:3px}
+.dk.attacks{background:var(--crack-soft);color:var(--crack)}.dk.replies{background:var(--lapis-soft);color:var(--lapis)}.dk.supports{background:var(--lamp-soft);color:var(--thread)}
+.dlegend{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:.8rem;color:var(--ink-2)}.dlegend .dst{margin-right:2px}
+.dmap .dcol.other{margin-top:8px}
 .xlink{all:unset;cursor:pointer;font-size:.82rem;color:var(--ink-3);text-decoration:underline dotted;text-underline-offset:3px}.xlink:hover{color:var(--ink)}
 .steel{border:1px dashed var(--lamp);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--lamp-soft)}.steel p{margin:0;font-size:.88rem}.steel textarea{min-height:60px}
 .steel-done{font-size:.88rem;font-style:italic;margin:0}
@@ -13266,29 +13288,48 @@ function agoraQuestion(q) {
     return '<div class="thread">' + tablet(id, rel) + (kidHTML ? '<div class="kids">' + kidHTML + "</div>" : "") + "</div>";
   };
   h += verdictHTML(q, cs);
-  const treeHTML = roots.map(id => node(id, null)).join("") + ordered.filter(c => !seen.has(c.id)).map(c => node(c.id, null)).join("");
-  h += '<section class="stack col" style="--g:12px;width:100%"><div class="row" style="justify-content:space-between"><h2>The arguments</h2><span class="faint">' + cs.length + ' arguments · <span style="color:var(--thread)">gold supports</span> · <span style="color:var(--crack)">red attacks</span> · <span class="side yes">one side</span> <span class="side no">the other</span></span></div>' +
-    treeHTML + "</section>";
+  // the argument map: a ladder with one column per side; each argument sits in its own side's column, in reading order,
+  // so an objection visibly crosses to the other side and a reply crosses back
+  DSTAT = dStatus(cs);
+  const sideOf = id => CARDS[id] ? CARDS[id].side : "own", sides = q.sides || {}, judged = cs.some(c => S.cards[c.id]);
+  const rows = [], walked = new Set();
+  const walk = (id, rel, d) => { if (walked.has(id)) return; walked.add(id); rows.push({ id, rel, d });
+    (kids[id] || []).slice().sort((a, b) => orderIdx(a) - orderIdx(b)).forEach(k => walk(k, parent[k] || (S.own.find(o => o.id === k) || {}), d + 1)); };
+  roots.forEach(id => walk(id, null, 0)); ordered.forEach(c => walk(c.id, null, 0));
+  const head = k => { const L = cs.filter(c => c.side === k), up = L.filter(c => DSTAT[c.id] !== "rejected" && DSTAT[c.id] !== "down").length;
+    return '<div class="dhead ' + k + '"><span class="side ' + k + '">' + esc(sides[k] || (k === "yes" ? "Yes" : "No")) + '</span><span class="faint">' + L.length + " arguments" + (judged ? " · " + up + " standing" : "") + "</span></div>"; };
+  const legend = '<div class="dlegend"><span><i class="dk attacks">✕</i> Objection</span><span><i class="dk replies">↩</i> Reply</span><span><i class="dk supports">＋</i> Support</span><span><b class="dst stands">Standing</b> <b class="dst down">Knocked down</b> follow from the arguments you accept</span></div>';
+  const ladder = rows.map((r, i) => { const sd = sideOf(r.id), cls = sd === "yes" || sd === "no" ? sd : "mid";
+    return (r.d === 0 && i ? '<div class="dsep"><span>Another line of argument</span></div>' : "") + '<div class="drow ' + cls + '" style="--d:' + Math.min(r.d, 4) + '">' + tablet(r.id, r.rel) + "</div>"; }).join("");
+  h += '<section class="stack dmap" style="--g:12px;width:100%"><div class="row" style="justify-content:space-between"><h2>The argument map</h2><span class="faint">' + cs.length + " arguments</span></div>" + legend +
+    '<div class="dladder">' + head("yes") + head("no") + ladder + "</div></section>";
   h += ownCardForm(q, cs);
   return h + "</div>";
 }
+let DSTAT = {};
+function dStatus(cs) { const att = {}; cs.forEach(c => (c.links || []).forEach(l => { if (l.type !== "supports" && l.target !== c.id) (att[l.target] = att[l.target] || []).push(c.id); }));
+  const memo = {}, busy = new Set();
+  const down = id => { if (id in memo) return memo[id]; if (busy.has(id)) return false; busy.add(id); const r = (att[id] || []).some(a => S.cards[a] === "accept" && !down(a)); busy.delete(id); return (memo[id] = r); };
+  const out = {}; cs.forEach(c => { out[c.id] = S.cards[c.id] === "reject" ? "rejected" : down(c.id) ? "down" : S.cards[c.id] === "accept" ? "stands" : ""; }); return out; }
 function tablet(id, rel) {
   const own = S.own.find(o => o.id === id);
   const c = own ? { id, title: "Your argument", claim: own.claim, premises: own.premises, plain: "", author: null, source: "Written by you", own: true, side: "neutral" } : CARDS[id];
   if (!c) return "";
   const st = S.cards[id];
   const relType = rel && (rel.type || rel.rel);
-  const relTxt = relType ? (relType === "attacks" ? "Attacks" + (rel.premise ? " premise " + rel.premise : "") : relType === "replies" ? "Replies" : "Supports") : "";
+  const relTo = rel && rel.target && CARDS[rel.target] ? " “" + CARDS[rel.target].title + "”" : "";
+  const relTxt = relType ? (relType === "attacks" ? "✕ Objection to " + (rel.premise ? "step " + rel.premise + " of" : "") + relTo : relType === "replies" ? "↩ Reply to" + relTo : "＋ Support for" + relTo) : "";
   const sides = (AGQ[c.q] && AGQ[c.q].sides) || {};
   const sideTxt = c.side === "yes" ? (sides.yes || "Says yes") : c.side === "no" ? (sides.no || "Says no") : c.side === "neutral" ? "Neither side" : "";
   // quote the premise under attack, so the reader needn't scroll back up to the target
   const tgt = rel && rel.target && CARDS[rel.target];
-  const quoted = relType === "attacks" && rel.premise && tgt && (tgt.premises || [])[rel.premise - 1] ? '<blockquote class="premq"><span class="faint">Premise ' + rel.premise + " of “" + esc(tgt.title) + "”:</span> " + esc(tgt.premises[rel.premise - 1]) + "</blockquote>" : "";
+  const quoted = relType === "attacks" && rel.premise && tgt && (tgt.premises || [])[rel.premise - 1] ? '<blockquote class="premq"><span class="faint">Step ' + rel.premise + " of “" + esc(tgt.title) + "”:</span> " + esc(tgt.premises[rel.premise - 1]) + "</blockquote>" : "";
   // a card hangs under its first link only; its other links show as chips
-  const verb = l => l.type === "attacks" ? "Also attacks " + (l.premise ? "premise " + l.premise + " of " : "") : l.type === "replies" ? "Also replies to " : "Also supports ";
+  const verb = l => l.type === "attacks" ? "Also objects to " + (l.premise ? "step " + l.premise + " of " : "") : l.type === "replies" ? "Also replies to " : "Also supports ";
   const extra = c.own ? [] : (c.links || []).filter(l => l !== rel && l.target !== id && CARDS[l.target] && CARDS[l.target].q === c.q && !(rel && l.target === rel.target && l.type === relType));
   const extraHTML = extra.length ? '<div class="row" style="--g:6px">' + extra.map(l => '<button class="xlink ' + esc(l.type) + '" data-act="scrollCard" data-card="' + esc(l.target) + '">↳ ' + esc(verb(l).toLowerCase()) + "“" + esc(CARDS[l.target].title) + "”</button>").join("") + "</div>" : "";
-  return '<article class="tablet' + (st === "accept" ? " accepted" : st === "reject" ? " rejected" : "") + '" id="card-' + esc(id) + '">' +
+  const ds = DSTAT[id], badge = ds === "down" ? '<b class="dst down">Knocked down</b>' : ds === "stands" ? '<b class="dst stands">Standing</b>' : "";
+  return '<article class="tablet s-' + esc(c.side || "own") + (ds ? " st-" + ds : "") + (st === "accept" ? " accepted" : st === "reject" ? " rejected" : "") + '" id="card-' + esc(id) + '">' + (badge ? '<div class="dbadge">' + badge + "</div>" : "") +
     '<div class="row" style="justify-content:space-between;--g:8px"><span class="rel ' + esc(relType || "") + '">' + esc(relTxt) + "</span>" + (c.own ? '<span class="chip lamp">Yours</span>' : sideTxt ? '<span class="side ' + esc(c.side) + '">' + sideTxt + "</span>" : "") + "</div>" +
     quoted + "<h3>" + esc(c.title) + "</h3>" + extraHTML +
     ((S.steel || {})[id] && st === "reject" ? '<p class="steel-done"><span class="faint">You put it fairly first:</span> “' + esc(S.steel[id]) + "”</p>" : "") +
@@ -13296,7 +13337,7 @@ function tablet(id, rel) {
     '<details><summary class="linkish" style="cursor:pointer;list-style:none">Show the argument</summary><div class="stack" style="--g:6px;margin-top:8px">' +
     (c.claim && c.plain ? '<p><b>Claim:</b> ' + esc(c.claim) + "</p>" : "") +
     (c.premises && c.premises.length ? "<ol>" + c.premises.map(p => "<li>" + esc(p) + "</li>").join("") + "</ol>" : "") +
-    (c.conclusion ? "<p><b>So:</b> " + esc(c.conclusion) + "</p>" : "") + "</div></details>" +
+    (c.conclusion ? "<p><b>So:</b> " + esc(c.conclusion) + "</p>" : "") + (c.source ? '<p class="src d-src">' + esc(c.source) + (c.status === "reconstruction" ? " · a reconstruction" : "") + "</p>" : "") + "</div></details>" +
     '<div class="row" style="justify-content:space-between;--g:8px"><div class="row" style="--g:6px">' + (c.author && c.author !== "anon" ? thinkerChip(c.author) : "") + '<span class="src">' + esc((() => { const src = c.source || "", nm = c.author && TH[c.author] ? TH[c.author].name : ""; return nm && src.startsWith(nm + ", ") ? src.slice(nm.length + 2) : src; })()) + (c.status === "reconstruction" ? ' · <span title="Our reconstruction of the argument in numbered steps, not a quotation" style="border-bottom:1px dotted">reconstruction</span>' : "") + "</span></div>" +
     (c.own ? '<button class="btn small ghost" data-act="delOwn" data-id="' + esc(id) + '">Delete</button>' :
       '<div class="row" style="--g:6px"><button class="btn small' + (st === "accept" ? " lamp" : "") + '" aria-pressed="' + (st === "accept") + '" data-act="card" data-id="' + esc(id) + '" data-v="accept">Accept</button><button class="btn small ghost" aria-pressed="' + (st === "reject") + '" data-act="' + (st === "reject" ? "card" : "steelOpen") + '" data-id="' + esc(id) + '" data-v="reject">' + (st === "reject" ? "Rejected" : "Reject") + "</button></div>") +
