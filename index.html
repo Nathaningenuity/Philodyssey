@@ -1314,7 +1314,7 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .dk{font-style:normal;display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;font-size:.68rem;font-weight:700;margin-right:3px}
 .dk.attacks{background:var(--crack-soft);color:var(--crack)}.dk.replies{background:var(--lapis-soft);color:var(--lapis)}.dk.supports{background:var(--lamp-soft);color:var(--thread)}
 .dlegend{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:.8rem;color:var(--ink-2)}.dlegend .dst{margin-right:2px}
-.dmap .dcol.other{margin-top:8px}
+.qsides{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:2px 0 4px}.qsides .faint{font-size:.74rem}
 .xlink{all:unset;cursor:pointer;font-size:.82rem;color:var(--ink-3);text-decoration:underline dotted;text-underline-offset:3px}.xlink:hover{color:var(--ink)}
 .steel{border:1px dashed var(--lamp);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--lamp-soft)}.steel p{margin:0;font-size:.88rem}.steel textarea{min-height:60px}
 .steel-done{font-size:.88rem;font-style:italic;margin:0}
@@ -13242,7 +13242,7 @@ VIEWS.agora = arg => {
   return '<div class="wrap stack" style="--g:26px"><div class="ring stack" style="--g:12px"><span class="eyebrow" style="color:#E8B04A;align-self:center">Debates</span><h1 class="ring-h">' + cap(numWord(AG.questions.length)) + ' questions that never went away</h1><p class="read" style="max-width:36em;margin:0 auto">Each debate is a set of short arguments. Some support each other, some crack each other. Predict first, then read, then decide which arguments you can live with. <a href="#duel" style="color:#E8B04A">Or put two thinkers in the ring: Duel →</a></p></div>' + agoraSemStrip() +
     '<div class="qlist">' + AG.questions.map(q => {
       const cs = AG.cards.filter(c => c.q === q.id); const acc = cs.filter(c => S.cards[c.id] === "accept").length;
-      return '<a class="qtile" href="#agora-' + q.id + '" style="text-decoration:none"><span class="t">' + esc(q.title) + '</span><span class="muted" style="font-size:.92rem">' + esc(teaser(q.intro)) + '</span><span class="row" style="--g:6px;margin-top:6px"><span class="chip">' + cs.length + " arguments</span>" + (S.predictions[q.id] != null ? '<span class="chip lapis">Predicted</span>' : "") + (acc ? '<span class="chip lamp">' + acc + " accepted</span>" : "") + (S.predictions[q.id] == null && !acc ? '<span class="chip">Not started</span>' : "") + "</span></a>";
+      return '<a class="qtile" href="#agora-' + q.id + '" style="text-decoration:none"><span class="t">' + esc(q.title) + '</span>' + (q.sides ? '<span class="qsides"><span class="side yes">' + esc(q.sides.yes || "") + '</span><span class="faint">vs</span><span class="side no">' + esc(q.sides.no || "") + "</span></span>" : "") + '<span class="muted" style="font-size:.92rem">' + esc(teaser(q.intro)) + '</span><span class="row" style="--g:6px;margin-top:6px"><span class="chip">' + cs.length + " arguments</span>" + (S.predictions[q.id] != null ? '<span class="chip lapis">Predicted</span>' : "") + (acc ? '<span class="chip lamp">' + acc + " accepted</span>" : "") + (S.predictions[q.id] == null && !acc ? '<span class="chip">Not started</span>' : "") + "</span></a>";
     }).join("") + "</div></div>";
 };
 // the first sentence of the intro, or the first two when the first is only a scene-setter ("A forest fire traps a young deer.")
