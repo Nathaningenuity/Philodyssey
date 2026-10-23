@@ -1736,6 +1736,80 @@ html,body{overflow-x:clip}
 .navlib-menu{position:absolute;top:calc(100% + 6px);left:0;min-width:220px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-3);padding:6px;z-index:40;display:grid}
 .navlib-menu a{display:grid;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--ink)}.navlib-menu a:hover,.navlib-menu a[aria-current=page]{background:var(--lamp-soft)}.navlib-menu small{color:var(--ink-3);font-size:var(--fs-xs)}
 @media (min-width:761px){.nav .lib-l{display:none}}.navlib-mid{display:none!important}@media (min-width:761px) and (max-width:960px){.mypos{width:34px;height:34px;padding:0;justify-content:center;border-radius:50%}.mypos span{display:none}}@media (min-width:761px) and (max-width:1180px){.nav .lib-m{display:none}.navlib-mid{display:grid!important}}@media (max-width:760px){.navlib{display:none}}
+/* Batch A #1: your next heading */
+.hero .btn.ghost.on-night{color:var(--night-ink);border-color:var(--night-line)}
+.hero .btn.ghost.on-night:hover{border-color:var(--gold)}
+.nh{display:grid;justify-items:start;gap:10px;padding:16px 18px;border:1px solid var(--night-line);border-left:3px solid var(--gold);border-radius:var(--r-md);background:rgba(255,255,255,.04);max-width:34em}
+.nh .eyebrow{color:var(--gold)}
+.nh .btn{font-size:var(--fs-md);padding:12px 20px;max-width:100%;text-align:left}
+.nh-line{margin:0;color:var(--night-mute);font-size:var(--fs-sm);line-height:1.45}
+.daily .chip{background:transparent;color:var(--night-ink);border-color:var(--night-line)}
+.daily .chip:hover{border-color:var(--gold)}
+.daily-holders .row{flex-wrap:wrap;margin-left:2px}
+@media (max-width:760px){
+ .hero .wrap{display:flex;flex-direction:column;align-items:stretch;gap:16px;padding-block:26px 30px}
+ .hero .wrap>.stack{display:contents}
+ .hero .wrap>.stack>.eyebrow{order:0}.hero .wrap>.stack>h1{order:1}.hero .daily{order:2}.hero .hero-cta,.hero .nh{order:3}.hero .wrap>.stack>.lede{order:4}
+ .hero h1{font-size:clamp(1.5rem,6.6vw,2rem);line-height:1.15}
+ .hero .daily{padding:16px}.hero .daily .q{font-size:var(--fs-lg);margin:6px 0 8px}
+ .hero .hero-cta{flex-direction:column;align-items:stretch}.hero .hero-cta .btn,.hero .nh .btn{width:100%;justify-content:center;text-align:center}
+ .nh{max-width:none;justify-items:stretch}
+ .hero .lede{font-size:var(--fs-md)}
+}
+/* Batch A #2: debates index by chapter */
+.ag-filter{gap:8px;justify-content:center}
+.ag-filter .chip{cursor:pointer;font-size:var(--fs-sm);padding:6px 14px}
+.ag-filter .chip[aria-pressed="true"]{background:var(--lamp);color:var(--on-lamp);border-color:var(--lamp)}
+.ag-filter .chip[aria-pressed="true"] .faint{color:var(--on-lamp);opacity:.7}
+.ag-group h2{font-size:var(--fs-xl)}
+.qtile.started{border-color:var(--line-input);box-shadow:inset 3px 0 0 var(--lamp)}
+.qstat{font-size:var(--fs-sm);color:var(--lamp-text)}.qstat b{font-weight:600}
+/* Batch A #3: quiz review and daily round */
+.qz-rh{font-size:var(--fs-xl);margin-top:8px}
+.qz-review{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.qz-review li{display:grid;grid-template-columns:28px minmax(0,1fr);gap:12px;align-items:start;padding:12px 14px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--card)}
+.qz-review li p{margin:0;line-height:1.45;color:var(--ink)}
+.qz-review li p .faint{display:block;font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+.qz-mark{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:var(--fs-sm)}
+.qz-review li.ok .qz-mark{color:var(--ok);border:1.5px solid var(--ok)}
+.qz-review li.no{border-left:3px solid var(--no)}
+.qz-review li.no .qz-mark{color:var(--no);background:var(--no-soft)}
+.qz-said{font-size:var(--fs-sm)}
+.qz-meet{display:grid;gap:8px;padding:14px;border-radius:var(--r-md);background:var(--lamp-soft)}
+.qz-meet .eyebrow{color:var(--lamp-text)}
+.qz-daily{border-color:var(--lamp)}
+.qz-daily .btn[disabled]{opacity:.55;cursor:default}
+/* Batch B #4: same question, elsewhere */
+.sameq{display:grid;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+.sameq-k{font:500 var(--fs-2xs) var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--lamp-text)}
+.sameq-row{display:flex;flex-wrap:wrap;gap:6px}
+.sameq .chip{font-size:var(--fs-sm);padding:5px 12px;max-width:100%;color:var(--ink);background:var(--card)}
+.sameq .chip:hover{border-color:var(--lamp)}
+.sameq .chip.lamp{background:var(--lamp-soft);border-color:var(--lamp)}
+.sameq-kind{font-weight:600;color:var(--lamp-text)}
+.sameq-sub{color:var(--ink-3);font-weight:400}
+.sameq.center{justify-items:center;text-align:center}.sameq.center .sameq-row{justify-content:center}
+.dq-sameq .sameq{margin-top:6px;border-top:0;padding-top:0}
+.sl-night .sameq{border-top-color:var(--night-line)}
+.sl-night .sameq-k,.sl-night .sameq-kind{color:var(--gold)}
+.sl-night .sameq .chip{background:transparent;color:var(--night-ink);border-color:var(--night-line)}
+.sl-night .sameq .chip:hover{border-color:var(--gold)}
+.sl-night .sameq .chip.lamp{background:rgba(232,176,74,.14);border-color:var(--gold)}
+.sl-night .sameq-sub{color:var(--night-mute)}
+/* Batch B #5: book as gateway */
+.wk-free{border-color:var(--lamp)}
+.wk-free .tp-wl a,.wk-argue .tp-wl a{font-weight:600}
+.wk-argue .tp-wl li{line-height:1.4}
+.wk-argue .tp-wl .faint{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.06em;margin-right:2px}
+.wk-missing h1{font-size:clamp(1.6rem,4vw,2.3rem)}
+/* Batch B #6: you and this thinker */
+.tp-you{display:inline-flex;flex-wrap:wrap;align-items:center;gap:4px 14px;padding:8px 14px;border:1px solid var(--night-line);border-radius:var(--r-pill,999px);background:rgba(255,255,255,.05);font-size:var(--fs-sm);max-width:100%;align-self:flex-start}
+.tp-you a{color:var(--night-ink);text-decoration:none}
+.tp-you a:hover{text-decoration:underline;text-underline-offset:3px}
+.tp-you b{color:var(--gold-hi,#F4D58D);font-weight:600}
+.tp-you-duel{color:var(--gold)!important;font-weight:600;padding-left:14px;border-left:1px solid var(--night-line)}
+.tp-also .tp-wl .faint{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.06em;margin-right:2px}
+@media (max-width:640px){.tp-you{border-radius:var(--r-md)}.tp-you-duel{padding-left:0;border-left:0}}
 </style>
 
 <header class="top">
@@ -10836,6 +10910,7 @@ function feedbackHTML(q, A) {
   }
   // 4. the argument: the best case for each answer you chose, and its weak point
   if (!isUnd) picks.forEach(p => { const card = (window.ATLAS_ARGUMENTS || {})[q.id + "|" + p]; if (card) h += argCardHTML(q.id, p, card, picks.length > 1); });
+  h += sameQHTML(q.id, ["compass"]);
   return h + "</section>";
 }
 function personChips(list) {
@@ -11514,12 +11589,29 @@ VIEWS.position = arg => {
 VIEWS.agora = arg => {
   if (arg && AGQ[arg]) { if (pendingCard) { const id = pendingCard; pendingCard = null; after.push(() => setTimeout(() => scrollToCard(id), 60)); } return agoraQuestion(AGQ[arg]); }
   if (!AG.questions.length) return '<div class="wrap"><div class="panel">The debates are being built.</div></div>';
-  return '<div class="wrap stack" style="--g:26px"><div class="ring stack" style="--g:12px"><span class="eyebrow" style="color:#E8B04A;align-self:center">Debates</span><h1 class="ring-h">' + cap(numWord(AG.questions.length)) + ' questions that never went away</h1><p class="read" style="max-width:36em;margin:0 auto">Each debate is a set of short arguments. Some support each other, some crack each other. Predict first, then read, then decide which arguments you can live with. <a href="#duel" style="color:#E8B04A">Or put two thinkers in the ring: Duel →</a></p></div>' + agoraSemStrip() +
-    '<div class="qlist">' + AG.questions.map(q => {
-      const cs = AG.cards.filter(c => c.q === q.id); const acc = cs.filter(c => S.cards[c.id] === "accept").length;
-      return '<a class="qtile" href="#agora-' + q.id + '" style="text-decoration:none"><span class="t">' + esc(q.title) + '</span>' + (q.sides ? '<span class="qsides"><span class="side yes">' + esc(q.sides.yes || "") + '</span><span class="faint">vs</span><span class="side no">' + esc(q.sides.no || "") + "</span></span>" : "") + '<span class="muted" style="font-size:.92rem">' + esc(teaser(q.intro)) + '</span><span class="row" style="--g:6px;margin-top:6px"><span class="chip">' + cs.length + " arguments</span>" + ((S.stance || {})[q.id] && S.stance[q.id] !== "skip" ? '<span class="chip lapis">Stance taken</span>' : "") + (acc ? '<span class="chip lamp">' + acc + " accepted</span>" : "") + (!agStarted(q.id) ? '<span class="chip">Not started</span>' : "") + "</span></a>";
-    }).join("") + "</div></div>";
+  const F = S.agFilter || "all";
+  const tile = q => {
+    const cs = AG.cards.filter(c => c.q === q.id); const acc = cs.filter(c => S.cards[c.id] === "accept").length; const st = (S.stance || {})[q.id]; const started = agStarted(q.id);
+    const stanceTxt = st === "yes" || st === "no" ? (q.sides || {})[st] || (st === "yes" ? "Yes" : "No") : st === "unsure" ? "Not sure yet" : "";
+    const status = started ? '<span class="qstat">' + (stanceTxt ? "Your stance: <b>" + esc(stanceTxt) + "</b>" : "Started") + (acc ? " · " + acc + " accepted" : "") + "</span>" : "";
+    return '<a class="qtile' + (started ? " started" : "") + '" href="#agora-' + q.id + '" style="text-decoration:none"><span class="t">' + esc(q.title) + '</span>' + (q.sides ? '<span class="qsides"><span class="side yes">' + esc(q.sides.yes || "") + '</span><span class="faint">vs</span><span class="side no">' + esc(q.sides.no || "") + "</span></span>" : "") + status + '<span class="muted" style="font-size:.92rem">' + esc(teaser(q.intro)) + '</span><span class="row" style="--g:6px;margin-top:6px"><span class="chip">' + cs.length + " arguments</span>" + (!started ? '<span class="chip">Not started</span>' : "") + "</span></a>";
+  };
+  // group by Compass chapter; started debates first within each chapter
+  const groups = {}; AG.questions.forEach(q => { if (F === "new" && agStarted(q.id)) return; if (F === "open" && !agStarted(q.id)) return; const r = qRoot(q), sec = r && QM[r] && SEC[QM[r].section] ? QM[r].section : "_more"; (groups[sec] = groups[sec] || []).push(q); });
+  const order = C.sections.map(x => x.id).concat(["_more"]).filter(k => groups[k]);
+  const nStarted = AG.questions.filter(q => agStarted(q.id)).length;
+  const fchip = (k, t, n) => '<button class="chip" data-act="agFilter" data-k="' + k + '" aria-pressed="' + (F === k) + '">' + t + ' <span class="faint">' + n + "</span></button>";
+  return '<div class="wrap stack" style="--g:26px"><div class="ring stack" style="--g:12px"><span class="eyebrow" style="color:#E8B04A;align-self:center">Debates</span><h1 class="ring-h">' + cap(numWord(AG.questions.length)) + ' questions that never went away</h1><p class="read" style="max-width:36em;margin:0 auto">Each debate is a set of short arguments. Some support each other, some crack each other. Say where you stand, then read, then decide which arguments you can live with. <a href="#duel" style="color:#E8B04A">Or put two thinkers in the ring: Duel →</a></p></div>' +
+    '<div class="ag-filter row" role="group" aria-label="Show debates">' + fchip("all", "All", AG.questions.length) + fchip("new", "Not started", AG.questions.length - nStarted) + fchip("open", "In progress", nStarted) + "</div>" +
+    (order.length ? order.map(k => { const L = groups[k].slice().sort((a, b) => (agStarted(b.id) ? 1 : 0) - (agStarted(a.id) ? 1 : 0));
+      return '<section class="stack ag-group" style="--g:12px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>' + esc(k === "_more" ? "More" : SEC[k].name || SEC[k].short) + '</h2><span class="faint">' + L.length + (L.length === 1 ? " debate" : " debates") + "</span></div>" + '<div class="qlist">' + L.map(tile).join("") + "</div></section>"; }).join("")
+      : '<div class="panel muted">' + (F === "open" ? "You haven’t started a debate yet. Pick one and say where you stand." : "You have started every debate. Well argued.") + "</div>") +
+    agoraSemStrip() + "</div>";
 };
+ACT.agFilter = el => { S.agFilter = el.dataset.k; save(); render(true); };
+// the Compass root a debate maps to (q.compass may hold a legacy id; C.legacy.q16 is null)
+function qComp(q) { const c = q && q.compass && ((C.legacy || {})[q.compass] !== undefined ? (C.legacy || {})[q.compass] : q.compass); return c && QM[c] ? c : null; }
+function qRoot(q) { const c = qComp(q); return c ? rootOf(c) : null; }
 // the first sentence of the intro, or the first two when the first is only a scene-setter ("A forest fire traps a young deer.")
 function agoraSemStrip() { if (typeof SEM_LIST === "undefined" || !SEM_LIST.length) return "";
   return '<section class="panel stack sem-strip" style="--g:10px"><div class="row" style="justify-content:space-between"><span class="stack" style="--g:2px"><span class="eyebrow">Discussion decks</span><b>Take a debate to your club or class</b></span><a class="btn small" href="#seminar">All ' + SEM_LIST.length + ' seminars</a></div><p class="muted" style="font-size:.92rem;margin:0">Slide decks for a 50-minute session: votes, “ask the room” prompts, criticism cards and facilitator notes. Each one also works alone as a lesson.</p><div class="row" style="--g:6px">' + SEM_LIST.slice(0, 8).map(x => '<a class="chip lapis" href="#seminar-' + esc(x.sid) + '">' + esc(x.title) + "</a>").join("") + "</div></section>"; }
@@ -11532,8 +11624,9 @@ function agoraQuestion(q) {
   const stance = (S.stance || {})[q.id], sides = q.sides || {};
   const sideName = k => sides[k] || (k === "yes" ? "Yes" : "No");
   let h = '<div class="wrap stack dq" style="--g:14px"><div class="dq-head"><a class="linkish" href="#agora">← All debates</a><h1>' + esc(q.title) + '</h1><p class="read">' + esc(q.intro || "") + "</p>" +
+    (() => { const sq = sameQHTML(qComp(q), ["debate"]); return sq ? '<div class="dq-sameq">' + sq + "</div>" :
     '<div class="dq-links">' + semsFor("agora", q.id).map(x => '<a href="#seminar-' + esc(x.sid) + '">Run it as a class discussion →</a>').join("") +
-    (q.compass && QM[q.compass] ? '<a href="#compass-' + q.compass + '">Your Compass answer: ' + esc(deepest(q.compass) ? deepest(q.compass).label : S.answers[q.compass] ? labelOf(q.compass, S.answers[q.compass].a) : "not answered yet") + "</a>" : "") + "</div></div>";
+    (q.compass && QM[q.compass] ? '<a href="#compass-' + q.compass + '">Your Compass answer: ' + esc(deepest(q.compass) ? deepest(q.compass).label : S.answers[q.compass] ? labelOf(q.compass, S.answers[q.compass].a) : "not answered yet") + "</a>" : "") + "</div>"; })() + "</div>";
   if (stance === undefined) h += '<div class="dq-begin"><span class="eyebrow">Before we begin</span><b>' + esc(String(q.stance || "Where do you stand on this right now?").replace(/^Before we begin:\s*/i, "").replace(/^./, c => c.toUpperCase())) + '</b><div class="row" style="--g:8px">' +
     ["yes", "no"].map(k => '<button class="btn small side-btn ' + k + '" data-act="stance" data-q="' + q.id + '" data-v="' + k + '">' + esc(sideName(k)) + "</button>").join("") +
     '<button class="btn small ghost" data-act="stance" data-q="' + q.id + '" data-v="unsure">Not sure yet</button><button class="linkish" data-act="stance" data-q="' + q.id + '" data-v="skip">Skip</button></div></div>';
@@ -11582,7 +11675,7 @@ function agoraQuestion(q) {
   after.push(dArrows);
   h += board + '<section class="stack dmap" style="--g:10px;width:100%"><div class="row" style="justify-content:space-between;align-items:center"><h2>The argument map</h2>' + modeBar + "</div>" + legend +
     '<div class="dladder"><svg class="darrows" aria-hidden="true"></svg>' + head("yes") + head("no") + ladder + "</div>" + next + "</section>";
-  h += ownCardForm(q, cs);
+  if (!playing || shown >= rows.length) h += ownCardForm(q, cs);
   return h + "</div>";
 }
 let DSTAT = {};
@@ -12850,7 +12943,7 @@ function thinkerPage(id) {
   // hero
   let h = '<section class="tp-hero"><div class="wrap"><a class="linkish wk-back tp-back" href="#thinkers">← All thinkers</a><div class="tp-hero-in">' + portraitHTML(cast.name ? cast : { name: t.name }, "tp-pt") +
     '<div class="stack" style="--g:8px;min-width:0"><span class="eyebrow">' + esc([tr ? tr.name : "", t.region ? "Worked in " + t.region : ""].filter(Boolean).join(" · ")) + "</span><h1>" + esc(t.name) + '</h1><span class="tp-dates">' + esc(life(t)) + "</span>" +
-    (t.tagline ? '<p class="tp-tag">' + esc(t.tagline) + "</p>" : "") +
+    (t.tagline ? '<p class="tp-tag">' + esc(t.tagline) + "</p>" : "") + tpYouHTML(t, mine) +
     '<div class="row tp-acts" style="--g:8px">' + (t.born != null ? '<a class="btn small" href="#firmament-' + esc(id) + '">✦ See in the sky</a><a class="btn small ghost" href="#firmament-trace.' + esc(id) + '">⇝ Trace a lineage</a>' : "") +
     (Object.keys(t.positions || {}).length >= 2 ? '<a class="btn small ghost" href="#duel-' + esc(id) + '">Duel ' + esc(shortName(t)) + " against…</a>" : "") + "</div></div></div></div></section>";
   // main column
@@ -12881,6 +12974,7 @@ function thinkerPage(id) {
     const listed = (t.works || []).filter(w => !works.some(a => base(a.title) === base(w.title) || base(a.title).startsWith(base(w.title)) || base(w.title).startsWith(base(a.title))));
     side += '<div class="tp-card" id="tp-works"><span class="eyebrow">Works</span><ul class="tp-wl">' + works.map(w => '<li><a href="#works-' + esc(w.id) + '"><i>' + esc(w.title) + "</i></a> <span class=\"faint\">" + esc(yrTxt(w.year, w.approx)) + "</span></li>").join("") + listed.map(w => "<li><i>" + esc(w.title) + '</i> <span class="faint">' + esc(yr(w.year, w.approx)) + "</span></li>").join("") + "</ul>" + (works.length ? '<a class="linkish" href="#works">The whole archive →</a>' : "") + "</div>"; }
   if (isl.length) side += '<div class="tp-card"><span class="eyebrow">On the Voyage</span><ul class="tp-wl">' + isl.map(i => '<li><a href="#voyage-' + esc(i.id) + '">' + esc(i.name) + '</a> <span class="faint">Sea ' + (["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV"][i.unit] || i.unit) + "</span></li>").join("") + "</ul></div>";
+  side += tpAlsoHTML(id);
   if (terms.length) side += '<div class="tp-card"><span class="eyebrow">Words to know</span><div class="row" style="--g:6px">' + terms.slice(0, 12).map(g => '<a class="chip" href="#dictionary-' + slugT(g.term) + '">' + esc(g.term) + "</a>").join("") + "</div></div>";
   // connections
   let web = "";
@@ -12891,6 +12985,22 @@ function thinkerPage(id) {
       (opp.length ? '<div><span class="eyebrow">Argued against</span><div class="row" style="--g:6px">' + opp.map(z => '<a class="chip crack" href="#thinker-' + z + '">' + esc(nameOf(z)) + "</a>").join("") + "</div></div>" : "") + "</div></section>"; }
   const toc = sec.length > 2 ? '<nav class="tp-toc" aria-label="On this page">' + sec.map(([k, n]) => '<a href="#thinker-' + esc(id) + '" data-act="tpJump" data-k="' + k + '">' + n + "</a>").join("") + "</nav>" : "";
   return h + '<div class="wrap">' + toc + '<div class="tp-grid"><div class="tp-main">' + main + web + '</div><aside class="tp-side">' + side + "</aside></div></div>";
+}
+// "You and this thinker": how far you agree, straight under the name (reuses the page's one matchOne result)
+function tpYouHTML(t, mine) {
+  if (Object.keys(t.positions || {}).filter(q => QM[q]).length < 2) return "";
+  const nm = shortName(t);
+  if (mine) return '<div class="tp-you"><a class="tp-you-main" href="#thinker-' + esc(t.id) + '" data-act="tpJump" data-k="stances"><b>You agree on ' + mine.pct + "%</b> · " + mine.n + " shared question" + (mine.n === 1 ? "" : "s") + '</a><a class="tp-you-duel" href="#duel-' + esc(t.id) + '">Duel →</a></div>';
+  const any = Object.keys(S.answers || {}).some(q => realA(S.answers[q]));
+  return '<div class="tp-you"><a class="tp-you-main" href="#compass-quick">' + (any ? "Not enough shared questions yet. Take the Quick Compass to see where you stand with " : "Take the Quick Compass to see where you stand with ") + esc(nm) + " →</a></div>";
+}
+// "Also in": the seminars that cast this thinker and the Shipyard games built on their ideas
+const LAB_PEOPLE = { gauntlet: ["foot", "thomson"], veil: ["rawls", "harsanyi"], machine: ["nozick"], ship: ["plutarch", "hobbes"], pd: ["hobbes", "axelrod"], heap: ["eubulus"], trolley: ["foot", "thomson"], marys: ["jackson"] };
+function tpAlsoHTML(id) {
+  const sems = SEM_LIST.filter(x => arr(x.cast).includes(id));
+  const games = Object.keys(LAB_PEOPLE).filter(k => LAB_NAMES[k] && LAB_PEOPLE[k].includes(id) && TH[id]);
+  if (!sems.length && !games.length) return "";
+  return '<div class="tp-card tp-also"><span class="eyebrow">Also in</span><ul class="tp-wl">' + sems.map(x => '<li><span class="faint">Seminar</span> <a href="#seminar-' + esc(x.sid) + '">' + esc(x.title) + "</a></li>").join("") + games.map(k => '<li><span class="faint">Play</span> <a href="#lab-' + k + '">' + esc(LAB_NAMES[k]) + "</a></li>").join("") + "</ul></div>";
 }
 ACT.tpJump = (el, ev) => { if (ev) ev.preventDefault(); const s = document.getElementById("tp-" + el.dataset.k) || $("#tp-" + el.dataset.k); if (s) window.scrollTo({ top: s.getBoundingClientRect().top + scrollY - 80, behavior: "smooth" }); };
 VIEWS.firmament = (arg) => {
@@ -13516,6 +13626,7 @@ let wRowsT; window.addEventListener("resize", () => { clearTimeout(wRowsT); wRow
 function wCard(w) { return '<a class="wcard" href="#works-' + esc(w.id) + '" data-w="' + esc(w.id) + '"><span class="wc-bar" style="--c:' + wColor(w) + '"></span><span class="wc-yr">' + esc(yrTxt(w.year)) + '</span><b>' + esc(w.title) + '</b><span class="wc-au">' + esc(wAuthor(w)) + " · " + esc(w.form || "") + "</span><p>" + esc(w.summary) + '</p><span class="wc-lv">' + wDots(w) + " " + esc(WLEVEL[w.level || 1]) + "</span></a>"; }
 VIEWS.works = arg => {
   if (arg && WK[arg]) return workPage(WK[arg]);
+  if (arg) return workMissing(arg);
   if (!WORKS.length) return '<div class="wrap stack"><span class="eyebrow">The Archive</span><h1>Works</h1><p class="muted">The archive is being catalogued.</p></div>';
   const shelves = W_ERAS.map(([k, n, a, b]) => { const L = wInEra(k); return L.length ? '<section class="shelf" data-era="' + k + '"><header><h2>' + n + '</h2><span class="faint">' + L.length + " works · " + yrTxt(a) + "–" + (b >= 2000 ? "today" : yrTxt(b)) + "</span></header><div class=\"subshelves\">" + wShelvesOf(k).map(s => '<div class="subshelf" data-shelf="' + esc(s.id) + '">' + (s.name ? "<h3>" + esc(s.name) + ' <span class="faint">' + s.L.length + "</span></h3>" : "") + '<div class="shelf-rows">' + s.L.map(wSpine).join("") + "</div></div>").join("") + "</div></section>" : ""; }).join("");
   const legend = '<div class="wk-legend" role="group" aria-label="Colour shows the main topic"><span class="faint">Colour = main topic:</span>' + W_TOPICS.map(t => '<button class="wk-key" data-act="wkKey" data-t="' + esc(t) + '" aria-pressed="' + (wkTopic === t) + '"><i style="background:' + W_TOPIC_COLOR[t] + '"></i>' + esc(cap(t)) + "</button>").join("") + "</div>";
@@ -13546,6 +13657,31 @@ function bookshelfLogHTML() { const B = S.books || {}, ids = Object.keys(B).filt
   return '<section class="stack"><div class="row" style="justify-content:space-between"><h2>Your bookshelf</h2><a class="cq-mono linkish-quiet" href="#works">The archive</a></div>' + (read.length ? '<span class="eyebrow">Read · ' + read.length + '</span><div class="shelf sea-shelf"><div class="shelf-row">' + read.map(wSpine).join("") + '</div><div class="shelf-board"></div></div>' : "") +
     (want.length ? '<span class="eyebrow">Want to read · ' + want.length + '</span><div class="wgrid">' + want.map(wCard).join("") + "</div>" : "") + "</section>"; }
 ACT.wkView = el => { wkView = el.dataset.v; render(true); };
+// an unknown book id: say so, and offer the closest works by title or author
+function workMissing(arg) {
+  const q = String(arg).replace(/-/g, " ").trim();
+  let L = typeof FIND !== "undefined" ? FIND.search(q).filter(x => x.kind === "Work").slice(0, 5).map(x => WK[x.href.slice(7)]).filter(Boolean) : [];
+  if (!L.length) { const ws = q.toLowerCase().split(/\s+/).filter(x => x.length > 2); L = WORKS.filter(w => ws.some(x => (w.title + " " + wAuthor(w) + " " + w.id).toLowerCase().includes(x))).slice(0, 5); }
+  return '<div class="wrap stack" style="--g:18px"><a class="linkish wk-back" href="#works">← The Archive</a><div class="panel stack wk-missing" style="--g:12px"><span class="eyebrow">The Archive</span><h1>We don’t have that book yet.</h1><p class="muted read">There is no work called “' + esc(q) + '” in the archive.' + (L.length ? " Did you mean one of these?" : " Try the search, or browse the shelves.") + "</p>" +
+    (L.length ? '<div class="wgrid">' + L.map(wCard).join("") + "</div>" : "") + '<div class="row"><a class="btn" href="#works">Browse all ' + WORKS.length + ' works</a><button class="btn ghost" data-act="find">Search the whole site</button></div></div></div>';
+}
+ACT.find = () => { if (typeof FIND !== "undefined") FIND.open(); };
+// a free text for books old enough to be in the public domain (written by 1928, author dead before 1955): search links, not curated editions
+function workFreeHTML(w) {
+  const t = w.author && TH[w.author]; if (!(w.year <= 1928 && t && t.died != null && t.died < 1955)) return "";
+  const sur = shortName(t) || String(w.authorName || "").split(" ").pop(), qs = encodeURIComponent(w.title + " " + sur);
+  return '<div class="tp-card wk-free"><span class="eyebrow">Read it free</span><p class="muted" style="font-size:var(--fs-sm);margin:0">Search free public-domain editions (translations vary).</p><ul class="tp-wl"><li><a href="https://www.gutenberg.org/ebooks/search/?query=' + qs + '" target="_blank" rel="noopener">Project Gutenberg ↗</a></li><li><a href="https://en.wikisource.org/w/index.php?search=' + qs + '" target="_blank" rel="noopener">Wikisource ↗</a></li></ul></div>';
+}
+// the debates and seminars this book drives: through its Voyage islands, and the debate arguments its author wrote
+function workArgueHTML(w) {
+  const seen = new Set(), L = [];
+  const push = (href, kind, label) => { if (seen.has(href)) return; seen.add(href); L.push([href, kind, label]); };
+  arr(w.islands).forEach(id => { const I = VOY.islands[id]; if (!I) return; const qs = (I.checkpoint || []).map(c => c && c.q).filter(q => QM[q]); if (!qs.length && islandRoot(I)) qs.push(islandRoot(I));
+    qs.forEach(q => { const X = sameQ(q); X.filter(x => x.kind === "debate").slice(0, 1).forEach(x => push(x.href, "Debate", x.label)); X.filter(x => x.kind === "seminar").slice(0, 1).forEach(x => push(x.href, "Seminar", x.label)); }); });
+  if (w.author) [...new Set(AG.cards.filter(c => c.author === w.author).map(c => c.q))].filter(id => AGQ[id]).forEach(id => push("#agora-" + id, "Debate", AGQ[id].title));
+  if (!L.length) return "";
+  return '<div class="tp-card wk-argue"><span class="eyebrow">Argue with it</span><ul class="tp-wl">' + L.slice(0, 6).map(([h, k, t]) => '<li><span class="faint">' + k + '</span> <a href="' + h + '">' + esc(t) + "</a></li>").join("") + "</ul></div>";
+}
 function workPage(w) {
   const t = w.author && TH[w.author], c = wColor(w), more = w.author ? worksBy(w.author).filter(z => z.id !== w.id) : [], rel = arr(w.related).map(id => WK[id]).filter(Boolean);
   const isl = arr(w.islands).map(id => VOY.islands[id]).filter(Boolean), cast = t ? castOf(t.id) : null;
@@ -13563,6 +13699,7 @@ function workPage(w) {
   if (rel.length) h += '<section class="tp-sec"><h3>Read it alongside</h3><div class="wgrid">' + rel.map(wCard).join("") + "</div></section>";
   h += '</div><aside class="tp-side"><div class="tp-card tp-start tp-wide"><span class="eyebrow">Where to start</span><p>' + esc(w.start) + "</p></div>";
   if (t) h += '<a class="tp-card wk-au" href="#thinker-' + esc(t.id) + '">' + portraitHTML(cast || { name: t.name }, "wk-pt") + '<span class="stack" style="--g:2px;min-width:0"><b>' + esc(t.name) + '</b><span class="faint">' + esc(life(t)) + "</span>" + (t.tagline ? "<i>" + esc(t.tagline) + "</i>" : "") + "</span></a>";
+  h += workFreeHTML(w) + workArgueHTML(w);
   if (isl.length) h += '<div class="tp-card"><span class="eyebrow">On the Voyage</span><ul class="tp-wl">' + isl.map(i => '<li><a href="#voyage-' + esc(i.id) + '">' + esc(i.name) + "</a></li>").join("") + "</ul></div>";
   if (more.length) h += '<div class="tp-card"><span class="eyebrow">More by ' + esc(shortName(t)) + '</span><ul class="tp-wl">' + more.map(z => '<li><a href="#works-' + esc(z.id) + '"><i>' + esc(z.title) + '</i></a> <span class="faint">' + esc(yrTxt(z.year, z.approx)) + "</span></li>").join("") + "</ul></div>";
   const i = WORKS.indexOf(w), pv = WORKS[i - 1], nx = WORKS[i + 1];
@@ -13698,6 +13835,7 @@ function labVeil() { const L = veilState(), C = veilCalc(L.w), maxInc = Math.max
     (lives.length ? '<p class="read" style="text-align:center;margin:0">' + lives.map(x => VEIL_NAMES[x.i] + " (" + x.wb + ")").join(" · ") + '</p><p style="text-align:center;margin:0">Your life score so far: <b class="vscore">' + score + "</b>" + (L.best ? ' <span class="faint">· best ' + L.best + "</span>" : "") + "</p>" : "") + "</div>";
   if (lives.length >= 5) { L.done = true;
     h += '<div class="panel stack" style="--g:8px"><span class="eyebrow">What you chose</span><h3>' + esc(principle[0]) + '</h3><p class="read">' + esc(principle[1]) + '</p><p class="read">Worst-off life: <b>' + C.min + "</b> · average life: <b>" + C.avg + '</b>. John Rawls (A Theory of Justice, 1971) argued that, not knowing who you’ll be, you should protect the worst position: the “maximin” rule. John Harsanyi replied that a rational chooser would maximise the average instead. Which bet did you make, and would you make it with your real life?</p><div class="row"><a class="btn small" href="#agora-inequality">Debate inequality</a><button class="btn small ghost" data-act="veilReset">Start again</button></div></div>'; }
+  if (lives.length) h += labSameQ("veil");
   after.push(veilDrag);
   return labShell("Behind the veil", h); }
 function veilDrag() { $$("#vbars .vtrack").forEach(t => { t.onpointerdown = e => { e.preventDefault(); t.setPointerCapture(e.pointerId); const i = +t.dataset.vi;
@@ -13770,7 +13908,7 @@ function gauntResult(L, dead) { L.done = true; const v = id => L.v[id], yes = id
   const acts = GAUNT.filter(c => !c.three && yes(c.id)).length;
   return '<div class="panel raised stack" style="--g:10px"><span class="eyebrow">The gauntlet is over</span><h2>☠ ' + dead + " lives lost across ten cases</h2><p class=\"read\">You acted in " + acts + " of the nine two-way cases. Here is what your pattern reveals:</p>" +
     P.map(p => '<div class="gfind"><b>' + esc(p.t) + '</b><p class="read">' + esc(p.d) + "</p></div>").join("") +
-    '<div class="row"><a class="btn primary" href="#agora-killing">Debate killing vs. letting die</a><button class="btn ghost" data-act="gauntReset">Run it again</button></div></div>'; }
+    labSameQ("gauntlet") + '<div class="row"><a class="btn primary" href="#agora-killing">Debate killing vs. letting die</a><button class="btn ghost" data-act="gauntReset">Run it again</button></div></div>'; }
 
 // The Odyssey: sail home from Troy through Homer's dilemmas. Crew, a mercy/ruthlessness needle and wits move with each choice;
 // each choice reveals the ethical theory behind it, and the ending depends on who you became.
@@ -13817,7 +13955,7 @@ function odyEnd(O, L) { L.done = true;
     (prof ? '<div class="olens"><span class="eyebrow">Your captaincy</span><b>' + esc(prof.name) + '</b><p class="read">' + esc(prof.line) + "</p></div>" : "") +
     '<div class="obars">' + top.map(([k, v]) => '<div><span>' + esc(ODY_THEORY[k] || k) + '</span><i style="width:' + Math.round(100 * v / L.picks.length) + '%"></i><b>' + v + "</b></div>").join("") + "</div>" +
     '<p class="read">You chose as Homer’s Odysseus did at ' + homer + " of " + O.stops.length + " islands.</p>" +
-    '<div class="row"><button class="btn primary" data-act="odyReset">Sail again</button><a class="btn ghost" href="#agora">Argue it out in Debates</a></div></div>'; }
+    labSameQ("odyssey") + '<div class="row"><button class="btn primary" data-act="odyReset">Sail again</button><a class="btn ghost" href="#agora">Argue it out in Debates</a></div></div>'; }
 ACT.odyStart = () => { odyState().seen = true; save(); render(true); };
 ACT.odyPick = el => { const L = odyState(), s = window.ODYSSEY.stops[L.i], c = s.choices.find(x => x.id === el.dataset.c), e = c.effects || {};
   L.picks[L.i] = c.id; L.crew = Math.max(0, L.crew + (e.crew || 0)); L.mercy += e.mercy || 0; L.wits += e.wits || 0; save(); render(true);
@@ -13997,6 +14135,7 @@ function labShip() {
       }[P.verdict]) + "</p>" + shipConfront(P) + '<p class="muted" style="font-size:.9rem">Plutarch recorded the puzzle in his <i>Life of Theseus</i>; Thomas Hobbes added the second ship built from old planks in <i>De Corpore</i> (1655).</p>' + crowd + '<div class="row"><a class="btn primary" href="#compass-q10">Now try the teleporter</a><button class="btn ghost" data-act="shipReset">Start again</button></div></div>';
     }
   }
+  if (P.replaced >= N && P.verdict) h += labSameQ("ship");
   return labShell("Theseus’ ship", h);
 }
 // Checkpoints at 1, 10 and 19 new planks ask whether it is still Theseus’ ship, so the final verdict can be held against them.
@@ -14035,7 +14174,7 @@ function labMachine() {
       (consistent ? (M.first === "out" ? "You’re consistent: you value contact with reality itself, not just how life feels. That is Nozick’s conclusion: we want to actually do things and actually be someone, so feeling good can’t be all that matters." : "You’re consistent: what matters to you is how life is experienced. That’s hedonism, the view Nozick’s machine was built to attack, and you’ve bitten the bullet.")
         : (M.first === "out" ? "You refused to plug in, yet you’d stay plugged in. Many people answer this way. De Brigard found that when the machine is the status quo, people often prefer to stay in it. That suggests part of our reluctance to plug in may be a bias toward whatever life we already have, rather than a deep love of reality." : "You’d plug in, yet you’d unplug from a machine you were already in. This is the rarer pattern. Perhaps you’d trade a known good for a better simulation, but not an unknown reality for one?")) +
       "</p>" + (() => { const it = (EX.philpapers.items || []).find(i => i.compass === "experience_machine"); return it ? barsHTML("machine", it.results.map(r => ({ id: r.label, label: r.label === "Yes" ? "Would plug in" : r.label === "No" ? "Would not plug in" : r.label, pct: r.pct })).concat([{ id: "other", label: "Other answers", pct: Math.max(0, 100 - it.results.reduce((a, r) => a + r.pct, 0)) }]), [M.first === "in" ? "Yes" : "No"], 0, "Philosophers asked about plugging in, 2020 PhilPapers survey (N=" + it.n + ")") : ""; })() +
-      '<div class="row"><a class="btn primary" href="#compass">Back to the Compass</a><button class="btn ghost" data-act="machReset">Start again</button></div></div>';
+      '<div class="row"><a class="btn primary" href="#compass">Back to the Compass</a><button class="btn ghost" data-act="machReset">Start again</button></div></div>' + labSameQ("machine");
   }
   return labShell("The experience machine", h);
 }
@@ -14086,6 +14225,7 @@ function labTrolley() {
       '<p class="muted" style="font-size:.92rem">A twist: Thomson later changed her mind. In “Turning the Trolley” (2008) she argued that a bystander may <i>not</i> turn the trolley, since you would be making someone else pay a cost you would not pay yourself. <a href="#agora-killing" data-act="gotoCard" data-card="killing-thomson-turning">Read her argument in Debates</a>.</p>' +
       '<div class="row"><a class="btn primary" href="#agora-killing">Open the debate</a><button class="btn ghost" data-act="trolReset">Start again</button></div></div>';
   }
+  if (done) h += labSameQ("trolley");
   return labShell("The trolley ladder", h);
 }
 ACT.trol = el => { const L = S.lab.trolley; L.v[el.dataset.c] = el.dataset.v; if (TROLLEY.every(c => L.v[c.id])) L.done = true; save(); render(true); };
@@ -14123,19 +14263,34 @@ function makeStandRound(n) {
   }
   return items;
 }
+// the daily round: five classic questions, the same for everyone that day, one attempt a day
+function quizDayKey(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+function quizStreak() { const D = (S.quiz && S.quiz.daily) || {}; const d = new Date(); if (D[quizDayKey(d)] == null) d.setDate(d.getDate() - 1); let n = 0; while (D[quizDayKey(d)] != null) { n++; d.setDate(d.getDate() - 1); } return n; }
+function quizDailyCard() {
+  const D = (S.quiz && S.quiz.daily) || {}, today = D[todayKey()]; const y = new Date(); y.setDate(y.getDate() - 1); const yest = D[quizDayKey(y)]; const stk = quizStreak();
+  const meta = [stk > 1 ? stk + " days in a row" : "", yest != null ? "Yesterday: " + yest + "/5" : ""].filter(Boolean).join(" · ");
+  return '<div class="panel stack qz-daily" style="--g:10px;flex:1 1 260px"><span class="eyebrow">Daily round</span><p class="muted">Five questions, the same for everyone today. One try a day; come back tomorrow for five more.</p>' + (meta ? '<span class="faint" style="font-size:.86rem">' + esc(meta) + "</span>" : "") +
+    '<div class="row" style="justify-content:space-between"><span class="faint" style="font-size:.86rem">' + (today != null ? 'Done today: <b style="color:var(--ink)">' + today + "/5</b> · come back tomorrow" : "Not played today") + '</span><button class="btn primary" data-act="quizStart" data-mode="daily"' + (today != null ? " disabled" : "") + ">" + (today != null ? "Done" : "Play") + "</button></div></div>";
+}
 function quizStartScreen() {
   const best = S.quiz.best || 0, bestS = S.quiz.bestStand || 0;
   const card = (mode, t, d, b) => '<div class="panel stack" style="--g:10px;flex:1 1 260px"><span class="eyebrow">' + t + '</span><p class="muted">' + d + '</p><div class="row" style="justify-content:space-between"><span class="faint" style="font-size:.86rem">' + (b ? 'Best round: <b style="color:var(--ink)">' + b + "</b> of 10" : "Not played yet") + "</span><button class=\"btn primary\" data-act=\"quizStart\" data-mode=\"" + mode + '">Play</button></div></div>';
   return '<div class="wrap"><div class="col stack" style="--g:18px"><span class="eyebrow">The Quiz</span><h1>Who thinks what?</h1><p class="muted read">Ten questions a round, four thinkers each. No quotations, only ideas in plain words, and every answer comes with an explanation.</p>' +
     '<div class="row" style="align-items:stretch">' + card("classic", "Who held this idea?", "A famous idea in plain words. Pick the thinker it belongs to.", best) +
-    card("stand", "Where do they stand?", "A position on one of the Compass questions. Pick the thinker who holds it; the others answered differently. New questions every round.", bestS) + "</div></div></div>";
+    card("stand", "Where do they stand?", "A position on one of the Compass questions. Pick the thinker who holds it; the others answered differently. New questions every round.", bestS) + quizDailyCard() + "</div></div></div>";
 }
 VIEWS.quiz = () => {
   if (!QZ) return quizStartScreen();
   const N = QZ.items.length;
   if (QZ.i >= N) {
-    const missed = QZ.items.filter(it => it.got === false).length;
-    return '<div class="wrap"><div class="col stack" style="--g:18px"><span class="eyebrow">Round complete · ' + (QZ.mode === "stand" ? "Where do they stand?" : "Who held this idea?") + "</span><h1>" + QZ.score + " of " + N + '</h1><p class="muted read">' + (QZ.score >= N - 1 ? "Outstanding. The owl approves." : QZ.score >= N * 0.6 ? "Solid. A few more rounds and the Firmament will feel like home." : "Every philosopher started somewhere. Try another round; the questions change.") + '</p><div class="row"><button class="btn primary" data-act="quizStart" data-mode="' + QZ.mode + '">Play again</button>' + (missed ? '<button class="btn" data-act="quizRetry">Retry the ' + missed + " I missed</button>" : "") + '<button class="btn ghost" data-act="quizHome">Switch mode</button></div></div></div>';
+    const missed = QZ.items.filter(it => it.got === false).length; const daily = QZ.mode === "daily";
+    const meet = []; QZ.items.forEach(it => { if (it.got === false && !meet.includes(it.answer)) meet.push(it.answer); });
+    const promptOf = it => { if (it.kind === "stand") { const q = QM[it.q] || {}, o = optOf(it.q, it.a) || {}; return '<span class="faint">' + esc(q.short || "") + "</span> Who holds: <b>" + esc(o.label || o.text || "") + "</b>"; } return esc(it.idea || ""); };
+    const review = '<section class="stack" style="--g:10px"><h2 class="qz-rh">Your round, answer by answer</h2><ol class="qz-review">' + QZ.items.map(it => '<li class="' + (it.got ? "ok" : "no") + '"><span class="qz-mark" aria-label="' + (it.got ? "Right" : "Missed") + '">' + (it.got ? "✓" : "✗") + '</span><div class="stack" style="--g:6px"><p>' + promptOf(it) + '</p><div class="row" style="--g:8px">' + thinkerChip(it.answer) + (!it.got && it.picked ? '<span class="faint qz-said">you said ' + esc(nameOf(it.picked)) + "</span>" : "") + "</div></div></li>").join("") + "</ol>" +
+      (meet.length ? '<div class="qz-meet"><span class="eyebrow">People to meet</span><div class="row" style="--g:6px">' + meet.map(thinkerChip).join("") + "</div></div>" : "") + "</section>";
+    const stk = daily ? quizStreak() : 0;
+    const msg = daily ? (QZ.retry ? "Practice only: today’s score is already saved." : "Saved. Five new questions tomorrow." + (stk > 1 ? " That’s " + stk + " days in a row." : "")) : QZ.score >= N - 1 ? "Outstanding. The owl approves." : QZ.score >= N * 0.6 ? "Solid. A few more rounds and the Firmament will feel like home." : "Every philosopher started somewhere. Try another round; the questions change.";
+    return '<div class="wrap"><div class="col stack" style="--g:18px"><span class="eyebrow">Round complete · ' + (daily ? "Daily round" : QZ.mode === "stand" ? "Where do they stand?" : "Who held this idea?") + "</span><h1>" + QZ.score + " of " + N + '</h1><p class="muted read">' + msg + '</p><div class="row">' + (daily ? '<button class="btn primary" data-act="quizStart" data-mode="classic">Play a full round</button>' : '<button class="btn primary" data-act="quizStart" data-mode="' + QZ.mode + '">Play again</button>') + (missed ? '<button class="btn" data-act="quizRetry">Retry the ' + missed + " I missed</button>" : "") + '<button class="btn ghost" data-act="quizHome">Switch mode</button></div>' + review + "</div></div>";
   }
   const it = QZ.items[QZ.i]; const picked = QZ.picked;
   let prompt, explain;
@@ -14161,16 +14316,22 @@ VIEWS.quiz = () => {
 };
 ACT.quizStart = el => {
   const mode = (el && el.dataset.mode) || "classic";
-  const items = mode === "stand" ? makeStandRound(10) : shuffle(EX.quiz).slice(0, 10).map(q => Object.assign({ kind: "classic" }, q, { opts: shuffle(q.options) }));
+  if (mode === "daily" && ((S.quiz || {}).daily || {})[todayKey()] != null) { toast("You’ve played today’s round. Come back tomorrow."); return; }
+  let items;
+  if (mode === "daily") { const R = rng(hash("daily" + todayKey())); items = shuffle(EX.quiz, R).slice(0, 5).map(q => Object.assign({ kind: "classic" }, q, { opts: shuffle(q.options, R) })); }
+  else items = mode === "stand" ? makeStandRound(10) : shuffle(EX.quiz).slice(0, 10).map(q => Object.assign({ kind: "classic" }, q, { opts: shuffle(q.options) }));
   if (!items.length) { toast("Not enough recorded positions for this mode yet."); return; }
   QZ = { mode, items, i: 0, score: 0, picked: null }; render(false);
 };
-ACT.quizRetry = () => { if (!QZ) return; const items = QZ.items.filter(it => it.got === false).map(it => Object.assign({}, it, { got: undefined, opts: shuffle(it.opts) })); QZ = { mode: QZ.mode, items, i: 0, score: 0, picked: null, retry: true }; render(false); };
+ACT.quizRetry = () => { if (!QZ) return; const items = QZ.items.filter(it => it.got === false).map(it => Object.assign({}, it, { got: undefined, picked: undefined, opts: shuffle(it.opts) })); QZ = { mode: QZ.mode, items, i: 0, score: 0, picked: null, retry: true }; render(false); };
 ACT.quizHome = () => { QZ = null; render(false); };
-ACT.quizPick = el => { const it = QZ.items[QZ.i]; if (QZ.picked) return; QZ.picked = el.dataset.id; it.got = QZ.picked === it.answer; if (it.got) QZ.score++; S.quiz.met = S.quiz.met || {}; S.quiz.met[it.answer] = 1; save(); render(true); };
+ACT.quizPick = el => { const it = QZ.items[QZ.i]; if (QZ.picked) return; QZ.picked = el.dataset.id; it.picked = QZ.picked; it.got = QZ.picked === it.answer; if (it.got) QZ.score++; S.quiz.met = S.quiz.met || {}; S.quiz.met[it.answer] = 1; save(); render(true); };
 ACT.quizNext = () => {
   QZ.i++; QZ.picked = null;
-  if (QZ.i >= QZ.items.length && !QZ.retry && QZ.items.length >= 10) { S.quiz.rounds = (S.quiz.rounds || 0) + 1; if (QZ.mode === "stand") S.quiz.bestStand = Math.max(S.quiz.bestStand || 0, QZ.score); else S.quiz.best = Math.max(S.quiz.best || 0, QZ.score); save(); }
+  if (QZ.mode === "daily") {
+    if (QZ.i >= QZ.items.length && !QZ.retry) { const D = Object.assign({}, S.quiz.daily || {}); if (D[todayKey()] == null) D[todayKey()] = QZ.score;
+      S.quiz.daily = {}; Object.keys(D).sort().slice(-60).forEach(k => { S.quiz.daily[k] = D[k]; }); save(); }
+  } else if (QZ.i >= QZ.items.length && !QZ.retry && QZ.items.length >= 10) { S.quiz.rounds = (S.quiz.rounds || 0) + 1; if (QZ.mode === "stand") S.quiz.bestStand = Math.max(S.quiz.bestStand || 0, QZ.score); else S.quiz.best = Math.max(S.quiz.best || 0, QZ.score); save(); }
   render(false);
 };
 
@@ -14228,6 +14389,20 @@ ACT.scrollTo = el => { const t = document.getElementById(el.dataset.t); if (t) w
 ACT.dailyVote = el => { S.daily[todayKey()] = +el.dataset.i; save(); render(true); };
 function dailyStreak() { let n = 0; const d = new Date(); for (;;) { const k = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); if (S.daily[k] == null) break; n++; d.setDate(d.getDate() - 1); } return n; }
 ACT.dailyLink = el => { if (el.dataset.exp) { libTab = "experiments"; libQuery = el.dataset.exp; } const h = el.getAttribute("href"); if (location.hash === h) render(false); else location.hash = h; };
+// after you answer the question of the day: the thinkers who share that view, when today's answer maps cleanly onto a
+// Compass option (same number of options, same labels) or when you already answered the linked Compass question
+function dailyHolders(D, mine) {
+  const lk = D.item.link, ag = AGQ[lk];
+  const raw = QM[lk] ? lk : (C.legacy || {})[lk] || (ag && ag.compass ? ((C.legacy || {})[ag.compass] || ag.compass) : null);
+  const cq = raw && QM[raw] ? raw : null; if (!cq) return "";
+  const norm = x => String(x || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  let o = realA(S.answers[cq]) ? arr(S.answers[cq].a)[0] : null; const fromC = o != null;
+  const qo = QM[cq].options || [];
+  if (o == null && mine != null && D.item.options.length === qo.length && D.item.options.every((x, i) => norm(x) === norm(qo[i].label) || norm(x) === norm(qo[i].text))) o = qo[mine] && qo[mine].id;
+  if (o == null) return "";
+  const H = holdersOf(cq, o).filter(h => TH[h.t.id] === h.t); if (!H.length) return "";
+  return '<p class="nudge daily-holders"><b>' + H.length + (H.length === 1 ? " thinker holds" : " thinkers hold") + (fromC ? " your Compass view" : " this view") + ":</b> " + (fromC ? '<span class="faint">' + esc(labelOf(cq, o)) + "</span> " : "") + '<span class="row" style="--g:6px;display:inline-flex;vertical-align:middle">' + H.slice(0, 3).map(h => thinkerChip(h.t.id)).join("") + "</span></p>";
+}
 function dailyCard() {
   const D = dailyItem(); if (!D) return "";
   const key = todayKey(); const mine = S.daily[key];
@@ -14249,8 +14424,11 @@ function dailyCard() {
   }
   const L = dailyLink(D.item.link);
   const stk = dailyStreak();
-  return '<div class="daily" id="dailyCard"><span class="eyebrow">Question of the day' + (stk > 1 ? " · " + stk + " days in a row" : "") + '</span><p class="q">' + esc(D.item.q) + "</p>" + body + ((mine != null || prior) && D.item.nudge ? '<p class="nudge daily-reveal"><b>What the philosophers say:</b> ' + esc(D.item.nudge) + "</p>" : "") +
-    (L ? '<p style="margin-top:12px"><a class="daily-link" href="' + L.href + '" data-act="dailyLink"' + (L.exp ? ' data-exp="' + esc(L.exp) + '"' : "") + ">" + esc(L.t) + " →</a></p>" : "") + "</div>";
+  const paid = mine != null || prior;
+  const ag = AGQ[D.item.link];
+  return '<div class="daily" id="dailyCard"><span class="eyebrow">Question of the day' + (stk > 1 ? " · " + stk + " days in a row" : "") + '</span><p class="q">' + esc(D.item.q) + "</p>" + body + (paid && D.item.nudge ? '<p class="nudge daily-reveal"><b>What the philosophers say:</b> ' + esc(D.item.nudge) + "</p>" : "") +
+    (paid ? dailyHolders(D, mine) : "") +
+    (paid && ag ? '<p style="margin-top:12px"><a class="daily-link" href="#agora-' + esc(ag.id) + '">Argue it: ' + esc(ag.title) + " →</a></p>" : L ? '<p style="margin-top:12px"><a class="daily-link" href="' + L.href + '" data-act="dailyLink"' + (L.exp ? ' data-exp="' + esc(L.exp) + '"' : "") + ">" + esc(L.t) + " →</a></p>" : "") + "</div>";
 }
 // Seals now mark acts of thinking, not visits: finishing the Compass, giving the other side a fair hearing,
 // mending a crack in writing, and building an argument of your own.
@@ -14263,6 +14441,28 @@ function sealsNow() {
     { k: "mend", n: "Mender", d: "Mend a crack with a written reason or distinction", on: written >= 1 },
     { k: "build", n: "Builder", d: "Write your own argument in a debate", on: S.own.length > 0 }
   ];
+}
+// "Your next heading": the one thing to do next, chosen by the first rule that matches (fallback: the next Start-here step)
+const mins = n => "about " + Math.max(1, Math.round(n)) + " min";
+function nextHeading(fallback) {
+  const V = voyState(), pos = V.pos || {}, done = V.done || {}, last = V.last || {}, seen = V.seen || {};
+  // 1. an island in progress, the most recently visited first
+  const open = Object.keys(pos).filter(id => VOY.islands[id] && pos[id] > 0 && done[id] == null).sort((a, b) => (last[b] || seen[b] || 0) - (last[a] || seen[a] || 0));
+  if (open.length) { const I = VOY.islands[open[0]], n = deckSlides(I).length, i = Math.min(pos[I.id], n - 1);
+    return { href: "#voyage-" + I.id, label: "Resume " + I.name + " (card " + (i + 1) + " of " + n + ")", line: "You were partway through this island · " + mins((n - i) * 0.4) + " to the end" }; }
+  // 2. Tide cards due (only once the Tide exists)
+  const due = typeof tideDue === "function" ? (() => { try { return arr(tideDue()).length; } catch (e) { return 0; } })() : 0;
+  if (due) return { href: "#tide", label: "Review " + due + " card" + (due === 1 ? "" : "s") + " (" + Math.max(1, Math.round(due * 0.5)) + " min)", line: "Spaced review: the cards you are about to forget, back on the tide today." };
+  // 3. open cracks in your positions
+  const cracks = allTensions().filter(t => !S.resolutions[t.key]).length;
+  if (cracks) return { href: "#codex", label: "Mend " + numWord(cracks) + " crack" + (cracks === 1 ? "" : "s"), line: "Two of your views pull against each other. Decide which gives way · " + mins(cracks * 2) };
+  // 4. a Compass chapter in progress
+  const sec = C.sections.find(x => answeredCount(x.id) > 0 && !secDone(x.id));
+  if (sec) { const a = answeredCount(sec.id), n = visibleQs(sec.id).length;
+    return { href: "#compass-" + sec.id, label: "Continue " + (sec.name || sec.short) + " (" + a + " of " + n + ")", line: "A Compass chapter you started · " + mins((n - a) * 0.6) + " to its result" }; }
+  // 5. the next Start-here step
+  if (fallback) return { href: fallback.href, label: fallback.t, line: fallback.d + " · " + mins(fallback.n === 1 ? 15 : fallback.n === 2 ? 7 : 5) };
+  return null;
 }
 VIEWS.home = () => {
   const ans = answeredCount();
@@ -14285,7 +14485,7 @@ VIEWS.home = () => {
     { href: "#thinkers", g: "X", t: "Thinkers", p: "Every philosopher on the site, with a full page each: life, big ideas, myths, critics and where to start reading.", m: null, s: T.filter(t => TH[t.id] === t).length + " thinkers" },
     { href: "#works", g: "XI", t: "Works", p: "The archive: the books that moved the argument, what each one says, and exactly where to start reading.", m: null, s: WORKS.length + " works" + (Object.keys(S.books || {}).length ? " · " + Object.keys(S.books).length + " on your shelf" : "") },
     { href: "#library", g: "XII", t: "Dictionary", p: "Every word philosophers use, in plain English, with where it comes from and what it is often confused with.", m: null, s: LIB.glossary.length + " terms · " + LIB.experiments.length + " thought experiments" },
-    { href: "#quiz", g: "XIII", t: "Quiz", p: "Who held this idea, and who holds this view? Ten questions a round, every answer explained.", m: null, s: S.quiz.best ? "Best: " + S.quiz.best + " of 10" : "Not played yet" }
+    { href: "#quiz", g: "XIII", t: "Quiz", p: "Who held this idea, and who holds this view? Ten questions a round, every answer explained.", m: null, s: (S.quiz.best ? "Best: " + S.quiz.best + " of 10" : "Not played yet") + (quizStreak() > 1 ? " · daily round " + quizStreak() + " days in a row" : "") }
   ];
   const steps = [
     { n: 1, href: "#voyage", t: "Land on your first island", d: "A quarter-hour lesson: the first Greek question, with quick checks.", done: Object.keys(voyState().done || {}).length > 0, s: Object.keys(voyState().done || {}).length ? Object.keys(voyState().done).length + " charted" : "Start here" },
@@ -14295,19 +14495,24 @@ VIEWS.home = () => {
   ];
   const nextStep = steps.find(x => !x.done) || steps[steps.length - 1];
   const S2 = sealsNow();
+  const fresh = ans === 0 && !Object.keys(voyState().done || {}).length && !Object.keys(voyState().pos || {}).some(id => VOY.islands[id] && voyState().pos[id] > 0);
+  const NH = fresh ? null : nextHeading(steps.find(x => !x.done));
+  const sealsOn = S2.some(s => s.on);
+  const sealsSec = '<section class="stack"><div class="row" style="justify-content:space-between"><h2>Your seals</h2><span class="faint">' + S2.filter(s => s.on).length + " of " + S2.length + " earned</span></div><div class=\"seals\">" +
+    S2.map(s => '<div class="seal' + (s.on ? " on" : "") + '">' + sealSVG(s.on, s.k) + "<div><b>" + s.n + '</b><div style="font-size:.78rem">' + s.d + "</div></div></div>").join("") + "</div></section>";
   after.push(drawHeroSkyNow);
   return '<section class="hero"><canvas id="heroSky" aria-hidden="true"></canvas><div class="wrap">' +
     '<div class="stack" style="--g:18px"><span class="eyebrow">Philodyssey · a voyage through philosophy</span>' +
     "<h1>What do you believe?<br>Test it against 2,600 years of argument.</h1>" +
     '<p class="lede">Answer one question at a time. Meet the philosophers who think like you, find the cracks in your own worldview, and argue your way through the great debates.</p>' +
-    '<div class="row"><a class="btn lamp" href="' + (secs === C.sections.length ? "#compass-results" : "#compass") + '">' + (secs === C.sections.length ? "See your portrait" : ans ? "Continue the Compass" : "Take the Compass") + '</a><a class="btn ghost" style="color:#ECE7DA;border-color:rgba(255,255,255,.28)" href="#voyage">New to philosophy? Set sail</a></div></div>' +
+    (NH ? '<div class="nh"><span class="eyebrow">Your next heading</span><a class="btn lamp" href="' + NH.href + '">' + esc(NH.label) + ' →</a><p class="nh-line">' + esc(NH.line) + "</p></div>" :
+    '<div class="row hero-cta"><a class="btn lamp" href="' + (secs === C.sections.length ? "#compass-results" : "#compass") + '">' + (secs === C.sections.length ? "See your portrait" : ans ? "Continue the Compass" : "Take the Compass") + '</a><a class="btn ghost on-night" href="#voyage">New to philosophy? Set sail</a></div>') + "</div>" +
     dailyCard() + "</div></section>" +
     '<div class="wrap stack" style="--g:30px;padding-top:34px"><section class="stack"><div class="row" style="justify-content:space-between"><h2>Start here</h2><span class="faint">Four steps, in order</span></div><ol class="path3">' +
-    steps.map(x => '<li class="' + (x.done ? "done" : x === nextStep ? "next" : "") + '"><a href="' + x.href + '"><span class="num">' + (x.done ? "✓" : x.n) + '</span><span class="stack" style="--g:2px"><b>' + x.t + '</b><span class="muted" style="font-size:.9rem">' + x.d + '</span><span class="faint" style="font-size:.8rem">' + esc(x.s) + "</span></span></a></li>").join("") + "</ol></section>" +
+    steps.map(x => '<li class="' + (x.done ? "done" : x === nextStep ? "next" : "") + '"><a href="' + x.href + '"><span class="num">' + (x.done ? "✓" : x.n) + '</span><span class="stack" style="--g:2px"><b>' + x.t + '</b><span class="muted" style="font-size:.9rem">' + x.d + '</span><span class="faint" style="font-size:.8rem">' + esc(x.s) + "</span></span></a></li>").join("") + "</ol></section>" + (sealsOn ? sealsSec : "") +
     '<section class="stack"><div class="row" style="justify-content:space-between"><h2>Explore Philodyssey</h2><span class="faint">' + cap(numWord(mods.length)) + ' places</span></div><span class="eyebrow">Learn and play</span><div class="modules">' +
     mods.map(m => (m.href === "#thinkers" ? '</div><span class="eyebrow" style="margin-top:10px">Look things up</span><div class="modules">' : "") + '<a class="mod" href="' + m.href + '"><h3><span>' + m.t + '</span><span class="glyph">' + m.g + "</span></h3><p>" + m.p + '</p><span class="faint" style="font-size:.8rem">' + esc(m.s) + "</span>" + (m.m != null ? '<span class="meter"><i style="width:' + Math.round(100 * Math.min(1, m.m)) + '%"></i></span>' : "") + "</a>").join("") +
-    '</div></section><section class="stack"><div class="row" style="justify-content:space-between"><h2>Your seals</h2><span class="faint">' + S2.filter(s => s.on).length + " of " + S2.length + " earned</span></div><div class=\"seals\">" +
-    S2.map(s => '<div class="seal' + (s.on ? " on" : "") + '">' + sealSVG(s.on, s.k) + "<div><b>" + s.n + '</b><div style="font-size:.78rem">' + s.d + "</div></div></div>").join("") + "</div></section></div>";
+    "</div></section>" + (sealsOn ? "" : sealsSec) + "</div>";
 };
 // Stars everywhere; the constellation only goes where it can't run through text or the daily card.
 function drawHeroSkyNow() {
@@ -14317,7 +14522,7 @@ function drawHeroSkyNow() {
   const g = cv.getContext("2d"); g.scale(dpr, dpr);
   const R = rng(7);
   // stars stay faint behind the words, so text never sits on a bright dot
-  const txt = $$(".hero .wrap > *").map(el => { const b = el.getBoundingClientRect(); return [b.left - r.left - 8, b.top - r.top - 8, b.right - r.left + 8, b.bottom - r.top + 8]; });
+  const txt = $$(".hero .wrap > *, .hero .wrap > .stack > *").filter(el => el.getBoundingClientRect().width).map(el => { const b = el.getBoundingClientRect(); return [b.left - r.left - 8, b.top - r.top - 8, b.right - r.left + 8, b.bottom - r.top + 8]; });
   const behind = (x, y) => txt.some(b => x > b[0] && x < b[2] && y > b[1] && y < b[3]);
   for (let i = 0; i < 220; i++) { const x = R() * r.width, y = R() * r.height, s = R() < .92 ? R() * 1.1 + .2 : R() * 1.8 + 1; g.globalAlpha = (.25 + R() * .6) * (behind(x, y) ? .18 : 1); g.fillStyle = R() < .15 ? "#E8B04A" : "#F4E3B5"; g.beginPath(); g.arc(x, y, s, 0, 7); g.fill(); }
   const card = $("#dailyCard"); const wrap = $(".hero .wrap");
@@ -14782,7 +14987,7 @@ function slideHTML(I, s, i) {
     case "finish": {
       const sc = deckScore(I); const u = unitOf(I); const list = u ? islandsOf(u) : []; const to = (I.crossing && I.crossing.to && VOY.islands[I.crossing.to]) || list[list.indexOf(I) + 1];
       return '<div class="sl sl-night"><div class="sl-body center">' + head("Island charted", I.name) + (sc.n ? '<p class="sl-score"><b>' + sc.ok + "</b> of " + sc.n + " quick checks right</p>" + missedHTML(I) : "") + (I.log ? '<p class="sl-log">“' + rich(I.log) + '”<br><span class="faint">Saved to My Positions</span></p>' : "") +
-        (I.crossing && I.crossing.text ? '<p class="sl-lead">' + rich(I.crossing.text) + "</p>" : "") + skyChartLine(I) + originalsLine(I) + wordsLine(I) + semLine(I) + '<div class="row" style="justify-content:center">' + (to ? '<a class="btn primary" href="#voyage-' + to.id + '">Sail on to ' + esc(to.name) + " →</a>" : "") + (u ? '<a class="btn ghost vy-ghost" href="#voyage-u' + u.id + '">' + esc(u.title) + " chart</a>" : "") + '<button class="btn ghost vy-ghost" data-act="dkRestart" data-id="' + esc(I.id) + '">Start again</button></div></div></div>';
+        (I.crossing && I.crossing.text ? '<p class="sl-lead">' + rich(I.crossing.text) + "</p>" : "") + skyChartLine(I) + originalsLine(I) + wordsLine(I) + sameQHTML(islandRoot(I), ["island"], { center: 1 }) + semLine(I) + '<div class="row" style="justify-content:center">' + (to ? '<a class="btn primary" href="#voyage-' + to.id + '">Sail on to ' + esc(to.name) + " →</a>" : "") + (u ? '<a class="btn ghost vy-ghost" href="#voyage-u' + u.id + '">' + esc(u.title) + " chart</a>" : "") + '<button class="btn ghost vy-ghost" data-act="dkRestart" data-id="' + esc(I.id) + '">Start again</button></div></div></div>';
     }
   }
   return '<div class="sl"><div class="sl-body"><p>' + esc(s.text || "") + "</p></div></div>";
@@ -14840,7 +15045,7 @@ function deckPage(id) {
   return h + "</article>";
 }
 // every new slide starts at its top, just under the sticky headers
-function dkGoTo(id, i) { const V = deckState(id); V.pos[id] = i; save(); render(true); const st = $("#dkStage"); if (!st) return;
+function dkGoTo(id, i) { const V = deckState(id); V.pos[id] = i; if (VOY.islands[id]) { V.last = V.last || {}; V.last[id] = Date.now(); } save(); render(true); const st = $("#dkStage"); if (!st) return;
   const head = ($(".top") ? $(".top").offsetHeight : 0) + ($(".dk-head") && getComputedStyle($(".dk-head")).position === "sticky" ? $(".dk-head").offsetHeight : 0);
   const y = st.getBoundingClientRect().top + scrollY - head - 10; if (Math.abs(scrollY - y) > 4 && (scrollY > y || st.getBoundingClientRect().top > innerHeight * .5)) window.scrollTo({ top: Math.max(0, y) }); }
 ACT.dkNext = el => { const id = el.dataset.id, I = DK(id), V = deckState(id), i = V.pos[id] || 0; if (slideLocked(I, i)) { const o = $(".sl-opts"); if (o) { o.classList.remove("nudge"); void o.offsetWidth; o.classList.add("nudge"); } return; } dkGoTo(id, Math.min(deckSlides(I).length - 1, i + 1)); };
@@ -14875,6 +15080,44 @@ function semDisc() { return S.semMode === "disc"; }
 const DISC = {}; function discOf(id) { return DISC[id] = DISC[id] || {}; }
 function semNotes(id) { S.semNotes = S.semNotes || {}; return S.semNotes[id] = S.semNotes[id] || {}; }
 function semsFor(kind, key) { return SEM_LIST.filter(s => kind === "agora" ? s.related && s.related.agora === key : s.related && (s.related[kind] || []).includes(key)); }
+/* ---- "Same question, elsewhere": one Compass question lives in the Compass, Debates, Seminars, Voyage islands, the Shipyard and the Works */
+const LAB_Q = { gauntlet: ["e2"], trolley: ["e2"], machine: ["e4c", "l1"], ship: ["m4"], heap: [], veil: ["s8"], pd: ["s1"], odyssey: ["e1"] };
+const LAB_NAMES = { odyssey: "The Odyssey", gauntlet: "The trolley gauntlet", pd: "The harbour bargain", veil: "Behind the veil", heap: "The vanishing heap", ship: "Theseus’ ship", machine: "The experience machine", trolley: "The trolley ladder" };
+// qid may be a follow-up question; matches on the same question come first, then anything under the same root
+function sameQ(qid) {
+  if (!qid || !QM[qid]) return [];
+  const root = rootOf(qid), rk = id => id && QM[id] ? (id === qid ? 0 : rootOf(id) === root ? 1 : -1) : -1, best = (L, f) => L.map(x => [x, f(x)]).filter(p => p[1] >= 0).sort((a, b) => a[1] - b[1]).map(p => p[0]);
+  const out = [];
+  const ansOf = id => { const d = deepest(id); if (d) return d.label; const a = S.answers[id]; return realA(a) ? labelOf(id, a.a) : null; };
+  const cqShow = qid; const ans = ansOf(cqShow) || (cqShow !== root ? ansOf(root) : null);
+  out.push({ kind: "compass", href: "#compass-" + cqShow, label: SHORT[cqShow] || QM[cqShow].short || "", sub: ans ? "your answer: " + ans : "", on: !!ans });
+  const debs = best(AG.questions, q => rk(qComp(q)));
+  debs.forEach(q => out.push({ kind: "debate", href: "#agora-" + q.id, label: q.title }));
+  const sems = []; debs.forEach(q => semsFor("agora", q.id).forEach(x => { if (!sems.includes(x)) sems.push(x); }));
+  best(SEM_LIST, x => { const r = arr((x.related || {}).compass).map(rk).filter(v => v >= 0); return r.length ? Math.min(...r) : -1; }).forEach(x => { if (!sems.includes(x)) sems.push(x); });
+  sems.forEach(x => out.push({ kind: "seminar", href: "#seminar-" + x.sid, label: x.title }));
+  const CI = (window.ATLAS_MAP || {}).compassIslands || {};
+  const isl = []; [qid, root].concat(Object.keys(CI).filter(k => QM[k] && rootOf(k) === root)).forEach(k => arr(CI[k]).forEach(i => { if (VOY.islands[i] && !isl.includes(i)) isl.push(i); }));
+  isl.forEach(i => out.push({ kind: "island", href: "#voyage-" + i, label: VOY.islands[i].name }));
+  best(Object.keys(LAB_Q), k => { const r = LAB_Q[k].map(rk).filter(v => v >= 0); return r.length ? Math.min(...r) : -1; }).forEach(k => out.push({ kind: "play", href: "#lab-" + k, label: LAB_NAMES[k] || k }));
+  const sec = (QM[root] || {}).section, tps = [sec, { society: "politics", art: "aesthetics", life: "ethics", knowledge: "metaphysics" }[sec]];
+  const wsc = w => (arr(w.topics).some(t => tps.includes(t)) ? 4 : 0) + (arr(w.islands).includes(isl[0]) ? 2 : 0);
+  WORKS.filter(w => arr(w.islands).some(i => isl.includes(i))).sort((a, b) => wsc(b) - wsc(a)).slice(0, 1).forEach(w => out.push({ kind: "read", href: "#works-" + w.id, label: w.title }));
+  return out;
+}
+const SAMEQ_KIND = { compass: "Compass", debate: "Debate", seminar: "Seminar", island: "Island", play: "Play", read: "Read" };
+// one chip per kind (the best match), never the place you are standing in; nothing at all if fewer than two chips
+function sameQHTML(qid, except, opts) {
+  const ex = arr(except), seen = {}, L = sameQ(qid).filter(x => !ex.includes(x.kind) && !ex.includes(x.href) && !seen[x.kind] && (seen[x.kind] = 1)).slice(0, 5);
+  if (L.length < 2) return "";
+  return '<div class="sameq' + (opts && opts.center ? " center" : "") + '"><span class="sameq-k">Same question, elsewhere</span><div class="sameq-row">' + L.map(x => '<a class="chip' + (x.on ? " lamp" : "") + '" href="' + x.href + '"><span class="sameq-kind">' + SAMEQ_KIND[x.kind] + "</span> " + esc(x.label) + (x.sub ? '<span class="sameq-sub"> · ' + esc(x.sub) + "</span>" : "") + "</a>").join("") + "</div></div>";
+}
+function islandRoot(I) {
+  const cp = (I.checkpoint || []).find(c => c && QM[c.q]); if (cp) return cp.q;
+  const CI = (window.ATLAS_MAP || {}).compassIslands || {}; return Object.keys(CI).find(k => QM[k] && arr(CI[k]).includes(I.id)) || null;
+}
+function semRoot(I) { const R = I.related || {}; const d = R.agora && AGQ[R.agora] ? qComp(AGQ[R.agora]) : null; return d || arr(R.compass).find(x => QM[x]) || null; }
+function labSameQ(k) { const q = (LAB_Q[k] || []).find(x => QM[x]); return q ? sameQHTML(q, ["#lab-" + k]) : ""; }
 const ROOM_ICON = { ask: "❝", pair: "⇄", hands: "✋" };
 function semMin(label) { const m = String(label || "").match(/(\d+)\s*MIN/i); return m ? +m[1] : 0; }
 function worksMatch(title) { const n = x => String(x || "").toLowerCase().replace(/^(the|a|an)\s+/, "").replace(/[^a-z0-9]+/g, " ").trim(); const t = n(title); if (!t) return null;
@@ -14945,6 +15188,9 @@ function semNotesText(I) {
 }
 ACT.semCopy = el => { const t = semNotesText(DK(el.dataset.id)); (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast("Notes copied")).catch(() => { const a = document.createElement("textarea"); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand("copy"); toast("Notes copied"); } catch (e) {} a.remove(); }); };
 function semRelatedHTML(I) {
+  const sq = sameQHTML(semRoot(I), ["seminar"], { center: 1 });
+  if (sq) { const cast = (I.cast || []).filter(x => TH[x]).map(x => '<a class="chip" href="#thinker-' + esc(x) + '">' + esc(TH[x].name) + "</a>").join("");
+    return sq + (cast ? '<div class="row" style="--g:6px;justify-content:center">' + cast + "</div>" : ""); }
   const R = I.related || {}, bits = [];
   if (R.agora && AGQ[R.agora]) bits.push('<a class="chip lapis" href="#agora-' + esc(R.agora) + '">Debate: ' + esc(AGQ[R.agora].title) + "</a>");
   (R.islands || []).filter(x => VOY.islands[x]).forEach(x => bits.push('<a class="chip" href="#voyage-' + esc(x) + '">Voyage: ' + esc(VOY.islands[x].name) + "</a>"));
@@ -15080,6 +15326,9 @@ const FIND = (() => {
 })();
 render(false);
 initCaps();
+// a small bridge for add-on modules (js/*.js), which load after this script and cannot see its closure
+window.PHILO = { VIEWS, ACT, save, render, esc, $, $$, labShell, route, ROUTE_ALIAS, TH, LIB, WORKS, WK, AG, AGQ, CARDS, QM, C, SEC, EX, thinkerChip, nameOf, slugT,
+  get S() { return S; }, get after() { return after; }, toast: (...a) => toast(...a) };
 })();
 </script>
 
