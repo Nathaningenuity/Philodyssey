@@ -15328,7 +15328,36 @@ render(false);
 initCaps();
 // a small bridge for add-on modules (js/*.js), which load after this script and cannot see its closure
 window.PHILO = { VIEWS, ACT, save, render, esc, $, $$, labShell, route, ROUTE_ALIAS, TH, LIB, WORKS, WK, AG, AGQ, CARDS, QM, C, SEC, EX, thinkerChip, nameOf, slugT,
-  get S() { return S; }, get after() { return after; }, toast: (...a) => toast(...a) };
+  get S() { return S; }, get after() { return after; }, toast: (...a) => toast(...a),
+  get openDrawer() { return typeof openDrawer !== "undefined" ? openDrawer : undefined; },
+  get rich() { return typeof rich !== "undefined" ? rich : undefined; },
+  get VOY() { return typeof VOY !== "undefined" ? VOY : undefined; },
+  get voyState() { return typeof voyState !== "undefined" ? voyState : undefined; },
+  get deckSlides() { return typeof deckSlides !== "undefined" ? deckSlides : undefined; },
+  get deckState() { return typeof deckState !== "undefined" ? deckState : undefined; },
+  get deckScore() { return typeof deckScore !== "undefined" ? deckScore : undefined; },
+  get missedAll() { return typeof missedAll !== "undefined" ? missedAll : undefined; },
+  get islandsOf() { return typeof islandsOf !== "undefined" ? islandsOf : undefined; },
+  get islDone() { return typeof islDone !== "undefined" ? islDone : undefined; },
+  get DK() { return typeof DK !== "undefined" ? DK : undefined; },
+  get QZ() { return typeof QZ !== "undefined" ? QZ : undefined; },
+  get life() { return typeof life !== "undefined" ? life : undefined; },
+  get labelOf() { return typeof labelOf !== "undefined" ? labelOf : undefined; },
+  get matches() { return typeof matches !== "undefined" ? matches : undefined; },
+  get deepest() { return typeof deepest !== "undefined" ? deepest : undefined; },
+  get SHORT() { return typeof SHORT !== "undefined" ? SHORT : undefined; },
+  get ROOTS() { return typeof ROOTS !== "undefined" ? ROOTS : undefined; },
+  get allTensions() { return typeof allTensions !== "undefined" ? allTensions : undefined; },
+  get secDone() { return typeof secDone !== "undefined" ? secDone : undefined; },
+  get agStarted() { return typeof agStarted !== "undefined" ? agStarted : undefined; },
+  get answeredCount() { return typeof answeredCount !== "undefined" ? answeredCount : undefined; },
+  get chartedStars() { return typeof chartedStars !== "undefined" ? chartedStars : undefined; },
+  get skyStarTotal() { return typeof skyStarTotal !== "undefined" ? skyStarTotal : undefined; },
+  get sealsNow() { return typeof sealsNow !== "undefined" ? sealsNow : undefined; },
+  get sealSVG() { return typeof sealSVG !== "undefined" ? sealSVG : undefined; },
+  get numWord() { return typeof numWord !== "undefined" ? numWord : undefined; },
+  get cap() { return typeof cap !== "undefined" ? cap : undefined; },
+  get CAP() { return typeof CAP !== "undefined" ? CAP : undefined; } };
 })();
 </script>
 
