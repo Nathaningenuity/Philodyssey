@@ -12144,114 +12144,123 @@ function matches(roots, minW) {
 // question and its follow-up at once (e.g. "Duties from reason" = e4 duties + e4e deontology).
 const QQ_DEF = [
   ["qq_right", "Ethics", "e4", "What mainly makes an action right or wrong?", [
-    ["Its results: how much good or harm it does", { e4: "results" }],
-    ["Duties: some acts are wrong even when they turn out well", { e4: "duties" }],
-    ["Character: whether it’s what a good person would do", { e4: "virtue" }],
-    ["Care: whether it does right by the people in your life", { e4: "care" }],
-    ["A mix: results, duties and character all count", { e4: "plural" }],
-    ["Your choice: no values are given, you create your own", { e4: "exist" }],
-    ["Nothing: no action is really right or wrong", { e4: "nothing" }]]],
-  ["qq_lever", "Ethics", "e1", "A runaway train will kill five people. Pulling a lever sends it onto a track where it kills one. Do you pull?", [
-    ["Yes, I must", { e1: "req" }],
-    ["I may, but I don’t have to", { e1: "allow" }],
-    ["No, pulling would be wrong", { e1: "wrong" }],
-    ["There’s no moral fact about it either way", { e1: "nofact" }]]],
-  ["qq_real", "Ethics", "e5", "Is “torturing someone for fun is wrong” true in the same way that “water boils at 100°C” is?", [
-    ["Yes: it’s an objective fact, true whatever anyone thinks", { e5: "yes" }],
-    ["Partly: it’s true because careful reasoning would conclude it, not because it’s “out there”", { e5: "construct" }],
-    ["No: it isn’t true or false the way facts are", { e5: "no" }]]],
-  ["qq_animal", "Ethics", "e3", "Does a pig’s pain matter as much as the same pain in a human?", [
-    ["Yes, equally", { e3: "equal" }],
-    ["It matters, but less", { e3: "less" }],
-    ["Not in itself", { e3: "none" }]]],
-  ["qq_help", "Ethics", "e6", "You could save a stranger’s life by giving the money you’d spend on a holiday. Must you?", [
-    ["Yes, and keep giving until it really costs you", { e6: "strict" }],
-    ["You must help some people, but how much is up to you", { e6: "imperfect" }],
-    ["No, it’s kind but optional", { e6: "negative" }],
-    ["“Must” is the wrong word: more is better, less is worse", { e6: "scalar" }]]],
+    ["Results: the right act is the one that does the most good and the least harm overall", { e4: "results" }],
+    ["Duties and rights: some acts are wrong in themselves, even when they would turn out better", { e4: "duties" }],
+    ["Character: the right act is what a kind, honest, brave and wise person would do", { e4: "virtue" }],
+    ["Care: what matters most is looking after the real people in your life", { e4: "care" }],
+    ["A mix: results, duties and character all count, weighed case by case", { e4: "plural" }],
+    ["Commitment: no rules are handed to us, so we create our values by how we choose to live, and must answer for that choice", { e4: "exist" }],
+    ["Nothing: no action is truly right or wrong; morality isn’t real", { e4: "nothing" }]]],
+  ["qq_lever", "Ethics", "e1", "A runaway train will kill five people. Pulling a lever sends it onto another track, where it kills one person instead. Answer what is right, not what you would have the nerve to do. Pulling the lever is…", [
+    ["Required: you must pull; not pulling would be wrong", { e1: "req" }],
+    ["Allowed: you may pull, but not pulling is also all right", { e1: "allow" }],
+    ["Wrong: you must not pull", { e1: "wrong" }],
+    ["Not a matter of fact: nothing makes either choice truly right or wrong", { e1: "nofact" }]]],
+  ["qq_real", "Ethics", "e5", "Is “torturing someone for fun is wrong” true in the same way that “water boils at 100°C” is true?", [
+    ["Yes: it is an objective fact, true whatever anyone thinks or feels", { e5: "yes" }],
+    ["In a way: it is true, but because careful reasoning about how to treat each other leads there, not because it is a fact “out there”", { e5: "construct" }],
+    ["No: it isn’t a fact like that; saying it does something else, such as expressing our feelings or our shared rules", { e5: "no" }]]],
+  ["qq_animal", "Ethics", "e3", "A pig and a human feel exactly the same amount of pain. Does the pig’s pain matter as much?", [
+    ["Yes, equally: pain is pain, whoever feels it", { e3: "equal" }],
+    ["It matters, but less than the same pain in a human", { e3: "less" }],
+    ["Not in itself: cruelty to animals is wrong only because of what it does to people", { e3: "none" }],
+    ["Not a matter of fact: nothing makes any answer truly right or wrong", { e3: "nofact" }]]],
+  ["qq_help", "Ethics", "e6", "You could save a stranger’s life by giving away the money you would otherwise spend on a holiday. Must you?", [
+    ["Yes, and keep giving, until giving more would cost you something nearly as important", { e6: "strict" }],
+    ["You must help some people in need, but how much, when and whom is up to you", { e6: "imperfect" }],
+    ["No: giving would be kind, but nothing requires it", { e6: "negative" }],
+    ["“Must” is the wrong question: giving more is better and less is worse, but there’s no line where it becomes required", { e6: "scalar" }],
+    ["Not a matter of fact: nothing makes giving or not giving truly right or wrong", { e6: "nofact" }]]],
   ["qq_mind", "Mind and self", "m1", "Is your mind just your brain at work?", [
-    ["Yes, just the brain", { m1: "yes" }],
-    ["No, there’s more to it", { m1: "no" }],
-    ["The question isn’t clear enough to answer", { m1: "unclear" }]]],
+    ["Yes: thoughts and feelings are things the brain does, and nothing more", { m1: "yes" }],
+    ["No: something about the mind, such as what pain feels like, is more than brain activity", { m1: "no" }],
+    ["The question is too unclear to answer: no one can say exactly what counts as “physical”", { m1: "unclear" }]]],
   ["qq_free", "Mind and self", "m3", "Do you have free will?", [
-    ["Yes, because my choices aren’t fully fixed by what came before", { m3: "libert" }],
-    ["Yes, even if my choices are fully fixed by what came before", { m3: "compat" }],
-    ["I’m not sure", { m3: "unsure" }],
-    ["No", { m3: "no" }]]],
-  ["qq_self", "Mind and self", "m4", "A machine destroys you and builds a perfect copy on Mars with all your memories. Is the copy you?", [
-    ["Yes, it’s me", { m4: "you" }],
-    ["No, it’s someone else", { m4: "someone" }],
-    ["There’s no right answer", { m4: "nofact" }]]],
-  ["qq_selfreal", "Mind and self", "m2", "Is there a single, real “you”, or only a flow of thoughts and feelings?", [
-    ["A real you: a soul-like core that thinks and chooses", { m2: "yes", m2a: "simple" }],
-    ["A real you: this living human being, body and brain", { m2: "yes", m2a: "person" }],
-    ["A real you, made by the story of your life", { m2: "yes", m2a: "story" }],
-    ["Only the flow: a bundle of experiences", { m2: "no", m2b: "bundle" }],
-    ["Only the flow: a changing stream, as the Buddha taught", { m2: "no", m2b: "conv" }]]],
-  ["qq_know", "Knowledge and reality", "k4", "Do you know you’re not dreaming right now?", [
-    ["Yes, I know it", { k4: "yes" }],
-    ["No, I can’t rule it out", { k4: "no" }],
-    ["The question makes no sense", { k4: "pointless" }]]],
+    ["Yes, the deep kind: my choices are not fixed by what came before, so I really could have chosen otherwise", { m3: "libert" }],
+    ["Not the deep kind, but yes in the sense that matters: my choices are fully caused by what came before, yet they are still free when they come from my own reasons and no one forces me", { m3: "compat" }],
+    ["Not sure: free will would need choices that aren’t fixed in advance, and I can’t tell whether ours are", { m3: "unsure" }],
+    ["No: none of us has the kind of control that would make us truly deserve praise or blame", { m3: "no" }]]],
+  ["qq_self", "Mind and self", "m4", "A machine destroys your body and builds a perfect copy on Mars, with all your memories and personality. Is the copy you?", [
+    ["Yes: same memories and personality, so it’s me; I just travelled very fast", { m4: "you" }],
+    ["No: I died, and a twin was made who only thinks they are me", { m4: "someone" }],
+    ["There’s no right answer: we know exactly what happened, and “is it me?” is only about how we use the word “me”", { m4: "nofact" }]]],
+  ["qq_selfreal", "Mind and self", "m2", "Is there a real “you”, and if so, what is it?", [
+    ["Yes: a soul-like core inside me that thinks, feels and chooses", { m2: "yes", m2a: "simple" }],
+    ["Yes: this living human being, body and brain together", { m2: "yes", m2a: "person" }],
+    ["Yes: a self made by the story of my life, linking my past, choices and plans", { m2: "yes", m2a: "story" }],
+    ["Yes: pure awareness, the silent witness in which thoughts and feelings appear", { m2: "yes", m2a: "witness" }],
+    ["No single self: just a bundle of experiences, loosely held together", { m2: "no", m2b: "bundle" }],
+    ["No self, as the Buddha taught: “I” is a handy name for a changing stream of body, feelings and thoughts", { m2: "no", m2b: "conv" }],
+    ["No self at all: the “me” is an illusion, a picture the brain paints of someone inside", { m2: "no", m2b: "noself" }]]],
+  ["qq_know", "Knowledge and reality", "k4", "Do you know that you’re not dreaming right now?", [
+    ["Yes: I know it, even if I can’t prove it to a sceptic", { k4: "yes" }],
+    ["No: I can’t rule out that I’m dreaming or in a simulation, so I don’t truly know", { k4: "no" }],
+    ["The question is empty: if no test could ever tell a perfect dream from waking life, there’s no real difference", { k4: "pointless" }]]],
   ["qq_math", "Knowledge and reality", "k2", "Is maths discovered or invented?", [
-    ["Discovered: numbers exist on their own, outside space and time", { k2: "yes" }],
-    ["Discovered in the world: maths describes real patterns in things", { k2: "no", k2b: "empiric" }],
-    ["Both: we invent the rules, then discover what follows", { k2: "no", k2b: "mixed" }],
-    ["Invented: a game played with symbols by rules", { k2: "no", k2b: "formal" }],
-    ["Invented: a useful story, true only inside the story", { k2: "no", k2b: "fiction" }]]],
+    ["Discovered: numbers really exist on their own, outside space and time", { k2: "yes" }],
+    ["Discovered in the world: maths describes real patterns in things, like how many apples are in a bowl", { k2: "no", k2b: "empiric" }],
+    ["Both: we invent the rules, then discover what follows from them, as with the rules and strategies of chess", { k2: "no", k2b: "mixed" }],
+    ["Built by the mind: a number exists only once it could be constructed step by step in thought", { k2: "no", k2b: "construct" }],
+    ["Invented: a game of moving symbols by rules, with no deeper truth behind it", { k2: "no", k2b: "formal" }],
+    ["Invented: a useful story, where “2 + 2 = 4” is true the way “Sherlock Holmes lives on Baker Street” is", { k2: "no", k2b: "fiction" }]]],
   ["qq_time", "Knowledge and reality", "k7", "Is the past still real? Is the future already real?", [
-    ["All times are equally real, like places on a map", { k7: "yes" }],
-    ["The past and present are real, but the future isn’t yet", { k7: "growing" }],
-    ["Only the present is real", { k7: "present" }],
-    ["Time itself is an illusion", { k7: "unreal" }]]],
+    ["All times are equally real, like places on a map; “now” is just where you happen to be", { k7: "yes" }],
+    ["All times are real, but a special “now” moves along them like a spotlight", { k7: "spotlight" }],
+    ["The past and present are real, but the future doesn’t exist yet", { k7: "growing" }],
+    ["Only the present is real: the past is gone and the future isn’t here yet", { k7: "present" }],
+    ["None of it: time itself is an illusion", { k7: "unreal" }]]],
   ["qq_cause", "Knowledge and reality", "k8", "When one thing causes another, does something really make it happen?", [
-    ["Yes: causes have a real power to produce effects", { k8: "yes", k8a: "powers" }],
-    ["Yes: laws of nature force the effect to happen", { k8: "yes", k8a: "necessit" }],
-    ["No: one kind of thing just always follows another", { k8: "no", k8b: "regular" }],
-    ["No: it only means that without the cause, no effect", { k8: "no", k8b: "counter" }],
-    ["No: our minds add the “making happen”", { k8: "no", k8b: "project" }]]],
+    ["Yes: things have real powers to produce effects, like a magnet’s pull", { k8: "yes", k8a: "powers" }],
+    ["Yes: the laws of nature force the effect to happen", { k8: "yes", k8a: "necessit" }],
+    ["No: “cause” just means that things of one kind always follow things of another kind", { k8: "no", k8b: "regular" }],
+    ["No: “cause” just means that without the cause, the effect wouldn’t have happened", { k8: "no", k8b: "counter" }],
+    ["No: our minds add the “making happen”, out of habit", { k8: "no", k8b: "project" }]]],
   ["qq_god", "God and religion", "k9", "Does God exist?", [
-    ["Yes", { k9: "yes" }],
-    ["Not a god, but something sacred and ultimate", { k9: "ultimate" }],
-    ["No, nothing of the kind", { k9: "no" }],
-    ["I can’t tell", { k9: "agnostic" }]]],
+    ["Yes: there is a God, or gods", { k9: "yes" }],
+    ["Not a god, but something sacred and ultimate that isn’t a person who thinks and chooses", { k9: "ultimate" }],
+    ["No: there is no God or anything like it", { k9: "no" }],
+    ["I can’t tell: we can’t know, or the reasons on each side seem equal", { k9: "agnostic" }],
+    ["The question has no clear meaning: nothing could ever count for or against it", { k9: "nomeaning" }]]],
   ["qq_demo", "Society and politics", "s3", "What, if anything, makes democracy the right way to govern?", [
-    ["Everyone gets an equal say in the laws we all live under", { s3: "intrinsic" }],
-    ["Voters can remove bad rulers without bloodshed", { s3: "protect" }],
-    ["Large groups of ordinary people tend to decide well", { s3: "epistemic" }],
-    ["Nothing special: other systems can do as well", { s3: "no" }]]],
-  ["qq_just", "Society and politics", "s8", "If everyone got rich or poor honestly, with no cheating, can the result still be unfair?", [
-    ["Yes, how things end up matters too", { s8: "yes" }],
-    ["No, fair steps make a fair result", { s8: "no" }],
-    ["It depends on the society’s rules", { s8: "rules" }]]],
+    ["Equal say: everyone deserves an equal voice in the laws we all live under, whatever the results", { s3: "intrinsic" }],
+    ["Protection: voters can remove bad rulers without bloodshed", { s3: "protect" }],
+    ["Better decisions: large groups of ordinary people tend to decide well", { s3: "epistemic" }],
+    ["Nothing special: other systems, such as rule by experts, could govern as well or better", { s3: "no" }]]],
+  ["qq_just", "Society and politics", "s8", "Suppose everyone got rich or poor honestly, by working, trading, saving and gifts, with no theft or cheating. Can the result still be unfair?", [
+    ["Yes: how things end up matters too, not just how we got there", { s8: "yes" }],
+    ["No: if every step was fair, the result is fair, however unequal", { s8: "no" }],
+    ["It depends on the rules: laws like tax and inheritance decide what counts as honestly yours in the first place", { s8: "rules" }],
+    ["Not a matter of fact: nothing makes any share-out truly fair or unfair", { s8: "nofact" }]]],
   ["qq_liberty", "Society and politics", "s10", "What does it take to be free?", [
-    ["No one stopping you from doing what you choose", { s10: "neg" }],
-    ["Having real options: the money, health and skills to act", { s10: "means" }],
-    ["No one having power over you, even if they never use it", { s10: "nondom" }],
-    ["Being ruled by your own reason, not your impulses", { s10: "self" }]]],
+    ["No one stopping you: you are free when no one interferes with what you choose", { s10: "neg" }],
+    ["Real options: having the money, health and skills to actually do things", { s10: "means" }],
+    ["No one having power over you, even if they never use it: a kind master’s slave still isn’t free", { s10: "nondom" }],
+    ["Self-mastery: your own reason and values run your life, not impulses or pressure", { s10: "self" }]]],
   ["qq_punish", "Society and politics", "s1", "Why punish criminals?", [
-    ["Because they deserve it", { s1: "retrib" }],
-    ["Only to prevent future crime", { s1: "forward" }],
-    ["To prevent crime, but only as much as they deserve", { s1: "mixed" }],
-    ["To show the community condemns what they did", { s1: "communic" }],
-    ["We shouldn’t; we should repair the harm instead", { s1: "abolish" }]]],
+    ["Because they deserve it for what they did", { s1: "retrib" }],
+    ["Only to protect others: to deter crime, keep dangerous people away, or help offenders change", { s1: "forward" }],
+    ["To prevent crime, but only the guilty, and no more than they deserve", { s1: "mixed" }],
+    ["To show publicly that the community condemns what they did", { s1: "communic" }],
+    ["We shouldn’t punish: we should repair the harm instead", { s1: "abolish" }],
+    ["Not a matter of fact: nothing makes punishment truly justified or unjustified", { s1: "nofact" }]]],
   ["qq_beauty", "Beauty and art", "a1", "Is beauty in the thing, or in the eye of the beholder?", [
-    ["In the thing", { a1: "thing" }],
-    ["In the beholder", { a1: "us" }],
-    ["Neither: calling it beautiful just expresses delight", { a1: "neither" }]]],
+    ["In the thing: “that sunset is beautiful” is true or false of the sunset itself, whatever anyone feels", { a1: "thing" }],
+    ["In the beholder: calling something beautiful is about how people respond to it", { a1: "us" }],
+    ["Neither: “beautiful!” doesn’t describe anything; it just expresses delight, like “wow!”", { a1: "neither" }]]],
   ["qq_life", "Life and death", "l1", "Can a human life have meaning, and if so, where does it come from?", [
-    ["Yes, from God", { l1: "yes", l1a: "god" }],
-    ["Yes, from doing what’s truly worthwhile, whatever you feel about it", { l1: "yes", l1a: "worth" }],
-    ["Yes, from caring about something truly worthwhile", { l1: "yes", l1a: "hybrid" }],
-    ["Yes, from whatever you yourself care about", { l1: "yes", l1a: "subjective" }],
-    ["No, life has no real meaning", { l1: "no" }],
-    ["The question doesn’t make sense", { l1: "confused" }]]],
+    ["Yes, from God: a purpose God gives us, or our relationship with God", { l1: "yes", l1a: "god" }],
+    ["Yes, from doing what’s truly worthwhile, like loving, helping or discovering, even if you don’t feel it", { l1: "yes", l1a: "worth" }],
+    ["Yes, from loving what’s truly worthwhile: you need both the caring and something worth caring about", { l1: "yes", l1a: "hybrid" }],
+    ["Yes, from whatever you yourself care about or commit to", { l1: "yes", l1a: "subjective" }],
+    ["No: nothing gives a life a real point", { l1: "no" }],
+    ["The question doesn’t make sense: a life isn’t the kind of thing that has a “meaning”", { l1: "confused" }]]],
   ["qq_after", "Life and death", "l5", "What happens to you when you die?", [
     ["It’s the end: I simply stop existing", { l5: "end" }],
     ["My soul lives on without my body", { l5: "soul" }],
-    ["I’ll be raised again, body and soul", { l5: "resur" }],
+    ["I’ll be raised again, body and soul, at the end of time", { l5: "resur" }],
     ["I’ll be reborn into another life", { l5: "rebirth" }],
-    ["I’ll dissolve back into the whole I came from", { l5: "merge" }],
-    ["No one can know", { l5: "unsure" }]]]
+    ["The separate “me” dissolves back into the ultimate reality I was always part of", { l5: "merge" }],
+    ["No one can know, and I don’t lean either way", { l5: "unsure" }]]]
 ];
 const QUICK = QQ_DEF.map(d => d[2]).filter(id => QM[id]);
 const QQK = {};
@@ -12273,7 +12282,7 @@ function gapsDoneHTML() { const left = gapsQs().filter(q => !isAnswered(q.id)).l
   return '<div class="wrap"><div class="col panel stack" style="--g:12px"><span class="eyebrow">Unanswered questions</span><h2>' + (left ? left + " still open" : "All caught up") + '</h2><p class="muted">' + (left ? "Some are still open. You can come back to them any time." : "Every question you had left open now has an answer.") + '</p><div class="row"><a class="btn primary" href="#compass-results">Your whole portrait</a><a class="btn ghost" href="#compass">All chapters</a>' + (left ? '<button class="btn ghost" data-act="gapsStart">Go through them again</button>' : "") + "</div></div></div>"; }
 function quickQs() { return Object.values(QQK); }
 // which combined answer matches the real answers (the most specific match wins)
-function quickPicked(q) { const r = S.answers[q.root]; if (!r || r.a == null) return null; if (r.a === "undecided") return "undecided";
+function quickPicked(q) { const r = S.answers[q.root]; if (!r || r.a == null) return null; if (r.a === "undecided") return "undecided"; if (r.a === "other") return "other";
   let best = null, bn = 0; q.options.forEach(o => { const ks = Object.entries(o.set); if (ks.every(([k, v]) => S.answers[k] && S.answers[k].a === v) && ks.length > bn) { best = o.id; bn = ks.length; } });
   return best || (realA(r) ? "partial" : null); }
 function quickA(q) { const p = quickPicked(q), r = S.answers[q.root] || {}; return p == null ? {} : { a: p === "partial" ? null : p, conf: r.conf, partial: p === "partial" }; }
@@ -12429,7 +12438,7 @@ function questionHTML(sec, qid) {
     (q.note ? '<p class="cq-qnote">(' + esc(q.note) + ")</p>" : "") +
     (q.hint ? '<div class="cq-hintwrap"><button class="cq-hintbtn" data-act="hint" aria-expanded="false">Show an example</button><p class="cq-hint" id="hint" hidden>' + esc(q.hint) + "</p></div>" : "") +
     '<div class="cq-opts" role="radiogroup" aria-label="Answers">' + opts + "</div>" + tornLine + conf + fb +
-    (q.quick ? "" : '<div class="cq-other"><button class="cq-otherbtn" data-act="other" data-q="' + q.id + '">＋ My view isn\'t here: write your own</button><div id="otherBox" ' + (A.other ? "" : "hidden") + ' class="stack" style="--g:8px;margin-top:10px"><textarea id="otherTxt" placeholder="Describe your view in a sentence or two">' + esc(A.other || "") + '</textarea><button class="btn small" data-act="saveOther" data-q="' + q.id + '" style="align-self:flex-start">Save my answer</button></div></div>') +
+    ((oq, oA) => '<div class="cq-other"><button class="cq-otherbtn" data-act="other" data-q="' + oq + '">＋ My view isn\'t here: write your own</button><div id="otherBox" ' + (oA.other ? "" : "hidden") + ' class="stack" style="--g:8px;margin-top:10px"><textarea id="otherTxt" placeholder="Describe your view in a sentence or two">' + esc(oA.other || "") + '</textarea><button class="btn small" data-act="saveOther" data-q="' + oq + '" style="align-self:flex-start">Save my answer</button></div></div>')(q.quick ? q.root : q.id, q.quick ? (S.answers[q.root] || {}) : A) +
     '<div class="cq-extras"><button class="switch" role="switch" aria-checked="' + !!S.autoNext + '" data-act="autoNext"><span class="tr"></span><span class="cq-mono">Auto-next</span></button>' +
     '<a class="cq-sofar" href="#compass-done.' + sec + '">' + (s.quick ? "See your bearings so far →" : s.gaps ? "Stop here →" : "See your chapter result so far →") + "</a></div>" +
     // the action bar stays pinned to the bottom of the screen; Next is always clickable (it skips if unanswered)
