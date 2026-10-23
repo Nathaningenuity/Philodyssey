@@ -1303,6 +1303,11 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 
 /* Find palette */
 .find-btn + .acct-btn{margin-left:8px}
+.mypos{margin-left:auto;flex:none;font-size:.82rem;font-weight:600;color:var(--ink);text-decoration:none;padding:6px 12px;border:1.5px solid var(--line);border-radius:999px;white-space:nowrap;background:var(--raised)}
+.mypos:hover{border-color:var(--ink-3)}.mypos[aria-current="page"]{border-color:var(--lamp);box-shadow:inset 0 0 0 1px var(--lamp)}
+.mypos + .find-btn{margin-left:8px}
+.mypos{display:inline-flex;align-items:center;gap:6px}
+@media (max-width:760px){.top .wrap{column-gap:6px}.top .theme-btn{margin-left:0}.mypos{margin-left:auto;width:34px;height:34px;padding:0;justify-content:center;border-radius:50%}.mypos span{display:none}}
 #find{position:fixed;inset:0;z-index:80;background:rgba(10,13,31,.42);display:flex;justify-content:center;align-items:flex-start;padding:max(10vh,calc(env(safe-area-inset-top,0px) + 16px)) max(16px,env(safe-area-inset-right,0px)) 16px max(16px,env(safe-area-inset-left,0px))}
 #find[hidden]{display:none}
 .find-card{width:min(640px,100%);background:var(--raised);border:1px solid var(--line);border-radius:14px;box-shadow:0 24px 60px rgba(0,0,0,.28);overflow:hidden;display:flex;flex-direction:column;max-height:76vh}
@@ -1645,8 +1650,9 @@ html,body{overflow-x:clip}
       <b>Philodyssey</b>
     </a>
     <nav class="nav" id="nav" aria-label="Sections">
-      <a href="#voyage">Voyage</a><a href="#compass">Compass</a><a href="#agora">Agora</a><a href="#seminar">Seminars</a><a href="#codex">Logbook</a><a href="#firmament">Stargazing</a><a href="#stoa">Stoa</a><a href="#lab">Shipyard</a><a href="#thinkers">Thinkers</a><a href="#works">Works</a><a href="#library">Dictionary</a><a href="#quiz">Quiz</a>
+      <a href="#voyage">Voyage</a><a href="#compass">Compass</a><a href="#agora">Debates</a><a href="#seminar">Seminars</a><a href="#firmament">Stargazing</a><a href="#stoa">Timeline</a><a href="#lab">Shipyard</a><a href="#thinkers">Thinkers</a><a href="#works">Works</a><a href="#library">Dictionary</a><a href="#quiz">Quiz</a>
     </nav>
+    <a class="mypos" href="#codex" title="Your positions, arguments and progress" aria-label="My Positions"><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2h8v12l-4-3-4 3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span>My Positions</span></a>
     <button class="theme-btn find-btn" id="findBtn" aria-label="Find (press /)" title="Find  ·  /  or  Ctrl K">
       <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 10.5 14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
     </button>
@@ -11834,11 +11840,11 @@ function render(keepScroll) {
   const view = $("#view");
   const y = window.scrollY;
   view.innerHTML = fn(r.arg);
-  const TITLES = { home: "", voyage: "Voyage", compass: "Compass", agora: "Agora", codex: "Logbook", firmament: "Stargazing", stoa: "Stoa", lab: "Shipyard", library: "Dictionary", quiz: "Quiz", duel: "Duel", works: WK[r.arg] ? WK[r.arg].title : "Works", thinkers: "Thinkers", quick: "Quick Compass", seminar: r.arg && typeof SEM !== "undefined" && SEM["sem_" + r.arg.replace(/\.all$/, "")] ? SEM["sem_" + r.arg.replace(/\.all$/, "")].title : "Seminars", experiment: "Thought experiments", thinker: TH[r.arg] ? TH[r.arg].name : "Thinker" };
+  const TITLES = { home: "", voyage: "Voyage", compass: "Compass", agora: "Debates", codex: "My Positions", firmament: "Stargazing", stoa: "Timeline", lab: "Shipyard", library: "Dictionary", quiz: "Quiz", duel: "Duel", works: WK[r.arg] ? WK[r.arg].title : "Works", thinkers: "Thinkers", quick: "Quick Compass", seminar: r.arg && typeof SEM !== "undefined" && SEM["sem_" + r.arg.replace(/\.all$/, "")] ? SEM["sem_" + r.arg.replace(/\.all$/, "")].title : "Seminars", experiment: "Thought experiments", thinker: TH[r.arg] ? TH[r.arg].name : "Thinker" };
   const tt = r.name === "voyage" && r.arg && VOY.islands[r.arg] ? VOY.islands[r.arg].name : TITLES[r.name];
   document.title = tt ? tt + " · Philodyssey" : "Philodyssey: a voyage through philosophy";
   view.classList.toggle("flush", r.name === "home" || r.name === "voyage" || (r.name === "seminar" && !!r.arg && !/\.all$/.test(r.arg)) || r.name === "thinker" || (r.name === "works" && !!WK[r.arg]) || !VIEWS[r.name]);
-  $$("#nav a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (r.name === "position" ? "compass" : r.name) ? "page" : "false"));
+  $$("#nav a, .top .mypos").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (r.name === "position" ? "compass" : r.name) ? "page" : "false"));
   // on narrow screens the nav strip scrolls; bring the current section into view
   const nv = $("#nav"), cur = $('#nav a[aria-current="page"]');
   if (nv && cur && nv.scrollWidth > nv.clientWidth + 1) { const a = cur.getBoundingClientRect(), b = nv.getBoundingClientRect(); nv.scrollLeft += (a.left + a.width / 2) - (b.left + b.width / 2); }
@@ -11942,7 +11948,7 @@ function openThinker(id) {
     });
     h += "</div>";
   }
-  if (cards.length) h += '<div class="stack" style="--g:6px"><span class="eyebrow">Arguments in the Agora</span>' + cards.map(c => '<a class="chip lapis" href="#agora-' + esc(c.q) + '" data-act="closeAndGo">' + esc(c.title) + "</a>").join(" ") + "</div>";
+  if (cards.length) h += '<div class="stack" style="--g:6px"><span class="eyebrow">Arguments in Debates</span>' + cards.map(c => '<a class="chip lapis" href="#agora-' + esc(c.q) + '" data-act="closeAndGo">' + esc(c.title) + "</a>").join(" ") + "</div>";
   const infl = arr(t.influencedBy).filter(x => TH[x]); const opp = arr(t.opposed).filter(x => TH[x]);
   if (infl.length) h += '<div class="stack" style="--g:6px"><span class="eyebrow">Learned from</span><div class="row">' + infl.map(thinkerChip).join("") + "</div></div>";
   if (influenced.length) h += '<div class="stack" style="--g:6px"><span class="eyebrow">Influenced</span><div class="row">' + influenced.map(thinkerChip).join("") + "</div></div>";
@@ -12303,7 +12309,7 @@ function quickResult() {
     (top.length ? '<section class="stack" style="--g:8px"><h2>Your closest thinkers</h2>' + top.map((m, i) => matchRow(m, false, i + 1)).join("") + "</section>" : "") +
     (foe ? '<section class="stack" style="--g:8px"><h2>A sharp opponent</h2><p class="faint" style="margin-top:-4px">Someone worth arguing with: they disagree with you on most of these questions.</p>' + matchRow(foe, "Opponent") + "</section>" : "") +
     (clash.length ? '<section class="stack" style="--g:8px"><h2>Already pulling against each other</h2>' + clash.map(crackHTML).join("") + "</section>" : "") +
-    '<section class="stack" style="--g:10px"><h2>Go deeper</h2><div class="row" style="--g:8px">' + C.sections.filter(s => !s.locked).map(s => '<a class="btn small" href="#compass-' + esc(s.id) + '">' + esc(s.name) + "</a>").join("") + '</div><div class="row" style="--g:8px"><a class="btn primary" href="#codex">See it in your Logbook</a><a class="btn ghost" href="#firmament-you">Find your star</a>' + (top[0] ? '<a class="btn ghost" href="#thinker-' + esc(top[0].t.id) + '">Meet ' + esc(shortName(top[0].t)) + "</a>" : "") + "</div></section></div></div>"; }
+    '<section class="stack" style="--g:10px"><h2>Go deeper</h2><div class="row" style="--g:8px">' + C.sections.filter(s => !s.locked).map(s => '<a class="btn small" href="#compass-' + esc(s.id) + '">' + esc(s.name) + "</a>").join("") + '</div><div class="row" style="--g:8px"><a class="btn primary" href="#codex">See it in My Positions</a><a class="btn ghost" href="#firmament-you">Find your star</a>' + (top[0] ? '<a class="btn ghost" href="#thinker-' + esc(top[0].t.id) + '">Meet ' + esc(shortName(top[0].t)) + "</a>" : "") + "</div></section></div></div>"; }
 
 /* =================================================================== HOME */
 // The home page lives in the HOME (live) block near the end; these two helpers are shared with it.
@@ -12479,7 +12485,7 @@ function qNumber(qid) { const q = QM[qid]; const j = visibleQs(q.section).findIn
 let FRESH = null;
 function feedbackHTML(q, A) {
   if (!A || A.a == null) return "";
-  if (A.a === "other") return '<div class="fb"><p class="muted">Your own view is saved. It won\'t count toward matches, but it stays in your Logbook.</p></div>';
+  if (A.a === "other") return '<div class="fb"><p class="muted">Your own view is saved. It won\'t count toward matches, but it stays in My Positions.</p></div>';
   const fresh = FRESH === q.id ? " fresh" : "";
   const isUnd = A.a === "undecided";
   const picks = arr(A.a);
@@ -12628,7 +12634,7 @@ function accountHTML() {
   const qs = visibleQs(); const ans = answeredCount();
   const acc = Object.values(S.cards).filter(v => v === "accept").length;
   let h = '<div class="stack" style="--g:6px"><span class="eyebrow">' + (synced ? "Your account" : "Your progress") + '</span><h2>' + esc(CAP.name ? CAP.name : "You") + "</h2>" +
-    '<p class="muted" style="font-size:.92rem">' + (synced ? "Your progress is saved to your account, so it follows you to any device where you open Philodyssey." : "Your progress is saved in this browser only. Use a backup code in the Logbook to move it to another device.") + "</p></div>" +
+    '<p class="muted" style="font-size:.92rem">' + (synced ? "Your progress is saved to your account, so it follows you to any device where you open Philodyssey." : "Your progress is saved in this browser only. Use a backup code in My Positions to move it to another device.") + "</p></div>" +
     '<div class="panel stack" style="--g:4px"><div class="page-line"><span>Compass chapters done</span><b>' + C.sections.filter(s => secDone(s.id)).length + " / " + C.sections.length + '</b></div><div class="page-line"><span>Compass questions answered</span><b>' + ans + '</b></div><div class="page-line"><span>Voyage islands charted</span><b>' + Object.keys(voyState().done || {}).length + " / " + Object.keys(VOY.islands).length + '</b></div><div class="page-line"><span>Stars charted</span><b>' + chartedStars().size + " / " + skyStarTotal() + '</b></div><div class="page-line"><span>Arguments accepted</span><b>' + acc + '</b></div><div class="page-line"><span>Own arguments</span><b>' + S.own.length + '</b></div><div class="page-line"><span>Best quiz round</span><b>' + (S.quiz.best ? S.quiz.best + " / 10" : "Not played") + "</b></div></div>" +
     '<div class="stack" style="--g:10px"><span class="eyebrow">Start over</span>' +
     '<div class="confirm stack" style="--g:8px"><b>Retake the Compass</b><p class="muted" style="font-size:.9rem">Clears your Compass answers so you can answer from scratch. Your current answers and matches are kept below as a past attempt, and the rest of your progress stays.</p><div data-confirm="compass" class="stack" style="--g:8px"><button class="btn small" data-act="askReset" data-kind="compass" style="align-self:flex-start">Retake the Compass</button></div></div>' +
@@ -13071,7 +13077,7 @@ function resultsHTML() {
       : '<h1>Your sky is still dark</h1><p class="rhero-tag">Answer a few more questions. A match needs at least four question areas in common.</p>') +
     '</div><div class="rhero-sky">' + skySVG(M) + "</div>" +
     '<div class="rhero-stats"><span><b>' + ans + "</b>answered</span><span><b>" + open + "</b>open " + (open === 1 ? "crack" : "cracks") + "</span><span><b>" + M.length + "</b>thinkers compared</span>" +
-    '<span class="rhero-actions"><a href="#firmament-you">Your star in the sky</a><a href="#compass">Chapters</a><button data-act="review">Review answers</button><a href="#codex">Logbook</a></span></div></section>';
+    '<span class="rhero-actions"><a href="#firmament-you">Your star in the sky</a><a href="#compass">Chapters</a><button data-act="review">Review answers</button><a href="#codex">My Positions</a></span></div></section>';
   // a sticky contents bar: the portrait is long, so let people jump between its parts
   h += '<nav class="rtoc" aria-label="On this page">' + [["r-close", "Closest"], far.length ? ["r-opp", "Opponents"] : null, ["r-read", "Reading"], ["r-fits", "Fits"], ["r-cracks", "Cracks"], ["r-ch", "By chapter"]].filter(Boolean).map(x => '<button data-act="scrollTo" data-t="' + x[0] + '">' + x[1] + "</button>").join("") + "</nav>";
   h += '<section class="stack" id="r-close"><div class="row" style="justify-content:space-between"><h2>Closest to you</h2><span class="cq-mono">Ranked by views strongly shared × how alike overall</span></div>' +
@@ -13084,7 +13090,7 @@ function resultsHTML() {
     shelf.map(([m, w]) => wCard(w).replace('<span class="wc-yr">', '<span class="wc-yr">' + m.pct + "% alike · ")).join("") + "</div></section>";
   h += '<div id="r-fits"></div>' + fitsHTML(compassFits());
   if (T2.length) h += '<section class="stack" id="r-cracks"><div class="row" style="justify-content:space-between"><h2>Cracks in your answers</h2><span class="cq-mono">' + open + " open</span></div>" + T2.map(tensionHTML).join("") + "</section>";
-  else h += '<section class="panel" id="r-cracks"><b>No cracks found</b><p class="muted">None of the known clashes appear in your answers yet. The Agora and the Logbook will look for more.</p></section>';
+  else h += '<section class="panel" id="r-cracks"><b>No cracks found</b><p class="muted">None of the known clashes appear in your answers yet. Debates and My Positions will look for more.</p></section>';
   h += '<div id="r-ch"></div>';
   C.sections.forEach(sec => {
     const roots = rootsOf(sec.id).filter(r => pathOf(r).length || isAnswered(r));
@@ -13210,8 +13216,8 @@ VIEWS.position = arg => {
 /* ================================================================== AGORA */
 VIEWS.agora = arg => {
   if (arg && AGQ[arg]) { if (pendingCard) { const id = pendingCard; pendingCard = null; after.push(() => setTimeout(() => scrollToCard(id), 60)); } return agoraQuestion(AGQ[arg]); }
-  if (!AG.questions.length) return '<div class="wrap"><div class="panel">The Agora is being built.</div></div>';
-  return '<div class="wrap stack" style="--g:26px"><div class="ring stack" style="--g:12px"><span class="eyebrow" style="color:#E8B04A;align-self:center">The Agora</span><h1 class="ring-h">' + cap(numWord(AG.questions.length)) + ' questions that never went away</h1><p class="read" style="max-width:36em;margin:0 auto">Each debate is a set of short arguments. Some support each other, some crack each other. Predict first, then read, then decide which arguments you can live with. <a href="#duel" style="color:#E8B04A">Or put two thinkers in the ring: Duel →</a></p></div>' + agoraSemStrip() +
+  if (!AG.questions.length) return '<div class="wrap"><div class="panel">The debates are being built.</div></div>';
+  return '<div class="wrap stack" style="--g:26px"><div class="ring stack" style="--g:12px"><span class="eyebrow" style="color:#E8B04A;align-self:center">Debates</span><h1 class="ring-h">' + cap(numWord(AG.questions.length)) + ' questions that never went away</h1><p class="read" style="max-width:36em;margin:0 auto">Each debate is a set of short arguments. Some support each other, some crack each other. Predict first, then read, then decide which arguments you can live with. <a href="#duel" style="color:#E8B04A">Or put two thinkers in the ring: Duel →</a></p></div>' + agoraSemStrip() +
     '<div class="qlist">' + AG.questions.map(q => {
       const cs = AG.cards.filter(c => c.q === q.id); const acc = cs.filter(c => S.cards[c.id] === "accept").length;
       return '<a class="qtile" href="#agora-' + q.id + '" style="text-decoration:none"><span class="t">' + esc(q.title) + '</span><span class="muted" style="font-size:.92rem">' + esc(teaser(q.intro)) + '</span><span class="row" style="--g:6px;margin-top:6px"><span class="chip">' + cs.length + " arguments</span>" + (S.predictions[q.id] != null ? '<span class="chip lapis">Predicted</span>' : "") + (acc ? '<span class="chip lamp">' + acc + " accepted</span>" : "") + (S.predictions[q.id] == null && !acc ? '<span class="chip">Not started</span>' : "") + "</span></a>";
@@ -13309,7 +13315,7 @@ ACT.card = el => {
   render(true);
   if (v === "accept" && S.cards[id] === "accept") {
     const n = cardTensions().filter(t => t.a === id || t.b === id).length, x = crossTensions().filter(t => t.card === id).length;
-    toast(n ? "Accepted. This clashes with another argument you hold; see the Logbook." : x ? "Accepted. This pulls against one of your Compass answers; see the Logbook." : "Accepted into your Logbook");
+    toast(n ? "Accepted. This clashes with another argument you hold; see My Positions." : x ? "Accepted. This pulls against one of your Compass answers; see My Positions." : "Added to My Positions");
   }
 };
 function scrollToCard(id) { const el = document.getElementById("card-" + id); if (!el) return false; el.scrollIntoView({ behavior: "smooth", block: "center" }); el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1600); return true; }
@@ -13324,10 +13330,10 @@ function verdictHTML(q, cs) {
   const y = n("yes"), no = n("no"), neu = n("neutral");
   const part = (k, label) => k ? "<b>" + k + "</b> for “" + esc(label) + "”" : "";
   const parts = [part(y, sides.yes || "Yes"), part(no, sides.no || "No")].filter(Boolean);
-  const lean = y && no ? "You accept arguments on both sides. That can be fair-minded, or it can be a crack: check the Logbook." : (y >= 3 || no >= 3) && !(y && no) ? "Every argument you accept leans one way. Have you given the other side’s strongest argument a fair reading?" : "";
+  const lean = y && no ? "You accept arguments on both sides. That can be fair-minded, or it can be a crack: check My Positions." : (y >= 3 || no >= 3) && !(y && no) ? "Every argument you accept leans one way. Have you given the other side’s strongest argument a fair reading?" : "";
   const x = crossTensions().filter(t => cs.some(c => c.id === t.card) && !S.resolutions[t.key]).length;
   return '<div class="panel stack col verdict" style="--g:6px;width:100%"><span class="eyebrow">Your verdict so far</span><p class="read">' + (parts.length ? "You accept " + parts.join(" and ") + "." + (neu ? " Plus " + neu + " that take" + (neu === 1 ? "s" : "") + " neither side." : "") : neu ? "You accept " + neu + (neu === 1 ? " argument that takes" : " arguments that take") + " neither side." : "You haven’t accepted any argument yet.") + (rej ? ' <span class="muted">You rejected ' + rej + ".</span>" : "") + "</p>" +
-    (lean ? '<p class="muted" style="font-size:.92rem">' + lean + "</p>" : "") + (x ? '<p style="font-size:.92rem"><a href="#codex">' + x + " of them pull" + (x === 1 ? "s" : "") + " against your Compass answer. See the Logbook.</a></p>" : "") + "</div>";
+    (lean ? '<p class="muted" style="font-size:.92rem">' + lean + "</p>" : "") + (x ? '<p style="font-size:.92rem"><a href="#codex">' + x + " of them pull" + (x === 1 ? "s" : "") + " against your Compass answer. See My Positions.</a></p>" : "") + "</div>";
 }
 ACT.delOwn = el => { S.own = S.own.filter(o => o.id !== el.dataset.id); save(); render(true); };
 function ownCardForm(q, cs) {
@@ -13698,7 +13704,7 @@ function nbFieldPage(f) { const n = NB(), F = nbFields(), i = F.indexOf(f), qs =
   const filled = n.head[f.id] || n.motto[f.id] || n.why[f.id] || n.prep[f.id];
   const crk = nbCracks().filter(k => k.f.id === f.id), tens = allTensions().filter(t => !S.resolutions[t.key] && JSON.stringify(t).match(new RegExp('"(' + qs.join("|") + ')"')));
   const gl = nbGloss(f);
-  return '<div class="wrap"><div class="stack nb-page nb-wide" style="--g:22px"><div class="row" style="justify-content:space-between"><a class="linkish" href="#codex">← Logbook</a><span class="faint" id="nbSaved" aria-live="polite"></span></div>' +
+  return '<div class="wrap"><div class="stack nb-page nb-wide" style="--g:22px"><div class="row" style="justify-content:space-between"><a class="linkish" href="#codex">← My Positions</a><span class="faint" id="nbSaved" aria-live="polite"></span></div>' +
     '<div class="stack" style="--g:6px"><span class="eyebrow">Field ' + (i + 1) + " of " + F.length + " · " + esc(f.sub) + "</span><h1>" + esc(f.name) + "</h1></div>" +
     (P ? '<section class="nb-problem"><span class="eyebrow">The problem</span><p class="nb-hook">' + esc(P[0]) + '</p><p class="nb-matters"><b>Why it matters.</b> ' + esc(P[1]) + "</p>" +
       (() => { const L = typeof islandsForTopic === "function" ? islandsForTopic(f.id).slice(0, 4) : []; return L.length ? '<div class="row" style="--g:6px;align-items:center"><span class="faint" style="font-size:.84rem">Learn it on the Voyage</span>' + L.map(x => '<a class="chip lamp" href="#voyage-' + esc(x.id) + '">' + esc(x.name) + "</a>").join("") + "</div>" : ""; })() + "</section>" : "") +
@@ -13978,7 +13984,7 @@ function lbMain(tab, raw) { if (!raw) { const f = lbFrontSecond(tab); if (f) ret
 // questions that apply to you (Ethics v2 hides other frameworks' questions from the count)
 function lbTotal(t) { return t.v2 ? t.qs.filter(id => LBQ[id] && (lbApply(LBQ[id]) === "yes" && (LBQ[id].forQ || LBQ[id].band !== "clarify")) || (lbAnswered(id) && lbApply(LBQ[id]) !== "no")).length : t.qs.length; }
 function lbTabBar(cur) { const pill = (href, name, on, n, tot, set) => '<a class="lb-tab2' + (on ? " on" : "") + (set ? " set" : "") + '" href="' + href + '"' + (on ? ' aria-current="page"' : "") + '><span class="lb-tab2-n">' + esc(name) + "</span>" + (tot ? '<span class="lb-tab2-p"><i style="width:' + Math.round(100 * n / tot) + '%"></i></span>' : "") + "</a>";
-  return '<nav class="lb-tabs2" aria-label="Logbook areas">' + pill("#codex", "Overview", !cur, 0, 0, false) + LB.tabs.map(t => { const n = t.qs.filter(id => lbAnswered(id) && (!t.v2 || lbApply(LBQ[id]) !== "no")).length; return pill("#codex-" + t.id, t.name, cur === t.id, n, lbTotal(t), !!lbMain(t).title); }).join("") + "</nav>"; }
+  return '<nav class="lb-tabs2" aria-label="My Positions areas">' + pill("#codex", "Overview", !cur, 0, 0, false) + LB.tabs.map(t => { const n = t.qs.filter(id => lbAnswered(id) && (!t.v2 || lbApply(LBQ[id]) !== "no")).length; return pill("#codex-" + t.id, t.name, cur === t.id, n, lbTotal(t), !!lbMain(t).title); }).join("") + "</nav>"; }
 function lbOverviewHTML() { const rows = LB.tabs.map((t, i) => { const m = lbMain(t), n = t.qs.filter(id => lbAnswered(id) && (!t.v2 || lbApply(LBQ[id]) !== "no")).length, tot = lbTotal(t), P = m.pos && LBP[m.pos], cr = lbCracks(t).length, nx = lbNextUp(t);
     return '<article class="lb-ocard' + (m.title ? "" : " empty") + '"><a class="lb-ocard-main" href="#codex-' + esc(t.id) + '"><span class="eyebrow">' + esc(t.name) + '</span><b class="lb-ocard-pos">' + (m.title ? esc(m.title) : '<span class="faint">Not set yet</span>') + "</b>" + (m.quals.length ? '<span class="lb-quals">' + esc(m.quals.slice(0, 4).join(", ")) + "</span>" : "") +
       '<span class="lb-ocard-line">' + esc(m.title && P ? P.line : t.sub ? t.sub.charAt(0).toUpperCase() + t.sub.slice(1) + "." : "") + "</span></a>" +
@@ -14299,21 +14305,21 @@ function lbObjHTML(t, fwName) { lbObjCard.n = 0; const L = lbObjList(t).map(o =>
 /* LOGBOOK:END */
 VIEWS.codex = arg => {
   if (LB.tabs.length && arg) { const [tid, focus] = arg.split("."), t = LBT[tid] || LBT[LB_ALIAS[tid]];
-    if (t) return '<div class="wrap"><div class="stack nb-wide lb-page" style="--g:12px"><span class="eyebrow">The Logbook</span>' + lbTabBar(t.id) + lbTabHTML(t, focus) + "</div></div>"; }
+    if (t) return '<div class="wrap"><div class="stack nb-wide lb-page" style="--g:12px"><span class="eyebrow">My Positions</span>' + lbTabBar(t.id) + lbTabHTML(t, focus) + "</div></div>"; }
   if (arg) { const f = nbFields().find(x => x.id === arg); if (f) return nbFieldPage(f); }
   const nbCr = nbCracks();
   const tens = allTensions(); const open = tens.filter(t => !S.resolutions[t.key]); const mended = tens.length - open.length;
   const pos = visibleQs().filter(q => S.answers[q.id] && S.answers[q.id].a != null && S.answers[q.id].a !== "undecided");
   const acc = AG.cards.filter(c => S.cards[c.id] === "accept");
   const sorted = open.concat(tens.filter(t => S.resolutions[t.key]));
-  let h = '<div class="wrap"><div class="stack nb-wide lb-page" style="--g:16px"><div class="stack" style="--g:4px"><span class="eyebrow">The Logbook</span><h1 class="lb-h1">Your notebook of stances</h1><p class="muted">Where you stand in each area, in your own words. Below, the tensions between things you hold.</p></div>' + (LB.tabs.length ? lbTabBar("") + lbOverviewHTML() : nbFront()) +
+  let h = '<div class="wrap"><div class="stack nb-wide lb-page" style="--g:16px"><div class="stack" style="--g:4px"><span class="eyebrow">My Positions</span><h1 class="lb-h1">Your notebook of stances</h1><p class="muted">Where you stand in each area, in your own words. Below, the tensions between things you hold.</p></div>' + (LB.tabs.length ? lbTabBar("") + lbOverviewHTML() : nbFront()) +
     '<h2 style="margin-bottom:-8px">Cracks and inconsistencies</h2><div class="book stack" style="--g:16px"><div class="row" style="justify-content:space-between;align-items:flex-end"><div class="row" style="--g:28px;align-items:flex-end"><div><span class="eyebrow">Open conflicts</span><div class="score"' + (open.filter(t => t.type !== "tension").length ? ' style="color:var(--crack)"' : "") + ">" + open.filter(t => t.type !== "tension").length + '</div></div><div><span class="eyebrow">Tensions</span><div class="score">' + (open.filter(t => t.type === "tension").length + nbCr.length) + '</div></div><div><span class="eyebrow">Mended</span><div class="score">' + mended + '</div></div></div><div class="faint" style="text-align:right;font-size:.86rem">' + pos.length + " stances" + (answeredCount() > pos.length ? " (+" + (answeredCount() - pos.length) + " undecided)" : "") + " · " + acc.length + (acc.length === 1 ? " accepted argument" : " accepted arguments") + "<br>" + S.own.length + (S.own.length === 1 ? " argument you wrote" : " arguments you wrote") + "</div></div>" +
     '<p class="faint" style="font-size:.84rem">Each crack says what kind it is. A <b>contradiction</b> means two answers cannot both be true as worded. A <b>conflict if…</b> holds only if you accept a further premise, which is named, so rejecting it is a way out. A <b>tension</b> is not an error: both can be held, but it takes an explanation. Finding cracks is progress, not failure. You mend one by giving up a view, biting the bullet with a reason, or drawing a distinction.</p></div>';
   let empty;
-  if (!pos.length && !acc.length) empty = '<div class="panel stack" style="--g:10px"><b class="read" style="font-size:1.1rem">Your Logbook is empty, so it has nothing to test yet.</b><p class="muted">Two steps fill it: take a stand, then weigh the arguments against it.</p><div class="row"><a class="btn primary" href="#compass">1 · Take the Compass</a><a class="btn" href="#agora">2 · Enter the Agora</a></div></div>';
+  if (!pos.length && !acc.length) empty = '<div class="panel stack" style="--g:10px"><b class="read" style="font-size:1.1rem">You haven’t taken any positions yet, so there is nothing to test.</b><p class="muted">Two steps fill it: take a stand, then weigh the arguments against it.</p><div class="row"><a class="btn primary" href="#compass">1 · Take the Compass</a><a class="btn" href="#agora">2 · Try a debate</a></div></div>';
   else if (!acc.length) empty = '<div class="panel stack" style="--g:10px"><b class="read" style="font-size:1.1rem">No cracks yet, because you haven\'t accepted any arguments.</b><p class="muted">Your ' + pos.length + ' Compass stances are here. Now go to a debate on something you answered, accept the arguments you find convincing, and see whether they agree with you.</p><div class="row">' +
     AG.questions.filter(q => q.compass && QM[q.compass] && realA(S.answers[q.compass])).slice(0, 3).map(q => '<a class="btn small" href="#agora-' + esc(q.id) + '">' + esc(q.title) + "</a>").join("") + '<a class="btn small ghost" href="#agora">All debates</a></div></div>';
-  else empty = '<div class="panel stack" style="--g:10px"><b class="read" style="font-size:1.1rem">No cracks found.</b><p class="muted">Nothing you hold clashes, as far as the Logbook can tell. Try a harder test: accept arguments on the side you disagree with if you find them convincing, or put a belief to the sparring partner.</p><div class="row"><a class="btn small" href="#agora">Back to the Agora</a></div></div>';
+  else empty = '<div class="panel stack" style="--g:10px"><b class="read" style="font-size:1.1rem">No cracks found.</b><p class="muted">Nothing you hold clashes, as far as we can tell. Try a harder test: accept arguments on the side you disagree with if you find them convincing, or put a belief to the sparring partner.</p><div class="row"><a class="btn small" href="#agora">Back to Debates</a></div></div>';
   h += '<section class="stack">' + (tens.length || nbCr.length ? sorted.map(crackHTML).join("") + (nbCr.length ? '<span class="eyebrow">Two ticks on one question</span>' + nbCr.map(nbCrackHTML).join("") : "") : empty) + "</section>";
   if (CAP.sample) {
     h += '<section class="panel raised stack" style="--g:12px"><span class="eyebrow">Sparring partner</span><h3>Put one of your beliefs under pressure</h3><p class="muted">Pick a belief. An AI sparring partner gives the strongest objection it can, then judges your reply. It does not speak for any real philosopher.</p>' +
@@ -14324,13 +14330,13 @@ VIEWS.codex = arg => {
       '<div id="sparOut" class="ai" hidden></div><div id="sparReply" class="stack" style="--g:8px" hidden><textarea id="sparTxt" placeholder="Your reply to the objection"></textarea><div class="row"><button class="btn" data-act="sparReply">Send my reply</button></div><div id="sparJudge" class="ai" hidden></div></div></section>';
   }
   // stances, grouped by Compass chapter and folded so a full portrait doesn't become a 70-row wall
-  h += '<section class="stack"><h2>Arguments you accept</h2>' + (acc.length ? '<div class="book">' + acc.map(c => '<div class="page-line"><div><div class="faint" style="font-size:.8rem">' + esc((AGQ[c.q] || {}).title || "") + '</div><div class="read">' + esc(c.title) + (c.author && c.author !== "anon" ? ' <span class="faint">· ' + esc(nameOf(c.author)) + "</span>" : "") + '</div></div><a class="linkish" href="#agora-' + esc(c.q) + '" style="font-size:.84rem">Open</a></div>').join("") + "</div>" : '<p class="muted">None yet. Accept arguments in the <a href="#agora">Agora</a>.</p>') + "</section>";
+  h += '<section class="stack"><h2>Arguments you accept</h2>' + (acc.length ? '<div class="book">' + acc.map(c => '<div class="page-line"><div><div class="faint" style="font-size:.8rem">' + esc((AGQ[c.q] || {}).title || "") + '</div><div class="read">' + esc(c.title) + (c.author && c.author !== "anon" ? ' <span class="faint">· ' + esc(nameOf(c.author)) + "</span>" : "") + '</div></div><a class="linkish" href="#agora-' + esc(c.q) + '" style="font-size:.84rem">Open</a></div>').join("") + "</div>" : '<p class="muted">None yet. Accept arguments in <a href="#agora">Debates</a>.</p>') + "</section>";
   if (S.own.length) h += '<section class="stack"><h2>Arguments you wrote</h2><div class="book">' + S.own.map(o => '<div class="page-line"><div><div class="faint" style="font-size:.8rem">' + esc((AGQ[o.q] || {}).title || "") + '</div><div class="read">' + esc(o.claim) + '</div></div><a class="linkish" href="#agora-' + esc(o.q) + '" style="font-size:.84rem">Open</a></div>').join("") + "</div></section>";
   const steel = Object.keys(S.steel || {}).filter(k => S.cards[k] === "reject" && CARDS[k]);
   if (steel.length) h += '<section class="stack"><h2>Rejected after a fair hearing</h2><div class="book">' + steel.map(k => '<div class="page-line"><div><div class="faint" style="font-size:.8rem">' + esc(CARDS[k].title) + '</div><div class="read">“' + esc(S.steel[k]) + '”</div></div><a class="linkish" href="#agora-' + esc(CARDS[k].q) + '" data-act="gotoCard" data-card="' + esc(k) + '" style="font-size:.84rem">Revisit</a></div>').join("") + "</div></section>";
   h += voyLogHTML();
   h += bookshelfLogHTML();
-  h += '<section class="panel stack" style="--g:10px"><span class="eyebrow">Keep a copy</span><p class="muted" style="font-size:.9rem">Your Logbook lives in this browser' + (CAP.db && CAP.uid ? " and in your account" : "") + '. Copy a backup code to move it to another device, or paste one to restore.</p><div class="row"><button class="btn small" data-act="exportCode">Copy backup code</button><button class="btn small ghost" data-act="importOpen">Restore from code</button></div><div id="importBox" class="stack" style="--g:8px" hidden><textarea id="importTxt" placeholder="Paste a backup code"></textarea><button class="btn small primary" data-act="importSave" style="align-self:flex-start">Restore</button></div></section>';
+  h += '<section class="panel stack" style="--g:10px"><span class="eyebrow">Keep a copy</span><p class="muted" style="font-size:.9rem">Your positions live in this browser' + (CAP.db && CAP.uid ? " and in your account" : "") + '. Copy a backup code to move it to another device, or paste one to restore.</p><div class="row"><button class="btn small" data-act="exportCode">Copy backup code</button><button class="btn small ghost" data-act="importOpen">Restore from code</button></div><div id="importBox" class="stack" style="--g:8px" hidden><textarea id="importTxt" placeholder="Paste a backup code"></textarea><button class="btn small primary" data-act="importSave" style="align-self:flex-start">Restore</button></div></section>';
   return h + "</div></div>";
 };
 let sparTurns = [];
@@ -14359,7 +14365,7 @@ ACT.exportCode = async () => {
 };
 ACT.importOpen = () => { const b = $("#importBox"); b.hidden = !b.hidden; };
 ACT.importSave = () => {
-  try { const s = JSON.parse(decodeURIComponent(escape(atob($("#importTxt").value.trim())))); if (!s || typeof s !== "object" || !s.answers) throw 0; S = migrate(Object.assign(blank(), s)); save(); toast("Logbook restored"); render(false); }
+  try { const s = JSON.parse(decodeURIComponent(escape(atob($("#importTxt").value.trim())))); if (!s || typeof s !== "object" || !s.answers) throw 0; S = migrate(Object.assign(blank(), s)); save(); toast("Your positions are restored"); render(false); }
   catch (e) { toast("That code didn’t work. Copy the whole code and try again."); }
 };
 
@@ -14498,7 +14504,7 @@ function thinkerPage(id) {
       const u = S.answers[q], sv = u && u.a != null && u.a !== "undecided" && u.a !== "other" ? simOf(q, u.a, p.a) : null;
       return '<a class="tp-posrow" href="#position-' + esc(q) + '"><span class="faint">' + esc(rootShort(q) || q) + "</span><b>" + esc(labelOf(q, p.a)) + (p.c === "likely" ? ' <i class="faint">(likely reading)</i>' : "") + "</b>" + (sv == null ? "" : '<span class="chip' + (sv >= .999 ? " lamp" : "") + '">' + (sv >= .999 ? "Same as you" : sv >= .5 ? "Close to you" : "You differ") + "</span>") + "</a>" + (pi === 7 && pos.length > 9 ? '<details class="tp-more"><summary class="linkish">' + (pos.length - 8) + " more stances</summary>" : ""); }).join("") + (pos.length > 9 ? "</details>" : "") + "</div></section>"; }
   const cards = AG.cards.filter(c => c.author === id);
-  if (cards.length) main += '<section class="tp-sec"><h3>Arguments in the Agora</h3><div class="row" style="--g:6px">' + cards.map(c => '<a class="chip lapis" href="#agora-' + esc(c.q) + '">' + esc(c.title) + "</a>").join("") + "</div></section>";
+  if (cards.length) main += '<section class="tp-sec"><h3>Arguments in Debates</h3><div class="row" style="--g:6px">' + cards.map(c => '<a class="chip lapis" href="#agora-' + esc(c.q) + '">' + esc(c.title) + "</a>").join("") + "</div></section>";
   // side column
   let side = "";
   if (x.startHere) { side += '<div class="tp-card tp-start tp-wide"><span class="eyebrow">Start reading here</span><p>' + esc(x.startHere) + "</p></div>"; main = '<div class="tp-card tp-start tp-narrow"><span class="eyebrow">Start reading here</span><p>' + esc(x.startHere) + "</p></div>" + main; }
@@ -15029,7 +15035,7 @@ VIEWS.stoa = arg => {
   after.push(markEras);
   const statue = (id, tag) => { const t = TH[id]; if (!t) return ""; const tr = tradOf(t); return '<button class="statue" data-act="thinker" data-id="' + esc(id) + '"><span class="bust" style="background:' + tr.color + '">' + esc(initials(t.name)) + '</span><span><b>' + esc(t.name) + "</b><small>" + esc(life(t) || "contemporary") + "</small>" + (tag && t.tagline ? '<small class="tag">' + esc(t.tagline) + "</small>" : "") + "</span></button>"; };
   const filled = LIB.schools.filter(s => arr(s.members).some(id => TH[id]));
-  let h = '<div class="wrap stack" style="--g:20px"><div class="stack" style="--g:8px"><span class="eyebrow">The Stoa</span><h1>A walk through 2,600 years</h1><p class="muted read">Each column is an era. Read what people were asking, then step up to the statues. Scroll sideways to walk forward in time. Eras overlap where traditions ran side by side.</p></div>' +
+  let h = '<div class="wrap stack" style="--g:20px"><div class="stack" style="--g:8px"><span class="eyebrow">Timeline</span><h1>A walk through 2,600 years</h1><p class="muted read">Each column is an era. Read what people were asking, then step up to the statues. Scroll sideways to walk forward in time. Eras overlap where traditions ran side by side.</p></div>' +
     '<div class="row" style="justify-content:space-between"><div class="row"><label class="faint" for="schoolPick" style="font-size:.86rem">Walk one school:</label><select id="schoolPick" style="border:1.5px solid var(--line);border-radius:10px;padding:8px;background:var(--raised)"><option value="">Every era (no filter)</option>' + filled.map(s => '<option value="' + esc(s.id) + '"' + (school && school.id === s.id ? " selected" : "") + ">" + esc(s.name) + "</option>").join("") + "</select></div>" +
     (school ? "" : '<div class="row" style="--g:6px"><span class="faint" style="font-size:.84rem">' + LIB.eras.filter(e => S.eras[e.id]).length + " of " + LIB.eras.length + ' eras walked</span><button class="btn small ghost" data-act="stoaStep" data-d="-1" aria-label="Earlier era">←</button><button class="btn small ghost" data-act="stoaStep" data-d="1" aria-label="Later era">→</button></div>') + "</div>";
   after.push(() => { const s = $("#schoolPick"); if (s) s.addEventListener("change", () => { location.hash = s.value ? "#stoa-" + s.value : "#stoa"; }); });
@@ -15491,8 +15497,8 @@ function labTrolley() {
       (miss.length ? '<div class="stack" style="--g:6px"><p class="read">Where you part ways with it:</p><ul class="read" style="margin:0;padding-left:1.2em">' + miss.map(c => "<li><b>" + esc(c.t) + "</b>: you said " + VERDICT[L.v[c.id]] + "; it says " + allowFor(best.p.p[c.id]) + ".</li>").join("") + "</ul>" +
         '<p class="read">Either those answers need rethinking, or you hold a principle not on this list.' + (miss.every(c => near(best.p, c)) ? " Note the gap is only between allowed and required: whether saving the five is a duty or merely permitted is itself a live question." : "") + "</p></div>" : "") +
       '<div class="stack" style="--g:6px">' + scored.slice(1).map(x => '<div class="row" style="justify-content:space-between"><span>' + esc(x.p.n) + ' <span class="faint" style="font-size:.84rem">· ' + esc(x.p.by) + '</span></span><span class="faint">' + x.s + " of 5</span></div>").join("") + "</div>" +
-      '<p class="muted" style="font-size:.92rem">A twist: Thomson later changed her mind. In “Turning the Trolley” (2008) she argued that a bystander may <i>not</i> turn the trolley, since you would be making someone else pay a cost you would not pay yourself. <a href="#agora-killing" data-act="gotoCard" data-card="killing-thomson-turning">Read her argument in the Agora</a>.</p>' +
-      '<div class="row"><a class="btn primary" href="#agora-killing">Debate it in the Agora</a><button class="btn ghost" data-act="trolReset">Start again</button></div></div>';
+      '<p class="muted" style="font-size:.92rem">A twist: Thomson later changed her mind. In “Turning the Trolley” (2008) she argued that a bystander may <i>not</i> turn the trolley, since you would be making someone else pay a cost you would not pay yourself. <a href="#agora-killing" data-act="gotoCard" data-card="killing-thomson-turning">Read her argument in Debates</a>.</p>' +
+      '<div class="row"><a class="btn primary" href="#agora-killing">Open the debate</a><button class="btn ghost" data-act="trolReset">Start again</button></div></div>';
   }
   return labShell("The trolley ladder", h);
 }
@@ -15669,7 +15675,7 @@ function sealsNow() {
     { k: "know", n: "Know thyself", d: "Finish every Compass chapter", on: C.sections.length > 0 && C.sections.every(s => secDone(s.id)) },
     { k: "fair", n: "Fair hearing", d: "Accept an argument that cuts against you, or steelman three before rejecting them", on: fair },
     { k: "mend", n: "Mender", d: "Mend a crack with a written reason or distinction", on: written >= 1 },
-    { k: "build", n: "Builder", d: "Write your own argument in the Agora", on: S.own.length > 0 }
+    { k: "build", n: "Builder", d: "Write your own argument in a debate", on: S.own.length > 0 }
   ];
 }
 VIEWS.home = () => {
@@ -15683,12 +15689,12 @@ VIEWS.home = () => {
   const mods = [
     { href: "#voyage", g: "I", t: "Voyage", p: "The course: sail from the first Greek questions to today’s debates, island by island, with quick checks along the way.", m: (() => { const n = Object.keys(VOY.islands).length; return n ? Object.keys(voyState().done || {}).length / n : null; })(), s: Object.keys(voyState().done || {}).length + " of " + Object.keys(VOY.islands).length + " islands charted" },
     { href: "#compass", g: "II", t: "Compass", p: "A tour in " + chapters + ". Each chapter ends with its own result.", m: C.sections.length ? secs / C.sections.length : null, s: secs + " of " + C.sections.length + " chapters done · " + ans + " answered" },
-    { href: "#agora", g: "III", t: "Agora", p: cap(numWord(AG.questions.length)) + " great debates. Predict first, then weigh the arguments and keep the ones you accept.", m: AG.questions.length ? Object.keys(S.predictions).length / AG.questions.length : null, s: acc + " argument" + (acc === 1 ? "" : "s") + " accepted" },
+    { href: "#agora", g: "III", t: "Debates", p: cap(numWord(AG.questions.length)) + " great debates. Predict first, then weigh the arguments and keep the ones you accept.", m: AG.questions.length ? Object.keys(S.predictions).length / AG.questions.length : null, s: acc + " argument" + (acc === 1 ? "" : "s") + " accepted" },
     { href: "#seminar", g: "IV", t: "Seminars", p: "Discussion decks for a club or class, each a 50-minute session on one big question. Alone, each one is a lively lesson.", m: null, s: (() => { const n = Object.keys(S.semDone || {}).length; return SEM_LIST.length + " decks" + (n ? " · " + n + " done" : ""); })() },
-    { href: "#codex", g: "V", t: "Logbook", p: "Your book of beliefs. It shows where your views crack against each other, and lets you mend them.", m: null, s: tens.length ? open + " open · " + (tens.length - open) + " mended" : "No cracks found yet" },
+    { href: "#codex", g: "V", t: "My Positions", p: "Your book of beliefs. It shows where your views crack against each other, and lets you mend them.", m: null, s: tens.length ? open + " open · " + (tens.length - open) + " mended" : "No cracks found yet" },
     { href: "#firmament", g: "VI", t: "Stargazing", p: "The night sky of philosophy: constellations of traditions, guided stories, and who learned from whom.", m: null, s: skyStarTotal() + " stars · " + chartedStars().size + " charted" },
     { href: "#duel", g: "VII", t: "Duel", p: "Put any two thinkers in the ring and see where they agree and clash, question by question.", m: null, s: "Pick any pair" },
-    { href: "#stoa", g: "VIII", t: "Stoa", p: "Walk 2,600 years of thought, era by era, across Greece, China, India and beyond.", m: LIB.eras.length ? Object.keys(S.eras).length / LIB.eras.length : null, s: Object.keys(S.eras).length + " of " + LIB.eras.length + " eras walked" },
+    { href: "#stoa", g: "VIII", t: "Timeline", p: "Walk 2,600 years of thought, era by era, across Greece, China, India and beyond.", m: LIB.eras.length ? Object.keys(S.eras).length / LIB.eras.length : null, s: Object.keys(S.eras).length + " of " + LIB.eras.length + " eras walked" },
     { href: "#lab", g: "IX", t: "Shipyard", p: "Play with famous thought experiments: the heap, Theseus’ ship, the experience machine, the trolley.", m: labs / 4, s: labs + " of 4 playable done" },
     { href: "#thinkers", g: "X", t: "Thinkers", p: "Every philosopher on the site, with a full page each: life, big ideas, myths, critics and where to start reading.", m: null, s: T.filter(t => TH[t.id] === t).length + " thinkers" },
     { href: "#works", g: "XI", t: "Works", p: "The archive: the books that moved the argument, what each one says, and exactly where to start reading.", m: null, s: WORKS.length + " works" + (Object.keys(S.books || {}).length ? " · " + Object.keys(S.books).length + " on your shelf" : "") },
@@ -16073,7 +16079,7 @@ function trialHTML(key, qs) {
 ACT.voyTrial = el => {
   const V = voyState(), k = el.dataset.k, i = +el.dataset.i, j = +el.dataset.j;
   V.trial[k] = V.trial[k] || {}; if (V.trial[k][i] != null) return; V.trial[k][i] = j;
-  const I = VOY.islands[k]; if (I && I.trial && Object.keys(V.trial[k]).length >= I.trial.length && V.done[k] == null) { V.done[k] = trialScore(k, I.trial); toast("Island charted. Entered in your Logbook."); }
+  const I = VOY.islands[k]; if (I && I.trial && Object.keys(V.trial[k]).length >= I.trial.length && V.done[k] == null) { V.done[k] = trialScore(k, I.trial); toast("Island charted. Saved to My Positions."); }
   save(); render(true);
 };
 ACT.voyRetry = el => { const V = voyState(); delete V.trial[el.dataset.k]; save(); render(true); };
@@ -16189,7 +16195,7 @@ function slideHTML(I, s, i) {
     case "checkpoint": return '<div class="sl"><div class="sl-body wide">' + checkpointHTML(I) + "</div></div>";
     case "finish": {
       const sc = deckScore(I); const u = unitOf(I); const list = u ? islandsOf(u) : []; const to = (I.crossing && I.crossing.to && VOY.islands[I.crossing.to]) || list[list.indexOf(I) + 1];
-      return '<div class="sl sl-night"><div class="sl-body center">' + head("Island charted", I.name) + (sc.n ? '<p class="sl-score"><b>' + sc.ok + "</b> of " + sc.n + " quick checks right</p>" + missedHTML(I) : "") + (I.log ? '<p class="sl-log">“' + rich(I.log) + '”<br><span class="faint">Entered in your Logbook</span></p>' : "") +
+      return '<div class="sl sl-night"><div class="sl-body center">' + head("Island charted", I.name) + (sc.n ? '<p class="sl-score"><b>' + sc.ok + "</b> of " + sc.n + " quick checks right</p>" + missedHTML(I) : "") + (I.log ? '<p class="sl-log">“' + rich(I.log) + '”<br><span class="faint">Saved to My Positions</span></p>' : "") +
         (I.crossing && I.crossing.text ? '<p class="sl-lead">' + rich(I.crossing.text) + "</p>" : "") + skyChartLine(I) + originalsLine(I) + wordsLine(I) + semLine(I) + '<div class="row" style="justify-content:center">' + (to ? '<a class="btn primary" href="#voyage-' + to.id + '">Sail on to ' + esc(to.name) + " →</a>" : "") + (u ? '<a class="btn ghost vy-ghost" href="#voyage-u' + u.id + '">' + esc(u.title) + " chart</a>" : "") + '<button class="btn ghost vy-ghost" data-act="dkRestart" data-id="' + esc(I.id) + '">Start again</button></div></div></div>';
     }
   }
@@ -16354,7 +16360,7 @@ function semNotesText(I) {
 ACT.semCopy = el => { const t = semNotesText(DK(el.dataset.id)); (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast("Notes copied")).catch(() => { const a = document.createElement("textarea"); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand("copy"); toast("Notes copied"); } catch (e) {} a.remove(); }); };
 function semRelatedHTML(I) {
   const R = I.related || {}, bits = [];
-  if (R.agora && AGQ[R.agora]) bits.push('<a class="chip lapis" href="#agora-' + esc(R.agora) + '">Agora: ' + esc(AGQ[R.agora].title) + "</a>");
+  if (R.agora && AGQ[R.agora]) bits.push('<a class="chip lapis" href="#agora-' + esc(R.agora) + '">Debate: ' + esc(AGQ[R.agora].title) + "</a>");
   (R.islands || []).filter(x => VOY.islands[x]).forEach(x => bits.push('<a class="chip" href="#voyage-' + esc(x) + '">Voyage: ' + esc(VOY.islands[x].name) + "</a>"));
   (R.compass || []).filter(x => QM[x]).forEach(x => bits.push('<a class="chip" href="#compass-' + esc(x) + '">Compass: ' + esc(SHORT[x] || QM[x].text || x) + "</a>"));
   (I.cast || []).filter(x => TH[x]).forEach(x => bits.push('<a class="chip" href="#thinker-' + esc(x) + '">' + esc(TH[x].name) + "</a>"));
@@ -16421,8 +16427,8 @@ const FIND = (() => {
   const fold = s => String(s || "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[’']/g, "");
   const items = [];
   const add = (kind, title, sub, href, extra, more) => items.push({ kind, title, sub: sub || "", href, more, k: fold(title).replace(/^(the|a|an) /, ""), x: fold((sub || "") + " " + (extra || "")) });
-  [["Voyage", "#voyage", "the course, island by island"], ["Compass", "#compass", "find where you stand"], ["Agora", "#agora", "debates, argument by argument"], ["Logbook", "#codex", "your stances and progress"],
-   ["Stargazing", "#firmament", "the sky of thinkers"], ["Stoa", "#stoa", "a walk through the eras"], ["Shipyard", "#lab", "thought-experiment workshop"], ["Dictionary", "#library", "every term, plus thought experiments and schools"], ["Works", "#works", "the archive of great books"], ["Thinkers", "#thinkers", "every philosopher, A to Z by era"], ["Quiz", "#quiz", "test yourself"], ["Your star", "#firmament-you", "where your answers place you in the sky"], ["Review your misses", "#voyage-review", "questions you got wrong on the Voyage"]]
+  [["Voyage", "#voyage", "the course, island by island"], ["Compass", "#compass", "find where you stand"], ["Debates", "#agora", "famous debates, argument by argument"], ["My Positions", "#codex", "your stances and progress"],
+   ["Stargazing", "#firmament", "the sky of thinkers"], ["Timeline", "#stoa", "a walk through the eras"], ["Shipyard", "#lab", "thought-experiment workshop"], ["Dictionary", "#library", "every term, plus thought experiments and schools"], ["Works", "#works", "the archive of great books"], ["Thinkers", "#thinkers", "every philosopher, A to Z by era"], ["Quiz", "#quiz", "test yourself"], ["Your star", "#firmament-you", "where your answers place you in the sky"], ["Review your misses", "#voyage-review", "questions you got wrong on the Voyage"]]
     .forEach(([t, h, s]) => add("Page", t, s, h));
   const ROMAN_ = ["", "I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X", "XI", "XII", "XIII", "XIV"];
   (VOY.units || []).forEach(u => add("Sea", "Sea " + (ROMAN_[u.id] || u.id) + " · " + u.title, u.sub, "#voyage-u" + u.id));
