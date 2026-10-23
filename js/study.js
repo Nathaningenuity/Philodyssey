@@ -1,13 +1,14 @@
 /* Philodyssey · study.js — BATCH D of the build plan
    #7 The Tide (spaced review) · #8 Captain's Log (#log) · #9 Share card + sea certificate
 
-   HOOK-UP (two lines in index.html):
-   1. Inside the main app IIFE, just before its closing `render(false); initCaps(); })();`, the bridge line
-      `window.PD = Object.defineProperties({}, …)` (see the report / README). The app's state and helpers are
-      closure variables, so this module reads them through lazy getters on window.PD (S is re-read on every
-      access, because the app reassigns it on import, reset and remote sync).
-   2. `<script src="js/study.js"></script>` right before `</body>`.
-   Without the bridge this file logs one warning and does nothing.
+   HOOK-UP: `<script src="js/study.js"></script>` right before `</body>`, after the main app script.
+   The app's state and helpers live in its closure, so this module reads them live through the app's
+   window.PHILO bridge (P.S is re-read on every access, because the app reassigns S on import, reset and sync).
+   It needs PHILO to carry: S, after, save, render, route, esc, $, $$, toast, openDrawer, VOY, voyState,
+   deckSlides, deckState, deckScore, missedAll, islandsOf, islDone, LIB, slugT, TH, QM; and optionally rich, DK,
+   QZ, life, labelOf, matches, deepest, SHORT, ROOTS, allTensions, secDone, agStarted, answeredCount,
+   chartedStars, skyStarTotal, sealsNow, sealSVG, numWord, cap, CAP, EX, AG, C, ROUTE_ALIAS.
+   If a required key is missing it logs one warning and does nothing.
 
    HOOKS this module installs (all at load time, nothing in index.html is edited):
    - VIEWS.tide (#tide, #tide-missed = the old "all missed checks" list), VIEWS.log (#log)
@@ -16,7 +17,8 @@
    - ACT.dkAnswer / ACT.voyTrial / ACT.quizPick wrapped: a miss adds a Tide card (no behaviour change otherwise)
    - ACT.shareCard replaced (rebranded, compass card + sea certificate), plus ACT.saveCard / scShare / scCopy
    - ACT.tideReveal / tideGrade / tidePick / tideNext / tideAdd / tideAddMany / tideMore
-   - window.tideDue() for the "Your next heading" home (returns the array of due card ids, length = count)
+   - window.tideDue() for the "Your next heading" home: the number of cards due today (max 20)
+   - window.progressStats() (the six Bearings numbers), for any page that wants them
    - S.tide, S.act (+ S.actV, S.actPruned) persisted with the app's save()
    - document listeners: click (capture) counts activity into S.act; click (bubble) adds "+ Tide" to #glPop;
      keydown drives the Tide with the keyboard
@@ -28,9 +30,8 @@
 */
 (function () {
 "use strict";
-// window.PHILO is the app's bridge; window.PD (optional) can supply internals PHILO does not export yet.
-// Every lookup is live, so P.S is always the current state object.
-const SRC = [window.PHILO, window.PD].filter(Boolean);
+// window.PHILO is the app's bridge. Every lookup is live, so P.S is always the current state object.
+const SRC = [window.PHILO].filter(Boolean);
 const P = new Proxy({}, { get(_, k) { for (const o of SRC) { try { const v = o[k]; if (v !== undefined) return v; } catch (e) { } } return undefined; } });
 if (!SRC.length || !P.VIEWS || !P.ACT) { console.warn("study.js: window.PHILO is missing, so the Tide, the Log and the share card are off."); return; }
 const NEED = ["S", "after", "save", "render", "route", "esc", "$", "$$", "toast", "openDrawer", "VOY", "voyState", "deckSlides", "deckState", "deckScore", "missedAll", "islandsOf", "islDone", "LIB", "slugT", "TH", "QM"];
