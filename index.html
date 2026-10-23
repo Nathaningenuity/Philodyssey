@@ -482,7 +482,7 @@ textarea{min-height:80px;resize:vertical}
 .star.m1 .sky-lab{fill:#F6EBCB;font-weight:600}
 .sky-back .tw{animation:twinkle 3.6s ease-in-out infinite}
 @keyframes twinkle{0%,100%{opacity:.15}50%{opacity:.75}}
-@media (prefers-reduced-motion:reduce){.sky-back .tw{animation:none}}
+
 .sky-btn.on{border-color:rgba(232,176,74,.7);color:#F4D58D}
 .sky-btn.primary{background:rgba(232,176,74,.18);border-color:rgba(232,176,74,.6);color:#F4D58D}
 .sky-btn:disabled{opacity:.35;cursor:default}
@@ -528,7 +528,7 @@ textarea{min-height:80px;resize:vertical}
 @media (max-width:640px){.g-opts{grid-template-columns:1fr}}
 .charted-ring{fill:none;stroke:#E8B04A;stroke-opacity:.75;pointer-events:none}
 .sky-menu button.mine{background:rgba(127,224,181,.08)}.sky-menu button.mine b{color:#BFF5DC}
-@media (prefers-reduced-motion:reduce){.you-ring{animation:none}.story-path circle{animation:none}}
+
 @media (max-width:640px){.sky:has(.sky-panel:not([hidden])) .sky-zoom{display:none}.sky-time{gap:8px}.sky-yr{min-width:78px}.sky-yr b{font-size:1.05rem}.sky-panel{bottom:50px;padding:10px 12px}.sky-panel p{font-size:.86rem;margin-bottom:8px}.sky-yr{min-width:92px}.sky-tip{left:8px!important;right:8px;max-width:none}}
 
 @media (max-width:640px){
@@ -618,7 +618,8 @@ button.review-row{width:100%;text-align:left;font:inherit;cursor:pointer}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes popIn{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
 .confirm{border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:var(--surface)}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* the one reduced-motion rule: it covers every transition, animation, stagger, seal stamp and page cross-fade */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important;scroll-behavior:auto!important}::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
 
 /* per-topic positions under a chapter title */
 .tp{display:flex;flex-direction:column;gap:10px}
@@ -881,12 +882,12 @@ body.lbm .scrim{z-index:65}body.lbm .drawer{z-index:70}
 .modal-card.lb-modal .modal-body{padding:16px 20px 22px}
 /* VOYAGE-CSS:BEGIN */
 /* ---------------------------------------------------------------- VOYAGE */
-:root{--night:#15203A;--night-2:#1D2B4A;--night-ink:#EDE6D2;--night-mute:#AEB4C4;--brass:#C9A24B;
+:root{--night:#15203A;--brass:#C9A24B; /* --night-2, --night-ink and --night-mute live in the token layer at the top */
   --ch-sea:#DCE6EC;--ch-land:#EFE6D2;--ch-coast:#9C8A62;--ch-grat:#B4C3D0;--ch-region:#5B6F86;--ch-route:#8A6B2A;
   --j-wine:#8E3B3B;--j-sea:#2F5E7E;--j-olive:#4F6B3A;--j-plum:#5E4A78;--j-ochre:#9A7426;--j-teal:#2E6E6A}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--night:#0E1A36;--night-2:#172139;--ch-sea:#18202D;--ch-land:#2A2D33;--ch-coast:#5E5747;--ch-grat:#26303F;--ch-region:#8796AC;--ch-route:#D9B76A;
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--night:#0E1A36;--ch-sea:#18202D;--ch-land:#2A2D33;--ch-coast:#5E5747;--ch-grat:#26303F;--ch-region:#8796AC;--ch-route:#D9B76A;
   --j-wine:#D98C80;--j-sea:#86B4D6;--j-olive:#A3BE86;--j-plum:#B9A3DA;--j-ochre:#DDB867;--j-teal:#7FC1BA}}
-:root[data-theme="dark"]{--night:#0E1A36;--night-2:#172139;--ch-sea:#18202D;--ch-land:#2A2D33;--ch-coast:#5E5747;--ch-grat:#26303F;--ch-region:#8796AC;--ch-route:#D9B76A;
+:root[data-theme="dark"]{--night:#0E1A36;--ch-sea:#18202D;--ch-land:#2A2D33;--ch-coast:#5E5747;--ch-grat:#26303F;--ch-region:#8796AC;--ch-route:#D9B76A;
   --j-wine:#D98C80;--j-sea:#86B4D6;--j-olive:#A3BE86;--j-plum:#B9A3DA;--j-ochre:#DDB867;--j-teal:#7FC1BA}
 
 .vy-hero{background:radial-gradient(120% 140% at 85% 0%,var(--night-2),var(--night) 60%);color:var(--night-ink);padding-block:46px 40px;position:relative;overflow:hidden}
@@ -915,7 +916,7 @@ body.lbm .scrim{z-index:65}body.lbm .drawer{z-index:70}
 .ch-lab{font-family:var(--font-ui);font-size:17px;font-weight:600;fill:var(--ink);paint-order:stroke;stroke:var(--ch-sea);stroke-width:5px;stroke-linejoin:round}
 .ch-pulse{fill:none!important;stroke:var(--crack)!important;stroke-width:2!important;animation:chp 1.8s ease-out infinite;transform-box:fill-box;transform-origin:center}
 @keyframes chp{0%{opacity:.9;transform:scale(.7)}100%{opacity:0;transform:scale(1.5)}}
-@media (prefers-reduced-motion:reduce){.ch-pulse{animation:none}}
+
 .ch-rose circle{fill:none;stroke:var(--ch-coast);stroke-width:.8}.ch-rose path{fill:var(--ch-coast);opacity:.7}.ch-rose text{font-family:var(--font-display);font-size:13px;fill:var(--ch-coast);text-anchor:middle}
 
 /* units list */
@@ -1130,7 +1131,7 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 
 .sl{min-height:clamp(380px,56vh,620px);border-radius:16px;border:1px solid var(--line);background:var(--raised);box-shadow:var(--shadow);display:flex;align-items:stretch;overflow:hidden;animation:slin .35s ease-out}
 @keyframes slin{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
-@media (prefers-reduced-motion:reduce){.sl{animation:none}}
+
 .sl-body{flex:1 1 0;min-width:0;padding:clamp(22px,4vw,52px);display:flex;flex-direction:column;justify-content:center;gap:16px;max-width:760px;margin-inline:auto}
 .sl-body.wide{max-width:960px}.sl-body.center{text-align:center;align-items:center}
 .sl h2{font-size:clamp(1.6rem,3.4vw,2.35rem);line-height:1.12}
@@ -1227,7 +1228,7 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .sl-sky{position:relative}
 .sl-sky::before{content:"";position:fixed;left:6%;top:120px;width:120px;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,#FFF3D0);transform:rotate(-18deg);opacity:0;animation:shoot 1.6s .6s ease-out 1 forwards;pointer-events:none}
 @keyframes shoot{0%{opacity:0;transform:translateX(0) rotate(-18deg)}15%{opacity:1}100%{opacity:0;transform:translateX(420px) translateY(130px) rotate(-18deg)}}
-@media (prefers-reduced-motion:reduce){.sl-sky::before{animation:none}}
+
 
 .pt-has{position:relative}.pt-has img{position:absolute;inset:0;opacity:0;transition:opacity .3s}.pt-has img.in{opacity:1}
 
@@ -1810,12 +1811,211 @@ html,body{overflow-x:clip}
 .tp-you-duel{color:var(--gold)!important;font-weight:600;padding-left:14px;border-left:1px solid var(--night-line)}
 .tp-also .tp-wl .faint{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.06em;margin-right:2px}
 @media (max-width:640px){.tp-you{border-radius:var(--r-md)}.tp-you-duel{padding-left:0;border-left:0}}
+/* ================= Batch F #13: emblems, page heads and line icons */
+.emblem{width:56px;height:56px;flex:none;color:var(--lamp-text);fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.ic{width:1.1em;height:1.1em;flex:none;vertical-align:-.17em;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.btn .ic{margin-inline:1px}
+.page-head{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:22px;row-gap:0;align-items:start;max-width:880px;margin:0;padding-block:6px 2px;position:relative}
+.page-head>.emblem{grid-column:1;grid-row:1/span 8;margin-top:4px}
+.page-head>:not(.emblem){grid-column:2;min-width:0}
+.page-head>:not(.emblem)+:not(.emblem){margin-top:10px}
+.page-head>.eyebrow{justify-self:start;align-self:start}
+.page-head>.eyebrow+h1{margin-top:6px}
+.page-head h1{font-size:clamp(1.9rem,4.2vw,2.75rem);line-height:1.08}
+.page-head .lede{font-family:var(--font-read);font-size:var(--fs-lg);line-height:1.55;color:var(--ink-2);max-width:40em;margin-bottom:0}
+.page-head.stack{display:grid}
+.page-head .ph-actions{margin-top:14px}
+@media (max-width:640px){.page-head{grid-template-columns:minmax(0,1fr)}.page-head>.emblem{grid-row:auto;width:46px;height:46px;margin:0 0 10px}.page-head>:not(.emblem){grid-column:1}.page-head>.emblem+:not(.emblem){margin-top:0}}
+.cta-link{font-weight:600;color:var(--lapis);text-decoration:none}.cta-link:hover{text-decoration:underline;text-underline-offset:3px}
+.on-night .cta-link,.hero .cta-link{color:var(--gold)}
+.ag-filter{justify-content:flex-start}
+/* seminars: the two modes become a plain two-card row on the paper */
+.sem-modes{max-width:none;margin:0;gap:12px}
+.sem-modes>div{border:1px solid var(--line);background:var(--card);color:var(--ink-2);border-radius:var(--r-md);padding:14px 16px;box-shadow:var(--shadow-1)}
+.sem-modes b{color:var(--lamp-text);font:500 var(--fs-2xs)/1.3 var(--font-mono);letter-spacing:.14em;text-transform:uppercase}
+.sem-tile .eyebrow{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.sem-tile .eyebrow::before{display:none}
+/* the locked Compass chapter: a full-width "last stop" banner with a padlock */
+.hub-card.locked{grid-column:1/-1}
+.hub-card.locked h3,.hub-card.locked p{color:var(--ink-2)}
+.hub-num .ic{margin-right:6px;vertical-align:-.2em}
+/* shipyard tiles and game icons */
+.labgames .gtile .gemo{font-size:0;line-height:0;color:var(--gold)}
+.labgames .gtile .gemo svg{width:40px;height:40px;color:var(--gold);stroke-width:1.15}
+.gdead{display:inline-flex;align-items:center;gap:4px;font-weight:600}
+h2 .ic{vertical-align:-.12em}
+.gscene{color:var(--ink);--ic-fill:var(--lamp-soft)}
+.gscene .gtrolley{color:var(--ink);fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.gscene .gfig{color:var(--ink-2)}.gscene .gfig.you{color:var(--lamp-text)}.gscene .gfig.kin{color:var(--crack)}
+.gscene .gtrap{fill:var(--bg);stroke:var(--ink-3);stroke-width:1.5;stroke-dasharray:3 2}
+.gscene.hosp{font-size:var(--fs-md);color:var(--ink-2)}.gscene.hosp .gbig .ic{width:56px;height:56px;color:var(--crack);stroke-width:1.3}
+.glab{display:inline-flex;align-items:center;gap:6px;flex-wrap:wrap}.gbeds{display:inline-flex;gap:2px}.gbeds .ic{width:22px;height:22px}.glab .ic.fig{width:12px;height:22px;stroke:none;fill:currentColor}
+.vpeople{color:var(--ink-2)}.vp{display:inline-grid;place-items:center;filter:none;opacity:.6}.vp .ic{width:34px;height:34px;stroke-width:1.4}.vp.on{opacity:1;color:var(--lamp-text)}
+.pdlog i{display:grid;place-items:center;width:26px;height:26px;border-radius:6px}.pdlog i .ic{width:18px;height:18px}.pdlog i.C{color:var(--ok)}.pdlog i.D{color:var(--crack)}
+.oship{color:#F6EEDB;stroke-width:1.8;fill:none;stroke:currentColor}
+/* gauntlet lever: the two ends of the lever sit at the two ends of the track */
+.glever{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:center;gap:12px}
+.glever>.faint,.glever>b{font-size:var(--fs-sm);white-space:nowrap}
+.glever .gl-track{min-width:0}
+@media (max-width:400px){.glever{grid-template-columns:1fr 1fr;grid-template-areas:"l r" "t t";row-gap:6px}.glever>.faint{grid-area:l}.glever>b{grid-area:r;text-align:right;white-space:normal}.glever .gl-track{grid-area:t}}
+
+/* ================= Batch F #14: one card language, one night surface */
+.mod,.path3 a,.qtile,.exp,.sem-tile,.hub-card,.vy-unit,.thk,.statue,.wcard,.tp-card,.nb-card,.lb-tile{background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-1);transition:transform var(--dur-1) var(--ease),box-shadow var(--dur-1) var(--ease),border-color var(--dur-1) var(--ease)}
+.mod:hover,.path3 a:hover,.qtile:hover,a.exp:hover,.sem-tile:hover,.hub-card:not(.locked):hover,a.vy-unit:hover,.thk:hover,.statue:hover,.wcard:hover,.lb-tile:hover{transform:translateY(-2px);box-shadow:var(--shadow-2);border-color:var(--lamp);background:var(--card)}
+.mod h3,.exp h3,.qtile .t,.sem-tile b,.hub-card h3{font-family:var(--font-display);font-weight:400}
+.sem-tile b{font-size:var(--fs-xl);line-height:1.2}
+.panel{border-radius:var(--r-md)}
+.hub-card.locked{background:transparent;box-shadow:none;border:1px dashed var(--line-input)}
+/* the night surface: one navy, one gold, a hairline edge that holds in dark mode */
+.hero,.vy-hero,.tp-hero,.era header,.gtile,.ring,.rhero{background:radial-gradient(120% 140% at 85% 0%,var(--night-2),var(--night) 62%);color:var(--night-ink)}
+.wk-hero{background:radial-gradient(120% 140% at 15% 0%,color-mix(in srgb,var(--c) 34%,var(--night-2)),var(--night) 66%);color:var(--night-ink)}
+.hero,.vy-hero{border-bottom:1px solid var(--night-line)}
+.hero h1 em{font-style:italic;color:var(--gold-hi)}
+.vy-emblem{color:var(--gold);width:52px;height:52px;margin-bottom:-4px;--lamp-soft:rgba(232,176,74,.16)}
+.tp-hero{border-bottom:2px solid var(--lamp)}
+.gtile,.ring,.rhero{border:1px solid var(--night-line)}
+.rhero{border-radius:var(--r-lg)}
+.era header{border-bottom:1px solid var(--night-line)}
+.gtile{border-radius:var(--r-lg);box-shadow:var(--shadow-1);transition:transform var(--dur-1) var(--ease),box-shadow var(--dur-1) var(--ease),border-color var(--dur-1) var(--ease)}
+.gtile:hover{transform:translateY(-2px);box-shadow:var(--shadow-2);border-color:color-mix(in srgb,var(--gold) 60%,transparent)}
+.gtile h3{color:var(--night-ink)}.gtile p{color:color-mix(in srgb,var(--night-ink) 86%,transparent)}.gtile .faint{color:var(--night-mute)}
+.ring{border-radius:var(--r-lg)}.ring .eyebrow{color:var(--gold)!important}.ring p{color:var(--night-mute)}.ring h2{color:var(--night-ink)}
+/* Timeline busts: navy medallions with the tradition as a ring, like the Thinkers page */
+.statue .bust{background:radial-gradient(circle at 35% 30%,var(--night-2),var(--night));color:var(--gold);box-shadow:0 0 0 2px var(--card),0 0 0 3.5px var(--tc,var(--lamp))}
+/* grids without orphans */
+@media (min-width:900px){.modules{grid-template-columns:repeat(3,minmax(0,1fr))}.modules.ref{grid-template-columns:repeat(4,minmax(0,1fr))}
+ .modules:not(.ref)>:last-child:nth-child(3n+1){grid-column:span 3}.modules:not(.ref)>:last-child:nth-child(3n+2){grid-column:span 2}}
+@media (min-width:1000px){.labgames{grid-template-columns:repeat(3,minmax(0,1fr))}.labgames>:last-child:nth-child(3n+1){grid-column:span 3}.labgames>:last-child:nth-child(3n+2){grid-column:span 2}
+ .labgrid{grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr))}
+ .sem-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.sem-grid>:last-child:nth-child(3n+1){grid-column:span 3}.sem-grid>:last-child:nth-child(3n+2){grid-column:span 2}
+ .vy-units{grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}.vy-units>:last-child:nth-child(4n+2){grid-column:span 3}.vy-units>:last-child:nth-child(4n+3){grid-column:span 2}}
+
+/* ================= Batch F #15: ornament and motion */
+:root{--grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .35  0 0 0 0 .28  0 0 0 0 .15  0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+:root[data-theme="dark"]{--grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .8  0 0 0 0 .85  0 0 0 0 1  0 0 0 .035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--grain:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .8  0 0 0 0 .85  0 0 0 0 1  0 0 0 .035 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}}
+body{background-image:var(--grain);background-size:240px 240px}
+/* section headings: an eight-point compass star, the words, then a hairline to the edge */
+.sec-h{display:flex;align-items:center;gap:12px;flex:1 1 auto;min-width:0}
+.sec-h::before{content:"";width:14px;height:14px;flex:none;background:var(--lamp);-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0l1.4 5.1L14 2l-3.1 4.6L16 8l-5.1 1.4L14 14l-4.6-3.1L8 16l-1.4-5.1L2 14l3.1-4.6L0 8l5.1-1.4L2 2l4.6 3.1z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M8 0l1.4 5.1L14 2l-3.1 4.6L16 8l-5.1 1.4L14 14l-4.6-3.1L8 16l-1.4-5.1L2 14l3.1-4.6L0 8l5.1-1.4L2 2l4.6 3.1z'/%3E%3C/svg%3E") center/contain no-repeat}
+.sec-h::after{content:"";flex:1 1 24px;min-width:24px;height:1px;background:linear-gradient(90deg,var(--line-input),transparent)}
+.row>.sec-h+.faint{margin-left:-4px}
+@media (max-width:640px){.sec-h::after{min-width:12px}.row>.sec-h{flex-basis:100%}.row>.sec-h+*,.row>.sec-h+.faint{margin-left:26px;margin-top:-8px}}
+/* Start here: four ports on a dashed sea route; a finished port shows a ship */
+.path3{position:relative}
+.path3>li{position:relative;z-index:1}
+.path3 .route{position:absolute;left:0;top:24px;width:100%;height:20px;z-index:0;pointer-events:none;overflow:visible}
+.path3 .route path{fill:none;stroke:var(--lamp);stroke-width:1.5;stroke-dasharray:4 5;vector-effect:non-scaling-stroke;opacity:.8}
+.path3 li.done .num{color:var(--lamp-text)}.path3 li.done .num .ic{width:20px;height:20px}
+@media (min-width:900px){.path3{column-gap:26px}}
+@media (max-width:899px){.path3{row-gap:20px}.path3 .route{display:none}.path3::before{content:"";position:absolute;left:34px;top:24px;bottom:24px;border-left:1.5px dashed var(--lamp);opacity:.7}}
+/* seals: earned ones are gold wax that stamp in once; the rest are engraved outlines to earn */
+.seal{border:1px dashed var(--line-input);color:var(--ink-2)}
+.seal.on{border-style:solid}
+.seal-mark{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%}
+.seal.on .seal-mark{background:radial-gradient(circle at 35% 30%,#ECCB77,var(--lamp) 58%,#7C5F22);box-shadow:inset 0 -2px 4px rgba(0,0,0,.25),inset 0 2px 2px rgba(255,255,255,.3),0 2px 6px rgba(80,55,10,.3)}
+.seal.on .seal-mark svg>circle:first-child{fill:transparent;stroke:rgba(31,26,14,.35);stroke-dasharray:2 2}
+@media (prefers-reduced-motion:no-preference){.seal.stamping .seal-mark{animation:waxIn .55s cubic-bezier(.34,1.56,.64,1) .2s both}}
+@keyframes waxIn{from{opacity:0;transform:scale(1.8) rotate(-24deg)}to{opacity:1;transform:none}}
+/* the footer is the shore: two waves, and the owl beside the name */
+footer.shore{position:relative;margin-top:36px;border-top:0}
+footer.shore::before{content:"";position:absolute;left:0;right:0;top:-20px;height:24px;background:var(--line-input);opacity:.75;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='24' viewBox='0 0 240 24'%3E%3Cpath d='M0 10c20-7 40-7 60 0s40 7 60 0 40-7 60 0 40 7 60 0' fill='none' stroke='%23000' stroke-width='1.3'/%3E%3Cpath d='M-30 17c20-5 40-5 60 0s40 5 60 0 40-5 60 0 40 5 60 0 40-5 60 0' fill='none' stroke='%23000' stroke-width='1' opacity='.55'/%3E%3C/svg%3E") repeat-x left bottom/240px 24px;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='24' viewBox='0 0 240 24'%3E%3Cpath d='M0 10c20-7 40-7 60 0s40 7 60 0 40-7 60 0 40 7 60 0' fill='none' stroke='%23000' stroke-width='1.3'/%3E%3Cpath d='M-30 17c20-5 40-5 60 0s40 5 60 0 40-5 60 0 40 5 60 0 40-5 60 0' fill='none' stroke='%23000' stroke-width='1' opacity='.55'/%3E%3C/svg%3E") repeat-x left bottom/240px 24px}
+.shore-brand{display:inline-flex;align-items:center;gap:8px}
+.owl-b{fill:var(--night);stroke:var(--gold)}
+.shore-brand svg{color:var(--gold)}
+/* brand mark */
+.brand .owl{width:34px;height:34px}
+.brand b{font-size:1.2rem;font-variation-settings:"opsz" 48}
+/* disclosures: one chevron, drawn like the line icons */
+summary:not(:where(.answers summary,.fits-more summary,.nb-more2>summary,.nb-refine>summary,.puzzle summary,.sl-reveal summary,.stance-ch summary,.nb-cust>summary)){list-style:none}
+summary:not(:where(.answers summary,.fits-more summary,.nb-more2>summary,.nb-refine>summary,.puzzle summary,.sl-reveal summary,.stance-ch summary,.nb-cust>summary))::-webkit-details-marker{display:none}
+summary:not(:where(.answers summary,.fits-more summary,.nb-more2>summary,.nb-refine>summary,.puzzle summary,.sl-reveal summary,.stance-ch summary,.nb-cust>summary))::before{content:"";display:inline-block;width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(-45deg);margin-right:10px;vertical-align:middle;transition:transform var(--dur-1) var(--ease);opacity:.75;flex:none}
+details[open]>summary:not(:where(.answers summary,.fits-more summary,.nb-more2>summary,.nb-refine>summary,.puzzle summary,.sl-reveal summary,.stance-ch summary,.nb-cust>summary))::before{transform:translateY(-3px) rotate(45deg)}
+/* nav: the gold underline grows from the centre */
+.nav a::after{content:"";position:absolute;left:10px;right:10px;bottom:2px;height:2px;background:var(--lamp);border-radius:2px;transform:scaleX(0);transition:transform var(--dur-2) var(--ease)}
+.nav a[aria-current="page"]::after{transform:scaleX(1)}
+/* theme toggle: the new icon turns in */
+#themeBtn svg{animation:themeIn .3s var(--ease)}
+@keyframes themeIn{from{transform:rotate(-90deg) scale(.6);opacity:0}}
+/* page changes cross-fade; the header holds still */
+.top{view-transition-name:top}
+::view-transition-old(root){animation:160ms ease-in both vt-out}
+::view-transition-new(root){animation:260ms cubic-bezier(.2,.7,.2,1) both vt-in}
+@keyframes vt-out{to{opacity:0}}
+@keyframes vt-in{from{opacity:0;transform:translateY(6px)}}
+/* card grids rise in, staggered, on first paint */
+@media (prefers-reduced-motion:no-preference){
+ .modules>*,.qlist>*,.sem-grid>*,.hub>*,.thk-grid>*:nth-child(-n+12),.vy-units>*,.labgames>*,.path3>li{animation:rise .42s cubic-bezier(.2,.7,.2,1) backwards}
+ :is(.modules,.qlist,.sem-grid,.hub,.thk-grid,.vy-units,.labgames,.path3)>:nth-child(2){animation-delay:28ms}
+ :is(.modules,.qlist,.sem-grid,.hub,.thk-grid,.vy-units,.labgames,.path3)>:nth-child(3){animation-delay:56ms}
+ :is(.modules,.qlist,.sem-grid,.hub,.thk-grid,.vy-units,.labgames,.path3)>:nth-child(4){animation-delay:84ms}
+ :is(.modules,.qlist,.sem-grid,.hub,.thk-grid,.vy-units,.labgames,.path3)>:nth-child(5){animation-delay:112ms}
+ :is(.modules,.qlist,.sem-grid,.hub,.thk-grid,.vy-units,.labgames,.path3)>:nth-child(6){animation-delay:140ms}
+ :is(.modules,.qlist,.sem-grid,.hub,.thk-grid,.vy-units,.labgames,.path3)>:nth-child(7){animation-delay:168ms}
+ :is(.modules,.qlist,.sem-grid,.hub,.thk-grid,.vy-units,.labgames,.path3)>:nth-child(n+8){animation-delay:196ms}
+ .mod .meter i,.hub-meter i{animation:growX .7s var(--ease) .2s both;transform-origin:left}
+}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}}
+@keyframes growX{from{transform:scaleX(0)}}
+/* ================= Batch C #16: the helm, a bottom bar on phones */
+.helm{display:none}
+.helm-more{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.helm-more a{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:var(--r-md);background:var(--card);color:var(--ink);text-decoration:none;min-height:64px}
+.helm-more a:hover{border-color:var(--lamp)}
+.helm-more .emblem{width:34px;height:34px;grid-row:span 2;stroke-width:1.9}
+.helm-more b{font-weight:600;font-size:var(--fs-sm);align-self:end}.helm-more small{color:var(--ink-3);font-size:var(--fs-xs);line-height:1.3;align-self:start}
+.helm-more a[aria-current="page"]{border-color:var(--lamp);background:var(--lamp-soft)}
+@media (max-width:760px){
+ .top .nav,.top .mypos{display:none}
+ .top .wrap{flex-wrap:nowrap;padding-block:7px;min-height:52px}
+ .top .find-btn{margin-left:auto}
+ .brand b{font-size:1.1rem}.brand .owl{width:30px;height:30px}
+ .helm{position:fixed;left:0;right:0;bottom:0;z-index:30;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));padding:4px max(6px,env(safe-area-inset-right,0px)) calc(4px + env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px));background:color-mix(in srgb,var(--bg) 94%,transparent);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border-top:1px solid var(--line);view-transition-name:helm}
+ .helm a,.helm button{all:unset;box-sizing:border-box;position:relative;display:grid;justify-items:center;align-content:center;gap:3px;min-height:50px;font:500 var(--fs-2xs)/1.1 var(--font-ui);letter-spacing:.01em;color:var(--ink-2);cursor:pointer;border-radius:10px;-webkit-tap-highlight-color:transparent;text-align:center}
+ .helm svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+ .helm [aria-current="page"]{color:var(--lamp-text)}
+ .helm [aria-current="page"]::before{content:"";position:absolute;top:-4px;left:28%;right:28%;height:2px;border-radius:2px;background:var(--lamp)}
+ .helm [aria-current="page"] svg{stroke-width:1.9}
+ .helm a:focus-visible,.helm button:focus-visible{outline:2px solid var(--lamp);outline-offset:-2px}
+ footer{padding-bottom:calc(62px + env(safe-area-inset-bottom,0px))}
+ .toast{bottom:calc(78px + env(safe-area-inset-bottom,0px))}
+ body.in-deck .helm{display:none}
+ body.in-deck footer{padding-bottom:0}
+ body.in-deck .toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}
+ body:has(input:focus,textarea:focus,select:focus,[contenteditable]:focus) .helm{display:none}
+ .tp-toc{top:calc(env(safe-area-inset-top,0px) + 52px)}
+ .rtoc{top:58px}
+}
+@media (max-width:640px){body.in-deck .toast{bottom:calc(84px + env(safe-area-inset-bottom,0px))}}
+
+/* ================= Batch C #17: compact long pages on phones */
+.thk-page:not(.searching) .thk-grid.folded>[data-more]{display:none}
+.thk-page.searching .thk-more{display:none}
+.thk-more{justify-self:start;align-self:flex-start;margin-top:10px}
+.thk-sort{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.thk-pct{font:500 var(--fs-2xs)/1.3 var(--font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--lamp-text);margin-top:4px}
+.shelf-fold{border-top:1px solid var(--line);padding-block:4px}
+.shelf-fold>summary{cursor:pointer;padding:12px 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.shelf-fold>summary b{font-family:var(--font-display);font-weight:400;font-size:var(--fs-xl)}
+.shelf-fold>summary .faint{font-size:var(--fs-sm)}
+.shelf-fold .shelf>header{display:none}
+@media (max-width:640px){
+ .wk-start-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding-bottom:8px;margin-inline:-16px;padding-inline:16px;scroll-padding-inline:16px;scrollbar-width:none}
+ .wk-start-row::-webkit-scrollbar{display:none}
+ .wk-start-row>*{flex:0 0 132px;scroll-snap-align:start}
+}
+.rtoc button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+@media (max-width:900px){[data-rtab]:not(.on){display:none}.rtoc{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.rtoc button{white-space:nowrap}}
+@media (min-width:901px){.rtoc button[aria-pressed="true"]{background:none;color:var(--ink-2)}.rtoc button[aria-pressed="true"]:hover{background:var(--raised);color:var(--ink)}}
+.lb-loading{display:grid;gap:14px;padding-block:24px}.lb-loading .bar{height:14px;border-radius:7px;background:linear-gradient(90deg,var(--line-2),var(--line),var(--line-2));background-size:200% 100%}
+@media (prefers-reduced-motion:no-preference){.lb-loading .bar{animation:shimmer 1.2s linear infinite}}
+@keyframes shimmer{to{background-position:-200% 0}}
 </style>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#home" aria-label="Philodyssey home">
-      <svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path d="M5 9 L9 4 L13 8 Q15 7 17 8 L21 4 L25 9 Q27 13 26 18 Q24 27 15 28 Q6 27 4 18 Q3 13 5 9Z" fill="#232A55" stroke="#E8B04A" stroke-width="1.2"/><circle cx="10.5" cy="14" r="4" fill="#0A0D1F" stroke="#E8B04A" stroke-width="1.2"/><circle cx="19.5" cy="14" r="4" fill="#0A0D1F" stroke="#E8B04A" stroke-width="1.2"/><circle cx="10.5" cy="14" r="1.6" fill="#E8B04A"/><path d="M18 11.5 L20.2 13.6 L18.8 15 L21 16.6" stroke="#EE7562" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M13.5 19 L15 21.5 L16.5 19Z" fill="#E8B04A"/></svg>
+      <svg class="owl" width="34" height="34" viewBox="0 0 30 30" aria-hidden="true"><path class="owl-b" d="M5 9 L9 4 L13 8 Q15 7 17 8 L21 4 L25 9 Q27 13 26 18 Q24 27 15 28 Q6 27 4 18 Q3 13 5 9Z" fill="#232A55" stroke="#E8B04A" stroke-width="1.2"/><circle cx="10.5" cy="14" r="4" fill="#0A0D1F" stroke="#E8B04A" stroke-width="1.2"/><circle cx="19.5" cy="14" r="4" fill="#0A0D1F" stroke="#E8B04A" stroke-width="1.2"/><circle cx="10.5" cy="14" r="1.6" fill="#E8B04A"/><path d="M18 11.5 L20.2 13.6 L18.8 15 L21 16.6" stroke="#EE7562" stroke-width="1.3" fill="none" stroke-linecap="round"/><path d="M13.5 19 L15 21.5 L16.5 19Z" fill="#E8B04A"/></svg>
       <b>Philodyssey</b>
     </a>
     <nav class="nav" id="nav" aria-label="Sections">
@@ -1834,11 +2034,48 @@ html,body{overflow-x:clip}
     </button>
   </div>
 </header>
+<svg id="emblems" xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+<symbol id="em-ship" viewBox="0 0 48 48"><path d="M10 14q4 1.2 8 0v5q-4 1.2-8 0zM9.5 21.5q4.5 1.2 9 0v6q-4.5 1.2-9 0zM19 9q5 1.4 10 0v6q-5 1.4-10 0zM18.5 17.5q5.5 1.4 11 0v8q-5.5 1.4-11 0zM30.5 15q3.5 1.2 7 0v5q-3.5 1.2-7 0zM30 22q4 1.2 8 0v5q-4 1.2-8 0z" style="fill:var(--lamp-soft)"/><path d="M14 32V11M24 32V5M34 32V12M24 5l4 1.5-4 1.5M40 32l6-6M7 32h34l-4 6H12z"/><path d="M3 43c3-2 5-2 8 0s5 2 8 0 5-2 8 0 5 2 8 0 5-2 8 0"/></symbol>
+<symbol id="em-compass" viewBox="0 0 48 48"><circle cx="24" cy="25" r="17"/><circle cx="24" cy="25" r="12" stroke-dasharray="1.5 3"/><path d="M24 4 27 22 45 25 27 28 24 46 21 28 3 25 21 22Z"/><path d="M24 11 25.5 23.5 38 25 25.5 26.5 24 39 22.5 26.5 10 25 22.5 23.5Z" style="fill:var(--lamp-soft)"/><circle cx="24" cy="25" r="1.6" style="fill:currentColor"/></symbol>
+<symbol id="em-scales" viewBox="0 0 48 48"><circle cx="24" cy="7.5" r="2"/><path d="M24 9.5V39M8 14h32M15 41h18M19 41l5-2.5 5 2.5M10 14 4.5 27M10 14l5.5 13M38 14l-5.5 13M38 14l5.5 13"/><path d="M3.5 27h13a6.5 6.5 0 0 1-13 0zM31.5 27h13a6.5 6.5 0 0 1-13 0z" style="fill:var(--lamp-soft)"/><path d="M13 46c1.5-2.6 4.5-4 8-4.4M35 46c-1.5-2.6-4.5-4-8-4.4M15.5 43.2l-1.6-2M18.4 42.2l-.8-2.3M32.5 43.2l1.6-2M29.6 42.2l.8-2.3"/></symbol>
+<symbol id="em-amph" viewBox="0 0 48 48"><path d="M4 33a20 19 0 0 1 40 0M9 33a15 14 0 0 1 30 0M14 33a10 9 0 0 1 20 0" /><path d="M19 33a5 4 0 0 1 10 0z" style="fill:var(--lamp-soft)"/><path d="M2 33h44M7 39h34M7 33v6M41 33v6M24 14v5M13.5 18l2.6 3.6M34.5 18l-2.6 3.6M7 25.5l4 1.6M41 25.5l-4 1.6M4 44h40"/></symbol>
+<symbol id="em-astrolabe" viewBox="0 0 48 48"><circle cx="24" cy="6.5" r="3"/><path d="M24 9.5v1.5"/><circle cx="24" cy="28" r="17"/><circle cx="24" cy="28" r="14.5" stroke-dasharray="1 2.4"/><circle cx="24" cy="28" r="9" style="fill:var(--lamp-soft)"/><path d="M24 11v34M7 28h34M11 41 37 15"/><circle cx="24" cy="28" r="1.6" style="fill:currentColor"/><circle cx="18" cy="23" r="1" style="fill:currentColor"/><circle cx="30.5" cy="32" r="1" style="fill:currentColor"/></symbol>
+<symbol id="em-columns" viewBox="0 0 48 48"><path d="M3 43h42M5 40h38"/><path d="M8.5 16v24M14.5 16v24M7 13h9M7.5 15.5h8M11.5 18v20"/><path d="M21 13v27M27 13v27M18.5 11h11M24 15v23"/><circle cx="19.5" cy="12.5" r="1.6"/><circle cx="28.5" cy="12.5" r="1.6"/><path d="M33.5 17v23M39.5 17v23M32 11h9M32.5 16c0-2.4 1.6-3.6 4-4.6 2.4 1 4 2.2 4 4.6M36.5 11.4V16M36.5 19v19"/></symbol>
+<symbol id="em-slipway" viewBox="0 0 48 48"><path d="M2 44 46 38"/><path d="M8 34h30c4-4 6-10 6-18C32 15 18 15.4 7 18c-1 6-.6 12 1 16z" style="fill:var(--lamp-soft)"/><path d="M14 34V17.4M20 34V16.6M26 34V16.2M32 34V16.2M13 34v8.8M24 34v7.3M35 34v5.8"/></symbol>
+<symbol id="em-bust" viewBox="0 0 48 48"><path d="M15 31h18v11H15zM12 45h24M15 36h18"/><path d="M19 31c.4-3 2.6-4 3-6.4-3-2-4.6-5-4.6-8.6a8.6 8.6 0 0 1 17.2-.4c0 1.4-.4 2.4-.8 3.2l1.9 2.8-1.7.8.4 2.4c.2 1.4-.9 2.4-2.3 2.3L29 27v4" style="fill:var(--lamp-soft)"/><path d="M18.6 13.6c2-3.6 7-5.6 11.6-3.6M19 18c1.4-.6 2.4 0 3 1"/><circle cx="29.4" cy="17.6" r=".9" style="fill:currentColor"/></symbol>
+<symbol id="em-books" viewBox="0 0 48 48"><path d="M3 42h42"/><rect x="7" y="13" width="8" height="29" rx="1"/><rect x="16" y="8" width="9" height="34" rx="1" style="fill:var(--lamp-soft)"/><path d="M26.5 41.6 33.6 11l7.8 1.8-7.1 30.6z"/><path d="M7 18h8M7 36h8M16 13h9M16 37h9M31.8 18.6l7.8 1.8M29 33.4l7.8 1.8"/></symbol>
+<symbol id="em-quill" viewBox="0 0 48 48"><path d="M13 35h18l2.4 9H10.6z" style="fill:var(--lamp-soft)"/><path d="M15.5 31h13v4h-13zM8 44h28"/><path d="M22 32C25 21 33 10 43 4c-1.6 10-7.6 21-17 28"/><path d="M22 32l-1.4 3M38 9.4c-4 4.6-8 11-12 18.6M33 13l3.6 1M29.6 19l3.8 1M27 24.6l3.4.8"/></symbol>
+<symbol id="em-light" viewBox="0 0 48 48"><path d="M18 42l3-25h6l3 25z" style="fill:var(--lamp-soft)"/><path d="M19.5 11h9v6h-9zM18 11l6-5.4 6 5.4M16.5 17h15M20.2 25h7.6M19.3 33h9.4M24 42v-4"/><path d="M31 12.6 44 9M31 15.4l13 3.6M17 12.6 4 9M17 15.4 4 19" stroke-dasharray="2 2"/><path d="M3 44c3-1.6 5-1.6 8 0s5 1.6 8 0M29 44c3-1.6 5-1.6 8 0s5 1.6 8 0"/></symbol>
+<symbol id="em-logbook" viewBox="0 0 48 48"><path d="M24 12c-5-3-12-4-19-3v29c7-1 14 0 19 3 5-3 12-4 19-3V9c-7-1-14 0-19 3z" style="fill:var(--lamp-soft)"/><path d="M24 12v29M9 16.5h10M9 21.5h10M9 26.5h8M29 16.5h10M29 21.5h10M29 26.5h6"/><path d="M33 37.6V46l2.5-2 2.5 2v-8.6" style="fill:currentColor"/></symbol>
+<symbol id="em-tide" viewBox="0 0 48 48"><circle cx="35" cy="12" r="6" style="fill:var(--lamp-soft)"/><path d="M3 25c4-3 7-3 10 0s6 3 10 0 6-3 10 0 6 3 10 0M3 33c4-3 7-3 10 0s6 3 10 0 6-3 10 0 6 3 10 0M3 41c4-3 7-3 10 0s6 3 10 0 6-3 10 0 6 3 10 0"/></symbol>
+<symbol id="ic-ship" viewBox="0 0 24 24"><path d="M12 3v13M12 4c3.6 2.6 5 6.4 5 10h-5zM11 6.4c-2.6 2-4 4.8-4.4 7.6H11M3 16.5h18l-2.6 4H5.8z"/></symbol>
+<symbol id="ic-trolley" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="11" rx="2.2" style="fill:var(--ic-fill,none)"/><path d="M5.5 9h5v3.5h-5zM13.5 9h5v3.5h-5zM9 6l3-3 3 3M2.5 14.5h19"/><circle cx="7.5" cy="19" r="1.7"/><circle cx="16.5" cy="19" r="1.7"/></symbol>
+<symbol id="ic-figure" viewBox="0 0 10 18"><g style="fill:currentColor;stroke:none"><circle cx="5" cy="2.6" r="2.4"/><path d="M1.2 7.4c0-1 .8-1.8 1.8-1.8h4c1 0 1.8.8 1.8 1.8v4.6H7.4V18H2.6v-6H1.2z"/></g></symbol>
+<symbol id="ic-die" viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="3.6"/><g style="fill:currentColor;stroke:none"><circle cx="8.2" cy="8.2" r="1.4"/><circle cx="15.8" cy="8.2" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="8.2" cy="15.8" r="1.4"/><circle cx="15.8" cy="15.8" r="1.4"/></g></symbol>
+<symbol id="ic-handshake" viewBox="0 0 24 24"><path d="M1.5 8.5 5 6.5l2.2 1M22.5 8.5 19 6.5l-5.4 1.8-3.4 3.1a1.2 1.2 0 0 0 1.6 1.8l2.4-1.6"/><path d="M5 6.5 3.2 14l2 1.9M19 6.5l1.8 7.5-6.6 6.2a1.6 1.6 0 0 1-2.2 0M5.2 15.9l1.6 1.5M7.8 13.6l3.4 3.2M9.6 12l3.6 3.4M6.8 17.4l2.2 2a1.6 1.6 0 0 0 2.2.1l.4-.3"/></symbol>
+<symbol id="ic-dagger" viewBox="0 0 24 24"><path d="M12 2l2 3v9h-4V5zM7 14h10M12 14v5"/><circle cx="12" cy="20.6" r="1.5"/></symbol>
+<symbol id="ic-bed" viewBox="0 0 24 24"><path d="M3 5.5v14M3 13.5h18v6M21 13.5v-1a2.5 2.5 0 0 0-2.5-2.5H10.5v3.5"/><rect x="5" y="9.5" width="4" height="4" rx="1.2"/></symbol>
+<symbol id="ic-hospital" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="17" rx="1.6"/><path d="M12 7.5v6M9 10.5h6M10 21v-3.6h4V21"/></symbol>
+<symbol id="ic-crown" viewBox="0 0 24 24"><path d="M3.5 17.5 2.5 7.5l5 4 4.5-7 4.5 7 5-4-1 10zM4 20.5h16"/></symbol>
+<symbol id="ic-wheat" viewBox="0 0 24 24"><path d="M12 22V5M12 8.4C9.8 7.6 9 5.6 9 3.6c2 .6 3 2.4 3 4.8zM12 8.4c2.2-.8 3-2.8 3-4.8-2 .6-3 2.4-3 4.8zM12 13c-2.2-.8-3-2.8-3-4.8 2 .6 3 2.4 3 4.8zM12 13c2.2-.8 3-2.8 3-4.8-2 .6-3 2.4-3 4.8zM12 17.6c-2.2-.8-3-2.8-3-4.8 2 .6 3 2.4 3 4.8zM12 17.6c2.2-.8 3-2.8 3-4.8-2 .6-3 2.4-3 4.8z"/></symbol>
+<symbol id="ic-wrench" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></symbol>
+<symbol id="ic-case" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8.5 7V5.2c0-.9.7-1.7 1.7-1.7h3.6c1 0 1.7.8 1.7 1.7V7M3 12.5h18M11 12.5v2h2v-2"/></symbol>
+<symbol id="ic-skull" viewBox="0 0 24 24"><path d="M12 3a8 8 0 0 0-8 8c0 2.6 1.2 4.4 3 5.6V20.5h10v-3.9c1.8-1.2 3-3 3-5.6a8 8 0 0 0-8-8zM10.2 20.5v-2.2M13.8 20.5v-2.2"/><g style="fill:currentColor;stroke:none"><circle cx="9" cy="11.6" r="1.8"/><circle cx="15" cy="11.6" r="1.8"/></g></symbol>
+<symbol id="ic-trophy" viewBox="0 0 24 24"><path d="M7 3.5h10v5.5a5 5 0 0 1-10 0zM7 5.5H4.2A3 3 0 0 0 7.4 10M17 5.5h2.8a3 3 0 0 1-3.2 4.5M12 14v3.5M8 21h8M9.5 17.5h5V21h-5z"/></symbol>
+<symbol id="ic-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5M12 14.5v2.4"/></symbol>
+</svg>
 
 <main id="view" tabindex="-1"></main>
+<nav class="helm" id="helm" aria-label="Sections">
+  <a href="#voyage" data-slot="voyage"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v13M12 4c3.6 2.6 5 6.4 5 10h-5zM11 6.4c-2.6 2-4 4.8-4.4 7.6H11M3 16.5h18l-2.6 4H5.8z"/></svg><span>Voyage</span></a>
+  <a href="#compass" data-slot="compass"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 5.5 14 12l-2 6.5-2-6.5z"/></svg><span>Compass</span></a>
+  <a href="#agora" data-slot="agora"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M8 20h8M4.5 7h15M4.5 7 2 13h5zM19.5 7 17 13h5z"/></svg><span>Debates</span></a>
+  <a href="#codex" data-slot="codex"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3.5h11v17L12 16.5l-5.5 4z"/></svg><span>Positions</span></a>
+  <button type="button" data-slot="more" data-act="helmMore" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg><span>More</span></button>
+</nav>
 
-<footer><div class="wrap row" style="justify-content:space-between">
-  <span>Philodyssey · part of Apollopedia</span>
+<footer class="shore"><div class="wrap row" style="justify-content:space-between">
+  <span class="shore-brand"><svg width="20" height="20" viewBox="0 0 30 30" aria-hidden="true"><path class="owl-b" d="M5 9 L9 4 L13 8 Q15 7 17 8 L21 4 L25 9 Q27 13 26 18 Q24 27 15 28 Q6 27 4 18 Q3 13 5 9Z" stroke-width="1.4"/><circle cx="10.5" cy="14" r="3.4" fill="none" stroke="currentColor" stroke-width="1.2"/><circle cx="19.5" cy="14" r="3.4" fill="none" stroke="currentColor" stroke-width="1.2"/></svg>Philodyssey · part of Apollopedia</span>
   <span>Positions and sources are summaries. Check the cited texts before quoting anyone.</span>
 </div></footer>
 
@@ -7130,7 +7367,6 @@ window.ATLAS_LIBRARY = {
 <script>window.ATLAS_MAP = {"islandTopics": {"academy": ["metaphysics", "knowledge"], "agora": ["knowledge", "ethics"], "anselm": ["religion", "logic"], "aquinas": ["religion", "metaphysics"], "augustine": ["religion", "ethics"], "bacon": ["science", "knowledge"], "berkeley": ["metaphysics", "knowledge"], "boethius": ["meaning", "freewill"], "buddha": ["identity", "eastern"], "confucius": ["ethics", "eastern"], "critical": ["politics", "knowledge"], "cynics": ["ethics", "meaning"], "dao": ["meaning", "eastern"], "descartes": ["skepticism", "mind"], "eastlight": ["knowledge", "eastern"], "elea": ["metaphysics", "time"], "existentialists": ["existentialism", "freewill"], "falsafa": ["mind", "religion"], "garden": ["ethics", "death"], "hegel": ["politics", "metaphysics"], "hemlock": ["ethics", "politics"], "hobbes": ["politics"], "hume": ["causation", "knowledge"], "incoherence": ["causation", "religion"], "justice": ["politics"], "kant": ["knowledge", "ethics"], "kierkegaard": ["existentialism", "religion"], "leibniz": ["religion", "metaphysics"], "locke": ["knowledge", "identity"], "logic": ["mathematics", "logic"], "lyceum": ["metaphysics", "science"], "machiavelli": ["politics", "ethics"], "maimonides": ["religion", "language"], "margins": ["politics"], "marx": ["politics"], "miletus": ["metaphysics", "science"], "mill": ["politics", "ethics"], "mind": ["mind"], "montaigne": ["skepticism"], "mozi_xunzi": ["ethics", "eastern"], "nagarjuna": ["metaphysics", "eastern"], "nicomachean": ["ethics", "meaning"], "nietzsche": ["metaethics", "existentialism"], "ockham": ["metaphysics", "language"], "parfit": ["identity", "death"], "pascal": ["religion"], "phenomenology": ["existentialism", "mind"], "plotinus": ["metaphysics", "religion"], "polis": ["politics"], "pragmatists": ["knowledge", "religion"], "reformation": ["religion", "freewill"], "republic": ["ethics", "politics"], "rousseau": ["politics"], "sceptics": ["skepticism"], "schopenhauer": ["meaning", "aesthetics"], "singer": ["ethics"], "sophists": ["metaethics", "knowledge"], "spinoza": ["freewill", "religion"], "stoa": ["ethics", "death"], "structures": ["language", "meaning"], "upanishads": ["identity", "eastern"], "vienna": ["language", "science"], "virtue": ["ethics"], "wittgenstein": ["language"], "wollstonecraft": ["politics", "ethics"], "gettier": ["knowledge", "skepticism"], "beauty": ["aesthetics"], "design": ["religion", "science"]}, "compassIslands": {"e1": ["virtue", "mill", "kant"], "e2": ["virtue", "kant", "mill"], "e2a": ["virtue", "kant"], "e3": ["singer", "mill"], "e6": ["singer"], "e4": ["kant", "mill", "nicomachean"], "e5": ["vienna", "sophists", "nietzsche"], "a1": ["beauty", "plotinus", "schopenhauer", "academy"], "a4": ["beauty", "schopenhauer", "nietzsche"], "a9": ["schopenhauer", "mind"], "a5": ["structures", "wittgenstein"], "a7": ["academy", "schopenhauer"], "a2": ["schopenhauer", "nietzsche", "plotinus"], "a8": ["schopenhauer", "nietzsche"], "a3": ["republic", "schopenhauer"], "m1": ["mind", "descartes", "falsafa"], "m6": ["mind"], "m2": ["buddha", "hume", "upanishads"], "m4": ["parfit", "locke", "buddha"], "m3": ["spinoza", "reformation", "existentialists"], "k4": ["gettier", "descartes", "sceptics", "montaigne"], "k11": ["gettier", "agora", "descartes"], "k3": ["kant", "locke", "academy"], "k13": ["pragmatists", "vienna", "wittgenstein"], "k1": ["vienna", "bacon", "pragmatists"], "k2": ["logic", "academy", "miletus"], "k12": ["nagarjuna", "buddha", "lyceum"], "k7": ["elea", "augustine"], "k8": ["hume", "incoherence"], "s7": ["hemlock", "hobbes"], "s8": ["justice"], "s10": ["mill", "rousseau", "existentialists"], "s3": ["polis", "republic", "rousseau"], "s4": ["mill"], "s5": ["mill"], "s13": ["mill", "justice"], "s12": ["singer", "justice"], "s1": ["hobbes", "structures", "mill"], "s6": ["marx", "hegel", "vienna"], "k9": ["design", "anselm", "aquinas", "pascal"], "k9k": ["augustine", "leibniz"], "k9l": ["pragmatists", "plotinus"], "k9g": ["design", "aquinas", "hume", "leibniz"], "k9h": ["design", "anselm", "aquinas", "pascal"], "k9i": ["pascal", "pragmatists", "kierkegaard"], "k9j": ["reformation", "maimonides", "pragmatists"], "l1": ["existentialists", "schopenhauer", "nicomachean"], "l3": ["nicomachean", "garden"], "l2": ["garden", "stoa"], "l5": ["hemlock", "buddha", "upanishads"], "l7": ["phenomenology", "garden"], "l8": ["schopenhauer"], "l6": ["stoa", "garden", "phenomenology"]}};
 </script>
 <script src="data/atlas-seminars.js"></script>
-<script src="data/atlas-logbook.js"></script>
 <script src="data/atlas-profiles-ext.js"></script>
 <script>// Philodyssey — extras: "Who said it?" quiz, question of the day, and 2020 PhilPapers Survey results.
 // Quiz items are paraphrases, not quotations. PhilPapers figures are the "accept or lean toward" (inclusive)
@@ -9898,12 +10134,14 @@ const T = [].concat(window.ATLAS_THINKERS_A || [], window.ATLAS_THINKERS_B || []
 const TH = {}; T.forEach(t => { if (!TH[t.id]) TH[t.id] = t; });
 // typographer's quotes for every piece of prose in the data files ("water is H2O" becomes “water is H2O”);
 // ids and keys never contain quote marks, so they pass through untouched
-(function smartQuotes() {
+// typographic quotes for every ATLAS_ data file; smartQuoteWalk(obj) is reused for data that loads later (the logbook)
+function smartQuoteWalk(obj) {
   const sq = s => s.replace(/\bH2O\b/g, "H\u2082O").replace(/(^|[\s(\[{\u2014\u2013\/-])"/g, "$1\u201C").replace(/"/g, "\u201D").replace(/(^|[\s(\[{\u201C\u2014\u2013\/-])'(?=\S)/g, "$1\u2018").replace(/'/g, "\u2019");
   const walk = o => { if (Array.isArray(o)) { for (let i = 0; i < o.length; i++) { if (typeof o[i] === "string") { if (/["']/.test(o[i])) o[i] = sq(o[i]); } else if (o[i] && typeof o[i] === "object") walk(o[i]); } }
     else if (o && typeof o === "object") for (const k in o) { const v = o[k]; if (typeof v === "string") { if (/["']/.test(v)) o[k] = sq(v); } else if (v && typeof v === "object") walk(v); } };
-  Object.keys(window).filter(k => /^ATLAS_/.test(k) && k !== "ATLAS_VOYAGE").forEach(k => { try { walk(window[k]); } catch (e) { } });
-})();
+  try { walk(obj); } catch (e) { }
+}
+Object.keys(window).filter(k => /^ATLAS_/.test(k) && k !== "ATLAS_VOYAGE").forEach(k => smartQuoteWalk(window[k]));
 // well-attested links the thinker records were missing ([learner, "from" | "against", other])
 [["voltaire", "from", "locke"], ["voltaire", "from", "bacon"], ["voltaire", "against", "leibniz"], ["voltaire", "against", "pascal"], ["voltaire", "against", "rousseau"],
  ["bentham", "from", "voltaire"], ["de_maistre", "against", "voltaire"],
@@ -10011,6 +10249,11 @@ const ERA_ORDER = ["ancient", "medieval", "early_modern", "modern", "contemporar
 const $ = (s, r) => (r || document).querySelector(s);
 const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
 const esc = s => String(s == null ? "" : s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+// art direction: engraved section emblems and line icons from the #emblems sprite (<use> needs the sprite in this document)
+const em = (id, cls) => '<svg class="' + (cls || "emblem") + '" aria-hidden="true" focusable="false"><use href="#em-' + id + '"/></svg>';
+const ic = (id, cls) => '<svg class="ic' + (cls ? " " + cls : "") + '" aria-hidden="true" focusable="false"><use href="#ic-' + id + '"/></svg>';
+// one head for every landing page: emblem, eyebrow, h1, lede, then any extra markup
+const pageHead = (emb, eyebrow, h1, lede, extra, cls) => '<header class="page-head' + (cls ? " " + cls : "") + '">' + em(emb) + '<span class="eyebrow">' + eyebrow + "</span><h1>" + h1 + "</h1>" + (lede ? '<p class="lede">' + lede + "</p>" : "") + (extra || "") + "</header>";
 const arr = x => Array.isArray(x) ? x : (x == null ? [] : [x]);
 function yr(n, approx) { if (n == null) return ""; const s = n < 0 ? (-n) + " BCE" : String(n); return (approx ? "c. " : "") + s; }
 function life(t) {
@@ -10202,9 +10445,31 @@ let after = [];
 let lastRoute = "";
 const ROUTE_ALIAS = { seminars: "seminar", discussion: "seminar", discuss: "seminar", philosophers: "thinkers", people: "thinkers", logbook: "codex", stargazing: "firmament", shipyard: "lab", timeline: "stoa", dictionary: "library", archive: "works", books: "works" };
 function route() { const h = decodeURIComponent(location.hash.slice(1)) || "home"; const i = h.indexOf("-"); const r = i < 0 ? { name: h, arg: "" } : { name: h.slice(0, i), arg: h.slice(i + 1) }; r.name = ROUTE_ALIAS[r.name] || r.name; return r; }
-function render(keepScroll) {
+// the five helm slots on phones; every other route lights "More"
+const HELM_SLOT = { voyage: "voyage", compass: "compass", quick: "compass", position: "compass", agora: "agora", seminar: "agora", duel: "agora", codex: "codex" };
+// navigate: a page change cross-fades through the View Transitions API where it exists (header held still);
+// in-place re-renders (keepScroll), same-route renders and reduced motion swap at once
+function render(keepScroll, nav) {
+  const r = route(), key0 = r.name + "-" + r.arg;
+  const go = () => { try { renderNow(keepScroll); } catch (e) { console.error(e); throw e; } };
+  if (nav && !keepScroll && key0 !== lastRoute && document.startViewTransition && lastRoute && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    try { document.startViewTransition(go); return; } catch (e) { }
+  }
+  go();
+}
+// load a data file once, on demand (the logbook is the only lazy one)
+const NEED = {};
+function need(name, src) { return NEED[name] || (NEED[name] = new Promise((res, rej) => { const s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = () => { delete NEED[name]; s.remove(); rej(); }; document.head.appendChild(s); })); }
+function lbLoad() { return lbInit.done ? Promise.resolve() : need("logbook", "data/atlas-logbook.js").then(() => { if (!lbInit.done && window.ATLAS_LOGBOOK) { smartQuoteWalk(window.ATLAS_LOGBOOK); lbInit(); } }); }
+function lbWaitView() {
+  lbLoad().then(() => { if (route().name === "codex" && lbInit.done) render(true); },
+    () => { const b = $("#lbWait"); if (b) b.innerHTML = '<p class="muted">Couldn’t load your logbook. Check your connection.</p><button class="btn" data-act="lbRetry" style="justify-self:start">Retry</button>'; });
+  return '<div class="wrap"><div class="stack nb-wide" style="--g:16px"><div class="stack page-head">' + em("logbook") + '<span class="eyebrow">My Positions</span><h1>Your notebook of stances</h1><p class="lede">Unrolling your logbook…</p></div>' +
+    '<div class="lb-loading" id="lbWait" role="status" aria-live="polite"><div class="bar" style="width:72%"></div><div class="bar"></div><div class="bar" style="width:86%"></div><div class="bar" style="width:58%"></div></div></div></div>';
+}
+function renderNow(keepScroll) {
   const r = route();
-  const fn = VIEWS[r.name] || VIEWS.home;
+  const fn = r.name === "codex" && !lbInit.done ? lbWaitView : VIEWS[r.name] || VIEWS.home;
   if (!VIEWS[r.name] && r.name !== "home") setTimeout(() => toast("There is no page at “#" + r.name + "”, so here is the home page."), 200);
   after = [];
   const view = $("#view");
@@ -10216,6 +10481,8 @@ function render(keepScroll) {
   view.classList.toggle("flush", r.name === "home" || r.name === "voyage" || (r.name === "seminar" && !!r.arg && !/\.all$/.test(r.arg)) || r.name === "thinker" || (r.name === "works" && !!WK[r.arg]) || !VIEWS[r.name]);
   { const lib = ["thinkers", "works", "library", "quiz", "thinker", "dictionary"].includes(r.name) || (innerWidth <= 1180 && ["seminar", "firmament", "stoa"].includes(r.name)); const b = $(".navlib-btn"); if (b) { b.classList.toggle("cur", lib); b.setAttribute("aria-expanded", "false"); } const m = $(".navlib-menu"); if (m) m.hidden = true; }
   $$("#nav a, .top .mypos, .navlib-menu a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (r.name === "position" ? "compass" : r.name) ? "page" : "false"));
+  { const slot = HELM_SLOT[r.name] || (r.name === "home" ? "" : "more"); $$(".helm [data-slot]").forEach(a => a.setAttribute("aria-current", a.dataset.slot === slot ? "page" : "false")); }
+  document.body.classList.toggle("in-deck", !!view.querySelector("[data-deck]"));
   // on narrow screens the nav strip scrolls; bring the current section into view
   const nv = $("#nav"), cur = $('#nav a[aria-current="page"]');
   if (nv && cur && nv.scrollWidth > nv.clientWidth + 1) { const a = cur.getBoundingClientRect(), b = nv.getBoundingClientRect(); nv.scrollLeft += (a.left + a.width / 2) - (b.left + b.width / 2); }
@@ -10228,7 +10495,7 @@ function softRender() {
   const r = route();
   if (["home", "compass", "lab"].includes(r.name) && !document.activeElement.matches("textarea,input")) render(true);
 }
-window.addEventListener("hashchange", () => { ACT.closeDrawer(); render(false); });
+window.addEventListener("hashchange", () => { ACT.closeDrawer(); render(false, true); });
 
 /* ------------------------------------------------------------- delegation */
 const ACT = {};
@@ -10326,7 +10593,16 @@ function openThinker(id) {
   if (opp.length) h += '<div class="stack" style="--g:6px"><span class="eyebrow">Argued against</span><div class="row">' + opp.map(id2 => '<button class="chip crack" data-act="thinker" data-id="' + esc(id2) + '">' + esc(nameOf(id2)) + "</button>").join("") + "</div></div>";
   openDrawer(h);
 }
+ACT.lbRetry = () => render(true);
 ACT.closeAndGo = el => { ACT.closeDrawer(); location.hash = el.getAttribute("href"); };
+// phones: the helm's "More" opens every other section as a sheet of emblems
+ACT.helmMore = () => {
+  const L = [["#seminar", "amph", "Seminars", "Discussion decks"], ["#firmament", "astrolabe", "Stargazing", "The sky of thinkers"], ["#stoa", "columns", "Timeline", "2,600 years, era by era"], ["#lab", "slipway", "Shipyard", "Play thought experiments"],
+    ["#thinkers", "bust", "Thinkers", "Every philosopher"], ["#works", "books", "Works", "The archive of books"], ["#library", "quill", "Dictionary", "Words philosophers use"], ["#quiz", "light", "Quiz", "Test yourself"], ["#duel", "scales", "Duel", "Two thinkers in the ring"]]
+    .concat(VIEWS.tide ? [["#tide", "tide", "The Tide", "Spaced review"]] : []).concat(VIEWS.log ? [["#log", "logbook", "Captain’s log", "Your progress"]] : []);
+  const cur = "#" + route().name;
+  openDrawer('<div class="stack" style="--g:14px"><span class="eyebrow">All sections</span><h2>Where to next?</h2><nav class="helm-more" aria-label="All sections">' + L.map(([h, e, t, d]) => '<a href="' + h + '" data-act="closeAndGo"' + (h === cur ? ' aria-current="page"' : "") + ">" + em(e) + "<b>" + t + "</b><small>" + d + "</small></a>").join("") + "</nav></div>");
+};
 
 /* ----------------------------------------------------------- compass logic */
 // The Compass is a set of question trees: a root question, then follow-ups shown only for some answers.
@@ -10729,14 +11005,12 @@ function hubHTML() {
     else if (done) act = '<a class="btn small primary" href="#compass-done.' + s.id + '">See your result</a><a class="btn small ghost" href="#compass-' + s.id + '">Revisit</a>';
     else if (n) act = '<a class="btn small primary" href="#compass-' + s.id + '">Continue</a><span class="faint" style="font-size:.84rem">' + n + " answered so far</span>";
     else act = '<a class="btn small" href="#compass-' + s.id + '">Start</a><span class="faint" style="font-size:.84rem">' + qs.length + " questions to start</span>";
-    return '<article class="hub-card' + (open ? "" : " locked") + (done ? " done" : "") + '"><span class="hub-num">Chapter ' + (ROMAN[i] || i + 1) + (s.locked ? " · the last stop" : "") + (done ? " · done" : "") + "</span><h3>" + esc(s.name) + "</h3><p>" + esc(s.blurb) + "</p>" +
+    return '<article class="hub-card' + (open ? "" : " locked") + (done ? " done" : "") + '"><span class="hub-num">' + (open ? "" : ic("lock")) + 'Chapter ' + (ROMAN[i] || i + 1) + (s.locked ? " · the last stop" : "") + (done ? " · done" : "") + "</span><h3>" + esc(s.name) + "</h3><p>" + esc(s.blurb) + "</p>" +
       (open ? '<div class="hub-meter" aria-hidden="true"><i style="width:' + Math.round(100 * (qs.length ? n / qs.length : 0)) + '%"></i></div>' : "") + '<div class="row">' + act + "</div></article>";
   }).join("");
   const any = Object.keys(S.answers).some(isAnswered);
-  return '<div class="wrap stack" style="--g:28px"><div class="sr-head"><span class="eyebrow">The Compass</span><h1>A tour through the big questions</h1>' +
-    '<p class="lede-i">Six chapters in any order, each with its own result. The seventh, Life and death, opens once you finish any two of Ethics, Mind and self, Knowledge and reality, and Society and politics.</p>' +
-    (any ? '<div class="row"><a class="btn" href="#compass-results">Your whole portrait</a><button class="btn ghost" data-act="review">Review all answers</button></div>' : "") +
-    '</div>' + (() => { const g = gapCandidates(); return g.length ? '<div class="gap-bar"><span><b>' + g.length + (g.length === 1 ? " question" : " questions") + "</b> left open in chapters you’ve started.</span><button class=\"btn small primary\" data-act=\"gapsStart\">Answer the unanswered questions →</button></div>" : ""; })() + '<a class="qk-promo" href="#quick-start"><span class="eyebrow">New here?</span><b>The Quick Compass: twenty-one quick questions</b><span>Short questions with plain answers, then your closest thinkers, a sharp opponent and where to go deeper. Your answers carry over into the chapters.</span><span class="qk-go">Start →</span></a><div class="hub">' + cards + "</div></div>";
+  return '<div class="wrap stack" style="--g:28px">' + pageHead("compass", "The Compass", "A tour through the big questions", "Six chapters in any order, each with its own result. The seventh, Life and death, opens once you finish any two of Ethics, Mind and self, Knowledge and reality, and Society and politics.",
+    any ? '<div class="row ph-actions"><a class="btn" href="#compass-results">Your whole portrait</a><button class="btn ghost" data-act="review">Review all answers</button></div>' : "") + (() => { const g = gapCandidates(); return g.length ? '<div class="gap-bar"><span><b>' + g.length + (g.length === 1 ? " question" : " questions") + "</b> left open in chapters you’ve started.</span><button class=\"btn small primary\" data-act=\"gapsStart\">Answer the unanswered questions →</button></div>" : ""; })() + '<a class="qk-promo" href="#quick-start"><span class="eyebrow">New here?</span><b>The Quick Compass: twenty-one quick questions</b><span>Short questions with plain answers, then your closest thinkers, a sharp opponent and where to go deeper. Your answers carry over into the chapters.</span><span class="qk-go">Start →</span></a><div class="hub">' + cards + "</div></div>";
 }
 
 /* ------------------------------------------------------- one question */
@@ -11450,27 +11724,35 @@ function resultsHTML() {
     '</div><div class="rhero-sky">' + skySVG(M) + "</div>" +
     '<div class="rhero-stats"><span><b>' + ans + "</b>answered</span><span><b>" + open + "</b>open " + (open === 1 ? "crack" : "cracks") + "</span><span><b>" + M.length + "</b>thinkers compared</span>" +
     '<span class="rhero-actions"><a href="#firmament-you">Your star in the sky</a><a href="#compass">Chapters</a><button data-act="review">Review answers</button><a href="#codex">My Positions</a></span></div></section>';
-  // a sticky contents bar: the portrait is long, so let people jump between its parts
-  h += '<nav class="rtoc" aria-label="On this page">' + [["r-close", "Closest"], far.length ? ["r-opp", "Opponents"] : null, ["r-read", "Reading"], ["r-fits", "Fits"], ["r-cracks", "Cracks"], ["r-ch", "By chapter"]].filter(Boolean).map(x => '<button data-act="scrollTo" data-t="' + x[0] + '">' + x[1] + "</button>").join("") + "</nav>";
-  h += '<section class="stack" id="r-close"><div class="row" style="justify-content:space-between"><h2>Closest to you</h2><span class="cq-mono">Ranked by views strongly shared × how alike overall</span></div>' +
-    (top.length ? '<div class="stack" style="--g:8px">' + top.map((m, i) => matchRow(m, false, i + 1)).join("") + "</div>" : '<p class="muted">Answer a few more questions; each match needs at least four question areas in common.</p>') +
-    (far.length ? '<h2 style="margin-top:18px" id="r-opp">Your fiercest opponents</h2><p class="faint" style="font-size:.84rem;margin-top:-4px">The thinker who disagrees with you most in each chapter, sharpest first.</p><div class="stack" style="--g:8px">' + far.map(m => matchRow(m, "Fiercest in " + m.where)).join("") + "</div>" : "") +
-    '<details class="howmatch"><summary>How matching works</summary><p class="faint" style="font-size:.8rem">Ranking multiplies two things: how many views you strongly share with a thinker (an exact match counts fully, a close neighbour most of the way) and how alike you are across everything you both answered. A thinker needs both many close agreements and few clashes. Match compares each question area with each thinker\'s best-documented positions. The first question in an area counts most and follow-ups refine it; areas like what makes actions right count more than single cases. Answers are weighted by how sure you are. Torn and “both” answers count half each. Some positions are scholarly readings rather than the thinker\'s own words; each profile names its sources.</p></details></section>';
-  // a reading list: one book by each of your closest thinkers, easiest first, from the Works archive
+  // a sticky contents bar: on a wide screen it jumps along the long portrait; up to 900px it is a set of tabs and only one part shows (S.rtab)
   const shelf = []; top.forEach(m => { const ws = worksBy(m.t.id).slice().sort((a, b) => (a.level || 2) - (b.level || 2) || a.year - b.year); if (ws[0] && shelf.length < 6) shelf.push([m, ws[0]]); });
-  if (shelf.length >= 2) h += '<section class="stack" id="r-read"><div class="row" style="justify-content:space-between"><h2>Your reading list</h2><a class="cq-mono linkish-quiet" href="#works">The whole archive</a></div><p class="faint" style="margin-top:-6px">One book by each of your closest thinkers, the most approachable first.</p><div class="wgrid">' +
+  const tabs = [["closest", "r-close", "Closest"], far.length ? ["opponents", "r-opp", "Opponents"] : null, shelf.length >= 2 ? ["reading", "r-read", "Reading"] : null, ["fits", "r-fits", "Fits"], ["cracks", "r-cracks", "Cracks"], ["chapters", "r-ch", "By chapter"]].filter(Boolean);
+  const rt = tabs.some(x => x[0] === S.rtab) ? S.rtab : "closest", on = k => ' data-rtab="' + k + '"';
+  after.push(() => $$("#view [data-rtab]").forEach(x => x.classList.toggle("on", x.dataset.rtab === rt)));
+  h += '<nav class="rtoc" aria-label="Parts of your portrait">' + tabs.map(x => '<button data-act="rtab" data-k="' + x[0] + '" data-t="' + x[1] + '" aria-pressed="' + (x[0] === rt) + '">' + x[2] + "</button>").join("") + "</nav>";
+  h += '<section class="stack' + (rt === "closest" ? " on" : "") + '" data-rtab="closest" id="r-close"><div class="row" style="justify-content:space-between"><h2>Closest to you</h2><span class="cq-mono">Ranked by views strongly shared × how alike overall</span></div>' +
+    (top.length ? '<div class="stack" style="--g:8px">' + top.map((m, i) => matchRow(m, false, i + 1)).join("") + "</div>" : '<p class="muted">Answer a few more questions; each match needs at least four question areas in common.</p>') +
+    '<details class="howmatch"><summary>How matching works</summary><p class="faint" style="font-size:.8rem">Ranking multiplies two things: how many views you strongly share with a thinker (an exact match counts fully, a close neighbour most of the way) and how alike you are across everything you both answered. A thinker needs both many close agreements and few clashes. Match compares each question area with each thinker\'s best-documented positions. The first question in an area counts most and follow-ups refine it; areas like what makes actions right count more than single cases. Answers are weighted by how sure you are. Torn and “both” answers count half each. Some positions are scholarly readings rather than the thinker\'s own words; each profile names its sources.</p></details></section>' +
+    (far.length ? '<section class="stack"' + on("opponents") + '><h2 id="r-opp">Your fiercest opponents</h2><p class="faint" style="font-size:.84rem;margin-top:-4px">The thinker who disagrees with you most in each chapter, sharpest first.</p><div class="stack" style="--g:8px">' + far.map(m => matchRow(m, "Fiercest in " + m.where)).join("") + "</div></section>" : "");
+  // a reading list: one book by each of your closest thinkers, easiest first, from the Works archive (built above)
+  if (shelf.length >= 2) h += '<section class="stack"' + on("reading") + ' id="r-read"><div class="row" style="justify-content:space-between"><h2>Your reading list</h2><a class="cq-mono linkish-quiet" href="#works">The whole archive</a></div><p class="faint" style="margin-top:-6px">One book by each of your closest thinkers, the most approachable first.</p><div class="wgrid">' +
     shelf.map(([m, w]) => wCard(w).replace('<span class="wc-yr">', '<span class="wc-yr">' + m.pct + "% alike · ")).join("") + "</div></section>";
-  h += '<div id="r-fits"></div>' + fitsHTML(compassFits());
-  if (T2.length) h += '<section class="stack" id="r-cracks"><div class="row" style="justify-content:space-between"><h2>Cracks in your answers</h2><span class="cq-mono">' + open + " open</span></div>" + T2.map(tensionHTML).join("") + "</section>";
-  else h += '<section class="panel" id="r-cracks"><b>No cracks found</b><p class="muted">None of the known clashes appear in your answers yet. Debates and My Positions will look for more.</p></section>';
-  h += '<div id="r-ch"></div>';
+  h += '<div class="stack"' + on("fits") + '><div id="r-fits"></div>' + fitsHTML(compassFits()) + "</div>";
+  if (T2.length) h += '<section class="stack"' + on("cracks") + ' id="r-cracks"><div class="row" style="justify-content:space-between"><h2>Cracks in your answers</h2><span class="cq-mono">' + open + " open</span></div>" + T2.map(tensionHTML).join("") + "</section>";
+  else h += '<section class="panel' + (rt === "cracks" ? " on" : "") + '" data-rtab="cracks" id="r-cracks"><b>No cracks found</b><p class="muted">None of the known clashes appear in your answers yet. Debates and My Positions will look for more.</p></section>';
+  h += '<div class="stack" style="--g:34px"' + on("chapters") + '><div id="r-ch"></div>';
   C.sections.forEach(sec => {
     const roots = rootsOf(sec.id).filter(r => pathOf(r).length || isAnswered(r));
     if (!roots.length) return;
     h += '<section class="stack"><div class="row" style="justify-content:space-between"><h2>' + esc(sec.name) + '</h2><a class="cq-mono linkish-quiet" href="#compass-done.' + sec.id + '">Chapter result</a></div><div class="stances">' + roots.map(r => stanceCard(r)).join("") + "</div></section>";
   });
-  return h + "</div>";
+  return h + "</div></div>";
 }
+// the portrait's parts: tabs up to 900px (no full render), a jump along the page above that
+ACT.rtab = el => { S.rtab = el.dataset.k; save();
+  $$("#view [data-rtab]").forEach(x => x.classList.toggle("on", x.dataset.rtab === S.rtab)); $$('#view .rtoc [data-act="rtab"]').forEach(b => b.setAttribute("aria-pressed", String(b === el)));
+  if (matchMedia("(max-width:900px)").matches) { const hero = $("#view .rhero"), y0 = hero ? hero.getBoundingClientRect().bottom + scrollY - 40 : 0; if (scrollY > y0) window.scrollTo({ top: y0 }); }
+  else ACT.scrollTo(el); };
 
 
 /* ============================================================ POSITION PROFILES */
@@ -11601,7 +11883,7 @@ VIEWS.agora = arg => {
   const order = C.sections.map(x => x.id).concat(["_more"]).filter(k => groups[k]);
   const nStarted = AG.questions.filter(q => agStarted(q.id)).length;
   const fchip = (k, t, n) => '<button class="chip" data-act="agFilter" data-k="' + k + '" aria-pressed="' + (F === k) + '">' + t + ' <span class="faint">' + n + "</span></button>";
-  return '<div class="wrap stack" style="--g:26px"><div class="ring stack" style="--g:12px"><span class="eyebrow" style="color:#E8B04A;align-self:center">Debates</span><h1 class="ring-h">' + cap(numWord(AG.questions.length)) + ' questions that never went away</h1><p class="read" style="max-width:36em;margin:0 auto">Each debate is a set of short arguments. Some support each other, some crack each other. Say where you stand, then read, then decide which arguments you can live with. <a href="#duel" style="color:#E8B04A">Or put two thinkers in the ring: Duel →</a></p></div>' +
+  return '<div class="wrap stack" style="--g:26px">' + pageHead("scales", "Debates", cap(numWord(AG.questions.length)) + " questions that never went away", "Each debate is a set of short arguments. Some support each other, some crack each other. Say where you stand, then read, then decide which arguments you can live with.", '<a class="cta-link" href="#duel">Or put two thinkers in the ring: Duel →</a>') +
     '<div class="ag-filter row" role="group" aria-label="Show debates">' + fchip("all", "All", AG.questions.length) + fchip("new", "Not started", AG.questions.length - nStarted) + fchip("open", "In progress", nStarted) + "</div>" +
     (order.length ? order.map(k => { const L = groups[k].slice().sort((a, b) => (agStarted(b.id) ? 1 : 0) - (agStarted(a.id) ? 1 : 0));
       return '<section class="stack ag-group" style="--g:12px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>' + esc(k === "_more" ? "More" : SEC[k].name || SEC[k].short) + '</h2><span class="faint">' + L.length + (L.length === 1 ? " debate" : " debates") + "</span></div>" + '<div class="qlist">' + L.map(tile).join("") + "</div></section>"; }).join("")
@@ -11617,7 +11899,7 @@ function agoraSemStrip() { if (typeof SEM_LIST === "undefined" || !SEM_LIST.leng
   return '<section class="panel stack sem-strip" style="--g:10px"><div class="row" style="justify-content:space-between"><span class="stack" style="--g:2px"><span class="eyebrow">Discussion decks</span><b>Take a debate to your club or class</b></span><a class="btn small" href="#seminar">All ' + SEM_LIST.length + ' seminars</a></div><p class="muted" style="font-size:.92rem;margin:0">Slide decks for a 50-minute session: votes, “ask the room” prompts, criticism cards and facilitator notes. Each one also works alone as a lesson.</p><div class="row" style="--g:6px">' + SEM_LIST.slice(0, 8).map(x => '<a class="chip lapis" href="#seminar-' + esc(x.sid) + '">' + esc(x.title) + "</a>").join("") + "</div></section>"; }
 function teaser(s) { s = String(s || "").trim(); const m = s.match(/^(.+?[.?!])(\s|$)/); if (!m) return s; if (m[1].length >= 70) return m[1]; const m2 = s.slice(m[0].length).match(/^(.+?[.?!])(\s|$)/); return m2 ? m[1] + " " + m2[1] : m[1]; }
 function agoraQuestion(q) {
-  after.push(() => { const r = $(".ring p.read"); if (r) glossify(r); }); // dictionary pop-ups for the debate's framing
+  after.push(() => { const r = $(".dq-head p.read"); if (r) glossify(r); }); // dictionary pop-ups for the debate's framing
   const cs = AG.cards.filter(c => c.q === q.id);
   const ownHere = S.own.filter(o => o.q === q.id);
   const pred = S.predictions[q.id];
@@ -12037,7 +12319,7 @@ function nbFront() { const n = NB(), F = nbFields(), shownF = F.filter(f => !n.h
   let set = 0; const rows = shownF.map((f, i) => { const h = nbHeadline(f), m = n.motto[f.id], w = (n.why[f.id] || "").split("\n").map(s => s.replace(/^[-•*]\s*/, "").trim()).filter(Boolean); if (h) set++;
     return '<a class="nb-row' + (h ? "" : " empty") + '" href="#codex-' + esc(f.id) + '"><span class="nb-num">' + (i + 1) + '</span><span class="nb-body"><span class="nb-line"><b>' + esc(f.name) + '</b><span class="nb-colon">:</span> ' + (h ? '<span class="nb-pos">' + esc(h.t) + "</span>" + (h.src === "compass" ? '<span class="nb-src" title="From your Compass answers; open to change it">Compass</span>' : "") + nbRecentFor(f) : '<span class="nb-none">not set</span>') + "</span>" + (() => { const g = h ? nbGloss(f) : ""; const sy = h && f.head ? nbAttLabels(f.head, "sym") : []; return (g && g !== h.t ? '<span class="nb-gloss">' + esc(g) + "</span>" : '<span class="nb-gloss faint">' + esc(h ? "" : f.sub) + "</span>") + (sy.length ? '<span class="nb-gloss">Sympathetic to ' + esc(sy.join(", ")) + "</span>" : ""); })() +
       (m ? '<span class="nb-motto">“' + esc(m.replace(/^["“]|["”]$/g, "")) + "”</span>" : "") + (w.length ? '<ul class="nb-why">' + w.slice(0, 3).map(s => "<li>" + esc(s) + "</li>").join("") + (w.length > 3 ? '<li class="faint">and ' + (w.length - 3) + " more</li>" : "") + "</ul>" : "") + '</span><span class="nb-edit">Edit</span></a>'; }).join("");
-  return '<section class="stack nb-front" style="--g:12px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>Where you stand</h2><span class="faint">' + set + " of " + shownF.length + ' fields set</span></div>' +
+  return '<section class="stack nb-front" style="--g:12px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2 class="sec-h">Where you stand</h2><span class="faint">' + set + " of " + shownF.length + ' fields set</span></div>' +
     '<p class="muted" style="margin-top:-4px">One line per field, like a page of your own notes. Open a field to see the problem, the main answers in plain words and who holds them, then pick the one you find most convincing. You can rename it, add reasons, or write your own.</p>' +
     '<div class="nb-list">' + rows + "</div>" + nbRecentHTML() +
     '<div class="row nb-tools" style="--g:8px"><button class="btn small" data-act="nbCopy">Copy as text</button><button class="btn small ghost" data-act="nbDownload">Download .txt</button>' +
@@ -12186,15 +12468,21 @@ function nbFieldPage(f) { const n = NB(), F = nbFields(), i = F.indexOf(f), qs =
    Data: window.ATLAS_LOGBOOK = { tabs: [...], questions: {id: q}, positions: {id: p} } (built by build_logbook.py).
    State: S.lb = { q: { qid: { hold, sym: [], ser: [], rej: [], mine: { title, stance, args: [{ t, x }] } } }, tab: { tid: { title, stance, args: [{ t, x }] } } }.
    A question linked to the Compass reads its starting answer from there and writes held answers back, so matches and cracks keep working. */
-const LB = window.ATLAS_LOGBOOK || { tabs: [], questions: {}, positions: {} };
-const LBT = {}; LB.tabs.forEach(t => { LBT[t.id] = t; });
-const LBQ = LB.questions, LBP = LB.positions;
-// Compass answer -> Logbook position, for opening full profiles from the Compass
-Object.values(LBQ).forEach(q => q.options.forEach(o => { o.key = o.id || o.pos; }));
-const LB_CPOS = {}; Object.values(LBQ).forEach(q => { if (q.compass) Object.entries(q.compass.map || {}).forEach(([k0, o]) => { const op = q.options.find(x => x.key === k0), p = op && op.pos, k = q.compass.q + "|" + o; if (p && !LB_CPOS[k] && LBP[p]) LB_CPOS[k] = p; }); });
+// The logbook (7.6 MB) loads lazily: when My Positions opens, or on idle after the first paint. Until then these are empty.
+let LB = { tabs: [], questions: {}, positions: {} }, LBT = {}, LBQ = {}, LBP = {}, LB_CPOS = {};
+function lbInit() {
+  if (!window.ATLAS_LOGBOOK || lbInit.done) return; lbInit.done = 1;
+  LB = window.ATLAS_LOGBOOK; LBT = {}; LB.tabs.forEach(t => { LBT[t.id] = t; });
+  LBQ = LB.questions; LBP = LB.positions;
+  // Compass answer -> Logbook position, for opening full profiles from the Compass
+  Object.values(LBQ).forEach(q => q.options.forEach(o => { o.key = o.id || o.pos; }));
+  LB_CPOS = {}; Object.values(LBQ).forEach(q => { if (q.compass) Object.entries(q.compass.map || {}).forEach(([k0, o]) => { const op = q.options.find(x => x.key === k0), p = op && op.pos, k = q.compass.q + "|" + o; if (p && !LB_CPOS[k] && LBP[p]) LB_CPOS[k] = p; }); });
+}
+lbInit(); // a host that bundles the logbook inline has it already
 function lbPosForCompass(q, o) { return LB_CPOS[q + "|" + o] || null; }
 const LB_ALIAS = { metaethics: "ethics", identity: "self", skepticism: "knowledge", vagueness: "language", mathematics: "language", meaning: "life", existentialism: "life", death: "life", time: "metaphysics", causation: "metaphysics" };
-function LBS() { S.lb = S.lb || {}; S.lb.q = S.lb.q || {}; S.lb.tab = S.lb.tab || {}; if (!LBS._my) { LBS._my = 1; lbMyQsLoad(); lbQedApply(); }
+function LBS() { if (!lbInit.done) return S.lb && S.lb.q && S.lb.tab ? S.lb : { q: {}, tab: {}, mig: {} }; // never migrate against empty data: old notebook text would be lost
+  S.lb = S.lb || {}; S.lb.q = S.lb.q || {}; S.lb.tab = S.lb.tab || {}; if (!LBS._my) { LBS._my = 1; lbMyQsLoad(); lbQedApply(); }
   if (!S.lb.migrated) { S.lb.migrated = 1; const n = S.nb || {}; // carry over what was written in the old notebook fields
     Object.keys(n.head || {}).concat(Object.keys(n.motto || {}), Object.keys(n.why || {})).forEach(f => { const t = LBT[f] ? f : LB_ALIAS[f]; if (!t || !LBT[t]) return; const T = S.lb.tab[t] = S.lb.tab[t] || { title: "", stance: "", args: [] };
       if (n.head && n.head[f] && !T.title) T.title = n.head[f]; if (n.motto && n.motto[f] && !T.stance) T.stance = n.motto[f];
@@ -12381,7 +12669,7 @@ function lbChecksHTML(q) { const L = lbChecksOf(q).filter(x => x.status !== "cra
   return '<div class="lb-checks stack" style="--g:6px">' + cr.map(x => lbCrackHTML(x, true)).join("") + (cr.some(x => x.status === "crack") ? "" : groups.map(line).join("")) + "</div>"; }
 // ---- the Ethics v2 layout: foundations, your framework in detail, cases
 function lbSecName(t, sec) { const N = CF(t).secNames || {}; if (N[sec]) return N[sec]; const hq = lbHeadQ(t), o = hq && lbOpt(hq.id, sec); return o ? (o.pos && LBP[o.pos] ? LBP[o.pos].name : o.lead) : sec.replace(/_/g, " "); }
-function lbBand(title, note, inner, cls) { return '<section class="lb-group lb-band' + (cls ? " " + cls : "") + '"><div class="lb-ghead"><h2>' + esc(title) + '</h2><p class="muted">' + note + "</p></div>" + inner + "</section>"; }
+function lbBand(title, note, inner, cls) { return '<section class="lb-group lb-band' + (cls ? " " + cls : "") + '"><div class="lb-ghead"><h2 class="sec-h">' + esc(title) + '</h2><p class="muted">' + note + "</p></div>" + inner + "</section>"; }
 function lbTiles(qs) { return '<div class="lb-tiles">' + qs.map(lbTileHTML).join("") + "</div>"; }
 function lbV2Bands(t) { const all = lbOrder(t), st = q => lbApply(q);
   const fnd = all.filter(q => q.band === "foundation"), fy = fnd.filter(q => st(q) === "yes"), fu = fnd.filter(q => st(q) === "unknown").length;
@@ -12451,7 +12739,7 @@ function lbOverviewHTML() { const rows = LB.tabs.map((t, i) => { const m = lbMai
       '<div class="lb-ocard-foot"><span class="lb-tab2-p"><i style="width:' + (tot ? Math.round(100 * n / tot) : 0) + '%"></i></span><span class="faint">' + n + "/" + tot + "</span>" + (cr ? '<span class="lb-ck crack">' + cr + (cr === 1 ? " tension" : " tensions") + "</span>" : "") +
       (nx ? '<a class="btn small" href="#codex-' + esc(t.id) + "." + esc(nx.id) + '">' + (m.title ? "Continue" : "Start") + " →</a>" : "") + "</div></article>"; }).join("");
   const core0 = LB.tabs.map(t => { const qs = t.qs.map(id => LBQ[id]).filter(q => q && q.tier === 1 && q.band !== "case" && !q.forQ); return qs.length ? '<div class="lb-core"><div class="row" style="justify-content:space-between;align-items:baseline"><h3>' + esc(t.name) + '</h3><a class="linkish" href="#codex-' + esc(t.id) + '">All ' + t.qs.length + " questions →</a></div>" + qs.map(q => '<div class="lb-coreq"><span class="lb-coreqt">' + esc(q.title) + ' <span class="faint">' + esc(q.text) + '</span></span><div class="lb-pills">' + q.options.map(o => { const a = lbAtt(q.id, o.key); return '<button class="lb-pill' + (a ? " " + a : "") + '" data-act="lbAtt" data-q="' + esc(q.id) + '" data-p="' + esc(o.key) + '" data-k="hold" title="' + esc(o.text) + '" aria-pressed="' + (a === "hold") + '">' + (a === "hold" ? "★ " : "") + esc(o.lead) + ' <small>' + esc((LBP[o.pos] || {}).name || "") + "</small></button>"; }).join("") + "</div></div>").join("") + "</div>" : ""; }).join("");
-  return '<section class="stack nb-front" style="--g:12px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>Where you stand</h2><span class="faint">' + LB.tabs.filter(t => lbMain(t).title).length + " of " + LB.tabs.length + " areas set</span></div>" +
+  return '<section class="stack nb-front" style="--g:12px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2 class="sec-h">Where you stand</h2><span class="faint">' + LB.tabs.filter(t => lbMain(t).title).length + " of " + LB.tabs.length + " areas set</span></div>" +
     '<div class="lb-search"><input id="lbSearch" type="search" placeholder="Search every question, case and position…" autocomplete="off"><div id="lbSearchRes" class="lb-search-res"></div></div><div class="lb-ogrid">' + rows + "</div>" + nbRecentHTML() +
     '<div class="row nb-tools" style="--g:8px"><button class="btn small" data-act="lbCopy">Copy as text</button><button class="btn small ghost" data-act="lbDownload">Download .txt</button></div></section>' +
     ""; }
@@ -12553,7 +12841,7 @@ function lbTabHTML(t, focus) { if (t.v2) return lbV2TabHTML(t, focus); const m =
     '<section class="nb-card stack lb-yours" style="--g:10px"><div class="row" style="justify-content:space-between;align-items:baseline"><span class="stack" style="--g:2px"><span class="eyebrow">Your position in ' + esc(t.name.toLowerCase()) + '</span><b class="nb-yours">' + (m.title ? esc(m.title) + (m.quals.length ? ' <span class="lb-quals">(' + esc(m.quals.join(", ")) + ")</span>" : "") : '<span class="faint">Not set yet: hold an answer to the core question below</span>') + "</b>" + (m.sym.length ? '<span class="nb-att">Sympathetic to ' + esc(m.sym.join(", ")) + "</span>" : "") + '</span><span class="faint" id="nbSaved" aria-live="polite"></span></div>' +
     "</section>" +
     (t.v2 ? lbV2Bands(t) : [[1, "The core questions", "Start here: the questions everything else in " + t.name.toLowerCase() + " builds on."], [2, "Major questions", "The big debates, each with its own named positions."], [3, "In more detail", "Finer points and famous puzzles, for when you want to go further."]].map(([tier, title, note]) => { const qs = lbOrder(t).filter(q => q.tier === tier && lbApplies(q)); if (!qs.length) return "";
-      return '<section class="lb-group"><div class="lb-ghead"><h2>' + esc(title) + '</h2><p class="muted">' + esc(note) + '</p></div><div class="lb-tiles">' + qs.map(lbTileHTML).join("") + "</div></section>"; }).join("") + (() => { const qs = lbOrder(t).filter(q => !lbApplies(q)); return qs.length ? '<details class="lb-group lb-notfor"><summary><b>Not for your position (' + qs.length + ')</b> <span class="faint">These assume a view you don’t hold, for example questions only consequentialists or theists need to answer. Open them if you’re curious.</span></summary><div class="lb-tiles">' + qs.map(lbTileHTML).join("") + "</div></details>" : ""; })()) +
+      return '<section class="lb-group"><div class="lb-ghead"><h2 class="sec-h">' + esc(title) + '</h2><p class="muted">' + esc(note) + '</p></div><div class="lb-tiles">' + qs.map(lbTileHTML).join("") + "</div></section>"; }).join("") + (() => { const qs = lbOrder(t).filter(q => !lbApplies(q)); return qs.length ? '<details class="lb-group lb-notfor"><summary><b>Not for your position (' + qs.length + ')</b> <span class="faint">These assume a view you don’t hold, for example questions only consequentialists or theists need to answer. Open them if you’re curious.</span></summary><div class="lb-tiles">' + qs.map(lbTileHTML).join("") + "</div></details>" : ""; })()) +
     '<nav class="row nb-step" style="justify-content:space-between">' + (() => { const i = LB.tabs.indexOf(t), a = LB.tabs[i - 1], b = LB.tabs[i + 1]; return (a ? '<a href="#codex-' + esc(a.id) + '">← ' + esc(a.name) + "</a>" : '<a href="#codex">← Overview</a>') + (b ? '<a href="#codex-' + esc(b.id) + '">' + esc(b.name) + " →</a>" : ""); })() + "</nav></div>"; }
 // ---- the whole notebook as text
 function lbText() { const L = ["My positions" + (S.name ? " · " + S.name : ""), ""]; let i = 0;
@@ -12772,8 +13060,8 @@ VIEWS.codex = arg => {
   const pos = visibleQs().filter(q => S.answers[q.id] && S.answers[q.id].a != null && S.answers[q.id].a !== "undecided");
   const acc = AG.cards.filter(c => S.cards[c.id] === "accept");
   const sorted = open.concat(tens.filter(t => S.resolutions[t.key]));
-  let h = '<div class="wrap"><div class="stack nb-wide lb-page" style="--g:16px"><div class="stack" style="--g:4px"><span class="eyebrow">My Positions</span><h1 class="lb-h1">Your notebook of stances</h1><p class="muted">Where you stand in each area, in your own words. Below, the tensions between things you hold.</p></div>' + (LB.tabs.length ? lbTabBar("") + lbOverviewHTML() : nbFront()) +
-    '<h2 style="margin-bottom:-8px">Cracks and inconsistencies</h2><div class="book stack" style="--g:16px"><div class="row" style="justify-content:space-between;align-items:flex-end"><div class="row" style="--g:28px;align-items:flex-end"><div><span class="eyebrow">Open conflicts</span><div class="score"' + (open.filter(t => t.type !== "tension").length ? ' style="color:var(--crack)"' : "") + ">" + open.filter(t => t.type !== "tension").length + '</div></div><div><span class="eyebrow">Tensions</span><div class="score">' + (open.filter(t => t.type === "tension").length + nbCr.length) + '</div></div><div><span class="eyebrow">Mended</span><div class="score">' + mended + '</div></div></div><div class="faint" style="text-align:right;font-size:.86rem">' + pos.length + " stances" + (answeredCount() > pos.length ? " (+" + (answeredCount() - pos.length) + " undecided)" : "") + " · " + acc.length + (acc.length === 1 ? " accepted argument" : " accepted arguments") + "<br>" + S.own.length + (S.own.length === 1 ? " argument you wrote" : " arguments you wrote") + "</div></div>" +
+  let h = '<div class="wrap"><div class="stack nb-wide lb-page" style="--g:16px"><div class="stack page-head">' + em("logbook") + '<span class="eyebrow">My Positions</span><h1 class="lb-h1">Your notebook of stances</h1><p class="lede">Where you stand in each area, in your own words. Below, the tensions between things you hold.</p></div>' + (LB.tabs.length ? lbTabBar("") + lbOverviewHTML() : nbFront()) +
+    '<h2 class="sec-h" style="margin-bottom:-8px">Cracks and inconsistencies</h2><div class="book stack" style="--g:16px"><div class="row" style="justify-content:space-between;align-items:flex-end"><div class="row" style="--g:28px;align-items:flex-end"><div><span class="eyebrow">Open conflicts</span><div class="score"' + (open.filter(t => t.type !== "tension").length ? ' style="color:var(--crack)"' : "") + ">" + open.filter(t => t.type !== "tension").length + '</div></div><div><span class="eyebrow">Tensions</span><div class="score">' + (open.filter(t => t.type === "tension").length + nbCr.length) + '</div></div><div><span class="eyebrow">Mended</span><div class="score">' + mended + '</div></div></div><div class="faint" style="text-align:right;font-size:.86rem">' + pos.length + " stances" + (answeredCount() > pos.length ? " (+" + (answeredCount() - pos.length) + " undecided)" : "") + " · " + acc.length + (acc.length === 1 ? " accepted argument" : " accepted arguments") + "<br>" + S.own.length + (S.own.length === 1 ? " argument you wrote" : " arguments you wrote") + "</div></div>" +
     '<p class="faint" style="font-size:.84rem">Each crack says what kind it is. A <b>contradiction</b> means two answers cannot both be true as worded. A <b>conflict if…</b> holds only if you accept a further premise, which is named, so rejecting it is a way out. A <b>tension</b> is not an error: both can be held, but it takes an explanation. Finding cracks is progress, not failure. You mend one by giving up a view, biting the bullet with a reason, or drawing a distinction.</p></div>';
   let empty;
   if (!pos.length && !acc.length) empty = '<div class="panel stack" style="--g:10px"><b class="read" style="font-size:1.1rem">You haven’t taken any positions yet, so there is nothing to test.</b><p class="muted">Two steps fill it: take a stand, then weigh the arguments against it.</p><div class="row"><a class="btn primary" href="#compass">1 · Take the Compass</a><a class="btn" href="#agora">2 · Try a debate</a></div></div>';
@@ -12790,10 +13078,10 @@ VIEWS.codex = arg => {
       '<div id="sparOut" class="ai" hidden></div><div id="sparReply" class="stack" style="--g:8px" hidden><textarea id="sparTxt" placeholder="Your reply to the objection"></textarea><div class="row"><button class="btn" data-act="sparReply">Send my reply</button></div><div id="sparJudge" class="ai" hidden></div></div></section>';
   }
   // stances, grouped by Compass chapter and folded so a full portrait doesn't become a 70-row wall
-  h += '<section class="stack"><h2>Arguments you accept</h2>' + (acc.length ? '<div class="book">' + acc.map(c => '<div class="page-line"><div><div class="faint" style="font-size:.8rem">' + esc((AGQ[c.q] || {}).title || "") + '</div><div class="read">' + esc(c.title) + (c.author && c.author !== "anon" ? ' <span class="faint">· ' + esc(nameOf(c.author)) + "</span>" : "") + '</div></div><a class="linkish" href="#agora-' + esc(c.q) + '" style="font-size:.84rem">Open</a></div>').join("") + "</div>" : '<p class="muted">None yet. Accept arguments in <a href="#agora">Debates</a>.</p>') + "</section>";
-  if (S.own.length) h += '<section class="stack"><h2>Arguments you wrote</h2><div class="book">' + S.own.map(o => '<div class="page-line"><div><div class="faint" style="font-size:.8rem">' + esc((AGQ[o.q] || {}).title || "") + '</div><div class="read">' + esc(o.claim) + '</div></div><a class="linkish" href="#agora-' + esc(o.q) + '" style="font-size:.84rem">Open</a></div>').join("") + "</div></section>";
+  h += '<section class="stack"><h2 class="sec-h">Arguments you accept</h2>' + (acc.length ? '<div class="book">' + acc.map(c => '<div class="page-line"><div><div class="faint" style="font-size:.8rem">' + esc((AGQ[c.q] || {}).title || "") + '</div><div class="read">' + esc(c.title) + (c.author && c.author !== "anon" ? ' <span class="faint">· ' + esc(nameOf(c.author)) + "</span>" : "") + '</div></div><a class="linkish" href="#agora-' + esc(c.q) + '" style="font-size:.84rem">Open</a></div>').join("") + "</div>" : '<p class="muted">None yet. Accept arguments in <a href="#agora">Debates</a>.</p>') + "</section>";
+  if (S.own.length) h += '<section class="stack"><h2 class="sec-h">Arguments you wrote</h2><div class="book">' + S.own.map(o => '<div class="page-line"><div><div class="faint" style="font-size:.8rem">' + esc((AGQ[o.q] || {}).title || "") + '</div><div class="read">' + esc(o.claim) + '</div></div><a class="linkish" href="#agora-' + esc(o.q) + '" style="font-size:.84rem">Open</a></div>').join("") + "</div></section>";
   const steel = Object.keys(S.steel || {}).filter(k => S.cards[k] === "reject" && CARDS[k]);
-  if (steel.length) h += '<section class="stack"><h2>Rejected after a fair hearing</h2><div class="book">' + steel.map(k => '<div class="page-line"><div><div class="faint" style="font-size:.8rem">' + esc(CARDS[k].title) + '</div><div class="read">“' + esc(S.steel[k]) + '”</div></div><a class="linkish" href="#agora-' + esc(CARDS[k].q) + '" data-act="gotoCard" data-card="' + esc(k) + '" style="font-size:.84rem">Revisit</a></div>').join("") + "</div></section>";
+  if (steel.length) h += '<section class="stack"><h2 class="sec-h">Rejected after a fair hearing</h2><div class="book">' + steel.map(k => '<div class="page-line"><div><div class="faint" style="font-size:.8rem">' + esc(CARDS[k].title) + '</div><div class="read">“' + esc(S.steel[k]) + '”</div></div><a class="linkish" href="#agora-' + esc(CARDS[k].q) + '" data-act="gotoCard" data-card="' + esc(k) + '" style="font-size:.84rem">Revisit</a></div>').join("") + "</div></section>";
   h += voyLogHTML();
   h += bookshelfLogHTML();
   h += '<section class="panel stack" style="--g:10px"><span class="eyebrow">Keep a copy</span><p class="muted" style="font-size:.9rem">Your positions live in this browser' + (CAP.db && CAP.uid ? " and in your account" : "") + '. Copy a backup code to move it to another device, or paste one to restore.</p><div class="row"><button class="btn small" data-act="exportCode">Copy backup code</button><button class="btn small ghost" data-act="importOpen">Restore from code</button></div><div id="importBox" class="stack" style="--g:8px" hidden><textarea id="importTxt" placeholder="Paste a backup code"></textarea><button class="btn small primary" data-act="importSave" style="align-self:flex-start">Restore</button></div></section>';
@@ -13006,7 +13294,7 @@ ACT.tpJump = (el, ev) => { if (ev) ev.preventDefault(); const s = document.getEl
 VIEWS.firmament = (arg) => {
   skyFocus = arg || ""; after.push(drawSky);
   const yp = skyYourPath(), ch = chartedStars();
-  return '<div class="wrap stack" style="--g:16px"><div class="stack" style="--g:6px"><span class="eyebrow">Stargazing</span><h1>The night sky of philosophy</h1><p class="muted read" style="max-width:68ch">Each star is a thinker, and each tradition a constellation. Drag and zoom to explore; point at or tap a star to see who it learned from and argued with. Try a <button class="linkbtn" data-act="skyOpen" data-w="skyStories">Story</button>, watch history unfold <button class="linkbtn" data-act="skyOpen" data-w="skyTime">Through time</button>, test yourself with <button class="linkbtn" data-act="skyOpen" data-w="skyGame">Name the stars</button>, or <button class="linkbtn" data-act="skyOpen" data-w="skyTrace">trace a lineage</button> between any two thinkers.</p></div>' +
+  return '<div class="wrap stack" style="--g:16px"><header class="page-head">' + em("astrolabe") + '<span class="eyebrow">Stargazing</span><h1>The night sky of philosophy</h1><p class="lede">Each star is a thinker, and each tradition a constellation. Drag and zoom to explore; point at or tap a star to see who it learned from and argued with. Try a <button class="linkbtn" data-act="skyOpen" data-w="skyStories">Story</button>, watch history unfold <button class="linkbtn" data-act="skyOpen" data-w="skyTime">Through time</button>, test yourself with <button class="linkbtn" data-act="skyOpen" data-w="skyGame">Name the stars</button>, or <button class="linkbtn" data-act="skyOpen" data-w="skyTrace">trace a lineage</button> between any two thinkers.</p></header>' +
     '<div class="sky" id="sky"><div class="sky-tools"><input type="search" id="skySearch" placeholder="Find a thinker" aria-label="Find a thinker">' +
     '<button class="sky-btn" id="skyStories" aria-expanded="false">✦ Stories</button><button class="sky-btn" id="skyTime">⏵ Through time</button><button class="sky-btn" id="skyGame">? Name the stars</button><button class="sky-btn" id="skyTrace">⇝ Trace a lineage</button>' +
     (matches().length ? '<button class="sky-btn" id="skyMine">☉ My star</button>' : "") + (ch.size ? '<button class="sky-btn" id="skyCharted" title="Stars from the Voyage islands you have finished">✧ Charted ' + ch.size + " of " + skyStarTotal() + "</button>" : "") + '<span id="skyMsg" class="sky-msg" role="status" aria-live="polite"></span></div>' +
@@ -13510,9 +13798,9 @@ const byBorn = ids => ids.filter(id => TH[id]).sort((a, b) => (TH[a].born == nul
 VIEWS.stoa = arg => {
   const school = arg ? LIB.schools.find(s => s.id === arg) : null;
   after.push(markEras);
-  const statue = (id, tag) => { const t = TH[id]; if (!t) return ""; const tr = tradOf(t); return '<button class="statue" data-act="thinker" data-id="' + esc(id) + '"><span class="bust" style="background:' + tr.color + '">' + esc(initials(t.name)) + '</span><span><b>' + esc(t.name) + "</b><small>" + esc(life(t) || "contemporary") + "</small>" + (tag && t.tagline ? '<small class="tag">' + esc(t.tagline) + "</small>" : "") + "</span></button>"; };
+  const statue = (id, tag) => { const t = TH[id]; if (!t) return ""; const tr = tradOf(t); return '<button class="statue" data-act="thinker" data-id="' + esc(id) + '"><span class="bust" style="--tc:' + tr.color + '">' + esc(initials(t.name)) + '</span><span><b>' + esc(t.name) + "</b><small>" + esc(life(t) || "contemporary") + "</small>" + (tag && t.tagline ? '<small class="tag">' + esc(t.tagline) + "</small>" : "") + "</span></button>"; };
   const filled = LIB.schools.filter(s => arr(s.members).some(id => TH[id]));
-  let h = '<div class="wrap stack" style="--g:20px"><div class="stack" style="--g:8px"><span class="eyebrow">Timeline</span><h1>A walk through 2,600 years</h1><p class="muted read">Each column is an era. Read what people were asking, then step up to the statues. Scroll sideways to walk forward in time. Eras overlap where traditions ran side by side.</p></div>' +
+  let h = '<div class="wrap stack" style="--g:20px">' + pageHead("columns", "Timeline", "A walk through 2,600 years", "Each column is an era. Read what people were asking, then step up to the statues. Scroll sideways to walk forward in time. Eras overlap where traditions ran side by side.") +
     '<div class="row" style="justify-content:space-between"><div class="row"><label class="faint" for="schoolPick" style="font-size:.86rem">Walk one school:</label><select id="schoolPick" style="border:1.5px solid var(--line);border-radius:10px;padding:8px;background:var(--raised)"><option value="">Every era (no filter)</option>' + filled.map(s => '<option value="' + esc(s.id) + '"' + (school && school.id === s.id ? " selected" : "") + ">" + esc(s.name) + "</option>").join("") + "</select></div>" +
     (school ? "" : '<div class="row" style="--g:6px"><span class="faint" id="erasWalked" style="font-size:.84rem">' + LIB.eras.filter(e => S.eras[e.id]).length + " of " + LIB.eras.length + ' eras walked</span><button class="btn small ghost" data-act="stoaStep" data-d="-1" aria-label="Earlier era">←</button><button class="btn small ghost" data-act="stoaStep" data-d="1" aria-label="Later era">→</button></div>') + "</div>";
   after.push(() => { const s = $("#schoolPick"); if (s) s.addEventListener("change", () => { location.hash = s.value ? "#stoa-" + s.value : "#stoa"; }); });
@@ -13547,26 +13835,34 @@ ACT.stoaStep = el => { const row = $("#stoaRow"); if (!row) return; const era = 
 
 
 /* ============================================================ THINKERS (the directory) */
-let thkTrad = "", thkQuery = "";
+let thkTrad = "", thkQuery = "", thkSort = "era";
+const THK_FOLD = 12; // each era shows its first twelve cards; search and the tradition filter still see every card
 const THK_ERAS = [["Born before 500 CE", -9999, 500], ["Born 500–1500", 500, 1500], ["Born 1500–1800", 1500, 1800], ["Born 1800–1900", 1800, 1900], ["Born 1900–1935", 1900, 1935], ["Born 1935–1950", 1935, 1950], ["Born after 1950", 1950, 9999]];
-function thkCard(t) { const tr = tradOf(t), x = PX[t.id], c = castOf(t.id);
-  return '<a class="thk" href="#thinker-' + esc(t.id) + '" data-tr="' + (tr ? tr.id : "") + '" data-s="' + esc(dKey(t.name + " " + (t.tagline || "") + " " + (t.region || "") + " " + (t.schools || []).join(" "))) + '">' + portraitHTML(c || { name: t.name }, "thk-pt") +
-    '<span class="thk-tx"><b>' + esc(t.name) + '</b><span class="faint">' + esc(life(t) || "dates unknown") + "</span>" + (t.tagline ? "<i>" + esc(t.tagline) + "</i>" : "") + "</span>" + (tr ? '<span class="thk-dot" style="background:' + tr.color + '" title="' + esc(tr.name) + '"></span>' : "") + "</a>"; }
+function thkCard(t, more, pct) { const tr = tradOf(t), x = PX[t.id], c = castOf(t.id);
+  return '<a class="thk" href="#thinker-' + esc(t.id) + '"' + (more ? " data-more" : "") + ' data-tr="' + (tr ? tr.id : "") + '" data-s="' + esc(dKey(t.name + " " + (t.tagline || "") + " " + (t.region || "") + " " + (t.schools || []).join(" "))) + '">' + portraitHTML(c || { name: t.name }, "thk-pt") +
+    '<span class="thk-tx"><b>' + esc(t.name) + '</b><span class="faint">' + esc(life(t) || "dates unknown") + "</span>" + (t.tagline ? "<i>" + esc(t.tagline) + "</i>" : "") + (pct != null ? '<span class="thk-pct">' + pct + "% alike</span>" : "") + "</span>" + (tr ? '<span class="thk-dot" style="background:' + tr.color + '" title="' + esc(tr.name) + '"></span>' : "") + "</a>"; }
 VIEWS.thinkers = () => {
   const L = T.filter(t => TH[t.id] === t);
   const groups = THK_ERAS.map(([n, a, b]) => [n, L.filter(t => t.born != null && t.born >= a && t.born < b).sort((x, y) => x.born - y.born)]).concat([["Dates unknown", L.filter(t => t.born == null).sort((a, b) => a.name.localeCompare(b.name))]]).filter(g => g[1].length);
   after.push(thkFilter);
   after.push(() => { const i = $("#thkSearch"); if (i) i.addEventListener("input", () => { thkQuery = i.value; thkFilter(); }); });
-  return '<div class="wrap stack" style="--g:20px"><div class="stack" style="--g:8px"><span class="eyebrow">The thinkers</span><h1>' + L.length + ' philosophers, from Thales to today</h1><p class="muted read" style="max-width:62ch">Each one has a page: their life, their big ideas, what people get wrong about them, the strongest objection, the books to start with, and where they appear on the Voyage, the Compass and in the sky.</p></div>' +
+  const M = matches().filter(m => m.t && TH[m.t.id] === m.t), near = thkSort === "near" && M.length;
+  const fold = (G, cards) => '<div class="thk-grid' + (G.length > THK_FOLD ? " folded" : "") + '">' + cards + "</div>" + (G.length > THK_FOLD ? '<button class="btn small ghost thk-more" data-act="thkMore">Show all ' + G.length + "</button>" : "");
+  const body = near ? '<section class="thk-era"><h2>Closest to you <span class="faint">' + M.length + "</span></h2>" + fold(M, M.map((m, i) => thkCard(m.t, i >= THK_FOLD, m.pct)).join("")) + "</section>"
+    : groups.map(([n, G]) => '<section class="thk-era"><h2>' + esc(n) + ' <span class="faint">' + G.length + "</span></h2>" + fold(G, G.map((t, i) => thkCard(t, i >= THK_FOLD)).join("")) + "</section>").join("");
+  return '<div class="wrap stack thk-page" style="--g:20px">' + pageHead("bust", "The thinkers", L.length + " philosophers, from Thales to today", "Each one has a page: their life, their big ideas, what people get wrong about them, the strongest objection, the books to start with, and where they appear on the Voyage, the Compass and in the sky.") +
     '<input type="search" id="thkSearch" placeholder="Search names, ideas, places" value="' + esc(thkQuery) + '" aria-label="Search thinkers">' +
     '<div class="seg" role="group" aria-label="Tradition"><button class="chip" data-act="thkTrad" data-v="" aria-pressed="' + !thkTrad + '">Every tradition</button>' + TRAD.map(tr => '<button class="chip" data-act="thkTrad" data-v="' + tr.id + '" aria-pressed="' + (thkTrad === tr.id) + '"><span class="dot" style="background:' + tr.color + '"></span>' + esc(tr.name) + "</button>").join("") + "</div>" +
-    '<p class="faint" id="thkCount" role="status" aria-live="polite"></p>' +
-    groups.map(([n, G]) => '<section class="thk-era"><h2>' + esc(n) + ' <span class="faint">' + G.length + '</span></h2><div class="thk-grid">' + G.map(thkCard).join("") + "</div></section>").join("") + "</div>";
+    (M.length ? '<div class="thk-sort" role="group" aria-label="Sort"><span class="faint">Sort:</span><button class="chip" data-act="thkSort" data-v="era" aria-pressed="' + !near + '">By era</button><button class="chip" data-act="thkSort" data-v="near" aria-pressed="' + !!near + '">Closest to you</button></div>' : "") +
+    '<p class="faint" id="thkCount" role="status" aria-live="polite"></p>' + body + "</div>";
 };
 function thkFilter() { const q = dKey(thkQuery.trim()); let n = 0;
   $$("#view .thk").forEach(el => { const ok = (!q || el.dataset.s.includes(q)) && (!thkTrad || el.dataset.tr === thkTrad); el.hidden = !ok; if (ok) n++; });
   $$("#view .thk-era").forEach(s => { const k = $$(".thk", s).filter(x => !x.hidden).length; s.hidden = !k; const c = $("h2 .faint", s); if (c) c.textContent = k; });
-  const c = $("#thkCount"); if (c) c.textContent = q || thkTrad ? (n ? n + (n === 1 ? " thinker matches" : " thinkers match") : "No thinker matches.") : ""; }
+  const c = $("#thkCount"); if (c) c.textContent = q || thkTrad ? (n ? n + (n === 1 ? " thinker matches" : " thinkers match") : "No thinker matches.") : "";
+  const pg = $("#view .thk-page"); if (pg) pg.classList.toggle("searching", !!(q || thkTrad)); }
+ACT.thkMore = el => { const g = el.previousElementSibling; if (g) g.classList.remove("folded"); el.remove(); };
+ACT.thkSort = el => { thkSort = el.dataset.v === "near" ? "near" : "era"; render(true); };
 ACT.thkTrad = el => { thkTrad = el.dataset.v; $$('[data-act="thkTrad"]').forEach(b => b.setAttribute("aria-pressed", String(b === el))); thkFilter(); };
 
 /* =============================================================== WORKS (the archive) */
@@ -13622,18 +13918,23 @@ function wRows() { $$("#view .subshelf").forEach(sh => { const box = $(".shelf-r
   if (row.length) rows.push(row);
   const wide = Math.max(0, ...rows.map(r => r.filter(b => !b.hidden).reduce((t, b) => t + parseFloat(b.style.width) + 3, 0))); sh.style.width = Math.min(W + 12, Math.max(200, wide + 12)) + "px";
   box.innerHTML = ""; rows.forEach(r => { const d = document.createElement("div"); d.className = "shelf-row"; r.forEach(b => d.appendChild(b)); const g = document.createElement("div"); g.className = "shelf-board"; box.appendChild(d); box.appendChild(g); }); }); }
+// crossing the phone breakpoint re-renders the archive, so the shelves fold or unfold
+try { matchMedia("(max-width:640px)").addEventListener("change", () => { const r = route(); if (r.name === "works" && !r.arg) render(true); }); } catch (e) { }
 let wRowsT; window.addEventListener("resize", () => { clearTimeout(wRowsT); wRowsT = setTimeout(() => { if ($("#view .subshelf")) wRows(); }, 120); });
 function wCard(w) { return '<a class="wcard" href="#works-' + esc(w.id) + '" data-w="' + esc(w.id) + '"><span class="wc-bar" style="--c:' + wColor(w) + '"></span><span class="wc-yr">' + esc(yrTxt(w.year)) + '</span><b>' + esc(w.title) + '</b><span class="wc-au">' + esc(wAuthor(w)) + " · " + esc(w.form || "") + "</span><p>" + esc(w.summary) + '</p><span class="wc-lv">' + wDots(w) + " " + esc(WLEVEL[w.level || 1]) + "</span></a>"; }
 VIEWS.works = arg => {
   if (arg && WK[arg]) return workPage(WK[arg]);
   if (arg) return workMissing(arg);
   if (!WORKS.length) return '<div class="wrap stack"><span class="eyebrow">The Archive</span><h1>Works</h1><p class="muted">The archive is being catalogued.</p></div>';
-  const shelves = W_ERAS.map(([k, n, a, b]) => { const L = wInEra(k); return L.length ? '<section class="shelf" data-era="' + k + '"><header><h2>' + n + '</h2><span class="faint">' + L.length + " works · " + yrTxt(a) + "–" + (b >= 2000 ? "today" : yrTxt(b)) + "</span></header><div class=\"subshelves\">" + wShelvesOf(k).map(s => '<div class="subshelf" data-shelf="' + esc(s.id) + '">' + (s.name ? "<h3>" + esc(s.name) + ' <span class="faint">' + s.L.length + "</span></h3>" : "") + '<div class="shelf-rows">' + s.L.map(wSpine).join("") + "</div></div>").join("") + "</div></section>" : ""; }).join("");
+  // phones: every era shelf after the first folds into a disclosure (wRows measures, so it re-runs on toggle)
+  const phone = matchMedia("(max-width:640px)").matches; let nShelf = 0;
+  const shelves = W_ERAS.map(([k, n, a, b]) => { const L = wInEra(k); if (!L.length) return ""; const f = phone && nShelf++ > 0; return (f ? '<details class="shelf-fold" data-era="' + k + '"><summary><b>' + n + '</b><span class="faint">' + L.length + " works · " + yrTxt(a) + "–" + (b >= 2000 ? "today" : yrTxt(b)) + "</span></summary>" : "") + '<section class="shelf" data-era="' + k + '"><header><h2>' + n + '</h2><span class="faint">' + L.length + " works · " + yrTxt(a) + "–" + (b >= 2000 ? "today" : yrTxt(b)) + "</span></header><div class=\"subshelves\">" + wShelvesOf(k).map(s => '<div class="subshelf" data-shelf="' + esc(s.id) + '">' + (s.name ? "<h3>" + esc(s.name) + ' <span class="faint">' + s.L.length + "</span></h3>" : "") + '<div class="shelf-rows">' + s.L.map(wSpine).join("") + "</div></div>").join("") + "</div></section>" + (f ? "</details>" : ""); }).join("");
+  after.push(() => $$("#view .shelf-fold").forEach(d => d.addEventListener("toggle", () => { if (d.open) wRows(); })));
   const legend = '<div class="wk-legend" role="group" aria-label="Colour shows the main topic"><span class="faint">Colour = main topic:</span>' + W_TOPICS.map(t => '<button class="wk-key" data-act="wkKey" data-t="' + esc(t) + '" aria-pressed="' + (wkTopic === t) + '"><i style="background:' + W_TOPIC_COLOR[t] + '"></i>' + esc(cap(t)) + "</button>").join("") + "</div>";
   const list = W_ERAS.map(([k, n, a, b]) => { const L = wInEra(k); return L.length ? '<section class="wlist-era" data-era="' + k + '"><h2>' + n + '</h2><div class="wgrid">' + L.map(wCard).join("") + "</div></section>" : ""; }).join("");
   after.push(wFilter);
   after.push(() => { const i = $("#wkSearch"); if (i) i.addEventListener("input", () => { wkQuery = i.value; wFilter(); }); const s = $("#wkTopic"); if (s) s.addEventListener("change", () => { wkTopic = s.value; wFilter(); }); });
-  return '<div class="wrap stack" style="--g:20px"><div class="stack" style="--g:8px"><span class="eyebrow">The Archive</span><h1>' + WORKS.length + ' works that moved the argument</h1><p class="muted read" style="max-width:62ch">From the Upanishads to the trolley problem: what each book argues, why it still matters, and exactly where a beginner should start reading. Every spine opens a page.</p></div>' +
+  return '<div class="wrap stack" style="--g:20px">' + pageHead("books", "The Archive", WORKS.length + " works that moved the argument", "From the Upanishads to the trolley problem: what each book argues, why it still matters, and exactly where a beginner should start reading. Every spine opens a page.") +
     '<div class="wk-tools"><input type="search" id="wkSearch" list="wkSuggest" placeholder="Find a book, a thinker or an idea (try “free will”)" value="' + esc(wkQuery) + '" aria-label="Search the archive"><datalist id="wkSuggest">' + [...new Set(WORKS.map(wAuthor).concat(WORKS.flatMap(w => arr(w.tags)), WORKS.map(w => w.title)))].sort((a, b) => a.localeCompare(b)).map(x => '<option value="' + esc(x) + '">').join("") + '</datalist><select id="wkTopic" aria-label="Topic"><option value="">Every topic</option>' + W_TOPICS.map(t => '<option value="' + t + '"' + (wkTopic === t ? " selected" : "") + ">" + cap(t) + "</option>").join("") + "</select>" +
     '<div class="seg" role="group" aria-label="Difficulty">' + [[0, "Any level"], [1, "Easy first reads"], [2, "Needs patience"], [3, "Hard"]].concat(Object.keys(S.books || {}).length ? [[-1, "★ My shelf (" + Object.keys(S.books).length + ")"]] : []).map(([v, n]) => '<button class="chip" data-act="wkLevel" data-v="' + v + '" aria-pressed="' + (wkLevel === v) + '">' + n + "</button>").join("") + "</div>" +
     '<div class="seg" role="group" aria-label="View"><button class="chip" data-act="wkView" data-v="shelf" aria-pressed="' + (wkView === "shelf") + '">Shelves</button><button class="chip" data-act="wkView" data-v="list" aria-pressed="' + (wkView === "list") + '">List</button></div></div>' +
@@ -13645,6 +13946,7 @@ VIEWS.works = arg => {
 function wFilter() { let n = 0; const on = !!(wkQuery.trim() || wkTopic || wkLevel);
   $$("#view .shelves [data-w], #view .wlist [data-w]").forEach(el => { const ok = wMatch(WK[el.dataset.w]); el.hidden = !ok; if (ok) n++; });
   $$("#view .subshelf, #view .shelf, #view .wlist-era").forEach(s => { s.hidden = !$$("[data-w]", s).some(x => !x.hidden); });
+  $$("#view .shelf-fold").forEach(d => { const sh = $(".shelf", d); d.hidden = !!(sh && sh.hidden); if (on && !d.hidden) d.open = true; });
   const st = $("#view .wk-start"); if (st) st.hidden = on; wRows(); $$('[data-act="wkKey"]').forEach(b => b.setAttribute("aria-pressed", String(b.dataset.t === wkTopic)));
   const c = $("#wkCount"); if (c) c.textContent = n === WORKS.length ? "" : n ? n + " of " + WORKS.length + " works match" : "Nothing in the archive matches" + (wkQuery.trim() ? " “" + wkQuery.trim() + "”" : "") + ". Try another word, or press / to search the whole site."; }
 ACT.wkTag = el => { wkQuery = el.dataset.t; wkTopic = ""; wkLevel = 0; wkView = "shelf"; location.hash = "#works"; };
@@ -13732,7 +14034,7 @@ VIEWS.library = (arg) => {
   }
   // filter in place (no re-render), so typing stays smooth and IME composition (e.g. Chinese input) isn't interrupted
   after.push(() => { libFilter(); const i = $("#libSearch"); let t; if (i) i.addEventListener("input", () => { libQuery = i.value; clearTimeout(t); t = setTimeout(libFilter, 120); }); });
-  return '<div class="wrap"><div class="col stack" style="--g:16px"><div class="stack" style="--g:8px"><span class="eyebrow">The Dictionary</span><h1>' + LIB.glossary.length + ' words philosophers use</h1></div>' +
+  return '<div class="wrap"><div class="col stack" style="--g:16px">' + pageHead("quill", "The Dictionary", LIB.glossary.length + " words philosophers use") +
     '<div class="stack" style="--g:8px"><input type="search" id="libSearch" placeholder="Search a word, a thinker or an idea" value="' + esc(libQuery) + '" aria-label="Search the dictionary" autocomplete="off">' +
     (libTab === "glossary" ? '<div class="d-ftags" role="group" aria-label="Field"><button data-act="dField" data-f="" aria-pressed="' + !dField + '">All</button>' + [...new Set(LIB.glossary.map(g => g.field).filter(Boolean))].sort().map(f => '<button data-act="dField" data-f="' + esc(f) + '" aria-pressed="' + (dField === f) + '">' + esc(f) + "</button>").join("") + "</div>" : "") + "</div>" +
     '<div class="tabs" role="tablist">' + [["glossary", "Dictionary (" + LIB.glossary.length + ")"], ["experiments", "Thought experiments (" + LIB.experiments.length + ")"], ["schools", "Schools (" + LIB.schools.length + ")"]].map(([k, n]) => '<button role="tab" aria-selected="' + (libTab === k) + '" data-act="libTab" data-k="' + k + '">' + n + "</button>").join("") + "</div>" + body + '<p class="muted" id="libNone" style="padding:20px 0" hidden></p></div></div>';
@@ -13830,7 +14132,7 @@ function labVeil() { const L = veilState(), C = veilCalc(L.w), maxInc = Math.max
     '<div class="panel stack" style="--g:12px"><div class="row" style="justify-content:space-between"><span class="eyebrow">Your society</span><span class="faint" style="font-size:.84rem">Size of the pie: <b>' + C.pie + '</b> · inequality ' + Math.round(100 * C.g) + '%</span></div><div class="vbars" id="vbars">' + bars + '</div>' +
     '<p class="faint" style="font-size:.8rem;margin:0">Numbers are income per person. In this toy world some inequality grows the pie, because people work harder for bigger rewards, but too much stops paying off; and each extra coin matters less the more you already have.</p>' +
     '<div class="row" style="--g:8px"><button class="btn small ghost" data-act="veilPreset" data-p="equal">All equal</button><button class="btn small ghost" data-act="veilPreset" data-p="rawls">Rawls</button><button class="btn small ghost" data-act="veilPreset" data-p="steep">Winner takes most</button></div></div>' +
-    '<div class="panel raised stack veil-born" style="--g:10px"><span class="eyebrow">Behind the veil</span><div class="vpeople" id="vpeople">' + VEIL_NAMES.map((n, i) => '<span class="vp" data-i="' + i + '">' + ["🧑‍🌾", "🧑‍🔧", "🧑‍💼", "🧑‍⚕️", "🤴"][i] + "</span>").join("") + '</div>' +
+    '<div class="panel raised stack veil-born" style="--g:10px"><span class="eyebrow">Behind the veil</span><div class="vpeople" id="vpeople">' + VEIL_NAMES.map((n, i) => '<span class="vp" data-i="' + i + '" title="' + esc(n) + '">' + ic(["wheat", "wrench", "case", "hospital", "crown"][i]) + "</span>").join("") + '</div>' +
     '<div class="row" style="justify-content:center"><button class="btn primary" data-act="veilBorn">' + (lives.length ? "Be born again" : "Be born") + "</button></div>" +
     (lives.length ? '<p class="read" style="text-align:center;margin:0">' + lives.map(x => VEIL_NAMES[x.i] + " (" + x.wb + ")").join(" · ") + '</p><p style="text-align:center;margin:0">Your life score so far: <b class="vscore">' + score + "</b>" + (L.best ? ' <span class="faint">· best ' + L.best + "</span>" : "") + "</p>" : "") + "</div>";
   if (lives.length >= 5) { L.done = true;
@@ -13866,13 +14168,16 @@ const GAUNT = [
 ];
 function gauntState() { return S.lab.gauntlet = S.lab.gauntlet || { v: {} }; }
 function gauntScene(c) {
-  if (c.scene === "hospital") return '<div class="gscene hosp"><span class="gbig">🏥</span><span class="glab">5 patients 🛏️🛏️🛏️🛏️🛏️</span><span class="glab">1 visitor 🧍</span></div>';
-  if (c.scene === "bridge") return '<svg class="gscene" viewBox="0 0 400 150" aria-hidden="true"><line x1="0" y1="120" x2="400" y2="120" class="trk"/><rect x="170" y="40" width="90" height="10" class="brg"/><text x="200" y="36" font-size="26">' + (c.id === "trapdoor" ? "🧍⬛" : "🧍🙋") + '</text><text x="20" y="115" font-size="26" class="gtrolley">🚃</text><text x="320" y="115" font-size="20">🧍🧍🧍🧍🧍</text></svg>';
+  if (c.scene === "hospital") return '<div class="gscene hosp"><span class="gbig">' + ic("hospital") + '</span><span class="glab">5 patients <span class="gbeds">' + ic("bed").repeat(5) + '</span></span><span class="glab">1 visitor ' + ic("figure", "fig") + "</span></div>";
+  if (c.scene === "bridge") return '<svg class="gscene" viewBox="0 0 400 150" aria-hidden="true"><line x1="0" y1="120" x2="400" y2="120" class="trk"/><rect x="170" y="40" width="90" height="10" class="brg"/>' + gFig(200, 18, 22, "") + (c.id === "trapdoor" ? '<rect x="194" y="40" width="24" height="10" class="gtrap"/>' : gFig(226, 18, 22, "you")) + '<use href="#ic-trolley" class="gtrolley" x="14" y="80" width="48" height="40"/>' + gFigs(5, 296, 98, 16) + "</svg>";
   const loop = c.scene === "loop", two = c.id === "two";
-  return '<svg class="gscene" viewBox="0 0 400 150" aria-hidden="true"><path d="M0 60 H400" class="trk"/><path d="M120 60 C170 60 180 115 240 115 H' + (loop ? "330 C370 115 380 60 400 60" : "400") + '" class="trk side"/><text x="10" y="55" font-size="26" class="gtrolley">🚃</text><text x="300" y="52" font-size="20">' + (two ? "🧍🧍" : "🧍🧍🧍🧍🧍") + '</text><text x="255" y="108" font-size="20">' + (c.id === "sister" ? "👩" : "🧍") + "</text>" + (c.id === "self" ? '<path d="M120 60 C160 60 170 15 230 15 H400" class="trk side"/><text x="255" y="10" font-size="18">🫵</text>' : "") + "</svg>"; }
+  return '<svg class="gscene" viewBox="0 0 400 150" aria-hidden="true"><path d="M0 60 H400" class="trk"/><path d="M120 60 C170 60 180 115 240 115 H' + (loop ? "330 C370 115 380 60 400 60" : "400") + '" class="trk side"/><use href="#ic-trolley" class="gtrolley" x="6" y="22" width="48" height="40"/>' + gFigs(two ? 2 : 5, 296, 38, 16) + gFig(258, 93, 20, c.id === "sister" ? "kin" : "") + (c.id === "self" ? '<path d="M120 60 C160 60 170 15 230 15 H400" class="trk side"/>' + gFig(258, 0, 15, "you") : "") + "</svg>"; }
+// trolley-scene people: one figure is 10×18; counts carry meaning, so draw exactly n
+function gFig(x, y, h, cls) { return '<use href="#ic-figure" class="gfig' + (cls ? " " + cls : "") + '" x="' + x + '" y="' + y + '" width="' + Math.round(h * 10 / 18) + '" height="' + h + '"/>'; }
+function gFigs(n, x, y, step) { let o = ""; for (let i = 0; i < n; i++) o += gFig(x + i * step, y, 20, ""); return o; }
 function labGauntlet() { const L = gauntState(), i = GAUNT.findIndex(c => !L.v[c.id]), done = i < 0;
   const dead = GAUNT.reduce((a, c) => { const v = L.v[c.id]; if (!v) return a; if (c.three) { const o = c.three.find(x => x[2] === v); return a + (o ? o[1] : 0); } return a + (v === "act" ? c.kill[0] : c.kill[1]); }, 0);
-  let h = '<div class="gtop"><span class="faint">Case ' + Math.min(GAUNT.length, done ? GAUNT.length : i + 1) + " of " + GAUNT.length + '</span><div class="gprog"><i style="width:' + Math.round(100 * Object.keys(L.v).length / GAUNT.length) + '%"></i></div><span class="gdead">☠ ' + dead + "</span></div>";
+  let h = '<div class="gtop"><span class="faint">Case ' + Math.min(GAUNT.length, done ? GAUNT.length : i + 1) + " of " + GAUNT.length + '</span><div class="gprog"><i style="width:' + Math.round(100 * Object.keys(L.v).length / GAUNT.length) + '%"></i></div><span class="gdead" aria-label="Lives lost">' + ic("skull") + " " + dead + "</span></div>";
   if (!done) { const c = GAUNT[i];
     h += '<div class="panel stack gcard" style="--g:12px"><span class="eyebrow">' + esc(c.by) + "</span><h2>" + esc(c.t) + "</h2>" + gauntScene(c) + '<p class="read">' + esc(c.d) + "</p>" +
       (c.three ? '<div class="row" style="--g:8px">' + c.three.map(o => '<button class="btn" data-act="gauntPick" data-v="' + o[2] + '">' + esc(o[0]) + "</button>").join("") + "</div>" :
@@ -13906,7 +14211,7 @@ function gauntResult(L, dead) { L.done = true; const v = id => L.v[id], yes = id
   if (v("self")) P.push(v("self") === "selfdie" ? { k: "self", t: "You took the third track", d: "You’d die yourself rather than kill a stranger. Thomson (2008) used exactly this case to argue that if you wouldn’t pay the cost yourself, you may not make someone else pay it." } : v("self") === "other" ? { k: "self", t: "You chose the stranger over yourself", d: "Thomson (2008) argued this is the hard spot: if you won’t give your own life, may you take someone else’s? Others reply that morality doesn’t demand heroic self-sacrifice." } : { k: "self", t: "You did nothing", d: "You won’t kill anyone, yourself included. The doing/allowing distinction: killing five by letting the trolley run is not the same as killing one." });
   if (v("driver") && v("switch") && yes("driver") && !yes("switch")) P.push({ k: "doing", t: "Driver yes, bystander no", d: "Foot’s original thought: the driver kills someone whatever he does, so he should kill fewer. The bystander can stay out of it." });
   const acts = GAUNT.filter(c => !c.three && yes(c.id)).length;
-  return '<div class="panel raised stack" style="--g:10px"><span class="eyebrow">The gauntlet is over</span><h2>☠ ' + dead + " lives lost across ten cases</h2><p class=\"read\">You acted in " + acts + " of the nine two-way cases. Here is what your pattern reveals:</p>" +
+  return '<div class="panel raised stack" style="--g:10px"><span class="eyebrow">The gauntlet is over</span><h2>' + ic("skull") + " " + dead + " lives lost across ten cases</h2><p class=\"read\">You acted in " + acts + " of the nine two-way cases. Here is what your pattern reveals:</p>" +
     P.map(p => '<div class="gfind"><b>' + esc(p.t) + '</b><p class="read">' + esc(p.d) + "</p></div>").join("") +
     labSameQ("gauntlet") + '<div class="row"><a class="btn primary" href="#agora-killing">Debate killing vs. letting die</a><button class="btn ghost" data-act="gauntReset">Run it again</button></div></div>'; }
 
@@ -13923,14 +14228,14 @@ function odyMap(O, L) { const st = O.stops || [];
   return '<svg class="omap" viewBox="0 0 400 220" aria-hidden="true"><defs><radialGradient id="osea" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#2b6e8f"/><stop offset="1" stop-color="#173f5c"/></radialGradient></defs><rect width="400" height="220" rx="14" fill="url(#osea)"/><path d="M0 0H400V12C330 30 300 8 240 18S120 4 60 20 0 10 0 10Z" fill="#c9b98c" opacity=".35"/><path d="M0 220H400V204C340 190 280 214 200 202S80 196 0 210Z" fill="#c9b98c" opacity=".35"/>' +
     '<path d="' + path + '" class="oroute"/>' + (L.i ? '<path d="' + pts.slice(0, L.i + 1).map((p, i) => (i ? "L" : "M") + p[0] + " " + p[1]).join(" ") + '" class="oroute done"/>' : "") +
     st.map((s, i) => '<g class="oisle' + (i < L.i ? " past" : i === L.i ? " now" : "") + '"><title>' + esc((i + 1) + ". " + s.place) + '</title><ellipse cx="' + pts[i][0] + '" cy="' + pts[i][1] + '" rx="9" ry="6"/>' + (i === cur || i === 0 || i === st.length - 1 ? '<text x="' + pts[i][0] + '" y="' + (pts[i][1] + 17) + '">' + esc(s.place) + "</text>" : "") + "</g>").join("") +
-    '<text class="oship" x="' + sh[0] + '" y="' + (sh[1] - 9) + '" style="--x:' + sh[0] + "px;--y:" + (sh[1] - 9) + 'px">⛵</text></svg>'; }
+    '<use href="#ic-ship" class="oship" x="' + (sh[0] - 8) + '" y="' + (sh[1] - 23) + '" width="16" height="16"/></svg>'; }
 function odyMeters(L, O) { const m = Math.max(-12, Math.min(12, L.mercy)), ang = m * 7;
   return '<div class="ometers"><div class="ometer"><span class="eyebrow">Crew</span><b class="ocrew">' + L.crew + '</b><div class="ocrewbar"><i style="width:' + Math.round(100 * L.crew / ((O.start || {}).crew || 45)) + '%"></i></div></div>' +
     '<div class="ometer"><span class="eyebrow">Your heart</span><svg viewBox="0 0 120 76" class="ogauge"><defs><linearGradient id="ogg"><stop offset="0" stop-color="#b8432f"/><stop offset=".5" stop-color="#c9b98c"/><stop offset="1" stop-color="var(--ok)"/></linearGradient></defs><path d="M10 60 A50 50 0 0 1 110 60" class="og-arc"/><line x1="60" y1="60" x2="60" y2="18" class="og-needle" style="transform:rotate(' + ang + 'deg)"/><text x="4" y="73">Ruthless</text><text x="116" y="73" text-anchor="end">Merciful</text></svg></div>' +
     '<div class="ometer"><span class="eyebrow">Wits</span><b>' + "★".repeat(Math.min(L.wits, 12)) + (L.wits ? "" : "–") + "</b></div></div>"; }
 function labOdyssey() { const O = window.ODYSSEY; if (!O || !O.stops) return labShell("The Odyssey", '<p class="muted">The voyage is being charted.</p>');
   const L = odyState(), st = O.stops, n = st.length;
-  if (!L.seen) return labShell("The Odyssey", '<div class="panel ody-intro stack" style="--g:12px"><span class="eyebrow">Twelve islands · one way home</span><p class="read" style="font-size:1.15rem">' + esc(O.intro || "") + '</p>' + odyMap(O, L) + '<p class="read">Every choice moves three things: how many of your <b>crew</b> live, whether your heart swings toward <b>mercy</b> or <b>ruthlessness</b>, and your <b>wits</b>. There is no right answer, only the captain you become.</p><div class="row"><button class="btn primary" data-act="odyStart">Set sail ⛵</button></div></div>');
+  if (!L.seen) return labShell("The Odyssey", '<div class="panel ody-intro stack" style="--g:12px"><span class="eyebrow">Twelve islands · one way home</span><p class="read" style="font-size:1.15rem">' + esc(O.intro || "") + '</p>' + odyMap(O, L) + '<p class="read">Every choice moves three things: how many of your <b>crew</b> live, whether your heart swings toward <b>mercy</b> or <b>ruthlessness</b>, and your <b>wits</b>. There is no right answer, only the captain you become.</p><div class="row"><button class="btn primary" data-act="odyStart">Set sail ' + ic("ship") + "</button></div></div>");
   let h = odyMeters(L, O) + odyMap(O, L);
   if (L.i < n) { const s = st[L.i], pk = L.picks[L.i];
     h += '<div class="panel stack ostop" style="--g:10px"><span class="eyebrow">Island ' + (L.i + 1) + " of " + n + " · " + esc(s.place) + "</span><h2>" + esc(s.title) + '</h2><p class="read ostory">' + esc(s.story) + '</p><p class="oq">' + esc(s.question) + "</p>";
@@ -13940,7 +14245,7 @@ function labOdyssey() { const O = window.ODYSSEY; if (!O || !O.stops) return lab
       h += '<div class="oout"><b>' + esc(c.label) + '</b><p class="read">' + esc(c.outcome) + '</p>' + (fx.length ? '<div class="ofx">' + fx.map(x => "<span>" + esc(x) + "</span>").join("") + "</div>" : "") + "</div>" +
         '<div class="olens"><span class="chip lamp">' + esc(ODY_THEORY[c.lens.theory] || c.lens.theory) + "</span> <b>" + esc(c.lens.name) + '</b><p class="read">' + esc(c.lens.note) + "</p></div>" +
         '<details class="ohomer"><summary>What did Homer’s Odysseus do?</summary><p class="read">' + esc(s.homer) + "</p></details>" +
-        '<div class="row" style="justify-content:flex-end"><button class="btn primary" data-act="odyNext">' + (L.i + 1 < n ? "Sail on ⛵" : "Reach Ithaca") + "</button></div>"; }
+        '<div class="row" style="justify-content:flex-end"><button class="btn primary" data-act="odyNext">' + (L.i + 1 < n ? "Sail on " + ic("ship") : "Reach Ithaca") + "</button></div>"; }
     h += "</div>"; }
   else h += odyEnd(O, L);
   return labShell("The Odyssey", h); }
@@ -13992,7 +14297,7 @@ function labPD() { const L = pdState(), R = L.rule, T = pdTourney(R), you = T.ra
   let h = '<p class="read">Two captains meet at sea, a hundred times. Each time, each can <b>trade fair</b> or <b>cheat</b>. If both trade fair, both earn 3. If both cheat, both earn 1. Cheat someone who trades fair, and you take 5 while they get nothing. Cheating always pays more in a single meeting, yet two cheats end up poorer than two honest traders. Design your captain, then enter the tournament.</p>' +
     '<div class="panel stack" style="--g:10px"><span class="eyebrow">Your captain’s rules</span>' + sel("first", "On the first meeting") + sel("afterC", "If they traded fair last time") + sel("afterD", "If they cheated last time") +
     '<label class="pdrule"><span>Forgive a cheat, sometimes: <b id="pdF">' + R.forgive + '%</b></span><input type="range" min="0" max="50" step="5" value="' + R.forgive + '" id="pdForgive" aria-label="Chance of forgiving a cheat"></label><p class="faint" style="margin:0;font-size:.84rem">Your strategy: <b>' + esc(name) + "</b></p></div>" +
-    '<div class="panel raised stack" style="--g:8px"><span class="eyebrow">The tournament · everyone meets everyone, 100 times</span><h3>You finished ' + you + " of " + T.rank.length + (you === 1 ? " 🏆" : "") + "</h3>" +
+    '<div class="panel raised stack" style="--g:8px"><span class="eyebrow">The tournament · everyone meets everyone, 100 times</span><h3>You finished ' + you + " of " + T.rank.length + (you === 1 ? " " + ic("trophy") : "") + "</h3>" +
     '<div class="pdboard">' + T.rank.map((x, i) => '<div class="' + (x.k === "you" ? "me" : "") + '"><span>' + (i + 1) + ". " + esc(x.n) + '</span><i style="width:' + Math.round(100 * (x.s - low) / ((max - low) || 1)) + '%"></i><b>' + x.s + "</b></div>").join("") + "</div>" +
     '<details><summary class="linkish">Your meetings, one by one</summary><div class="pdvs">' + PD_BOTS.map(b => '<div><span>vs ' + esc(b.n) + '</span><b>' + T.vs[b.k][0] + " – " + T.vs[b.k][1] + '</b><small class="faint">' + esc(b.d) + "</small></div>").join("") + "</div></details>" +
     '<p class="read" style="margin:0">' + (you <= 2 ? "Robert Axelrod found the same in 1980: the winners were <b>nice</b> (never cheat first), <b>retaliating</b>, <b>forgiving</b> and <b>clear</b>. Cooperation can grow among selfish traders, without any sovereign to enforce it." : "Try what won Axelrod’s real tournaments in 1980: be nice (never cheat first), hit back when cheated, then forgive.") + "</p></div>" +
@@ -14003,8 +14308,8 @@ function labPD() { const L = pdState(), R = L.rule, T = pdTourney(R), you = T.ra
 function pdHandHTML(L) { const H = L.hand;
   if (!H) return '<div class="panel stack" style="--g:8px"><span class="eyebrow">Face a mystery captain</span><p class="read" style="margin:0">Ten meetings by hand against a captain whose strategy you don’t know. Then guess who it was.</p><div class="row"><button class="btn" data-act="pdHand">Meet a mystery captain</button></div></div>';
   const bot = PD_BOTS.find(b => b.k === H.bot), you = H.a.reduce((s, x, i) => s + PD_PAY[x + H.b[i]][0], 0), them = H.a.reduce((s, x, i) => s + PD_PAY[x + H.b[i]][1], 0);
-  const log = '<div class="pdlog">' + H.a.map((x, i) => '<span title="Meeting ' + (i + 1) + '"><i class="' + x + '">' + (x === "C" ? "🤝" : "🗡️") + '</i><i class="' + H.b[i] + '">' + (H.b[i] === "C" ? "🤝" : "🗡️") + "</i></span>").join("") + "</div>";
-  if (H.a.length < 10) return '<div class="panel stack" style="--g:8px"><span class="eyebrow">Mystery captain · meeting ' + (H.a.length + 1) + ' of 10</span>' + log + '<p class="faint" style="margin:0">Top row you, bottom row them · you ' + you + " – " + them + '</p><div class="row"><button class="btn" data-act="pdMove" data-v="C">🤝 Trade fair</button><button class="btn ghost" data-act="pdMove" data-v="D">🗡️ Cheat</button></div></div>';
+  const log = '<div class="pdlog">' + H.a.map((x, i) => '<span title="Meeting ' + (i + 1) + '"><i class="' + x + '">' + ic(x === "C" ? "handshake" : "dagger") + '</i><i class="' + H.b[i] + '">' + ic(H.b[i] === "C" ? "handshake" : "dagger") + "</i></span>").join("") + "</div>";
+  if (H.a.length < 10) return '<div class="panel stack" style="--g:8px"><span class="eyebrow">Mystery captain · meeting ' + (H.a.length + 1) + ' of 10</span>' + log + '<p class="faint" style="margin:0">Top row you, bottom row them · you ' + you + " – " + them + '</p><div class="row"><button class="btn" data-act="pdMove" data-v="C">' + ic("handshake") + ' Trade fair</button><button class="btn ghost" data-act="pdMove" data-v="D">' + ic("dagger") + " Cheat</button></div></div>";
   if (!H.guess) return '<div class="panel stack" style="--g:8px"><span class="eyebrow">Who was it?</span>' + log + '<p class="faint" style="margin:0">You ' + you + " – " + them + '</p><div class="row" style="--g:6px">' + PD_BOTS.map(b => '<button class="chip" data-act="pdGuess" data-v="' + b.k + '">' + esc(b.n) + "</button>").join("") + "</div></div>";
   return '<div class="panel stack" style="--g:8px"><span class="eyebrow">' + (H.guess === H.bot ? "Spot on! ⭐" : "Not quite") + '</span>' + log + '<p class="read" style="margin:0">It was <b>' + esc(bot.n) + "</b>: " + esc(bot.d) + " You scored " + you + ", they scored " + them + '.</p><div class="row"><button class="btn small" data-act="pdHand">Another mystery captain</button></div></div>'; }
 ACT.pdSet = el => { pdState().rule[el.dataset.k] = el.dataset.v; save(); render(true); };
@@ -14023,10 +14328,10 @@ VIEWS.lab = arg => {
   if (arg === "gauntlet") return labGauntlet();
   if (arg === "pd") return labPD();
   const games = [
-    { k: "odyssey", t: "The Odyssey", e: "⛵", d: "Sail home from Troy through twelve of Homer’s islands. Every choice costs or saves your crew, and swings your heart between mercy and ruthlessness.", by: "Homer; inspired by EPIC: The Musical" },
-    { k: "gauntlet", t: "The trolley gauntlet", e: "🚃", d: "Ten trolley cases, from the switch to the surgeon. Drag the lever, count the cost, then see which principles your choices follow.", by: "Foot, Thomson, Greene and others" },
-    { k: "pd", t: "The harbour bargain", e: "🤝", d: "Two captains, a hundred meetings: trade fair or cheat? Design a strategy, take on Tit for Tat in a tournament, and unmask a mystery captain.", by: "Hobbes; Robert Axelrod, 1984" },
-    { k: "veil", t: "Behind the veil", e: "🎲", d: "Drag the bars to design a society, then be born into it at random. Did you protect the poorest, or gamble on being rich?", by: "John Rawls, 1971; John Harsanyi" }
+    { k: "odyssey", t: "The Odyssey", e: "ship", d: "Sail home from Troy through twelve of Homer’s islands. Every choice costs or saves your crew, and swings your heart between mercy and ruthlessness.", by: "Homer; inspired by EPIC: The Musical" },
+    { k: "gauntlet", t: "The trolley gauntlet", e: "trolley", d: "Ten trolley cases, from the switch to the surgeon. Drag the lever, count the cost, then see which principles your choices follow.", by: "Foot, Thomson, Greene and others" },
+    { k: "pd", t: "The harbour bargain", e: "handshake", d: "Two captains, a hundred meetings: trade fair or cheat? Design a strategy, take on Tit for Tat in a tournament, and unmask a mystery captain.", by: "Hobbes; Robert Axelrod, 1984" },
+    { k: "veil", t: "Behind the veil", e: "die", d: "Drag the bars to design a society, then be born into it at random. Did you protect the poorest, or gamble on being rich?", by: "John Rawls, 1971; John Harsanyi" }
   ];
   const tiles = [
     { k: "heap", t: "The vanishing heap", d: "Take grains away one at a time. Tell us the moment it stops being a heap.", by: "Eubulides of Miletus, 4th century BCE" },
@@ -14034,8 +14339,8 @@ VIEWS.lab = arg => {
     { k: "machine", t: "The experience machine", d: "Would you plug into a perfect simulated life? Then: would you unplug from one?", by: "Robert Nozick, 1974; Felipe De Brigard, 2010" },
     { k: "trolley", t: "The trolley ladder", d: "Five versions of the trolley case. We’ll find the principle your answers follow.", by: "Philippa Foot, 1967; Judith Jarvis Thomson, 1976–85" }
   ];
-  return '<div class="wrap stack" style="--g:22px"><div class="stack" style="--g:8px"><span class="eyebrow">The Shipyard</span><h1>Thought experiments you can play</h1><p class="muted read">Philosophers test ideas by imagining cases. Here you run the experiment yourself, then see what your answer commits you to.</p></div><div class="labgames">' +
-    games.map(x => '<a class="gtile" href="#lab-' + x.k + '"><span class="gemo">' + x.e + "</span><h3>" + x.t + (S.lab[x.k] && S.lab[x.k].done ? ' <span class="chip lamp">Played</span>' : "") + "</h3><p>" + x.d + '</p><span class="faint" style="font-size:.8rem">' + x.by + "</span></a>").join("") + '</div><h2 style="margin-top:8px">Quick experiments</h2><div class="labgrid">' +
+  return '<div class="wrap stack" style="--g:22px">' + pageHead("slipway", "The Shipyard", "Thought experiments you can play", "Philosophers test ideas by imagining cases. Here you run the experiment yourself, then see what your answer commits you to.") + '<div class="labgames">' +
+    games.map(x => '<a class="gtile" href="#lab-' + x.k + '"><span class="gemo">' + ic(x.e) + "</span><h3>" + x.t + (S.lab[x.k] && S.lab[x.k].done ? ' <span class="chip lamp">Played</span>' : "") + "</h3><p>" + x.d + '</p><span class="faint" style="font-size:.8rem">' + x.by + "</span></a>").join("") + '</div><h2 style="margin-top:8px">Quick experiments</h2><div class="labgrid">' +
     tiles.map(x => '<a class="mod" href="#lab-' + x.k + '"><h3><span>' + x.t + "</span>" + (S.lab[x.k] && S.lab[x.k].done ? '<span class="chip lamp">Done</span>' : "") + "</h3><p>" + x.d + '</p><span class="faint" style="font-size:.8rem">' + x.by + "</span></a>").join("") + "</div>" +
     '<p class="muted">' + (games.length + tiles.length) + ' you can play, and ' + LIB.experiments.length + ' more thought experiments to read: <a href="#library" data-act="libExperiments">the thought experiments in the Dictionary →</a></p></div>';
 };
@@ -14275,7 +14580,7 @@ function quizDailyCard() {
 function quizStartScreen() {
   const best = S.quiz.best || 0, bestS = S.quiz.bestStand || 0;
   const card = (mode, t, d, b) => '<div class="panel stack" style="--g:10px;flex:1 1 260px"><span class="eyebrow">' + t + '</span><p class="muted">' + d + '</p><div class="row" style="justify-content:space-between"><span class="faint" style="font-size:.86rem">' + (b ? 'Best round: <b style="color:var(--ink)">' + b + "</b> of 10" : "Not played yet") + "</span><button class=\"btn primary\" data-act=\"quizStart\" data-mode=\"" + mode + '">Play</button></div></div>';
-  return '<div class="wrap"><div class="col stack" style="--g:18px"><span class="eyebrow">The Quiz</span><h1>Who thinks what?</h1><p class="muted read">Ten questions a round, four thinkers each. No quotations, only ideas in plain words, and every answer comes with an explanation.</p>' +
+  return '<div class="wrap"><div class="col stack" style="--g:18px">' + pageHead("light", "The Quiz", "Who thinks what?", "Ten questions a round, four thinkers each. No quotations, only ideas in plain words, and every answer comes with an explanation.") +
     '<div class="row" style="align-items:stretch">' + card("classic", "Who held this idea?", "A famous idea in plain words. Pick the thinker it belongs to.", best) +
     card("stand", "Where do they stand?", "A position on one of the Compass questions. Pick the thinker who holds it; the others answered differently. New questions every round.", bestS) + quizDailyCard() + "</div></div></div>";
 }
@@ -14364,7 +14669,7 @@ VIEWS.duel = arg => {
     return html;
   });
   const rows = rowsArr.join("") + (one.length ? '<details class="stack"><summary class="linkish" style="cursor:pointer">Show ' + one.length + " more where only one of them has a recorded view</summary><div class=\"stack\" style=\"--g:10px;margin-top:10px\">" + one.join("") + "</div></details>" : "");
-  const head = t => { const tr = tradOf(t); return '<button class="statue" data-act="thinker" data-id="' + esc(t.id) + '" style="width:100%"><span class="bust" style="background:' + tr.color + '">' + esc(initials(t.name)) + '</span><span><b>' + esc(t.name) + "</b><small>" + esc(life(t)) + "</small></span></button>"; };
+  const head = t => { const tr = tradOf(t); return '<button class="statue" data-act="thinker" data-id="' + esc(t.id) + '" style="width:100%"><span class="bust" style="--tc:' + tr.color + '">' + esc(initials(t.name)) + '</span><span><b>' + esc(t.name) + "</b><small>" + esc(life(t)) + "</small></span></button>"; };
   return '<div class="wrap"><div class="col stack" style="--g:18px"><div class="stack" style="--g:8px"><span class="eyebrow">Duel</span><h1>Put two thinkers in the ring</h1><p class="muted">Pick any two philosophers and see exactly where they agree and where they would clash, question by question.</p></div>' +
     '<div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">' + sel("duelA", A) + sel("duelB", B) + head(A) + head(B) + "</div>" +
     '<div class="ring" style="padding:20px"><span class="eyebrow" style="color:#E8B04A">Verdict</span><h2 style="margin-top:6px">' + (both ? same + " agree, " + close + " close, " + (both - same - close) + " clash" : "They never meet on the same question") + '</h2><p style="margin-top:6px">' + (both ? "On the " + both + " questions where both have a clear view." : "Try another pairing; few positions overlap.") + "</p></div>" + rows + "</div></div>";
@@ -14498,20 +14803,23 @@ VIEWS.home = () => {
   const fresh = ans === 0 && !Object.keys(voyState().done || {}).length && !Object.keys(voyState().pos || {}).some(id => VOY.islands[id] && voyState().pos[id] > 0);
   const NH = fresh ? null : nextHeading(steps.find(x => !x.done));
   const sealsOn = S2.some(s => s.on);
-  const sealsSec = '<section class="stack"><div class="row" style="justify-content:space-between"><h2>Your seals</h2><span class="faint">' + S2.filter(s => s.on).length + " of " + S2.length + " earned</span></div><div class=\"seals\">" +
-    S2.map(s => '<div class="seal' + (s.on ? " on" : "") + '">' + sealSVG(s.on, s.k) + "<div><b>" + s.n + '</b><div style="font-size:.78rem">' + s.d + "</div></div></div>").join("") + "</div></section>";
+  // a seal stamps in once, the first time it is seen earned
+  const seen = S.sealSeen = S.sealSeen || {}, fresh2 = S2.filter(s => s.on && !seen[s.k]).map(s => s.k);
+  if (fresh2.length) { fresh2.forEach(k => { seen[k] = 1; }); save(); }
+  const sealsSec = '<section class="stack"><div class="row" style="justify-content:space-between"><h2 class="sec-h">Your seals</h2><span class="faint">' + S2.filter(s => s.on).length + " of " + S2.length + " earned</span></div><div class=\"seals\">" +
+    S2.map(s => '<div class="seal' + (s.on ? " on" : "") + (fresh2.includes(s.k) ? " stamping" : "") + '"><span class="seal-mark">' + sealSVG(s.on, s.k) + "</span><div><b>" + s.n + '</b><div style="font-size:.78rem">' + s.d + "</div></div></div>").join("") + "</div></section>";
   after.push(drawHeroSkyNow);
   return '<section class="hero"><canvas id="heroSky" aria-hidden="true"></canvas><div class="wrap">' +
     '<div class="stack" style="--g:18px"><span class="eyebrow">Philodyssey · a voyage through philosophy</span>' +
-    "<h1>What do you believe?<br>Test it against 2,600 years of argument.</h1>" +
+    "<h1>What do you believe?<br>Test it against <em>2,600 years</em> of argument.</h1>" +
     '<p class="lede">Answer one question at a time. Meet the philosophers who think like you, find the cracks in your own worldview, and argue your way through the great debates.</p>' +
     (NH ? '<div class="nh"><span class="eyebrow">Your next heading</span><a class="btn lamp" href="' + NH.href + '">' + esc(NH.label) + ' →</a><p class="nh-line">' + esc(NH.line) + "</p></div>" :
     '<div class="row hero-cta"><a class="btn lamp" href="' + (secs === C.sections.length ? "#compass-results" : "#compass") + '">' + (secs === C.sections.length ? "See your portrait" : ans ? "Continue the Compass" : "Take the Compass") + '</a><a class="btn ghost on-night" href="#voyage">New to philosophy? Set sail</a></div>') + "</div>" +
     dailyCard() + "</div></section>" +
-    '<div class="wrap stack" style="--g:30px;padding-top:34px"><section class="stack"><div class="row" style="justify-content:space-between"><h2>Start here</h2><span class="faint">Four steps, in order</span></div><ol class="path3">' +
-    steps.map(x => '<li class="' + (x.done ? "done" : x === nextStep ? "next" : "") + '"><a href="' + x.href + '"><span class="num">' + (x.done ? "✓" : x.n) + '</span><span class="stack" style="--g:2px"><b>' + x.t + '</b><span class="muted" style="font-size:.9rem">' + x.d + '</span><span class="faint" style="font-size:.8rem">' + esc(x.s) + "</span></span></a></li>").join("") + "</ol></section>" + (sealsOn ? sealsSec : "") +
-    '<section class="stack"><div class="row" style="justify-content:space-between"><h2>Explore Philodyssey</h2><span class="faint">' + cap(numWord(mods.length)) + ' places</span></div><span class="eyebrow">Learn and play</span><div class="modules">' +
-    mods.map(m => (m.href === "#thinkers" ? '</div><span class="eyebrow" style="margin-top:10px">Look things up</span><div class="modules">' : "") + '<a class="mod" href="' + m.href + '"><h3><span>' + m.t + '</span><span class="glyph">' + m.g + "</span></h3><p>" + m.p + '</p><span class="faint" style="font-size:.8rem">' + esc(m.s) + "</span>" + (m.m != null ? '<span class="meter"><i style="width:' + Math.round(100 * Math.min(1, m.m)) + '%"></i></span>' : "") + "</a>").join("") +
+    '<div class="wrap stack" style="--g:30px;padding-top:34px"><section class="stack"><div class="row" style="justify-content:space-between"><h2 class="sec-h">Start here</h2><span class="faint">Four steps, in order</span></div><ol class="path3"><svg class="route" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5 C 20 0, 30 10, 50 5 S 80 0, 98 5"/></svg>' +
+    steps.map(x => '<li class="' + (x.done ? "done" : x === nextStep ? "next" : "") + '"><a href="' + x.href + '"><span class="num">' + (x.done ? ic("ship") : x.n) + '</span><span class="stack" style="--g:2px"><b>' + x.t + '</b><span class="muted" style="font-size:.9rem">' + x.d + '</span><span class="faint" style="font-size:.8rem">' + esc(x.s) + "</span></span></a></li>").join("") + "</ol></section>" + (sealsOn ? sealsSec : "") +
+    '<section class="stack"><div class="row" style="justify-content:space-between"><h2 class="sec-h">Explore Philodyssey</h2><span class="faint">' + cap(numWord(mods.length)) + ' places</span></div><span class="eyebrow">Learn and play</span><div class="modules">' +
+    mods.map(m => (m.href === "#thinkers" ? '</div><span class="eyebrow" style="margin-top:10px">Look things up</span><div class="modules ref">' : "") + '<a class="mod" href="' + m.href + '"><h3><span>' + m.t + '</span><span class="glyph">' + m.g + "</span></h3><p>" + m.p + '</p><span class="faint" style="font-size:.8rem">' + esc(m.s) + "</span>" + (m.m != null ? '<span class="meter"><i style="width:' + Math.round(100 * Math.min(1, m.m)) + '%"></i></span>' : "") + "</a>").join("") +
     "</div></section>" + (sealsOn ? "" : sealsSec) + "</div>";
 };
 // Stars everywhere; the constellation only goes where it can't run through text or the daily card.
@@ -14674,7 +14982,7 @@ function voyHome() {
   const nx = nextIsland();
   const stops = VOY.units.map(u => { const isl = islandsOf(u); const dn = isl.filter(i => islDone(i.id)).length; return { place: "sea" + u.id, href: "#voyage-u" + u.id, done: isl.length && dn === isl.length, current: nx && nx.unit === u.id, title: u.title, num: u.id, tip: ROMANV[u.id] + " · " + u.title + (VOY.seaCity && VOY.seaCity[u.id] ? " · " + VOY.seaCity[u.id] : "") }; });
   let h = '<div class="voy">';
-  h += '<section class="vy-hero"><div class="wrap vy-hero-in"><div class="stack" style="--g:14px"><span class="eyebrow vy-eb">The Voyage · a course in fourteen seas</span><h1>Sail the history of philosophy, island by island</h1>' +
+  h += '<section class="vy-hero"><div class="wrap vy-hero-in"><div class="stack" style="--g:14px">' + em("ship", "emblem vy-emblem") + '<span class="eyebrow vy-eb">The Voyage · a course in fourteen seas</span><h1>Sail the history of philosophy, island by island</h1>' +
     '<p class="vy-lede">Each island is an illustrated lesson of 25 to 35 cards (about a quarter of an hour) that you tap through one idea at a time, with quick questions along the way. A landfall story opens it; a crossing tells you why the next thinker set sail.</p>' +
     '<div class="row">' + (nx ? '<a class="btn primary" href="#voyage-' + nx.id + '">' + (done ? "Continue: " : "Begin: ") + esc(nx.name) + "</a>" : "") + '<a class="btn ghost vy-ghost" href="#voyage-u1">Sea I chart</a></div>' +
     '<p class="vy-count"><b>' + done + "</b> of " + all.length + " islands charted so far" + (missedAll().length ? ' · <a href="#voyage-review" style="color:inherit">' + missedAll().length + " missed checks to review</a>" : "") + "</p></div>" +
@@ -14687,7 +14995,7 @@ function voyHome() {
   h += '<div class="row vy-viewsw" role="group" aria-label="Browse the Voyage"><button class="chip" data-act="vyView" data-v="sea" aria-pressed="' + !byQ + '">By sea, in order</button><button class="chip" data-act="vyView" data-v="q" aria-pressed="' + byQ + '">By question</button></div>';
   if (byQ) return h + byQuestionHTML() + "</div></div>";
   h += '<section class="stack" style="--g:12px"><div class="chart-box">' + chartSVG("world", stops, { aria: "Chart of the whole voyage", r: 9.5 }) + "</div><p class=\"faint vy-cap\">Fourteen seas on a modern coastline, in the order of the course. Tap a sea to open its chart.</p></section>";
-  h += '<section class="stack" style="--g:14px"><h2>The seas</h2><div class="vy-units">' +
+  h += '<section class="stack" style="--g:14px"><h2 class="sec-h">The seas</h2><div class="vy-units">' +
     (VOY.plan || []).map(p => { const u = VOY.units.find(x => x.id === p.id); const isl = u ? islandsOf(u) : []; const dn = isl.filter(i => islDone(i.id)).length;
       return u ? '<a class="vy-unit" href="#voyage-u' + u.id + '"><span class="vy-unum">' + ROMANV[u.id] + '</span><span class="stack" style="--g:4px;min-width:0"><b>' + esc(u.title) + '</b><span class="faint">' + esc(u.sub) + '</span>' + (dn ? '<span class="vy-bar"><i style="width:' + (isl.length ? 100 * dn / isl.length : 0) + '%"></i></span><span class="cq-mono">' + dn + " of " + isl.length + " islands charted</span>" : '<span class="cq-mono">' + isl.length + " islands</span>") + "</span></a>"
         : '<div class="vy-unit fog" aria-disabled="true"><span class="vy-unum">' + ROMANV[p.id] + '</span><span class="stack" style="--g:4px;min-width:0"><b>' + esc(p.title) + '</b><span class="faint">' + esc(p.sub) + '</span><span class="cq-mono">Uncharted · in preparation</span></span></div>'; }).join("") + "</div></section>";
@@ -14938,7 +15246,7 @@ function skyChartLine(I) {
 function voyLogHTML() {
   const V = voyState(); const all = VOY.units.flatMap(u => islandsOf(u)).filter(i => V.done[i.id] != null);
   const nC = chartedStars().size, nM = missedAll().length;
-  return '<section class="stack"><h2>Voyage log</h2>' + (nC ? '<p class="muted">✧ You have charted <b>' + nC + "</b> of " + skyStarTotal() + ' stars. <a href="#firmament">Look at your sky</a></p>' : "") + (nM ? '<p class="muted">' + nM + (nM === 1 ? " quick check" : " quick checks") + ' still to mend. <a href="#voyage-review">Review them</a></p>' : "") + (all.length ? '<div class="book">' + all.map(i => '<div class="page-line"><div><div class="faint" style="font-size:.8rem">Sea ' + ROMANV[i.unit] + " · " + esc(i.name) + " · " + (() => { const sc = deckScore(i); return sc.n ? sc.ok + " of " + sc.n + " checks right" : "charted"; })() + '</div><div class="read">' + rich(i.log || "") + '</div></div><a class="linkish" href="#voyage-' + i.id + '" style="font-size:.84rem">Revisit</a></div>').join("") + "</div>" : '<p class="muted">No islands charted yet. <a href="#voyage">Set sail on the Voyage</a>; each island you finish adds a line here.</p>') + "</section>";
+  return '<section class="stack"><h2 class="sec-h">Voyage log</h2>' + (nC ? '<p class="muted">✧ You have charted <b>' + nC + "</b> of " + skyStarTotal() + ' stars. <a href="#firmament">Look at your sky</a></p>' : "") + (nM ? '<p class="muted">' + nM + (nM === 1 ? " quick check" : " quick checks") + ' still to mend. <a href="#voyage-review">Review them</a></p>' : "") + (all.length ? '<div class="book">' + all.map(i => '<div class="page-line"><div><div class="faint" style="font-size:.8rem">Sea ' + ROMANV[i.unit] + " · " + esc(i.name) + " · " + (() => { const sc = deckScore(i); return sc.n ? sc.ok + " of " + sc.n + " checks right" : "charted"; })() + '</div><div class="read">' + rich(i.log || "") + '</div></div><a class="linkish" href="#voyage-' + i.id + '" style="font-size:.84rem">Revisit</a></div>').join("") + "</div>" : '<p class="muted">No islands charted yet. <a href="#voyage">Set sail on the Voyage</a>; each island you finish adds a line here.</p>') + "</section>";
 }
 
 /* ---- an island is a deck: one idea per slide, quick questions along the way */
@@ -15222,8 +15530,8 @@ function semIndex() {
   const done = S.semDone || {}, seen = S.semSeen || {};
   const tile = I => '<a class="sem-tile" href="#seminar-' + esc(I.sid) + '"><span class="eyebrow">' + esc(I.question) + "</span><b>" + esc(I.title) + '</b><span class="muted" style="font-size:.9rem">' + esc(I.sub || "") + '</span><span class="row" style="--g:6px;margin-top:auto"><span class="chip">' + I.minutes + " min group</span><span class=\"chip\">" + (I.soloMinutes || 15) + " min solo</span>" + (done[I.id] ? '<span class="chip lamp">Done</span>' : seen[I.id] ? '<span class="chip lapis">Started</span>' : "") + "</span></a>";
   const placed = new Set();
-  return '<div class="wrap stack" style="--g:26px;padding-block:8px"><div class="ring stack" style="--g:12px"><span class="eyebrow" style="color:#E8B04A;align-self:center">Seminars</span><h1 class="ring-h">' + cap(numWord(SEM_LIST.length)) + ' discussion decks</h1><p class="read" style="max-width:38em;margin:0 auto">Each one is a full session on one big question: a hook, votes, thought experiments that change one detail at a time, quick checks, and a round of the strongest objections. Run it with a group, or take it alone as a lesson.</p>' +
-    '<div class="sem-modes"><div><b>Solo</b><span>Tap through in about a quarter of an hour. Vote, write a sentence, give verdicts; your notes are kept.</span></div><div><b>Discussion</b><span>Project it for a club or class. Timings, hand counts, timers and facilitator notes appear, and nothing locks. Press <i>Present</i> for full screen.</span></div></div></div>' +
+  return '<div class="wrap stack" style="--g:26px">' + pageHead("amph", "Seminars", cap(numWord(SEM_LIST.length)) + " discussion decks", "Each one is a full session on one big question: a hook, votes, thought experiments that change one detail at a time, quick checks, and a round of the strongest objections. Run it with a group, or take it alone as a lesson.") +
+    '<div class="sem-modes"><div><b>Solo</b><span>Tap through in about a quarter of an hour. Vote, write a sentence, give verdicts; your notes are kept.</span></div><div><b>Discussion</b><span>Project it for a club or class. Timings, hand counts, timers and facilitator notes appear, and nothing locks. Press <i>Present</i> for full screen.</span></div></div>' +
     SEM_GROUPS.map(([g, ids]) => { const L = ids.map(x => SEM["sem_" + x]).filter(Boolean); L.forEach(x => placed.add(x)); return L.length ? '<section class="stack"><h2>' + esc(g) + '</h2><div class="sem-grid">' + L.map(tile).join("") + "</div></section>" : ""; }).join("") +
     (SEM_LIST.some(x => !placed.has(x)) ? '<section class="stack"><h2>More</h2><div class="sem-grid">' + SEM_LIST.filter(x => !placed.has(x)).map(tile).join("") + "</div></section>" : "") +
     '<details class="panel sem-guide"><summary><b>Leading one? A short guide</b></summary><ol class="read"><li><b>Before:</b> open “All slides on one page” from the deck’s last slide (or add <code>.all</code> to its link) to read every slide with the answers and facilitator notes. Print it if you like.</li><li><b>During:</b> switch to Discussion, press Present. Votes count hands with a click per hand; “Ask the room” slides have a timer.</li><li><b>The criticism cards:</b> split into groups, one card each, four minutes, then each group gives a verdict: Fatal, Fixable or Misguided.</li><li><b>After:</b> the closing vote shows how the room moved since the opening vote. Point people to the solo mode to go back over it.</li></ol></details></div>';
@@ -15243,9 +15551,12 @@ function semLine(I) { const L = semsFor("islands", I.id); return L.length ? '<p 
   if (pref) document.documentElement.setAttribute("data-theme", pref);
   $("#themeBtn").addEventListener("click", () => {
     const cur = document.documentElement.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-    const next = cur === "dark" ? "light" : "dark"; document.documentElement.setAttribute("data-theme", next);
+    const next = cur === "dark" ? "light" : "dark";
+    const flip = () => { document.documentElement.setAttribute("data-theme", next); themeIcon(); };
     try { localStorage.setItem("atlas.theme", next); } catch (e) { }
-    themeIcon();
+    // cross-fade the whole page between themes where the browser can
+    if (document.startViewTransition && !matchMedia("(prefers-reduced-motion: reduce)").matches) { try { document.startViewTransition(flip); return; } catch (e) { } }
+    flip();
   });
   // the button shows what clicking will do: a sun in dark mode, a moon in light mode
   function themeIcon() { const dark = (document.documentElement.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")) === "dark"; const b = $("#themeBtn"); b.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode"); b.innerHTML = dark ? '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="3.2" fill="currentColor"/><g stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M8 1v1.6M8 13.4V15M1 8h1.6M13.4 8H15M3 3l1.1 1.1M11.9 11.9 13 13M3 13l1.1-1.1M11.9 4.1 13 3"/></g></svg>' : '<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5a6.5 6.5 0 1 0 6.5 6.5A5 5 0 0 1 8 1.5Z" fill="currentColor"/></svg>'; }
@@ -15326,6 +15637,8 @@ const FIND = (() => {
 })();
 render(false);
 initCaps();
+// prefetch the logbook when the browser is idle, five seconds after the first paint, so My Positions rarely waits
+setTimeout(() => (window.requestIdleCallback || (f => setTimeout(f, 1)))(() => lbLoad().catch(() => { })), 5000);
 // a small bridge for add-on modules (js/*.js), which load after this script and cannot see its closure
 window.PHILO = { VIEWS, ACT, save, render, esc, $, $$, labShell, route, ROUTE_ALIAS, TH, LIB, WORKS, WK, AG, AGQ, CARDS, QM, C, SEC, EX, thinkerChip, nameOf, slugT,
   get S() { return S; }, get after() { return after; }, toast: (...a) => toast(...a),
