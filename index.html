@@ -1332,6 +1332,35 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .drow.fresh .tablet{animation:dfresh .6s ease-out}@keyframes dfresh{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .darrows{position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:1}
 @media (max-width:760px){.darrows{display:none}}
+.labgames{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr))}
+.gtile{display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:16px;text-decoration:none;color:#ECE7DA;background:linear-gradient(150deg,#1d3e5a,#0f2236);box-shadow:var(--shadow);transition:transform .2s}
+.gtile:hover{transform:translateY(-3px)}.gtile h3{color:#fff;margin:0}.gtile p{margin:0;color:#d9e2ea}.gtile .faint{color:#9fb3c4}.gemo{font-size:2rem}
+.vbars{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:end}
+.vbar{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}.vbar small{font-size:.72rem;color:var(--ink-3);line-height:1.2}
+.vtrack{position:relative;width:100%;height:190px;border-radius:10px;background:var(--line-2);cursor:ns-resize;touch-action:none;display:flex;align-items:flex-end;overflow:hidden}
+.vfill{width:100%;background:linear-gradient(0deg,var(--lapis),#6b8fc4);border-radius:10px 10px 0 0;display:flex;justify-content:center;padding-top:4px;color:#fff;font-size:.78rem;font-weight:700;min-height:18px;transition:height .12s}
+.vpeople{display:flex;justify-content:center;gap:14px;font-size:2rem}.vp{padding:6px;border-radius:12px;transition:transform .1s,background .1s;filter:grayscale(.6)}.vp.on{background:var(--lamp-soft);transform:scale(1.25);filter:none}
+.vscore{font-size:1.3rem}
+.gtop{display:flex;align-items:center;gap:12px}.gprog{flex:1;height:8px;border-radius:999px;background:var(--line-2);overflow:hidden}.gprog i{display:block;height:100%;background:var(--lamp)}.gdead{font-weight:700;color:var(--crack)}
+.gscene{width:100%;max-height:170px;background:var(--surface);border-radius:12px}.gscene .trk{stroke:var(--ink-3);stroke-width:4;fill:none}.gscene .trk.side{stroke-dasharray:2 0}.gscene .brg{fill:var(--ink-3)}
+.gscene.hosp{display:flex;align-items:center;justify-content:space-around;padding:18px;font-size:1.2rem}.gbig{font-size:2.6rem}
+.gtrolley{transition:transform .7s ease-in}.gtrolley.go{transform:translateX(260px)}.gtrolley.go-side{transform:translate(220px,52px)}
+.glever{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.gl-track{position:relative;flex:1;min-width:180px;height:36px;border-radius:999px;background:var(--line-2);touch-action:none;cursor:grab}
+.gl-knob{position:absolute;left:0;top:2px;width:32px;height:32px;border-radius:50%;background:var(--ink);box-shadow:0 2px 6px rgba(0,0,0,.3)}.gl-track.hot{background:var(--crack-soft)}
+.gfind{border-left:3px solid var(--lamp);padding:4px 12px}.gfind p{margin:2px 0 0}
+.omap{width:100%;border-radius:14px;display:block}.oroute{fill:none;stroke:#f3e3b5;stroke-width:1.5;stroke-dasharray:4 4;opacity:.6}.oroute.done{stroke-dasharray:none;opacity:1;stroke:#E8B04A}
+.oisle ellipse{fill:#d8c79a;stroke:#8a6a3e}.oisle text{font-size:7px;fill:#f6eedb;text-anchor:middle}.oisle.past ellipse{fill:#b9a77a}.oisle.now ellipse{fill:#E8B04A;stroke:#fff;stroke-width:1.5}
+.oship{font-size:16px;text-anchor:middle}
+.ometers{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:10px}.ometer{border:1px solid var(--line);border-radius:12px;background:var(--raised);padding:8px 12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.ocrew{font-size:1.5rem}.ocrewbar{height:6px;background:var(--line-2);border-radius:999px;overflow:hidden}.ocrewbar i{display:block;height:100%;background:#2e7d4f}
+.ogauge{width:100%;max-width:170px}.og-arc{fill:none;stroke:url(#ogg);stroke-width:8;stroke:var(--line)}.og-needle{stroke:var(--ink);stroke-width:3;stroke-linecap:round;transform-origin:60px 60px;transition:transform .6s cubic-bezier(.3,1.4,.5,1)}.ogauge text{font-size:8px;fill:var(--ink-3)}
+.ostory{font-size:1.1rem}.oq{font-weight:600;margin:0}.ochoices{display:grid;gap:8px}
+.ochoice{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:2px;padding:12px 16px;border:1.5px solid var(--line);border-radius:12px;background:var(--raised)}.ochoice:hover,.ochoice:focus-visible{border-color:var(--lamp)}.ochoice span{color:var(--ink-2);font-size:.92rem}
+.oout{padding:12px 16px;border-radius:12px;background:var(--lapis-soft)}.oout p{margin:4px 0 0}.ofx{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.ofx span{font-size:.76rem;font-weight:700;padding:2px 8px;border-radius:999px;background:var(--raised)}
+.olens{border-left:3px solid var(--lamp);padding:4px 12px}.olens p{margin:4px 0 0}.ohomer summary{cursor:pointer;color:var(--lapis)}
+.oscore{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}.oscore b{display:block;font-size:1.8rem}.oscore span{font-size:.8rem;color:var(--ink-3)}
+.obars{display:grid;gap:4px}.obars div{display:grid;grid-template-columns:120px 1fr 24px;gap:8px;align-items:center;font-size:.84rem}.obars i{height:10px;border-radius:999px;background:var(--lamp)}
+@media (max-width:560px){.ometers{grid-template-columns:1fr 1fr}.ometers .ometer:nth-child(2){grid-column:1/-1;order:3}.vtrack{height:150px}}
 .qsides{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:2px 0 4px}.qsides .faint{font-size:.74rem}
 .xlink{all:unset;cursor:pointer;font-size:.82rem;color:var(--ink-3);text-decoration:underline dotted;text-underline-offset:3px}.xlink:hover{color:var(--ink)}
 .steel{border:1px dashed var(--lamp);border-radius:10px;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--lamp-soft)}.steel p{margin:0;font-size:.88rem}.steel textarea{min-height:60px}
@@ -6510,7 +6539,7 @@ window.ATLAS_POSITIONS_EXTRA = [
   {"id":"zeno_citium","q":"q13","a":"empiric","c":"likely","src":"Aetius, Placita IV.11 (Stoic view: the mind at birth is like a blank sheet written on by sense impressions)"}
 ];
 </script>
-<script src="data/atlas-agora.js"></script>
+<script src="data/atlas-agora.js"></script><script src="data/odyssey.js"></script>
 <script>// Philodyssey — Library (glossary, thought experiments, schools) and Stoa (eras).
 // Years: negative = BCE. Ancient years are approximate ("approx: true").
 window.ATLAS_LIBRARY = {
@@ -13607,18 +13636,175 @@ ACT.libTab = el => { libTab = el.dataset.k; libQuery = ""; if (location.hash !==
 ACT.libSearch = el => { libQuery = el.dataset.q; libTab = "glossary"; render(false); };
 
 /* ==================================================================== LAB */
+/* =============================================================== SHIPYARD GAMES */
+// Behind the Veil: design a society by dragging how its wealth is shared, then get born into it at random (Rawls 1971).
+// A toy model, said so on screen: some inequality grows the pie (incentives), with diminishing returns, and wellbeing grows with the log of income.
+const VEIL_N = 5, VEIL_NAMES = ["Poorest fifth", "Lower middle", "Middle", "Upper middle", "Richest fifth"];
+function veilState() { const L = S.lab.veil = S.lab.veil || {}; if (!L.w) L.w = [20, 20, 20, 20, 20]; if (!L.lives) L.lives = []; return L; }
+function veilCalc(w) { const sum = w.reduce((a, b) => a + b, 0) || 1, sh = w.map(x => x / sum).slice().sort((a, b) => a - b);
+  let g = 0; for (let i = 0; i < VEIL_N; i++) for (let j = 0; j < VEIL_N; j++) g += Math.abs(sh[i] - sh[j]); g /= 2 * VEIL_N; // Gini of the five shares, 0 to 0.8
+  const pie = 100 * Math.max(1, 1 + 4 * g - 6 * g * g), inc = sh.map(s => Math.round(VEIL_N * pie * s)), wb = inc.map(x => Math.round(26 * Math.log(1 + x / 10)));
+  return { sh, g, pie: Math.round(pie), inc, wb, avg: Math.round(wb.reduce((a, b) => a + b, 0) / VEIL_N), min: wb[0] }; }
+function labVeil() { const L = veilState(), C = veilCalc(L.w), maxInc = Math.max(...C.inc, 1);
+  const bars = C.sh.map((s, i) => '<div class="vbar"><div class="vtrack" data-vi="' + i + '"><div class="vfill" style="height:' + Math.round(100 * C.inc[i] / maxInc) + '%"><span>' + C.inc[i] + '</span></div></div><b>' + Math.round(100 * s) + '%</b><small>' + VEIL_NAMES[i] + "</small></div>").join("");
+  const lives = L.lives.slice(-5), score = lives.length ? Math.round(lives.reduce((a, b) => a + b.wb, 0) / lives.length) : null;
+  const E = veilCalc([1, 1, 1, 1, 1]);
+  const principle = C.g < 0.03 ? ["Strict equality", "Everyone gets the same. Nobody is left behind, but nobody has a reason to make the pie bigger either."] : C.inc[0] >= E.inc[0] ? ["Rawls’s difference principle", "You allowed inequality, but only the kind that leaves the poorest better off than strict equality would. That is exactly what Rawls asked for."] : C.avg > E.avg ? ["Average utilitarianism", "You made the average life better than under equality, as John Harsanyi argued a rational chooser would, but the poorest pay for it."] : ["A gamble on the top", "Big rewards for the lucky and hard lives at the bottom: worse on average, and worse for the poorest. Behind the veil, that is a bet that you’ll be born rich."];
+  let h = '<p class="read">You are about to be born into a society, but you don’t know who you’ll be: rich or poor, lucky or not. First design it. <b>Drag each bar</b> to set how much of the wealth that fifth of the population gets. Then step behind the veil and be born, five times.</p>' +
+    '<div class="panel stack" style="--g:12px"><div class="row" style="justify-content:space-between"><span class="eyebrow">Your society</span><span class="faint" style="font-size:.84rem">Size of the pie: <b>' + C.pie + '</b> · inequality ' + Math.round(100 * C.g) + '%</span></div><div class="vbars" id="vbars">' + bars + '</div>' +
+    '<p class="faint" style="font-size:.8rem;margin:0">Numbers are income per person. In this toy world some inequality grows the pie, because people work harder for bigger rewards, but too much stops paying off; and each extra coin matters less the more you already have.</p>' +
+    '<div class="row" style="--g:8px"><button class="btn small ghost" data-act="veilPreset" data-p="equal">All equal</button><button class="btn small ghost" data-act="veilPreset" data-p="rawls">Rawls</button><button class="btn small ghost" data-act="veilPreset" data-p="steep">Winner takes most</button></div></div>' +
+    '<div class="panel raised stack veil-born" style="--g:10px"><span class="eyebrow">Behind the veil</span><div class="vpeople" id="vpeople">' + VEIL_NAMES.map((n, i) => '<span class="vp" data-i="' + i + '">' + ["🧑‍🌾", "🧑‍🔧", "🧑‍💼", "🧑‍⚕️", "🤴"][i] + "</span>").join("") + '</div>' +
+    '<div class="row" style="justify-content:center"><button class="btn primary" data-act="veilBorn">' + (lives.length ? "Be born again" : "Be born") + "</button></div>" +
+    (lives.length ? '<p class="read" style="text-align:center;margin:0">' + lives.map(x => VEIL_NAMES[x.i] + " (" + x.wb + ")").join(" · ") + '</p><p style="text-align:center;margin:0">Your life score so far: <b class="vscore">' + score + "</b>" + (L.best ? ' <span class="faint">· best ' + L.best + "</span>" : "") + "</p>" : "") + "</div>";
+  if (lives.length >= 5) { L.done = true;
+    h += '<div class="panel stack" style="--g:8px"><span class="eyebrow">What you chose</span><h3>' + esc(principle[0]) + '</h3><p class="read">' + esc(principle[1]) + '</p><p class="read">Worst-off life: <b>' + C.min + "</b> · average life: <b>" + C.avg + '</b>. John Rawls (A Theory of Justice, 1971) argued that, not knowing who you’ll be, you should protect the worst position: the “maximin” rule. John Harsanyi replied that a rational chooser would maximise the average instead. Which bet did you make, and would you make it with your real life?</p><div class="row"><a class="btn small" href="#agora-inequality">Debate inequality</a><button class="btn small ghost" data-act="veilReset">Start again</button></div></div>'; }
+  after.push(veilDrag);
+  return labShell("Behind the veil", h); }
+function veilDrag() { $$("#vbars .vtrack").forEach(t => { t.onpointerdown = e => { e.preventDefault(); t.setPointerCapture(e.pointerId); const i = +t.dataset.vi;
+    const move = ev => { const r = t.getBoundingClientRect(), f = Math.max(0.02, Math.min(1, (r.bottom - ev.clientY) / r.height)); const L = veilState();
+      // bars are drawn sorted, so dragging bar i sets the i-th smallest weight; keep the order by clamping between neighbours
+      const sorted = L.w.slice().sort((a, b) => a - b); sorted[i] = Math.round(f * 100); for (let k = i + 1; k < VEIL_N; k++) sorted[k] = Math.max(sorted[k], sorted[i]); for (let k = i - 1; k >= 0; k--) sorted[k] = Math.min(sorted[k], sorted[i]);
+      L.w = sorted; const C = veilCalc(L.w), mx = Math.max(...C.inc, 1);
+      $$("#vbars .vbar").forEach((b, k) => { $(".vfill", b).style.height = Math.round(100 * C.inc[k] / mx) + "%"; $(".vfill span", b).textContent = C.inc[k]; $("b", b).textContent = Math.round(100 * C.sh[k]) + "%"; }); };
+    move(e); t.onpointermove = move; t.onpointerup = () => { t.onpointermove = null; save(); render(true); }; }; }); }
+ACT.veilPreset = el => { const L = veilState(); L.w = { equal: [20, 20, 20, 20, 20], rawls: [16, 18, 20, 22, 24], steep: [2, 5, 10, 23, 60] }[el.dataset.p]; L.lives = []; save(); render(true); };
+ACT.veilReset = () => { S.lab.veil = { w: [20, 20, 20, 20, 20], lives: [], best: (S.lab.veil || {}).best }; save(); render(true); };
+ACT.veilBorn = el => { const L = veilState(), C = veilCalc(L.w), i = Math.floor(Math.random() * VEIL_N), ps = $$("#vpeople .vp"); el.disabled = true; let k = 0, n = 14 + i;
+  const tick = () => { ps.forEach((p, j) => p.classList.toggle("on", j === k % VEIL_N)); if (k++ < n) setTimeout(tick, 40 + k * 5); else { L.lives.push({ i, wb: C.wb[i] }); if (L.lives.length >= 5) { const sc = Math.round(L.lives.slice(-5).reduce((a, b) => a + b.wb, 0) / 5); L.best = Math.max(L.best || 0, sc); } save(); setTimeout(() => render(true), 350); } };
+  tick(); };
+
+// The Trolley Gauntlet: ten classic variants, a draggable lever, a body count, and the principles your answers reveal
+const GAUNT = [
+  { id: "switch", t: "The switch", by: "Philippa Foot (1967); Judith Jarvis Thomson (1985)", d: "A runaway trolley will kill five workers. You stand by a lever: pull it, and the trolley turns onto a side track where it kills one worker instead.", act: "Pull the lever", stay: "Leave it", kill: [1, 5], scene: "track" },
+  { id: "driver", t: "You are the driver", by: "Philippa Foot (1967)", d: "Now you are driving the trolley and the brakes have failed. Straight on, you hit five; steer onto the spur, and you hit one. Either way, you are the one driving.", act: "Steer onto the spur", stay: "Keep straight", kill: [1, 5], scene: "track" },
+  { id: "loop", t: "The loop", by: "Judith Jarvis Thomson (1985)", d: "The side track loops back to the five. It only saves them because the one worker on the loop is big enough to stop the trolley: his body is what saves them.", act: "Pull the lever", stay: "Leave it", kill: [1, 5], scene: "loop" },
+  { id: "footbridge", t: "The footbridge", by: "Judith Jarvis Thomson (1985)", d: "You are on a bridge over the track, next to a very large stranger. Push him off and his body will stop the trolley before it reaches the five. You are too small to stop it yourself.", act: "Push him", stay: "Don’t push", kill: [1, 5], scene: "bridge" },
+  { id: "trapdoor", t: "The trapdoor", by: "Joshua Greene and colleagues (2009)", d: "Same bridge, but the stranger stands on a trapdoor. You can drop him onto the track with a switch, without touching him. His body still stops the trolley.", act: "Flip the switch", stay: "Don’t", kill: [1, 5], scene: "bridge" },
+  { id: "self", t: "Three options", by: "Judith Jarvis Thomson (2008)", d: "A third track appears, and on it is you. Do nothing: five die. Turn left: one stranger dies. Turn right: you die, and nobody else.", three: [["Do nothing", 5, "none"], ["Turn onto the stranger", 1, "other"], ["Turn onto yourself", 1, "selfdie"]], scene: "track" },
+  { id: "two", t: "Two for one", by: "A common variant", d: "Back to the switch, but the main track holds only two workers, not five. Turning still kills one.", act: "Pull the lever", stay: "Leave it", kill: [1, 2], scene: "track" },
+  { id: "sister", t: "The one is your sister", by: "A common variant", d: "The switch again, five on the main track. But the one worker on the side track is your sister.", act: "Pull the lever", stay: "Leave it", kill: [1, 5], scene: "track" },
+  { id: "dare", t: "The five took a dare", by: "A variant on responsibility", d: "The five climbed onto the track for a dare, ignoring every warning sign. The one on the side track is a worker doing his job.", act: "Pull the lever", stay: "Leave it", kill: [1, 5], scene: "track" },
+  { id: "transplant", t: "The transplant", by: "Judith Jarvis Thomson (1976)", d: "No trolley now. You are a surgeon with five patients dying for want of organs. A healthy visitor is a perfect match for all five. No one would ever find out.", act: "Operate", stay: "Don’t", kill: [1, 5], scene: "hospital" }
+];
+function gauntState() { return S.lab.gauntlet = S.lab.gauntlet || { v: {} }; }
+function gauntScene(c) {
+  if (c.scene === "hospital") return '<div class="gscene hosp"><span class="gbig">🏥</span><span class="glab">5 patients 🛏️🛏️🛏️🛏️🛏️</span><span class="glab">1 visitor 🧍</span></div>';
+  if (c.scene === "bridge") return '<svg class="gscene" viewBox="0 0 400 150" aria-hidden="true"><line x1="0" y1="120" x2="400" y2="120" class="trk"/><rect x="170" y="40" width="90" height="10" class="brg"/><text x="200" y="36" font-size="26">' + (c.id === "trapdoor" ? "🧍⬛" : "🧍🙋") + '</text><text x="20" y="115" font-size="26" class="gtrolley">🚃</text><text x="320" y="115" font-size="20">🧍🧍🧍🧍🧍</text></svg>';
+  const loop = c.scene === "loop", two = c.id === "two";
+  return '<svg class="gscene" viewBox="0 0 400 150" aria-hidden="true"><path d="M0 60 H400" class="trk"/><path d="M120 60 C170 60 180 115 240 115 H' + (loop ? "330 C370 115 380 60 400 60" : "400") + '" class="trk side"/><text x="10" y="55" font-size="26" class="gtrolley">🚃</text><text x="300" y="52" font-size="20">' + (two ? "🧍🧍" : "🧍🧍🧍🧍🧍") + '</text><text x="255" y="108" font-size="20">' + (c.id === "sister" ? "👩" : "🧍") + "</text>" + (c.id === "self" ? '<path d="M120 60 C160 60 170 15 230 15 H400" class="trk side"/><text x="255" y="10" font-size="18">🫵</text>' : "") + "</svg>"; }
+function labGauntlet() { const L = gauntState(), i = GAUNT.findIndex(c => !L.v[c.id]), done = i < 0;
+  const dead = GAUNT.reduce((a, c) => { const v = L.v[c.id]; if (!v) return a; if (c.three) { const o = c.three.find(x => x[2] === v); return a + (o ? o[1] : 0); } return a + (v === "act" ? c.kill[0] : c.kill[1]); }, 0);
+  let h = '<div class="gtop"><span class="faint">Case ' + Math.min(GAUNT.length, done ? GAUNT.length : i + 1) + " of " + GAUNT.length + '</span><div class="gprog"><i style="width:' + Math.round(100 * Object.keys(L.v).length / GAUNT.length) + '%"></i></div><span class="gdead">☠ ' + dead + "</span></div>";
+  if (!done) { const c = GAUNT[i];
+    h += '<div class="panel stack gcard" style="--g:12px"><span class="eyebrow">' + esc(c.by) + "</span><h2>" + esc(c.t) + "</h2>" + gauntScene(c) + '<p class="read">' + esc(c.d) + "</p>" +
+      (c.three ? '<div class="row" style="--g:8px">' + c.three.map(o => '<button class="btn" data-act="gauntPick" data-v="' + o[2] + '">' + esc(o[0]) + "</button>").join("") + "</div>" :
+        '<div class="glever" data-act-label="' + esc(c.act) + '"><span class="faint">' + esc(c.stay) + '</span><div class="gl-track" id="glever" role="slider" aria-label="' + esc(c.act) + '" tabindex="0" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"><span class="gl-knob"></span></div><b>' + esc(c.act) + '</b></div><p class="faint" style="font-size:.8rem;margin:0">Drag the lever all the way to act, or <button class="linkish" data-act="gauntPick" data-v="stay">' + esc(c.stay.toLowerCase()) + "</button>.</p>") + "</div>";
+    after.push(gauntLever); }
+  else h += gauntResult(L, dead);
+  return labShell("The trolley gauntlet", h); }
+function gauntLever() { const t = $("#glever"); if (!t) return; const k = $(".gl-knob", t); let on = false;
+  const fin = () => { pick("act"); }, pick = v => { gauntPickVal(v); };
+  t.onpointerdown = e => { e.preventDefault(); t.setPointerCapture(e.pointerId); const r = t.getBoundingClientRect();
+    t.onpointermove = ev => { const f = Math.max(0, Math.min(1, (ev.clientX - r.left - 16) / (r.width - 32))); k.style.left = "calc(" + Math.round(f * 100) + "% - " + Math.round(f * 32) + "px)"; on = f > 0.92; t.classList.toggle("hot", on); };
+    t.onpointerup = () => { t.onpointermove = null; if (on) fin(); else { k.style.left = ""; t.classList.remove("hot"); } }; };
+  t.onkeydown = e => { if (e.key === "ArrowRight" || e.key === "Enter") fin(); }; }
+function gauntPickVal(v) { const L = gauntState(), c = GAUNT.find(x => !L.v[x.id]); if (!c) return; L.v[c.id] = v; save();
+  const tr = $(".gtrolley"); if (tr) { tr.classList.add(v === "act" || v === "other" ? "go-side" : "go"); setTimeout(() => render(true), 700); } else render(true); }
+ACT.gauntPick = el => gauntPickVal(el.dataset.v);
+ACT.gauntReset = () => { S.lab.gauntlet = { v: {} }; save(); render(true); };
+function gauntResult(L, dead) { L.done = true; const v = id => L.v[id], yes = id => v(id) === "act";
+  const P = [];
+  const pair = (a, b, same, diff) => { if (!v(a) || !v(b)) return; P.push(yes(a) === yes(b) ? same : diff); };
+  pair("switch", "footbridge", { k: "consistent", t: "Switch and footbridge: same answer", d: "You treat the two alike: what matters is how many live. Most people don’t. In the 2020 PhilPapers Survey, about 63% of philosophers would pull the switch but only about 22% would push." },
+    { k: "means", t: "Switch yes, footbridge no", d: "Like most people, you’ll redirect a threat but not use a person to stop it. The doctrine of double effect explains this: harm you foresee as a side effect can be allowed when harm you intend as a means cannot." });
+  pair("footbridge", "trapdoor", { k: "force", t: "Push and trapdoor: same answer", d: "Whether you touch him makes no difference to you. Joshua Greene found many people feel differently: a hands-on push feels far worse than a switch." },
+    { k: "force", t: "Push and trapdoor: different answers", d: "Using your own hands changes your verdict. Joshua Greene calls this “personal force”, and asks whether a gut reaction like that should count morally." });
+  pair("switch", "loop", { k: "loop", t: "Switch and loop: same answer", d: "Thomson thought the loop shows the double-effect story is too simple: the one’s body saves the five, yet turning still seems allowed." },
+    { k: "loop", t: "Switch and loop: different answers", d: "You care whether the one is used as a means. That is the doctrine of double effect applied strictly." });
+  if (v("switch") && v("transplant")) P.push(yes("transplant") ? { k: "numbers", t: "You would operate", d: "You follow the numbers all the way. Few people go this far: here the five are saved by taking a person’s organs, not by redirecting a threat." } : { k: "rights", t: "No to the transplant", d: "Almost everyone draws a line here. Thomson asked what makes the surgeon different from the switch; one answer is that the visitor has a right not to be used that the five can’t override." });
+  if (v("switch") && v("two")) P.push(yes("two") === yes("switch") ? { k: "numbers", t: "Numbers", d: yes("two") ? "Even two for one is enough for you: more lives saved is better, however small the margin." : "You leave the trolley even when it would save more lives." } : { k: "threshold", t: "A threshold", d: "Five for one is enough to act, two for one is not. Some deontologists defend thresholds like this; others say any line is arbitrary." });
+  if (v("switch") && v("sister")) P.push(yes("sister") === yes("switch") ? { k: "impartial", t: "Your sister counts the same", d: "Strict impartiality: everyone counts for one, as Bentham put it. Bernard Williams called a person who must check impartial rules before saving his own wife a man with “one thought too many”." } : { k: "partial", t: "Your sister changes things", d: "Special obligations to the people close to you. Care ethics and many ordinary moral views agree; strict utilitarians do not." });
+  if (v("switch") && v("dare")) P.push(yes("dare") === yes("switch") ? { k: "same", t: "Blame doesn’t change the sums", d: "The five being at fault doesn’t change your verdict." } : { k: "desert", t: "Who’s at fault matters", d: "The five chose the risk; the worker didn’t. Responsibility for creating a danger shifts who should bear it." });
+  if (v("self")) P.push(v("self") === "selfdie" ? { k: "self", t: "You took the third track", d: "You’d die yourself rather than kill a stranger. Thomson (2008) used exactly this case to argue that if you wouldn’t pay the cost yourself, you may not make someone else pay it." } : v("self") === "other" ? { k: "self", t: "You chose the stranger over yourself", d: "Thomson (2008) argued this is the hard spot: if you won’t give your own life, may you take someone else’s? Others reply that morality doesn’t demand heroic self-sacrifice." } : { k: "self", t: "You did nothing", d: "You won’t kill anyone, yourself included. The doing/allowing distinction: killing five by letting the trolley run is not the same as killing one." });
+  if (v("driver") && v("switch") && yes("driver") && !yes("switch")) P.push({ k: "doing", t: "Driver yes, bystander no", d: "Foot’s original thought: the driver kills someone whatever he does, so he should kill fewer. The bystander can stay out of it." });
+  const acts = GAUNT.filter(c => !c.three && yes(c.id)).length;
+  return '<div class="panel raised stack" style="--g:10px"><span class="eyebrow">The gauntlet is over</span><h2>☠ ' + dead + " lives lost across ten cases</h2><p class=\"read\">You acted in " + acts + " of the nine two-way cases. Here is what your pattern reveals:</p>" +
+    P.map(p => '<div class="gfind"><b>' + esc(p.t) + '</b><p class="read">' + esc(p.d) + "</p></div>").join("") +
+    '<div class="row"><a class="btn primary" href="#agora-killing">Debate killing vs. letting die</a><button class="btn ghost" data-act="gauntReset">Run it again</button></div></div>'; }
+
+// The Odyssey: sail home from Troy through Homer's dilemmas. Crew, a mercy/ruthlessness needle and wits move with each choice;
+// each choice reveals the ethical theory behind it, and the ending depends on who you became.
+const ODY_THEORY = { consequences: "Consequences", duty: "Duty", virtue: "Virtue", care: "Care", self: "Self-interest", contract: "Fair agreement", faith: "Piety", wits: "Wits" };
+function odyState() { const O = window.ODYSSEY || {}; const L = S.lab.odyssey = S.lab.odyssey || {}; if (L.i == null) Object.assign(L, { i: 0, crew: (O.start || {}).crew || 45, mercy: 0, wits: 0, picks: [], seen: false }); return L; }
+function odyMap(O, L) { const st = O.stops || [];
+  const pts = st.map(s => [s.map.x * 4, s.map.y * 2.2]);
+  const path = pts.map((p, i) => (i ? "L" : "M") + p[0] + " " + p[1]).join(" ");
+  const cur = Math.min(L.i, st.length - 1), sh = pts[cur] || [0, 0];
+  return '<svg class="omap" viewBox="0 0 400 220" aria-hidden="true"><defs><radialGradient id="osea" cx="50%" cy="45%" r="70%"><stop offset="0" stop-color="#2b6e8f"/><stop offset="1" stop-color="#173f5c"/></radialGradient></defs><rect width="400" height="220" rx="14" fill="url(#osea)"/>' +
+    '<path d="' + path + '" class="oroute"/>' + (L.i ? '<path d="' + pts.slice(0, L.i + 1).map((p, i) => (i ? "L" : "M") + p[0] + " " + p[1]).join(" ") + '" class="oroute done"/>' : "") +
+    st.map((s, i) => '<g class="oisle' + (i < L.i ? " past" : i === L.i ? " now" : "") + '"><ellipse cx="' + pts[i][0] + '" cy="' + pts[i][1] + '" rx="11" ry="7"/><text x="' + pts[i][0] + '" y="' + (pts[i][1] + 19) + '">' + esc(s.place) + "</text></g>").join("") +
+    '<text class="oship" x="' + sh[0] + '" y="' + (sh[1] - 9) + '" style="--x:' + sh[0] + "px;--y:" + (sh[1] - 9) + 'px">⛵</text></svg>'; }
+function odyMeters(L, O) { const m = Math.max(-12, Math.min(12, L.mercy)), ang = m * 7;
+  return '<div class="ometers"><div class="ometer"><span class="eyebrow">Crew</span><b class="ocrew">' + L.crew + '</b><div class="ocrewbar"><i style="width:' + Math.round(100 * L.crew / ((O.start || {}).crew || 45)) + '%"></i></div></div>' +
+    '<div class="ometer"><span class="eyebrow">Your heart</span><svg viewBox="0 0 120 66" class="ogauge"><path d="M10 60 A50 50 0 0 1 110 60" class="og-arc"/><line x1="60" y1="60" x2="60" y2="18" class="og-needle" style="transform:rotate(' + ang + 'deg)"/><text x="6" y="66">Ruthless</text><text x="114" y="66" text-anchor="end">Merciful</text></svg></div>' +
+    '<div class="ometer"><span class="eyebrow">Wits</span><b>' + "★".repeat(Math.min(L.wits, 12)) + (L.wits ? "" : "–") + "</b></div></div>"; }
+function labOdyssey() { const O = window.ODYSSEY; if (!O || !O.stops) return labShell("The Odyssey", '<p class="muted">The voyage is being charted.</p>');
+  const L = odyState(), st = O.stops, n = st.length;
+  if (!L.seen) return labShell("The Odyssey", '<div class="panel ody-intro stack" style="--g:12px"><span class="eyebrow">Twelve islands · one way home</span><p class="read" style="font-size:1.15rem">' + esc(O.intro || "") + '</p>' + odyMap(O, L) + '<p class="read">Every choice moves three things: how many of your <b>crew</b> live, whether your heart swings toward <b>mercy</b> or <b>ruthlessness</b>, and your <b>wits</b>. There is no right answer, only the captain you become.</p><div class="row"><button class="btn primary" data-act="odyStart">Set sail ⛵</button></div></div>');
+  let h = odyMeters(L, O) + odyMap(O, L);
+  if (L.i < n) { const s = st[L.i], pk = L.picks[L.i];
+    h += '<div class="panel stack ostop" style="--g:10px"><span class="eyebrow">Island ' + (L.i + 1) + " of " + n + " · " + esc(s.place) + "</span><h2>" + esc(s.title) + '</h2><p class="read ostory">' + esc(s.story) + '</p><p class="oq">' + esc(s.question) + "</p>";
+    if (!pk) h += '<div class="ochoices">' + s.choices.map(c => '<button class="ochoice" data-act="odyPick" data-c="' + esc(c.id) + '"><b>' + esc(c.label) + "</b><span>" + esc(c.text) + "</span></button>").join("") + "</div>";
+    else { const c = s.choices.find(x => x.id === pk) || s.choices[0], e = c.effects || {};
+      const fx = [e.crew ? (e.crew > 0 ? "+" : "") + e.crew + " crew" : "", e.mercy ? (e.mercy > 0 ? "heart → mercy" : "heart → ruthless") : "", e.wits ? "+" + "★".repeat(e.wits) + " wits" : ""].filter(Boolean);
+      h += '<div class="oout"><b>' + esc(c.label) + '</b><p class="read">' + esc(c.outcome) + '</p>' + (fx.length ? '<div class="ofx">' + fx.map(x => "<span>" + esc(x) + "</span>").join("") + "</div>" : "") + "</div>" +
+        '<div class="olens"><span class="chip lamp">' + esc(ODY_THEORY[c.lens.theory] || c.lens.theory) + "</span> <b>" + esc(c.lens.name) + '</b><p class="read">' + esc(c.lens.note) + "</p></div>" +
+        '<details class="ohomer"><summary>What did Homer’s Odysseus do?</summary><p class="read">' + esc(s.homer) + "</p></details>" +
+        '<div class="row" style="justify-content:flex-end"><button class="btn primary" data-act="odyNext">' + (L.i + 1 < n ? "Sail on ⛵" : "Reach Ithaca") + "</button></div>"; }
+    h += "</div>"; }
+  else h += odyEnd(O, L);
+  return labShell("The Odyssey", h); }
+function odyEnd(O, L) { L.done = true;
+  const end = (O.endings || []).find(x => { const w = x.when || {}; return L.crew >= (w.crewMin ?? -1e9) && L.crew <= (w.crewMax ?? 1e9) && L.mercy >= (w.mercyMin ?? -1e9) && L.mercy <= (w.mercyMax ?? 1e9); }) || { title: "Home", text: "" };
+  const tally = {}; L.picks.forEach((p, i) => { const s = O.stops[i], c = s && s.choices.find(x => x.id === p); if (c) tally[c.lens.theory] = (tally[c.lens.theory] || 0) + 1; });
+  const top = Object.entries(tally).sort((a, b) => b[1] - a[1]), prof = top[0] && (O.profiles || {})[top[0][0]];
+  const homer = O.stops.filter((s, i) => s.homerChoice && L.picks[i] === s.homerChoice).length;
+  const score = L.crew * 10 + L.wits * 15 + (12 - Math.abs(L.mercy)) * 5; L.best = Math.max(L.best || 0, score);
+  return '<div class="panel raised stack oend" style="--g:12px"><span class="eyebrow">Ithaca</span><h2>' + esc(end.title) + '</h2><p class="read">' + esc(end.text) + "</p>" +
+    '<div class="oscore"><div><b>' + L.crew + '</b><span>crew home</span></div><div><b>' + L.wits + '</b><span>wits</span></div><div><b>' + score + '</b><span>points' + (L.best > score ? " · best " + L.best : "") + "</span></div></div>" +
+    (prof ? '<div class="olens"><span class="eyebrow">Your captaincy</span><b>' + esc(prof.name) + '</b><p class="read">' + esc(prof.line) + "</p></div>" : "") +
+    '<div class="obars">' + top.map(([k, v]) => '<div><span>' + esc(ODY_THEORY[k] || k) + '</span><i style="width:' + Math.round(100 * v / L.picks.length) + '%"></i><b>' + v + "</b></div>").join("") + "</div>" +
+    '<p class="read">You chose as Homer’s Odysseus did at ' + homer + " of " + O.stops.length + " islands.</p>" +
+    '<div class="row"><button class="btn primary" data-act="odyReset">Sail again</button><a class="btn ghost" href="#agora">Argue it out in Debates</a></div></div>'; }
+ACT.odyStart = () => { odyState().seen = true; save(); render(true); };
+ACT.odyPick = el => { const L = odyState(), s = window.ODYSSEY.stops[L.i], c = s.choices.find(x => x.id === el.dataset.c), e = c.effects || {};
+  L.picks[L.i] = c.id; L.crew = Math.max(0, L.crew + (e.crew || 0)); L.mercy += e.mercy || 0; L.wits += e.wits || 0; save(); render(true);
+  const o = $(".oout"); if (o) setTimeout(() => o.scrollIntoView({ block: "center", behavior: "smooth" }), 30); };
+ACT.odyNext = () => { const L = odyState(); L.i++; save(); render(true); window.scrollTo({ top: 0 }); };
+ACT.odyReset = () => { const b = (S.lab.odyssey || {}).best; S.lab.odyssey = { best: b }; odyState().seen = true; save(); render(true); };
+
 VIEWS.lab = arg => {
   if (arg === "heap") return labHeap();
   if (arg === "ship") return labShip();
   if (arg === "machine") return labMachine();
   if (arg === "trolley") return labTrolley();
+  if (arg === "odyssey") return labOdyssey();
+  if (arg === "veil") return labVeil();
+  if (arg === "gauntlet") return labGauntlet();
+  const games = [
+    { k: "odyssey", t: "The Odyssey", e: "⛵", d: "Sail home from Troy through twelve of Homer’s islands. Every choice costs or saves your crew, and swings your heart between mercy and ruthlessness.", by: "Homer; inspired by EPIC: The Musical" },
+    { k: "gauntlet", t: "The trolley gauntlet", e: "🚃", d: "Ten trolley cases, from the switch to the surgeon. Drag the lever, count the cost, then see which principles your choices follow.", by: "Foot, Thomson, Greene and others" },
+    { k: "veil", t: "Behind the veil", e: "🎲", d: "Drag the bars to design a society, then be born into it at random. Did you protect the poorest, or gamble on being rich?", by: "John Rawls, 1971; John Harsanyi" }
+  ];
   const tiles = [
     { k: "heap", t: "The vanishing heap", d: "Take grains away one at a time. Tell us the moment it stops being a heap.", by: "Eubulides of Miletus, 4th century BCE" },
     { k: "ship", t: "Theseus’ ship", d: "Replace every plank. Then rebuild the old planks into a second ship. Which one is Theseus'?", by: "Plutarch; Hobbes added the second ship" },
     { k: "machine", t: "The experience machine", d: "Would you plug into a perfect simulated life? Then: would you unplug from one?", by: "Robert Nozick, 1974; Felipe De Brigard, 2010" },
     { k: "trolley", t: "The trolley ladder", d: "Five versions of the trolley case. We’ll find the principle your answers follow.", by: "Philippa Foot, 1967; Judith Jarvis Thomson, 1976–85" }
   ];
-  return '<div class="wrap stack" style="--g:22px"><div class="stack" style="--g:8px"><span class="eyebrow">The Shipyard</span><h1>Thought experiments you can play</h1><p class="muted read">Philosophers test ideas by imagining cases. Here you run the experiment yourself, then see what your answer commits you to.</p></div><div class="labgrid">' +
+  return '<div class="wrap stack" style="--g:22px"><div class="stack" style="--g:8px"><span class="eyebrow">The Shipyard</span><h1>Thought experiments you can play</h1><p class="muted read">Philosophers test ideas by imagining cases. Here you run the experiment yourself, then see what your answer commits you to.</p></div><div class="labgames">' +
+    games.map(x => '<a class="gtile" href="#lab-' + x.k + '"><span class="gemo">' + x.e + "</span><h3>" + x.t + (S.lab[x.k] && S.lab[x.k].done ? ' <span class="chip lamp">Played</span>' : "") + "</h3><p>" + x.d + '</p><span class="faint" style="font-size:.8rem">' + x.by + "</span></a>").join("") + '</div><h2 style="margin-top:8px">Quick experiments</h2><div class="labgrid">' +
     tiles.map(x => '<a class="mod" href="#lab-' + x.k + '"><h3><span>' + x.t + "</span>" + (S.lab[x.k] && S.lab[x.k].done ? '<span class="chip lamp">Done</span>' : "") + "</h3><p>" + x.d + '</p><span class="faint" style="font-size:.8rem">' + x.by + "</span></a>").join("") + "</div>" +
     '<p class="muted">Four you can play, and ' + Math.max(0, LIB.experiments.length - 4) + ' more to read: <a href="#library" data-act="libExperiments">the thought experiments in the Dictionary →</a></p></div>';
 };
