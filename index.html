@@ -1356,7 +1356,7 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .gtile{display:flex;flex-direction:column;gap:8px;padding:20px;border-radius:16px;text-decoration:none;color:#ECE7DA;background:linear-gradient(150deg,#1d3e5a,#0f2236);box-shadow:var(--shadow);transition:transform .2s}
 .gtile:hover{transform:translateY(-3px)}.gtile h3{color:#fff;margin:0}.gtile p{margin:0;color:#d9e2ea}.gtile .faint{color:#9fb3c4}.gemo{font-size:2rem}
 .vbars{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:end}
-.vbar{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}.vbar small{font-size:.72rem;color:var(--ink-3);line-height:1.2}
+.vbar{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}.vbar small{font-size:.72rem;color:var(--ink-3);line-height:1.2;min-height:2.4em}
 .vtrack{position:relative;width:100%;height:190px;border-radius:10px;background:var(--line-2);cursor:ns-resize;touch-action:none;display:flex;align-items:flex-end;overflow:hidden}
 .vfill{width:100%;background:linear-gradient(0deg,var(--lapis),#6b8fc4);border-radius:10px 10px 0 0;display:flex;justify-content:center;padding-top:4px;color:#fff;font-size:.78rem;font-weight:700;min-height:18px;transition:height .12s}
 .vpeople{display:flex;justify-content:center;gap:14px;font-size:2rem}.vp{padding:6px;border-radius:12px;transition:transform .1s,background .1s;filter:grayscale(.6)}.vp.on{background:var(--lamp-soft);transform:scale(1.25);filter:none}
@@ -1371,7 +1371,7 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .omap{width:100%;border-radius:14px;display:block}.oroute{fill:none;stroke:#f3e3b5;stroke-width:1.5;stroke-dasharray:4 4;opacity:.6}.oroute.done{stroke-dasharray:none;opacity:1;stroke:#E8B04A}
 .oisle ellipse{fill:#d8c79a;stroke:#8a6a3e}.oisle{cursor:help}.oisle text{font-size:8px;font-weight:600;paint-order:stroke;stroke:#173f5c;stroke-width:2px;fill:#f6eedb;text-anchor:middle}.oisle.past ellipse{fill:#b9a77a}.oisle.now ellipse{fill:#E8B04A;stroke:#fff;stroke-width:1.5}
 .oship{font-size:16px;text-anchor:middle}
-.ometers{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:10px}.ometer{border:1px solid var(--line);border-radius:12px;background:var(--raised);padding:8px 12px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.ometers{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:10px;position:sticky;top:60px;z-index:5;background:var(--bg);padding:6px 0}.ometer{border:1px solid var(--line);border-radius:12px;background:var(--raised);padding:8px 12px;display:flex;flex-direction:column;gap:4px;min-width:0}
 .ocrew{font-size:1.5rem}.ocrewbar{height:6px;background:var(--line-2);border-radius:999px;overflow:hidden}.ocrewbar i{display:block;height:100%;background:var(--ok)}
 .ogauge{width:100%;max-width:170px}.og-arc{fill:none;stroke:url(#ogg);stroke-width:8;stroke-linecap:round}.og-needle{stroke:var(--ink);stroke-width:3;stroke-linecap:round;transform-origin:60px 60px;transition:transform .6s cubic-bezier(.3,1.4,.5,1)}.ogauge text{font-size:8px;fill:var(--ink-3)}
 .ostory{font-size:1.1rem}.oq{font-weight:600;margin:0}.ochoices{display:grid;gap:8px}
@@ -1735,7 +1735,7 @@ html,body{overflow-x:clip}
 .navlib-btn.cur{color:var(--ink)}.navlib-btn.cur::after{content:"";position:absolute;left:10px;right:10px;bottom:2px;height:2px;background:var(--lamp);border-radius:2px}
 .navlib-menu{position:absolute;top:calc(100% + 6px);left:0;min-width:220px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-3);padding:6px;z-index:40;display:grid}
 .navlib-menu a{display:grid;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--ink)}.navlib-menu a:hover,.navlib-menu a[aria-current=page]{background:var(--lamp-soft)}.navlib-menu small{color:var(--ink-3);font-size:var(--fs-xs)}
-@media (min-width:761px){.nav .lib-l{display:none}}@media (max-width:760px){.navlib{display:none}}
+@media (min-width:761px){.nav .lib-l{display:none}}.navlib-mid{display:none!important}@media (min-width:761px) and (max-width:960px){.mypos{width:34px;height:34px;padding:0;justify-content:center;border-radius:50%}.mypos span{display:none}}@media (min-width:761px) and (max-width:1180px){.nav .lib-m{display:none}.navlib-mid{display:grid!important}}@media (max-width:760px){.navlib{display:none}}
 </style>
 
 <header class="top">
@@ -1745,9 +1745,9 @@ html,body{overflow-x:clip}
       <b>Philodyssey</b>
     </a>
     <nav class="nav" id="nav" aria-label="Sections">
-      <a href="#voyage">Voyage</a><a href="#compass">Compass</a><a href="#agora">Debates</a><a href="#seminar">Seminars</a><a href="#firmament">Stargazing</a><a href="#stoa">Timeline</a><a href="#lab">Shipyard</a><a class="lib-l" href="#thinkers">Thinkers</a><a class="lib-l" href="#works">Works</a><a class="lib-l" href="#library">Dictionary</a><a class="lib-l" href="#quiz">Quiz</a>
+      <a href="#voyage">Voyage</a><a href="#compass">Compass</a><a href="#agora">Debates</a><a class="lib-m" href="#seminar">Seminars</a><a class="lib-m" href="#firmament">Stargazing</a><a class="lib-m" href="#stoa">Timeline</a><a href="#lab">Shipyard</a><a class="lib-l" href="#thinkers">Thinkers</a><a class="lib-l" href="#works">Works</a><a class="lib-l" href="#library">Dictionary</a><a class="lib-l" href="#quiz">Quiz</a>
     </nav>
-    <div class="navlib"><button class="navlib-btn" type="button" aria-haspopup="true" aria-expanded="false" data-act="navLib">Library <span aria-hidden="true">▾</span></button><div class="navlib-menu" hidden><a href="#thinkers"><b>Thinkers</b><small>377 philosophers</small></a><a href="#works"><b>Works</b><small>The archive of books</small></a><a href="#library"><b>Dictionary</b><small>Words philosophers use</small></a><a href="#quiz"><b>Quiz</b><small>Test yourself</small></a></div></div>
+    <div class="navlib"><button class="navlib-btn" type="button" aria-haspopup="true" aria-expanded="false" data-act="navLib">Library <span aria-hidden="true">▾</span></button><div class="navlib-menu" hidden><a class="navlib-mid" href="#seminar"><b>Seminars</b><small>Class discussion decks</small></a><a class="navlib-mid" href="#firmament"><b>Stargazing</b><small>The sky of thinkers</small></a><a class="navlib-mid" href="#stoa"><b>Timeline</b><small>2,600 years, era by era</small></a><a href="#thinkers"><b>Thinkers</b><small>377 philosophers</small></a><a href="#works"><b>Works</b><small>The archive of books</small></a><a href="#library"><b>Dictionary</b><small>Words philosophers use</small></a><a href="#quiz"><b>Quiz</b><small>Test yourself</small></a></div></div>
     <a class="mypos" href="#codex" title="Your positions, arguments and progress" aria-label="My Positions"><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2h8v12l-4-3-4 3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span>My Positions</span></a>
     <button class="theme-btn find-btn" id="findBtn" aria-label="Find (press /)" title="Find  ·  /  or  Ctrl K">
       <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 10.5 14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -10131,6 +10131,7 @@ function route() { const h = decodeURIComponent(location.hash.slice(1)) || "home
 function render(keepScroll) {
   const r = route();
   const fn = VIEWS[r.name] || VIEWS.home;
+  if (!VIEWS[r.name] && r.name !== "home") setTimeout(() => toast("There is no page at “#" + r.name + "”, so here is the home page."), 200);
   after = [];
   const view = $("#view");
   const y = window.scrollY;
@@ -10139,7 +10140,7 @@ function render(keepScroll) {
   const tt = r.name === "voyage" && r.arg && VOY.islands[r.arg] ? VOY.islands[r.arg].name : TITLES[r.name];
   document.title = tt ? tt + " · Philodyssey" : "Philodyssey: a voyage through philosophy";
   view.classList.toggle("flush", r.name === "home" || r.name === "voyage" || (r.name === "seminar" && !!r.arg && !/\.all$/.test(r.arg)) || r.name === "thinker" || (r.name === "works" && !!WK[r.arg]) || !VIEWS[r.name]);
-  { const lib = ["thinkers", "works", "library", "quiz", "thinker", "dictionary"].includes(r.name); const b = $(".navlib-btn"); if (b) { b.classList.toggle("cur", lib); b.setAttribute("aria-expanded", "false"); } const m = $(".navlib-menu"); if (m) m.hidden = true; }
+  { const lib = ["thinkers", "works", "library", "quiz", "thinker", "dictionary"].includes(r.name) || (innerWidth <= 1180 && ["seminar", "firmament", "stoa"].includes(r.name)); const b = $(".navlib-btn"); if (b) { b.classList.toggle("cur", lib); b.setAttribute("aria-expanded", "false"); } const m = $(".navlib-menu"); if (m) m.hidden = true; }
   $$("#nav a, .top .mypos, .navlib-menu a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (r.name === "position" ? "compass" : r.name) ? "page" : "false"));
   // on narrow screens the nav strip scrolls; bring the current section into view
   const nv = $("#nav"), cur = $('#nav a[aria-current="page"]');
@@ -10599,7 +10600,7 @@ VIEWS.quick = arg => {
 function quickResult() {
   const QQ = [...new Set(quickQs().flatMap(q => q.options.flatMap(o => Object.keys(o.set))))], n = QUICK.filter(id => realA(S.answers[id])).length;
   if (n < 4) return '<div class="wrap"><div class="col panel stack"><h2>A few more answers first</h2><p class="muted">Bearings need at least four real answers (not “Not sure”). You have ' + n + '.</p><a class="btn primary" href="#compass-quick" style="align-self:flex-start">Back to the questions</a></div></div>';
-  const M = matches(QUICK, 0).filter(m => m.n >= 3), top = M.slice(0, 3), foe = M.slice().reverse().find(m => m.n >= 4 && !top.includes(m));
+  const M0 = matches(QUICK, 0), M = (M0.some(m => m.n >= 5) ? M0.filter(m => m.n >= 5) : M0.filter(m => m.n >= 3)), top = M.slice(0, 3), foe = M.slice().reverse().find(m => m.n >= 4 && !top.includes(m));
   const clash = compassTensions().filter(t => !S.resolutions[t.key] && t.qs.every(q => QQ.includes(q)) && (!t.type || t.type !== "tension"));
   return '<div class="wrap"><div class="col stack" style="--g:24px"><div class="stack" style="--g:8px"><span class="eyebrow">Quick Compass · your first bearings</span><h1>' + (top[0] ? "Closest to you: " + esc(top[0].t.name) : "Your first bearings") + '</h1><p class="muted read">A rough first reading from ' + n + " answers. The full Compass asks follow-ups, so these matches will sharpen (and may change) as you go deeper.</p></div>" +
     (top.length ? '<section class="stack" style="--g:8px"><h2>Your closest thinkers</h2>' + top.map((m, i) => matchRow(m, false, i + 1)).join("") + "</section>" : "") +
@@ -11119,7 +11120,7 @@ ACT.dropCard = el => { S.cards[el.dataset.id] = "reject"; S.resolutions[el.datas
 
 // rank: when given, show a place number instead of a percentage (chapter results); percentages are for the whole portrait only
 function matchRow(m, named, rank) {
-  return '<button class="match" data-act="thinker" data-id="' + esc(m.t.id) + '" style="text-align:left;width:100%;color:var(--ink)"><span class="pct">' + (rank ? rank + '<small class="rk-pct">' + m.pct + "% alike</small>" : m.pct + '<small style="font-size:.55em">% alike</small>') + '</span><span><b style="font-family:var(--font-display);font-size:1.12rem;font-weight:400">' + esc(m.t.name) + '</b> <span class="faint" style="font-size:.82rem">' + esc(life(m.t)) + '</span>' + (named ? ' <span class="chip lamp" style="font-size:.72rem;padding:1px 8px">' + (typeof named === "string" ? esc(named) : "Holds your named view") + "</span>" : "") + '<br><span class="muted" style="font-size:.88rem">' + esc(m.t.tagline || "") + '</span><br><span class="faint" style="font-size:.78rem">' + (() => { const st = m.strongL || [], part = m.agree.filter(q => !st.includes(q)), bits = [];
+  return '<button class="match" data-act="thinker" data-id="' + esc(m.t.id) + '" style="text-align:left;width:100%;color:var(--ink)"><span class="pct">' + (rank ? rank + '<small class="rk-pct">' + m.pct + "% alike</small>" : m.pct + '<small style="font-size:.55em">% alike</small>') + '</span><span><b style="font-family:var(--font-display);font-size:1.12rem;font-weight:400">' + esc(m.t.name) + '</b> <span class="faint" style="font-size:.82rem">' + esc(life(m.t)) + (m.n ? " · from " + m.n + " shared question" + (m.n === 1 ? "" : "s") : "") + '</span>' + (named ? ' <span class="chip lamp" style="font-size:.72rem;padding:1px 8px">' + (typeof named === "string" ? esc(named) : "Holds your named view") + "</span>" : "") + '<br><span class="muted" style="font-size:.88rem">' + esc(m.t.tagline || "") + '</span><br><span class="faint" style="font-size:.78rem">' + (() => { const st = m.strongL || [], part = m.agree.filter(q => !st.includes(q)), bits = [];
     if (st.length) bits.push("<b>Strongly shared (" + st.length + "):</b> " + esc(st.map(q => SHORT[q]).join(", ")));
     if (part.length) bits.push("Partly shared: " + esc(part.map(q => SHORT[q]).join(", ")));
     if (m.differ.length) bits.push("Differ: " + esc(m.differ.map(q => SHORT[q]).join(", ")));
@@ -11516,7 +11517,7 @@ VIEWS.agora = arg => {
   return '<div class="wrap stack" style="--g:26px"><div class="ring stack" style="--g:12px"><span class="eyebrow" style="color:#E8B04A;align-self:center">Debates</span><h1 class="ring-h">' + cap(numWord(AG.questions.length)) + ' questions that never went away</h1><p class="read" style="max-width:36em;margin:0 auto">Each debate is a set of short arguments. Some support each other, some crack each other. Predict first, then read, then decide which arguments you can live with. <a href="#duel" style="color:#E8B04A">Or put two thinkers in the ring: Duel →</a></p></div>' + agoraSemStrip() +
     '<div class="qlist">' + AG.questions.map(q => {
       const cs = AG.cards.filter(c => c.q === q.id); const acc = cs.filter(c => S.cards[c.id] === "accept").length;
-      return '<a class="qtile" href="#agora-' + q.id + '" style="text-decoration:none"><span class="t">' + esc(q.title) + '</span>' + (q.sides ? '<span class="qsides"><span class="side yes">' + esc(q.sides.yes || "") + '</span><span class="faint">vs</span><span class="side no">' + esc(q.sides.no || "") + "</span></span>" : "") + '<span class="muted" style="font-size:.92rem">' + esc(teaser(q.intro)) + '</span><span class="row" style="--g:6px;margin-top:6px"><span class="chip">' + cs.length + " arguments</span>" + (S.predictions[q.id] != null ? '<span class="chip lapis">Predicted</span>' : "") + (acc ? '<span class="chip lamp">' + acc + " accepted</span>" : "") + (S.predictions[q.id] == null && !acc ? '<span class="chip">Not started</span>' : "") + "</span></a>";
+      return '<a class="qtile" href="#agora-' + q.id + '" style="text-decoration:none"><span class="t">' + esc(q.title) + '</span>' + (q.sides ? '<span class="qsides"><span class="side yes">' + esc(q.sides.yes || "") + '</span><span class="faint">vs</span><span class="side no">' + esc(q.sides.no || "") + "</span></span>" : "") + '<span class="muted" style="font-size:.92rem">' + esc(teaser(q.intro)) + '</span><span class="row" style="--g:6px;margin-top:6px"><span class="chip">' + cs.length + " arguments</span>" + ((S.stance || {})[q.id] && S.stance[q.id] !== "skip" ? '<span class="chip lapis">Stance taken</span>' : "") + (acc ? '<span class="chip lamp">' + acc + " accepted</span>" : "") + (!agStarted(q.id) ? '<span class="chip">Not started</span>' : "") + "</span></a>";
     }).join("") + "</div></div>";
 };
 // the first sentence of the intro, or the first two when the first is only a scene-setter ("A forest fire traps a young deer.")
@@ -11562,7 +11563,8 @@ function agoraQuestion(q) {
     (kids[id] || []).slice().sort((a, b) => orderIdx(a) - orderIdx(b)).forEach(k => walk(k, parent[k] || (S.own.find(o => o.id === k) || {}), d + 1)); };
   roots.forEach(id => walk(id, null, 0)); ordered.forEach(c => walk(c.id, null, 0));
   const head = k => { const L = cs.filter(c => c.side === k), up = L.filter(c => DSTAT[c.id] !== "rejected" && DSTAT[c.id] !== "down").length;
-    return '<div class="dhead ' + k + '"><span class="side ' + k + '">' + esc(sides[k] || (k === "yes" ? "Yes" : "No")) + '</span><span class="faint">' + L.length + " arguments" + (judged ? " · " + up + " standing" : "") + "</span></div>"; };
+    const held = L.filter(c => DSTAT[c.id] === "stands").length, down = L.filter(c => DSTAT[c.id] === "down").length;
+    return '<div class="dhead ' + k + '"><span class="side ' + k + '">' + esc(sides[k] || (k === "yes" ? "Yes" : "No")) + '</span><span class="faint">' + L.length + " arguments" + (judged ? " · " + held + " accepted" + (down ? " · " + down + " knocked down" : "") : "") + "</span></div>"; };
   const legend = '<div class="dlegend"><span><i class="dk attacks">✕</i> Objection</span><span><i class="dk replies">↩</i> Reply</span><span><i class="dk supports">＋</i> Support</span><span><b class="dst stands">Standing</b> <b class="dst down">Knocked down</b> follow from the arguments you accept</span></div>';
   // staggered placement: every card spans two grid rows; a card answering from the other side starts one row down,
   // halfway along the card before it, while a card on the same side waits for that column to be free
@@ -11611,7 +11613,7 @@ function debateBoard(q, cs, stance, finished) { const sides = q.sides || {}, nm 
 // arrows from each card to the argument it answers, redrawn whenever the map changes size
 let dArrowsRO = null;
 function dArrows() { const L = $(".dladder"), svg = L && $("svg.darrows", L); if (!svg) return;
-  const draw = () => { const R = L.getBoundingClientRect(); svg.setAttribute("width", R.width); svg.setAttribute("height", R.height); let out = "";
+  const draw = () => { if (!document.body.contains(L)) { if (dArrowsRO) dArrowsRO.disconnect(); return; } const R = L.getBoundingClientRect(); svg.setAttribute("width", R.width); svg.setAttribute("height", R.height); let out = "";
     const col = { attacks: "var(--crack)", replies: "var(--lapis)", supports: "var(--thread)" };
     ["attacks", "replies", "supports"].forEach(t => { out += '<marker id="ah-' + t + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="' + col[t] + '"/></marker>'; });
     out = "<defs>" + out + "</defs>";
@@ -11670,6 +11672,8 @@ ACT.steelOpen = el => { const box = document.querySelector('[data-steel="' + el.
 ACT.steelSave = el => { const id = el.dataset.id, box = document.querySelector('[data-steel="' + id + '"]'), v = $("textarea", box).value.trim();
   if (v.split(/\s+/).length < 6) { toast("Give it a full sentence: at least six words."); return; }
   S.steel = S.steel || {}; S.steel[id] = v; S.cards[id] = "reject"; save(); toast("Rejected, after a fair hearing"); render(true); };
+// a debate counts as started once you take a stance or judge any of its arguments
+function agStarted(qid) { const st = (S.stance || {})[qid]; return !!(st && st !== "skip") || AG.cards.some(c => c.q === qid && S.cards[c.id]); }
 ACT.predict = el => { S.predictions[el.dataset.q] = +el.dataset.i; save(); render(true); };
 ACT.card = el => {
   const id = el.dataset.id, v = el.dataset.v;
@@ -13400,7 +13404,7 @@ VIEWS.stoa = arg => {
   const filled = LIB.schools.filter(s => arr(s.members).some(id => TH[id]));
   let h = '<div class="wrap stack" style="--g:20px"><div class="stack" style="--g:8px"><span class="eyebrow">Timeline</span><h1>A walk through 2,600 years</h1><p class="muted read">Each column is an era. Read what people were asking, then step up to the statues. Scroll sideways to walk forward in time. Eras overlap where traditions ran side by side.</p></div>' +
     '<div class="row" style="justify-content:space-between"><div class="row"><label class="faint" for="schoolPick" style="font-size:.86rem">Walk one school:</label><select id="schoolPick" style="border:1.5px solid var(--line);border-radius:10px;padding:8px;background:var(--raised)"><option value="">Every era (no filter)</option>' + filled.map(s => '<option value="' + esc(s.id) + '"' + (school && school.id === s.id ? " selected" : "") + ">" + esc(s.name) + "</option>").join("") + "</select></div>" +
-    (school ? "" : '<div class="row" style="--g:6px"><span class="faint" style="font-size:.84rem">' + LIB.eras.filter(e => S.eras[e.id]).length + " of " + LIB.eras.length + ' eras walked</span><button class="btn small ghost" data-act="stoaStep" data-d="-1" aria-label="Earlier era">←</button><button class="btn small ghost" data-act="stoaStep" data-d="1" aria-label="Later era">→</button></div>') + "</div>";
+    (school ? "" : '<div class="row" style="--g:6px"><span class="faint" id="erasWalked" style="font-size:.84rem">' + LIB.eras.filter(e => S.eras[e.id]).length + " of " + LIB.eras.length + ' eras walked</span><button class="btn small ghost" data-act="stoaStep" data-d="-1" aria-label="Earlier era">←</button><button class="btn small ghost" data-act="stoaStep" data-d="1" aria-label="Later era">→</button></div>') + "</div>";
   after.push(() => { const s = $("#schoolPick"); if (s) s.addEventListener("change", () => { location.hash = s.value ? "#stoa-" + s.value : "#stoa"; }); });
   if (school) {
     h += '<div class="panel raised stack col" style="--g:12px;width:100%"><span class="eyebrow">' + esc((school.era || "").replace("_", " ")) + " · " + esc(school.region || "") + "</span><h2>" + esc(school.name) + '</h2><p class="read">' + esc(school.summary || "") + '</p><p class="read" style="font-style:italic">' + esc(school.keyIdea || "") + '</p><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))">' + byBorn(arr(school.members)).map(id => statue(id, true)).join("") + "</div>" + (arr(school.members).filter(id => TH[id]).length ? "" : '<p class="faint">No members profiled yet.</p>') + "</div>";
@@ -13415,15 +13419,16 @@ VIEWS.stoa = arg => {
   return h + "</div>";
 };
 // An era counts as walked when you open a statue in it, or after you have scrolled the walk yourself
-// and then stay on the era (60% in view) for 1.5 seconds. Just loading the page marks nothing.
+// and then stay on the era (60% in view) for 3 seconds. Just loading the page marks nothing.
 if (S.eras && S.eras.neo_confucian) { if (!S.eras.golden_age) S.eras.golden_age = S.eras.neo_confucian; delete S.eras.neo_confucian; }
-function walkEra(id) { if (!id || S.eras[id]) return; S.eras[id] = Date.now(); save(); const el = $('.era[data-era="' + id + '"]'); if (el) { el.classList.add("walked"); const y = $(".yrs", el); if (y && !$(".walkmark", y)) y.insertAdjacentHTML("beforeend", ' <span class="walkmark">· walked</span>'); } }
+function walkEra(id) { if (!id || S.eras[id]) return; S.eras[id] = Date.now(); save(); const el = $('.era[data-era="' + id + '"]'); if (el) { el.classList.add("walked"); const y = $(".yrs", el); if (y && !$(".walkmark", y)) y.insertAdjacentHTML("beforeend", ' <span class="walkmark">· walked</span>'); }
+  const c = $("#erasWalked"); if (c) c.textContent = LIB.eras.filter(e => S.eras[e.id]).length + " of " + LIB.eras.length + " eras walked"; }
 function markEras() {
   const row = $("#stoaRow"); if (!row) return;
   row.addEventListener("click", e => { const el = e.target.closest(".era"); if (el && e.target.closest(".statue,summary")) walkEra(el.dataset.era); });
   if (!("IntersectionObserver" in window)) return;
   let moved = false; const timers = {}; const seen = new Set();
-  const arm = el => { const id = el.dataset.era; if (!moved || timers[id] || S.eras[id]) return; timers[id] = setTimeout(() => { if (seen.has(id)) walkEra(id); timers[id] = null; }, 1500); };
+  const arm = el => { const id = el.dataset.era; if (!moved || timers[id] || S.eras[id]) return; timers[id] = setTimeout(() => { if (seen.has(id)) walkEra(id); timers[id] = null; }, 3000); };
   row.addEventListener("scroll", () => { if (!moved) { moved = true; $$(".era", row).forEach(el => { if (seen.has(el.dataset.era)) arm(el); }); } }, { passive: true, once: true });
   const io = new IntersectionObserver(ents => { ents.forEach(en => { const id = en.target.dataset.era; if (en.intersectionRatio >= .6) { seen.add(id); arm(en.target); } else { seen.delete(id); clearTimeout(timers[id]); timers[id] = null; } }); }, { root: row, threshold: [0, .6] });
   $$(".era", row).forEach(el => io.observe(el));
@@ -13575,13 +13580,12 @@ VIEWS.library = (arg) => {
       after.push(() => { const el = document.getElementById("d-" + arg); if (!el) return; const d = $("details", el); if (d) d.open = true; el.classList.add("d-hit"); setTimeout(() => window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 90 }), 30); }); }
     else { const near = LIB.glossary.find(x => slugT(x.term).startsWith(arg.split("-")[0])); libTab = "glossary"; dField = ""; libQuery = near ? near.term : arg.replace(/-/g, " "); } }
   if (libTab === "glossary") {
-    const list = LIB.glossary.slice().sort((a, b) => dKey(a.term).localeCompare(dKey(b.term)));
-    const groups = []; list.forEach(t => { const L = dKey(t.term)[0].toUpperCase(); if (!groups.length || groups[groups.length - 1].L !== L) groups.push({ L, items: [] }); groups[groups.length - 1].items.push(t); });
+    const groups = dGroups();
     if (libLetter === null || (libLetter && !groups.some(g => g.L === libLetter))) libLetter = groups.length ? groups[0].L : "";
     const fields = [...new Set(LIB.glossary.map(g => g.field).filter(Boolean))].sort();
     body = '<div id="libResults" hidden></div>' +
       '<p class="faint" id="dCount" role="status" aria-live="polite" style="margin:6px 0 0;font-size:.86rem"></p><div class="azbar" role="navigation" aria-label="Show one letter">' + '<button class="chip" data-act="libJump" data-l="">All</button>' + groups.map(g => '<button class="chip" data-act="libJump" data-l="' + esc(g.L) + '">' + esc(g.L) + "</button>").join("") + "</div>" +
-      '<div id="libList">' + groups.map(g => '<div class="lgroup" id="lib-' + esc(g.L) + '"><div class="d-letter">' + esc(g.L) + "</div>" + g.items.map(dEntry).join("") + "</div>").join("") + "</div>";
+      '<div id="libList">' + groups.map(g => '<div class="lgroup" id="lib-' + esc(g.L) + '" data-l="' + esc(g.L) + '"' + (g.L === libLetter ? "" : " data-empty") + '><div class="d-letter">' + esc(g.L) + "</div>" + (g.L === libLetter ? g.items.map(dEntry).join("") : "") + "</div>").join("") + "</div>";
   } else if (libTab === "experiments") {
     const list = LIB.experiments;
     body = '<div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,330px),1fr));margin-top:16px">' + list.map(x => '<article class="exp" id="x-' + esc(x.id) + '" data-s="' + esc((x.name + " " + x.setup + " " + x.question).toLowerCase()) + '"><span class="eyebrow">' + esc(arr(x.tags).join(" · ")) + "</span><h3>" + esc(x.name) + '</h3><p class="read">' + esc(x.setup) + '</p><p class="read" style="font-weight:500">' + esc(x.question) + '</p><p class="muted" style="font-size:.9rem"><b>Tests:</b> ' + esc(x.tests || "") + "</p>" + (arr(x.responses).length ? '<details><summary class="linkish" style="cursor:pointer">Common responses</summary><ul class="muted" style="margin:6px 0 0;padding-left:1.2em">' + x.responses.map(r => "<li>" + esc(r) + "</li>").join("") + "</ul></details>" : "") + '<div class="row" style="--g:6px;margin-top:auto">' + (LABMAP[x.id] ? '<a class="btn small primary" href="#lab-' + LABMAP[x.id] + '">Play it in the Shipyard →</a>' : "") + (x.by && TH[x.by] ? thinkerChip(x.by) : "") + '<span class="faint" style="font-size:.8rem">' + esc([x.year ? yr(x.year) : "", x.source].filter(Boolean).join(" · ")) + "</span>" + (x.compass && QM[x.compass] ? '<a class="chip lapis" href="#compass-' + x.compass + '">Answer on the Compass</a>' : "") + "</div></article>").join("") + "</div>";
@@ -13590,7 +13594,7 @@ VIEWS.library = (arg) => {
     body = '<div class="grid" style="margin-top:16px">' + list.map(s => '<a class="exp" data-s="' + esc((s.name + " " + s.summary).toLowerCase()) + '" href="#stoa-' + esc(s.id) + '" style="text-decoration:none;color:var(--ink)"><span class="eyebrow">' + esc((s.era || "").replace("_", " ")) + " · " + esc(s.region || "") + "</span><h3>" + esc(s.name) + '</h3><p class="muted">' + esc(s.summary) + '</p><p class="read" style="font-style:italic">' + esc(s.keyIdea || "") + "</p></a>").join("") + "</div>";
   }
   // filter in place (no re-render), so typing stays smooth and IME composition (e.g. Chinese input) isn't interrupted
-  after.push(() => { libFilter(); const i = $("#libSearch"); if (i) i.addEventListener("input", () => { libQuery = i.value; libFilter(); }); });
+  after.push(() => { libFilter(); const i = $("#libSearch"); let t; if (i) i.addEventListener("input", () => { libQuery = i.value; clearTimeout(t); t = setTimeout(libFilter, 120); }); });
   return '<div class="wrap"><div class="col stack" style="--g:16px"><div class="stack" style="--g:8px"><span class="eyebrow">The Dictionary</span><h1>' + LIB.glossary.length + ' words philosophers use</h1></div>' +
     '<div class="stack" style="--g:8px"><input type="search" id="libSearch" placeholder="Search a word, a thinker or an idea" value="' + esc(libQuery) + '" aria-label="Search the dictionary" autocomplete="off">' +
     (libTab === "glossary" ? '<div class="d-ftags" role="group" aria-label="Field"><button data-act="dField" data-f="" aria-pressed="' + !dField + '">All</button>' + [...new Set(LIB.glossary.map(g => g.field).filter(Boolean))].sort().map(f => '<button data-act="dField" data-f="' + esc(f) + '" aria-pressed="' + (dField === f) + '">' + esc(f) + "</button>").join("") + "</div>" : "") + "</div>" +
@@ -13638,6 +13642,13 @@ function dSearch(q) { const I = dIndex(); const run = x => I.items.map(e => [e, 
   const top = hits.reduce((m, r) => Math.max(m, r[1]), 0); if (top >= 70) hits = hits.filter(r => r[1] >= 38);
   hits.sort((a, b) => b[1] - a[1] || a[0].name.length - b[0].name.length);
   return { hits: hits.map(r => r[0].t), fixed, loose }; }
+// the dictionary is sorted once (keys computed once, not inside the comparator) and each letter is drawn only when shown
+let DGROUPS = null, DGROUPS_N = -1;
+function dGroups() { if (DGROUPS && DGROUPS_N === LIB.glossary.length) return DGROUPS;
+  const keyed = LIB.glossary.map(t => [dKey(t.term), t]).sort((a, b) => a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0), groups = [];
+  keyed.forEach(([k, t]) => { const L = k[0].toUpperCase(); if (!groups.length || groups[groups.length - 1].L !== L) groups.push({ L, items: [] }); groups[groups.length - 1].items.push(t); });
+  DGROUPS_N = LIB.glossary.length; return (DGROUPS = groups); }
+function dFill(all) { $$("#libList .lgroup[data-empty]").forEach(el => { if (!all && el.dataset.l !== libLetter) return; const g = dGroups().find(x => x.L === el.dataset.l); if (g) el.insertAdjacentHTML("beforeend", g.items.map(dEntry).join("")); el.removeAttribute("data-empty"); }); }
 function libFilter() {
   const q = libQuery.trim().toLowerCase(); let shown = 0;
   const box = $("#libResults"), listEl = $("#libList");
@@ -13648,7 +13659,7 @@ function libFilter() {
       box.hidden = false; listEl.hidden = true; const az = $("#view .azbar"); if (az) az.hidden = true;
       const m = $("#libNone"); if (m) { m.hidden = L.length > 0; m.textContent = "Nothing matches “" + libQuery.trim() + "”" + (dField ? " in " + dField : "") + "."; }
       const dc = $("#dCount"); if (dc) dc.textContent = L.length ? L.length + (L.length === 1 ? " entry" : " entries") : ""; return; }
-    box.hidden = true; box.innerHTML = ""; listEl.hidden = false; }
+    box.hidden = true; box.innerHTML = ""; listEl.hidden = false; dFill(!libLetter || !!dField); }
   const qf = dKey(q); $$("#view [data-s]").forEach(el => { const ok = (!q || el.dataset.s.includes(qf) || el.dataset.s.includes(q)) && (!dField || !el.dataset.f || el.dataset.f === dField || !el.classList.contains("dterm")); el.hidden = !ok; if (ok) shown++; });
   $$("#view .lgroup").forEach(g => { g.hidden = !$$(".term", g).some(x => !x.hidden) || (!q && libLetter && g.id !== "lib-" + libLetter); });
   $$("#view .azbar .chip").forEach(c => c.setAttribute("aria-pressed", String(c.dataset.l === libLetter)));
@@ -13888,7 +13899,7 @@ VIEWS.lab = arg => {
   return '<div class="wrap stack" style="--g:22px"><div class="stack" style="--g:8px"><span class="eyebrow">The Shipyard</span><h1>Thought experiments you can play</h1><p class="muted read">Philosophers test ideas by imagining cases. Here you run the experiment yourself, then see what your answer commits you to.</p></div><div class="labgames">' +
     games.map(x => '<a class="gtile" href="#lab-' + x.k + '"><span class="gemo">' + x.e + "</span><h3>" + x.t + (S.lab[x.k] && S.lab[x.k].done ? ' <span class="chip lamp">Played</span>' : "") + "</h3><p>" + x.d + '</p><span class="faint" style="font-size:.8rem">' + x.by + "</span></a>").join("") + '</div><h2 style="margin-top:8px">Quick experiments</h2><div class="labgrid">' +
     tiles.map(x => '<a class="mod" href="#lab-' + x.k + '"><h3><span>' + x.t + "</span>" + (S.lab[x.k] && S.lab[x.k].done ? '<span class="chip lamp">Done</span>' : "") + "</h3><p>" + x.d + '</p><span class="faint" style="font-size:.8rem">' + x.by + "</span></a>").join("") + "</div>" +
-    '<p class="muted">Four you can play, and ' + Math.max(0, LIB.experiments.length - 4) + ' more to read: <a href="#library" data-act="libExperiments">the thought experiments in the Dictionary →</a></p></div>';
+    '<p class="muted">' + (games.length + tiles.length) + ' you can play, and ' + LIB.experiments.length + ' more thought experiments to read: <a href="#library" data-act="libExperiments">the thought experiments in the Dictionary →</a></p></div>';
 };
 ACT.navLib = el => { const m = $(".navlib-menu"); m.hidden = !m.hidden; el.setAttribute("aria-expanded", String(!m.hidden)); if (!m.hidden) setTimeout(() => document.addEventListener("click", function off(e) { if (!e.target.closest(".navlib")) { m.hidden = true; el.setAttribute("aria-expanded", "false"); } document.removeEventListener("click", off); }), 0); };
 ACT.libExperiments = el => { libTab = "experiments"; libQuery = ""; if (location.hash === "#library") render(false); else location.hash = "#library"; };
@@ -13910,7 +13921,7 @@ function labHeap() {
     const first = exact ? "You called " + H.lastYes.toLocaleString() + " grains a heap, and " + H.boundary.toLocaleString() + " grains not a heap. You judged both. So did that single grain make all the difference?"
       : H.boundary >= 10000 ? "You don’t call even 10,000 grains a heap. Then perhaps nothing is a heap, which is one of the answers below."
       : "You stopped calling it a heap at " + H.boundary.toLocaleString() + " grains. (This result is from an older version of the experiment; start again to pin your line down to a single grain.)";
-    reveal = '<div class="panel raised stack" style="--g:10px"><span class="eyebrow">The paradox</span><p class="read">' + first + '</p><p class="read">Most people say no single grain ever matters, yet everyone draws a line somewhere. That is the sorites paradox, first posed by Eubulides. Philosophers answer it in four main ways:</p><ul class="read" style="margin:0;padding-left:1.2em"><li><b>There is a real line</b>, we just can\'t know where (epistemicism).</li><li><b>The word was never finished</b>; piles near the line are neither (supervaluationism).</li><li><b>Heapness comes in degrees</b>, like 70% a heap.</li><li><b>There are no heaps at all.</b></li></ul>' + crowd + '<div class="row"><a class="btn primary" href="#compass-q16">Answer this on the Compass</a><button class="btn ghost" data-act="heapReset">Start again</button></div></div>';
+    reveal = '<div class="panel raised stack" style="--g:10px"><span class="eyebrow">The paradox</span><p class="read">' + first + '</p><p class="read">Most people say no single grain ever matters, yet everyone draws a line somewhere. That is the sorites paradox, first posed by Eubulides. Philosophers answer it in four main ways:</p><ul class="read" style="margin:0;padding-left:1.2em"><li><b>There is a real line</b>, we just can\'t know where (epistemicism).</li><li><b>The word was never finished</b>; piles near the line are neither (supervaluationism).</li><li><b>Heapness comes in degrees</b>, like 70% a heap.</li><li><b>There are no heaps at all.</b></li></ul>' + crowd + '<div class="row"><a class="btn primary" href="#dictionary-sorites-paradox">Read about the sorites paradox</a><a class="btn ghost" href="#dictionary-vagueness">What is vagueness?</a><button class="btn ghost" data-act="heapReset">Start again</button></div></div>';
   }
   const take = H.boundary == null && !bis ? '<div class="row" style="--g:6px"><button class="btn small" data-act="heapTake" data-k="1">Take 1</button><button class="btn small" data-act="heapTake" data-k="100">Take 100</button></div>' : "";
   const ask = H.boundary != null ? "" : bis
@@ -14257,20 +14268,20 @@ VIEWS.home = () => {
   const ans = answeredCount();
   const acc = Object.values(S.cards).filter(v => v === "accept").length;
   const tens = allTensions(); const open = tens.filter(t => !S.resolutions[t.key]).length;
-  const labs = ["heap", "ship", "machine", "trolley"].filter(k => S.lab[k] && S.lab[k].done).length;
+  const LABK = ["odyssey", "gauntlet", "pd", "veil", "heap", "ship", "machine", "trolley"], labs = LABK.filter(k => S.lab[k] && S.lab[k].done).length;
   const secs = C.sections.filter(x => secDone(x.id)).length;
   const secNames = C.sections.map(x => (x.name || x.short || x.title || "").toLowerCase()).filter(Boolean);
   const chapters = numWord(C.sections.length) + " chapter" + (C.sections.length === 1 ? "" : "s") + (secNames.length === C.sections.length && secNames.length > 1 ? ": " + secNames.slice(0, -1).join(", ") + ", and " + secNames[secNames.length - 1] : "");
   const mods = [
     { href: "#voyage", g: "I", t: "Voyage", p: "The course: sail from the first Greek questions to today’s debates, island by island, with quick checks along the way.", m: (() => { const n = Object.keys(VOY.islands).length; return n ? Object.keys(voyState().done || {}).length / n : null; })(), s: Object.keys(voyState().done || {}).length + " of " + Object.keys(VOY.islands).length + " islands charted" },
     { href: "#compass", g: "II", t: "Compass", p: "A tour in " + chapters + ". Each chapter ends with its own result.", m: C.sections.length ? secs / C.sections.length : null, s: secs + " of " + C.sections.length + " chapters done · " + ans + " answered" },
-    { href: "#agora", g: "III", t: "Debates", p: cap(numWord(AG.questions.length)) + " great debates. Predict first, then weigh the arguments and keep the ones you accept.", m: AG.questions.length ? Object.keys(S.predictions).length / AG.questions.length : null, s: acc + " argument" + (acc === 1 ? "" : "s") + " accepted" },
+    { href: "#agora", g: "III", t: "Debates", p: cap(numWord(AG.questions.length)) + " great debates. Say where you stand, then weigh the arguments and keep the ones you accept.", m: AG.questions.length ? AG.questions.filter(q => agStarted(q.id)).length / AG.questions.length : null, s: acc + " argument" + (acc === 1 ? "" : "s") + " accepted" },
     { href: "#seminar", g: "IV", t: "Seminars", p: "Discussion decks for a club or class, each a 50-minute session on one big question. Alone, each one is a lively lesson.", m: null, s: (() => { const n = Object.keys(S.semDone || {}).length; return SEM_LIST.length + " decks" + (n ? " · " + n + " done" : ""); })() },
     { href: "#codex", g: "V", t: "My Positions", p: "Your book of beliefs. It shows where your views crack against each other, and lets you mend them.", m: null, s: tens.length ? open + " open · " + (tens.length - open) + " mended" : "No cracks found yet" },
     { href: "#firmament", g: "VI", t: "Stargazing", p: "The night sky of philosophy: constellations of traditions, guided stories, and who learned from whom.", m: null, s: skyStarTotal() + " stars · " + chartedStars().size + " charted" },
     { href: "#duel", g: "VII", t: "Duel", p: "Put any two thinkers in the ring and see where they agree and clash, question by question.", m: null, s: "Pick any pair" },
     { href: "#stoa", g: "VIII", t: "Timeline", p: "Walk 2,600 years of thought, era by era, across Greece, China, India and beyond.", m: LIB.eras.length ? Object.keys(S.eras).length / LIB.eras.length : null, s: Object.keys(S.eras).length + " of " + LIB.eras.length + " eras walked" },
-    { href: "#lab", g: "IX", t: "Shipyard", p: "Play with famous thought experiments: the heap, Theseus’ ship, the experience machine, the trolley.", m: labs / 4, s: labs + " of 4 playable done" },
+    { href: "#lab", g: "IX", t: "Shipyard", p: "Play philosophy: sail the Odyssey, run the trolley gauntlet, design a society behind the veil, out-trade Tit for Tat.", m: labs / LABK.length, s: labs + " of " + LABK.length + " games played" },
     { href: "#thinkers", g: "X", t: "Thinkers", p: "Every philosopher on the site, with a full page each: life, big ideas, myths, critics and where to start reading.", m: null, s: T.filter(t => TH[t.id] === t).length + " thinkers" },
     { href: "#works", g: "XI", t: "Works", p: "The archive: the books that moved the argument, what each one says, and exactly where to start reading.", m: null, s: WORKS.length + " works" + (Object.keys(S.books || {}).length ? " · " + Object.keys(S.books).length + " on your shelf" : "") },
     { href: "#library", g: "XII", t: "Dictionary", p: "Every word philosophers use, in plain English, with where it comes from and what it is often confused with.", m: null, s: LIB.glossary.length + " terms · " + LIB.experiments.length + " thought experiments" },
@@ -14900,7 +14911,7 @@ function semSlideHTML(I, s, i, pick) {
       }
       const done = pick != null, was = first >= 0 ? deckState(I.id).quiz[I.id][first] : null;
       return '<div class="sl sl-quiz sem-vote"><div class="sl-body"><span class="sem-label">' + (s.compare ? "YOUR VERDICT NOW" : "YOUR VOTE") + '</span><p class="sl-q">' + rich(s.q) + '</p><div class="sl-opts">' + s.options.map((o, j) => '<button class="sl-opt' + (done && j === pick ? " picked" : "") + (was === j ? " was" : "") + '" data-act="dkAnswer" data-id="' + id + '" data-i="' + i + '" data-j="' + j + '"' + (done ? " disabled" : "") + '><span class="sl-ol">' + "ABCDE"[j] + "</span>" + rich(o) + (was === j ? '<small class="sem-was">your first answer</small>' : "") + "</button>").join("") + "</div>" +
-        (done ? (s.compare && was != null ? '<p class="sem-shift ' + (was === pick ? "same" : "moved") + '">' + (was === pick ? "You held your ground." : "You changed your mind: from “" + esc(s.options[was]) + "” to “" + esc(s.options[pick]) + "”.") + "</p>" : "") + '<p class="sl-why">' + rich(s.reveal || "") + "</p>" : '<p class="faint" style="font-size:.86rem">No wrong answers. Pick one to see what others think.</p>') + "</div></div>";
+        (done ? (s.compare && was != null ? '<p class="sem-shift ' + (was === pick ? "same" : "moved") + '">' + (was === pick ? "You held your ground." : "You changed your mind: from “" + esc(s.options[was]) + "” to “" + esc(s.options[pick]) + "”.") + "</p>" : "") + '<p class="sl-why">' + rich(s.reveal || "") + "</p>" : '<p class="faint" style="font-size:.86rem">No wrong answers. Pick one to see how philosophers have answered it.</p>') + "</div></div>";
     }
     case "variations": return '<div class="sl"><div class="sl-body wide">' + kick("Change one detail") + "<h2>" + esc(s.title || "Now change one detail at a time") + "</h2>" + (s.case ? '<p class="sem-case"><span class="faint">The case</span> ' + rich(s.case) + "</p>" : "") + '<ol class="sem-vars">' + (s.items || []).map((x, k) => { const v = N[i + "." + k]; return "<li><b>" + esc(x.title) + "</b><span>" + rich(x.text) + "</span>" + (disc ? "" : '<span class="sem-yn"><button class="' + (v === "c" ? "on" : "") + '" data-act="semMark" data-id="' + id + '" data-k="' + i + "." + k + '" data-v="c">My answer changes</button><button class="' + (v === "s" ? "on" : "") + '" data-act="semMark" data-id="' + id + '" data-k="' + i + "." + k + '" data-v="s">Same answer</button></span>') + "</li>"; }).join("") + "</ol>" + (s.ask ? '<p class="sem-follow">' + rich(s.ask) + "</p>" : "") + "</div></div>";
     case "critique": return '<div class="sl"><div class="sl-body wide">' + kick(disc ? "Criticism cards" : "Judge the objections") + "<h2>" + esc(s.title || "Your turn: attack the argument") + "</h2>" + (disc ? '<ol class="sem-how">' + (s.how || []).map(x => "<li>" + rich(x) + "</li>").join("") + "</ol>" : '<p class="muted">For each objection: is it fatal to the view, fixable with a better version, or misguided? Tap your verdict.</p>') +
