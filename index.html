@@ -12995,7 +12995,7 @@ function tpYouHTML(t, mine) {
   return '<div class="tp-you"><a class="tp-you-main" href="#compass-quick">' + (any ? "Not enough shared questions yet. Take the Quick Compass to see where you stand with " : "Take the Quick Compass to see where you stand with ") + esc(nm) + " →</a></div>";
 }
 // "Also in": the seminars that cast this thinker and the Shipyard games built on their ideas
-const LAB_PEOPLE = { gauntlet: ["foot", "thomson"], veil: ["rawls", "harsanyi"], machine: ["nozick"], ship: ["plutarch", "hobbes"], pd: ["hobbes", "axelrod"], heap: ["eubulus"], trolley: ["foot", "thomson"], marys: ["jackson"] };
+const LAB_PEOPLE = { gauntlet: ["foot", "thomson"], veil: ["rawls", "harsanyi"], machine: ["nozick"], ship: ["plutarch", "hobbes"], pd: ["hobbes", "axelrod"], heap: ["eubulus"], trolley: ["foot", "thomson"], marys: ["jackson", "dennett", "chalmers", "lewis"].filter(id => TH[id]) };
 function tpAlsoHTML(id) {
   const sems = SEM_LIST.filter(x => arr(x.cast).includes(id));
   const games = Object.keys(LAB_PEOPLE).filter(k => LAB_NAMES[k] && LAB_PEOPLE[k].includes(id) && TH[id]);
@@ -14468,7 +14468,7 @@ VIEWS.home = () => {
   const ans = answeredCount();
   const acc = Object.values(S.cards).filter(v => v === "accept").length;
   const tens = allTensions(); const open = tens.filter(t => !S.resolutions[t.key]).length;
-  const LABK = ["odyssey", "gauntlet", "pd", "veil", "heap", "ship", "machine", "trolley"], labs = LABK.filter(k => S.lab[k] && S.lab[k].done).length;
+  const LABK = ["odyssey", "gauntlet", "pd", "veil", "heap", "ship", "machine", "trolley", "drop", "myths", "marys"], labs = LABK.filter(k => S.lab[k] && S.lab[k].done).length;
   const secs = C.sections.filter(x => secDone(x.id)).length;
   const secNames = C.sections.map(x => (x.name || x.short || x.title || "").toLowerCase()).filter(Boolean);
   const chapters = numWord(C.sections.length) + " chapter" + (C.sections.length === 1 ? "" : "s") + (secNames.length === C.sections.length && secNames.length > 1 ? ": " + secNames.slice(0, -1).join(", ") + ", and " + secNames[secNames.length - 1] : "");
@@ -15081,7 +15081,7 @@ const DISC = {}; function discOf(id) { return DISC[id] = DISC[id] || {}; }
 function semNotes(id) { S.semNotes = S.semNotes || {}; return S.semNotes[id] = S.semNotes[id] || {}; }
 function semsFor(kind, key) { return SEM_LIST.filter(s => kind === "agora" ? s.related && s.related.agora === key : s.related && (s.related[kind] || []).includes(key)); }
 /* ---- "Same question, elsewhere": one Compass question lives in the Compass, Debates, Seminars, Voyage islands, the Shipyard and the Works */
-const LAB_Q = { gauntlet: ["e2"], trolley: ["e2"], machine: ["e4c", "l1"], ship: ["m4"], heap: [], veil: ["s8"], pd: ["s1"], odyssey: ["e1"] };
+const LAB_Q = { gauntlet: ["e2"], trolley: ["e2"], machine: ["e4c", "l1"], ship: ["m4"], heap: [], veil: ["s8"], pd: ["s1"], odyssey: ["e1"], marys: ["m1"] };
 const LAB_NAMES = { odyssey: "The Odyssey", gauntlet: "The trolley gauntlet", pd: "The harbour bargain", veil: "Behind the veil", heap: "The vanishing heap", ship: "Theseus’ ship", machine: "The experience machine", trolley: "The trolley ladder" };
 // qid may be a follow-up question; matches on the same question come first, then anything under the same root
 function sameQ(qid) {
@@ -15360,6 +15360,7 @@ window.PHILO = { VIEWS, ACT, save, render, esc, $, $$, labShell, route, ROUTE_AL
   get CAP() { return typeof CAP !== "undefined" ? CAP : undefined; } };
 })();
 </script>
-
+<script src="js/study.js"></script>
+<script src="js/experiences.js"></script>
 </body>
 </html>
