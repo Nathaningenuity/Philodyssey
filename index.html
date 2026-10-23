@@ -3,7 +3,22 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}
+/* design tokens v2: contrast-safe colours, type and shape scales */
+:root{--card:#FDFBF6;--line-input:#8F8977;--lamp-text:#866521;--on-lamp:#1F1A0E;--no:#5E428C;--no-soft:#ECE6F2;--ok:#3F6B4D;--gold:#E8B04A;--gold-hi:#F4D58D;--night-2:#1D2B4A;--night-ink:#EDE6D2;--night-mute:#AEB4C4;--night-line:rgba(237,230,210,.14);--fs-2xs:.6875rem;--fs-xs:.75rem;--fs-sm:.875rem;--fs-md:1rem;--fs-lg:1.125rem;--fs-xl:1.375rem;--r-xs:4px;--r-sm:8px;--r-md:12px;--r-lg:16px;--r-pill:999px;--shadow-1:0 1px 2px rgba(38,35,25,.05),0 2px 8px rgba(38,35,25,.04);--shadow-2:0 1px 2px rgba(38,35,25,.06),0 10px 28px rgba(38,35,25,.10);--shadow-3:0 24px 64px rgba(20,16,8,.28);--ease:cubic-bezier(.2,.7,.2,1);--dur-1:.15s;--dur-2:.26s}
+:root[data-theme="dark"]{--card:#252B36;--line-input:#6A7384;--lamp-text:#E2C27A;--on-lamp:#1F1A0E;--no:#BBA3E6;--no-soft:#2F2840;--ok:#79B08A;--night-2:#1C2D55;--night-line:rgba(237,230,210,.12);--shadow-1:0 1px 2px rgba(0,0,0,.3);--shadow-2:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.32);--shadow-3:0 24px 64px rgba(0,0,0,.5)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--card:#252B36;--line-input:#6A7384;--lamp-text:#E2C27A;--on-lamp:#1F1A0E;--no:#BBA3E6;--no-soft:#2F2840;--ok:#79B08A;--night-2:#1C2D55;--night-line:rgba(237,230,210,.12);--shadow-1:0 1px 2px rgba(0,0,0,.3);--shadow-2:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.32);--shadow-3:0 24px 64px rgba(0,0,0,.5)}}
+/* P0 accessibility fixes */
+textarea,input[type=text],input[type=search],input[type=email],select{border-color:var(--line-input)}
+.side.no{background:var(--no-soft);color:var(--no)}
+.d-field{font:500 var(--fs-2xs) var(--font-mono)}
+.btn.small{padding:8px 14px;font-size:var(--fs-sm);min-height:36px}
+@media (pointer:coarse){.btn.small{min-height:44px}.chip{min-height:36px;padding-inline:12px}.theme-btn,.mypos{width:40px;height:40px}}
+.lb-tab2.on{color:var(--on-lamp)}.lb-tab2.on .lb-tab2-p i{background:var(--on-lamp)}
+.mod .glyph,.vy-unum{color:var(--lamp-text)}
+.svbar i{color:var(--raised)}.svbar i:last-child{color:var(--ink-2)}
+@media (hover:none){.sky-hint{display:none}}
+</style>
 </head>
 <body>
 <title>Philodyssey</title>
@@ -20,7 +35,7 @@
   --raised:#FFFFFF;
   --ink:#262319;
   --ink-2:#5E5A4B;
-  --ink-3:#8A8574;
+  --ink-3:#706B59;
   --line:#DAD5C6;
   --line-2:#E8E3D6;
   --lapis:#2C4870;       /* navy: navigation, links */
@@ -43,11 +58,11 @@
   --shadow:0 1px 2px rgba(38,35,25,.05),0 8px 24px rgba(38,35,25,.06);
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#1B1F27;--surface:#20252F;--raised:#262C38;--ink:#E9E6DC;--ink-2:#B4B3AA;--ink-3:#868C96;--line:#383F4C;--line-2:#2E3440;
+  --bg:#1B1F27;--surface:#20252F;--raised:#262C38;--ink:#E9E6DC;--ink-2:#B4B3AA;--ink-3:#959BA5;--line:#383F4C;--line-2:#2E3440;
   --lapis:#93ACD3;--lapis-soft:#26324A;--lamp:#C9A24B;--lamp-ink:#E2C27A;--lamp-soft:#3A3322;--thread:#B39A62;--crack:#DE7A63;--crack-soft:#40282A;--ok:#79B08A;
   --sky:#14171E;--sky-2:#1D212A;--star:#F1E3BC;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.28);color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#1B1F27;--surface:#20252F;--raised:#262C38;--ink:#E9E6DC;--ink-2:#B4B3AA;--ink-3:#868C96;--line:#383F4C;--line-2:#2E3440;
+  --bg:#1B1F27;--surface:#20252F;--raised:#262C38;--ink:#E9E6DC;--ink-2:#B4B3AA;--ink-3:#959BA5;--line:#383F4C;--line-2:#2E3440;
   --lapis:#93ACD3;--lapis-soft:#26324A;--lamp:#C9A24B;--lamp-ink:#E2C27A;--lamp-soft:#3A3322;--thread:#B39A62;--crack:#DE7A63;--crack-soft:#40282A;--ok:#79B08A;
   --sky:#14171E;--sky-2:#1D212A;--star:#F1E3BC;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.28);color-scheme:dark}
 
@@ -387,8 +402,8 @@ textarea{min-height:80px;resize:vertical}
 .fits-more summary{list-style:none;cursor:pointer;margin-top:12px}.fits-more summary::-webkit-details-marker{display:none}.fits-more[open] summary{display:none}
 .fits{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
 .fit{border:1px solid color-mix(in srgb,var(--ok) 35%,transparent);border-left:4px solid var(--ok);background:var(--raised);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
-.fit h3{margin:0;font-size:1.02rem}.fit p{margin:0}.fit-name{font-family:var(--mono,monospace);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ok)}
-.fit-qs{font-size:.8rem;color:var(--muted,inherit);opacity:.8}
+.fit h3{margin:0;font-size:1.02rem}.fit p{margin:0}.fit-name{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ok)}
+.fit-qs{font-size:.8rem;color:var(--ink-3);opacity:.8}
 .tension{border:1px solid var(--crack-soft);background:var(--raised);border-radius:12px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;position:relative}
 .tension::before{content:"";position:absolute;left:0;top:14px;bottom:14px;width:3px;background:var(--crack);border-radius:0 2px 2px 0}
 .tension.resolved{border-color:var(--line)}
@@ -422,7 +437,7 @@ textarea{min-height:80px;resize:vertical}
 .tablet.rejected{opacity:.62}
 .side{font-size:.72rem;font-weight:700;border-radius:4px;padding:1px 6px}
 .side.yes{background:var(--lapis-soft);color:var(--lapis)}
-.side.no{background:color-mix(in srgb,#7A5BA8 16%,transparent);color:#6B4E98}
+.side.no{background:color-mix(in srgb,var(--no) 16%,transparent);color:var(--no)}
 :root[data-theme=dark] .side.no{color:#BBA3E6}@media (prefers-color-scheme:dark){:root:not([data-theme=light]) .side.no{color:#BBA3E6}}
 .side.neutral{background:var(--surface);color:var(--ink-3);border:1px solid var(--line)}
 .premq{margin:0;padding:6px 10px;border-left:2px solid var(--crack);background:var(--crack-soft);border-radius:0 6px 6px 0;font-family:var(--font-read);font-size:.95rem;line-height:1.45}
@@ -869,9 +884,9 @@ body.lbm .scrim{z-index:65}body.lbm .drawer{z-index:70}
 :root{--night:#15203A;--night-2:#1D2B4A;--night-ink:#EDE6D2;--night-mute:#AEB4C4;--brass:#C9A24B;
   --ch-sea:#DCE6EC;--ch-land:#EFE6D2;--ch-coast:#9C8A62;--ch-grat:#B4C3D0;--ch-region:#5B6F86;--ch-route:#8A6B2A;
   --j-wine:#8E3B3B;--j-sea:#2F5E7E;--j-olive:#4F6B3A;--j-plum:#5E4A78;--j-ochre:#9A7426;--j-teal:#2E6E6A}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--night:#0F1628;--night-2:#172139;--ch-sea:#18202D;--ch-land:#2A2D33;--ch-coast:#5E5747;--ch-grat:#26303F;--ch-region:#8796AC;--ch-route:#D9B76A;
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--night:#0E1A36;--night-2:#172139;--ch-sea:#18202D;--ch-land:#2A2D33;--ch-coast:#5E5747;--ch-grat:#26303F;--ch-region:#8796AC;--ch-route:#D9B76A;
   --j-wine:#D98C80;--j-sea:#86B4D6;--j-olive:#A3BE86;--j-plum:#B9A3DA;--j-ochre:#DDB867;--j-teal:#7FC1BA}}
-:root[data-theme="dark"]{--night:#0F1628;--night-2:#172139;--ch-sea:#18202D;--ch-land:#2A2D33;--ch-coast:#5E5747;--ch-grat:#26303F;--ch-region:#8796AC;--ch-route:#D9B76A;
+:root[data-theme="dark"]{--night:#0E1A36;--night-2:#172139;--ch-sea:#18202D;--ch-land:#2A2D33;--ch-coast:#5E5747;--ch-grat:#26303F;--ch-region:#8796AC;--ch-route:#D9B76A;
   --j-wine:#D98C80;--j-sea:#86B4D6;--j-olive:#A3BE86;--j-plum:#B9A3DA;--j-ochre:#DDB867;--j-teal:#7FC1BA}
 
 .vy-hero{background:radial-gradient(120% 140% at 85% 0%,var(--night-2),var(--night) 60%);color:var(--night-ink);padding-block:46px 40px;position:relative;overflow:hidden}
@@ -1296,13 +1311,13 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .dladder{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:56px;row-gap:10px;grid-auto-rows:minmax(40px,auto);position:relative}
 .dladder::before{content:"";position:absolute;top:0;bottom:0;left:50%;border-left:1px dashed var(--line)}
 .dhead{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 4px;border-bottom:3px solid var(--line);position:sticky;top:58px;z-index:2;background:var(--bg)}
-.dhead.yes{grid-column:1;border-color:var(--lapis)}.dhead.no{grid-column:2;border-color:#7A5BA8}.dhead .side{font-size:.86rem;padding:3px 10px}
+.dhead.yes{grid-column:1;border-color:var(--lapis)}.dhead.no{grid-column:2;border-color:var(--no)}.dhead .side{font-size:.86rem;padding:3px 10px}
 .drow{min-width:0;margin-left:calc(var(--d,0) * 10px);grid-row:var(--r,auto);align-self:start}.dsep{grid-row:var(--r,auto)}.dhead{grid-row:1}.drow.yes{grid-column:1}.drow.no{grid-column:2}.drow.mid{grid-column:1/-1;max-width:640px;justify-self:center;margin-left:0}
 .dsep{grid-column:1/-1;display:flex;align-items:center;gap:10px;color:var(--ink-3);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;margin-top:10px}
 .dsep::before,.dsep::after{content:"";flex:1;border-top:1px solid var(--line)}
 @media (max-width:760px){.drow,.dsep{grid-row:auto}.dladder{grid-template-columns:minmax(0,1fr)}.dladder::before{display:none}.dhead{display:none}.drow.yes,.drow.no{grid-column:1}.drow.yes{margin-right:18px}.drow.no{margin-left:calc(18px + var(--d,0) * 6px)}}
 .dmap .tablet{padding:12px 14px;box-shadow:none;position:relative}
-.dmap .tablet.s-yes{border-left:4px solid var(--lapis)}.dmap .tablet.s-no{border-left:4px solid #7A5BA8}
+.dmap .tablet.s-yes{border-left:4px solid var(--lapis)}.dmap .tablet.s-no{border-left:4px solid var(--no)}
 .dmap .thread{gap:8px}.dmap .thread .kids{margin-left:12px;padding-left:12px;border-left:2px dashed var(--line);gap:8px}
 .dmap .tablet .rel{font-size:.72rem;letter-spacing:.04em}.dmap .tablet .rel.replies{color:var(--lapis)}
 .dmap .tablet.st-down h3{text-decoration:line-through;text-decoration-color:var(--crack);text-decoration-thickness:2px}
@@ -1310,18 +1325,18 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 @media (max-width:760px){.dladder .tablet .side{display:inline}.dbadge{position:static;align-self:flex-start;margin-bottom:-2px}.dmap .tablet:has(.dbadge) .row:first-of-type{padding-right:0}}
 .dmap .tablet:has(.dbadge) .row:first-of-type{padding-right:96px}
 .dst{font-size:.68rem;font-weight:700;letter-spacing:.02em;padding:2px 8px;border-radius:999px;white-space:nowrap}
-.dst.stands{background:color-mix(in srgb,#2e7d4f 16%,transparent);color:#2e7d4f}.dst.down{background:var(--crack-soft);color:var(--crack)}
+.dst.stands{background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok)}.dst.down{background:var(--crack-soft);color:var(--crack)}
 .dk{font-style:normal;display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;font-size:.68rem;font-weight:700;margin-right:3px}
 .dk.attacks{background:var(--crack-soft);color:var(--crack)}.dk.replies{background:var(--lapis-soft);color:var(--lapis)}.dk.supports{background:var(--lamp-soft);color:var(--thread)}
 .dlegend{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:.8rem;color:var(--ink-2)}.dlegend .dst{margin-right:2px}
 .dq-head{display:flex;flex-direction:column;gap:6px;max-width:760px}.dq-head h1{font-size:clamp(1.6rem,3.6vw,2.3rem);margin:2px 0 0}.dq-head p{margin:0}
 .dq-links{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:.84rem}.dq-links a{color:var(--ink-3)}
 .dq-begin{display:flex;flex-wrap:wrap;align-items:center;gap:8px 14px;padding:12px 16px;border:1.5px solid var(--lamp);border-radius:12px;background:var(--raised)}.dq-begin .eyebrow{flex-basis:100%}
-.side-btn.yes{border-color:var(--lapis);color:var(--lapis)}.side-btn.no{border-color:#7A5BA8;color:#7A5BA8}
+.side-btn.yes{border-color:var(--lapis);color:var(--lapis)}.side-btn.no{border-color:var(--no);color:var(--no)}
 .dq-board{display:grid;gap:12px;grid-template-columns:minmax(0,1fr)}.dq-board.two{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}@media (max-width:760px){.dq-board.two{grid-template-columns:minmax(0,1fr)}}
 .dq-card{border:1px solid var(--line);border-radius:12px;background:var(--raised);padding:12px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
 .tug{display:flex;justify-content:space-between;gap:8px;font-size:.8rem}
-.tug-rope{position:relative;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--lapis),var(--line) 50%,#7A5BA8)}
+.tug-rope{position:relative;height:10px;border-radius:999px;background:linear-gradient(90deg,var(--lapis),var(--line) 50%,var(--no))}
 .tug-rope i{position:absolute;top:50%;width:18px;height:18px;border-radius:50%;background:var(--ink);border:3px solid var(--raised);transform:translate(-50%,-50%);transition:left .5s cubic-bezier(.3,1.4,.5,1);box-shadow:0 1px 4px rgba(0,0,0,.25)}
 .tug-v{margin:0;font-family:var(--font-read)}
 .svq{display:flex;flex-direction:column;gap:4px}.svt{font-size:.82rem;font-weight:600}
@@ -1357,7 +1372,7 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .oisle ellipse{fill:#d8c79a;stroke:#8a6a3e}.oisle{cursor:help}.oisle text{font-size:8px;font-weight:600;paint-order:stroke;stroke:#173f5c;stroke-width:2px;fill:#f6eedb;text-anchor:middle}.oisle.past ellipse{fill:#b9a77a}.oisle.now ellipse{fill:#E8B04A;stroke:#fff;stroke-width:1.5}
 .oship{font-size:16px;text-anchor:middle}
 .ometers{display:grid;grid-template-columns:1fr 1.4fr 1fr;gap:10px}.ometer{border:1px solid var(--line);border-radius:12px;background:var(--raised);padding:8px 12px;display:flex;flex-direction:column;gap:4px;min-width:0}
-.ocrew{font-size:1.5rem}.ocrewbar{height:6px;background:var(--line-2);border-radius:999px;overflow:hidden}.ocrewbar i{display:block;height:100%;background:#2e7d4f}
+.ocrew{font-size:1.5rem}.ocrewbar{height:6px;background:var(--line-2);border-radius:999px;overflow:hidden}.ocrewbar i{display:block;height:100%;background:var(--ok)}
 .ogauge{width:100%;max-width:170px}.og-arc{fill:none;stroke:url(#ogg);stroke-width:8;stroke-linecap:round}.og-needle{stroke:var(--ink);stroke-width:3;stroke-linecap:round;transform-origin:60px 60px;transition:transform .6s cubic-bezier(.3,1.4,.5,1)}.ogauge text{font-size:8px;fill:var(--ink-3)}
 .ostory{font-size:1.1rem}.oq{font-weight:600;margin:0}.ochoices{display:grid;gap:8px}
 .ochoice{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:2px;padding:12px 16px;border:1.5px solid var(--line);border-radius:12px;background:var(--raised)}.ochoice:hover,.ochoice:focus-visible{border-color:var(--lamp)}.ochoice span{color:var(--ink-2);font-size:.92rem}
@@ -1476,7 +1491,7 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .spine.long .sp-t{font-size:.72rem}
 .spine.two .sp-t{white-space:normal;font-size:.74rem;text-align:start;overflow:hidden;max-width:calc(100% - 6px)}
 .wk-tags{display:flex;flex-wrap:wrap;gap:6px}
-.d-ftags{display:flex;flex-wrap:wrap;gap:4px 5px}#view .d-ftags button{font-size:.7rem;line-height:1.35;padding:2px 8px;min-height:0;letter-spacing:.01em}.d-ftags button{font:500 .74rem var(--font-body,inherit);padding:3px 9px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink-2);cursor:pointer}
+.d-ftags{display:flex;flex-wrap:wrap;gap:4px 5px}#view .d-ftags button{font-size:.7rem;line-height:1.35;padding:2px 8px;min-height:0;letter-spacing:.01em}.d-ftags button{font:500 .74rem var(--font-ui);padding:3px 9px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink-2);cursor:pointer}
 .d-ftags button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .d-fix{margin:4px 0 10px;color:var(--ink-2);font-size:.92rem}
 .wk-legend{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;font-size:.82rem}
@@ -1683,7 +1698,7 @@ html,body{overflow-x:clip}
 .lb-search-res{display:flex;flex-direction:column;gap:2px;margin-top:6px}
 .lb-search-res a{padding:6px 10px;border-radius:8px;text-decoration:none;color:inherit}.lb-search-res a:hover{background:var(--lamp-soft)}
 .lb-intro{font-size:.95rem}
-.nb-yours{font-size:1.15rem}.lb-yours-l{font-family:var(--font-body,inherit);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-right:6px}
+.nb-yours{font-size:1.15rem}.lb-yours-l{font-family:var(--font-ui);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);margin-right:6px}
 .lb-mt{min-height:0!important;padding:12px 16px!important;gap:6px!important;border-radius:14px!important}
 .lb-mt-name{font-size:1.5rem!important}
 .lb-mt-line{font-size:.9rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
@@ -1715,6 +1730,12 @@ html,body{overflow-x:clip}
 
 .sub-clarify .lb-ck.fit{display:none}
 .lb-crit.maybe{border-left-color:var(--line-2,var(--line));background:transparent}
+.top .wrap{max-width:1280px}
+.navlib{position:relative;flex:none}.navlib-btn{all:unset;cursor:pointer;color:var(--ink-2);font-size:.84rem;font-weight:500;padding:7px 10px;border-radius:4px;position:relative}.navlib-btn:hover{background:var(--line-2);color:var(--ink)}
+.navlib-btn.cur{color:var(--ink)}.navlib-btn.cur::after{content:"";position:absolute;left:10px;right:10px;bottom:2px;height:2px;background:var(--lamp);border-radius:2px}
+.navlib-menu{position:absolute;top:calc(100% + 6px);left:0;min-width:220px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-3);padding:6px;z-index:40;display:grid}
+.navlib-menu a{display:grid;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--ink)}.navlib-menu a:hover,.navlib-menu a[aria-current=page]{background:var(--lamp-soft)}.navlib-menu small{color:var(--ink-3);font-size:var(--fs-xs)}
+@media (min-width:761px){.nav .lib-l{display:none}}@media (max-width:760px){.navlib{display:none}}
 </style>
 
 <header class="top">
@@ -1724,8 +1745,9 @@ html,body{overflow-x:clip}
       <b>Philodyssey</b>
     </a>
     <nav class="nav" id="nav" aria-label="Sections">
-      <a href="#voyage">Voyage</a><a href="#compass">Compass</a><a href="#agora">Debates</a><a href="#seminar">Seminars</a><a href="#firmament">Stargazing</a><a href="#stoa">Timeline</a><a href="#lab">Shipyard</a><a href="#thinkers">Thinkers</a><a href="#works">Works</a><a href="#library">Dictionary</a><a href="#quiz">Quiz</a>
+      <a href="#voyage">Voyage</a><a href="#compass">Compass</a><a href="#agora">Debates</a><a href="#seminar">Seminars</a><a href="#firmament">Stargazing</a><a href="#stoa">Timeline</a><a href="#lab">Shipyard</a><a class="lib-l" href="#thinkers">Thinkers</a><a class="lib-l" href="#works">Works</a><a class="lib-l" href="#library">Dictionary</a><a class="lib-l" href="#quiz">Quiz</a>
     </nav>
+    <div class="navlib"><button class="navlib-btn" type="button" aria-haspopup="true" aria-expanded="false" data-act="navLib">Library <span aria-hidden="true">▾</span></button><div class="navlib-menu" hidden><a href="#thinkers"><b>Thinkers</b><small>377 philosophers</small></a><a href="#works"><b>Works</b><small>The archive of books</small></a><a href="#library"><b>Dictionary</b><small>Words philosophers use</small></a><a href="#quiz"><b>Quiz</b><small>Test yourself</small></a></div></div>
     <a class="mypos" href="#codex" title="Your positions, arguments and progress" aria-label="My Positions"><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2h8v12l-4-3-4 3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span>My Positions</span></a>
     <button class="theme-btn find-btn" id="findBtn" aria-label="Find (press /)" title="Find  ·  /  or  Ctrl K">
       <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 10.5 14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -10117,7 +10139,8 @@ function render(keepScroll) {
   const tt = r.name === "voyage" && r.arg && VOY.islands[r.arg] ? VOY.islands[r.arg].name : TITLES[r.name];
   document.title = tt ? tt + " · Philodyssey" : "Philodyssey: a voyage through philosophy";
   view.classList.toggle("flush", r.name === "home" || r.name === "voyage" || (r.name === "seminar" && !!r.arg && !/\.all$/.test(r.arg)) || r.name === "thinker" || (r.name === "works" && !!WK[r.arg]) || !VIEWS[r.name]);
-  $$("#nav a, .top .mypos").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (r.name === "position" ? "compass" : r.name) ? "page" : "false"));
+  { const lib = ["thinkers", "works", "library", "quiz", "thinker", "dictionary"].includes(r.name); const b = $(".navlib-btn"); if (b) { b.classList.toggle("cur", lib); b.setAttribute("aria-expanded", "false"); } const m = $(".navlib-menu"); if (m) m.hidden = true; }
+  $$("#nav a, .top .mypos, .navlib-menu a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (r.name === "position" ? "compass" : r.name) ? "page" : "false"));
   // on narrow screens the nav strip scrolls; bring the current section into view
   const nv = $("#nav"), cur = $('#nav a[aria-current="page"]');
   if (nv && cur && nv.scrollWidth > nv.clientWidth + 1) { const a = cur.getBoundingClientRect(), b = nv.getBoundingClientRect(); nv.scrollLeft += (a.left + a.width / 2) - (b.left + b.width / 2); }
@@ -11510,7 +11533,7 @@ function agoraQuestion(q) {
   let h = '<div class="wrap stack dq" style="--g:14px"><div class="dq-head"><a class="linkish" href="#agora">← All debates</a><h1>' + esc(q.title) + '</h1><p class="read">' + esc(q.intro || "") + "</p>" +
     '<div class="dq-links">' + semsFor("agora", q.id).map(x => '<a href="#seminar-' + esc(x.sid) + '">Run it as a class discussion →</a>').join("") +
     (q.compass && QM[q.compass] ? '<a href="#compass-' + q.compass + '">Your Compass answer: ' + esc(deepest(q.compass) ? deepest(q.compass).label : S.answers[q.compass] ? labelOf(q.compass, S.answers[q.compass].a) : "not answered yet") + "</a>" : "") + "</div></div>";
-  if (stance === undefined) h += '<div class="dq-begin"><span class="eyebrow">Before we begin</span><b>' + esc(q.stance || "Where do you stand on this right now?") + '</b><div class="row" style="--g:8px">' +
+  if (stance === undefined) h += '<div class="dq-begin"><span class="eyebrow">Before we begin</span><b>' + esc(String(q.stance || "Where do you stand on this right now?").replace(/^Before we begin:\s*/i, "").replace(/^./, c => c.toUpperCase())) + '</b><div class="row" style="--g:8px">' +
     ["yes", "no"].map(k => '<button class="btn small side-btn ' + k + '" data-act="stance" data-q="' + q.id + '" data-v="' + k + '">' + esc(sideName(k)) + "</button>").join("") +
     '<button class="btn small ghost" data-act="stance" data-q="' + q.id + '" data-v="unsure">Not sure yet</button><button class="linkish" data-act="stance" data-q="' + q.id + '" data-v="skip">Skip</button></div></div>';
   // build a debate tree: each card hangs under the first card it links to
@@ -11582,7 +11605,7 @@ function debateBoard(q, cs, stance, finished) { const sides = q.sides || {}, nm 
   let verdict = !tot ? "Accept the arguments that convince you, and the rope will move." : lean === "even" ? "Dead level: the arguments you accept pull equally both ways." : "The arguments you accept pull toward “" + nm(lean) + "”.";
   if (finished && tot && (stance === "yes" || stance === "no")) verdict = lean === stance ? "You held your ground: you began with “" + nm(stance) + "” and the arguments you accept still point there." : lean === "even" ? "You began with “" + nm(stance) + "”, and now you’re torn down the middle." : "You changed your mind: you began with “" + nm(stance) + "”, but the arguments you accept now point the other way.";
   const tug = '<div class="dq-card"><span class="eyebrow">' + (finished ? "Final verdict" : "Tug of war") + '</span><div class="tug"><span class="side yes">' + esc(nm("yes")) + " · " + y + '</span><span class="side no">' + n + " · " + esc(nm("no")) + '</span></div><div class="tug-rope"><i style="left:' + pos + '%"></i></div><p class="tug-v">' + esc(verdict) + "</p>" + (start ? '<p class="faint" style="font-size:.8rem;margin:0">You started: ' + esc(start) + ' · <button class="linkish" data-act="stance" data-q="' + q.id + '" data-v="">change</button></p>' : "") + "</div>";
-  const sv = DEBATE_SURVEY[q.id], col = c => c === "yes" ? "var(--lapis)" : c === "no" ? "#7A5BA8" : "var(--line)";
+  const sv = DEBATE_SURVEY[q.id], col = c => c === "yes" ? "var(--lapis)" : c === "no" ? "var(--no)" : "var(--line)";
   const chart = sv ? '<div class="dq-card"><span class="eyebrow">What philosophers think</span>' + sv.map(([t, bars]) => '<div class="svq"><span class="svt">' + esc(t) + '</span><div class="svbar">' + bars.map(([l, v, c]) => '<i style="width:' + v + "%;background:" + col(c) + '" title="' + esc(l + ": " + v + "%") + '">' + (v >= 9 ? "<span>" + v + "%</span>" : "") + "</i>").join("") + '</div><div class="svk">' + bars.filter(b => b[0] !== "Other").map(([l, v, c]) => '<span><i style="background:' + col(c) + '"></i>' + esc(l) + " " + v + "%</span>").join("") + "</div></div>").join("") + '<p class="faint" style="font-size:.74rem;margin:2px 0 0">2020 PhilPapers Survey of philosophy faculty</p></div>' : "";
   return '<div class="dq-board' + (chart ? " two" : "") + '">' + tug + chart + "</div>"; }
 // arrows from each card to the argument it answers, redrawn whenever the map changes size
@@ -13754,7 +13777,7 @@ function odyMap(O, L) { const st = O.stops || [];
     '<text class="oship" x="' + sh[0] + '" y="' + (sh[1] - 9) + '" style="--x:' + sh[0] + "px;--y:" + (sh[1] - 9) + 'px">⛵</text></svg>'; }
 function odyMeters(L, O) { const m = Math.max(-12, Math.min(12, L.mercy)), ang = m * 7;
   return '<div class="ometers"><div class="ometer"><span class="eyebrow">Crew</span><b class="ocrew">' + L.crew + '</b><div class="ocrewbar"><i style="width:' + Math.round(100 * L.crew / ((O.start || {}).crew || 45)) + '%"></i></div></div>' +
-    '<div class="ometer"><span class="eyebrow">Your heart</span><svg viewBox="0 0 120 76" class="ogauge"><defs><linearGradient id="ogg"><stop offset="0" stop-color="#b8432f"/><stop offset=".5" stop-color="#c9b98c"/><stop offset="1" stop-color="#2e7d4f"/></linearGradient></defs><path d="M10 60 A50 50 0 0 1 110 60" class="og-arc"/><line x1="60" y1="60" x2="60" y2="18" class="og-needle" style="transform:rotate(' + ang + 'deg)"/><text x="4" y="73">Ruthless</text><text x="116" y="73" text-anchor="end">Merciful</text></svg></div>' +
+    '<div class="ometer"><span class="eyebrow">Your heart</span><svg viewBox="0 0 120 76" class="ogauge"><defs><linearGradient id="ogg"><stop offset="0" stop-color="#b8432f"/><stop offset=".5" stop-color="#c9b98c"/><stop offset="1" stop-color="var(--ok)"/></linearGradient></defs><path d="M10 60 A50 50 0 0 1 110 60" class="og-arc"/><line x1="60" y1="60" x2="60" y2="18" class="og-needle" style="transform:rotate(' + ang + 'deg)"/><text x="4" y="73">Ruthless</text><text x="116" y="73" text-anchor="end">Merciful</text></svg></div>' +
     '<div class="ometer"><span class="eyebrow">Wits</span><b>' + "★".repeat(Math.min(L.wits, 12)) + (L.wits ? "" : "–") + "</b></div></div>"; }
 function labOdyssey() { const O = window.ODYSSEY; if (!O || !O.stops) return labShell("The Odyssey", '<p class="muted">The voyage is being charted.</p>');
   const L = odyState(), st = O.stops, n = st.length;
@@ -13867,6 +13890,7 @@ VIEWS.lab = arg => {
     tiles.map(x => '<a class="mod" href="#lab-' + x.k + '"><h3><span>' + x.t + "</span>" + (S.lab[x.k] && S.lab[x.k].done ? '<span class="chip lamp">Done</span>' : "") + "</h3><p>" + x.d + '</p><span class="faint" style="font-size:.8rem">' + x.by + "</span></a>").join("") + "</div>" +
     '<p class="muted">Four you can play, and ' + Math.max(0, LIB.experiments.length - 4) + ' more to read: <a href="#library" data-act="libExperiments">the thought experiments in the Dictionary →</a></p></div>';
 };
+ACT.navLib = el => { const m = $(".navlib-menu"); m.hidden = !m.hidden; el.setAttribute("aria-expanded", String(!m.hidden)); if (!m.hidden) setTimeout(() => document.addEventListener("click", function off(e) { if (!e.target.closest(".navlib")) { m.hidden = true; el.setAttribute("aria-expanded", "false"); } document.removeEventListener("click", off); }), 0); };
 ACT.libExperiments = el => { libTab = "experiments"; libQuery = ""; if (location.hash === "#library") render(false); else location.hash = "#library"; };
 function labShell(title, body) { return '<div class="wrap"><div class="col stack" style="--g:18px"><a class="linkish" href="#lab">← All experiments</a><h1>' + title + "</h1>" + body + "</div></div>"; }
 
