@@ -1342,11 +1342,13 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .tug-v{margin:0;font-family:var(--font-read)}
 .svq{display:flex;flex-direction:column;gap:4px}.svt{font-size:.82rem;font-weight:600}
 .svbar{display:flex;height:22px;border-radius:6px;overflow:hidden;background:var(--line-2)}.svbar i{display:flex;align-items:center;justify-content:center;color:#fff;font-size:.7rem;font-weight:700;font-style:normal;border-right:1px solid var(--raised)}
+.svbar i.sv-side{color:var(--raised)}.svbar i.sv-other{color:var(--ink-2)} /* labels flip with the theme: light text on the dark fills of light mode, dark text on the pale fills of dark mode */
 .svk{display:flex;flex-wrap:wrap;gap:2px 12px;font-size:.74rem;color:var(--ink-2)}.svk i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:4px}
 .dq-mode{display:flex;gap:6px}
 .dq-next{display:flex;align-items:center;justify-content:center;gap:14px;padding:14px;border:1px dashed var(--line);border-radius:12px}
 .drow.fresh .tablet{animation:dfresh .6s ease-out}@keyframes dfresh{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .darrows{position:absolute;inset:0;pointer-events:none;overflow:visible;z-index:1}
+.drow{position:relative;z-index:2}.dladder .dhead{z-index:3} /* arrows pass behind the cards; the sticky column heads stay on top */
 @media (max-width:760px){.darrows{display:none}}
 .pdrule{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:6px 12px}.pdrule input[type=range]{flex:1;min-width:160px}
 .pdboard{display:grid;gap:4px}.pdboard div{display:grid;grid-template-columns:minmax(120px,190px) 1fr 44px;gap:8px;align-items:center;font-size:.86rem}.pdboard i{height:12px;border-radius:999px;background:var(--line)}.pdboard .me i{background:var(--lamp)}.pdboard .me span{font-weight:700}
@@ -1358,7 +1360,7 @@ button.isl-pn{text-decoration:underline;text-decoration-color:rgba(201,162,75,.6
 .gtile:hover{transform:translateY(-3px)}.gtile h3{color:#fff;margin:0}.gtile p{margin:0;color:#d9e2ea}.gtile .faint{color:#9fb3c4}.gemo{font-size:2rem}
 .vbars{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:end}
 .vbar{display:flex;flex-direction:column;align-items:center;gap:4px;text-align:center}.vbar small{font-size:.72rem;color:var(--ink-3);line-height:1.2;min-height:2.4em}
-.vtrack{position:relative;width:100%;height:190px;border-radius:10px;background:var(--line-2);cursor:ns-resize;touch-action:none;display:flex;align-items:flex-end;overflow:hidden}
+.vtrack:focus-visible{outline:2px solid var(--lamp);outline-offset:3px}.vtrack{position:relative;width:100%;height:190px;border-radius:10px;background:var(--line-2);cursor:ns-resize;touch-action:none;display:flex;align-items:flex-end;overflow:hidden}
 .vfill{width:100%;background:linear-gradient(0deg,var(--lapis),#6b8fc4);border-radius:10px 10px 0 0;display:flex;justify-content:center;padding-top:4px;color:#fff;font-size:.78rem;font-weight:700;min-height:18px;transition:height .12s}
 .vpeople{display:flex;justify-content:center;gap:14px;font-size:2rem}.vp{padding:6px;border-radius:12px;transition:transform .1s,background .1s;filter:grayscale(.6)}.vp.on{background:var(--lamp-soft);transform:scale(1.25);filter:none}
 .vscore{font-size:1.3rem}
@@ -1676,6 +1678,7 @@ html,body{overflow-x:clip}
 /* Logbook layout, compact (v3) */
 .lb-page .lb-h1{font-size:clamp(1.8rem,3.4vw,2.4rem);margin:0}
 .lb-tabs2{display:flex;flex-wrap:wrap;gap:6px}
+@media (max-width:560px){.lb-tabs2{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin;position:relative}.lb-tabs2 .lb-tab2{flex:none}} /* phones: one scrolling row of topics, not a screenful of chips */
 .lb-tab2{display:flex;flex-direction:column;gap:4px;min-width:0;padding:7px 12px 6px;border:1.5px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink-2);background:var(--raised);font-size:.9rem;line-height:1.2}
 .lb-tab2:hover{border-color:var(--lamp)}
 .lb-tab2.set .lb-tab2-n{color:var(--ink)}
@@ -1732,7 +1735,7 @@ html,body{overflow-x:clip}
 .sub-clarify .lb-ck.fit{display:none}
 .lb-crit.maybe{border-left-color:var(--line-2,var(--line));background:transparent}
 .top .wrap{max-width:1280px}
-.navlib{position:relative;flex:none}.navlib-btn{all:unset;cursor:pointer;color:var(--ink-2);font-size:.84rem;font-weight:500;padding:7px 10px;border-radius:4px;position:relative}.navlib-btn:hover{background:var(--line-2);color:var(--ink)}
+.navlib{position:relative;flex:none}.navlib-btn{all:unset;cursor:pointer;color:var(--ink-2);font-size:.84rem;font-weight:500;padding:7px 10px;border-radius:4px;position:relative}.navlib-btn:hover{background:var(--line-2);color:var(--ink)}.navlib-btn:focus-visible{outline:2px solid var(--lamp);outline-offset:2px}
 .navlib-btn.cur{color:var(--ink)}.navlib-btn.cur::after{content:"";position:absolute;left:10px;right:10px;bottom:2px;height:2px;background:var(--lamp);border-radius:2px}
 .navlib-menu{position:absolute;top:calc(100% + 6px);left:0;min-width:220px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-3);padding:6px;z-index:40;display:grid}
 .navlib-menu a{display:grid;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--ink)}.navlib-menu a:hover,.navlib-menu a[aria-current=page]{background:var(--lamp-soft)}.navlib-menu small{color:var(--ink-3);font-size:var(--fs-xs)}
@@ -2010,8 +2013,10 @@ details[open]>summary:not(:where(.answers summary,.fits-more summary,.nb-more2>s
 .lb-loading{display:grid;gap:14px;padding-block:24px}.lb-loading .bar{height:14px;border-radius:7px;background:linear-gradient(90deg,var(--line-2),var(--line),var(--line-2));background-size:200% 100%}
 @media (prefers-reduced-motion:no-preference){.lb-loading .bar{animation:shimmer 1.2s linear infinite}}
 @keyframes shimmer{to{background-position:-200% 0}}
+.skip-link{position:fixed;left:12px;top:-60px;z-index:200;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 14px;font:inherit;font-size:.9rem;cursor:pointer;box-shadow:var(--shadow-3)}.skip-link:focus{top:10px}
 </style>
 
+<button class="skip-link" type="button" data-act="skipMain">Skip to content</button>
 <header class="top">
   <div class="wrap">
     <a class="brand" href="#home" aria-label="Philodyssey home">
@@ -10313,6 +10318,9 @@ function labelOf(qid, a) {
   const o = optOf(qid, a); return o ? (o.label || o.text) : a;
 }
 let toastT;
+// an unknown id in a section shows that section's index, with a note saying so (once per address, not on every redraw)
+let noSuchAt = "";
+function noSuch(what, arg, here) { if (noSuchAt === location.hash) return; noSuchAt = location.hash; setTimeout(() => toast("There is no " + what + " called “" + String(arg).slice(0, 40) + "”, so here " + here + "."), 220); }
 function toast(msg) { const t = $("#toast"); t.textContent = msg; t.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => { t.hidden = true; }, 2600); }
 
 /* ----------------------------------------------------------------- state */
@@ -10446,7 +10454,7 @@ let lastRoute = "";
 const ROUTE_ALIAS = { seminars: "seminar", discussion: "seminar", discuss: "seminar", philosophers: "thinkers", people: "thinkers", logbook: "codex", stargazing: "firmament", shipyard: "lab", timeline: "stoa", dictionary: "library", archive: "works", books: "works" };
 function route() { const h = decodeURIComponent(location.hash.slice(1)) || "home"; const i = h.indexOf("-"); const r = i < 0 ? { name: h, arg: "" } : { name: h.slice(0, i), arg: h.slice(i + 1) }; r.name = ROUTE_ALIAS[r.name] || r.name; return r; }
 // the five helm slots on phones; every other route lights "More"
-const HELM_SLOT = { voyage: "voyage", compass: "compass", quick: "compass", position: "compass", agora: "agora", seminar: "agora", duel: "agora", codex: "codex" };
+const HELM_SLOT = { voyage: "voyage", compass: "compass", quick: "compass", position: "compass", agora: "agora", codex: "codex" }; // Seminars and Duel live in the More drawer, so they light More
 // navigate: a page change cross-fades through the View Transitions API where it exists (header held still);
 // in-place re-renders (keepScroll), same-route renders and reduced motion swap at once
 function render(keepScroll, nav) {
@@ -10479,7 +10487,7 @@ function renderNow(keepScroll) {
   const tt = r.name === "voyage" && r.arg && VOY.islands[r.arg] ? VOY.islands[r.arg].name : TITLES[r.name];
   document.title = tt ? tt + " · Philodyssey" : "Philodyssey: a voyage through philosophy";
   view.classList.toggle("flush", r.name === "home" || r.name === "voyage" || (r.name === "seminar" && !!r.arg && !/\.all$/.test(r.arg)) || r.name === "thinker" || (r.name === "works" && !!WK[r.arg]) || !VIEWS[r.name]);
-  { const lib = ["thinkers", "works", "library", "quiz", "thinker", "dictionary"].includes(r.name) || (innerWidth <= 1180 && ["seminar", "firmament", "stoa"].includes(r.name)); const b = $(".navlib-btn"); if (b) { b.classList.toggle("cur", lib); b.setAttribute("aria-expanded", "false"); } const m = $(".navlib-menu"); if (m) m.hidden = true; }
+  { const lib = ["thinkers", "works", "library", "quiz", "thinker", "dictionary"].includes(r.name) || (innerWidth <= 1180 && ["seminar", "firmament", "stoa"].includes(r.name)); const b = $(".navlib-btn"); if (b) { b.classList.toggle("cur", lib); b.setAttribute("aria-expanded", "false"); } if ($(".navlib-menu")) navLibClose(false); }
   $$("#nav a, .top .mypos, .navlib-menu a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (r.name === "position" ? "compass" : r.name) ? "page" : "false"));
   { const slot = HELM_SLOT[r.name] || (r.name === "home" ? "" : "more"); $$(".helm [data-slot]").forEach(a => a.setAttribute("aria-current", a.dataset.slot === slot ? "page" : "false")); }
   document.body.classList.toggle("in-deck", !!view.querySelector("[data-deck]"));
@@ -10499,6 +10507,7 @@ window.addEventListener("hashchange", () => { ACT.closeDrawer(); render(false, t
 
 /* ------------------------------------------------------------- delegation */
 const ACT = {};
+ACT.skipMain = () => { const v = $("#view"); if (v) { v.focus({ preventScroll: true }); v.scrollIntoView(); } };
 document.addEventListener("click", e => {
   const el = e.target.closest("[data-act]");
   if (!el) return;
@@ -10950,7 +10959,8 @@ VIEWS.quick = arg => {
 function quickResult() {
   const QQ = [...new Set(quickQs().flatMap(q => q.options.flatMap(o => Object.keys(o.set))))], n = QUICK.filter(id => realA(S.answers[id])).length;
   if (n < 4) return '<div class="wrap"><div class="col panel stack"><h2>A few more answers first</h2><p class="muted">Bearings need at least four real answers (not “Not sure”). You have ' + n + '.</p><a class="btn primary" href="#compass-quick" style="align-self:flex-start">Back to the questions</a></div></div>';
-  const M0 = matches(QUICK, 0), M = (M0.some(m => m.n >= 5) ? M0.filter(m => m.n >= 5) : M0.filter(m => m.n >= 3)), top = M.slice(0, 3), foe = M.slice().reverse().find(m => m.n >= 4 && !top.includes(m));
+  // the same matcher as the whole portrait, the thinker pages and the share card, so a thinker's "% alike" is one figure everywhere
+  const M = matches(), top = M.slice(0, 3), foe = M.slice().reverse().find(m => m.n >= 4 && !top.includes(m));
   const clash = compassTensions().filter(t => !S.resolutions[t.key] && t.qs.every(q => QQ.includes(q)) && (!t.type || t.type !== "tension"));
   return '<div class="wrap"><div class="col stack" style="--g:24px"><div class="stack" style="--g:8px"><span class="eyebrow">Quick Compass · your first bearings</span><h1>' + (top[0] ? "Closest to you: " + esc(top[0].t.name) : "Your first bearings") + '</h1><p class="muted read">A rough first reading from ' + n + " answers. The full Compass asks follow-ups, so these matches will sharpen (and may change) as you go deeper.</p></div>" +
     (top.length ? '<section class="stack" style="--g:8px"><h2>Your closest thinkers</h2>' + top.map((m, i) => matchRow(m, false, i + 1)).join("") + "</section>" : "") +
@@ -10991,6 +11001,7 @@ VIEWS.compass = arg => {
   if (arg.indexOf("done.") === 0) return sectionResultHTML(arg.slice(5));
   if (SEC[arg]) return questionHTML(arg, null);
   if (QM[arg]) return questionHTML(QM[arg].section, arg);
+  if (arg) noSuch("Compass chapter or question", arg, "is the Compass");
   return hubHTML();
 };
 function goSec(sec) { const h = "#compass-" + sec; if (location.hash === h) render(false); else location.hash = h; }
@@ -11871,6 +11882,7 @@ VIEWS.position = arg => {
 VIEWS.agora = arg => {
   if (arg && AGQ[arg]) { if (pendingCard) { const id = pendingCard; pendingCard = null; after.push(() => setTimeout(() => scrollToCard(id), 60)); } return agoraQuestion(AGQ[arg]); }
   if (!AG.questions.length) return '<div class="wrap"><div class="panel">The debates are being built.</div></div>';
+  if (arg) noSuch("debate", arg, "are all the debates");
   const F = S.agFilter || "all";
   const tile = q => {
     const cs = AG.cards.filter(c => c.q === q.id); const acc = cs.filter(c => S.cards[c.id] === "accept").length; const st = (S.stance || {})[q.id]; const started = agStarted(q.id);
@@ -11906,7 +11918,7 @@ function agoraQuestion(q) {
   const stance = (S.stance || {})[q.id], sides = q.sides || {};
   const sideName = k => sides[k] || (k === "yes" ? "Yes" : "No");
   let h = '<div class="wrap stack dq" style="--g:14px"><div class="dq-head"><a class="linkish" href="#agora">← All debates</a><h1>' + esc(q.title) + '</h1><p class="read">' + esc(q.intro || "") + "</p>" +
-    (() => { const sq = sameQHTML(qComp(q), ["debate"]); return sq ? '<div class="dq-sameq">' + sq + "</div>" :
+    (() => { const sq = sameQHTML(qComp(q), ["debate"], { debate: q.id }); return sq ? '<div class="dq-sameq">' + sq + "</div>" :
     '<div class="dq-links">' + semsFor("agora", q.id).map(x => '<a href="#seminar-' + esc(x.sid) + '">Run it as a class discussion →</a>').join("") +
     (q.compass && QM[q.compass] ? '<a href="#compass-' + q.compass + '">Your Compass answer: ' + esc(deepest(q.compass) ? deepest(q.compass).label : S.answers[q.compass] ? labelOf(q.compass, S.answers[q.compass].a) : "not answered yet") + "</a>" : "") + "</div>"; })() + "</div>";
   if (stance === undefined) h += '<div class="dq-begin"><span class="eyebrow">Before we begin</span><b>' + esc(String(q.stance || "Where do you stand on this right now?").replace(/^Before we begin:\s*/i, "").replace(/^./, c => c.toUpperCase())) + '</b><div class="row" style="--g:8px">' +
@@ -11940,7 +11952,7 @@ function agoraQuestion(q) {
   const head = k => { const L = cs.filter(c => c.side === k), up = L.filter(c => DSTAT[c.id] !== "rejected" && DSTAT[c.id] !== "down").length;
     const held = L.filter(c => DSTAT[c.id] === "stands").length, down = L.filter(c => DSTAT[c.id] === "down").length;
     return '<div class="dhead ' + k + '"><span class="side ' + k + '">' + esc(sides[k] || (k === "yes" ? "Yes" : "No")) + '</span><span class="faint">' + L.length + " arguments" + (judged ? " · " + held + " accepted" + (down ? " · " + down + " knocked down" : "") : "") + "</span></div>"; };
-  const legend = '<div class="dlegend"><span><i class="dk attacks">✕</i> Objection</span><span><i class="dk replies">↩</i> Reply</span><span><i class="dk supports">＋</i> Support</span><span><b class="dst stands">Standing</b> <b class="dst down">Knocked down</b> follow from the arguments you accept</span></div>';
+  const legend = '<div class="dlegend"><span><i class="dk attacks">✕</i> Objection</span><span><i class="dk replies">↩</i> Reply</span><span><i class="dk supports">＋</i> Support or builds on</span><span><b class="dst stands">Standing</b> <b class="dst down">Knocked down</b> follow from the arguments you accept</span></div>';
   // staggered placement: every card spans two grid rows; a card answering from the other side starts one row down,
   // halfway along the card before it, while a card on the same side waits for that column to be free
   let prev = 1, maxEnd = 2; const colEnd = { yes: 2, no: 2 };
@@ -11950,7 +11962,7 @@ function agoraQuestion(q) {
     if (r.d === 0 && i) { sep = '<div class="dsep" style="--r:' + maxEnd + ' / span 1"><span>Another line of argument</span></div>'; prev = maxEnd; maxEnd++; colEnd.yes = colEnd.no = maxEnd; }
     let start = cls === "mid" ? maxEnd : Math.max(i && !(r.d === 0) ? prev + 1 : maxEnd, colEnd[cls]);
     prev = start; const end = start + 2; if (cls === "mid") colEnd.yes = colEnd.no = end; else colEnd[cls] = end; maxEnd = Math.max(maxEnd, end);
-    return sep + '<div class="drow ' + cls + (playing && i === shown - 1 ? " fresh" : "") + '" data-p="' + esc(r.rel && r.rel.target || "") + '" data-t="' + esc(r.rel && (r.rel.type || r.rel.rel) || "") + '" style="--d:' + Math.min(r.d, 4) + ";--r:" + start + ' / span 2">' + tablet(r.id, r.rel) + "</div>"; }).join("");
+    return sep + '<div class="drow ' + cls + (playing && i === shown - 1 ? " fresh" : "") + '" data-p="' + esc(r.rel && r.rel.target || "") + '" data-t="' + esc(r.rel && linkKind(CARDS[r.id], r.rel) || "") + '" style="--d:' + Math.min(r.d, 4) + ";--r:" + start + ' / span 2">' + tablet(r.id, r.rel) + "</div>"; }).join("");
   const board = debateBoard(q, cs, stance, playing && shown >= rows.length);
   const modeBar = '<div class="dq-mode" role="group" aria-label="How to read the debate"><button class="chip" aria-pressed="' + playing + '" data-act="roundPlay" data-q="' + q.id + '">▶ Round by round</button><button class="chip" aria-pressed="' + !playing + '" data-act="roundAll" data-q="' + q.id + '">Whole map</button></div>';
   const next = playing && shown < rows.length ? '<div class="dq-next"><span class="faint">Argument ' + shown + " of " + rows.length + '</span><button class="btn primary" data-act="roundNext" data-q="' + q.id + '">Next argument →</button><button class="linkish" data-act="roundAll" data-q="' + q.id + '">Show everything</button></div>' : "";
@@ -11963,7 +11975,7 @@ function agoraQuestion(q) {
 let DSTAT = {};
 // what philosophers think, from the 2020 PhilPapers Survey (target faculty; Bourget & Chalmers 2023), where a debate maps onto a survey question
 const DEBATE_SURVEY = {
-  killing: [["The switch case: pull the lever?", [["Pull", 63, "yes"], ["Don’t pull", 13, "no"], ["Other", 24]]], ["The footbridge: push the man?", [["Push", 22, "no"], ["Don’t push", 56, "yes"], ["Other", 22]]]],
+  killing: [["The switch case: pull the lever?", [["Pull", 63, "no"], ["Don’t pull", 13, "yes"], ["Other", 24]]], ["The footbridge: push the man?", [["Push", 22, "no"], ["Don’t push", 56, "yes"], ["Other", 22]]]],
   freewill: [["Free will", [["Compatibilism", 59, "yes"], ["Libertarianism", 19, "yes"], ["No free will", 11, "no"], ["Other", 11]]]],
   identity: [["Teletransporter: do you survive?", [["Survive", 35, "yes"], ["Die", 40, "no"], ["Other", 25]]], ["Personal identity", [["Psychological", 44, "yes"], ["Biological", 19, "no"], ["Further fact", 15, "no"], ["Other", 22]]]],
   mind: [["Mind", [["Physicalism", 52, "yes"], ["Non-physicalism", 32, "no"], ["Other", 16]]]],
@@ -11983,14 +11995,14 @@ function debateBoard(q, cs, stance, finished) { const sides = q.sides || {}, nm 
   if (finished && tot && (stance === "yes" || stance === "no")) verdict = lean === stance ? "You held your ground: you began with “" + nm(stance) + "” and the arguments you accept still point there." : lean === "even" ? "You began with “" + nm(stance) + "”, and now you’re torn down the middle." : "You changed your mind: you began with “" + nm(stance) + "”, but the arguments you accept now point the other way.";
   const tug = '<div class="dq-card"><span class="eyebrow">' + (finished ? "Final verdict" : "Tug of war") + '</span><div class="tug"><span class="side yes">' + esc(nm("yes")) + " · " + y + '</span><span class="side no">' + n + " · " + esc(nm("no")) + '</span></div><div class="tug-rope"><i style="left:' + pos + '%"></i></div><p class="tug-v">' + esc(verdict) + "</p>" + (start ? '<p class="faint" style="font-size:.8rem;margin:0">You started: ' + esc(start) + ' · <button class="linkish" data-act="stance" data-q="' + q.id + '" data-v="">change</button></p>' : "") + "</div>";
   const sv = DEBATE_SURVEY[q.id], col = c => c === "yes" ? "var(--lapis)" : c === "no" ? "var(--no)" : "var(--line)";
-  const chart = sv ? '<div class="dq-card"><span class="eyebrow">What philosophers think</span>' + sv.map(([t, bars]) => '<div class="svq"><span class="svt">' + esc(t) + '</span><div class="svbar">' + bars.map(([l, v, c]) => '<i style="width:' + v + "%;background:" + col(c) + '" title="' + esc(l + ": " + v + "%") + '">' + (v >= 9 ? "<span>" + v + "%</span>" : "") + "</i>").join("") + '</div><div class="svk">' + bars.filter(b => b[0] !== "Other").map(([l, v, c]) => '<span><i style="background:' + col(c) + '"></i>' + esc(l) + " " + v + "%</span>").join("") + "</div></div>").join("") + '<p class="faint" style="font-size:.74rem;margin:2px 0 0">2020 PhilPapers Survey of philosophy faculty</p></div>' : "";
+  const chart = sv ? '<div class="dq-card"><span class="eyebrow">What philosophers think</span>' + sv.map(([t, bars]) => '<div class="svq"><span class="svt">' + esc(t) + '</span><div class="svbar">' + bars.map(([l, v, c]) => '<i class="' + (c === "yes" || c === "no" ? "sv-side" : "sv-other") + '" style="width:' + v + "%;background:" + col(c) + '" title="' + esc(l + ": " + v + "%") + '">' + (v >= 9 ? "<span>" + v + "%</span>" : "") + "</i>").join("") + '</div><div class="svk">' + bars.filter(b => b[0] !== "Other").map(([l, v, c]) => '<span><i style="background:' + col(c) + '"></i>' + esc(l) + " " + v + "%</span>").join("") + "</div></div>").join("") + '<p class="faint" style="font-size:.74rem;margin:2px 0 0">2020 PhilPapers Survey of philosophy faculty</p></div>' : "";
   return '<div class="dq-board' + (chart ? " two" : "") + '">' + tug + chart + "</div>"; }
 // arrows from each card to the argument it answers, redrawn whenever the map changes size
 let dArrowsRO = null;
 function dArrows() { const L = $(".dladder"), svg = L && $("svg.darrows", L); if (!svg) return;
   const draw = () => { if (!document.body.contains(L)) { if (dArrowsRO) dArrowsRO.disconnect(); return; } const R = L.getBoundingClientRect(); svg.setAttribute("width", R.width); svg.setAttribute("height", R.height); let out = "";
-    const col = { attacks: "var(--crack)", replies: "var(--lapis)", supports: "var(--thread)" };
-    ["attacks", "replies", "supports"].forEach(t => { out += '<marker id="ah-' + t + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="' + col[t] + '"/></marker>'; });
+    const col = { attacks: "var(--crack)", replies: "var(--lapis)", supports: "var(--thread)", builds: "var(--thread)" };
+    ["attacks", "replies", "supports", "builds"].forEach(t => { out += '<marker id="ah-' + t + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="' + col[t] + '"/></marker>'; });
     out = "<defs>" + out + "</defs>";
     $$(".drow[data-p]", L).forEach(d => { const p = d.dataset.p, tgt = p && document.getElementById("card-" + p), me = $(".tablet", d); if (!tgt || !me || !L.contains(tgt)) return;
       const a = me.getBoundingClientRect(), b = tgt.getBoundingClientRect(), t = d.dataset.t || "attacks";
@@ -11998,7 +12010,7 @@ function dArrows() { const L = $(".dladder"), svg = L && $("svg.darrows", L); if
       if (a.left > b.right - 4) { sx = a.left - R.left; ex = b.right - R.left; c1 = sx - 26; c2 = ex + 26; }
       else if (a.right < b.left + 4) { sx = a.right - R.left; ex = b.left - R.left; c1 = sx + 26; c2 = ex - 26; }
       else { sx = a.left - R.left; ex = b.left - R.left; c1 = Math.min(sx, ex) - 22; c2 = c1; }
-      out += '<path d="M' + sx + " " + sy + " C" + c1 + " " + sy + " " + c2 + " " + ey + " " + ex + " " + ey + '" fill="none" stroke="' + (col[t] || col.attacks) + '" stroke-width="1.8" stroke-dasharray="' + (t === "supports" ? "4 3" : "none") + '" marker-end="url(#ah-' + (col[t] ? t : "attacks") + ')" opacity=".75"/>'; });
+      out += '<path d="M' + sx + " " + sy + " C" + c1 + " " + sy + " " + c2 + " " + ey + " " + ex + " " + ey + '" fill="none" stroke="' + (col[t] || col.attacks) + '" stroke-width="1.8" stroke-dasharray="' + (t === "supports" || t === "builds" ? "4 3" : "none") + '" marker-end="url(#ah-' + (col[t] ? t : "attacks") + ')" opacity=".75"/>'; });
     svg.innerHTML = out; };
   draw(); if (dArrowsRO) dArrowsRO.disconnect(); if (window.ResizeObserver) { dArrowsRO = new ResizeObserver(() => requestAnimationFrame(draw)); dArrowsRO.observe(L); } }
 ACT.stance = el => { S.stance = S.stance || {}; if (el.dataset.v === "") delete S.stance[el.dataset.q]; else S.stance[el.dataset.q] = el.dataset.v; save(); render(true); };
@@ -12006,7 +12018,9 @@ ACT.roundPlay = el => { S.rounds = S.rounds || {}; S.rounds[el.dataset.q] = 1; s
 ACT.roundNext = el => { const q = el.dataset.q; S.rounds[q] = (S.rounds[q] || 1) + 1; save(); render(true); const f = $(".drow.fresh"); if (f) setTimeout(() => f.scrollIntoView({ block: "center", behavior: "smooth" }), 30); };
 ACT.roundAll = el => { if (S.rounds) delete S.rounds[el.dataset.q]; save(); render(true); };
 
-function dStatus(cs) { const att = {}; cs.forEach(c => (c.links || []).forEach(l => { if (l.type !== "supports" && l.target !== c.id) (att[l.target] = att[l.target] || []).push(c.id); }));
+// what a link does: "attacks", "replies" (to the other side), "builds" (a reply to a card on its own side) or "supports"
+function linkKind(c, l) { const t = l && (l.type || l.rel); if (t !== "replies") return t; const g = CARDS[l.target]; return c && g && c.side && c.side === g.side ? "builds" : "replies"; }
+function dStatus(cs) { const att = {}; cs.forEach(c => (c.links || []).forEach(l => { const k = linkKind(c, l); if (k !== "supports" && k !== "builds" && l.target !== c.id) (att[l.target] = att[l.target] || []).push(c.id); }));
   const memo = {}, busy = new Set();
   const down = id => { if (id in memo) return memo[id]; if (busy.has(id)) return false; busy.add(id); const r = (att[id] || []).some(a => S.cards[a] === "accept" && !down(a)); busy.delete(id); return (memo[id] = r); };
   const out = {}; cs.forEach(c => { out[c.id] = S.cards[c.id] === "reject" ? "rejected" : down(c.id) ? "down" : S.cards[c.id] === "accept" ? "stands" : ""; }); return out; }
@@ -12015,18 +12029,18 @@ function tablet(id, rel) {
   const c = own ? { id, title: "Your argument", claim: own.claim, premises: own.premises, plain: "", author: null, source: "Written by you", own: true, side: "neutral" } : CARDS[id];
   if (!c) return "";
   const st = S.cards[id];
-  const relType = rel && (rel.type || rel.rel);
+  const relType = rel && (rel.type || rel.rel), relKind = rel && linkKind(c, rel);
   const relTo = rel && rel.target && CARDS[rel.target] ? " “" + CARDS[rel.target].title + "”" : "";
-  const relTxt = relType ? (relType === "attacks" ? "✕ Objection to " + (rel.premise ? "step " + rel.premise + " of" : "") + relTo : relType === "replies" ? "↩ Reply to" + relTo : "＋ Support for" + relTo) : "";
+  const relTxt = relType ? (relType === "attacks" ? "✕ Objection to " + (rel.premise ? "step " + rel.premise + " of" : "") + relTo : relKind === "builds" ? "＋ Builds on" + relTo : relType === "replies" ? "↩ Reply to" + relTo : "＋ Support for" + relTo) : "";
   const sides = (AGQ[c.q] && AGQ[c.q].sides) || {};
   const sideTxt = c.side === "yes" ? (sides.yes || "Says yes") : c.side === "no" ? (sides.no || "Says no") : c.side === "neutral" ? "Neither side" : "";
   // quote the premise under attack, so the reader needn't scroll back up to the target
   const tgt = rel && rel.target && CARDS[rel.target];
   const quoted = relType === "attacks" && rel.premise && tgt && (tgt.premises || [])[rel.premise - 1] ? '<blockquote class="premq"><span class="faint">Step ' + rel.premise + " of “" + esc(tgt.title) + "”:</span> " + esc(tgt.premises[rel.premise - 1]) + "</blockquote>" : "";
   // a card hangs under its first link only; its other links show as chips
-  const verb = l => l.type === "attacks" ? "Also objects to " + (l.premise ? "step " + l.premise + " of " : "") : l.type === "replies" ? "Also replies to " : "Also supports ";
+  const verb = l => l.type === "attacks" ? "Also objects to " + (l.premise ? "step " + l.premise + " of " : "") : linkKind(c, l) === "builds" ? "Also builds on " : l.type === "replies" ? "Also replies to " : "Also supports ";
   const extra = c.own ? [] : (c.links || []).filter(l => l !== rel && l.target !== id && CARDS[l.target] && CARDS[l.target].q === c.q && !(rel && l.target === rel.target && l.type === relType));
-  const extraHTML = extra.length ? '<div class="row" style="--g:6px">' + extra.map(l => '<button class="xlink ' + esc(l.type) + '" data-act="scrollCard" data-card="' + esc(l.target) + '">↳ ' + esc(verb(l).toLowerCase()) + "“" + esc(CARDS[l.target].title) + "”</button>").join("") + "</div>" : "";
+  const extraHTML = extra.length ? '<div class="row" style="--g:6px">' + extra.map(l => '<button class="xlink ' + esc(linkKind(c, l) === "builds" ? "supports" : l.type) + '" data-act="scrollCard" data-card="' + esc(l.target) + '">↳ ' + esc(verb(l).toLowerCase()) + "“" + esc(CARDS[l.target].title) + "”</button>").join("") + "</div>" : "";
   const ds = DSTAT[id], badge = ds === "down" ? '<b class="dst down">Knocked down</b>' : ds === "stands" ? '<b class="dst stands">Standing</b>' : "";
   return '<article class="tablet s-' + esc(c.side || "own") + (ds ? " st-" + ds : "") + (st === "accept" ? " accepted" : st === "reject" ? " rejected" : "") + '" id="card-' + esc(id) + '">' + (badge ? '<div class="dbadge">' + badge + "</div>" : "") +
     '<div class="row" style="justify-content:space-between;--g:8px"><span class="rel ' + esc(relType || "") + '">' + esc(relTxt) + "</span>" + (c.own ? '<span class="chip lamp">Yours</span>' : sideTxt ? '<span class="side ' + esc(c.side) + '">' + sideTxt + "</span>" : "") + "</div>" +
@@ -13053,8 +13067,9 @@ function lbObjHTML(t, fwName) { lbObjCard.n = 0; const L = lbObjList(t).map(o =>
 /* LOGBOOK:END */
 VIEWS.codex = arg => {
   if (LB.tabs.length && arg) { const [tid, focus] = arg.split("."), t = LBT[tid] || LBT[LB_ALIAS[tid]];
-    if (t) return '<div class="wrap"><div class="stack nb-wide lb-page" style="--g:12px"><span class="eyebrow">My Positions</span>' + lbTabBar(t.id) + lbTabHTML(t, focus) + "</div></div>"; }
-  if (arg) { const f = nbFields().find(x => x.id === arg); if (f) return nbFieldPage(f); }
+    if (t) { after.push(() => { const n = $(".lb-tabs2"), on = n && $(".lb-tab2.on", n); if (n && on && n.scrollWidth > n.clientWidth) n.scrollLeft = on.offsetLeft - 16; });
+      return '<div class="wrap"><div class="stack nb-wide lb-page" style="--g:12px"><span class="eyebrow">My Positions</span><h1 class="lb-h1">' + esc(t.name) + "</h1>" + lbTabBar(t.id) + lbTabHTML(t, focus) + "</div></div>"; } }
+  if (arg) { const f = nbFields().find(x => x.id === arg); if (f) return nbFieldPage(f); if (LB.tabs.length) noSuch("topic", arg, "are all your positions"); }
   const nbCr = nbCracks();
   const tens = allTensions(); const open = tens.filter(t => !S.resolutions[t.key]); const mended = tens.length - open.length;
   const pos = visibleQs().filter(q => S.answers[q.id] && S.answers[q.id].a != null && S.answers[q.id].a !== "undecided");
@@ -13223,7 +13238,7 @@ const slugT = s => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCas
 function yrTxt(y, approx) { return y == null ? "" : y < 0 ? "c. " + (-y) + " BCE" : (approx ? "c. " : "") + String(y); }
 function thinkerPage(id) {
   const t = TH[id];
-  if (!t) return '<div class="wrap stack"><a class="linkish" href="#library">← Dictionary</a><h1>' + esc(nameOf(id)) + '</h1><p class="muted">No profile for this thinker yet.</p></div>';
+  if (!t) return '<div class="wrap stack"><a class="linkish" href="#thinkers">← All thinkers</a><h1>' + esc(nameOf(id)) + '</h1><p class="muted">No profile for this thinker yet.</p></div>';
   const x = PX[id] || {}, tr = tradOf(t), mine = matchOne(t), cast = castOf(id) || { name: t.name };
   const isl = islandsWith(id), works = worksBy(id), terms = termsFor(id);
   const infl = arr(t.influencedBy).filter(z => TH[z]), opp = arr(t.opposed).filter(z => TH[z]), inspired = T.filter(z => TH[z.id] === z && arr(z.influencedBy).includes(id)).map(z => z.id);
@@ -13280,6 +13295,10 @@ function tpYouHTML(t, mine) {
   const nm = shortName(t);
   if (mine) return '<div class="tp-you"><a class="tp-you-main" href="#thinker-' + esc(t.id) + '" data-act="tpJump" data-k="stances"><b>You agree on ' + mine.pct + "%</b> · " + mine.n + " shared question" + (mine.n === 1 ? "" : "s") + '</a><a class="tp-you-duel" href="#duel-' + esc(t.id) + '">Duel →</a></div>';
   const any = Object.keys(S.answers || {}).some(q => realA(S.answers[q]));
+  if (any) { // you have started: point to the chapter that holds most of this thinker's questions you haven't answered
+    const cnt = {}; Object.keys(t.positions || {}).forEach(q => { if (QM[q] && !realA(S.answers[q]) && SEC[QM[q].section]) cnt[QM[q].section] = (cnt[QM[q].section] || 0) + 1; });
+    const sec = Object.keys(cnt).sort((a, b) => cnt[b] - cnt[a])[0], so = sec && SEC[sec];
+    if (so) return '<div class="tp-you"><a class="tp-you-main" href="#compass-' + esc(sec) + '">Not enough shared questions yet. Answer ' + esc(so.name || so.short || "the next chapter") + " on the Compass to see where you stand with " + esc(nm) + " →</a></div>"; }
   return '<div class="tp-you"><a class="tp-you-main" href="#compass-quick">' + (any ? "Not enough shared questions yet. Take the Quick Compass to see where you stand with " : "Take the Quick Compass to see where you stand with ") + esc(nm) + " →</a></div>";
 }
 // "Also in": the seminars that cast this thinker and the Shipyard games built on their ideas
@@ -13288,7 +13307,7 @@ function tpAlsoHTML(id) {
   const sems = SEM_LIST.filter(x => arr(x.cast).includes(id));
   const games = Object.keys(LAB_PEOPLE).filter(k => LAB_NAMES[k] && LAB_PEOPLE[k].includes(id) && TH[id]);
   if (!sems.length && !games.length) return "";
-  return '<div class="tp-card tp-also"><span class="eyebrow">Also in</span><ul class="tp-wl">' + sems.map(x => '<li><span class="faint">Seminar</span> <a href="#seminar-' + esc(x.sid) + '">' + esc(x.title) + "</a></li>").join("") + games.map(k => '<li><span class="faint">Play</span> <a href="#lab-' + k + '">' + esc(LAB_NAMES[k]) + "</a></li>").join("") + "</ul></div>";
+  return '<div class="tp-card tp-also"><span class="eyebrow">Also in</span><ul class="tp-wl">' + sems.map(x => '<li><span class="faint">Seminar</span> <a href="#seminar-' + esc(x.sid) + '">' + esc(x.title) + "</a></li>").join("") + games.map(k => '<li><span class="faint">Play</span> <a href="' + labHref(k) + '">' + esc(LAB_NAMES[k]) + "</a></li>").join("") + "</ul></div>";
 }
 ACT.tpJump = (el, ev) => { if (ev) ev.preventDefault(); const s = document.getElementById("tp-" + el.dataset.k) || $("#tp-" + el.dataset.k); if (s) window.scrollTo({ top: s.getBoundingClientRect().top + scrollY - 80, behavior: "smooth" }); };
 VIEWS.firmament = (arg) => {
@@ -13924,7 +13943,10 @@ let wRowsT; window.addEventListener("resize", () => { clearTimeout(wRowsT); wRow
 function wCard(w) { return '<a class="wcard" href="#works-' + esc(w.id) + '" data-w="' + esc(w.id) + '"><span class="wc-bar" style="--c:' + wColor(w) + '"></span><span class="wc-yr">' + esc(yrTxt(w.year)) + '</span><b>' + esc(w.title) + '</b><span class="wc-au">' + esc(wAuthor(w)) + " · " + esc(w.form || "") + "</span><p>" + esc(w.summary) + '</p><span class="wc-lv">' + wDots(w) + " " + esc(WLEVEL[w.level || 1]) + "</span></a>"; }
 VIEWS.works = arg => {
   if (arg && WK[arg]) return workPage(WK[arg]);
-  if (arg) return workMissing(arg);
+  if (arg) { // a title typed as a slug ("critique-of-pure-reason") that names exactly one book opens it
+    const sl = x => String(x || "").toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""), one = WORKS.filter(w => sl(w.title) === sl(arg));
+    if (one.length === 1) { after.push(() => history.replaceState(null, "", "#works-" + one[0].id)); return workPage(one[0]); }
+    return workMissing(arg); }
   if (!WORKS.length) return '<div class="wrap stack"><span class="eyebrow">The Archive</span><h1>Works</h1><p class="muted">The archive is being catalogued.</p></div>';
   // phones: every era shelf after the first folds into a disclosure (wRows measures, so it re-runs on toggle)
   const phone = matchMedia("(max-width:640px)").matches; let nShelf = 0;
@@ -13968,10 +13990,12 @@ function workMissing(arg) {
     (L.length ? '<div class="wgrid">' + L.map(wCard).join("") + "</div>" : "") + '<div class="row"><a class="btn" href="#works">Browse all ' + WORKS.length + ' works</a><button class="btn ghost" data-act="find">Search the whole site</button></div></div></div>';
 }
 ACT.find = () => { if (typeof FIND !== "undefined") FIND.open(); };
-// a free text for books old enough to be in the public domain (written by 1928, author dead before 1955): search links, not curated editions
+// a free text for books old enough to be in the public domain: search links, not curated editions. With a thinker record:
+// written by 1928 and the author dead before 1955. Without one (or with no death date): written before 1900, under the book's own author name
 function workFreeHTML(w) {
-  const t = w.author && TH[w.author]; if (!(w.year <= 1928 && t && t.died != null && t.died < 1955)) return "";
-  const sur = shortName(t) || String(w.authorName || "").split(" ").pop(), qs = encodeURIComponent(w.title + " " + sur);
+  const t = w.author && TH[w.author], known = t && t.died != null;
+  if (!(known ? w.year <= 1928 && t.died < 1955 : w.year != null && w.year < 1900 && (t || w.authorName))) return "";
+  const sur = (t && shortName(t)) || (/^(anonymous|unknown|various)/i.test(w.authorName || "") ? "" : String(w.authorName || "").replace(/\s*\(.*?\)\s*/g, " ").trim().split(" ").pop()), qs = encodeURIComponent((w.title + " " + sur).trim());
   return '<div class="tp-card wk-free"><span class="eyebrow">Read it free</span><p class="muted" style="font-size:var(--fs-sm);margin:0">Search free public-domain editions (translations vary).</p><ul class="tp-wl"><li><a href="https://www.gutenberg.org/ebooks/search/?query=' + qs + '" target="_blank" rel="noopener">Project Gutenberg ↗</a></li><li><a href="https://en.wikisource.org/w/index.php?search=' + qs + '" target="_blank" rel="noopener">Wikisource ↗</a></li></ul></div>';
 }
 // the debates and seminars this book drives: through its Voyage islands, and the debate arguments its author wrote
@@ -14020,6 +14044,7 @@ VIEWS.library = (arg) => {
     else { const near = LIB.glossary.find(x => slugT(x.term).startsWith(arg.split("-")[0])); libTab = "glossary"; dField = ""; libQuery = near ? near.term : arg.replace(/-/g, " "); } }
   if (libTab === "glossary") {
     const groups = dGroups();
+    if (libLetter === null && S.libLetter) libLetter = S.libLetter; // the letter you last opened, like the debate filter
     if (libLetter === null || (libLetter && !groups.some(g => g.L === libLetter))) libLetter = groups.length ? groups[0].L : "";
     const fields = [...new Set(LIB.glossary.map(g => g.field).filter(Boolean))].sort();
     body = '<div id="libResults" hidden></div>' +
@@ -14109,7 +14134,7 @@ function libFilter() {
 }
 // letters filter the glossary to one page at a time (150 terms in one scroll was a 28,000px wall); "All" brings back the lot
 let libLetter = null;
-ACT.libJump = el => { libLetter = el.dataset.l; libFilter(); const t = $("#view .azbar"); if (t) window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - 90 }); };
+ACT.libJump = el => { libLetter = el.dataset.l; S.libLetter = libLetter; save(); libFilter(); const t = $("#view .azbar"); if (t) window.scrollTo({ top: t.getBoundingClientRect().top + scrollY - 90 }); };
 ACT.libTab = el => { libTab = el.dataset.k; libQuery = ""; if (location.hash !== "#library") history.replaceState(null, "", "#library"); render(true); };
 ACT.libSearch = el => { libQuery = el.dataset.q; libTab = "glossary"; render(false); };
 
@@ -14124,7 +14149,7 @@ function veilCalc(w) { const sum = w.reduce((a, b) => a + b, 0) || 1, sh = w.map
   const pie = 100 * Math.max(1, 1 + 4 * g - 6 * g * g), inc = sh.map(s => Math.round(VEIL_N * pie * s)), wb = inc.map(x => Math.round(26 * Math.log(1 + x / 10)));
   return { sh, g, pie: Math.round(pie), inc, wb, avg: Math.round(wb.reduce((a, b) => a + b, 0) / VEIL_N), min: wb[0] }; }
 function labVeil() { const L = veilState(), C = veilCalc(L.w), maxInc = Math.max(...C.inc, 1);
-  const bars = C.sh.map((s, i) => '<div class="vbar"><div class="vtrack" data-vi="' + i + '"><div class="vfill" style="height:' + Math.round(100 * C.inc[i] / maxInc) + '%"><span>' + C.inc[i] + '</span></div></div><b>' + Math.round(100 * s) + '%</b><small>' + VEIL_NAMES[i] + "</small></div>").join("");
+  const bars = C.sh.map((s, i) => '<div class="vbar"><div class="vtrack" data-vi="' + i + '" role="slider" tabindex="0" aria-label="' + esc(VEIL_NAMES[i]) + ': share of the wealth" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + Math.round(100 * s) + '" aria-valuetext="' + Math.round(100 * s) + '% of the wealth"><div class="vfill" style="height:' + Math.round(100 * C.inc[i] / maxInc) + '%"><span>' + C.inc[i] + '</span></div></div><b>' + Math.round(100 * s) + '%</b><small>' + VEIL_NAMES[i] + "</small></div>").join("");
   const lives = L.lives.slice(-5), score = lives.length ? Math.round(lives.reduce((a, b) => a + b.wb, 0) / lives.length) : null;
   const E = veilCalc([1, 1, 1, 1, 1]);
   const principle = C.g < 0.03 ? ["Strict equality", "Everyone gets the same. Nobody is left behind, but nobody has a reason to make the pie bigger either."] : C.inc[0] >= E.inc[0] ? ["Rawls’s difference principle", "You allowed inequality, but only the kind that leaves the poorest better off than strict equality would. That is exactly what Rawls asked for."] : C.avg > E.avg ? ["Average utilitarianism", "You made the average life better than under equality, as John Harsanyi argued a rational chooser would, but the poorest pay for it."] : ["A gamble on the top", "Big rewards for the lucky and hard lives at the bottom: worse on average, and worse for the poorest. Behind the veil, that is a bet that you’ll be born rich."];
@@ -14140,13 +14165,22 @@ function labVeil() { const L = veilState(), C = veilCalc(L.w), maxInc = Math.max
   if (lives.length) h += labSameQ("veil");
   after.push(veilDrag);
   return labShell("Behind the veil", h); }
-function veilDrag() { $$("#vbars .vtrack").forEach(t => { t.onpointerdown = e => { e.preventDefault(); t.setPointerCapture(e.pointerId); const i = +t.dataset.vi;
-    const move = ev => { const r = t.getBoundingClientRect(), f = Math.max(0.02, Math.min(1, (r.bottom - ev.clientY) / r.height)); const L = veilState();
-      // bars are drawn sorted, so dragging bar i sets the i-th smallest weight; keep the order by clamping between neighbours
-      const sorted = L.w.slice().sort((a, b) => a - b); sorted[i] = Math.round(f * 100); for (let k = i + 1; k < VEIL_N; k++) sorted[k] = Math.max(sorted[k], sorted[i]); for (let k = i - 1; k >= 0; k--) sorted[k] = Math.min(sorted[k], sorted[i]);
-      L.w = sorted; const C = veilCalc(L.w), mx = Math.max(...C.inc, 1);
-      $$("#vbars .vbar").forEach((b, k) => { $(".vfill", b).style.height = Math.round(100 * C.inc[k] / mx) + "%"; $(".vfill span", b).textContent = C.inc[k]; $("b", b).textContent = Math.round(100 * C.sh[k]) + "%"; }); };
-    move(e); t.onpointermove = move; t.onpointerup = () => { t.onpointermove = null; save(); render(true); }; }; }); }
+// dragging bar i sets the i-th smallest weight. Every move starts again from the weights as they were at pointerdown,
+// so a bar pushed aside to keep the order springs back when the drag moves away, and the drag is relative (no jump on press)
+function veilSet(base, i, v) { const w = base.slice(); w[i] = Math.max(2, Math.min(100, Math.round(v)));
+  for (let k = i + 1; k < VEIL_N; k++) w[k] = Math.max(w[k], w[i]); for (let k = i - 1; k >= 0; k--) w[k] = Math.min(w[k], w[i]); return w; }
+function veilShow(w) { const C = veilCalc(w), mx = Math.max(...C.inc, 1);
+  $$("#vbars .vbar").forEach((b, k) => { $(".vfill", b).style.height = Math.round(100 * C.inc[k] / mx) + "%"; $(".vfill span", b).textContent = C.inc[k]; $("b", b).textContent = Math.round(100 * C.sh[k]) + "%"; const t = $(".vtrack", b); t.setAttribute("aria-valuenow", Math.round(100 * C.sh[k])); t.setAttribute("aria-valuetext", Math.round(100 * C.sh[k]) + "% of the wealth"); }); }
+// a new society: the lives drawn in the old one no longer count
+function veilCommit(L, w) { if (w.join() !== L.w.join()) { L.w = w; L.lives = []; } save(); }
+let veilFocus = null;
+function veilDrag() { if (veilFocus != null) { const f = $('#vbars .vtrack[data-vi="' + veilFocus + '"]'); veilFocus = null; if (f) try { f.focus({ preventScroll: true }); } catch (e) { } }
+  $$("#vbars .vtrack").forEach(t => { const i = +t.dataset.vi;
+  t.onpointerdown = e => { e.preventDefault(); t.setPointerCapture(e.pointerId); const L = veilState(), base = L.w.slice().sort((a, b) => a - b), y0 = e.clientY; let w = base;
+    const move = ev => { const r = t.getBoundingClientRect(); w = veilSet(base, i, base[i] + 100 * (y0 - ev.clientY) / Math.max(40, r.height)); veilShow(w); };
+    t.onpointermove = move; t.onpointerup = t.onpointercancel = () => { t.onpointermove = t.onpointerup = t.onpointercancel = null; veilCommit(L, w); render(true); }; };
+  t.onkeydown = e => { const d = { ArrowUp: 2, ArrowRight: 2, PageUp: 10, ArrowDown: -2, ArrowLeft: -2, PageDown: -10 }[e.key]; if (!d) return; e.preventDefault();
+    const L = veilState(), base = L.w.slice().sort((a, b) => a - b); veilCommit(L, veilSet(base, i, base[i] + d)); veilFocus = i; render(true); }; }); }
 ACT.veilPreset = el => { const L = veilState(); L.w = { equal: [20, 20, 20, 20, 20], rawls: [16, 18, 20, 22, 24], steep: [2, 5, 10, 23, 60] }[el.dataset.p]; L.lives = []; save(); render(true); };
 ACT.veilReset = () => { S.lab.veil = { w: [20, 20, 20, 20, 20], lives: [], best: (S.lab.veil || {}).best }; save(); render(true); };
 ACT.veilBorn = el => { const L = veilState(), C = veilCalc(L.w), i = Math.floor(Math.random() * VEIL_N), ps = $$("#vpeople .vp"); el.disabled = true; let k = 0, n = 14 + i;
@@ -14180,21 +14214,28 @@ function labGauntlet() { const L = gauntState(), i = GAUNT.findIndex(c => !L.v[c
   let h = '<div class="gtop"><span class="faint">Case ' + Math.min(GAUNT.length, done ? GAUNT.length : i + 1) + " of " + GAUNT.length + '</span><div class="gprog"><i style="width:' + Math.round(100 * Object.keys(L.v).length / GAUNT.length) + '%"></i></div><span class="gdead" aria-label="Lives lost">' + ic("skull") + " " + dead + "</span></div>";
   if (!done) { const c = GAUNT[i];
     h += '<div class="panel stack gcard" style="--g:12px"><span class="eyebrow">' + esc(c.by) + "</span><h2>" + esc(c.t) + "</h2>" + gauntScene(c) + '<p class="read">' + esc(c.d) + "</p>" +
-      (c.three ? '<div class="row" style="--g:8px">' + c.three.map(o => '<button class="btn" data-act="gauntPick" data-v="' + o[2] + '">' + esc(o[0]) + "</button>").join("") + "</div>" :
-        '<div class="glever" data-act-label="' + esc(c.act) + '"><span class="faint">' + esc(c.stay) + '</span><div class="gl-track" id="glever" role="slider" aria-label="' + esc(c.act) + '" tabindex="0" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"><span class="gl-knob"></span></div><b>' + esc(c.act) + '</b></div><p class="faint" style="font-size:.8rem;margin:0">Drag the lever all the way to act, or <button class="linkish" data-act="gauntPick" data-v="stay">' + esc(c.stay.toLowerCase()) + "</button>.</p>") + "</div>";
+      (c.three ? '<div class="row" style="--g:8px">' + c.three.map(o => '<button class="btn" data-act="gauntPick" data-c="' + esc(c.id) + '" data-v="' + o[2] + '">' + esc(o[0]) + "</button>").join("") + "</div>" :
+        '<div class="glever" data-act-label="' + esc(c.act) + '"><span class="faint">' + esc(c.stay) + '</span><div class="gl-track" id="glever" data-c="' + esc(c.id) + '" role="slider" aria-label="' + esc(c.act) + '" tabindex="0" aria-valuemin="0" aria-valuemax="1" aria-valuenow="0"><span class="gl-knob"></span></div><b>' + esc(c.act) + '</b></div><p class="faint" style="font-size:.8rem;margin:0">Drag the lever all the way to act, or <button class="linkish" data-act="gauntPick" data-c="' + esc(c.id) + '" data-v="stay">' + esc(c.stay.toLowerCase()) + "</button>.</p>") + "</div>";
     after.push(gauntLever); }
   else h += gauntResult(L, dead);
+  gauntBusy = false;
   return labShell("The trolley gauntlet", h); }
-function gauntLever() { const t = $("#glever"); if (!t) return; const k = $(".gl-knob", t); let on = false;
-  const fin = () => { pick("act"); }, pick = v => { gauntPickVal(v); };
+// after a pick, keyboard focus moves on to the next case's lever (or its first button)
+let gauntBusy = false, gauntRefocus = false;
+function gauntLever() { if (gauntRefocus) { gauntRefocus = false; const f = $("#glever") || $(".gcard button[data-act=gauntPick]"); if (f) try { f.focus({ preventScroll: true }); } catch (e) { } }
+  const t = $("#glever"); if (!t) return; const k = $(".gl-knob", t); let on = false;
+  const fin = () => { pick("act"); }, pick = v => { gauntPickVal(v, t.dataset.c); };
   t.onpointerdown = e => { e.preventDefault(); t.setPointerCapture(e.pointerId); const r = t.getBoundingClientRect();
-    t.onpointermove = ev => { const f = Math.max(0, Math.min(1, (ev.clientX - r.left - 16) / (r.width - 32))); k.style.left = "calc(" + Math.round(f * 100) + "% - " + Math.round(f * 32) + "px)"; on = f > 0.92; t.classList.toggle("hot", on); };
+    t.onpointermove = ev => { const f = Math.max(0, Math.min(1, (ev.clientX - r.left - 16) / (r.width - 32))); k.style.left = "calc(" + Math.round(f * 100) + "% - " + Math.round(f * 32) + "px)"; on = f > 0.92; t.classList.toggle("hot", on); t.setAttribute("aria-valuenow", on ? "1" : "0"); };
     t.onpointerup = () => { t.onpointermove = null; if (on) fin(); else { k.style.left = ""; t.classList.remove("hot"); } }; };
   t.onkeydown = e => { if (e.key === "ArrowRight" || e.key === "Enter") fin(); }; }
-function gauntPickVal(v) { const L = gauntState(), c = GAUNT.find(x => !L.v[x.id]); if (!c) return; L.v[c.id] = v; save();
+// one pick per case: the input stays locked through the trolley animation, and a pick made for a case that is
+// already answered (a double-click, a fast second tap) is ignored rather than answering the next case unseen
+function gauntPickVal(v, cid) { const L = gauntState(), c = GAUNT.find(x => !L.v[x.id]); if (!c || gauntBusy || (cid && cid !== c.id)) return; L.v[c.id] = v; save();
+  gauntBusy = true; gauntRefocus = true; $$(".gcard button, .gcard #glever").forEach(b => { b.disabled = true; b.setAttribute("aria-disabled", "true"); b.style.pointerEvents = "none"; });
   const tr = $(".gtrolley"); if (tr) { tr.classList.add(v === "act" || v === "other" ? "go-side" : "go"); setTimeout(() => render(true), 700); } else render(true); }
-ACT.gauntPick = el => gauntPickVal(el.dataset.v);
-ACT.gauntReset = () => { S.lab.gauntlet = { v: {} }; save(); render(true); };
+ACT.gauntPick = el => gauntPickVal(el.dataset.v, el.dataset.c);
+ACT.gauntReset = () => { gauntBusy = false; S.lab.gauntlet = { v: {} }; save(); render(true); };
 function gauntResult(L, dead) { L.done = true; const v = id => L.v[id], yes = id => v(id) === "act";
   const P = [];
   const pair = (a, b, same, diff) => { if (!v(a) || !v(b)) return; P.push(yes(a) === yes(b) ? same : diff); };
@@ -14291,7 +14332,7 @@ function pdTourney(rule) { const ent = [{ k: "you", n: "Your captain", f: pdMine
   ent.forEach((A, i) => ent.forEach((B, j) => { if (j <= i) return; const [sa, sb] = pdPlay(A.f, B.f, 1000 + i * 31 + j); tot[A.k] += sa; tot[B.k] += sb; if (A.k === "you") vs[B.k] = [sa, sb]; }));
   return { rank: ent.map(e => ({ k: e.k, n: e.n, s: tot[e.k] })).sort((a, b) => b.s - a.s), vs }; }
 function labPD() { const L = pdState(), R = L.rule, T = pdTourney(R), you = T.rank.findIndex(x => x.k === "you") + 1, max = T.rank[0].s, low = T.rank[T.rank.length - 1].s * 0.92;
-  L.best = Math.min(L.best || 99, you);
+  if (L.done) L.best = Math.min(L.best || 99, you);
   const sel = (key, label) => '<label class="pdrule"><span>' + label + '</span><span class="seg">' + [["C", "Trade fair"], ["D", "Cheat"]].map(([v, t]) => '<button class="chip" aria-pressed="' + (R[key] === v) + '" data-act="pdSet" data-k="' + key + '" data-v="' + v + '">' + t + "</button>").join("") + "</span></label>";
   const name = R.first === "C" && R.afterC === "C" && R.afterD === "D" ? (R.forgive ? "Generous Tit for Tat" : "Tit for Tat") : R.afterC === "D" && R.afterD === "D" ? "Always Cheat" : R.afterC === "C" && R.afterD === "C" ? "Always Fair" : R.afterC === "D" && R.afterD === "C" ? "The Contrarian" : "Your own design";
   let h = '<p class="read">Two captains meet at sea, a hundred times. Each time, each can <b>trade fair</b> or <b>cheat</b>. If both trade fair, both earn 3. If both cheat, both earn 1. Cheat someone who trades fair, and you take 5 while they get nothing. Cheating always pays more in a single meeting, yet two cheats end up poorer than two honest traders. Design your captain, then enter the tournament.</p>' +
@@ -14301,9 +14342,9 @@ function labPD() { const L = pdState(), R = L.rule, T = pdTourney(R), you = T.ra
     '<div class="pdboard">' + T.rank.map((x, i) => '<div class="' + (x.k === "you" ? "me" : "") + '"><span>' + (i + 1) + ". " + esc(x.n) + '</span><i style="width:' + Math.round(100 * (x.s - low) / ((max - low) || 1)) + '%"></i><b>' + x.s + "</b></div>").join("") + "</div>" +
     '<details><summary class="linkish">Your meetings, one by one</summary><div class="pdvs">' + PD_BOTS.map(b => '<div><span>vs ' + esc(b.n) + '</span><b>' + T.vs[b.k][0] + " – " + T.vs[b.k][1] + '</b><small class="faint">' + esc(b.d) + "</small></div>").join("") + "</div></details>" +
     '<p class="read" style="margin:0">' + (you <= 2 ? "Robert Axelrod found the same in 1980: the winners were <b>nice</b> (never cheat first), <b>retaliating</b>, <b>forgiving</b> and <b>clear</b>. Cooperation can grow among selfish traders, without any sovereign to enforce it." : "Try what won Axelrod’s real tournaments in 1980: be nice (never cheat first), hit back when cheated, then forgive.") + "</p></div>" +
-    pdHandHTML(L) + '<div class="row"><a class="btn small" href="#thinker-hobbes">Hobbes on the war of all against all</a><a class="btn small ghost" href="#agora-inequality">Debates</a></div>';
-  after.push(() => { const r = $("#pdForgive"); if (r) { r.oninput = () => { $("#pdF").textContent = r.value + "%"; }; r.onchange = () => { pdState().rule.forgive = +r.value; save(); render(true); }; } });
-  L.done = true; return labShell("The harbour bargain", h); }
+    pdHandHTML(L) + '<div class="row"><a class="btn small" href="#thinker-hobbes">Hobbes on the war of all against all</a><a class="btn small ghost" href="#agora-inequality">Debate inequality</a></div>';
+  after.push(() => { const r = $("#pdForgive"); if (r) { r.oninput = () => { $("#pdF").textContent = r.value + "%"; }; r.onchange = () => { pdPlayed(); pdState().rule.forgive = +r.value; save(); render(true); }; } });
+  return labShell("The harbour bargain", h); }
 // Play one hidden captain by hand for ten meetings, then guess who it was
 function pdHandHTML(L) { const H = L.hand;
   if (!H) return '<div class="panel stack" style="--g:8px"><span class="eyebrow">Face a mystery captain</span><p class="read" style="margin:0">Ten meetings by hand against a captain whose strategy you don’t know. Then guess who it was.</p><div class="row"><button class="btn" data-act="pdHand">Meet a mystery captain</button></div></div>';
@@ -14312,11 +14353,13 @@ function pdHandHTML(L) { const H = L.hand;
   if (H.a.length < 10) return '<div class="panel stack" style="--g:8px"><span class="eyebrow">Mystery captain · meeting ' + (H.a.length + 1) + ' of 10</span>' + log + '<p class="faint" style="margin:0">Top row you, bottom row them · you ' + you + " – " + them + '</p><div class="row"><button class="btn" data-act="pdMove" data-v="C">' + ic("handshake") + ' Trade fair</button><button class="btn ghost" data-act="pdMove" data-v="D">' + ic("dagger") + " Cheat</button></div></div>";
   if (!H.guess) return '<div class="panel stack" style="--g:8px"><span class="eyebrow">Who was it?</span>' + log + '<p class="faint" style="margin:0">You ' + you + " – " + them + '</p><div class="row" style="--g:6px">' + PD_BOTS.map(b => '<button class="chip" data-act="pdGuess" data-v="' + b.k + '">' + esc(b.n) + "</button>").join("") + "</div></div>";
   return '<div class="panel stack" style="--g:8px"><span class="eyebrow">' + (H.guess === H.bot ? "Spot on! ⭐" : "Not quite") + '</span>' + log + '<p class="read" style="margin:0">It was <b>' + esc(bot.n) + "</b>: " + esc(bot.d) + " You scored " + you + ", they scored " + them + '.</p><div class="row"><button class="btn small" data-act="pdHand">Another mystery captain</button></div></div>'; }
-ACT.pdSet = el => { pdState().rule[el.dataset.k] = el.dataset.v; save(); render(true); };
+// the game counts as played only once you act: set a rule (which reruns the tournament) or finish a mystery captain
+function pdPlayed() { pdState().done = true; }
+ACT.pdSet = el => { pdPlayed(); pdState().rule[el.dataset.k] = el.dataset.v; save(); render(true); };
 ACT.pdHand = () => { const L = pdState(); L.hand = { bot: PD_BOTS[Math.floor(Math.random() * PD_BOTS.length)].k, a: [], b: [], seed: Math.floor(Math.random() * 1e6) }; save(); render(true); };
 ACT.pdMove = el => { const L = pdState(), H = L.hand, bot = PD_BOTS.find(b => b.k === H.bot), r = pdRng(H.seed + H.a.length * 7);
-  const y = bot.f(H.b.slice(), H.a.slice(), r); H.a.push(el.dataset.v); H.b.push(y); save(); render(true); };
-ACT.pdGuess = el => { const L = pdState(); L.hand.guess = el.dataset.v; if (el.dataset.v === L.hand.bot) L.stars = (L.stars || 0) + 1; save(); render(true); };
+  const y = bot.f(H.b.slice(), H.a.slice(), r); H.a.push(el.dataset.v); H.b.push(y); if (H.a.length >= 10) pdPlayed(); save(); render(true); };
+ACT.pdGuess = el => { const L = pdState(); pdPlayed(); L.hand.guess = el.dataset.v; if (el.dataset.v === L.hand.bot) L.stars = (L.stars || 0) + 1; save(); render(true); };
 
 VIEWS.lab = arg => {
   if (arg === "heap") return labHeap();
@@ -14327,6 +14370,7 @@ VIEWS.lab = arg => {
   if (arg === "veil") return labVeil();
   if (arg === "gauntlet") return labGauntlet();
   if (arg === "pd") return labPD();
+  if (arg) noSuch("game", arg, "are all the games");
   const games = [
     { k: "odyssey", t: "The Odyssey", e: "ship", d: "Sail home from Troy through twelve of Homer’s islands. Every choice costs or saves your crew, and swings your heart between mercy and ruthlessness.", by: "Homer; inspired by EPIC: The Musical" },
     { k: "gauntlet", t: "The trolley gauntlet", e: "trolley", d: "Ten trolley cases, from the switch to the surgeon. Drag the lever, count the cost, then see which principles your choices follow.", by: "Foot, Thomson, Greene and others" },
@@ -14344,7 +14388,14 @@ VIEWS.lab = arg => {
     tiles.map(x => '<a class="mod" href="#lab-' + x.k + '"><h3><span>' + x.t + "</span>" + (S.lab[x.k] && S.lab[x.k].done ? '<span class="chip lamp">Done</span>' : "") + "</h3><p>" + x.d + '</p><span class="faint" style="font-size:.8rem">' + x.by + "</span></a>").join("") + "</div>" +
     '<p class="muted">' + (games.length + tiles.length) + ' you can play, and ' + LIB.experiments.length + ' more thought experiments to read: <a href="#library" data-act="libExperiments">the thought experiments in the Dictionary →</a></p></div>';
 };
-ACT.navLib = el => { const m = $(".navlib-menu"); m.hidden = !m.hidden; el.setAttribute("aria-expanded", String(!m.hidden)); if (!m.hidden) setTimeout(() => document.addEventListener("click", function off(e) { if (!e.target.closest(".navlib")) { m.hidden = true; el.setAttribute("aria-expanded", "false"); } document.removeEventListener("click", off); }), 0); };
+// the Library menu: a press anywhere outside it or Escape closes it (Escape hands focus back to the button);
+// the document listeners stay on for as long as the menu is open
+function navLibClose(refocus) { const m = $(".navlib-menu"), b = $(".navlib-btn"); if (m) m.hidden = true; if (b) b.setAttribute("aria-expanded", "false");
+  document.removeEventListener("pointerdown", navLibOutside, true); document.removeEventListener("keydown", navLibKey, true); if (refocus && b) b.focus(); }
+function navLibOutside(e) { if (!e.target.closest || !e.target.closest(".navlib")) navLibClose(false); }
+function navLibKey(e) { if (e.key === "Escape") { e.stopPropagation(); navLibClose(true); } }
+ACT.navLib = el => { const m = $(".navlib-menu"); if (!m.hidden) return navLibClose(false); m.hidden = false; el.setAttribute("aria-expanded", "true");
+  document.addEventListener("pointerdown", navLibOutside, true); document.addEventListener("keydown", navLibKey, true); };
 ACT.libExperiments = el => { libTab = "experiments"; libQuery = ""; if (location.hash === "#library") render(false); else location.hash = "#library"; };
 function labShell(title, body) { return '<div class="wrap"><div class="col stack" style="--g:18px"><a class="linkish" href="#lab">← All experiments</a><h1>' + title + "</h1>" + body + "</div></div>"; }
 
@@ -14451,7 +14502,7 @@ function shipConfront(P) {
   if (!said.length) return "";
   const firstNo = said.find(k => c[k] === "no"); const yes19 = c[19] === "yes";
   let t = "Along the way you said: " + said.map(k => k + " new plank" + (k === 1 ? "" : "s") + ", " + (c[k] === "yes" ? "still his ship" : "not his ship")).join("; ") + ". ";
-  if ((P.verdict === "new" || P.verdict === "both") && firstNo) t += "Yet you now say the repaired ship is Theseus'. At " + firstNo + " you said it had stopped being his. Did it become his again when one more plank went in?";
+  if ((P.verdict === "new" || P.verdict === "both") && firstNo) t += "Yet you now say the repaired ship is Theseus'. At " + firstNo + " new plank" + (firstNo === 1 ? "" : "s") + " you said it had stopped being his. " + (firstNo === 19 ? "Did it become his again when one more plank went in?" : "Did it become his again somewhere between " + firstNo + " and 20?");
   else if (P.verdict === "old" && yes19) t += "At 19 new planks you still called the harbour ship his. One plank later, the old planks win. So did the twentieth plank carry the whole identity of the ship?";
   else if (P.verdict === "old" && firstNo) t += "You let go of the harbour ship at " + firstNo + " planks. Then what was it between " + firstNo + " and 20: no one’s ship, or a new ship that slowly became a copy?";
   else if (P.verdict === "new" && !firstNo) t += "You kept faith with the harbour ship the whole way. That’s the continuity view, held consistently.";
@@ -14686,8 +14737,27 @@ function dailyLink(l) {
   if (AGQ[l]) return { href: "#agora-" + l, t: "See the full debate" };
   if (LABMAP[l]) return { href: "#lab-" + LABMAP[l], t: "Play it in the Shipyard" };
   const x = (LIB.experiments || []).find(e => e.id === l); if (x) return { href: "#experiment-" + x.id, t: "Read the thought experiment", exp: x.name };
-  const q = QM[l] ? l : (C.legacy || {})[l]; if (q && QM[q]) return { href: "#compass-" + q, t: "Answer it on the Compass" };
   return null;
+}
+// Daily items whose question really is a Compass question, checked by reading both texts. Only these may show a
+// Compass answer, Compass holders or a Compass link; the old flat "link" ids often resolve to unrelated questions.
+// Each entry: [Compass id, Compass option label for each daily option in order (null = no clean match)].
+const DAILY_SAME = {
+  "do you have free will": ["m3", ["Libertarianism", "Compatibilism", "No free will"]],
+  "is death bad for the person who dies": ["l2", ["Death is bad", "Death is not bad", null]],
+  "are numbers real or did humans invent them": ["k2", ["Platonism", "Anti-Platonism", null]],
+  "is beauty in the eye of the beholder": ["a1", ["Response-based view", null, "Aesthetic realism"]],
+  "would a perfect copy of you on mars be you": ["m4", ["Psychological continuity", "Bodily or soul view", "Reductionism"]],
+  "does god exist": ["k9", ["Theism, broadly", "Atheism", "Agnosticism"]],
+  "is there one self in your head making decisions": ["m2", ["A self", "No single self", "No single self"]]
+};
+const dyNorm = x => String(x || "").toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9]+/g, " ").trim();
+// the verified Compass twin of a daily item: { q, opt(i) → option id or null }, or null when there is none
+function dailyCompass(item) {
+  const m = item && DAILY_SAME[dyNorm(item.q)]; if (!m || !QM[m[0]]) return null;
+  const qo = QM[m[0]].options || [], byLabel = l => { const o = l && qo.find(x => dyNorm(x.label) === dyNorm(l)); return o ? o.id : null; };
+  if (m[1].length !== (item.options || []).length) return null;
+  return { q: m[0], opt: i => byLabel(m[1][i]) };
 }
 // answering the question of the day saves it and reveals what the philosophers said
 ACT.scrollTo = el => { const t = document.getElementById(el.dataset.t); if (t) window.scrollTo({ top: t.getBoundingClientRect().top + window.scrollY - 120, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); };
@@ -14697,13 +14767,10 @@ ACT.dailyLink = el => { if (el.dataset.exp) { libTab = "experiments"; libQuery =
 // after you answer the question of the day: the thinkers who share that view, when today's answer maps cleanly onto a
 // Compass option (same number of options, same labels) or when you already answered the linked Compass question
 function dailyHolders(D, mine) {
-  const lk = D.item.link, ag = AGQ[lk];
-  const raw = QM[lk] ? lk : (C.legacy || {})[lk] || (ag && ag.compass ? ((C.legacy || {})[ag.compass] || ag.compass) : null);
-  const cq = raw && QM[raw] ? raw : null; if (!cq) return "";
-  const norm = x => String(x || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+  const V = dailyCompass(D.item); if (!V) return "";
+  const cq = V.q;
   let o = realA(S.answers[cq]) ? arr(S.answers[cq].a)[0] : null; const fromC = o != null;
-  const qo = QM[cq].options || [];
-  if (o == null && mine != null && D.item.options.length === qo.length && D.item.options.every((x, i) => norm(x) === norm(qo[i].label) || norm(x) === norm(qo[i].text))) o = qo[mine] && qo[mine].id;
+  if (o == null && mine != null) o = V.opt(mine);
   if (o == null) return "";
   const H = holdersOf(cq, o).filter(h => TH[h.t.id] === h.t); if (!H.length) return "";
   return '<p class="nudge daily-holders"><b>' + H.length + (H.length === 1 ? " thinker holds" : " thinkers hold") + (fromC ? " your Compass view" : " this view") + ":</b> " + (fromC ? '<span class="faint">' + esc(labelOf(cq, o)) + "</span> " : "") + '<span class="row" style="--g:6px;display:inline-flex;vertical-align:middle">' + H.slice(0, 3).map(h => thinkerChip(h.t.id)).join("") + "</span></p>";
@@ -14713,8 +14780,8 @@ function dailyCard() {
   const key = todayKey(); const mine = S.daily[key];
   let body = "";
   // if today's question is one you already answered on the Compass, show that answer instead of asking again
-  const cq = QM[D.item.link] ? D.item.link : (C.legacy || {})[D.item.link];
-  const prior = mine == null && cq && QM[cq] && realA(S.answers[cq]) ? labelOf(cq, S.answers[cq].a) : null;
+  const V = dailyCompass(D.item), cq = V && V.q;
+  const prior = mine == null && cq && realA(S.answers[cq]) ? labelOf(cq, S.answers[cq].a) : null;
   if (prior) {
     body = '<div class="opt" style="cursor:default;border-color:#E8B04A"><span>You answered this on the Compass: <b>' + esc(prior) + "</b></span></div>";
   } else if (mine == null) {
@@ -14727,7 +14794,7 @@ function dailyCard() {
     else body = D.item.options.map((o, i) => { const p = Math.round(100 * counts[i] / n); return '<div class="opt" style="cursor:default' + (i === mine ? ";border-color:#E8B04A" : "") + '"><i class="bar" style="width:' + p + '%"></i><span>' + esc(o) + ' <b style="float:right">' + p + "%</b></span></div>"; }).join("") +
       '<p class="nudge">' + n + " people answered today.</p>";
   }
-  const L = dailyLink(D.item.link);
+  const L = dailyLink(D.item.link) || (cq ? { href: "#compass-" + cq, t: realA(S.answers[cq]) ? "See it on the Compass" : "Answer it on the Compass" } : null);
   const stk = dailyStreak();
   const paid = mine != null || prior;
   const ag = AGQ[D.item.link];
@@ -14749,6 +14816,8 @@ function sealsNow() {
 }
 // "Your next heading": the one thing to do next, chosen by the first rule that matches (fallback: the next Start-here step)
 const mins = n => "about " + Math.max(1, Math.round(n)) + " min";
+// every Shipyard game, for "N of M games played" (Home and the Captain's Log share this list through PHILO.LABK)
+const LABK = ["odyssey", "gauntlet", "pd", "veil", "heap", "ship", "machine", "trolley", "drop", "myths", "marys"];
 function nextHeading(fallback) {
   const V = voyState(), pos = V.pos || {}, done = V.done || {}, last = V.last || {}, seen = V.seen || {};
   // 1. an island in progress, the most recently visited first
@@ -14756,11 +14825,11 @@ function nextHeading(fallback) {
   if (open.length) { const I = VOY.islands[open[0]], n = deckSlides(I).length, i = Math.min(pos[I.id], n - 1);
     return { href: "#voyage-" + I.id, label: "Resume " + I.name + " (card " + (i + 1) + " of " + n + ")", line: "You were partway through this island · " + mins((n - i) * 0.4) + " to the end" }; }
   // 2. Tide cards due (only once the Tide exists)
-  const due = typeof tideDue === "function" ? (() => { try { return arr(tideDue()).length; } catch (e) { return 0; } })() : 0;
+  const due = typeof window.tideDue === "function" ? (() => { try { const r = window.tideDue(); return Array.isArray(r) ? r.length : Math.max(0, Math.floor(+r || 0)); } catch (e) { return 0; } })() : 0;
   if (due) return { href: "#tide", label: "Review " + due + " card" + (due === 1 ? "" : "s") + " (" + Math.max(1, Math.round(due * 0.5)) + " min)", line: "Spaced review: the cards you are about to forget, back on the tide today." };
   // 3. open cracks in your positions
   const cracks = allTensions().filter(t => !S.resolutions[t.key]).length;
-  if (cracks) return { href: "#codex", label: "Mend " + numWord(cracks) + " crack" + (cracks === 1 ? "" : "s"), line: "Two of your views pull against each other. Decide which gives way · " + mins(cracks * 2) };
+  if (cracks) return { href: "#codex", label: "Mend " + numWord(cracks) + " crack" + (cracks === 1 ? "" : "s"), line: (cracks === 1 ? "Two of your views pull against each other" : cap(numWord(cracks)) + " pairs of your views pull against each other") + ". Decide which gives way · " + mins(cracks * 2) };
   // 4. a Compass chapter in progress
   const sec = C.sections.find(x => answeredCount(x.id) > 0 && !secDone(x.id));
   if (sec) { const a = answeredCount(sec.id), n = visibleQs(sec.id).length;
@@ -14773,7 +14842,7 @@ VIEWS.home = () => {
   const ans = answeredCount();
   const acc = Object.values(S.cards).filter(v => v === "accept").length;
   const tens = allTensions(); const open = tens.filter(t => !S.resolutions[t.key]).length;
-  const LABK = ["odyssey", "gauntlet", "pd", "veil", "heap", "ship", "machine", "trolley", "drop", "myths", "marys"], labs = LABK.filter(k => S.lab[k] && S.lab[k].done).length;
+  const labs = LABK.filter(k => S.lab[k] && S.lab[k].done).length;
   const secs = C.sections.filter(x => secDone(x.id)).length;
   const secNames = C.sections.map(x => (x.name || x.short || x.title || "").toLowerCase()).filter(Boolean);
   const chapters = numWord(C.sections.length) + " chapter" + (C.sections.length === 1 ? "" : "s") + (secNames.length === C.sections.length && secNames.length > 1 ? ": " + secNames.slice(0, -1).join(", ") + ", and " + secNames[secNames.length - 1] : "");
@@ -15333,7 +15402,7 @@ document.addEventListener("click", e => {
   const below = r.bottom + 8 + pop.offsetHeight < window.innerHeight; pop.style.top = (below ? r.bottom + 8 : r.top - pop.offsetHeight - 8) + window.scrollY + "px";
 });
 function deckPage(id) {
-  const I = DK(id); if (!I) return voyHome();
+  const I = DK(id); if (!I) { noSuch("island", id, "is the whole voyage"); return voyHome(); }
   after.push(() => glossify($("#dkStage")));
   const V = deckState(id); const L = deckSlides(I);
   let i = Math.max(0, Math.min(L.length - 1, V.pos[id] || 0));
@@ -15389,10 +15458,15 @@ const DISC = {}; function discOf(id) { return DISC[id] = DISC[id] || {}; }
 function semNotes(id) { S.semNotes = S.semNotes || {}; return S.semNotes[id] = S.semNotes[id] || {}; }
 function semsFor(kind, key) { return SEM_LIST.filter(s => kind === "agora" ? s.related && s.related.agora === key : s.related && (s.related[kind] || []).includes(key)); }
 /* ---- "Same question, elsewhere": one Compass question lives in the Compass, Debates, Seminars, Voyage islands, the Shipyard and the Works */
-const LAB_Q = { gauntlet: ["e2"], trolley: ["e2"], machine: ["e4c", "l1"], ship: ["m4"], heap: [], veil: ["s8"], pd: ["s1"], odyssey: ["e1"], marys: ["m1"] };
-const LAB_NAMES = { odyssey: "The Odyssey", gauntlet: "The trolley gauntlet", pd: "The harbour bargain", veil: "Behind the veil", heap: "The vanishing heap", ship: "Theseus’ ship", machine: "The experience machine", trolley: "The trolley ladder" };
-// qid may be a follow-up question; matches on the same question come first, then anything under the same root
-function sameQ(qid) {
+const LAB_Q = { gauntlet: ["e2"], trolley: ["e2"], machine: ["e4c", "l1"], ship: ["m4"], heap: [], veil: ["s8"], pd: ["s1"], odyssey: ["e4"], marys: ["m1"] };
+const LAB_NAMES = { odyssey: "The Odyssey", gauntlet: "The trolley gauntlet", pd: "The harbour bargain", veil: "Behind the veil", heap: "The vanishing heap", ship: "Theseus’ ship", machine: "The experience machine", trolley: "The trolley ladder", marys: "Mary’s Room" };
+const labHref = k => "#lab-" + (k === "marys" ? "mary" : k);
+// qid may be a follow-up question; matches on the same question come first, then anything under the same root.
+// On a debate page (opts.debate), the debate's own seminar and that seminar's islands lead, and nothing that belongs
+// to a different debate is offered: several debates share one Compass root (e4), so root-level matches would mislead.
+// A game is offered only when it asks this very question (not merely one under the same root).
+function sameQ(qid, opts) {
+  const deb = opts && opts.debate;
   if (!qid || !QM[qid]) return [];
   const root = rootOf(qid), rk = id => id && QM[id] ? (id === qid ? 0 : rootOf(id) === root ? 1 : -1) : -1, best = (L, f) => L.map(x => [x, f(x)]).filter(p => p[1] >= 0).sort((a, b) => a[1] - b[1]).map(p => p[0]);
   const out = [];
@@ -15401,13 +15475,18 @@ function sameQ(qid) {
   out.push({ kind: "compass", href: "#compass-" + cqShow, label: SHORT[cqShow] || QM[cqShow].short || "", sub: ans ? "your answer: " + ans : "", on: !!ans });
   const debs = best(AG.questions, q => rk(qComp(q)));
   debs.forEach(q => out.push({ kind: "debate", href: "#agora-" + q.id, label: q.title }));
-  const sems = []; debs.forEach(q => semsFor("agora", q.id).forEach(x => { if (!sems.includes(x)) sems.push(x); }));
-  best(SEM_LIST, x => { const r = arr((x.related || {}).compass).map(rk).filter(v => v >= 0); return r.length ? Math.min(...r) : -1; }).forEach(x => { if (!sems.includes(x)) sems.push(x); });
+  const sems = [];
+  if (deb) { semsFor("agora", deb).forEach(x => sems.push(x));
+    SEM_LIST.filter(x => !(x.related || {}).agora && arr((x.related || {}).compass).includes(qid)).forEach(x => { if (!sems.includes(x)) sems.push(x); }); }
+  else { debs.forEach(q => semsFor("agora", q.id).forEach(x => { if (!sems.includes(x)) sems.push(x); }));
+    best(SEM_LIST, x => { const r = arr((x.related || {}).compass).map(rk).filter(v => v >= 0); return r.length ? Math.min(...r) : -1; }).forEach(x => { if (!sems.includes(x)) sems.push(x); }); }
   sems.forEach(x => out.push({ kind: "seminar", href: "#seminar-" + x.sid, label: x.title }));
   const CI = (window.ATLAS_MAP || {}).compassIslands || {};
-  const isl = []; [qid, root].concat(Object.keys(CI).filter(k => QM[k] && rootOf(k) === root)).forEach(k => arr(CI[k]).forEach(i => { if (VOY.islands[i] && !isl.includes(i)) isl.push(i); }));
+  const isl = [], addI = i => { if (VOY.islands[i] && !isl.includes(i)) isl.push(i); };
+  if (deb) { semsFor("agora", deb).forEach(x => arr((x.related || {}).islands).forEach(addI)); arr(CI[qid]).forEach(addI); }
+  else [qid, root].concat(Object.keys(CI).filter(k => QM[k] && rootOf(k) === root)).forEach(k => arr(CI[k]).forEach(addI));
   isl.forEach(i => out.push({ kind: "island", href: "#voyage-" + i, label: VOY.islands[i].name }));
-  best(Object.keys(LAB_Q), k => { const r = LAB_Q[k].map(rk).filter(v => v >= 0); return r.length ? Math.min(...r) : -1; }).forEach(k => out.push({ kind: "play", href: "#lab-" + k, label: LAB_NAMES[k] || k }));
+  Object.keys(LAB_Q).filter(k => LAB_NAMES[k] && LAB_Q[k].includes(qid)).forEach(k => out.push({ kind: "play", href: labHref(k), label: LAB_NAMES[k] }));
   const sec = (QM[root] || {}).section, tps = [sec, { society: "politics", art: "aesthetics", life: "ethics", knowledge: "metaphysics" }[sec]];
   const wsc = w => (arr(w.topics).some(t => tps.includes(t)) ? 4 : 0) + (arr(w.islands).includes(isl[0]) ? 2 : 0);
   WORKS.filter(w => arr(w.islands).some(i => isl.includes(i))).sort((a, b) => wsc(b) - wsc(a)).slice(0, 1).forEach(w => out.push({ kind: "read", href: "#works-" + w.id, label: w.title }));
@@ -15416,7 +15495,7 @@ function sameQ(qid) {
 const SAMEQ_KIND = { compass: "Compass", debate: "Debate", seminar: "Seminar", island: "Island", play: "Play", read: "Read" };
 // one chip per kind (the best match), never the place you are standing in; nothing at all if fewer than two chips
 function sameQHTML(qid, except, opts) {
-  const ex = arr(except), seen = {}, L = sameQ(qid).filter(x => !ex.includes(x.kind) && !ex.includes(x.href) && !seen[x.kind] && (seen[x.kind] = 1)).slice(0, 5);
+  const ex = arr(except), seen = {}, L = sameQ(qid, opts).filter(x => !ex.includes(x.kind) && !ex.includes(x.href) && !seen[x.kind] && (seen[x.kind] = 1)).slice(0, 5);
   if (L.length < 2) return "";
   return '<div class="sameq' + (opts && opts.center ? " center" : "") + '"><span class="sameq-k">Same question, elsewhere</span><div class="sameq-row">' + L.map(x => '<a class="chip' + (x.on ? " lamp" : "") + '" href="' + x.href + '"><span class="sameq-kind">' + SAMEQ_KIND[x.kind] + "</span> " + esc(x.label) + (x.sub ? '<span class="sameq-sub"> · ' + esc(x.sub) + "</span>" : "") + "</a>").join("") + "</div></div>";
 }
@@ -15425,7 +15504,7 @@ function islandRoot(I) {
   const CI = (window.ATLAS_MAP || {}).compassIslands || {}; return Object.keys(CI).find(k => QM[k] && arr(CI[k]).includes(I.id)) || null;
 }
 function semRoot(I) { const R = I.related || {}; const d = R.agora && AGQ[R.agora] ? qComp(AGQ[R.agora]) : null; return d || arr(R.compass).find(x => QM[x]) || null; }
-function labSameQ(k) { const q = (LAB_Q[k] || []).find(x => QM[x]); return q ? sameQHTML(q, ["#lab-" + k]) : ""; }
+function labSameQ(k) { const q = (LAB_Q[k] || []).find(x => QM[x]); return q ? sameQHTML(q, ["#lab-" + k, labHref(k)]) : ""; }
 const ROOM_ICON = { ask: "❝", pair: "⇄", hands: "✋" };
 function semMin(label) { const m = String(label || "").match(/(\d+)\s*MIN/i); return m ? +m[1] : 0; }
 function worksMatch(title) { const n = x => String(x || "").toLowerCase().replace(/^(the|a|an)\s+/, "").replace(/[^a-z0-9]+/g, " ").trim(); const t = n(title); if (!t) return null;
@@ -15539,7 +15618,7 @@ function semIndex() {
 VIEWS.seminar = arg => {
   if (!arg) return semIndex();
   const all = /\.all$/.test(arg), I = SEM["sem_" + arg.replace(/\.all$/, "")];
-  if (!I) return semIndex();
+  if (!I) { noSuch("seminar", arg, "are all the seminars"); return semIndex(); }
   return all ? semAllPage(I) : deckPage(I.id);
 };
 function semLine(I) { const L = semsFor("islands", I.id); return L.length ? '<p class="sl-orig"><span class="faint">Discuss it</span> ' + L.map(x => '<a href="#seminar-' + esc(x.sid) + '">' + esc(x.title) + "</a>").join(" · ") + "</p>" : ""; }
@@ -15640,7 +15719,7 @@ initCaps();
 // prefetch the logbook when the browser is idle, five seconds after the first paint, so My Positions rarely waits
 setTimeout(() => (window.requestIdleCallback || (f => setTimeout(f, 1)))(() => lbLoad().catch(() => { })), 5000);
 // a small bridge for add-on modules (js/*.js), which load after this script and cannot see its closure
-window.PHILO = { VIEWS, ACT, save, render, esc, $, $$, labShell, route, ROUTE_ALIAS, TH, LIB, WORKS, WK, AG, AGQ, CARDS, QM, C, SEC, EX, thinkerChip, nameOf, slugT,
+window.PHILO = { VIEWS, ACT, save, render, esc, $, $$, labShell, route, ROUTE_ALIAS, TH, LIB, WORKS, WK, AG, AGQ, CARDS, QM, C, SEC, EX, thinkerChip, nameOf, slugT, LABK,
   get S() { return S; }, get after() { return after; }, toast: (...a) => toast(...a),
   get openDrawer() { return typeof openDrawer !== "undefined" ? openDrawer : undefined; },
   get rich() { return typeof rich !== "undefined" ? rich : undefined; },

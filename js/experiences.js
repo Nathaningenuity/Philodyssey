@@ -761,6 +761,8 @@
     if (!$("#view [data-xp=myths]") || ($("#modal") && !$("#modal").hidden)) return;
     const k = e.key.toLowerCase();
     if (!MYTH.picked && (k === "t" || k === "m" || k === "1" || k === "2")) { e.preventDefault(); XA.mythPick({ dataset: { v: k === "t" || k === "1" ? "truth" : "myth" } }); }
+    // after an answer, N (or Enter, when no button or link has focus) moves on to the next claim
+    else if (MYTH.picked && (k === "n" || (k === "enter" && !(e.target.closest && e.target.closest("button,a"))))) { e.preventDefault(); XA.mythNext(); }
   });
 
   /* ========================================================== MARY'S ROOM */

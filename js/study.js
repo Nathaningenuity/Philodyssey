@@ -121,12 +121,12 @@ function tideDueNow() {
 window.tideDue = () => { try { return tideDue().length; } catch (e) { return 0; } }; // a number, for the home page
 function nextDue() { const d = today(); let m = null, n = 0; Object.values(TS().c).forEach(c => { if (c.due > d) { if (!m || c.due < m) { m = c.due; n = 1; } else if (c.due === m) n++; } }); return m ? { key: m, n } : null; }
 
-// SM-2-lite. Again resets the run (n = 0) so the next Good starts again at one day.
+// SM-2-lite. Again resets the run (n = 0) so the next Good starts again at two days.
 function schedule(c, g) {
   let iv = c.iv || 0, e = c.e || 2.5, n = c.n || 0, l = c.l || 0;
   if (g === "again") { iv = 0; e = Math.max(1.3, e - .2); l++; n = 0; }
   else if (g === "hard") { iv = Math.max(1, Math.round(iv * 1.2)); e = Math.max(1.3, e - .15); n++; }
-  else if (g === "good") { iv = n === 0 ? 1 : n === 1 ? 3 : Math.max(1, Math.round(iv * e)); n++; }
+  else if (g === "good") { iv = n === 0 ? 2 : n === 1 ? 3 : Math.max(1, Math.round(iv * e)); n++; } // a new card: Hard 1 day, Good 2, Easy 3
   else { iv = Math.max(2, Math.round(Math.max(1, iv) * e * 1.3)); e += .15; n++; }
   iv = Math.min(365, iv);
   return { iv, e: Math.round(e * 100) / 100, n, l };
@@ -343,7 +343,7 @@ document.addEventListener("click", e => {
   bump(); clearTimeout(bumpT); bumpT = setTimeout(save, 1200); // the app's own save() usually lands first and carries it
 }, true);
 
-const LABK = ["odyssey", "gauntlet", "pd", "veil", "heap", "ship", "machine", "trolley"];
+const LABK = P.LABK || ["odyssey", "gauntlet", "pd", "veil", "heap", "ship", "machine", "trolley", "drop", "myths", "marys"];
 function progressStats() {
   const s = S(), V = VOY(), C = opt("C", { sections: [] }), AG = opt("AG", { questions: [] });
   const safe = (f, d) => { try { return f(); } catch (e) { return d; } };
@@ -352,7 +352,7 @@ function progressStats() {
     chapters: { n: safe(() => C.sections.filter(x => P.secDone(x.id)).length, 0), of: C.sections.length, href: "#compass", t: "Compass chapters" },
     debates: { n: safe(() => AG.questions.filter(q => P.agStarted(q.id)).length, 0), of: AG.questions.length, href: "#agora", t: "Debates started" },
     games: { n: LABK.filter(k => s.lab && s.lab[k] && s.lab[k].done).length, of: LABK.length, href: "#lab", t: "Games played" },
-    quiz: { n: (s.quiz && s.quiz.rounds) || 0, of: null, href: "#quiz", t: "Quiz rounds", sub: s.quiz && s.quiz.best ? "best " + s.quiz.best + " of 10" : "" },
+    quiz: { n: ((s.quiz && s.quiz.rounds) || 0) + Object.keys((s.quiz && s.quiz.daily) || {}).length, of: null, href: "#quiz", t: "Quiz rounds", sub: s.quiz && s.quiz.best ? "best " + s.quiz.best + " of 10" : "" },
     stars: { n: safe(() => P.chartedStars().size, 0), of: safe(() => P.skyStarTotal(), null), href: "#firmament", t: "Stars charted" },
     answered: safe(() => P.answeredCount(), 0)
   };
@@ -747,5 +747,9 @@ if (r0 && (["tide", "log"].includes(r0.name) || (r0.name === "voyage" && r0.arg 
   // the first render ran before this file loaded and queued a "no page at #tide" toast: take it back
   [230, 420].forEach(ms => setTimeout(() => { const t = $("#toast"); if (t && /There is no page at/.test(t.textContent)) t.hidden = true; }, ms));
 }
-else patchAll();
+else {
+  patchAll();
+  // Home's first render ran before the Tide existed: draw it again so "Your next heading" can count the cards due
+  if (r0 && r0.name === "home") try { P.render(true); } catch (e) { console.error(e); }
+}
 })();
