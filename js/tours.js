@@ -86,8 +86,18 @@
     }
   }
   function shortName(t) { const n = String(t.name).replace(/\s*\(.*?\)\s*/g, " ").trim(); if (/^The /.test(n)) return n.replace(/ \(.*$/, ""); if (/ of /.test(n)) return n.split(" of ")[0]; if (/Chinese|Japan|Indian/i.test(t.tradition || "")) return n; return n.split(" ").slice(-1)[0]; }
+  // the stop pictures also come bundled in one file (data/atlas-tour-img.js), fetched the first time a tour opens
+  const BLANK = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+  function needTourImg() {
+    if (W.TOUR_IMG || needTourImg.p) return; needTourImg.p = 1;
+    const sc = D.createElement("script"); sc.src = "data/atlas-tour-img.js";
+    const fill = () => D.querySelectorAll("img[data-tsrc]").forEach(i => { const k = i.dataset.tsrc; i.removeAttribute("data-tsrc"); i.src = (W.TOUR_IMG && W.TOUR_IMG[k]) || k; });
+    sc.onload = fill; sc.onerror = () => { W.TOUR_IMG = {}; fill(); };
+    D.head.appendChild(sc);
+  }
   function picture(stop) {
-    if (stop.img && stop.img.src) return stop.img;
+    // until the bundle arrives, show a blank frame and remember the file (a missing file would get the figure hidden)
+    if (stop.img && stop.img.src) { const T = W.TOUR_IMG; return T ? Object.assign({}, stop.img, { src: T[stop.img.src] || stop.img.src }) : Object.assign({}, stop.img, { src: BLANK, wait: stop.img.src }); }
     const I = W.ATLAS_IMAGES && W.ATLAS_IMAGES.th; if (!I) return null;
     for (const id of stop.th || []) { const p = I[id]; if (p && p.src) return Object.assign({ who: id }, p); }
     return null;
@@ -221,7 +231,7 @@
       return '<a class="tour-chip" href="#thinker-' + esc(id) + '"><b>' + esc(t.name) + "</b>" + (l ? "<small>" + esc(l) + "</small>" : "") + "</a>"; }).join("");
     const L = linkInfo(s.link);
     return '<div class="tour-kicker"><span>Stop ' + (i + 1) + " of " + n + "</span><span>" + esc(s.year || "") + "</span></div>" +
-      (pic ? '<figure class="tour-fig"><img src="' + esc(pic.src) + '" alt="' + esc(pic.alt || (pic.who && TH()[pic.who] ? TH()[pic.who].name : s.title)) + '" loading="lazy" decoding="async"' + (pic.pos ? ' style="object-position:' + esc(pic.pos) + '"' : "") + ">" +
+      (pic ? '<figure class="tour-fig"><img src="' + esc(pic.src) + '" alt="' + esc(pic.alt || (pic.who && TH()[pic.who] ? TH()[pic.who].name : s.title)) + '" loading="lazy" decoding="async"' + (pic.pos ? ' style="object-position:' + esc(pic.pos) + '"' : "") + (pic.wait ? ' data-tsrc="' + esc(pic.wait) + '"' : "") + ">" +
         (pic.credit ? "<figcaption>" + esc(pic.credit) + "</figcaption>" : "") + "</figure>" : ORN) +
       '<h2 class="tour-title">' + esc(s.title) + '</h2><p class="tour-place">' + IC.pin + esc(s.place) + "</p>" +
       '<p class="tour-take">' + esc(s.takeaway) + "</p>" +
@@ -539,6 +549,7 @@
 
   /* ================================================================== ROUTING */
   function view(arg) {
+    needTourImg();
     if (!arg) { pageMode(false); return listView(); }
     const dot = arg.lastIndexOf("."), id = dot > 0 ? arg.slice(0, dot) : arg, rest = dot > 0 ? arg.slice(dot + 1) : "";
     const tour = BY[id] || BY[arg];
