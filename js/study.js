@@ -358,6 +358,7 @@ function progressStats() {
   };
 }
 window.progressStats = progressStats;
+window.philoStreak = () => { try { return streaks(ensureAct()).cur; } catch (e) { return 0; } }; // for the top bar
 function streaks(A) {
   const d = today(); let cur = 0, k = A[d] ? d : addDays(d, -1);
   while (A[k]) { cur++; k = addDays(k, -1); }

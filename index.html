@@ -1739,7 +1739,7 @@ html,body{overflow-x:clip}
 .navlib-btn.cur{color:var(--ink)}.navlib-btn.cur::after{content:"";position:absolute;left:10px;right:10px;bottom:2px;height:2px;background:var(--lamp);border-radius:2px}
 .navlib-menu{position:absolute;top:calc(100% + 6px);left:0;min-width:220px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-3);padding:6px;z-index:40;display:grid}
 .navlib-menu a{display:grid;padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--ink)}.navlib-menu a:hover,.navlib-menu a[aria-current=page]{background:var(--lamp-soft)}.navlib-menu small{color:var(--ink-3);font-size:var(--fs-xs)}
-@media (min-width:761px){.nav .lib-l{display:none}}.navlib-mid{display:none!important}@media (min-width:761px) and (max-width:960px){.mypos{width:34px;height:34px;padding:0;justify-content:center;border-radius:50%}.mypos span{display:none}}@media (min-width:761px) and (max-width:1180px){.nav .lib-m{display:none}.navlib-mid{display:grid!important}}@media (max-width:760px){.navlib{display:none}}
+@media (min-width:761px){.nav .lib-l{display:none}}.navlib-mid{display:none!important}@media (min-width:761px) and (max-width:1060px){.mypos{width:34px;height:34px;padding:0;justify-content:center;border-radius:50%}.mypos span{display:none}}@media (min-width:761px) and (max-width:1480px){.nav .lib-m{display:none}.navlib-mid{display:grid!important}}@media (max-width:760px){.navlib{display:none}}
 /* Batch A #1: your next heading */
 .hero .btn.ghost.on-night{color:var(--night-ink);border-color:var(--night-line)}
 .hero .btn.ghost.on-night:hover{border-color:var(--gold)}
@@ -2014,6 +2014,151 @@ details[open]>summary:not(:where(.answers summary,.fits-more summary,.nb-more2>s
 @media (prefers-reduced-motion:no-preference){.lb-loading .bar{animation:shimmer 1.2s linear infinite}}
 @keyframes shimmer{to{background-position:-200% 0}}
 .skip-link{position:fixed;left:12px;top:-60px;z-index:200;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:8px 14px;font:inherit;font-size:.9rem;cursor:pointer;box-shadow:var(--shadow-3)}.skip-link:focus{top:10px}
+/* ===== design v3: a colour for every section, friendlier shapes, progress in the top bar ===== */
+:root{
+  --c-home:#8C6A2A;--c-voyage:#1F7A78;--c-compass:#2F5D9E;--c-agora:#B03A4B;--c-seminar:#87509B;--c-firmament:#4A4FA6;--c-stoa:#9A6224;
+  --c-lab:#C45A24;--c-thinkers:#2C7D5F;--c-works:#5E7D2A;--c-library:#6A52A6;--c-quiz:#A87A12;--c-codex:#A1486B;--c-tours:#2672A8;--c-study:#3B7F9C;
+  --go:#C4571F;--go-hi:#A9471A;--on-go:#FFFFFF;
+  --r:10px;--r-md:16px;--r-lg:22px;
+  --sec:var(--c-home);
+  --sec-ink:color-mix(in srgb,var(--sec) 82%,#000);
+  --sec-soft:color-mix(in srgb,var(--sec) 12%,var(--card));
+  --sec-line:color-mix(in srgb,var(--sec) 30%,var(--line));
+  --wash-a:#E3EEF0;--wash-b:#F4ECDD;--wash-c:#E9E6F3;
+}
+:root[data-theme="dark"]{--go:#E2793F;--go-hi:#EE8D56;--on-go:#1B1206;--sec-ink:color-mix(in srgb,var(--sec) 55%,#fff);--sec-soft:color-mix(in srgb,var(--sec) 22%,var(--card));--sec-line:color-mix(in srgb,var(--sec) 45%,var(--line));--wash-a:#18222C;--wash-b:#221F1B;--wash-c:#1E1D2B}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--go:#E2793F;--go-hi:#EE8D56;--on-go:#1B1206;--sec-ink:color-mix(in srgb,var(--sec) 55%,#fff);--sec-soft:color-mix(in srgb,var(--sec) 22%,var(--card));--sec-line:color-mix(in srgb,var(--sec) 45%,var(--line));--wash-a:#18222C;--wash-b:#221F1B;--wash-c:#1E1D2B}}
+body[data-sec=voyage]{--sec:var(--c-voyage)}body[data-sec=compass]{--sec:var(--c-compass)}body[data-sec=agora]{--sec:var(--c-agora)}body[data-sec=seminar]{--sec:var(--c-seminar)}
+body[data-sec=firmament]{--sec:var(--c-firmament)}body[data-sec=stoa]{--sec:var(--c-stoa)}body[data-sec=lab]{--sec:var(--c-lab)}body[data-sec=thinkers]{--sec:var(--c-thinkers)}
+body[data-sec=works]{--sec:var(--c-works)}body[data-sec=library]{--sec:var(--c-library)}body[data-sec=quiz]{--sec:var(--c-quiz)}body[data-sec=codex]{--sec:var(--c-codex)}
+body[data-sec=tours]{--sec:var(--c-tours)}body[data-sec=study]{--sec:var(--c-study)}
+/* a soft wash behind everything, like light on water */
+body{background:radial-gradient(1200px 700px at 8% -10%,var(--wash-a),transparent 60%),radial-gradient(900px 600px at 100% 10%,var(--wash-c),transparent 60%),radial-gradient(1000px 800px at 50% 110%,var(--wash-b),transparent 60%),var(--bg);background-attachment:fixed}
+html{background:var(--bg)}
+/* the top bar: one coloured pill per section */
+.top{background:color-mix(in srgb,var(--card) 86%,transparent);border-bottom:1px solid var(--line);box-shadow:0 1px 0 color-mix(in srgb,var(--sec) 35%,transparent),0 6px 20px rgba(38,35,25,.05)}
+.top .wrap{gap:12px}
+.nav{gap:6px;padding:4px 2px}
+.nav a,.navlib-btn{--c:var(--c-home);color:var(--c-ink,color-mix(in srgb,var(--c) 85%,#000));background:color-mix(in srgb,var(--c) 11%,transparent);border:1px solid color-mix(in srgb,var(--c) 22%,transparent);border-radius:999px;padding:6px 13px;font-weight:600;font-size:.82rem;transition:background var(--dur-1) var(--ease),color var(--dur-1) var(--ease),transform var(--dur-1) var(--ease)}
+:root[data-theme="dark"] .nav a,:root[data-theme="dark"] .navlib-btn{color:color-mix(in srgb,var(--c) 50%,#fff);background:color-mix(in srgb,var(--c) 22%,transparent)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .nav a,:root:not([data-theme="light"]) .navlib-btn{color:color-mix(in srgb,var(--c) 50%,#fff);background:color-mix(in srgb,var(--c) 22%,transparent)}}
+@media (hover:hover){.nav a:hover,.navlib-btn:hover{background:color-mix(in srgb,var(--c) 20%,transparent);color:var(--ink);transform:translateY(-1px)}}
+.nav a[aria-current="page"],.nav a[aria-current="page"]:hover,.navlib-btn.cur{background:var(--c);border-color:var(--c);color:#fff!important;box-shadow:0 4px 12px color-mix(in srgb,var(--c) 35%,transparent)}
+.nav a[aria-current="page"]::after{display:none}
+.nav a[href="#voyage"]{--c:var(--c-voyage)}.nav a[href="#compass"]{--c:var(--c-compass)}.nav a[href="#agora"]{--c:var(--c-agora)}.nav a[href="#seminar"]{--c:var(--c-seminar)}
+.nav a[href="#firmament"]{--c:var(--c-firmament)}.nav a[href="#stoa"]{--c:var(--c-stoa)}.nav a[href="#lab"]{--c:var(--c-lab)}.nav a[href="#thinkers"]{--c:var(--c-thinkers)}
+.nav a[href="#works"]{--c:var(--c-works)}.nav a[href="#library"]{--c:var(--c-library)}.nav a[href="#quiz"]{--c:var(--c-quiz)}.nav a[href="#tours"]{--c:var(--c-tours)}
+.navlib-btn{--c:#6B6656}
+.navlib-menu a{border-left:3px solid var(--c,transparent)}
+.navlib-menu a[href="#seminar"]{--c:var(--c-seminar)}.navlib-menu a[href="#firmament"]{--c:var(--c-firmament)}.navlib-menu a[href="#stoa"]{--c:var(--c-stoa)}.navlib-menu a[href="#thinkers"]{--c:var(--c-thinkers)}
+.navlib-menu a[href="#works"]{--c:var(--c-works)}.navlib-menu a[href="#library"]{--c:var(--c-library)}.navlib-menu a[href="#quiz"]{--c:var(--c-quiz)}.navlib-menu a[href="#tours"]{--c:var(--c-tours)}
+.mypos{--c:var(--c-codex);border-radius:999px!important;color:color-mix(in srgb,var(--c) 85%,#000);background:color-mix(in srgb,var(--c) 10%,var(--card));border-color:color-mix(in srgb,var(--c) 28%,transparent)!important}
+.mypos[aria-current="page"]{background:var(--c);color:#fff;box-shadow:none}
+:root[data-theme="dark"] .mypos{color:color-mix(in srgb,var(--c) 50%,#fff)}
+/* progress you can always see */
+.hud{display:flex;gap:6px;flex:none;align-items:center}
+.hud a{display:inline-flex;align-items:center;gap:5px;height:34px;padding:0 11px;border-radius:999px;background:var(--card);border:1px solid var(--line);color:var(--ink);text-decoration:none;font-weight:600;font-size:.84rem;font-variant-numeric:tabular-nums;box-shadow:var(--shadow-1);transition:transform var(--dur-1) var(--ease)}
+.hud a:hover{transform:translateY(-1px);border-color:var(--ink-3)}
+.hud svg{width:16px;height:16px;flex:none}
+.hud .h-streak svg{color:#E0662B}.hud .h-tide svg{color:var(--c-voyage)}.hud .h-seal svg{color:var(--lamp)}
+.hud .h-tide.due{background:color-mix(in srgb,var(--c-voyage) 12%,var(--card));border-color:color-mix(in srgb,var(--c-voyage) 40%,transparent)}
+.hud .h-tide.due::after{content:"";width:7px;height:7px;border-radius:50%;background:#E0662B;margin-left:1px}
+.hud small{font-weight:500;color:var(--ink-3);font-size:.7rem;letter-spacing:.04em}
+@media (max-width:1600px){.hud small{display:none}}@media (max-width:1440px){.hud .h-seal{display:none}}
+@media (max-width:1180px){.hud .h-seal{display:none}}
+@media (max-width:760px){.hud{order:2;margin-left:auto}.hud .h-tide{display:none}}
+/* shapes: rounder, softer, more air */
+.btn{border-radius:999px;padding:10px 20px}
+.btn.small{padding:7px 14px}
+.btn.primary,.btn.lamp,.btn.go{background:var(--go);border-color:var(--go);color:var(--on-go);box-shadow:0 4px 14px color-mix(in srgb,var(--go) 30%,transparent)}
+.btn.primary:hover,.btn.lamp:hover,.btn.go:hover{background:var(--go-hi);border-color:var(--go-hi);color:var(--on-go)}
+.chip{border-radius:999px}
+.mod,.path3 a,.qtile,.exp,.sem-tile,.hub-card,.vy-unit,.thk,.statue,.wcard,.tp-card,.nb-card,.lb-tile{border-radius:var(--r-md);box-shadow:0 1px 2px rgba(38,35,25,.04),0 8px 24px rgba(38,35,25,.06)}
+@media (hover:hover){.mod:hover,.qtile:hover,.exp:hover,.sem-tile:hover,.hub-card:hover,.thk:hover,.wcard:hover,.tp-card:hover,.lb-tile:hover{transform:translateY(-3px);box-shadow:0 2px 4px rgba(38,35,25,.05),0 16px 36px rgba(38,35,25,.12)}}
+/* page headers pick up their section colour */
+.page-head .eyebrow,.eyebrow{color:var(--sec-ink)}
+.page-head .emblem,.page-head svg.emblem{color:var(--sec)}
+.page-head h1{font-weight:500}
+/* the one thing to remember: a tinted takeaway */
+.takeaway{display:block;background:color-mix(in srgb,var(--go) 11%,var(--card));color:color-mix(in srgb,var(--go) 70%,#000);border-radius:12px;padding:10px 14px;font-weight:600;font-size:1.02rem;line-height:1.45;border:0}
+:root[data-theme="dark"] .takeaway{background:color-mix(in srgb,var(--go) 20%,var(--card));color:color-mix(in srgb,var(--go) 45%,#fff)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .takeaway{background:color-mix(in srgb,var(--go) 20%,var(--card));color:color-mix(in srgb,var(--go) 45%,#fff)}}
+/* home: one card anatomy for every place on the site */
+.xgrid{display:grid;gap:18px;grid-template-columns:repeat(auto-fill,minmax(min(100%,268px),1fr))}
+.xcard{--c:var(--c-home);display:flex;flex-direction:column;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;color:var(--ink);text-decoration:none;box-shadow:0 1px 2px rgba(38,35,25,.04),0 8px 24px rgba(38,35,25,.06);transition:transform var(--dur-2) var(--ease),box-shadow var(--dur-2) var(--ease)}
+@media (hover:hover){.xcard:hover{transform:translateY(-4px);box-shadow:0 2px 4px rgba(38,35,25,.05),0 18px 40px rgba(38,35,25,.14)}.xcard:hover .xc-ban img{transform:scale(1.04)}}
+.xc-ban{position:relative;aspect-ratio:16/8.5;overflow:hidden;background:linear-gradient(135deg,color-mix(in srgb,var(--c) 85%,#fff),color-mix(in srgb,var(--c) 70%,#000));display:grid;place-items:center;border-bottom:3px solid var(--c)}
+.xc-ban img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.xc-ban .emblem{width:64px;height:64px;color:#fff;opacity:.9;--lamp-soft:rgba(255,255,255,.22)}
+.xc-ban .xc-credit{position:absolute;right:8px;bottom:6px;font-size:.6rem;color:#fff;opacity:.8;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.xc-body{display:flex;flex-direction:column;gap:10px;padding:16px 18px 18px;flex:1}
+.xc-head{display:flex;gap:12px;align-items:center}
+.xc-ico{width:44px;height:44px;flex:none;border-radius:13px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 13%,var(--card));color:var(--c)}
+.xc-ico svg{width:26px;height:26px}
+.xc-head b{display:block;font-family:var(--font-display);font-weight:600;font-size:1.18rem;line-height:1.2}
+.xc-head small{display:block;color:var(--ink-3);font-size:.82rem;margin-top:1px}
+.xc-body p{margin:0;color:var(--ink-2);font-size:.92rem;line-height:1.5}
+.xc-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.xc-chips span,.xc-chips a{font-size:.78rem;font-weight:600;padding:5px 11px;border-radius:999px;background:color-mix(in srgb,var(--c) 11%,var(--card));color:color-mix(in srgb,var(--c) 80%,#000);text-decoration:none}
+.xc-chips a:hover{background:color-mix(in srgb,var(--c) 22%,var(--card))}
+:root[data-theme="dark"] .xc-chips a,:root[data-theme="dark"] .xc-chips span{color:color-mix(in srgb,var(--c) 45%,#fff);background:color-mix(in srgb,var(--c) 22%,var(--card))}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .xc-chips a,:root:not([data-theme="light"]) .xc-chips span{color:color-mix(in srgb,var(--c) 45%,#fff);background:color-mix(in srgb,var(--c) 22%,var(--card))}}
+@media (min-width:1181px){.nav a.lib-m[href="#stoa"]{display:inline-block!important}.navlib-menu a.navlib-mid[href="#stoa"]{display:none!important}}
+.chip[aria-pressed="true"],.ag-filter .chip[aria-pressed="true"]{background:var(--sec);border-color:var(--sec);color:#fff}.ag-filter .chip[aria-pressed="true"] .faint{color:#fff}
+.xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
+/* today strip */
+.today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
+.tcard{--c:var(--c-home);display:flex;gap:14px;align-items:center;padding:16px 18px;border-radius:var(--r-lg);background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--ink);box-shadow:0 1px 2px rgba(38,35,25,.04),0 8px 24px rgba(38,35,25,.06);transition:transform var(--dur-1) var(--ease)}
+.tcard:hover{transform:translateY(-2px)}
+.tcard .tn{width:52px;height:52px;flex:none;border-radius:15px;display:grid;place-items:center;background:var(--c);color:#fff;font-weight:700;font-size:1.05rem;box-shadow:0 6px 14px color-mix(in srgb,var(--c) 30%,transparent)}
+.tcard .tn svg{width:26px;height:26px}
+.tcard b{display:block;font-size:1rem}.tcard small{display:block;color:var(--ink-2);font-size:.84rem;line-height:1.4}
+/* home v3 */
+.xcard{position:relative}
+.xc-link{color:inherit;text-decoration:none}.xc-link::after{content:"";position:absolute;inset:0;border-radius:inherit}
+.xc-link:focus-visible{outline:none}.xcard:has(.xc-link:focus-visible){outline:2px solid var(--c);outline-offset:2px}
+.xc-chips a{position:relative;z-index:1}
+.hx-sec{font-family:var(--font-ui);font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-2)}
+.hx{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:28px;padding:34px 34px 34px 40px;box-shadow:0 2px 6px rgba(38,35,25,.04),0 20px 50px rgba(38,35,25,.08);overflow:hidden}
+.hx-eyebrow{align-self:flex-start;justify-self:start;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--c-voyage);background:color-mix(in srgb,var(--c-voyage) 12%,var(--card));padding:7px 14px;border-radius:999px}
+.hx h1{font-size:clamp(2rem,4.2vw,3.25rem);line-height:1.08;font-weight:600;letter-spacing:-.02em;color:var(--ink)}
+.hx h1 em{font-style:italic;color:var(--go)}
+.hx-lede{margin:0;font-size:1.08rem;line-height:1.6;color:var(--ink-2);max-width:34em}
+.hx-seals-t{font-size:.92rem;color:var(--ink-2)}.hx-seals-t b{color:var(--ink)}
+.hx-seal-row{display:flex;gap:16px;margin-top:10px;flex-wrap:wrap}
+.hx-seal{display:grid;justify-items:center;gap:5px;width:72px;text-align:center}
+.hx-seal .seal-mark{width:58px;height:58px;border-radius:50%;border:2px dashed var(--line-input);display:grid;place-items:center;color:var(--ink-3)}
+.hx-seal.on .seal-mark{border:0}
+.hx-seal small{font-size:.64rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);line-height:1.2}
+.hx-seal.on small{color:var(--lamp-text)}
+.hx-cta{gap:10px;flex-wrap:wrap}
+.hx-go{font-size:1rem;padding:14px 24px;max-width:100%;text-align:left}
+.hx-ghost{padding:14px 22px;font-size:1rem}
+.hx-art{position:relative;align-self:stretch;min-height:360px;border-radius:22px;background:radial-gradient(120% 90% at 70% 100%,#2A3C6B,#121833 60%,#0A0D1F);overflow:hidden;display:grid;place-items:center;padding:18px}
+.hx-art canvas{position:absolute;inset:0;width:100%;height:100%}
+.hx-tiles{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:100%}
+.hx-tile{--c:var(--c-home);position:relative;aspect-ratio:4/3.2;border-radius:16px;overflow:hidden;border:3px solid rgba(255,255,255,.92);box-shadow:0 10px 24px rgba(0,0,0,.35);background:linear-gradient(135deg,color-mix(in srgb,var(--c) 80%,#fff),color-mix(in srgb,var(--c) 65%,#000));display:grid;place-items:center;transition:transform var(--dur-2) var(--ease)}
+.hx-tile:nth-child(odd){transform:rotate(-1.6deg)}.hx-tile:nth-child(even){transform:rotate(1.4deg) translateY(8px)}
+.hx-tile:hover{transform:rotate(0) scale(1.04);z-index:2}
+.hx-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hx-tile .emblem{width:46px;height:46px;color:#fff;--lamp-soft:rgba(255,255,255,.2)}
+.hx-pill{position:absolute;left:8px;bottom:8px;background:rgba(14,18,38,.82);color:#fff;font-size:.78rem;font-weight:600;padding:5px 11px;border-radius:999px;backdrop-filter:blur(4px)}
+@media (max-width:900px){.hx{grid-template-columns:1fr;padding:24px 20px}.hx-art{min-height:0}}
+@media (max-width:520px){.hx-tiles{grid-template-columns:repeat(2,1fr)}.hx-tile:nth-child(n+5){display:none}.hx-seal{width:62px}.hx-seal .seal-mark{width:50px;height:50px}}
+.hx-duo{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:20px;align-items:start}
+@media (max-width:900px){.hx-duo{grid-template-columns:1fr}}
+.hx-night{background:radial-gradient(120% 100% at 80% 0%,#24335E,#121833 70%);border-radius:var(--r-lg);padding:6px;box-shadow:0 12px 30px rgba(10,13,31,.25)}
+.hx-night .daily{border:0;background:transparent}
+.steps4{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.steps4 a{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border-radius:var(--r-md);background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--ink);box-shadow:var(--shadow-1);transition:transform var(--dur-1) var(--ease)}
+.steps4 a:hover{transform:translateX(3px)}
+.steps4 .num{width:34px;height:34px;flex:none;border-radius:50%;display:grid;place-items:center;font-weight:700;background:color-mix(in srgb,var(--c-compass) 12%,var(--card));color:var(--c-compass)}
+.steps4 .next a{border-color:color-mix(in srgb,var(--go) 50%,var(--line));box-shadow:0 0 0 3px color-mix(in srgb,var(--go) 14%,transparent)}
+.steps4 .next .num{background:var(--go);color:var(--on-go)}
+.steps4 .done .num{background:var(--c-thinkers);color:#fff}
+.steps4 .done a{opacity:.75}
+.steps4 b{display:block;font-size:.98rem}.steps4 small{display:block;color:var(--ink-2);font-size:.85rem;line-height:1.4}.steps4 em{display:block;font-style:normal;color:var(--ink-3);font-size:.76rem;margin-top:2px}
+.home3 .tcard .tn .emblem{width:30px;height:30px;color:#fff;--lamp-soft:rgba(255,255,255,.25)}
 </style>
 
 <button class="skip-link" type="button" data-act="skipMain">Skip to content</button>
@@ -2027,6 +2172,7 @@ details[open]>summary:not(:where(.answers summary,.fits-more summary,.nb-more2>s
       <a href="#voyage">Voyage</a><a href="#compass">Compass</a><a href="#agora">Debates</a><a class="lib-m" href="#seminar">Seminars</a><a class="lib-m" href="#firmament">Stargazing</a><a class="lib-m" href="#stoa">Timeline</a><a href="#lab">Shipyard</a><a class="lib-l" href="#thinkers">Thinkers</a><a class="lib-l" href="#works">Works</a><a class="lib-l" href="#library">Dictionary</a><a class="lib-l" href="#quiz">Quiz</a>
     </nav>
     <div class="navlib"><button class="navlib-btn" type="button" aria-haspopup="true" aria-expanded="false" data-act="navLib">Library <span aria-hidden="true">▾</span></button><div class="navlib-menu" hidden><a class="navlib-mid" href="#seminar"><b>Seminars</b><small>Class discussion decks</small></a><a class="navlib-mid" href="#firmament"><b>Stargazing</b><small>The sky of thinkers</small></a><a class="navlib-mid" href="#stoa"><b>Timeline</b><small>2,600 years, era by era</small></a><a href="#thinkers"><b>Thinkers</b><small>377 philosophers</small></a><a href="#works"><b>Works</b><small>The archive of books</small></a><a href="#library"><b>Dictionary</b><small>Words philosophers use</small></a><a href="#quiz"><b>Quiz</b><small>Test yourself</small></a></div></div>
+<div class="hud" id="hud" aria-label="Your progress"><a class="h-streak" href="#log" title="Days in a row you have studied"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8.6 1.2c.4 2.2-.6 3.4-1.7 4.6C5.6 7.2 4 8.6 4 10.8A4 4 0 0 0 8 15a4.2 4.2 0 0 0 4.2-4.2c0-1.8-.8-3-1.6-4-.2 1-.7 1.7-1.4 2 .5-2.8-.2-5.4-.6-7.6Z" fill="currentColor"/></svg><span id="hudStreak">0</span><small>day streak</small></a><a class="h-tide" href="#tide" title="Cards waiting on the Tide"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M1 6.5c1.6-1.3 3-1.3 4.6 0s3 1.3 4.6 0 3-1.3 4.6 0M1 10.5c1.6-1.3 3-1.3 4.6 0s3 1.3 4.6 0 3-1.3 4.6 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span id="hudTide">0</span><small>to review</small></a><a class="h-seal" href="#log" title="Seals earned"><svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.2" fill="currentColor" opacity=".25"/><circle cx="8" cy="8" r="6.2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m8 4.4 1.1 2.3 2.5.3-1.8 1.7.5 2.5L8 10l-2.3 1.2.5-2.5L4.4 7l2.5-.3Z" fill="currentColor"/></svg><span id="hudSeals">0</span><small>seals</small></a></div>
     <a class="mypos" href="#codex" title="Your positions, arguments and progress" aria-label="My Positions"><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2h8v12l-4-3-4 3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg><span>My Positions</span></a>
     <button class="theme-btn find-btn" id="findBtn" aria-label="Find (press /)" title="Find  ·  /  or  Ctrl K">
       <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10.5 10.5 14 14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
@@ -10454,6 +10600,15 @@ let lastRoute = "";
 const ROUTE_ALIAS = { seminars: "seminar", discussion: "seminar", discuss: "seminar", philosophers: "thinkers", people: "thinkers", logbook: "codex", stargazing: "firmament", shipyard: "lab", timeline: "stoa", dictionary: "library", archive: "works", books: "works" };
 function route() { const h = decodeURIComponent(location.hash.slice(1)) || "home"; const i = h.indexOf("-"); const r = i < 0 ? { name: h, arg: "" } : { name: h.slice(0, i), arg: h.slice(i + 1) }; r.name = ROUTE_ALIAS[r.name] || r.name; return r; }
 // the five helm slots on phones; every other route lights "More"
+// the colour family each route belongs to (see the --c-* tokens)
+const SEC_OF = { quick: "compass", position: "compass", duel: "agora", thinker: "thinkers", dictionary: "library", experiment: "library", tide: "study", log: "study" };
+function hudNow() {
+  const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
+  try { set("hudStreak", typeof window.philoStreak === "function" ? window.philoStreak() : 0); } catch (e) { }
+  try { const n = typeof window.tideDue === "function" ? window.tideDue() : 0; set("hudTide", n); const t = $(".hud .h-tide"); if (t) t.classList.toggle("due", n > 0); } catch (e) { }
+  try { set("hudSeals", sealsNow().filter(x => x.on).length); } catch (e) { }
+}
+addEventListener("load", () => hudNow()); // the streak and the Tide come from js/study.js, which loads after the first render
 const HELM_SLOT = { voyage: "voyage", compass: "compass", quick: "compass", position: "compass", agora: "agora", codex: "codex" }; // Seminars and Duel live in the More drawer, so they light More
 // navigate: a page change cross-fades through the View Transitions API where it exists (header held still);
 // in-place re-renders (keepScroll), same-route renders and reduced motion swap at once
@@ -10487,10 +10642,12 @@ function renderNow(keepScroll) {
   const tt = r.name === "voyage" && r.arg && VOY.islands[r.arg] ? VOY.islands[r.arg].name : TITLES[r.name];
   document.title = tt ? tt + " · Philodyssey" : "Philodyssey: a voyage through philosophy";
   view.classList.toggle("flush", r.name === "home" || r.name === "voyage" || (r.name === "seminar" && !!r.arg && !/\.all$/.test(r.arg)) || r.name === "thinker" || (r.name === "works" && !!WK[r.arg]) || !VIEWS[r.name]);
-  { const lib = ["thinkers", "works", "library", "quiz", "thinker", "dictionary"].includes(r.name) || (innerWidth <= 1180 && ["seminar", "firmament", "stoa"].includes(r.name)); const b = $(".navlib-btn"); if (b) { b.classList.toggle("cur", lib); b.setAttribute("aria-expanded", "false"); } if ($(".navlib-menu")) navLibClose(false); }
+  { const lib = ["thinkers", "works", "library", "quiz", "thinker", "dictionary"].includes(r.name) || (innerWidth <= 1480 && ["seminar", "firmament"].includes(r.name)) || (innerWidth <= 1180 && r.name === "stoa"); const b = $(".navlib-btn"); if (b) { b.classList.toggle("cur", lib); b.setAttribute("aria-expanded", "false"); } if ($(".navlib-menu")) navLibClose(false); }
   $$("#nav a, .top .mypos, .navlib-menu a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (r.name === "position" ? "compass" : r.name) ? "page" : "false"));
   { const slot = HELM_SLOT[r.name] || (r.name === "home" ? "" : "more"); $$(".helm [data-slot]").forEach(a => a.setAttribute("aria-current", a.dataset.slot === slot ? "page" : "false")); }
   document.body.classList.toggle("in-deck", !!view.querySelector("[data-deck]"));
+  document.body.dataset.sec = SEC_OF[r.name] || r.name;
+  hudNow();
   // on narrow screens the nav strip scrolls; bring the current section into view
   const nv = $("#nav"), cur = $('#nav a[aria-current="page"]');
   if (nv && cur && nv.scrollWidth > nv.clientWidth + 1) { const a = cur.getBoundingClientRect(), b = nv.getBoundingClientRect(); nv.scrollLeft += (a.left + a.width / 2) - (b.left + b.width / 2); }
@@ -13244,7 +13401,7 @@ function thinkerPage(id) {
   const infl = arr(t.influencedBy).filter(z => TH[z]), opp = arr(t.opposed).filter(z => TH[z]), inspired = T.filter(z => TH[z.id] === z && arr(z.influencedBy).includes(id)).map(z => z.id);
   const sec = [];
   // hero
-  let h = '<section class="tp-hero"><div class="wrap"><a class="linkish wk-back tp-back" href="#thinkers">← All thinkers</a><div class="tp-hero-in">' + portraitHTML(cast.name ? cast : { name: t.name }, "tp-pt") +
+  let h = '<section class="tp-hero"><div class="wrap"><a class="linkish wk-back tp-back" href="#thinkers">← All thinkers</a><div class="tp-hero-in">' + portraitHTML(Object.assign({ tid: id }, cast.name ? cast : { name: t.name }), "tp-pt") +
     '<div class="stack" style="--g:8px;min-width:0"><span class="eyebrow">' + esc([tr ? tr.name : "", t.region ? "Worked in " + t.region : ""].filter(Boolean).join(" · ")) + "</span><h1>" + esc(t.name) + '</h1><span class="tp-dates">' + esc(life(t)) + "</span>" +
     (t.tagline ? '<p class="tp-tag">' + esc(t.tagline) + "</p>" : "") + tpYouHTML(t, mine) +
     '<div class="row tp-acts" style="--g:8px">' + (t.born != null ? '<a class="btn small" href="#firmament-' + esc(id) + '">✦ See in the sky</a><a class="btn small ghost" href="#firmament-trace.' + esc(id) + '">⇝ Trace a lineage</a>' : "") +
@@ -13858,7 +14015,7 @@ let thkTrad = "", thkQuery = "", thkSort = "era";
 const THK_FOLD = 12; // each era shows its first twelve cards; search and the tradition filter still see every card
 const THK_ERAS = [["Born before 500 CE", -9999, 500], ["Born 500–1500", 500, 1500], ["Born 1500–1800", 1500, 1800], ["Born 1800–1900", 1800, 1900], ["Born 1900–1935", 1900, 1935], ["Born 1935–1950", 1935, 1950], ["Born after 1950", 1950, 9999]];
 function thkCard(t, more, pct) { const tr = tradOf(t), x = PX[t.id], c = castOf(t.id);
-  return '<a class="thk" href="#thinker-' + esc(t.id) + '"' + (more ? " data-more" : "") + ' data-tr="' + (tr ? tr.id : "") + '" data-s="' + esc(dKey(t.name + " " + (t.tagline || "") + " " + (t.region || "") + " " + (t.schools || []).join(" "))) + '">' + portraitHTML(c || { name: t.name }, "thk-pt") +
+  return '<a class="thk" href="#thinker-' + esc(t.id) + '"' + (more ? " data-more" : "") + ' data-tr="' + (tr ? tr.id : "") + '" data-s="' + esc(dKey(t.name + " " + (t.tagline || "") + " " + (t.region || "") + " " + (t.schools || []).join(" "))) + '">' + portraitHTML(Object.assign({ tid: t.id }, c || { name: t.name }), "thk-pt") +
     '<span class="thk-tx"><b>' + esc(t.name) + '</b><span class="faint">' + esc(life(t) || "dates unknown") + "</span>" + (t.tagline ? "<i>" + esc(t.tagline) + "</i>" : "") + (pct != null ? '<span class="thk-pct">' + pct + "% alike</span>" : "") + "</span>" + (tr ? '<span class="thk-dot" style="background:' + tr.color + '" title="' + esc(tr.name) + '"></span>' : "") + "</a>"; }
 VIEWS.thinkers = () => {
   const L = T.filter(t => TH[t.id] === t);
@@ -14024,7 +14181,7 @@ function workPage(w) {
   h += '<section class="tp-sec tp-two"><div><h3>Why it matters</h3><p class="read">' + esc(w.why) + '</p></div><div><h3>What is inside</h3><p class="read">' + esc(w.inside) + "</p></div></section>";
   if (rel.length) h += '<section class="tp-sec"><h3>Read it alongside</h3><div class="wgrid">' + rel.map(wCard).join("") + "</div></section>";
   h += '</div><aside class="tp-side"><div class="tp-card tp-start tp-wide"><span class="eyebrow">Where to start</span><p>' + esc(w.start) + "</p></div>";
-  if (t) h += '<a class="tp-card wk-au" href="#thinker-' + esc(t.id) + '">' + portraitHTML(cast || { name: t.name }, "wk-pt") + '<span class="stack" style="--g:2px;min-width:0"><b>' + esc(t.name) + '</b><span class="faint">' + esc(life(t)) + "</span>" + (t.tagline ? "<i>" + esc(t.tagline) + "</i>" : "") + "</span></a>";
+  if (t) h += '<a class="tp-card wk-au" href="#thinker-' + esc(t.id) + '">' + portraitHTML(Object.assign({ tid: t.id }, cast || { name: t.name }), "wk-pt") + '<span class="stack" style="--g:2px;min-width:0"><b>' + esc(t.name) + '</b><span class="faint">' + esc(life(t)) + "</span>" + (t.tagline ? "<i>" + esc(t.tagline) + "</i>" : "") + "</span></a>";
   h += workFreeHTML(w) + workArgueHTML(w);
   if (isl.length) h += '<div class="tp-card"><span class="eyebrow">On the Voyage</span><ul class="tp-wl">' + isl.map(i => '<li><a href="#voyage-' + esc(i.id) + '">' + esc(i.name) + "</a></li>").join("") + "</ul></div>";
   if (more.length) h += '<div class="tp-card"><span class="eyebrow">More by ' + esc(shortName(t)) + '</span><ul class="tp-wl">' + more.map(z => '<li><a href="#works-' + esc(z.id) + '"><i>' + esc(z.title) + '</i></a> <span class="faint">' + esc(yrTxt(z.year, z.approx)) + "</span></li>").join("") + "</ul></div>";
@@ -14877,19 +15034,61 @@ VIEWS.home = () => {
   if (fresh2.length) { fresh2.forEach(k => { seen[k] = 1; }); save(); }
   const sealsSec = '<section class="stack"><div class="row" style="justify-content:space-between"><h2 class="sec-h">Your seals</h2><span class="faint">' + S2.filter(s => s.on).length + " of " + S2.length + " earned</span></div><div class=\"seals\">" +
     S2.map(s => '<div class="seal' + (s.on ? " on" : "") + (fresh2.includes(s.k) ? " stamping" : "") + '"><span class="seal-mark">' + sealSVG(s.on, s.k) + "</span><div><b>" + s.n + '</b><div style="font-size:.78rem">' + s.d + "</div></div></div>").join("") + "</div></section>";
+  // images come from data/atlas-images.js when it is there; every card still works without them
+  const IMG = window.ATLAS_IMAGES || {}, secImg = k => (IMG.sec || {})[k];
+  const thOk = id => TH[id] ? [TH[id].name, "#thinker-" + id] : null;
+  const agOk = q => [q.short || q.title, "#agora-" + q.id];
+  const chips = {
+    voyage: [nextIsland() ? ["Next: " + nextIsland().name, "#voyage-" + nextIsland().id] : null, ["Sea I chart", "#voyage-u1"]],
+    compass: [["Quick Compass", "#quick-start"], ["Full Compass", "#compass"], secs ? ["Your portrait", "#compass-results"] : null],
+    agora: AG.questions.slice(0, 3).map(agOk),
+    seminar: (typeof SEM_LIST !== "undefined" ? SEM_LIST : []).slice(0, 2).map(x => [x.short || x.title, "#seminar-" + String(x.id || "").replace(/^sem_/, "")]).filter(x => x[0]),
+    stoa: [["Timeline Drop", "#lab-drop"]],
+    lab: [["The Odyssey", "#lab-odyssey"], ["Trolley Gauntlet", "#lab-gauntlet"], ["Behind the Veil", "#lab-veil"], ["Harbour Bargain", "#lab-pd"]],
+    thinkers: ["plato", "confucius", "kant", "beauvoir", "nietzsche"].map(thOk).filter(Boolean).slice(0, 4),
+    works: ["plato-republic", "aristotle-nicomachean-ethics", "marcus-aurelius-meditations", "descartes-meditations"].filter(id => WK[id]).slice(0, 3).map(id => [WK[id].title, "#works-" + id]),
+    library: [["Thought experiments", "#experiment"]],
+    quiz: [["Daily round", "#quiz"]]
+  };
+  const ICON = { voyage: "ship", compass: "compass", agora: "scales", seminar: "amph", codex: "logbook", firmament: "astrolabe", duel: "scales", stoa: "columns", lab: "slipway", thinkers: "bust", works: "books", library: "quill", quiz: "light", tide: "tide", log: "logbook", tours: "compass" };
+  const xmods = mods.map(m => Object.assign({ k: m.href.slice(1) }, m));
+  if (VIEWS.tours) xmods.splice(1, 0, { k: "tours", href: "#tours", t: "Guided tours", p: "Travel the map of philosophy, stop by stop: Athens, Varanasi, Qufu, Baghdad, Paris, Königsberg.", m: null, s: "Stories told on the map" });
+  if (typeof window.tideDue === "function") { const n = window.tideDue();
+    xmods.push({ k: "tide", href: "#tide", t: "The Tide", p: "Spaced review: what you missed and the words you pinned come back just before you forget them.", m: null, s: n ? n + " card" + (n === 1 ? "" : "s") + " to review today" : "Calm seas: nothing due" },
+      { k: "log", href: "#log", t: "Captain’s log", p: "Everything you have charted: twelve weeks at sea, your streaks, seals and share card.", m: null, s: "Your progress at a glance" }); }
+  const CK = { tide: "study", log: "study", duel: "agora" };
+  const card = m => { const k = m.k, im = secImg(k), c = "var(--c-" + (CK[k] || k) + ")";
+    const ch = (chips[k] || []).filter(Boolean);
+    return '<article class="xcard" style="--c:' + c + '"><div class="xc-ban">' + (im ? '<img src="' + esc(im.src) + '" alt="" loading="lazy" style="object-position:' + esc(im.pos || "50% 40%") + '"><span class="xc-credit">' + esc(im.credit || "") + "</span>" : em(ICON[k] || "compass")) + "</div>" +
+      '<div class="xc-body"><div class="xc-head"><span class="xc-ico">' + em(ICON[k] || "compass", "emblem") + '</span><span><a class="xc-link" href="' + m.href + '"><b>' + esc(m.t) + "</b></a><small>" + esc(m.s) + "</small></span></div><p>" + m.p + "</p>" +
+      (m.m != null ? '<span class="xc-meter" aria-hidden="true"><i style="width:' + Math.round(100 * Math.min(1, m.m)) + '%"></i></span>' : "") +
+      (ch.length ? '<div class="xc-chips">' + ch.map(([t, h]) => '<a href="' + h + '">' + esc(t) + "</a>").join("") + "</div>" : "") + "</div></article>"; };
+  // the collage: famous pictures of the big questions, floating on the night sky
+  const HERO = (IMG.hero || []).slice(0, 6);
+  const TILE = [["Ethics", "#agora", "agora"], ["Mind", "#compass", "compass"], ["Reality", "#stoa", "stoa"], ["God", "#agora", "seminar"], ["Politics", "#agora", "codex"], ["Meaning", "#voyage", "voyage"]];
+  const collage = '<div class="hx-art"><canvas id="heroSky" aria-hidden="true"></canvas><div class="hx-tiles">' + TILE.map((t, i) => { const h = HERO[i];
+    return '<a class="hx-tile" href="' + (h && h.href || t[1]) + '" style="--c:var(--c-' + t[2] + ')">' + (h ? '<img src="' + esc(h.src) + '" alt="' + esc(h.caption || "") + '" style="object-position:' + esc(h.pos || "50% 40%") + '">' : em(ICON[t[2]] || "compass")) + '<span class="hx-pill">' + esc(h && h.label || t[0]) + "</span></a>"; }).join("") + "</div></div>";
+  const nIsl = nextIsland(), due = typeof window.tideDue === "function" ? window.tideDue() : 0;
+  const todayRow = [
+    NH ? { c: "home", n: "→", t: NH.label, s: NH.line, h: NH.href } : { c: "compass", n: ic("ship") , t: nextStep.t, s: nextStep.d, h: nextStep.href },
+    { c: "study", n: String(due), t: due ? "Review on the Tide" : "The Tide is calm", s: due ? "Cards you are about to forget" : "Nothing to review today", h: "#tide" },
+    { c: "quiz", n: "5", t: "Daily round", s: "Five quiz questions, new every day" + (quizStreak() > 1 ? " · " + quizStreak() + " days running" : ""), h: "#quiz" },
+    nIsl ? { c: "voyage", n: em("ship", "emblem"), t: "Your voyage", s: "Next island: " + nIsl.name, h: "#voyage-" + nIsl.id } : null
+  ].filter(Boolean);
   after.push(drawHeroSkyNow);
-  return '<section class="hero"><canvas id="heroSky" aria-hidden="true"></canvas><div class="wrap">' +
-    '<div class="stack" style="--g:18px"><span class="eyebrow">Philodyssey · a voyage through philosophy</span>' +
-    "<h1>What do you believe?<br>Test it against <em>2,600 years</em> of argument.</h1>" +
-    '<p class="lede">Answer one question at a time. Meet the philosophers who think like you, find the cracks in your own worldview, and argue your way through the great debates.</p>' +
-    (NH ? '<div class="nh"><span class="eyebrow">Your next heading</span><a class="btn lamp" href="' + NH.href + '">' + esc(NH.label) + ' →</a><p class="nh-line">' + esc(NH.line) + "</p></div>" :
-    '<div class="row hero-cta"><a class="btn lamp" href="' + (secs === C.sections.length ? "#compass-results" : "#compass") + '">' + (secs === C.sections.length ? "See your portrait" : ans ? "Continue the Compass" : "Take the Compass") + '</a><a class="btn ghost on-night" href="#voyage">New to philosophy? Set sail</a></div>') + "</div>" +
-    dailyCard() + "</div></section>" +
-    '<div class="wrap stack" style="--g:30px;padding-top:34px"><section class="stack"><div class="row" style="justify-content:space-between"><h2 class="sec-h">Start here</h2><span class="faint">Four steps, in order</span></div><ol class="path3"><svg class="route" viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path d="M2 5 C 20 0, 30 10, 50 5 S 80 0, 98 5"/></svg>' +
-    steps.map(x => '<li class="' + (x.done ? "done" : x === nextStep ? "next" : "") + '"><a href="' + x.href + '"><span class="num">' + (x.done ? ic("ship") : x.n) + '</span><span class="stack" style="--g:2px"><b>' + x.t + '</b><span class="muted" style="font-size:.9rem">' + x.d + '</span><span class="faint" style="font-size:.8rem">' + esc(x.s) + "</span></span></a></li>").join("") + "</ol></section>" + (sealsOn ? sealsSec : "") +
-    '<section class="stack"><div class="row" style="justify-content:space-between"><h2 class="sec-h">Explore Philodyssey</h2><span class="faint">' + cap(numWord(mods.length)) + ' places</span></div><span class="eyebrow">Learn and play</span><div class="modules">' +
-    mods.map(m => (m.href === "#thinkers" ? '</div><span class="eyebrow" style="margin-top:10px">Look things up</span><div class="modules ref">' : "") + '<a class="mod" href="' + m.href + '"><h3><span>' + m.t + '</span><span class="glyph">' + m.g + "</span></h3><p>" + m.p + '</p><span class="faint" style="font-size:.8rem">' + esc(m.s) + "</span>" + (m.m != null ? '<span class="meter"><i style="width:' + Math.round(100 * Math.min(1, m.m)) + '%"></i></span>' : "") + "</a>").join("") +
-    "</div></section>" + (sealsOn ? "" : sealsSec) + "</div>";
+  return '<div class="wrap stack home3" style="--g:30px;padding-top:22px">' +
+    '<section class="hx"><div class="hx-text stack" style="--g:16px"><span class="hx-eyebrow">A voyage through philosophy</span>' +
+    "<h1>What do you believe? Test it against <em>2,600 years</em> of argument.</h1>" +
+    '<p class="hx-lede">Answer one question at a time. Meet the philosophers who think like you, find the cracks in your own worldview, and argue your way through the great debates.</p>' +
+    '<div class="hx-seals"><span class="hx-seals-t">Your seals: four acts of thinking. <b>Earn them all.</b></span><div class="hx-seal-row">' + S2.map(s => '<span class="hx-seal' + (s.on ? " on" : "") + (fresh2.includes(s.k) ? " stamping" : "") + '" title="' + esc(s.n + ": " + s.d) + '"><span class="seal-mark">' + sealSVG(s.on, s.k) + "</span><small>" + esc(s.n) + "</small></span>").join("") + "</div></div>" +
+    '<div class="row hx-cta">' + (NH ? '<a class="btn primary hx-go" href="' + NH.href + '">' + esc(NH.label) + " →</a>" : '<a class="btn primary hx-go" href="' + (secs === C.sections.length ? "#compass-results" : ans ? "#compass" : "#quick-start") + '">' + (secs === C.sections.length ? "See your portrait" : ans ? "Continue the Compass" : "Take the Quick Compass") + " →</a>") +
+    '<a class="btn hx-ghost" href="#voyage">' + (fresh ? "New to philosophy? Set sail" : "Open the voyage") + "</a></div></div>" + collage + "</section>" +
+    '<section class="stack" style="--g:12px"><h2 class="hx-sec">Today</h2><div class="today">' + todayRow.map(x => '<a class="tcard" href="' + x.h + '" style="--c:var(--c-' + x.c + ')"><span class="tn">' + x.n + "</span><span><b>" + esc(x.t) + "</b><small>" + esc(x.s) + "</small></span></a>").join("") + "</div></section>" +
+    '<section class="hx-duo"><div class="hx-night">' + dailyCard() + '</div><div class="stack" style="--g:12px"><h2 class="hx-sec">Start here</h2><ol class="steps4">' +
+    steps.map(x => '<li class="' + (x.done ? "done" : x === nextStep ? "next" : "") + '"><a href="' + x.href + '"><span class="num">' + (x.done ? "✓" : x.n) + '</span><span><b>' + x.t + "</b><small>" + x.d + '</small><em>' + esc(x.s) + "</em></span></a></li>").join("") + "</ol></div></section>" +
+    '<section class="stack" style="--g:14px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2 class="hx-sec">Everything on Philodyssey</h2><span class="faint">' + cap(numWord(xmods.length)) + " places</span></div>" +
+    '<div class="xgrid">' + xmods.map(card).join("") + "</div></section>" +
+    (sealsOn ? sealsSec : "") + "</div>";
 };
 // Stars everywhere; the constellation only goes where it can't run through text or the daily card.
 function drawHeroSkyNow() {
@@ -14968,7 +15167,9 @@ function imgURL(file, w) {
   return "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(String(file).replace(/^File:/, "").replace(/ /g, "_")) + "?width=" + (w || 800);
 }
 function portraitHTML(c, cls) {
-  const src = c && ((c.img && VOY.portraits[c.img]) || (c.portrait && c.portrait.file && imgURL(c.portrait.file, 360)));
+  // the image library (data/atlas-images.js) is served with the page, so it wins over a remote Commons link
+  const lib = c && window.ATLAS_IMAGES && (window.ATLAS_IMAGES.th || {})[c.tid || c.id];
+  const src = c && ((lib && lib.src) || (c.img && VOY.portraits[c.img]) || (c.portrait && c.portrait.file && imgURL(c.portrait.file, 360)));
   const nm = c ? c.name : "?";
   // the initials sit underneath; the picture covers them only once it has actually loaded (a slow or blocked server leaves the coin readable)
   if (src) return '<span class="pt pt-coin pt-has ' + (cls || "") + '"><b>' + esc(initials(nm)) + '</b><img src="' + src + '" alt="' + esc(nm) + '" loading="lazy" referrerpolicy="no-referrer" onload="this.classList.add(\'in\')" onerror="this.remove()"></span>';
