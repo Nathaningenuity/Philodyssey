@@ -705,38 +705,38 @@ window.ATLAS_IMAGES = {
  "sec": {
   "agora": {
    "src": "img/sec/agora.webp",
-   "credit": "The School of Athens · Raphael, 1511 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:\"The_School_of_Athens\"_by_Raffaello_Sanzio_da_Urbino.jpg",
+   "credit": "A pupil raises her hand in class, 1964 · Thomas Taylor Hammond · CC BY-SA 4.0",
+   "file": "https://commons.wikimedia.org/w/index.php?curid=64899327",
    "pos": "50% 50%"
   },
   "codex": {
    "src": "img/sec/codex.webp",
-   "credit": "Jean Miélot at his desk · Unknown miniaturist, 15th c. · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Jean_Miélot,_Brussels.jpg",
+   "credit": "A hand writing in a notebook · Jamiesrabbits · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/38389073@N04/5947373341",
    "pos": "50% 50%"
   },
   "compass": {
    "src": "img/sec/compass.webp",
-   "credit": "Carta Marina · Olaus Magnus, 1539 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Carta_Marina.jpeg",
+   "credit": "An antique compass rose · Walt Stoneburner · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/8404611@N06/6170496511",
    "pos": "50% 50%"
   },
   "experiment": {
    "src": "img/sec/experiment.webp",
-   "credit": "An Experiment on a Bird in the Air Pump · Joseph Wright of Derby, 1768 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:An_Experiment_on_a_Bird_in_an_Air_Pump_by_Joseph_Wright_of_Derby,_1768.jpg",
+   "credit": "A light bulb on a page of handwritten equations · qisur · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/37657853@N07/4351196974",
    "pos": "50% 50%"
   },
   "firmament": {
    "src": "img/sec/firmament.webp",
-   "credit": "The Ptolemaic system, Harmonia Macrocosmica · Andreas Cellarius, 1660 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Cellarius_ptolemaic_system.jpg",
+   "credit": "The Milky Way over the hoodoos of a dark-sky park · snowpeak · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/53986933@N00/48057126392",
    "pos": "50% 50%"
   },
   "lab": {
    "src": "img/sec/lab.webp",
-   "credit": "The Fighting Temeraire · J. M. W. Turner, 1839 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:The_Fighting_Temeraire,_JMW_Turner,_National_Gallery.jpg",
+   "credit": "A model of HMS Bounty · Tim Sheerman-Chase · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/68932647@N00/7623773412",
    "pos": "50% 50%"
   },
   "library": {
@@ -747,32 +747,32 @@ window.ATLAS_IMAGES = {
   },
   "quiz": {
    "src": "img/sec/quiz.webp",
-   "credit": "Priestess of Delphi · John Collier, 1891 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:John_Collier_-_Priestess_of_Delphi.jpg",
+   "credit": "A golden question mark sign · ryanmilani · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/51029297@N00/5275403364",
    "pos": "50% 50%"
   },
   "seminar": {
    "src": "img/sec/seminar.webp",
-   "credit": "Plato's Academy, mosaic from Pompeii · Roman, 1st c. · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Plato's_Academy_mosaic_from_Pompeii.jpg",
-   "pos": "50% 50%"
+   "credit": "A Harkness seminar table in a school classroom · AdmissionsQuest · CC BY-NC 2.0",
+   "file": "https://www.flickr.com/photos/30990415@N02/4581350899",
+   "pos": "50% 60%"
   },
   "stoa": {
    "src": "img/sec/stoa.webp",
-   "credit": "The Course of Empire: Desolation · Thomas Cole, 1836 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Cole_Thomas_The_Course_of_Empire_Desolation_1836.jpg",
+   "credit": "The colonnade of the Stoa of Attalos, Athens · Tilemahos Efthimiadis · CC BY-SA 2.0",
+   "file": "https://www.flickr.com/photos/64379474@N00/3966275331",
    "pos": "50% 50%"
   },
   "thinkers": {
    "src": "img/sec/thinkers.webp",
-   "credit": "Aristotle with a Bust of Homer · Rembrandt, 1653 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Rembrandt_-_Aristotle_with_a_Bust_of_Homer_-_WGA19232.jpg",
+   "credit": "Ancient marble portrait busts in the Stoa of Attalos · Woopi · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/11224573@N03/44840286951",
    "pos": "50% 50%"
   },
   "voyage": {
    "src": "img/sec/voyage.webp",
-   "credit": "Ulysses and the Sirens · John William Waterhouse, 1891 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:John_William_Waterhouse_-_Ulysses_and_the_Sirens_(1891).jpg",
+   "credit": "The Star of India under full sail · Port of San Diego · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/8123170@N06/10827351455",
    "pos": "50% 50%"
   },
   "works": {
@@ -785,153 +785,165 @@ window.ATLAS_IMAGES = {
  "ag": {
   "aiart": {
    "src": "img/ag/aiart.webp",
-   "credit": "The Art of Painting · Johannes Vermeer, c. 1667 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Jan_Vermeer_-_The_Art_of_Painting_-_Google_Art_Project.jpg",
+   "credit": "An industrial robot arm drawing figures on a wall · Claudio Moderini · CC BY-SA 2.0",
+   "file": "https://commons.wikimedia.org/w/index.php?curid=4259290",
    "pos": "50% 50%"
   },
   "animals": {
    "src": "img/ag/animals.webp",
-   "credit": "The Peaceable Kingdom · Edward Hicks, c. 1834 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Edward_Hicks_-_Peaceable_Kingdom.jpg",
+   "credit": "A pig behind the bars of its pen · Kelly Hau Photography · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/67574009@N00/6838171573",
    "pos": "50% 50%"
   },
   "beauty": {
    "src": "img/ag/beauty.webp",
-   "credit": "The Birth of Venus · Sandro Botticelli, c. 1485 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Sandro_Botticelli_-_La_nascita_di_Venere_-_Google_Art_Project_-_edited.jpg",
+   "credit": "People watching the sunset · egorick · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/24866012@N00/3754608666",
    "pos": "50% 50%"
   },
   "children": {
    "src": "img/ag/children.webp",
-   "credit": "The Cradle · Berthe Morisot, 1872 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Berthe_Morisot_-_The_Cradle_-_Google_Art_Project.jpg",
+   "credit": "A newborn's feet with a hospital tag · hlkljgk · CC BY-SA 2.0",
+   "file": "https://www.flickr.com/photos/52473526@N00/5764422581",
    "pos": "50% 50%"
   },
   "death": {
    "src": "img/ag/death.webp",
-   "credit": "Isle of the Dead · Arnold Böcklin, 1883 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Arnold_Böcklin_-_Die_Toteninsel_III_(Alte_Nationalgalerie,_Berlin).jpg",
+   "credit": "Spring Grove Cemetery on a foggy morning · David Paul Ohmer · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/50965924@N00/39981548401",
    "pos": "50% 50%"
   },
   "disobey": {
    "src": "img/ag/disobey.webp",
-   "credit": "Gandhi on the Salt March · Unknown photographer, 1930 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Marche_sel.jpg",
+   "credit": "The Montgomery bus on which Rosa Parks was arrested, Henry Ford Museum · Yourusernamewillbepublic2 · CC0",
+   "file": "https://commons.wikimedia.org/w/index.php?curid=165327481",
    "pos": "50% 50%"
   },
   "euthanasia": {
    "src": "img/ag/euthanasia.webp",
-   "credit": "The Doctor · Luke Fildes, 1891 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:The_Doctor_Luke_Fildes_crop.jpg",
+   "credit": "An empty intensive-care hospital room · quinn.anya · CC BY-SA 2.0",
+   "file": "https://www.flickr.com/photos/53326337@N00/5645540917",
    "pos": "50% 50%"
   },
   "evil": {
    "src": "img/ag/evil.webp",
-   "credit": "The Garden of Earthly Delights · Hieronymus Bosch, c. 1500 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:The_Garden_of_earthly_delights.jpg",
+   "credit": "A forest fire at night · Ervins Strauhmanis · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/76523360@N03/9554405492",
    "pos": "50% 50%"
+  },
+  "experience": {
+   "src": "img/ag/experience.webp",
+   "credit": "A child wearing a virtual reality headset · Andri Koolme · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/125858571@N04/26012914455",
+   "pos": "60% 50%"
   },
   "freewill": {
    "src": "img/ag/freewill.webp",
-   "credit": "Adam and Eve · Albrecht Dürer, 1504 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Albrecht_Dürer,_Adam_and_Eve,_1504,_Engraving.jpg",
+   "credit": "A chain of falling dominoes · Wesley Fryer · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/31442459@N00/52457552135",
    "pos": "50% 50%"
   },
   "god": {
    "src": "img/ag/god.webp",
-   "credit": "The Creation of Adam · Michelangelo, c. 1511 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Michelangelo_-_Creation_of_Adam_(cropped).jpg",
+   "credit": "The inner workings of an Elgin pocket watch · timlewisnm · CC BY-SA 2.0",
+   "file": "https://www.flickr.com/photos/10343926@N02/3257641860",
    "pos": "50% 50%"
   },
   "identity": {
    "src": "img/ag/identity.webp",
-   "credit": "The Three Ages of Woman · Gustav Klimt, 1905 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Gustav_Klimt_020.jpg",
+   "credit": "The Life and Age of Man: one life from cradle to old age, lithograph · Frederick Gleason (Smithsonian) · CC0",
+   "file": "https://n2t.net/ark:/65665/ng49ca746b4-51d7-704b-e053-15f76fa0b4fa",
    "pos": "50% 50%"
   },
   "inequality": {
    "src": "img/ag/inequality.webp",
-   "credit": "The Gleaners · Jean-François Millet, 1857 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Jean-François_Millet_-_Gleaners_-_Google_Art_Project_2.jpg",
-   "pos": "50% 50%"
+   "credit": "Favela do Moinho beneath São Paulo tower blocks · Mílton Jung · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/22155587@N02/6605979025",
+   "pos": "50% 60%"
   },
   "killing": {
    "src": "img/ag/killing.webp",
-   "credit": "The Third of May 1808 · Francisco Goya, 1814 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:El_Tres_de_Mayo,_by_Francisco_de_Goya,_from_Prado_thin_black_margin.jpg",
+   "credit": "The trolley problem: a lever between five lives and one · McGeddon & Zapyon · CC BY-SA 4.0",
+   "file": "https://commons.wikimedia.org/wiki/File:Trolley_Problem.svg",
    "pos": "50% 50%"
   },
   "lying": {
    "src": "img/ag/lying.webp",
-   "credit": "The Cardsharps · Caravaggio, c. 1595 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Caravaggio_(Michelangelo_Merisi)_-_The_Cardsharps_-_Google_Art_Project.jpg",
+   "credit": "A shadowy figure at a frosted glass door · Georgie Pauwels · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/53662163@N06/18789173878",
    "pos": "50% 50%"
   },
   "machines": {
    "src": "img/ag/machines.webp",
-   "credit": "The Mechanical Turk chess automaton · Engraving, 1783 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Tuerkischer_schachspieler_windisch4.jpg",
+   "credit": "Humanoid robot Simon at AAAI 2010 · jiuguangw · CC BY-SA 2.0",
+   "file": "https://www.flickr.com/photos/32366606@N00/4982410844",
    "pos": "50% 50%"
   },
   "meaning": {
    "src": "img/ag/meaning.webp",
-   "credit": "Where Do We Come From? What Are We? Where Are We Going? · Paul Gauguin, 1897 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Paul_Gauguin_-_D'ou_venons-nous.jpg",
-   "pos": "50% 50%"
+   "credit": "A morning walk under a blazing sun · Bhaskar India · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/40531574@N04/6896670269",
+   "pos": "50% 80%"
   },
   "mind": {
    "src": "img/ag/mind.webp",
-   "credit": "The mind's faculties · Robert Fludd, 1619 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:RobertFuddBewusstsein17Jh.png",
+   "credit": "MRI scan of a human brain · National Institutes of Health · Public domain",
+   "file": "https://www.flickr.com/photos/132318516@N08/30754695411",
    "pos": "50% 50%"
   },
   "patriotism": {
    "src": "img/ag/patriotism.webp",
-   "credit": "Liberty Leading the People · Eugène Delacroix, 1830 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Eugène_Delacroix_-_Le_28_Juillet._La_Liberté_guidant_le_peuple.jpg",
+   "credit": "Argentina fans pack out Soccer City, World Cup 2010 · Richard_of_England · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/57827564@N03/6996593230",
    "pos": "50% 50%"
   },
   "promise": {
    "src": "img/ag/promise.webp",
-   "credit": "The Oath of the Horatii · Jacques-Louis David & Anne-Louis Girodet, 1786 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Jacques-Louis_David_-_Oath_of_the_Horatii_-_Google_Art_Project.jpg",
+   "credit": "A pinky promise · Unknown photographer (via rawpixel) · CC0",
+   "file": "https://www.rawpixel.com/image/5903360/photo-image-public-domain-kid-wall",
    "pos": "50% 50%"
   },
   "realism": {
    "src": "img/ag/realism.webp",
-   "credit": "Moses with the Ten Commandments · Rembrandt, 1659 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Rembrandt_-_Moses_with_the_Ten_Commandments_-_Google_Art_Project.jpg",
+   "credit": "Statue of Justice with her scales, Brisbane · Sheba_Also · CC BY-SA 2.0",
+   "file": "https://www.flickr.com/photos/34534185@N00/108279806",
    "pos": "50% 50%"
   },
   "skepticism": {
    "src": "img/ag/skepticism.webp",
-   "credit": "Plato's Cave · Jan Saenredam after Cornelis van Haarlem, 1604 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Platon_Cave_Sanraedam_1604.jpg",
+   "credit": "A brain in a vat, wired to a computer that feeds it a world · Alexander Wivel · CC BY 3.0",
+   "file": "https://commons.wikimedia.org/w/index.php?curid=8719730",
    "pos": "50% 50%"
   },
   "speech": {
    "src": "img/ag/speech.webp",
-   "credit": "St Paul Preaching in Athens · Raphael, 1515 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:V&A_-_Raphael,_St_Paul_Preaching_in_Athens_(1515).jpg",
+   "credit": "A red megaphone · floeschie · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/21551833@N00/4345518893",
    "pos": "50% 50%"
   },
   "strangers": {
    "src": "img/ag/strangers.webp",
-   "credit": "The Good Samaritan (after Delacroix) · Vincent van Gogh, 1890 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Van_Gogh_-_Der_barmherzige_Samariter.jpeg",
+   "credit": "Boys Wading, watercolour, 1873 · Winslow Homer (National Gallery of Art) · CC0",
+   "file": "https://www.rawpixel.com/image/3049253/free-illustration-image-beach-sea-watercolor-painting",
    "pos": "50% 50%"
   },
   "timetravel": {
    "src": "img/ag/timetravel.webp",
-   "credit": "The Voyage of Life: Youth · Thomas Cole, 1842 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Thomas_Cole_-_The_Voyage_of_Life_Youth,_1842_(National_Gallery_of_Art).jpg",
+   "credit": "A young couple, Herb and Miriam Abramson, c. 1950 · Library of Congress (via rawpixel) · CC0",
+   "file": "https://www.rawpixel.com/image/6735499/image-background-wooden-people",
+   "pos": "50% 30%"
+  },
+  "torture": {
+   "src": "img/ag/torture.webp",
+   "credit": "Interrogation room at Alcatraz: typewriter and handcuffs · Andreas Wulff · CC BY-SA 2.0",
+   "file": "https://www.flickr.com/photos/76358315@N00/22106991171",
    "pos": "50% 50%"
   }
  },
  "hero": [
   {
    "src": "img/hero/1.webp",
-   "credit": "The School of Athens · Raphael, 1511 · Public domain",
+   "credit": "The School of Athens (detail: Plato and Aristotle) · Raphael, 1511 · Public domain",
    "file": "https://commons.wikimedia.org/wiki/File:Raphael_School_of_Athens.jpg",
    "pos": "50% 50%",
    "caption": "Plato and Aristotle at the centre of the ancient debate"
@@ -959,10 +971,10 @@ window.ATLAS_IMAGES = {
   },
   {
    "src": "img/hero/5.webp",
-   "credit": "Where Do We Come From? What Are We? Where Are We Going? · Paul Gauguin, 1897 · Public domain",
-   "file": "https://commons.wikimedia.org/wiki/File:Paul_Gauguin_-_D'ou_venons-nous.jpg",
+   "credit": "Earthrise, from Apollo 8 · William Anders / NASA, 1968 · Public domain",
+   "file": "https://commons.wikimedia.org/wiki/File:NASA-Apollo8-Dec24-Earthrise.jpg",
    "pos": "50% 50%",
-   "caption": "The three oldest questions, painted in Tahiti"
+   "caption": "Earth rising over the Moon: the whole human story in one frame"
   },
   {
    "src": "img/hero/6.webp",
