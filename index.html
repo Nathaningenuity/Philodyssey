@@ -2150,6 +2150,18 @@ html{background:var(--bg)}
 .qk-sec{display:grid;gap:3px;padding:10px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--ink)}
 .qk-sec:hover{border-color:var(--c-compass)}.qk-sec small{color:var(--ink-3);font-size:.78rem}.qk-sec.next{border-color:var(--go);box-shadow:0 0 0 2px color-mix(in srgb,var(--go) 18%,transparent)}.qk-sec.done small{color:var(--ok)}
 .qk-mini{display:block;height:4px;border-radius:4px;background:var(--line-2);overflow:hidden}.qk-mini i{display:block;height:100%;background:var(--c-compass)}
+.fb-nb{border-left:3px solid var(--c-codex);background:color-mix(in srgb,var(--c-codex) 7%,var(--card));border-radius:0 12px 12px 0;padding:12px 14px}
+.fb-nb .cq-mono{color:var(--c-codex)}.fb-nb p{margin:6px 0 10px}.fb-nb-go{background:var(--c-codex);border-color:var(--c-codex);color:#fff}
+.nb-handoff{display:grid;gap:10px;padding:22px 24px;border-radius:var(--r-lg);background:color-mix(in srgb,var(--c-codex) 8%,var(--card));border:1.5px solid color-mix(in srgb,var(--c-codex) 35%,var(--line))}
+.nb-handoff h2{margin:0}.nb-handoff p{margin:0;color:var(--ink-2);line-height:1.55}.nb-handoff .eyebrow{color:var(--c-codex)}.nb-handoff .btn{justify-self:start}
+.lb-chg{margin:0 0 10px;padding:8px 12px;border-radius:10px;background:color-mix(in srgb,var(--c-compass) 9%,var(--card));color:var(--ink-2);font-size:.86rem}
+.lb-crack-src{display:grid;gap:6px}.lb-crack-src>a{font-size:.82rem;color:var(--ink-3)}
+.pm{display:grid;gap:8px;padding:14px 16px;border-radius:var(--r-lg);background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow-1)}
+.pm-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}@media (max-width:640px){.pm-row{grid-template-columns:1fr}}
+.pm-part{display:grid;gap:5px;text-decoration:none;color:var(--ink)}.pm-part:hover .pm-k{color:var(--c)}
+.pm-k{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+.pm-bar{display:block;height:8px;border-radius:8px;background:var(--line-2);overflow:hidden}.pm-bar i{display:block;height:100%;background:var(--c);border-radius:8px;min-width:4px}
+.pm-n{font-size:.84rem;color:var(--ink-2)}.pm-note{margin:0;font-size:.78rem;color:var(--ink-3)}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -10326,7 +10338,7 @@ window.ATLAS_EXTRAS = {
 </script>
 <script src="data/atlas-arguments.js"></script>
 <script src="data/atlas-profiles.js"></script>
-<script src="data/atlas-voyage.js"></script><script src="data/atlas-images.js"></script><script src="data/atlas-images-th2.js"></script>
+<script src="data/atlas-voyage.js"></script><script src="data/atlas-links.js"></script><script src="data/atlas-images.js"></script><script src="data/atlas-images-th2.js"></script>
 <script>(function () {
 "use strict";
 
@@ -10976,7 +10988,9 @@ function matchOne(t, roots, minW) {
     const g = sim >= 0.95 ? 1 : sim >= 0.7 ? 0.7 : sim >= 0.5 ? 0.35 : 0;
     K += wt * depth * g; if (sim >= 0.7) { strong++; strongL.push(r); }
   });
-  const n = agree.length + differ.length;
+  // notebook-only stances: half weight each, whole portrait only
+  let nb = 0; if (whole && S.lbM) Object.values(S.lbM).forEach(m => { const ag = m.a.includes(t.id); if (!ag && !m.d.includes(t.id)) return; const wt = 0.5; w += wt; s += ag ? wt : 0; K += ag ? wt * 0.7 : 0; shared += wt; nb++; });
+  const n = agree.length + differ.length + nb;
   if (!n || shared < minW) return null;
   // a light pull toward 50% so one lucky agreement on a minor case can't top the list
   const k = 1;
@@ -11173,6 +11187,13 @@ VIEWS.quick = arg => {
   after.push(() => history.replaceState(null, "", "#compass-quick"));
   return questionHTML("quick", null);
 };
+// one portrait, two measures: breadth from the Compass (your intuitions), depth from My Positions (do they hold together)
+function portraitMeterHTML(where) {
+  const all = visibleQs(), a = all.filter(q => isAnswered(q.id)).length, D = S.lbD || { held: 0, apps: 774, aimed: 0, def: 0, crack: 0, mend: 0 };
+  const pb = all.length ? Math.round(100 * a / all.length) : 0, pd = D.apps ? Math.round(100 * D.held / D.apps) : 0;
+  return '<section class="pm' + (where ? " pm-" + where : "") + '" aria-label="Your portrait"><div class="pm-row"><a class="pm-part" href="#compass" style="--c:var(--c-compass)"><span class="pm-k">Intuitions · Compass</span><span class="pm-bar"><i style="width:' + pb + '%"></i></span><span class="pm-n">' + a + " of " + all.length + ' answered</span></a>' +
+    '<a class="pm-part" href="#codex" style="--c:var(--c-codex)"><span class="pm-k">Depth · My Positions</span><span class="pm-bar"><i style="width:' + pd + '%"></i></span><span class="pm-n">' + D.held + " stance" + (D.held === 1 ? "" : "s") + (D.aimed ? " · " + D.def + " of " + D.aimed + " defended" : "") + (D.crack ? " · " + D.crack + " crack" + (D.crack > 1 ? "s" : "") + " open" : "") + (D.mend ? " · " + D.mend + " mended" : "") + "</span></a></div>" +
+    '<p class="pm-note">They change together: answer in either place and both update.</p></section>'; }
 // the Quick Compass (and a half-finished Compass) is only a first reading: say so, and point to the next chapter (Ethics first, by default)
 function portraitIncompleteHTML(lead) {
   const secs = C.sections.filter(x => !x.locked), tot = secs.reduce((a, x) => a + visibleQs(x.id).length, 0), done = secs.reduce((a, x) => a + Math.min(answeredCount(x.id), visibleQs(x.id).length), 0);
@@ -11250,8 +11271,8 @@ function hubHTML() {
       (open ? '<div class="hub-meter" aria-hidden="true"><i style="width:' + Math.round(100 * (qs.length ? n / qs.length : 0)) + '%"></i></div>' : "") + '<div class="row">' + act + "</div></article>";
   }).join("");
   const any = Object.keys(S.answers).some(isAnswered);
-  return '<div class="wrap stack" style="--g:28px">' + pageHead("compass", "The Compass", "A tour through the big questions", "Six chapters in any order, each with its own result. The seventh, Life and death, opens once you finish any two of Ethics, Mind and self, Knowledge and reality, and Society and politics.",
-    any ? '<div class="row ph-actions"><a class="btn" href="#compass-results">Your whole portrait</a><button class="btn ghost" data-act="review">Review all answers</button></div>' : "") + (() => { const g = gapCandidates(); return g.length ? '<div class="gap-bar"><span><b>' + g.length + (g.length === 1 ? " question" : " questions") + "</b> left open in chapters you’ve started.</span><button class=\"btn small primary\" data-act=\"gapsStart\">Answer the unanswered questions →</button></div>" : ""; })() + '<a class="qk-promo" href="#quick-start"><span class="eyebrow">New here?</span><b>The Quick Compass: twenty-one quick questions</b><span>Short questions with plain answers, then your closest thinkers, a sharp opponent and where to go deeper. Your answers carry over into the chapters.</span><span class="qk-go">Start →</span></a><div class="hub">' + cards + "</div></div>";
+  return '<div class="wrap stack" style="--g:28px">' + pageHead("compass", "The Compass", "Test your intuitions", "A quick tour of the big questions: answer from the gut, and see which philosophers your intuitions point you towards. Every answer is saved to My Positions, where the deep check begins. Six chapters in any order; the seventh, Life and death, opens once you finish any two of Ethics, Mind and self, Knowledge and reality, and Society and politics.",
+    any ? '<div class="row ph-actions"><a class="btn" href="#compass-results">Your whole portrait</a><button class="btn ghost" data-act="review">Review all answers</button></div>' : "") + (any ? portraitMeterHTML("compass") : "") + (() => { const g = gapCandidates(); return g.length ? '<div class="gap-bar"><span><b>' + g.length + (g.length === 1 ? " question" : " questions") + "</b> left open in chapters you’ve started.</span><button class=\"btn small primary\" data-act=\"gapsStart\">Answer the unanswered questions →</button></div>" : ""; })() + '<a class="qk-promo" href="#quick-start"><span class="eyebrow">New here?</span><b>The Quick Compass: twenty-one quick questions</b><span>Short questions with plain answers, then your closest thinkers, a sharp opponent and where to go deeper. Your answers carry over into the chapters.</span><span class="qk-go">Start →</span></a><div class="hub">' + cards + "</div></div>";
 }
 
 /* ------------------------------------------------------- one question */
@@ -11425,9 +11446,14 @@ function feedbackHTML(q, A) {
   }
   // 4. the argument: the best case for each answer you chose, and its weak point
   if (!isUnd) picks.forEach(p => { const card = (window.ATLAS_ARGUMENTS || {})[q.id + "|" + p]; if (card) h += argCardHTML(q.id, p, card, picks.length > 1); });
+  if (!isUnd) h += nbLinkHTML(q.id);
   h += sameQHTML(q.id, ["compass"]);
   return h + "</section>";
 }
+// the Compass and My Positions share answers; data/atlas-links.js says which notebook question each Compass question feeds
+const LINKS = (window.ATLAS_LINKS || { cq: {} }).cq;
+function nbLinkHTML(cq) { const L = LINKS[cq]; if (!L) return "";
+  return '<div class="fb-block fb-nb"><span class="cq-mono">Saved to My Positions · ' + esc(L.tn) + "</span><p>Your answer is in your notebook too. Change it in either place and the other follows." + (L.ch ? " There, " + numWord(L.ch) + " objection" + (L.ch > 1 ? "s are" : " is") + " waiting, with " + L.rs + " ways to defend your view." : "") + '</p><a class="btn small fb-nb-go" href="#codex-' + esc(L.tab) + "." + esc(L.n) + '">' + (L.ch ? "Defend it in My Positions" : "Open it in My Positions") + " →</a></div>"; }
 function personChips(list) {
   return arr(list).map(x => TH[x] ? '<button class="who" data-act="thinker" data-id="' + esc(x) + '"><span class="ini">' + esc(initials(TH[x].name)) + faceImg(x) + "</span>" + esc(shortName(TH[x])) + "</button>" : '<span class="who"><span class="ini">' + esc(initials(x)) + "</span>" + esc(x) + "</span>").join("");
 }
@@ -11790,6 +11816,8 @@ function sectionResultHTML(sec) {
   if (T2.length) h += '<section class="stack"><div class="row" style="justify-content:space-between"><h2>Cracks in your answers</h2><span class="cq-mono">' + T2.filter(t => !S.resolutions[t.key]).length + " open</span></div>" + T2.map(tensionHTML).join("") + "</section>";
   // continue the tour
   const next = C.sections.filter(x => x.id !== sec && !secDone(x.id));
+  { const lk = qs.filter(q => isAnswered(q.id) && LINKS[q.id]), obj = lk.reduce((a, q) => a + (LINKS[q.id].ch || 0), 0), L0 = lk[0] && LINKS[lk[0].id];
+    if (lk.length) h += '<section class="nb-handoff"><span class="eyebrow">Next: the deep check</span><h2>' + cap(numWord(lk.length)) + " of your answers are now in My Positions</h2><p>The Compass showed which philosophers your intuitions point to. My Positions checks whether your views hold together" + (obj ? ": " + numWord(obj) + " objection" + (obj > 1 ? "s are" : " is") + " aimed at them, each with ways to defend yourself" : "") + ', and finds the places where two of your answers pull against each other.</p><a class="btn primary" href="#codex-' + esc(L0.tab) + '">Check them in My Positions →</a></section>'; }
   h += '<section class="panel stack" style="--g:12px"><span class="eyebrow">Continue the tour</span><div class="row">' +
     next.map(x => secOpen(x.id) ? '<a class="btn' + (x === next.find(y => secOpen(y.id)) ? " primary" : "") + '" href="#compass-' + x.id + '">' + esc(x.name) + " →</a>" : '<span class="btn ghost" aria-disabled="true" style="opacity:.55;cursor:default">' + esc(x.name) + " · opens after " + x.locked + " main chapters</span>").join("") +
     '<a class="btn ghost" href="#compass-results">Your whole portrait</a><a class="btn ghost" href="#compass">All chapters</a></div></section>';
@@ -12743,7 +12771,16 @@ function LBS() { if (!lbInit.done) return S.lb && S.lb.q && S.lb.tab ? S.lb : { 
 function lbSt(qid) { return LBS().q[qid] || {}; }
 function lbEnsure(qid) { const L = LBS(); const e = L.q[qid] = Object.assign({ sym: [], ser: [], rej: [] }, L.q[qid] || {}); if (e.hold === undefined) e.hold = lbHeld(qid).pos; return e; }
 // the held position: your own choice, or (until you choose) what your Compass answer implies
-function lbHeld(qid) { const e = lbSt(qid); if (e.hold !== undefined) return { pos: e.hold, from: "you" };
+// Compass and notebook change together: whichever was answered more recently wins.
+// A notebook hold remembers the Compass answer at the moment it was set (holdC); if the Compass answer has
+// since moved to something else that maps here, the Compass is newer, so the notebook follows it.
+function lbCompassKey(q) { const a = q && q.compass && S.answers[q.compass.q]; if (!realA(a) || Array.isArray(a.a)) return null; return Object.keys(q.compass.map || {}).find(k => q.compass.map[k] === a.a) || null; }
+function lbAnsSig(q) { const a = q && q.compass && S.answers[q.compass.q]; return realA(a) ? JSON.stringify(a.a) : null; }
+function lbHeld(qid) { const e = lbSt(qid), lq = LBQ[qid];
+  if (e.hold !== undefined && lq && lq.compass && QM[lq.compass.q]) { const q = lq, sig = lbAnsSig(q);
+    if (e.holdC === undefined) e.holdC = sig; // a hold from before this rule: take today's Compass answer as its baseline
+    else if (sig && sig !== e.holdC) { const k = lbCompassKey(q); if (k && k !== e.hold) { const L = LBS(); if (L.q[qid]) { L.q[qid].hold = k; L.q[qid].holdC = sig; L.q[qid].chg = { by: "compass", t: Date.now() }; } return { pos: k, from: "compass" }; } e.holdC = sig; } }
+  if (e.hold !== undefined) return { pos: e.hold, from: "you" };
   const q = LBQ[qid]; if (q && q.compass && QM[q.compass.q]) { const a = S.answers[q.compass.q]; if (realA(a) && !Array.isArray(a.a)) { const p = Object.keys(q.compass.map || {}).find(k => q.compass.map[k] === a.a); if (p) return { pos: p, from: "compass" }; } }
   return { pos: null }; }
 function lbAtt(qid, pos) { if (lbHeld(qid).pos === pos) return "hold"; const e = lbSt(qid); return (e.sym || []).includes(pos) ? "sym" : (e.ser || []).includes(pos) ? "ser" : (e.rej || []).includes(pos) ? "rej" : null; }
@@ -12754,9 +12791,23 @@ function lbKeyName(qid, key) { const rw = lbRw(qid, key); if (rw && (rw.name || 
 function lbName(pos) { return pos === "mine" ? "Your own view" : (LBP[pos] || {}).name || pos; }
 function lbHeldLabel(qid) { const h = lbHeld(qid).pos; return h ? lbKeyName(qid, h) : ""; }
 function lbAnswered(qid) { return !!lbHeld(qid).pos; }
-function lbSync(qid) { const q = LBQ[qid]; if (!q || !q.compass || !QM[q.compass.q]) return; const h = lbSt(qid).hold; let v = h && q.compass.map ? q.compass.map[h] : null;
+// stances you take only in My Positions also sharpen your thinker matches: who holds the view you hold, and who holds its rivals
+// (kept in S.lbM so the matcher works without loading the notebook)
+function lbMatchSync() { if (!lbInit.done) return; const M = {};
+  Object.values(LBQ).forEach(q => { if (q.compass) return; const h = lbHeld(q.id).pos; if (!h || h === "mine") return;
+    const o = q.options.find(x => x.key === h), P = o && LBP[o.pos]; if (!P || !(P.holders || []).length) return;
+    const a = P.holders.filter(id => TH[id]), d = new Set(); q.options.forEach(x => { if (x.key !== h && x.pos !== o.pos && LBP[x.pos]) (LBP[x.pos].holders || []).forEach(id => { if (TH[id] && !a.includes(id)) d.add(id); }); });
+    if (a.length || d.size) M[q.id] = { a, d: [...d] }; });
+  S.lbM = M;
+  let held = 0, apps = 0, aimed = 0, def = 0, crack = 0, mend = 0;
+  Object.values(LBQ).forEach(q => { if (lbApply(q) === "no") return; apps++; if (!lbAnswered(q.id)) return; held++;
+    if ((q.challenges || []).some(c => c.target && c.target.length && lbAny(c.target) && !lbAny(c.exclude))) { aimed++; if ((lbSt(q.id).why || []).length || (lbSt(q.id).mine && lbSt(q.id).mine.why)) def++; }
+    if (q.checks) lbChecksOf(q).forEach(x => { if (x.status === "crack") crack++; else if (x.status === "resolved") mend++; }); });
+  S.lbD = { held, apps, aimed, def, crack, mend }; }
+function lbSync(qid) { lbMatchSync(); const q = LBQ[qid]; if (!q || !q.compass || !QM[q.compass.q]) return; const h = lbSt(qid).hold; let v = h && q.compass.map ? q.compass.map[h] : null;
   if (h === "mine") { const m = lbSt(qid).mine || {}; v = m.from && q.compass.map ? q.compass.map[m.from] : null; }
-  if (v && shown(QM[q.compass.q])) { const cur = S.answers[q.compass.q]; S.answers[q.compass.q] = Object.assign({}, cur && cur.a === v ? cur : {}, { a: v, conf: cur && cur.conf != null ? cur.conf : 1 }); prune(); } }
+  if (v && shown(QM[q.compass.q])) { const cur = S.answers[q.compass.q]; S.answers[q.compass.q] = Object.assign({}, cur && cur.a === v ? cur : {}, { a: v, conf: cur && cur.conf != null ? cur.conf : 1 }); prune(); }
+  const L = LBS(); if (L.q[qid]) { L.q[qid].holdC = lbAnsSig(q); delete L.q[qid].chg; } }
 ACT.lbAtt = el => { const qid = el.dataset.q, pos = el.dataset.p, k = el.dataset.k, cur = lbAtt(qid, pos), before = lbHeldLabel(qid), e = lbEnsure(qid);
   ["sym", "ser", "rej"].forEach(x => { e[x] = (e[x] || []).filter(y => y !== pos); }); if (e.hold === pos) e.hold = null;
   if (k !== cur) { if (k === "hold") e.hold = pos; else e[k].push(pos); }
@@ -12815,6 +12866,7 @@ function lbAsCase(q) { if (!q) return false; if (q.band === "case") return true;
 function lbOrderOpts(q, L) { return L; const L0 = LBS(); if (!L0.seed) { L0.seed = Math.floor(Math.random() * 1e9); save(); }
   const h = k => { let x = L0.seed ^ 2166136261; for (const c of String(k)) x = Math.imul(x ^ c.charCodeAt(0), 16777619); return x >>> 0; };
   return L.slice().sort((a, b) => h(a.key) - h(b.key)); }
+function lbChgHTML(qid) { const c = lbSt(qid).chg; return c && c.by === "compass" ? '<p class="lb-chg">↻ Updated to match your Compass answer' + (c.t ? " (" + new Date(c.t).toLocaleDateString("en-GB", { day: "numeric", month: "short" }) + ")" : "") + ". Change it here and the Compass follows.</p>" : ""; }
 function lbCards(qid) { const q = LBQ[qid]; if (!q) return ""; lbCards._m = 0; const asCase = lbAsCase(q); const held = lbHeld(qid), mine = lbSt(qid).mine, ed = LB_EDIT === qid;
   const own = ed ? '<div class="nb-mine-ed"><div class="row" style="justify-content:space-between;align-items:baseline"><span class="eyebrow">Your own answer</span>' + (mine && mine.from ? '<span class="faint" style="font-size:.84rem">Adapted from ' + esc(lbKeyName(qid, mine.from)) + "</span>" : "") + "</div>" + lbWriter("q", qid, mine, { titlePh: "Your position in a few words", stancePh: "What you say to this question" }) + '<div class="row" style="--g:8px"><button class="btn small primary" data-act="lbMine" data-q="' + esc(qid) + '">Done</button>' + (mine ? '<button class="linkish nb-del" data-act="lbMineDel" data-q="' + esc(qid) + '">Delete my answer</button>' : "") + "</div></div>"
     : mine && (mine.title || mine.stance) ? '<div class="nb-mine' + (held.pos === "mine" ? " held" : "") + '"><div class="row" style="justify-content:space-between;align-items:baseline"><span class="eyebrow">' + (held.pos === "mine" ? "★ Your answer, in your own words" : "Your own answer") + '</span><button class="linkish" data-act="lbMine" data-q="' + esc(qid) + '">Edit</button></div><b class="nb-mine-t">' + esc(mine.title || "Untitled") + "</b>" + (mine.stance ? "<p>" + esc(mine.stance) + "</p>" : "") + ((mine.args || []).filter(a => a.x || a.t).length ? '<details><summary class="linkish">Your arguments (' + mine.args.filter(a => a.x || a.t).length + ")</summary>" + mine.args.filter(a => a.x || a.t).map(a => '<p class="nb-mine-arg"><b>' + esc(a.t || "Argument") + "</b><br>" + esc(a.x || "") + "</p>").join("") + "</details>" : "") + (held.pos === "mine" ? "" : '<button class="btn small" data-act="lbAtt" data-q="' + esc(qid) + '" data-p="mine" data-k="hold">Hold this view</button>') + "</div>"
@@ -12823,7 +12875,7 @@ function lbCards(qid) { const q = LBQ[qid]; if (!q) return ""; lbCards._m = 0; c
   const addCard = (bq ? '<button class="nb-ch nb-addcard" data-act="lbBlendAll" data-q="' + esc(bq) + '"><b>Not here? Choose a blend</b><span>Many people hold a mix of two of these views. See every blend and pick one; your main view is filled in to match.</span></button>' : "") + (own ? "" : !q.options.length ? '<button class="nb-ch nb-addcard" data-act="lbMine" data-q="' + esc(qid) + '"><b>＋ Write your answer</b><span>Your own question: write your answer and up to five arguments.</span></button>'
     : LB_ASK === qid ? '<div class="nb-ch nb-addcard lb-ask"><b>Before you write your own</b><span>Have you read all ' + q.options.length + ' answers? Most views fit one of them closely. Pick the closest and use ✎ Reword to put it your way: your wording stays linked to ' + (lbIsMain(q) ? "the questions, lists and checks built for that view. A card you write yourself has none of these, so you would choose your own clarifying questions." : "the checks and replies built for it.") + '</span><span class="row" style="--g:8px"><button class="btn small" data-act="lbAsk" data-q="">Back to the answers</button><button class="btn small primary" data-act="lbMine" data-q="' + esc(qid) + '">Write my own card</button></span></div>'
     : '<button class="nb-ch nb-addcard" data-act="lbAsk" data-q="' + esc(qid) + '"><b>＋ Add your own card</b><span>None of these quite right? First check every answer above; you can also ✎ Reword the closest one.</span></button>');
-  return '<div class="nb-choices">' + lbOrderOpts(q, allB ? lbBlendFits(q) : q.options.filter(o => [].concat(o.forQ || []).every(c => lbCond(c) !== "no") && !(o.notQ || []).some(n => LBQ[n.q] && lbWhenMatch(n)))).map(o0 => { const o1 = asCase ? Object.assign({}, o0, { pos: null }) : o0, rw = lbRw(qid, o1.key), o = rw ? Object.assign({}, o1, rw.lead ? { lead: rw.lead } : {}, rw.text ? { text: rw.text } : {}) : o1, P = rw && rw.name ? Object.assign({}, LBP[o.pos] || {}, { name: rw.name }) : LBP[o.pos] || {}, k = o.key, att = lbAtt(qid, k), rwAny = lbRwAny(qid, k);
+  return lbChgHTML(qid) + '<div class="nb-choices">' + lbOrderOpts(q, allB ? lbBlendFits(q) : q.options.filter(o => [].concat(o.forQ || []).every(c => lbCond(c) !== "no") && !(o.notQ || []).some(n => LBQ[n.q] && lbWhenMatch(n)))).map(o0 => { const o1 = asCase ? Object.assign({}, o0, { pos: null }) : o0, rw = lbRw(qid, o1.key), o = rw ? Object.assign({}, o1, rw.lead ? { lead: rw.lead } : {}, rw.text ? { text: rw.text } : {}) : o1, P = rw && rw.name ? Object.assign({}, LBP[o.pos] || {}, { name: rw.name }) : LBP[o.pos] || {}, k = o.key, att = lbAtt(qid, k), rwAny = lbRwAny(qid, k);
     if (LB_RWD === qid + "|" + k) return lbRwEditor(qid, o1, rwAny);
     const minorH = o.minor && !lbCards._m ? (lbCards._m = 1, '<div class="nb-minor-h">Not committed to a framework?</div>') : "";
     return minorH + '<article class="nb-ch' + (o.minor ? " nb-minor" : "") + (att ? " att-" + att : "") + '">' + (att && (att !== "hold" || held.from === "compass") ? '<span class="nb-badge">' + esc(att === "hold" ? "From your Compass" : (LB_ATT.find(x => x[0] === att) || [])[1]) + "</span>" : "") +
@@ -13300,24 +13352,30 @@ function lbObjHTML(t, fwName) { lbObjCard.n = 0; const L = lbObjList(t).map(o =>
 
 /* LOGBOOK:END */
 VIEWS.codex = arg => {
+  lbMatchSync();
   if (LB.tabs.length && arg) { const [tid, focus] = arg.split("."), t = LBT[tid] || LBT[LB_ALIAS[tid]];
     if (t) { after.push(() => { const n = $(".lb-tabs2"), on = n && $(".lb-tab2.on", n); if (n && on && n.scrollWidth > n.clientWidth) n.scrollLeft = on.offsetLeft - 16; });
       return '<div class="wrap"><div class="stack nb-wide lb-page" style="--g:12px"><span class="eyebrow">My Positions</span><h1 class="lb-h1">' + esc(t.name) + "</h1>" + lbTabBar(t.id) + lbTabHTML(t, focus) + "</div></div>"; } }
   if (arg) { const f = nbFields().find(x => x.id === arg); if (f) return nbFieldPage(f); if (LB.tabs.length) noSuch("topic", arg, "are all your positions"); }
   const nbCr = nbCracks();
+  // one list of cracks: the Compass's and the notebook's checks, each labelled with where it came from
+  const lbAll = LB.tabs.length ? [].concat(...Object.values(LBQ).filter(q => q.checks).map(q => lbChecksOf(q).filter(x => x.status === "crack" || x.status === "resolved"))) : [];
+  const lbOpen = lbAll.filter(x => x.status === "crack"), lbHard = lbOpen.filter(x => x.c.type === "contradiction" || x.c.type === "conditional");
   const tens = allTensions(); const open = tens.filter(t => !S.resolutions[t.key]); const mended = tens.length - open.length;
   const pos = visibleQs().filter(q => S.answers[q.id] && S.answers[q.id].a != null && S.answers[q.id].a !== "undecided");
   const acc = AG.cards.filter(c => S.cards[c.id] === "accept");
   const sorted = open.concat(tens.filter(t => S.resolutions[t.key]));
-  let h = '<div class="wrap"><div class="stack nb-wide lb-page" style="--g:16px"><div class="stack page-head">' + em("logbook") + '<span class="eyebrow">My Positions</span><h1 class="lb-h1">Your notebook of stances</h1><p class="lede">Where you stand in each area, in your own words. Below, the tensions between things you hold.</p></div>' + (LB.tabs.length ? lbTabBar("") + lbOverviewHTML() : nbFront()) +
-    '<h2 class="sec-h" style="margin-bottom:-8px">Cracks and inconsistencies</h2><div class="book stack" style="--g:16px"><div class="row" style="justify-content:space-between;align-items:flex-end"><div class="row" style="--g:28px;align-items:flex-end"><div><span class="eyebrow">Open conflicts</span><div class="score"' + (open.filter(t => t.type !== "tension").length ? ' style="color:var(--crack)"' : "") + ">" + open.filter(t => t.type !== "tension").length + '</div></div><div><span class="eyebrow">Tensions</span><div class="score">' + (open.filter(t => t.type === "tension").length + nbCr.length) + '</div></div><div><span class="eyebrow">Mended</span><div class="score">' + mended + '</div></div></div><div class="faint" style="text-align:right;font-size:.86rem">' + pos.length + " stances" + (answeredCount() > pos.length ? " (+" + (answeredCount() - pos.length) + " undecided)" : "") + " · " + acc.length + (acc.length === 1 ? " accepted argument" : " accepted arguments") + "<br>" + S.own.length + (S.own.length === 1 ? " argument you wrote" : " arguments you wrote") + "</div></div>" +
+  let h = '<div class="wrap"><div class="stack nb-wide lb-page" style="--g:16px"><div class="stack page-head">' + em("logbook") + '<span class="eyebrow">My Positions</span><h1 class="lb-h1">Do your views hold together?</h1><p class="lede">The deep check of where you stand. Your Compass answers are already here; refine them, defend them against the strongest objections, and find where two of your views pull against each other. Change an answer here or in the Compass and the other follows.</p></div>' + (LB.tabs.length ? lbTabBar("") + portraitMeterHTML("codex") + lbOverviewHTML() : nbFront()) +
+    '<h2 class="sec-h" style="margin-bottom:-8px">Cracks and inconsistencies</h2><div class="book stack" style="--g:16px"><div class="row" style="justify-content:space-between;align-items:flex-end"><div class="row" style="--g:28px;align-items:flex-end"><div><span class="eyebrow">Open conflicts</span><div class="score"' + (open.filter(t => t.type !== "tension").length ? ' style="color:var(--crack)"' : "") + ">" + (open.filter(t => t.type !== "tension").length + lbHard.length) + '</div></div><div><span class="eyebrow">Tensions</span><div class="score">' + (open.filter(t => t.type === "tension").length + nbCr.length + lbOpen.length - lbHard.length) + '</div></div><div><span class="eyebrow">Mended</span><div class="score">' + (mended + lbAll.length - lbOpen.length) + '</div></div></div><div class="faint" style="text-align:right;font-size:.86rem">' + pos.length + " stances" + (answeredCount() > pos.length ? " (+" + (answeredCount() - pos.length) + " undecided)" : "") + " · " + acc.length + (acc.length === 1 ? " accepted argument" : " accepted arguments") + "<br>" + S.own.length + (S.own.length === 1 ? " argument you wrote" : " arguments you wrote") + "</div></div>" +
     '<p class="faint" style="font-size:.84rem">Each crack says what kind it is. A <b>contradiction</b> means two answers cannot both be true as worded. A <b>conflict if…</b> holds only if you accept a further premise, which is named, so rejecting it is a way out. A <b>tension</b> is not an error: both can be held, but it takes an explanation. Finding cracks is progress, not failure. You mend one by giving up a view, biting the bullet with a reason, or drawing a distinction.</p></div>';
   let empty;
-  if (!pos.length && !acc.length) empty = '<div class="panel stack" style="--g:10px"><b class="read" style="font-size:1.1rem">You haven’t taken any positions yet, so there is nothing to test.</b><p class="muted">Two steps fill it: take a stand, then weigh the arguments against it.</p><div class="row"><a class="btn primary" href="#compass">1 · Take the Compass</a><a class="btn" href="#agora">2 · Try a debate</a></div></div>';
+  if (!pos.length && !acc.length) empty = '<div class="panel stack" style="--g:10px"><b class="read" style="font-size:1.1rem">Nothing to check yet: start with the Compass.</b><p class="muted">The Quick Compass takes about seven minutes. Every answer lands here, ready to be tested: the objections aimed at your views, the defences open to you, and the cracks between your answers.</p><div class="row"><a class="btn primary" href="#quick-start">Take the Quick Compass (7 min)</a><a class="btn" href="#compass">The full Compass</a></div></div>';
   else if (!acc.length) empty = '<div class="panel stack" style="--g:10px"><b class="read" style="font-size:1.1rem">No cracks yet, because you haven\'t accepted any arguments.</b><p class="muted">Your ' + pos.length + ' Compass stances are here. Now go to a debate on something you answered, accept the arguments you find convincing, and see whether they agree with you.</p><div class="row">' +
     AG.questions.filter(q => q.compass && QM[q.compass] && realA(S.answers[q.compass])).slice(0, 3).map(q => '<a class="btn small" href="#agora-' + esc(q.id) + '">' + esc(q.title) + "</a>").join("") + '<a class="btn small ghost" href="#agora">All debates</a></div></div>';
   else empty = '<div class="panel stack" style="--g:10px"><b class="read" style="font-size:1.1rem">No cracks found.</b><p class="muted">Nothing you hold clashes, as far as we can tell. Try a harder test: accept arguments on the side you disagree with if you find them convincing, or put a belief to the sparring partner.</p><div class="row"><a class="btn small" href="#agora">Back to Debates</a></div></div>';
-  h += '<section class="stack">' + (tens.length || nbCr.length ? sorted.map(crackHTML).join("") + (nbCr.length ? '<span class="eyebrow">Two ticks on one question</span>' + nbCr.map(nbCrackHTML).join("") : "") : empty) + "</section>";
+  h += '<section class="stack">' + (tens.length || nbCr.length || lbAll.length ? (sorted.length ? '<span class="eyebrow">From your Compass answers</span>' + sorted.map(crackHTML).join("") : "") +
+    (lbAll.length ? '<span class="eyebrow">From My Positions</span>' + lbOpen.concat(lbAll.filter(x => x.status === "resolved")).map(x => '<div class="lb-crack-src"><a class="linkish" href="#codex-' + esc(x.q.tab) + "." + esc(x.q.id) + '">' + esc((LBT[x.q.tab] || {}).name || "") + " · " + esc(x.q.title || x.q.text) + " →</a>" + lbCrackHTML(x, false) + "</div>").join("") : "") +
+    (nbCr.length ? '<span class="eyebrow">Two ticks on one question</span>' + nbCr.map(nbCrackHTML).join("") : "") : empty) + "</section>";
   if (CAP.sample) {
     h += '<section class="panel raised stack" style="--g:12px"><span class="eyebrow">Sparring partner</span><h3>Put one of your beliefs under pressure</h3><p class="muted">Pick a belief. An AI sparring partner gives the strongest objection it can, then judges your reply. It does not speak for any real philosopher.</p>' +
       '<select id="sparPick" style="border:1.5px solid var(--line);border-radius:10px;padding:9px;background:var(--raised)">' +
@@ -15083,10 +15141,10 @@ VIEWS.home = () => {
   const chapters = numWord(C.sections.length) + " chapter" + (C.sections.length === 1 ? "" : "s") + (secNames.length === C.sections.length && secNames.length > 1 ? ": " + secNames.slice(0, -1).join(", ") + ", and " + secNames[secNames.length - 1] : "");
   const mods = [
     { href: "#voyage", g: "I", t: "Voyage", p: "The course: sail from the first Greek questions to today’s debates, island by island, with quick checks along the way.", m: (() => { const n = Object.keys(VOY.islands).length; return n ? Object.keys(voyState().done || {}).length / n : null; })(), s: Object.keys(voyState().done || {}).length + " of " + Object.keys(VOY.islands).length + " islands charted" },
-    { href: "#compass", g: "II", t: "Compass", p: "A tour in " + chapters + ". Each chapter ends with its own result.", m: C.sections.length ? secs / C.sections.length : null, s: secs + " of " + C.sections.length + " chapters done · " + ans + " answered" },
+    { href: "#compass", g: "II", t: "Compass", p: "A quick test of your intuitions, " + numWord(C.sections.length) + " chapters long, that shows which philosophers you’re pointed towards.", m: C.sections.length ? secs / C.sections.length : null, s: secs + " of " + C.sections.length + " chapters done · " + ans + " answered" },
     { href: "#agora", g: "III", t: "Debates", p: cap(numWord(AG.questions.length)) + " great debates. Say where you stand, then weigh the arguments and keep the ones you accept.", m: AG.questions.length ? AG.questions.filter(q => agStarted(q.id)).length / AG.questions.length : null, s: acc + " argument" + (acc === 1 ? "" : "s") + " accepted" },
     { href: "#seminar", g: "IV", t: "Seminars", p: "Discussion decks for a club or class, each a 50-minute session on one big question. Alone, each one is a lively lesson.", m: null, s: (() => { const n = Object.keys(S.semDone || {}).length; return SEM_LIST.length + " decks" + (n ? " · " + n + " done" : ""); })() },
-    { href: "#codex", g: "V", t: "My Positions", p: "Your book of beliefs. It shows where your views crack against each other, and lets you mend them.", m: null, s: tens.length ? open + " open · " + (tens.length - open) + " mended" : "No cracks found yet" },
+    { href: "#codex", g: "V", t: "My Positions", p: "The deep check: refine your Compass answers, defend them against objections, and see whether they hold together.", m: null, s: tens.length ? open + " open · " + (tens.length - open) + " mended" : "No cracks found yet" },
     { href: "#firmament", g: "VI", t: "Stargazing", p: "The night sky of philosophy: constellations of traditions, guided stories, and who learned from whom.", m: null, s: skyStarTotal() + " stars · " + chartedStars().size + " charted" },
     { href: "#duel", g: "VII", t: "Duel", p: "Put any two thinkers in the ring and see where they agree and clash, question by question.", m: null, s: "Pick any pair" },
     { href: "#stoa", g: "VIII", t: "Timeline", p: "Walk 2,600 years of thought, era by era, across Greece, China, India and beyond.", m: LIB.eras.length ? Object.keys(S.eras).length / LIB.eras.length : null, s: Object.keys(S.eras).length + " of " + LIB.eras.length + " eras walked" },
@@ -15161,7 +15219,8 @@ VIEWS.home = () => {
     '<div class="hx-seals"><span class="hx-seals-t">Your seals: four acts of thinking. <b>Earn them all.</b></span><div class="hx-seal-row">' + S2.map(s => '<span class="hx-seal' + (s.on ? " on" : "") + (fresh2.includes(s.k) ? " stamping" : "") + '" title="' + esc(s.n + ": " + s.d) + '"><span class="seal-mark">' + sealSVG(s.on, s.k) + "</span><small>" + esc(s.n) + "</small></span>").join("") + "</div></div>" +
     '<div class="row hx-cta">' + (NH ? '<a class="btn primary hx-go" href="' + NH.href + '">' + esc(NH.label) + " →</a>" : '<a class="btn primary hx-go" href="' + (secs === C.sections.length ? "#compass-results" : ans ? "#compass" : "#quick-start") + '">' + (secs === C.sections.length ? "See your portrait" : ans ? "Continue the Compass" : "Take the Quick Compass") + " →</a>") +
     '<a class="btn hx-ghost" href="#voyage">' + (fresh ? "New to philosophy? Set sail" : "Open the voyage") + "</a></div></div>" + collage + "</section>" +
-    '<a class="mp-band" href="#codex"><span class="mp-ico">' + em("logbook", "emblem") + '</span><span class="mp-tx"><span class="mp-eb">My Positions · your book of beliefs</span><b>' + (ans ? "You’ve taken " + ans + " position" + (ans === 1 ? "" : "s") + ". See where they crack." : "Write down what you believe, and see where it cracks.") + "</b><small>Every answer you give lands here: your stances, the arguments you accept, the thinkers you side with, and the places your views pull against each other." + (open ? " <strong>" + open + " crack" + (open === 1 ? "" : "s") + " waiting to be mended.</strong>" : "") + '</small></span><span class="btn mp-go">Open My Positions →</span></a>' +
+    '<a class="mp-band" href="#codex"><span class="mp-ico">' + em("logbook", "emblem") + '</span><span class="mp-tx"><span class="mp-eb">My Positions · the deep check</span><b>' + (ans ? "You’ve taken " + ans + " position" + (ans === 1 ? "" : "s") + ". See where they crack." : "Write down what you believe, and see where it cracks.") + "</b><small>Every answer you give lands here: your stances, the arguments you accept, the thinkers you side with, and the places your views pull against each other." + (open ? " <strong>" + open + " crack" + (open === 1 ? "" : "s") + " waiting to be mended.</strong>" : "") + '</small></span><span class="btn mp-go">Open My Positions →</span></a>' +
+    (ans ? portraitMeterHTML("home") : "") +
     '<section class="stack" style="--g:12px"><h2 class="hx-sec">Today</h2><div class="today">' + todayRow.map(x => '<a class="tcard" href="' + x.h + '" style="--c:var(--c-' + x.c + ')"><span class="tn">' + x.n + "</span><span><b>" + esc(x.t) + "</b><small>" + esc(x.s) + "</small></span></a>").join("") + "</div></section>" +
     '<section class="hx-duo"><div class="hx-night">' + dailyCard() + '</div><div class="stack" style="--g:12px"><h2 class="hx-sec">Start here</h2><ol class="steps4">' +
     steps.map(x => '<li class="' + (x.done ? "done" : x === nextStep ? "next" : "") + '"><a href="' + x.href + '"><span class="num">' + (x.done ? "✓" : x.n) + '</span><span><b>' + x.t + "</b><small>" + x.d + '</small><em>' + esc(x.s) + "</em></span></a></li>").join("") + "</ol></div></section>" +
