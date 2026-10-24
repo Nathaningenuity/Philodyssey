@@ -2105,6 +2105,8 @@ html{background:var(--bg)}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .xc-chips a,:root:not([data-theme="light"]) .xc-chips span{color:color-mix(in srgb,var(--c) 45%,#fff);background:color-mix(in srgb,var(--c) 22%,var(--card))}}
 @media (min-width:1181px){.nav a.lib-m[href="#stoa"]{display:inline-block!important}.navlib-menu a.navlib-mid[href="#stoa"]{display:none!important}}
 .chip[aria-pressed="true"],.ag-filter .chip[aria-pressed="true"]{background:var(--sec);border-color:var(--sec);color:#fff}.ag-filter .chip[aria-pressed="true"] .faint{color:#fff}
+.qtile.has-img{padding-top:0;overflow:hidden}.qt-img{display:block;margin:0 -18px 12px;aspect-ratio:16/6.5;overflow:hidden;border-bottom:3px solid var(--sec)}.qt-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}.qtile:hover .qt-img img{transform:scale(1.04)}
+.pt-has img{object-fit:cover}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -10275,7 +10277,7 @@ window.ATLAS_EXTRAS = {
 </script>
 <script src="data/atlas-arguments.js"></script>
 <script src="data/atlas-profiles.js"></script>
-<script src="data/atlas-voyage.js"></script>
+<script src="data/atlas-voyage.js"></script><script src="data/atlas-images.js"></script>
 <script>(function () {
 "use strict";
 
@@ -12045,7 +12047,8 @@ VIEWS.agora = arg => {
     const cs = AG.cards.filter(c => c.q === q.id); const acc = cs.filter(c => S.cards[c.id] === "accept").length; const st = (S.stance || {})[q.id]; const started = agStarted(q.id);
     const stanceTxt = st === "yes" || st === "no" ? (q.sides || {})[st] || (st === "yes" ? "Yes" : "No") : st === "unsure" ? "Not sure yet" : "";
     const status = started ? '<span class="qstat">' + (stanceTxt ? "Your stance: <b>" + esc(stanceTxt) + "</b>" : "Started") + (acc ? " · " + acc + " accepted" : "") + "</span>" : "";
-    return '<a class="qtile' + (started ? " started" : "") + '" href="#agora-' + q.id + '" style="text-decoration:none"><span class="t">' + esc(q.title) + '</span>' + (q.sides ? '<span class="qsides"><span class="side yes">' + esc(q.sides.yes || "") + '</span><span class="faint">vs</span><span class="side no">' + esc(q.sides.no || "") + "</span></span>" : "") + status + '<span class="muted" style="font-size:.92rem">' + esc(teaser(q.intro)) + '</span><span class="row" style="--g:6px;margin-top:6px"><span class="chip">' + cs.length + " arguments</span>" + (!started ? '<span class="chip">Not started</span>' : "") + "</span></a>";
+    const qi = ((window.ATLAS_IMAGES || {}).ag || {})[q.id];
+    return '<a class="qtile' + (started ? " started" : "") + (qi ? " has-img" : "") + '" href="#agora-' + q.id + '" style="text-decoration:none">' + (qi ? '<span class="qt-img"><img src="' + esc(qi.src) + '" alt="" loading="lazy" style="object-position:' + esc(qi.pos || "50% 40%") + '"></span>' : "") + '<span class="t">'  + esc(q.title) + '</span>' + (q.sides ? '<span class="qsides"><span class="side yes">' + esc(q.sides.yes || "") + '</span><span class="faint">vs</span><span class="side no">' + esc(q.sides.no || "") + "</span></span>" : "") + status + '<span class="muted" style="font-size:.92rem">' + esc(teaser(q.intro)) + '</span><span class="row" style="--g:6px;margin-top:6px"><span class="chip">' + cs.length + " arguments</span>" + (!started ? '<span class="chip">Not started</span>' : "") + "</span></a>";
   };
   // group by Compass chapter; started debates first within each chapter
   const groups = {}; AG.questions.forEach(q => { if (F === "new" && agStarted(q.id)) return; if (F === "open" && !agStarted(q.id)) return; const r = qRoot(q), sec = r && QM[r] && SEC[QM[r].section] ? QM[r].section : "_more"; (groups[sec] = groups[sec] || []).push(q); });
@@ -15065,7 +15068,8 @@ VIEWS.home = () => {
       (ch.length ? '<div class="xc-chips">' + ch.map(([t, h]) => '<a href="' + h + '">' + esc(t) + "</a>").join("") + "</div>" : "") + "</div></article>"; };
   // the collage: famous pictures of the big questions, floating on the night sky
   const HERO = (IMG.hero || []).slice(0, 6);
-  const TILE = [["Ethics", "#agora", "agora"], ["Mind", "#compass", "compass"], ["Reality", "#stoa", "stoa"], ["God", "#agora", "seminar"], ["Politics", "#agora", "codex"], ["Meaning", "#voyage", "voyage"]];
+  // one label per picture, in the order of data/atlas-images.js: School of Athens, Death of Socrates, Wanderer, Flammarion, Gauguin, Snow Storm
+  const TILE = [["Debates", "#agora", "agora"], ["Ethics", "#tours-greece.6", "voyage"], ["The self", "#compass", "compass"], ["Reality", "#stoa", "stoa"], ["Meaning", "#seminar", "seminar"], ["Fate", "#lab", "lab"]];
   const collage = '<div class="hx-art"><canvas id="heroSky" aria-hidden="true"></canvas><div class="hx-tiles">' + TILE.map((t, i) => { const h = HERO[i];
     return '<a class="hx-tile" href="' + (h && h.href || t[1]) + '" style="--c:var(--c-' + t[2] + ')">' + (h ? '<img src="' + esc(h.src) + '" alt="' + esc(h.caption || "") + '" style="object-position:' + esc(h.pos || "50% 40%") + '">' : em(ICON[t[2]] || "compass")) + '<span class="hx-pill">' + esc(h && h.label || t[0]) + "</span></a>"; }).join("") + "</div></div>";
   const nIsl = nextIsland(), due = typeof window.tideDue === "function" ? window.tideDue() : 0;
