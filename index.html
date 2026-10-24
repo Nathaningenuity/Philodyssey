@@ -2142,6 +2142,14 @@ html{background:var(--bg)}
 .nb-am.on.nb-a-ser{background:color-mix(in srgb,var(--c-quiz) 18%,var(--card));color:color-mix(in srgb,var(--c-quiz) 80%,#000)}
 .nb-am.on.nb-a-rej{background:color-mix(in srgb,var(--c-agora) 14%,var(--card));color:var(--c-agora)}
 .att-k{font:inherit;font-weight:700;color:var(--ink)}
+.qk-more{background:color-mix(in srgb,var(--c-compass) 7%,var(--card));border:1.5px solid color-mix(in srgb,var(--c-compass) 35%,var(--line));border-radius:var(--r-lg);padding:22px 24px}
+.qk-more .eyebrow{color:var(--c-compass)}.qk-more h2{margin:0}.qk-more p{margin:0;color:var(--ink-2);line-height:1.55}
+.qk-bar{display:block!important;height:10px;border-radius:10px;background:var(--line-2);overflow:hidden}.qk-bar i{display:block;height:100%;background:linear-gradient(90deg,var(--c-compass),var(--go));border-radius:10px}
+.qk-next{align-self:flex-start;font-size:1rem;padding:13px 22px}
+.qk-secs{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(min(100%,190px),1fr))}
+.qk-sec{display:grid;gap:3px;padding:10px 12px;border-radius:12px;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--ink)}
+.qk-sec:hover{border-color:var(--c-compass)}.qk-sec small{color:var(--ink-3);font-size:.78rem}.qk-sec.next{border-color:var(--go);box-shadow:0 0 0 2px color-mix(in srgb,var(--go) 18%,transparent)}.qk-sec.done small{color:var(--ok)}
+.qk-mini{display:block;height:4px;border-radius:4px;background:var(--line-2);overflow:hidden}.qk-mini i{display:block;height:100%;background:var(--c-compass)}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -11153,17 +11161,30 @@ VIEWS.quick = arg => {
   after.push(() => history.replaceState(null, "", "#compass-quick"));
   return questionHTML("quick", null);
 };
+// the Quick Compass (and a half-finished Compass) is only a first reading: say so, and point to the next chapter (Ethics first, by default)
+function portraitIncompleteHTML(lead) {
+  const secs = C.sections.filter(x => !x.locked), tot = secs.reduce((a, x) => a + visibleQs(x.id).length, 0), done = secs.reduce((a, x) => a + Math.min(answeredCount(x.id), visibleQs(x.id).length), 0);
+  const pct = tot ? Math.max(1, Math.round(100 * done / tot)) : 0, nextSec = secs.find(x => !secDone(x.id)), n = 0;
+  if (!nextSec) return "";
+  return '<section class="qk-more stack" style="--g:12px"><span class="eyebrow">Your portrait is incomplete</span><h2>' + pct + "% of your full profile</h2>" +
+    '<div class="qk-bar" role="img" aria-label="' + pct + '% of the full Compass answered"><i style="width:' + pct + '%"></i></div>' +
+    '<p>' + lead + " Your full profile (your stance on every big question, a portrait across " + secs.length + " chapters, and much more reliable thinker matches) opens as you finish the chapters. Your answers so far carry over.</p>" +
+    (nextSec ? '<a class="btn primary qk-next" href="#compass-' + esc(nextSec.id) + '">Next stop: ' + esc(nextSec.name) + " (" + Math.min(answeredCount(nextSec.id), visibleQs(nextSec.id).length) + " of " + visibleQs(nextSec.id).length + ") →</a>" : '<a class="btn primary qk-next" href="#compass-results">See your full portrait →</a>') +
+    '<p class="faint" style="margin:0">Or choose where to go next:</p><div class="qk-secs">' + secs.map(x => { const a = Math.min(answeredCount(x.id), visibleQs(x.id).length), t = visibleQs(x.id).length;
+      return '<a class="qk-sec' + (secDone(x.id) ? " done" : "") + (x === nextSec ? " next" : "") + '" href="#compass-' + esc(x.id) + '"><b>' + esc(x.name) + "</b><small>" + (secDone(x.id) ? "✓ Done" : a + " of " + t + " answered") + '</small><span class="qk-mini"><i style="width:' + (t ? Math.round(100 * a / t) : 0) + '%"></i></span></a>'; }).join("") + "</div></section>";
+}
 function quickResult() {
   const QQ = [...new Set(quickQs().flatMap(q => q.options.flatMap(o => Object.keys(o.set))))], n = QUICK.filter(id => realA(S.answers[id])).length;
   if (n < 4) return '<div class="wrap"><div class="col panel stack"><h2>A few more answers first</h2><p class="muted">Bearings need at least four real answers (not “Not sure”). You have ' + n + '.</p><a class="btn primary" href="#compass-quick" style="align-self:flex-start">Back to the questions</a></div></div>';
   // the same matcher as the whole portrait, the thinker pages and the share card, so a thinker's "% alike" is one figure everywhere
   const M = matches(), top = M.slice(0, 3), foe = M.slice().reverse().find(m => m.n >= 4 && !top.includes(m));
   const clash = compassTensions().filter(t => !S.resolutions[t.key] && t.qs.every(q => QQ.includes(q)) && (!t.type || t.type !== "tension"));
-  return '<div class="wrap"><div class="col stack" style="--g:24px"><div class="stack" style="--g:8px"><span class="eyebrow">Quick Compass · your first bearings</span><h1>' + (top[0] ? "Closest to you: " + esc(top[0].t.name) : "Your first bearings") + '</h1><p class="muted read">A rough first reading from ' + n + " answers. The full Compass asks follow-ups, so these matches will sharpen (and may change) as you go deeper.</p></div>" +
+  const more = portraitIncompleteHTML("The Quick Compass is a first reading: " + n + " short answers."), nextSec = C.sections.filter(x => !x.locked).find(x => !secDone(x.id));
+  return '<div class="wrap"><div class="col stack" style="--g:24px"><div class="stack" style="--g:8px"><span class="eyebrow">Quick Compass · your first bearings</span><h1>' + (top[0] ? "Closest to you: " + esc(top[0].t.name) : "Your first bearings") + '</h1><p class="muted read">A rough first reading from ' + n + " answers. The full Compass asks follow-ups, so these matches will sharpen (and may change) as you go deeper.</p></div>" + more +
     (top.length ? '<section class="stack" style="--g:8px"><h2>Your closest thinkers</h2>' + top.map((m, i) => matchRow(m, false, i + 1)).join("") + "</section>" : "") +
     (foe ? '<section class="stack" style="--g:8px"><h2>A sharp opponent</h2><p class="faint" style="margin-top:-4px">Someone worth arguing with: they disagree with you on most of these questions.</p>' + matchRow(foe, "Opponent") + "</section>" : "") +
     (clash.length ? '<section class="stack" style="--g:8px"><h2>Already pulling against each other</h2>' + clash.map(crackHTML).join("") + "</section>" : "") +
-    '<section class="stack" style="--g:10px"><h2>Go deeper</h2><div class="row" style="--g:8px">' + C.sections.filter(s => !s.locked).map(s => '<a class="btn small" href="#compass-' + esc(s.id) + '">' + esc(s.name) + "</a>").join("") + '</div><div class="row" style="--g:8px"><a class="btn primary" href="#codex">See it in My Positions</a><a class="btn ghost" href="#firmament-you">Find your star</a>' + (top[0] ? '<a class="btn ghost" href="#thinker-' + esc(top[0].t.id) + '">Meet ' + esc(shortName(top[0].t)) + "</a>" : "") + "</div></section></div></div>"; }
+    '<section class="stack" style="--g:10px"><h2>Keep exploring</h2><div class="row" style="--g:8px">' + (nextSec ? '<a class="btn primary" href="#compass-' + esc(nextSec.id) + '">Continue: ' + esc(nextSec.name) + " →</a>" : "") + '<a class="btn" href="#codex">See it in My Positions</a><a class="btn ghost" href="#firmament-you">Find your star</a>' + (top[0] ? '<a class="btn ghost" href="#thinker-' + esc(top[0].t.id) + '">Meet ' + esc(shortName(top[0].t)) + "</a>" : "") + "</div></section></div></div>"; }
 
 /* =================================================================== HOME */
 // The home page lives in the HOME (live) block near the end; these two helpers are shared with it.
@@ -11921,6 +11942,7 @@ function resultsHTML() {
   const best = top[0];
   const nDone = C.sections.filter(s => secDone(s.id)).length;
   let h = '<div class="wrap stack" style="--g:34px">';
+  h += portraitIncompleteHTML("These matches come from " + ans + " answers so far.");
   h += '<section class="rhero"><div class="rhero-text">' +
     '<span class="eyebrow" style="color:#D9B76A">Your whole portrait · ' + nDone + " of " + C.sections.length + " chapters done</span>" +
     (best ? '<span class="rhero-lead">Your strongest match</span><h1>' + esc(best.t.name) + '</h1><p class="rhero-dates">' + esc(life(best.t)) + (best.t.tradition ? " · " + esc(best.t.tradition) : "") + "</p>" +
