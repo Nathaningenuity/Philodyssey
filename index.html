@@ -12781,7 +12781,7 @@ function lbHeld(qid) { const e = lbSt(qid), lq = LBQ[qid];
     if (e.holdC === undefined) e.holdC = sig; // a hold from before this rule: take today's Compass answer as its baseline
     else if (sig && sig !== e.holdC) { const k = lbCompassKey(q); if (k && k !== e.hold) { const L = LBS(); if (L.q[qid]) { L.q[qid].hold = k; L.q[qid].holdC = sig; L.q[qid].chg = { by: "compass", t: Date.now() }; } return { pos: k, from: "compass" }; } e.holdC = sig; } }
   if (e.hold !== undefined) return { pos: e.hold, from: "you" };
-  const q = LBQ[qid]; if (q && q.compass && QM[q.compass.q]) { const a = S.answers[q.compass.q]; if (realA(a) && !Array.isArray(a.a)) { const p = Object.keys(q.compass.map || {}).find(k => q.compass.map[k] === a.a); if (p) return { pos: p, from: "compass" }; } }
+  const q = LBQ[qid]; if (q) for (const L of [].concat(q.compass ? [q.compass] : [], q.compassAlso || [])) { if (!QM[L.q]) continue; const a = S.answers[L.q]; if (realA(a) && !Array.isArray(a.a)) { const p = Object.keys(L.map || {}).find(k => L.map[k] === a.a); if (p) return { pos: p, from: "compass" }; } }
   return { pos: null }; }
 function lbAtt(qid, pos) { if (lbHeld(qid).pos === pos) return "hold"; const e = lbSt(qid); return (e.sym || []).includes(pos) ? "sym" : (e.ser || []).includes(pos) ? "ser" : (e.rej || []).includes(pos) ? "rej" : null; }
 function lbOpt(qid, key) { const q = LBQ[qid]; return q && q.options.find(o => o.key === key); }
@@ -12794,7 +12794,7 @@ function lbAnswered(qid) { return !!lbHeld(qid).pos; }
 // stances you take only in My Positions also sharpen your thinker matches: who holds the view you hold, and who holds its rivals
 // (kept in S.lbM so the matcher works without loading the notebook)
 function lbMatchSync() { if (!lbInit.done) return; const M = {};
-  Object.values(LBQ).forEach(q => { if (q.compass) return; const h = lbHeld(q.id).pos; if (!h || h === "mine") return;
+  Object.values(LBQ).forEach(q => { if (q.compass || (q.compassAlso || []).length) return; const h = lbHeld(q.id).pos; if (!h || h === "mine") return;
     const o = q.options.find(x => x.key === h), P = o && LBP[o.pos]; if (!P || !(P.holders || []).length) return;
     const a = P.holders.filter(id => TH[id]), d = new Set(); q.options.forEach(x => { if (x.key !== h && x.pos !== o.pos && LBP[x.pos]) (LBP[x.pos].holders || []).forEach(id => { if (TH[id] && !a.includes(id)) d.add(id); }); });
     if (a.length || d.size) M[q.id] = { a, d: [...d] }; });
@@ -12804,9 +12804,13 @@ function lbMatchSync() { if (!lbInit.done) return; const M = {};
     if ((q.challenges || []).some(c => c.target && c.target.length && lbAny(c.target) && !lbAny(c.exclude))) { aimed++; if ((lbSt(q.id).why || []).length || (lbSt(q.id).mine && lbSt(q.id).mine.why)) def++; }
     if (q.checks) lbChecksOf(q).forEach(x => { if (x.status === "crack") crack++; else if (x.status === "resolved") mend++; }); });
   S.lbD = { held, apps, aimed, def, crack, mend }; }
-function lbSync(qid) { lbMatchSync(); const q = LBQ[qid]; if (!q || !q.compass || !QM[q.compass.q]) return; const h = lbSt(qid).hold; let v = h && q.compass.map ? q.compass.map[h] : null;
-  if (h === "mine") { const m = lbSt(qid).mine || {}; v = m.from && q.compass.map ? q.compass.map[m.from] : null; }
-  if (v && shown(QM[q.compass.q])) { const cur = S.answers[q.compass.q]; S.answers[q.compass.q] = Object.assign({}, cur && cur.a === v ? cur : {}, { a: v, conf: cur && cur.conf != null ? cur.conf : 1 }); prune(); }
+// a notebook answer writes every Compass question it is linked to: parents first (compassAlso), then its own (compass),
+// so a follow-up the notebook fills is actually shown in the Compass
+function lbLinks(q) { return [].concat(q.compassAlso || [], q.compass ? [q.compass] : []).filter(L => L && QM[L.q]); }
+function lbSync(qid) { lbMatchSync(); const q = LBQ[qid]; if (!q) return; const links = lbLinks(q); if (!links.length) return;
+  const h = lbSt(qid).hold, key = h === "mine" ? (lbSt(qid).mine || {}).from : h;
+  links.forEach(L => { const v = key && L.map ? L.map[key] : null;
+    if (v && shown(QM[L.q])) { const cur = S.answers[L.q]; S.answers[L.q] = Object.assign({}, cur && cur.a === v ? cur : {}, { a: v, conf: cur && cur.conf != null ? cur.conf : 1 }); prune(); } });
   const L = LBS(); if (L.q[qid]) { L.q[qid].holdC = lbAnsSig(q); delete L.q[qid].chg; } }
 ACT.lbAtt = el => { const qid = el.dataset.q, pos = el.dataset.p, k = el.dataset.k, cur = lbAtt(qid, pos), before = lbHeldLabel(qid), e = lbEnsure(qid);
   ["sym", "ser", "rej"].forEach(x => { e[x] = (e[x] || []).filter(y => y !== pos); }); if (e.hold === pos) e.hold = null;
