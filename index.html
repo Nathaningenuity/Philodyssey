@@ -2128,6 +2128,8 @@ html{background:var(--bg)}
 .vy-tour:hover{transform:translateY(-3px)}.vy-tour b{font-family:var(--font-display);font-weight:600;font-size:1.1rem;line-height:1.25}.vy-tour small{color:var(--ink-2);font-size:.85rem;line-height:1.4}
 .vy-tour .xc-meter{--c:var(--c-voyage);margin-top:auto}.vy-tour em{font-style:normal;font-weight:600;font-size:.84rem;color:var(--c-voyage)}
 .nav a[href="#firmament"]{--c:var(--c-firmament)}
+.bust,.ini{position:relative;overflow:hidden}.bust img.face,.ini img.face{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.era header.has-img{background:linear-gradient(180deg,rgba(14,20,44,.35),rgba(14,20,44,.88)),var(--era-img) center/cover no-repeat;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -10445,6 +10447,8 @@ function initials0(n) { const w = String(n).replace(/\(.*?\)/g, "").replace(/\s+
 // monograms are made unique across every name on the site, so Epicurus and Epictetus (or Anaximander and Anaximenes)
 // never share a coin: a clash tries the first letter with each later letter of the name in turn
 let INI = null;
+// a face from the image library, laid over the initials (which stay underneath in case the file is missing)
+function faceImg(id) { const f = id && window.ATLAS_IMAGES && (window.ATLAS_IMAGES.th || {})[id]; return f ? '<img class="face" src="' + esc(f.src) + '" alt="" loading="lazy" style="object-position:' + esc(f.pos || "50% 30%") + '" onerror="this.remove()">' : ""; }
 function initials(n) {
   n = String(n);
   if (!INI) {
@@ -11369,7 +11373,7 @@ function feedbackHTML(q, A) {
   // 3. who stands where
   if (!isUnd) {
     const sd = sidesFor(q.id, A.a);
-    const chips = list => list.map(t => '<button class="who" data-act="thinker" data-id="' + esc(t.id) + '"><span class="ini">' + esc(initials(t.name)) + "</span>" + esc(shortName(t)) + "</button>").join("");
+    const chips = list => list.map(t => '<button class="who" data-act="thinker" data-id="' + esc(t.id) + '"><span class="ini">' + esc(initials(t.name)) + faceImg(t.id) + "</span>" + esc(shortName(t)) + "</button>").join("");
     h += '<div class="fb-sides">' +
       (sd.withYou.length ? '<div><span class="cq-mono">In good company' + (sd.nWith > sd.withYou.length ? " · " + sd.withYou.length + " of " + sd.nWith : "") + '</span><div class="whos">' + chips(sd.withYou) + "</div></div>" : '<div><span class="cq-mono">In good company</span><p class="faint" style="font-size:.88rem">No thinker in Philodyssey is on record with exactly this answer yet.</p></div>') +
       (sd.against.length ? '<div><span class="cq-mono">Against you</span><div class="whos against">' + chips(sd.against) + "</div></div>" : "") + "</div>";
@@ -11380,7 +11384,7 @@ function feedbackHTML(q, A) {
   return h + "</section>";
 }
 function personChips(list) {
-  return arr(list).map(x => TH[x] ? '<button class="who" data-act="thinker" data-id="' + esc(x) + '"><span class="ini">' + esc(initials(TH[x].name)) + "</span>" + esc(shortName(TH[x])) + "</button>" : '<span class="who"><span class="ini">' + esc(initials(x)) + "</span>" + esc(x) + "</span>").join("");
+  return arr(list).map(x => TH[x] ? '<button class="who" data-act="thinker" data-id="' + esc(x) + '"><span class="ini">' + esc(initials(TH[x].name)) + faceImg(x) + "</span>" + esc(shortName(TH[x])) + "</button>" : '<span class="who"><span class="ini">' + esc(initials(x)) + "</span>" + esc(x) + "</span>").join("");
 }
 function argCardHTML(qid, oid, c, torn) {
   const o = optOf(qid, oid) || {};
@@ -11667,7 +11671,7 @@ function matchRow(m, named, rank) {
     if (m.differ.length) bits.push("Differ: " + esc(m.differ.map(q => SHORT[q]).join(", ")));
     return bits.join(" · ") || "No shared topics yet"; })() + "</span></span></button>";
 }
-function whoChips(ids) { return ids.filter(id => TH[id]).map(id => '<button class="who" data-act="thinker" data-id="' + esc(id) + '"><span class="ini">' + esc(initials(TH[id].name)) + "</span>" + esc(shortName(TH[id])) + "</button>").join(""); }
+function whoChips(ids) { return ids.filter(id => TH[id]).map(id => '<button class="who" data-act="thinker" data-id="' + esc(id) + '"><span class="ini">' + esc(initials(TH[id].name)) + faceImg(id) + "</span>" + esc(shortName(TH[id])) + "</button>").join(""); }
 
 /* --------------------------------------------- the ethics triangle */
 // Where an answer set sits between Results, Duties and Character.
@@ -13999,7 +14003,7 @@ const byBorn = ids => ids.filter(id => TH[id]).sort((a, b) => (TH[a].born == nul
 VIEWS.stoa = arg => {
   const school = arg ? LIB.schools.find(s => s.id === arg) : null;
   after.push(markEras);
-  const statue = (id, tag) => { const t = TH[id]; if (!t) return ""; const tr = tradOf(t); return '<button class="statue" data-act="thinker" data-id="' + esc(id) + '"><span class="bust" style="--tc:' + tr.color + '">' + esc(initials(t.name)) + '</span><span><b>' + esc(t.name) + "</b><small>" + esc(life(t) || "contemporary") + "</small>" + (tag && t.tagline ? '<small class="tag">' + esc(t.tagline) + "</small>" : "") + "</span></button>"; };
+  const statue = (id, tag) => { const t = TH[id]; if (!t) return ""; const tr = tradOf(t); return '<button class="statue" data-act="thinker" data-id="' + esc(id) + '"><span class="bust" style="--tc:' + tr.color + '">' + esc(initials(t.name)) + faceImg(id) + '</span><span><b>' + esc(t.name) + "</b><small>" + esc(life(t) || "contemporary") + "</small>" + (tag && t.tagline ? '<small class="tag">' + esc(t.tagline) + "</small>" : "") + "</span></button>"; };
   const filled = LIB.schools.filter(s => arr(s.members).some(id => TH[id]));
   let h = '<div class="wrap stack" style="--g:20px">' + pageHead("columns", "Timeline", "A walk through 2,600 years", "Each column is an era. Read what people were asking, then step up to the statues. Scroll sideways to walk forward in time. Eras overlap where traditions ran side by side.") +
     '<div class="row" style="justify-content:space-between"><div class="row"><label class="faint" for="schoolPick" style="font-size:.86rem">Walk one school:</label><select id="schoolPick" style="border:1.5px solid var(--line);border-radius:10px;padding:8px;background:var(--raised)"><option value="">Every era (no filter)</option>' + filled.map(s => '<option value="' + esc(s.id) + '"' + (school && school.id === s.id ? " selected" : "") + ">" + esc(s.name) + "</option>").join("") + "</select></div>" +
@@ -14012,7 +14016,8 @@ VIEWS.stoa = arg => {
   h += '<div class="stoa" id="stoaRow">' + LIB.eras.map(e => {
     // columns stay a similar height: at most eight statues stand up front, the rest wait behind "more"
     const feat = byBorn(arr(e.thinkers)), front = feat.slice(0, 8), more = byBorn(feat.slice(8).concat(ERA_MORE[e.id] || []));
-    return '<section class="era' + (S.eras[e.id] ? " walked" : "") + '" data-era="' + esc(e.id) + '"><header><div class="yrs">' + esc(yr(e.start)) + " – " + esc(e.end >= 2000 ? "today" : yr(e.end) + (e.start < 0 && e.end > 0 ? " CE" : "")) + (S.eras[e.id] ? ' <span class="walkmark">· walked</span>' : "") + '</div><h3>' + esc(e.name) + '</h3></header><div class="body"><p class="read" style="font-style:italic">' + esc(e.bigQuestion || "") + '</p><p class="muted" style="font-size:.93rem">' + esc(e.intro || "") + '</p><div class="stack" style="--g:8px">' + front.map(id => statue(id, true)).join("") + "</div>" +
+    const ei = ((window.ATLAS_IMAGES || {}).era || {})[e.id];
+    return '<section class="era' + (S.eras[e.id] ? " walked" : "") + '" data-era="' + esc(e.id) + '"><header' + (ei ? ' class="has-img" style="--era-img:url(\'' + esc(ei.src) + '\')"' : "") + '><div class="yrs">' + esc(yr(e.start)) + " – " + esc(e.end >= 2000 ? "today" : yr(e.end) + (e.start < 0 && e.end > 0 ? " CE" : "")) + (S.eras[e.id] ? ' <span class="walkmark">· walked</span>' : "") + '</div><h3>' + esc(e.name) + '</h3></header><div class="body"><p class="read" style="font-style:italic">' + esc(e.bigQuestion || "") + '</p><p class="muted" style="font-size:.93rem">' + esc(e.intro || "") + '</p><div class="stack" style="--g:8px">' + front.map(id => statue(id, true)).join("") + "</div>" +
       (more.length ? '<details class="more"><summary class="linkish">' + more.length + " more thinker" + (more.length === 1 ? "" : "s") + ' of this era</summary><div class="stack" style="--g:8px;margin-top:10px">' + more.map(id => statue(id, false)).join("") + "</div></details>" : "") + "</div></section>";
   }).join("") + "</div>";
   return h + "</div>";
@@ -14902,7 +14907,7 @@ VIEWS.duel = arg => {
     return html;
   });
   const rows = rowsArr.join("") + (one.length ? '<details class="stack"><summary class="linkish" style="cursor:pointer">Show ' + one.length + " more where only one of them has a recorded view</summary><div class=\"stack\" style=\"--g:10px;margin-top:10px\">" + one.join("") + "</div></details>" : "");
-  const head = t => { const tr = tradOf(t); return '<button class="statue" data-act="thinker" data-id="' + esc(t.id) + '" style="width:100%"><span class="bust" style="--tc:' + tr.color + '">' + esc(initials(t.name)) + '</span><span><b>' + esc(t.name) + "</b><small>" + esc(life(t)) + "</small></span></button>"; };
+  const head = t => { const tr = tradOf(t); return '<button class="statue" data-act="thinker" data-id="' + esc(t.id) + '" style="width:100%"><span class="bust" style="--tc:' + tr.color + '">' + esc(initials(t.name)) + faceImg(t.id) + '</span><span><b>' + esc(t.name) + "</b><small>" + esc(life(t)) + "</small></span></button>"; };
   return '<div class="wrap"><div class="col stack" style="--g:18px"><div class="stack" style="--g:8px"><span class="eyebrow">Duel</span><h1>Put two thinkers in the ring</h1><p class="muted">Pick any two philosophers and see exactly where they agree and where they would clash, question by question.</p></div>' +
     '<div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:10px">' + sel("duelA", A) + sel("duelB", B) + head(A) + head(B) + "</div>" +
     '<div class="ring" style="padding:20px"><span class="eyebrow" style="color:#E8B04A">Verdict</span><h2 style="margin-top:6px">' + (both ? same + " agree, " + close + " close, " + (both - same - close) + " clash" : "They never meet on the same question") + '</h2><p style="margin-top:6px">' + (both ? "On the " + both + " questions where both have a clear view." : "Try another pairing; few positions overlap.") + "</p></div>" + rows + "</div></div>";
