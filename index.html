@@ -6011,7 +6011,7 @@ window.ATLAS_POSITIONS_TREE = [
   {"id":"hertzmann","q":"a9","a":"tool","c":"likely","src":"'Can Computers Create Art?', Arts 7(2) (2018): art is made by social agents, so computers cannot be credited as authors; like the camera, they are tools artists use"},
   {"id":"hick","q":"k9d","a":"experience","c":"clear","src":"John Hick, Faith and Knowledge (1957), chs. 5-6 (faith as experiencing-as); An Interpretation of Religion (1989), ch. 13 (it is rational to trust one's religious experience)"},
   {"id":"hick","q":"k9c","a":["soulmaking","redeem"],"c":"clear","src":"John Hick, Evil and the God of Love (1966), Part IV, chs. 13-17 (soul-making; ch. 17, the coming Kingdom will make all suffering worthwhile)"},
-  {"id":"hick","q":"k9l","a":"perceive","c":"likely","src":"John Hick, An Interpretation of Religion (1989), ch. 13 'The Rationality of Religious Belief' (the principle of critical trust applies to religious experience)"},
+  {"id":"hick","q":"k9l","a":"shaped","c":"clear","src":"John Hick, An Interpretation of Religion (1989): religious experience is a real response to the Real, shaped by each tradition's concepts into its different personae (God, Allah, Vishnu) and impersonae (Brahman, the Dao, nirvana); he also applies the principle of critical trust to it"},
   {"id":"hick","q":"k9h","a":"experience","c":"likely","src":"John Hick, An Interpretation of Religion (1989), chs. 5 and 13 (the traditional proofs fail; religious experience is the ground of belief)"},
   {"id":"hick","q":"k9j","a":"plural","c":"clear","src":"John Hick, An Interpretation of Religion (1989), chs. 14-16 (the great traditions are different human responses to the one Real)"},
   {"id":"hick","q":"l1a","a":"god","c":"likely","src":"Evil and the God of Love (1966), Part IV (life as 'soul-making' toward God)"},
@@ -6460,6 +6460,12 @@ window.ATLAS_POSITIONS_TREE = [
   {"id":"pinker","q":"m1","a":"yes","c":"likely","src":"Steven Pinker, How the Mind Works (1997), ch. 2 (the computational theory of mind)"},
   {"id":"pinker","q":"m1a","a":"mystery","c":"likely","src":"Steven Pinker, How the Mind Works (1997), ch. 8 'The Meaning of Life': sympathetic to McGinn's view that our minds may not be built to solve the problem of consciousness"},
   {"id":"pinnock","q":"k9","a":"yes","c":"clear","src":"Clark Pinnock, Most Moved Mover (2001)"},
+  {"id":"greene","q":"e2a","a":"gut","c":"clear","src":"Joshua Greene, 'The Secret Joke of Kant's Soul' (2008) and Moral Tribes (2013): the different verdicts on the switch and footbridge cases come from an emotional alarm at personal force, which is not a real moral difference"},
+  {"id":"protagoras","q":"k13","a":"relative","c":"likely","src":"Plato, Theaetetus 152a and 166a-172b: Protagoras's 'man is the measure of all things', read as saying that what seems true to each person is true for that person"},
+  {"id":"kropotkin","q":"s3","a":"noone","c":"likely","src":"Peter Kropotkin, 'Representative Government', in Words of a Rebel (1885): elected parliaments are still government of the many by a few, and anarchists reject government as such"},
+  {"id":"proudhon","q":"s3","a":"noone","c":"likely","src":"Pierre-Joseph Proudhon, General Idea of the Revolution in the Nineteenth Century (1851), study on the principle of authority: democracy and direct legislation are still government, and the principle of authority itself must go"},
+  {"id":"aquinas","q":"s8","a":"yes","c":"likely","src":"Thomas Aquinas, Summa Theologiae II-II q. 66 a. 7: what some have in superabundance is owed by natural law to the poor, so lawfully acquired wealth can still leave an unjust situation"},
+  {"id":"aquinas","q":"s8a","a":"steward","c":"clear","src":"Thomas Aquinas, Summa Theologiae II-II q. 66 a. 2 and a. 7: private possession is lawful, but external things are to be held as common in use, and in urgent need all things are common"},
   {"id":"pinnock","q":"k9a","a":"open","c":"clear","src":"Clark Pinnock et al., The Openness of God (1994), ch. 3; Most Moved Mover: A Theology of God's Openness (2001)"},
   {"id":"plantinga","q":"k9d","a":"basic","c":"clear","src":"Alvin Plantinga, 'Is Belief in God Properly Basic?' (1981, Noûs); Warranted Christian Belief (2000)"},
   {"id":"plantinga","q":"k9k","a":"noforce","c":"clear","src":"Alvin Plantinga, God, Freedom, and Evil (1974), Part I; Warranted Christian Belief (2000), ch. 14 (evil is not a defeater for Christian belief)"},
@@ -11011,8 +11017,8 @@ function matches(roots, minW) {
 // question and its follow-up at once (e.g. "Duties from reason" = e4 duties + e4e deontology).
 const QQ_DEF = [
   ["qq_right", "Ethics", "e4", "What mainly makes an action right or wrong?", [
-    ["Results: the right act is the one that does the most good and the least harm overall", { e4: "results" }],
-    ["Duties and rights: some acts are wrong in themselves, even when they would turn out better", { e4: "duties" }],
+    ["Results: the right act is the one that does the most good and the least harm overall (utilitarianism is the best-known version)", { e4: "results" }],
+    ["Duties and rights: some acts are wrong in themselves, even when they would turn out better (these duties may come from reason, from God or from rules we could all agree to)", { e4: "duties" }],
     ["Character: the right act is what a kind, honest, brave and wise person would do", { e4: "virtue" }],
     ["Care: what matters most is looking after the real people in your life", { e4: "care" }],
     ["A mix: results, duties and character all count, weighed case by case", { e4: "plural" }],
@@ -11026,7 +11032,7 @@ const QQ_DEF = [
   ["qq_real", "Ethics", "e5", "Is “torturing someone for fun is wrong” true in the same way that “water boils at 100°C” is true?", [
     ["Yes: it is an objective fact, true whatever anyone thinks or feels", { e5: "yes" }],
     ["In a way: it is true, but because careful reasoning about how to treat each other leads there, not because it is a fact “out there”", { e5: "construct" }],
-    ["No: it isn’t a fact like that; saying it does something else, such as expressing our feelings or our shared rules", { e5: "no" }]]],
+    ["No: it isn’t a fact like that; it may be true only for some people or cultures, simply false, or not a statement at all but an expression of feeling", { e5: "no" }]]],
   ["qq_animal", "Ethics", "e3", "A pig and a human feel exactly the same amount of pain. Does the pig’s pain matter as much?", [
     ["Yes, equally: pain is pain, whoever feels it", { e3: "equal" }],
     ["It matters, but less than the same pain in a human", { e3: "less" }],
@@ -11051,13 +11057,14 @@ const QQ_DEF = [
     ["Yes: same memories and personality, so it’s me; I just travelled very fast", { m4: "you" }],
     ["No: I died, and a twin was made who only thinks they are me", { m4: "someone" }],
     ["There’s no right answer: we know exactly what happened, and “is it me?” is only about how we use the word “me”", { m4: "nofact" }]]],
-  ["qq_selfreal", "Mind and self", "m2", "Is there a real “you”, and if so, what is it?", [
+  ["qq_selfreal", "Mind and self", "m2", "Is there a real “you”, and if so, what is it? (A self that changes over time still counts as real.)", [
     ["Yes: a soul-like core inside me that thinks, feels and chooses", { m2: "yes", m2a: "simple" }],
     ["Yes: this living human being, body and brain together", { m2: "yes", m2a: "person" }],
     ["Yes: a self made by the story of my life, linking my past, choices and plans", { m2: "yes", m2a: "story" }],
+    ["Yes: a changing process, not a fixed thing, held together by memories, character and plans carried forward", { m2: "yes", m2a: "process" }],
     ["Yes: pure awareness, the silent witness in which thoughts and feelings appear", { m2: "yes", m2a: "witness" }],
-    ["No single self: just a bundle of experiences, loosely held together", { m2: "no", m2b: "bundle" }],
-    ["No self, as the Buddha taught: “I” is a handy name for a changing stream of body, feelings and thoughts", { m2: "no", m2b: "conv" }],
+    ["No single self: just a bundle of experiences, loosely held together, with no one extra who has them", { m2: "no", m2b: "bundle" }],
+    ["No self, as the Buddha taught: “I” is a handy name for a changing stream of body, feelings and thoughts, with no owner inside it", { m2: "no", m2b: "conv" }],
     ["No self at all: the “me” is an illusion, a picture the brain paints of someone inside", { m2: "no", m2b: "noself" }]]],
   ["qq_know", "Knowledge and reality", "k4", "Do you know that you’re not dreaming right now?", [
     ["Yes: I know it, even if I can’t prove it to a sceptic", { k4: "yes" }],
@@ -11075,13 +11082,17 @@ const QQ_DEF = [
     ["All times are real, but a special “now” moves along them like a spotlight", { k7: "spotlight" }],
     ["The past and present are real, but the future doesn’t exist yet", { k7: "growing" }],
     ["Only the present is real: the past is gone and the future isn’t here yet", { k7: "present" }],
-    ["None of it: time itself is an illusion", { k7: "unreal" }]]],
+    ["None of it: time itself is an illusion", { k7: "unreal" }],
+    ["There’s no real disagreement: once we pin down what “real” means, everyone agrees on the facts", { k7: "verbal" }]]],
   ["qq_cause", "Knowledge and reality", "k8", "When one thing causes another, does something really make it happen?", [
     ["Yes: things have real powers to produce effects, like a magnet’s pull", { k8: "yes", k8a: "powers" }],
     ["Yes: the laws of nature force the effect to happen", { k8: "yes", k8a: "necessit" }],
+    ["Yes: energy or motion is passed from cause to effect, as one billiard ball passes its motion to the next", { k8: "yes", k8a: "process" }],
+    ["Yes, but only God: God is the one real cause, and makes each effect happen whenever its “cause” occurs", { k8: "yes", k8a: "god" }],
     ["No: “cause” just means that things of one kind always follow things of another kind", { k8: "no", k8b: "regular" }],
     ["No: “cause” just means that without the cause, the effect wouldn’t have happened", { k8: "no", k8b: "counter" }],
-    ["No: our minds add the “making happen”, out of habit", { k8: "no", k8b: "project" }]]],
+    ["No: our minds add the “making happen”, out of habit", { k8: "no", k8b: "project" }],
+    ["No: there are no causes at all; physics just describes how things change, and “cause” is a leftover from everyday talk", { k8: "no", k8b: "none" }]]],
   ["qq_god", "God and religion", "k9", "Does God exist?", [
     ["Yes: there is a God, or gods", { k9: "yes" }],
     ["Not a god, but something sacred and ultimate that isn’t a person who thinks and chooses", { k9: "ultimate" }],
@@ -11089,10 +11100,11 @@ const QQ_DEF = [
     ["I can’t tell: we can’t know, or the reasons on each side seem equal", { k9: "agnostic" }],
     ["The question has no clear meaning: nothing could ever count for or against it", { k9: "nomeaning" }]]],
   ["qq_demo", "Society and politics", "s3", "What, if anything, makes democracy the right way to govern?", [
-    ["Equal say: everyone deserves an equal voice in the laws we all live under, whatever the results", { s3: "intrinsic" }],
+    ["Equal say: everyone deserves an equal voice in the laws we all live under, even if experts would sometimes decide better", { s3: "intrinsic" }],
     ["Protection: voters can remove bad rulers without bloodshed", { s3: "protect" }],
     ["Better decisions: large groups of ordinary people tend to decide well", { s3: "epistemic" }],
-    ["Nothing special: other systems, such as rule by experts, could govern as well or better", { s3: "no" }]]],
+    ["Nothing special: other systems, such as rule by experts, could govern as well or better", { s3: "no" }],
+    ["Nothing: no one has the right to rule, and democracy is still a majority ruling everyone else", { s3: "noone" }]]],
   ["qq_just", "Society and politics", "s8", "Suppose everyone got rich or poor honestly, by working, trading, saving and gifts, with no theft or cheating. Can the result still be unfair?", [
     ["Yes: how things end up matters too, not just how we got there", { s8: "yes" }],
     ["No: if every step was fair, the result is fair, however unequal", { s8: "no" }],
@@ -11115,7 +11127,7 @@ const QQ_DEF = [
     ["In the beholder: calling something beautiful is about how people respond to it", { a1: "us" }],
     ["Neither: “beautiful!” doesn’t describe anything; it just expresses delight, like “wow!”", { a1: "neither" }]]],
   ["qq_life", "Life and death", "l1", "Can a human life have meaning, and if so, where does it come from?", [
-    ["Yes, from God: a purpose God gives us, or our relationship with God", { l1: "yes", l1a: "god" }],
+    ["Yes, from God or something sacred: a purpose God gives us, or our relationship with God or another sacred reality", { l1: "yes", l1a: "god" }],
     ["Yes, from doing what’s truly worthwhile, like loving, helping or discovering, even if you don’t feel it", { l1: "yes", l1a: "worth" }],
     ["Yes, from loving what’s truly worthwhile: you need both the caring and something worth caring about", { l1: "yes", l1a: "hybrid" }],
     ["Yes, from whatever you yourself care about or commit to", { l1: "yes", l1a: "subjective" }],
