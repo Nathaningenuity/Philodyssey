@@ -188,7 +188,7 @@
     }).join("");
     const total = TOURS.reduce((n, t) => n + t.stops.length, 0);
     return '<div class="tour-root tour-listpage">' + landDefs() + '<div class="wrap stack" style="--g:22px"><header class="page-head">' + emb("compass") +
-      '<span class="eyebrow">Guided tours</span><h1>Travel through the history of philosophy</h1><p class="lede">Pick a route and follow it across the map, from Miletus to Kyoto and from Baghdad to Harvard. Each stop is a place, a moment and an idea. ' +
+      '<a class="linkish" href="#voyage">← The Voyage</a><span class="eyebrow">The Voyage · Guided tours</span><h1>Travel through the history of philosophy</h1><p class="lede">Pick a route and follow it across the map, from Miletus to Kyoto and from Baghdad to Harvard. Each stop is a place, a moment and an idea. ' +
       TOURS.length + " tours, " + total + ' stops.</p></header><div class="tour-tcards">' + cards + '</div><p class="tour-hint">On a tour: use <kbd>←</kbd> <kbd>→</kbd> to move between stops, drag or scroll the map to look around, and <kbd>Esc</kbd> to come back here.</p></div></div>';
   }
 
@@ -770,9 +770,10 @@
     if (String(s.takeaway || "").length > 90) out.push(at + ": takeaway longer than 90 characters");
     if (typeof s.lat !== "number" || typeof s.lon !== "number") out.push(at + ": missing lat/lon"); })); return out; };
   W.PHILO_TOURS = { tours: TOURS, check, go: (id, n) => { location.hash = "#tours-" + id + (n ? "." + n : ""); } };
-  patchMenu();
-  try { new MutationObserver(patchMenu).observe(D.body, { childList: true, subtree: false }); } catch (e) { }
+  // tours live inside the Voyage now, so the Library menu keeps no entry for them
   let r0 = null; try { r0 = P.route(); } catch (e) { }
+  // the Voyage page and the home page show tour cards, so draw them again now that the tours exist
+  if (r0 && ["voyage", "home"].includes(r0.name) && !r0.arg) P.render(true);
   if (r0 && r0.name === "tours") {
     P.render(false);
     // the first render ran before this file loaded and queued a "no page at #tours" toast: take it back
