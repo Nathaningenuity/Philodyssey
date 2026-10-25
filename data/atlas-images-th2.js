@@ -15,8 +15,8 @@ var add = {
  },
  "anscombe": {
   "src": "img/th/anscombe.webp",
-  "credit": "G. E. M. Anscombe, drawing · Albarluque · CC BY-SA 3.0",
-  "file": "https://commons.wikimedia.org/wiki/File:Elisabeth_Anscombe.jpg",
+  "credit": "Photo via Wikipedia · non-free, used under fair use",
+  "file": "https://en.wikipedia.org/wiki/File:Gertrude_Elizabeth_Margaret_Anscombe.jpg",
   "pos": "50% 30%"
  },
  "murdoch": {
@@ -325,8 +325,8 @@ var add = {
  },
  "mctaggart": {
   "src": "img/th/mctaggart.webp",
-  "credit": "J. M. E. McTaggart, portrait drawing in the Cambridge Magazine, 1912 · Public domain",
-  "file": "https://commons.wikimedia.org/wiki/File:John_McTaggart_Ellis_McTaggart.jpg",
+  "credit": "Photo: Walter Stoneman, 1917 · Public domain in the US",
+  "file": "https://en.wikipedia.org/wiki/File:John_Mctaggart_Ellis_McTaggart.jpg",
   "pos": "50% 30%"
  },
  "tooley": {
@@ -727,8 +727,8 @@ var add = {
  },
  "scheler": {
   "src": "img/th/scheler.webp",
-  "credit": "Max Scheler, drawing, before 1939 · Unknown artist · Public domain",
-  "file": "https://commons.wikimedia.org/wiki/File:Max_Scheler.jpg",
+  "credit": "Photo: August Sander, 1925 · Public domain in the US",
+  "file": "https://en.wikipedia.org/wiki/File:Scheler_max.jpg",
   "pos": "50% 30%"
  },
  "berlin": {
@@ -1013,10 +1013,9 @@ var add = {
  },
  "block": {
   "src": "img/th/block.webp",
-  "credit": "Symbol: walkie-talkies, for Block’s ‘China brain’ thought experiment · Photo: balusss · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/56766281@N00/24384004820",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo: Ned Block · GFDL",
+  "file": "https://commons.wikimedia.org/wiki/File:Large_ned.block.jpg",
+  "pos": "50% 30%"
  },
  "turing": {
   "src": "img/th/turing.webp",
@@ -1344,10 +1343,9 @@ var add = {
  },
  "pinnock": {
   "src": "img/th/pinnock.webp",
-  "credit": "Symbol: open hands, for Pinnock’s open theism · Photo: Alexandra E Rust · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/69670601@N05/9615757642",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via Wikipedia · non-free, used under fair use",
+  "file": "https://en.wikipedia.org/wiki/File:Clark_Pinnock.jpg",
+  "pos": "50% 30%"
  },
  "hasker": {
   "src": "img/th/hasker.webp",
@@ -1455,10 +1453,9 @@ var add = {
  },
  "phillips_dz": {
   "src": "img/th/phillips_dz.webp",
-  "credit": "Symbol: praying hands, for Phillips’s ‘The Concept of Prayer’ · Photo: Alejandro Hernandez. · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/32825651@N05/4492880296",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via Wikipedia · non-free, used under fair use",
+  "file": "https://en.wikipedia.org/wiki/File:Dewi_Zephaniah_Phillips.jpg",
+  "pos": "50% 30%"
  },
  "schellenberg": {
   "src": "img/th/schellenberg.webp",
