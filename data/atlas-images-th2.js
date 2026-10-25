@@ -21,10 +21,9 @@ var add = {
  },
  "murdoch": {
   "src": "img/th/murdoch.webp",
-  "credit": "Symbol: a hovering kestrel, for Murdoch’s ‘unselfing’ attention to the world · Photo: Hari K Patibanda · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/34176693@N06/49672005821",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "foot": {
   "src": "img/th/foot.webp",
@@ -498,10 +497,9 @@ var add = {
  },
  "garner": {
   "src": "img/th/garner.webp",
-  "credit": "Symbol: an eraser, for Garner’s moral abolitionism · Photo: Kanko* · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/29282750@N00/102924259",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "olson_jonas": {
   "src": "img/th/olson_jonas.webp",
@@ -549,10 +547,9 @@ var add = {
  },
  "fischer": {
   "src": "img/th/fischer.webp",
-  "credit": "Symbol: a steering wheel, for Fischer’s ‘guidance control’ · Photo: wbaiv · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/9998127@N06/7277877508",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "smilansky": {
   "src": "img/th/smilansky.webp",
@@ -575,10 +572,9 @@ var add = {
  },
  "alston": {
   "src": "img/th/alston.webp",
-  "credit": "Symbol: light through stained glass, for Alston’s ‘perceiving God’ · Photo: dumbledad · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/27141279@N00/4766903217",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "hacking": {
   "src": "img/th/hacking.webp",
@@ -1723,10 +1719,9 @@ var add = {
  },
  "hick": {
   "src": "img/th/hick.webp",
-  "credit": "Symbol: a potter shaping clay, for Hick’s ‘soul-making’ theodicy · Photo: Walt Stoneburner · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/8404611@N06/5745387762",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "olson": {
   "src": "img/th/olson.webp",
