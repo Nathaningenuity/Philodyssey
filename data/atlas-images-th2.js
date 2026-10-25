@@ -264,10 +264,9 @@ var add = {
  },
  "field": {
   "src": "img/th/field.webp",
-  "credit": "Symbol: an abacus, for Field’s ‘science without numbers’ · Photo: blaahhi · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/54966739@N00/3597105175",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "shapiro": {
   "src": "img/th/shapiro.webp",
@@ -704,10 +703,9 @@ var add = {
  },
  "driver": {
   "src": "img/th/driver.webp",
-  "credit": "Symbol: helping hands, for Driver’s virtue consequentialism · Photo: antonella.beccaria · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/29157315@N00/4739523391",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "carruthers": {
   "src": "img/th/carruthers.webp",
@@ -754,10 +752,9 @@ var add = {
  },
  "dickie": {
   "src": "img/th/dickie.webp",
-  "credit": "Symbol: a picture gallery, for Dickie’s institutional theory of art · Photo: Martin Beek · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/66122200@N00/2418383450",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "levinson": {
   "src": "img/th/levinson.webp",
@@ -1597,10 +1594,9 @@ var add = {
  },
  "david_miller": {
   "src": "img/th/david_miller.webp",
-  "credit": "Symbol: national flags, for Miller’s liberal nationalism · Photo: Phuketian.S · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/124790945@N06/14806731443",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "dworkin": {
   "src": "img/th/dworkin.webp",
@@ -1698,10 +1694,9 @@ var add = {
  },
  "rachels": {
   "src": "img/th/rachels.webp",
-  "credit": "Symbol: a candle, for Rachels’s ‘Active and Passive Euthanasia’ · Photo: spcbrass · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/14347196@N00/4744175365",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "unger": {
   "src": "img/th/unger.webp",
