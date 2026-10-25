@@ -1,0 +1,347 @@
+{
+ "id": "beauty",
+ "title": "Beauty and Art",
+ "question": "Is beauty in the eye of the beholder?",
+ "topic": "art",
+ "topicName": "Beauty and art",
+ "minutes": 40,
+ "basis": "Draws on themes from Hume, Of the Standard of Taste, Kant, Critique of Judgment, and Arthur Danto, The Transfiguration of the Commonplace",
+ "cover": "cave",
+ "images": {
+  "kintsugi": {
+   "src": "img/deck/beauty/kintsugi.webp",
+   "credit": "Kintsugi bowl, illustration · martinjhoward2 · CC BY-SA 2.0",
+   "file": "https://www.flickr.com/photos/35940595@N06/33831836632",
+   "pos": "50% 40%"
+  },
+  "cave": {
+   "src": "img/deck/beauty/cave.webp",
+   "credit": "Palaeolithic cave painting · Carla216 · CC BY-SA 2.0",
+   "file": "https://www.flickr.com/photos/96437739@N00/254294224",
+   "pos": "50% 40%"
+  },
+  "sublime": {
+   "src": "img/deck/beauty/sublime.webp",
+   "credit": "The Milky Way over mountains · Scott Cresswell · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/49404637@N03/11763686274",
+   "pos": "50% 40%"
+  },
+  "museum": {
+   "src": "img/deck/beauty/museum.webp",
+   "credit": "Visitors in a gallery · Georgie Pauwels · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/53662163@N06/14879030488",
+   "pos": "50% 40%"
+  },
+  "dancer": {
+   "src": "img/deck/beauty/dancer.webp",
+   "credit": "Kathakali performer · ravalli1 · CC BY-NC-SA 2.0",
+   "file": "https://www.flickr.com/photos/78599020@N04/16786786221",
+   "pos": "50% 40%"
+  },
+  "teahouse": {
+   "src": "img/deck/beauty/teahouse.webp",
+   "credit": "Japanese garden pavilion · einaz80 · CC0",
+   "file": "https://www.flickr.com/photos/23960020@N02/34520374034",
+   "pos": "50% 40%"
+  }
+ },
+ "slides": [
+  {
+   "layout": "title",
+   "kicker": "PUBLIC LECTURE · AESTHETICS",
+   "title": "Beauty and Art",
+   "question": "Is beauty in the eye of the beholder?",
+   "sub": "Taste and judgment, the sublime, and the long argument about what counts as art",
+   "tags": [
+    "TASTE",
+    "BEAUTY",
+    "SUBLIME",
+    "ART",
+    "RASA"
+   ],
+   "img": "cave",
+   "notes": "About 17,000 years ago, people crawled deep into caves in southern France and painted horses, bulls and deer by lamplight. Nobody needed those paintings to survive. Yet humans everywhere, in every period, have made things to be looked at, listened to and loved.\nAesthetics asks what beauty is, whether judgments of taste can be right or wrong, and what makes something a work of art. Tonight we’ll go from Hume and Kant to the sublime, to Indian rasa theory and Japanese wabi-sabi, and finally to a gallery where a soup-carton box became art.\nNext: the central puzzle."
+  },
+  {
+   "layout": "compare",
+   "section": "Taste",
+   "title": "If beauty is subjective, why do we argue about it?",
+   "sub": "The puzzle of taste",
+   "a": {
+    "name": "Beauty is subjective",
+    "label": "‘In the eye of the beholder’",
+    "lead": "Beauty is a feeling in us, not a property of things.",
+    "points": [
+     "People and cultures disagree deeply",
+     "There is no test to settle who is right"
+    ],
+    "focus": "No one’s taste is better",
+    "img": "museum"
+   },
+   "b": {
+    "name": "Beauty is objective",
+    "label": "Plato · Aquinas",
+    "lead": "Beauty is real, found in harmony, proportion and clarity.",
+    "points": [
+     "Some works move people across centuries",
+     "We do think some judgments are mistaken"
+    ],
+    "focus": "Some taste is better",
+    "img": "th:plato"
+   },
+   "bottom": "Most philosophers since Hume have looked for a middle way: subjective feelings, but with standards.",
+   "link": "#agora-beauty",
+   "linkLabel": "Debate: is beauty objective?",
+   "notes": "If beauty were purely subjective, saying ‘that song is beautiful’ would be like saying ‘I like mint ice cream’. There would be nothing to argue about. Yet we do argue, and we think some judgments are better than others: someone who prefers a nursery rhyme to Bach is missing something, we feel.\nPlato thought beauty was a real Form, glimpsed through beautiful things. Medieval thinkers like Aquinas said beauty consists in proportion, wholeness and radiance. The modern debate starts with Hume.\nNext: Hume’s standard of taste."
+  },
+  {
+   "layout": "split",
+   "section": "Taste",
+   "title": "Hume: beauty lives in feeling, but some judges are better than others",
+   "sub": "Of the Standard of Taste, 1757",
+   "challenge": {
+    "title": "The problem",
+    "text": "Beauty is no quality in things themselves; it exists in the mind that contemplates them. So how can one taste be better?"
+   },
+   "answer": {
+    "title": "True judges",
+    "text": "The standard is the joint verdict of ‘true judges’: those with delicate taste, practice, comparison, freedom from prejudice and good sense."
+   },
+   "open": {
+    "title": "The test of time",
+    "text": "Works that please across ages and nations, like Homer, show what human nature responds to. Fashions fade; Homer lasts."
+   },
+   "img": "th:hume",
+   "bottom": "Hume’s wine-tasting story: two experts detect leather and iron in the wine; everyone laughs, until a key on a leather strap is found in the barrel.",
+   "notes": "Hume agreed beauty is a sentiment, a feeling. But not all feelings are equally good guides. In Don Quixote, two wine experts taste a barrel: one detects leather, the other iron. Everyone laughs, until the barrel is emptied and a key on a leather thong is found at the bottom. Their delicate taste was right.\nSo the standard of taste is the agreement of true judges with delicacy, practice, comparison and freedom from prejudice. And the test of time helps: what pleases across ages is responding to something real in human nature.\nNext: Kant."
+  },
+  {
+   "layout": "steps",
+   "section": "Kant",
+   "title": "Kant: judging beauty is free, disinterested and claims everyone’s agreement",
+   "sub": "Critique of Judgment, 1790",
+   "steps": [
+    {
+     "title": "Disinterested",
+     "text": "Not about wanting or owning the thing; you enjoy just looking."
+    },
+    {
+     "title": "Universal",
+     "text": "When you call it beautiful, you speak as if everyone should agree."
+    },
+    {
+     "title": "Purposive",
+     "text": "It seems designed, though for no purpose you can name."
+    },
+    {
+     "title": "Necessary",
+     "text": "It rests on a shared human capacity: the free play of imagination and understanding."
+    }
+   ],
+   "bottom": "‘Pleasant’ is personal; ‘beautiful’ demands agreement. That’s why we argue about beauty but not about ice cream.",
+   "link": "#thinker-kant",
+   "linkLabel": "Meet Kant",
+   "notes": "Kant distinguished the merely pleasant (I like mint) from the beautiful. A judgment of beauty is disinterested: you are not wanting to eat or own the thing. It claims universal agreement: you speak as though everyone ought to agree. It finds the object ‘purposive without a purpose’: it seems made to fit our minds. And it rests on the free play of imagination and understanding, which all humans share.\nThis explains our puzzle: we argue about beauty because a beauty judgment claims more than personal preference.\nNext: something that is not beautiful but overwhelming."
+  },
+  {
+   "layout": "image",
+   "img": "sublime",
+   "title": "The sublime: delight in what overwhelms us",
+   "sub": "Edmund Burke, 1757; Immanuel Kant, 1790",
+   "caption": "Why do we enjoy feeling small?",
+   "text": "Storms, mountains, the starry sky: from a safe place, we feel tiny, yet thrilled. For Burke the sublime is a delightful terror; for Kant it reveals that our reason is greater than any natural force.",
+   "notes": "Edmund Burke distinguished the beautiful, which is small, smooth and delicate, from the sublime, which is vast, dark and powerful, producing ‘delightful horror’. Kant added that in the sublime, nature overwhelms our senses, but our reason can still think the infinite, so we discover a kind of greatness in ourselves.\nNext: what is art?"
+  },
+  {
+   "layout": "timeline",
+   "section": "What is art?",
+   "title": "What is art? Two and a half thousand years of answers",
+   "sub": "Each theory fits some art and leaves out other art",
+   "events": [
+    {
+     "date": "c. 375 BCE",
+     "title": "Imitation",
+     "text": "Art copies appearances, a copy of a copy (Plato).",
+     "img": "th:plato"
+    },
+    {
+     "date": "c. 200 CE",
+     "title": "Rasa",
+     "text": "Art lets the audience savour a refined emotion (Bharata).",
+     "img": "th:bharata",
+     "key": true
+    },
+    {
+     "date": "1790",
+     "title": "Free beauty",
+     "text": "Art is the product of genius that seems like nature (Kant).",
+     "img": "th:kant"
+    },
+    {
+     "date": "1897",
+     "title": "Feeling",
+     "text": "Art passes a feeling from artist to audience (Tolstoy).",
+     "img": "th:tolstoy"
+    },
+    {
+     "date": "1914",
+     "title": "Form",
+     "text": "Art has ‘significant form’: line and colour that move us (Bell).",
+     "img": "th:bell"
+    },
+    {
+     "date": "1964",
+     "title": "Artworld",
+     "text": "Art is whatever the artworld’s theory makes art (Danto).",
+     "img": "th:danto",
+     "key": true
+    }
+   ],
+   "bottom": "Each new kind of art, from photography to performance, has broken the last definition.",
+   "notes": "Plato thought paintings imitate appearances, which are themselves copies of the Forms. The Natyashastra, attributed to Bharata, taught that drama awakens rasa, a savoured emotion. Kant saw fine art as the work of genius. Tolstoy said art transmits feeling from artist to audience. Clive Bell said art has significant form. And Arthur Danto, after seeing Andy Warhol’s Brillo Boxes in 1964, argued that what makes something art is not how it looks but the theory and history that surround it.\nNext: two traditions outside Europe."
+  },
+  {
+   "layout": "columns",
+   "section": "Traditions",
+   "title": "Beauty beyond Europe: rasa and wabi-sabi",
+   "sub": "Two of the richest aesthetic traditions",
+   "cols": [
+    {
+     "label": "India",
+     "title": "Rasa: savouring emotion",
+     "text": "Drama transforms personal emotions into universal ‘flavours’: love, heroism, compassion, wonder. We taste sorrow without being harmed (Abhinavagupta).",
+     "img": "dancer"
+    },
+    {
+     "label": "Japan",
+     "title": "Wabi-sabi: imperfection",
+     "text": "Beauty in what is simple, worn, asymmetrical and passing: a rustic tea bowl, moss, autumn.",
+     "img": "teahouse"
+    },
+    {
+     "label": "Japan",
+     "title": "Kintsugi: mended beauty",
+     "text": "Broken pottery repaired with gold. The crack becomes part of the object’s story.",
+     "img": "kintsugi"
+    }
+   ],
+   "bottom": "Not every tradition locates beauty in perfection, symmetry or permanence.",
+   "notes": "Indian aesthetics, from the Natyashastra to Abhinavagupta around 1000 CE, held that drama and poetry awaken rasa. The spectator tastes emotions like grief or fear in a refined, universal form, which is why we can enjoy tragedy.\nJapanese aesthetics prizes wabi-sabi: the beauty of the simple, imperfect and transient. Kintsugi mends broken bowls with gold, making the repair a feature rather than hiding it. Okakura Kakuzo’s Book of Tea brought these ideas to the West in 1906.\nNext: the hardest case."
+  },
+  {
+   "layout": "split",
+   "section": "What is art?",
+   "title": "If anything can be art, what makes it art?",
+   "sub": "From Duchamp’s Fountain (1917) to Warhol’s Brillo Boxes (1964)",
+   "challenge": {
+    "title": "The challenge",
+    "text": "Duchamp signed a mass-produced urinal and called it Fountain. Warhol’s Brillo Boxes look just like soap-pad cartons in a supermarket."
+   },
+   "answer": {
+    "title": "Institutional theory",
+    "text": "Something is art if it is presented to an artworld public by someone in the artworld (Dickie). Danto: art needs an atmosphere of theory."
+   },
+   "open": {
+    "title": "Objections",
+    "text": "Is it circular? Can there be art outside any artworld, like cave paintings? And can AI-made pictures be art?"
+   },
+   "img": "museum",
+   "bottom": "Indiscernible objects, one art and one not, show that art isn’t a matter of looks alone.",
+   "link": "#agora-aiart",
+   "linkLabel": "Debate: can AI make art?",
+   "notes": "In 1917 Marcel Duchamp submitted a mass-produced urinal to an art exhibition. In 1964 Andy Warhol showed boxes that looked exactly like supermarket cartons. If two objects look identical and only one is art, the difference can’t be visible. Arthur Danto concluded that art depends on an ‘artworld’ of theory and history; George Dickie gave an institutional definition.\nCritics ask whether that is circular, and whether the cave painters needed an artworld. Today AI image generators raise the question again.\nNext: the whole field."
+  },
+  {
+   "layout": "table",
+   "section": "The whole field",
+   "title": "Aesthetics on one page",
+   "sub": "The main questions and the main answers",
+   "head": [
+    "Question",
+    "Main answers",
+    "Key thinkers"
+   ],
+   "rows": [
+    [
+     "Is beauty objective?",
+     "Real property; feeling with standards; pure preference",
+     "Plato, Hume, Kant"
+    ],
+    [
+     "What is the sublime?",
+     "Delightful terror; reason’s greatness",
+     "Burke, Kant"
+    ],
+    [
+     "What is art?",
+     "Imitation; expression; form; institution",
+     "Plato, Tolstoy, Bell, Danto"
+    ],
+    [
+     "Why enjoy tragedy?",
+     "Catharsis; savoured rasa",
+     "Aristotle, Abhinavagupta"
+    ],
+    [
+     "Must art be beautiful?",
+     "Yes; no, it can shock or question",
+     "Kant, Adorno, Danto"
+    ]
+   ],
+   "bottom": "Aesthetics connects to ethics (can art be immoral?) and mind (what is an emotion?).",
+   "notes": "Here is the whole field on one page. Notice how often the answers connect to other areas: whether art can be morally bad, what emotions are, and what makes a human practice what it is.\nNext: a toolkit."
+  },
+  {
+   "layout": "steps",
+   "section": "Take it with you",
+   "title": "Four questions for the next time you call something beautiful",
+   "sub": "A toolkit",
+   "steps": [
+    {
+     "title": "Pleasant or beautiful?",
+     "text": "Do you just like it, or think others should too?"
+    },
+    {
+     "title": "Why?",
+     "text": "Point to features: form, colour, meaning, skill."
+    },
+    {
+     "title": "Have you compared?",
+     "text": "Hume’s true judges practise and compare widely."
+    },
+    {
+     "title": "Any prejudice?",
+     "text": "Is fashion or familiarity doing the work?"
+    }
+   ],
+   "bottom": "Good taste isn’t snobbery; it is attention, practice and openness.",
+   "notes": "Four questions. Do you merely like it, or do you think everyone should? What features make it beautiful? Have you compared it with others? And are prejudice or fashion distorting your view? These are Hume’s and Kant’s ideas turned into habits.\nNext: closing."
+  },
+  {
+   "layout": "closing",
+   "title": "Aesthetics asks why some things move us, and whether they should",
+   "sub": "Better questions",
+   "questions": [
+    "Can a judgment of beauty be wrong?",
+    "Why do we enjoy sad songs and tragedies?",
+    "Does art need an artist, an audience, or a theory?"
+   ],
+   "line": "Taste can be trained, and arguing about it is one way to train it.",
+   "notes": "Beauty may begin in feeling, but it doesn’t end there. Arguing about it, as Hume and Kant both saw, is how taste grows."
+  },
+  {
+   "layout": "discussion",
+   "title": "Discussion: bring the theory back to real life",
+   "sub": "Three questions for debate",
+   "questions": [
+    "Is a beautiful photo taken by an AI art?",
+    "Should museums return art taken from other countries?",
+    "Is there music that everyone should learn to appreciate?"
+   ],
+   "line": "Say whether you’re making a claim about taste or about value.",
+   "link": "#compass-art",
+   "linkLabel": "Take the Compass: Art",
+   "notes": "Three questions. For each, say whether you mean ‘I like this’ or ‘this is good’."
+  }
+ ]
+}
