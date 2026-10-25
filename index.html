@@ -15703,12 +15703,14 @@ function diagramSVG(kind, D) {
     return s + "</svg>";
   }
   if (kind === "soul-city") {
-    const R = [["Reason", "Rulers", "Wisdom"], ["Spirit", "Auxiliaries", "Courage"], ["Appetite", "Producers", "Moderation"]];
-    let s = '<svg viewBox="0 0 760 270" class="dg" role="img" aria-label="Plato’s soul and city: three parts each">';
-    s += T(140, 26, "IN THE SOUL", "dg-k", "middle") + T(380, 26, "IN THE CITY", "dg-k", "middle") + T(620, 26, "ITS VIRTUE", "dg-k", "middle");
-    R.forEach((r, i) => { const y = 44 + i * 62; s += '<rect x="40" y="' + y + '" width="200" height="46" rx="6" class="dg-box b' + i + '"/><rect x="280" y="' + y + '" width="200" height="46" rx="6" class="dg-box b' + i + '"/><rect x="520" y="' + y + '" width="200" height="46" rx="6" class="dg-box b' + i + '"/>' +
-      T(140, y + 28, r[0], "dg-h", "middle") + T(380, y + 28, r[1], "dg-h", "middle") + T(620, y + 28, r[2], "dg-h", "middle") + '<line x1="242" y1="' + (y + 23) + '" x2="278" y2="' + (y + 23) + '" class="dg-pl"/><line x1="482" y1="' + (y + 23) + '" x2="518" y2="' + (y + 23) + '" class="dg-pl"/>'; });
-    s += T(380, 254, "Justice: each part doing its own work, with reason in charge", "dg-s", "middle");
+    // the tripartite soul as a pyramid: reason a small ruling peak, appetite the broad base, and the city's classes and virtues alongside
+    const R = [["Reason", "Rulers", "Wisdom"], ["Spirit", "Auxiliaries", "Courage"], ["Appetite", "Producers", "Moderation"]], ys = [34, 120, 206, 292], hw = y => 230 * (y - 34) / 258;
+    let s = '<svg viewBox="0 0 800 330" class="dg" role="img" aria-label="Plato’s soul as a pyramid: reason on top, spirit in the middle, appetite at the base, matched to the city’s rulers, auxiliaries and producers">';
+    s += T(250, 20, "IN THE SOUL", "dg-k", "middle") + T(590, 20, "IN THE CITY", "dg-k", "middle") + T(728, 20, "ITS VIRTUE", "dg-k", "middle");
+    R.forEach((r, i) => { const y0 = ys[i], y1 = ys[i + 1], a = hw(y0), b = hw(y1), cy = i ? (y0 + y1) / 2 + 8 : y0 + 62;
+      s += '<polygon points="' + [250 - a, y0, 250 + a, y0, 250 + b, y1, 250 - b, y1].join(",") + '" class="dg-box b' + i + '"/>' + T(250, cy, r[0], "dg-h", "middle") +
+        '<line x1="' + (250 + (a + b) / 2 + 6) + '" y1="' + (cy - 6) + '" x2="512" y2="' + (cy - 6) + '" class="dg-pl"/><rect x="516" y="' + (cy - 26) + '" width="148" height="40" rx="6" class="dg-box b' + i + '"/>' + T(590, cy, r[1], "dg-h", "middle") + T(728, cy, r[2], "dg-t", "middle"); });
+    s += T(400, 322, "Justice: each part doing its own work, with reason in charge", "dg-s", "middle");
     return s + "</svg>";
   }
   if (kind === "mean") {
@@ -15910,7 +15912,7 @@ function glossify(root) {
     terms.sort((a, b) => b.length - a.length);
     GL_RE = new RegExp("\\b(" + terms.map(t => t.replace(/[.*+?^${}()|[\]\\]/g, "\\$&").replace(/’/g, "['’]")).join("|") + ")s?\\b", "i"); }
   let n = 0; const seen = new Set();
-  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: t => t.parentElement.closest("button,a,h2,h3,.gk,.sl-kick,.sl-term,figcaption,.gl-term,.sl-ol,.eyebrow") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, { acceptNode: t => t.parentElement.closest("svg,button,a,h2,h3,.gk,.sl-kick,.sl-term,figcaption,.gl-term,.sl-ol,.eyebrow") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT });
   const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
   for (const tn of nodes) {
     if (n >= 2) break;
