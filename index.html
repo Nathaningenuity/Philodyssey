@@ -2126,8 +2126,8 @@ html{background:var(--bg)}
 .vy-tour-row{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}
 .vy-tour{display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:var(--r-md);background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c-voyage);text-decoration:none;color:var(--ink);box-shadow:var(--shadow-1);transition:transform var(--dur-1) var(--ease)}
 .vy-tour:hover{transform:translateY(-3px)}.vy-tour b{font-family:var(--font-display);font-weight:600;font-size:1.1rem;line-height:1.25}.vy-tour small{color:var(--ink-2);font-size:.85rem;line-height:1.4}
-.vy-tour .vs-img{margin:-4px 0 10px}.vs-img img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px}.vs-img figcaption{font-size:.68rem;opacity:.6;margin-top:3px}
-.xc-meter{--c:var(--c-voyage);margin-top:auto}.vy-tour em{font-style:normal;font-weight:600;font-size:.84rem;color:var(--c-voyage)}
+.vs-img{margin:-4px 0 10px}.vs-img img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px}.vs-img figcaption{font-size:.68rem;opacity:.6;margin-top:3px}
+.vy-tour .xc-meter{--c:var(--c-voyage);margin-top:auto}.vy-tour em{font-style:normal;font-weight:600;font-size:.84rem;color:var(--c-voyage)}
 .nav a[href="#firmament"]{--c:var(--c-firmament)}
 .bust,.ini{position:relative;overflow:hidden}.bust img.face,.ini img.face{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
 .era header.has-img{background:linear-gradient(180deg,rgba(14,20,44,.35),rgba(14,20,44,.88)),var(--era-img) center/cover no-repeat;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end}
@@ -15399,8 +15399,17 @@ function trialScore(key, qs) { const T = voyState().trial[key] || {}; return qs.
 
 /* ---- portraits: a public-domain image when we have one, otherwise a struck medallion */
 // images come from Wikimedia Commons by file name; a copy embedded in the page wins when we have one
+const BLANK_IMG = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
+// the sea bundles an island's pictures need, loaded on first visit
+function voyImgNeed(I) {
+  const M = window.ATLAS_VOYIMG || {}, us = new Set();
+  (I.slides || []).forEach(s => [s.img, s.a && s.a.img, s.b && s.b.img].concat((s.items || []).map(c => c && c.img)).forEach(im => { const f = im && im.file, m = f && /^img\/voy\/(u\d+)\//.exec(f); if (m && !M[f]) us.add(m[1]); }));
+  return [...us];
+}
 function imgURL(file, w) {
   if (!file) return "";
+  // Voyage pictures live in one bundle per sea (data/voyimg/u<N>.js); until it arrives, a blank stands in
+  if (/^img\/voy\//.test(file)) return (window.ATLAS_VOYIMG || {})[file] || BLANK_IMG;
   if (/^img\//.test(file)) return file;
   const k = String(file).replace(/^File:/, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "").slice(0, 60);
   if (VOY.portraits[k]) return VOY.portraits[k];
@@ -15636,7 +15645,7 @@ function blockHTML(b) {
   if (!b || !b.type) return "";
   switch (b.type) {
     case "text": return '<p class="read">' + rich(b.text) + "</p>";
-    case "cards": return '<div class="vc-grid n' + Math.min((b.items || []).length, 4) + '">' + (b.items || []).map((c, i) => '<div class="vc j-' + JEWEL[i % JEWEL.length] + '"><span class="vc-tag">' + esc(c.tag || "") + (c.term ? ' <i>' + esc(c.term) + "</i>" : "") + "</span><h3>" + esc(c.title || "") + "</h3><p>" + rich(c.text || "") + "</p>" + (c.eg ? '<p class="vc-eg">' + rich(c.eg) + "</p>" : "") + "</div>").join("") + "</div>";
+    case "cards": return '<div class="vc-grid n' + Math.min((b.items || []).length, 4) + '">' + (b.items || []).map((c, i) => '<div class="vc j-' + JEWEL[i % JEWEL.length] + '">' + vsImg(c) + '<span class="vc-tag">' + esc(c.tag || "") + (c.term ? ' <i>' + esc(c.term) + "</i>" : "") + "</span><h3>" + esc(c.title || "") + "</h3><p>" + rich(c.text || "") + "</p>" + (c.eg ? '<p class="vc-eg">' + rich(c.eg) + "</p>" : "") + "</div>").join("") + "</div>";
     case "versus": return '<div class="vs"><div class="vs-side">' + vsImg(b.a) + '<span class="vc-tag">' + esc(b.a.label) + "</span><h3>" + esc(b.a.title) + "</h3><p>" + rich(b.a.text) + '</p></div><span class="vs-mid" aria-hidden="true">vs</span><div class="vs-side">' + vsImg(b.b) + '<span class="vc-tag">' + esc(b.b.label) + "</span><h3>" + esc(b.b.title) + "</h3><p>" + rich(b.b.text) + "</p></div>" + (b.verdict ? '<p class="vs-verdict">' + rich(b.verdict) + "</p>" : "") + "</div>";
     case "steps": return '<div class="steps">' + (b.label ? '<span class="eyebrow">' + esc(b.label) + "</span>" : "") + "<ol>" + (b.items || []).map(s => "<li><b>" + esc(s.title) + "</b>" + (s.text ? "<span>" + rich(s.text) + "</span>" : "") + "</li>").join("") + "</ol>" + (b.conclusion ? '<p class="steps-c"><span aria-hidden="true">∴</span> ' + rich(b.conclusion) + "</p>" : "") + "</div>";
     case "flow": return '<div class="flow">' + (b.items || []).map((s, i) => (i ? '<span class="flow-ar" aria-hidden="true">→</span>' : "") + '<div class="flow-st"><b>' + esc(s.title) + "</b>" + (s.text ? "<span>" + rich(s.text) + "</span>" : "") + "</div>").join("") + "</div>";
@@ -15773,6 +15782,8 @@ VIEWS.voyage = arg => {
   if (!arg) return voyHome();
   if (/^u\d+$/.test(arg)) return unitPage(+arg.slice(1));
   if (arg === "review") return reviewPage();
+  const I = VOY.islands[arg], us = I ? voyImgNeed(I) : [];
+  if (us.length) Promise.all(us.map(u => need("voyimg-" + u, "data/voyimg/" + u + ".js"))).then(() => { if (route().name === "voyage" && route().arg === arg) render(true); }, () => {});
   return deckPage(arg);
 };
 /* ---- review: every quick check you missed, across all islands, until you get it right ---- */
