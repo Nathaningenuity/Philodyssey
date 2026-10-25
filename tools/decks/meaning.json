@@ -1,0 +1,345 @@
+{
+ "id": "meaning",
+ "title": "Life, Death and Meaning",
+ "question": "What makes a life worth living?",
+ "topic": "life",
+ "topicName": "Life and death",
+ "minutes": 40,
+ "basis": "Draws on themes from Thomas Nagel, What Does It All Mean?, Susan Wolf, Meaning in Life and Why It Matters, and Camus, The Myth of Sisyphus",
+ "cover": "sunrise",
+ "images": {
+  "sunrise": {
+   "src": "img/deck/meaning/sunrise.webp",
+   "credit": "Sunrise over the sea · Anton Vakulenko · CC BY-SA 2.0",
+   "file": "https://www.flickr.com/photos/59043180@N08/27976785462",
+   "pos": "50% 40%"
+  },
+  "hourglass": {
+   "src": "img/deck/meaning/hourglass.webp",
+   "credit": "An hourglass · Jamiesrabbits · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/38389073@N04/5640739307",
+   "pos": "50% 40%"
+  },
+  "dinner": {
+   "src": "img/deck/meaning/dinner.webp",
+   "credit": "Friends at dinner · Abscond · CC BY-NC 2.0",
+   "file": "https://www.flickr.com/photos/82586441@N00/5321008520",
+   "pos": "50% 40%"
+  },
+  "blossom": {
+   "src": "img/deck/meaning/blossom.webp",
+   "credit": "Cherry trees in blossom · stephenccwu · CC BY-NC-ND 2.0",
+   "file": "https://www.flickr.com/photos/48408790@N00/3461403014",
+   "pos": "50% 40%"
+  },
+  "volunteers": {
+   "src": "img/deck/meaning/volunteers.webp",
+   "credit": "Reading with children · IDVMedia · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/34276038@N07/4910808629",
+   "pos": "50% 40%"
+  },
+  "boulder": {
+   "src": "img/deck/meaning/boulder.webp",
+   "credit": "Pushing a boulder · daveynin · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/44124370018@N01/53943244826",
+   "pos": "50% 40%"
+  }
+ },
+ "slides": [
+  {
+   "layout": "title",
+   "kicker": "PUBLIC LECTURE · LIFE AND DEATH",
+   "title": "Life, Death and Meaning",
+   "question": "What makes a life worth living?",
+   "sub": "Happiness, purpose and absurdity; and how philosophers have faced death",
+   "tags": [
+    "HAPPINESS",
+    "MEANING",
+    "ABSURD",
+    "DEATH",
+    "TIME"
+   ],
+   "img": "sunrise",
+   "notes": "You will live, if you are lucky, around four thousand weeks. What should you do with them? What makes a life go well, and does it mean anything in the end?\nThese are the oldest philosophical questions of all, and every tradition has answers: the Greek schools, the Buddha, Confucius, the Stoics, the existentialists. Tonight we’ll look at what makes a life good for the person living it, what might make it meaningful, and how philosophers have thought about death.\nNext: three theories of a good life."
+  },
+  {
+   "layout": "columns",
+   "section": "A good life",
+   "title": "What makes a life go well for the person living it?",
+   "sub": "Three theories of well-being",
+   "cols": [
+    {
+     "label": "Hedonism",
+     "title": "Pleasure",
+     "text": "A life goes well to the extent that it contains pleasure and lacks pain (Epicurus, Bentham).",
+     "note": "Would you plug into an experience machine?",
+     "img": "th:epicurus"
+    },
+    {
+     "label": "Desire",
+     "title": "Getting what you want",
+     "text": "A life goes well when your desires, especially informed ones, are satisfied.",
+     "img": "dinner"
+    },
+    {
+     "label": "Objective list",
+     "title": "Real goods",
+     "text": "Some things are good for you whether or not you want them: friendship, knowledge, achievement (Aristotle).",
+     "img": "th:aristotle"
+    }
+   ],
+   "bottom": "Nozick’s experience machine: if pleasure were all that mattered, you’d plug in for life. Would you?",
+   "notes": "Hedonists say a good life is a pleasant one. Epicurus, often misunderstood, meant a simple life of friendship, free from pain and anxiety. Desire theorists say it is getting what you want, or what you would want if fully informed. Objective-list theorists such as Aristotle say some things, like friendship, knowledge and achievement, are good for you whether you want them or not.\nRobert Nozick asked: would you plug into a machine that gave you any experiences you liked, for life? Most people say no, which suggests we want more than pleasant experiences: we want to actually do things and be in touch with reality.\nNext: from a good life to a meaningful one."
+  },
+  {
+   "layout": "compare",
+   "section": "Meaning",
+   "title": "Is meaning given to us, or do we make it?",
+   "sub": "Two broad answers",
+   "a": {
+    "name": "Meaning is found",
+    "label": "Religious · Aristotle · Confucius",
+    "lead": "Meaning comes from fitting into something larger than you: God’s purpose, human nature, family and community.",
+    "points": [
+     "Your role and relationships define you",
+     "Purpose exists before you choose"
+    ],
+    "focus": "Discover your purpose",
+    "img": "th:confucius"
+   },
+   "b": {
+    "name": "Meaning is made",
+    "label": "Nietzsche · Sartre · Beauvoir",
+    "lead": "There is no meaning built into the universe, so we must create it through our choices.",
+    "points": [
+     "‘Existence precedes essence’ (Sartre)",
+     "Freedom is a burden and a gift"
+    ],
+    "focus": "Create your purpose",
+    "img": "th:sartre"
+   },
+   "bottom": "Susan Wolf: meaning arises when subjective attraction meets objective attractiveness.",
+   "notes": "One family of answers says meaning is there to be found: in God’s purpose, in our human nature (Aristotle), or in our roles and relationships (Confucius). Another says meaning must be made. Sartre said ‘existence precedes essence’: we exist first, and then define ourselves by our choices. Nietzsche urged us to become who we are.\nSusan Wolf offers a middle path: a meaningful life is one in which you are actively engaged in projects that are actually worthwhile. Passion alone isn’t enough (you could be passionate about collecting rubber bands); worth alone isn’t enough (you could do good work you hate).\nNext: the absurd."
+  },
+  {
+   "layout": "split",
+   "section": "The absurd",
+   "title": "Camus: life is absurd, and we must imagine Sisyphus happy",
+   "sub": "The Myth of Sisyphus, 1942",
+   "challenge": {
+    "title": "The absurd",
+    "text": "We long for meaning and clarity; the universe answers with silence. The absurd is the clash between the two."
+   },
+   "answer": {
+    "title": "Revolt",
+    "text": "Don’t escape through suicide or blind faith. Live fully, lucidly, with defiance. Sisyphus pushing his boulder can find joy in the struggle itself."
+   },
+   "open": {
+    "title": "Nagel’s reply",
+    "text": "The absurd comes from our ability to step back and see our lives from outside. Meet it with irony, not heroism."
+   },
+   "img": "boulder",
+   "bottom": "‘The struggle itself towards the heights is enough to fill a man’s heart.’ (Camus)",
+   "link": "#agora-meaning",
+   "linkLabel": "Debate: does life have meaning?",
+   "notes": "In Greek myth, Sisyphus was condemned to roll a boulder up a hill forever, only for it to roll down each time. Camus saw in him the human condition: we long for meaning, and the universe is silent. That clash is the absurd. Camus rejected escaping it, either by suicide or by a leap of faith. Instead he urged revolt: to live fully and lucidly. ‘One must imagine Sisyphus happy.’\nThomas Nagel argued that absurdity comes from our ability to see our lives from the outside, sub specie aeternitatis. His advice: meet it with irony.\nNext: wisdom from other traditions."
+  },
+  {
+   "layout": "gallery",
+   "section": "Traditions",
+   "title": "Every tradition offers a path to a life well lived",
+   "sub": "Different diagnoses, different cures",
+   "items": [
+    {
+     "img": "th:buddha",
+     "caption": "The Buddha",
+     "text": "Suffering comes from craving; let go and find peace"
+    },
+    {
+     "img": "th:confucius",
+     "caption": "Confucius",
+     "text": "Cultivate virtue in family and community"
+    },
+    {
+     "img": "th:zhuangzi",
+     "caption": "Zhuangzi",
+     "text": "Flow with the Dao; don’t fear change"
+    },
+    {
+     "img": "th:marcus_aurelius",
+     "caption": "Marcus Aurelius",
+     "text": "Control what you can; accept what you can’t"
+    },
+    {
+     "img": "th:kierkegaard",
+     "caption": "Kierkegaard",
+     "text": "Commit with your whole self"
+    },
+    {
+     "img": "volunteers",
+     "caption": "Service",
+     "text": "Many find meaning in helping others"
+    }
+   ],
+   "bottom": "Most traditions agree on one thing: chasing pleasure directly rarely makes people happy.",
+   "notes": "The Buddha diagnosed suffering as caused by craving, and taught a path to let go. Confucius taught that a good life is lived in relationships, cultivating virtue and ritual. Zhuangzi taught acceptance of change. The Stoic emperor Marcus Aurelius wrote to himself every night: focus on what is in your control. Kierkegaard insisted on wholehearted commitment.\nA striking point of agreement: pursuing pleasure directly is a poor way to be happy. The paradox of hedonism.\nNext: death."
+  },
+  {
+   "layout": "steps",
+   "section": "Death",
+   "title": "Epicurus argued that death is nothing to us",
+   "sub": "Letter to Menoeceus, c. 300 BCE",
+   "steps": [
+    {
+     "title": "Good and bad need experience",
+     "text": "Something can only be bad for you if you can experience it."
+    },
+    {
+     "title": "Death ends experience",
+     "text": "When death comes, you no longer exist."
+    },
+    {
+     "title": "So death isn’t bad",
+     "text": "‘Where death is, I am not; where I am, death is not.’"
+    },
+    {
+     "title": "So don’t fear it",
+     "text": "Fearing what can’t harm you is irrational."
+    }
+   ],
+   "bottom": "Lucretius added the symmetry argument: you don’t mourn the eternity before your birth, so why fear the one after death?",
+   "link": "#agora-death",
+   "linkLabel": "Debate: is death bad?",
+   "notes": "Epicurus wanted to free people from the fear of death. Good and bad consist in sensation; death is the end of sensation; so death is nothing to us. Lucretius added: think of the infinite time before you were born. It didn’t bother you. The time after death is its mirror image.\nNext: the replies."
+  },
+  {
+   "layout": "columns",
+   "section": "Death",
+   "title": "Many philosophers still think death can be bad for us",
+   "sub": "Replies to Epicurus",
+   "cols": [
+    {
+     "label": "Deprivation",
+     "title": "Death takes away goods",
+     "text": "Death is bad because it deprives you of the good life you would have had (Nagel).",
+     "img": "th:nagel"
+    },
+    {
+     "label": "Asymmetry",
+     "title": "The future is different",
+     "text": "We care about the future in a way we don’t about the past; the symmetry argument fails.",
+     "img": "hourglass"
+    },
+    {
+     "label": "Immortality",
+     "title": "Would forever be better?",
+     "text": "Endless life would become tedious and lose its meaning (Bernard Williams, ‘the Makropulos case’).",
+     "img": "th:williams"
+    }
+   ],
+   "bottom": "Perhaps death is bad because life is good, and its limit is part of what gives life shape.",
+   "notes": "Thomas Nagel’s deprivation account says death harms you by taking away the goods of life you would otherwise have had, even though you never experience the loss. Others point out we naturally care more about our future than our past. And Bernard Williams argued that immortality would be a curse: eventually we would run out of the desires that make life worth living.\nNext: living with death."
+  },
+  {
+   "layout": "image",
+   "img": "blossom",
+   "title": "Mono no aware: the beauty of passing things",
+   "sub": "Japanese aesthetics, Motoori Norinaga, 18th century",
+   "caption": "Does impermanence make life precious?",
+   "text": "Cherry blossoms are loved because they fall within days. Many traditions suggest that facing our finitude, rather than denying it, lets us live with more attention and gratitude.",
+   "notes": "In Japanese culture, the cherry blossom is admired precisely because it falls so quickly. Mono no aware, a phrase popularised by Motoori Norinaga, means a gentle sadness at the passing of things, which deepens our appreciation of them. Heidegger argued that facing our ‘being-towards-death’ makes an authentic life possible. Seneca wrote that life is long enough if we know how to use it.\nNext: the map."
+  },
+  {
+   "layout": "table",
+   "section": "The whole field",
+   "title": "Big questions, main answers",
+   "sub": "A map of the debate",
+   "head": [
+    "Question",
+    "Main answers",
+    "Key thinkers"
+   ],
+   "rows": [
+    [
+     "What is good for me?",
+     "Pleasure; desire; objective goods",
+     "Epicurus, Bentham, Aristotle"
+    ],
+    [
+     "Is life meaningful?",
+     "Given by God or nature; made by us; absurd",
+     "Aquinas, Sartre, Camus, Wolf"
+    ],
+    [
+     "Is death bad?",
+     "No (Epicurus); yes, by deprivation",
+     "Epicurus, Lucretius, Nagel"
+    ],
+    [
+     "Would immortality be good?",
+     "Yes; no, it would become tedious",
+     "Williams, Fischer"
+    ],
+    [
+     "How should I face death?",
+     "Acceptance; revolt; faith",
+     "Stoics, Camus, Kierkegaard"
+    ]
+   ],
+   "bottom": "You don’t have to settle these to live well, but thinking them through changes how you live.",
+   "notes": "Here is the whole debate on one page. Note that the answers interact: if meaning is made, death might take away a project but not destroy meaning; if meaning is found in God, death may not be the end at all.\nNext: a toolkit."
+  },
+  {
+   "layout": "steps",
+   "section": "Take it with you",
+   "title": "Four questions to ask of your own life",
+   "sub": "A toolkit",
+   "steps": [
+    {
+     "title": "What do I value?",
+     "text": "Not just what you enjoy, but what you’d be proud of."
+    },
+    {
+     "title": "What is in my control?",
+     "text": "Spend effort there; accept the rest."
+    },
+    {
+     "title": "Who am I connected to?",
+     "text": "Almost every theory of the good life includes other people."
+    },
+    {
+     "title": "What would I regret?",
+     "text": "Imagine looking back at the end."
+    }
+   ],
+   "bottom": "The most common regret of the dying: ‘I wish I’d lived a life true to myself, not what others expected.’",
+   "notes": "Four practical questions. What do you value, really? What can you control? Who are you connected to? And what would you regret? The palliative nurse Bronnie Ware recorded that the most common regret of the dying was not living true to themselves.\nNext: closing."
+  },
+  {
+   "layout": "closing",
+   "title": "Philosophy can’t give you a meaning, but it can help you find or make one",
+   "sub": "Better questions",
+   "questions": [
+    "Would you plug into the experience machine?",
+    "Can a life be meaningful if nothing lasts forever?",
+    "Is death bad for the one who dies?"
+   ],
+   "line": "‘The unexamined life is not worth living.’ (Socrates)",
+   "notes": "Socrates said the unexamined life is not worth living. Examining it doesn’t give you a ready-made answer, but it lets you live deliberately."
+  },
+  {
+   "layout": "discussion",
+   "title": "Discussion: bring the theory back to real life",
+   "sub": "Three questions for debate",
+   "questions": [
+    "Is it better to be happy or to do something important?",
+    "Would you want to live forever?",
+    "Can a person’s life go better or worse after they die?"
+   ],
+   "line": "Say which theory of the good life you’re using.",
+   "link": "#compass-life",
+   "linkLabel": "Take the Compass: Life",
+   "notes": "Three questions. For each, say which theory of the good life your answer assumes."
+  }
+ ]
+}

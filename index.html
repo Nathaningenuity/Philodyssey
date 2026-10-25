@@ -2126,7 +2126,8 @@ html{background:var(--bg)}
 .vy-tour-row{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))}
 .vy-tour{display:flex;flex-direction:column;gap:6px;padding:16px;border-radius:var(--r-md);background:var(--card);border:1px solid var(--line);border-top:4px solid var(--c-voyage);text-decoration:none;color:var(--ink);box-shadow:var(--shadow-1);transition:transform var(--dur-1) var(--ease)}
 .vy-tour:hover{transform:translateY(-3px)}.vy-tour b{font-family:var(--font-display);font-weight:600;font-size:1.1rem;line-height:1.25}.vy-tour small{color:var(--ink-2);font-size:.85rem;line-height:1.4}
-.vy-tour .xc-meter{--c:var(--c-voyage);margin-top:auto}.vy-tour em{font-style:normal;font-weight:600;font-size:.84rem;color:var(--c-voyage)}
+.vy-tour .vs-img{margin:-4px 0 10px}.vs-img img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:8px}.vs-img figcaption{font-size:.68rem;opacity:.6;margin-top:3px}
+.xc-meter{--c:var(--c-voyage);margin-top:auto}.vy-tour em{font-style:normal;font-weight:600;font-size:.84rem;color:var(--c-voyage)}
 .nav a[href="#firmament"]{--c:var(--c-firmament)}
 .bust,.ini{position:relative;overflow:hidden}.bust img.face,.ini img.face{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
 .era header.has-img{background:linear-gradient(180deg,rgba(14,20,44,.35),rgba(14,20,44,.88)),var(--era-img) center/cover no-repeat;min-height:150px;display:flex;flex-direction:column;justify-content:flex-end}
@@ -2204,7 +2205,7 @@ html{background:var(--bg)}
 .zk-cover{margin:0;height:560px;border-radius:6px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.18)}.zk-cover img{width:100%;height:100%;object-fit:cover}
 .zk-L-image{padding:0}.zk-image{position:absolute;inset:0}.zk-image img{width:100%;height:100%;object-fit:cover}
 .zk-image-tx{position:absolute;left:0;right:0;bottom:0;padding:60px 64px 34px;background:linear-gradient(transparent,rgba(10,20,17,.85));color:#F3EDDD;display:grid;gap:8px}.zk-image-tx p{margin:0;font-size:20px;line-height:1.5;max-width:900px}.zk-image-tx .zk-lab{color:#E7BE76}
-.zk-image-h{position:absolute;left:0;top:0;right:0;padding:36px 64px 60px;background:linear-gradient(rgba(10,20,17,.75),transparent);color:#fff}.zk-image-h h2{font-family:var(--font-display);font-size:40px;margin:0;font-weight:600}.zk-image-h p{margin:6px 0 0;color:#E7BE76;font-size:16px}
+.zk-image-h{position:absolute;left:0;top:0;right:0;padding:36px 64px 90px;background:linear-gradient(rgba(10,20,17,.88),rgba(10,20,17,.6) 55%,transparent);color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.5)}.zk-image-h h2{font-family:var(--font-display);font-size:40px;margin:0;font-weight:600}.zk-image-h p{margin:6px 0 0;color:#E7BE76;font-size:16px}
 .zk-cimg{display:block;height:130px;border-radius:5px;overflow:hidden;margin-bottom:4px}.zk-cimg img{width:100%;height:100%;object-fit:cover}.zk-cols.n2 .zk-cimg{height:190px}
 .zk-gal{display:grid;gap:14px;height:100%}.zk-gal.n2{grid-template-columns:repeat(2,1fr)}.zk-gal.n3{grid-template-columns:repeat(3,1fr)}.zk-gal.n4{grid-template-columns:repeat(4,1fr)}.zk-gal.n5,.zk-gal.n6{grid-template-columns:repeat(3,1fr)}.zk-gal.n7,.zk-gal.n8{grid-template-columns:repeat(4,1fr)}
 .zk-gal figure{margin:0;display:flex;flex-direction:column;gap:6px;min-height:0}.zk-gal img{flex:1;min-height:0;width:100%;object-fit:cover;border-radius:5px}.zk-gal figcaption{display:grid;font-size:14px;line-height:1.35}.zk-gal figcaption span{color:var(--ink2);font-size:13px}
@@ -15400,6 +15401,7 @@ function trialScore(key, qs) { const T = voyState().trial[key] || {}; return qs.
 // images come from Wikimedia Commons by file name; a copy embedded in the page wins when we have one
 function imgURL(file, w) {
   if (!file) return "";
+  if (/^img\//.test(file)) return file;
   const k = String(file).replace(/^File:/, "").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_|_$/g, "").slice(0, 60);
   if (VOY.portraits[k]) return VOY.portraits[k];
   return "https://commons.wikimedia.org/wiki/Special:FilePath/" + encodeURIComponent(String(file).replace(/^File:/, "").replace(/ /g, "_")) + "?width=" + (w || 800);
@@ -15635,7 +15637,7 @@ function blockHTML(b) {
   switch (b.type) {
     case "text": return '<p class="read">' + rich(b.text) + "</p>";
     case "cards": return '<div class="vc-grid n' + Math.min((b.items || []).length, 4) + '">' + (b.items || []).map((c, i) => '<div class="vc j-' + JEWEL[i % JEWEL.length] + '"><span class="vc-tag">' + esc(c.tag || "") + (c.term ? ' <i>' + esc(c.term) + "</i>" : "") + "</span><h3>" + esc(c.title || "") + "</h3><p>" + rich(c.text || "") + "</p>" + (c.eg ? '<p class="vc-eg">' + rich(c.eg) + "</p>" : "") + "</div>").join("") + "</div>";
-    case "versus": return '<div class="vs"><div class="vs-side"><span class="vc-tag">' + esc(b.a.label) + "</span><h3>" + esc(b.a.title) + "</h3><p>" + rich(b.a.text) + '</p></div><span class="vs-mid" aria-hidden="true">vs</span><div class="vs-side"><span class="vc-tag">' + esc(b.b.label) + "</span><h3>" + esc(b.b.title) + "</h3><p>" + rich(b.b.text) + "</p></div>" + (b.verdict ? '<p class="vs-verdict">' + rich(b.verdict) + "</p>" : "") + "</div>";
+    case "versus": return '<div class="vs"><div class="vs-side">' + vsImg(b.a) + '<span class="vc-tag">' + esc(b.a.label) + "</span><h3>" + esc(b.a.title) + "</h3><p>" + rich(b.a.text) + '</p></div><span class="vs-mid" aria-hidden="true">vs</span><div class="vs-side">' + vsImg(b.b) + '<span class="vc-tag">' + esc(b.b.label) + "</span><h3>" + esc(b.b.title) + "</h3><p>" + rich(b.b.text) + "</p></div>" + (b.verdict ? '<p class="vs-verdict">' + rich(b.verdict) + "</p>" : "") + "</div>";
     case "steps": return '<div class="steps">' + (b.label ? '<span class="eyebrow">' + esc(b.label) + "</span>" : "") + "<ol>" + (b.items || []).map(s => "<li><b>" + esc(s.title) + "</b>" + (s.text ? "<span>" + rich(s.text) + "</span>" : "") + "</li>").join("") + "</ol>" + (b.conclusion ? '<p class="steps-c"><span aria-hidden="true">∴</span> ' + rich(b.conclusion) + "</p>" : "") + "</div>";
     case "flow": return '<div class="flow">' + (b.items || []).map((s, i) => (i ? '<span class="flow-ar" aria-hidden="true">→</span>' : "") + '<div class="flow-st"><b>' + esc(s.title) + "</b>" + (s.text ? "<span>" + rich(s.text) + "</span>" : "") + "</div>").join("") + "</div>";
     case "ladder": return '<div class="ladder">' + (b.top ? '<span class="ld-end">↑ ' + esc(b.top) + "</span>" : "") + (b.items || []).map((s, i) => '<div class="ld-rung" style="--k:' + i + '"><b>' + esc(s.title) + "</b><span>" + rich(s.text || "") + "</span></div>").join("") + (b.bottom ? '<span class="ld-end">↓ ' + esc(b.bottom) + "</span>" : "") + "</div>";
@@ -15844,6 +15846,8 @@ function deckSlides(I) {
 function deckState(id) { const V = voyState(); V.pos = V.pos || {}; V.quiz = V.quiz || {}; V.max = V.max || {}; V.quiz[id] = V.quiz[id] || {}; return V; }
 function slideLocked(I, i) { const s = deckSlides(I)[i]; const V = deckState(I.id); if (I.sem && semDisc()) return false; return s && (s.t === "quiz" || s.t === "predict" || (I.sem && s.t === "vote")) && V.quiz[I.id][i] == null; }
 function deckScore(I) { const V = deckState(I.id); const L = deckSlides(I); let n = 0, ok = 0; L.forEach((s, i) => { if (s.t === "quiz") { n++; if (V.quiz[I.id][i] === s.answer) ok++; } }); return { n, ok }; }
+// a picture heading one side of a versus card
+function vsImg(x) { return x && x.img && x.img.file ? '<figure class="vs-img"><img src="' + imgURL(x.img.file, 700) + '" alt="' + esc(x.img.credit || "") + '" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest(\'figure\').remove()">' + (x.img.credit ? "<figcaption>" + esc(x.img.credit) + "</figcaption>" : "") + "</figure>" : ""; }
 function slideImg(im, cls) {
   if (!im || !im.file) return "";
   return '<figure class="sl-img ' + (cls || "") + '" data-alt="' + esc(im.credit || "Image") + '"><img src="' + imgURL(im.file, 1100) + '" alt="' + esc(im.credit || "") + '" referrerpolicy="no-referrer" onerror="const f=this.closest(\'figure\');f.classList.add(\'gone\');this.remove()">' + (im.credit ? "<figcaption>" + esc(im.credit) + "</figcaption>" : "") +
