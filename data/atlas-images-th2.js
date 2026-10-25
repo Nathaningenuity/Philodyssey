@@ -200,10 +200,9 @@ var add = {
  },
  "benatar": {
   "src": "img/th/benatar.webp",
-  "credit": "Symbol: unhatched eggs, for Benatar’s antinatalism · Photo: John-Morgan · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/24742305@N00/4634923304",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "scruton": {
   "src": "img/th/scruton.webp",
@@ -213,10 +212,9 @@ var add = {
  },
  "churchland": {
   "src": "img/th/churchland.webp",
-  "credit": "Symbol: a model of the brain, for Churchland’s neurophilosophy · Photo: GreenFlames09 · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/46179909@N00/100782015",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "swinburne": {
   "src": "img/th/swinburne.webp",
@@ -335,10 +333,9 @@ var add = {
  },
  "tooley": {
   "src": "img/th/tooley.webp",
-  "credit": "Symbol: building blocks, for Tooley’s growing-block theory of time · Photo: Holger Zscheyge · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/49741083@N00/49012397",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "mumford": {
   "src": "img/th/mumford.webp",
@@ -1726,10 +1723,9 @@ var add = {
  },
  "pfstrawson": {
   "src": "img/th/pfstrawson.webp",
-  "credit": "Symbol: a ‘thanks!’ note, for Strawson’s reactive attitudes of gratitude and resentment · Photo: ralphhogaboom · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/59568944@N00/5871263299",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "berker": {
   "src": "img/th/berker.webp",
