@@ -28,31 +28,27 @@ var add = {
  },
  "foot": {
   "src": "img/th/foot.webp",
-  "credit": "Symbol: a tram, for Foot’s trolley problem · Photo: Bernard Spragg · CC0",
-  "file": "https://www.flickr.com/photos/88123769@N02/14515041221",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "thomson": {
   "src": "img/th/thomson.webp",
-  "credit": "Symbol: a violin, for Thomson’s famous violinist thought experiment · Photo: firepile · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/17643132@N00/30517837",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "williams": {
   "src": "img/th/williams.webp",
-  "credit": "Symbol: a four-leaf clover, for Williams’s ‘moral luck’ · Photo: angeladellatorre · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/57593460@N05/5774349822",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "mackie": {
   "src": "img/th/mackie.webp",
-  "credit": "Symbol: a light bulb, for Mackie’s ‘inventing right and wrong’ · Photo: derekskey · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/32211216@N06/9109573902",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "rorty": {
   "src": "img/th/rorty.webp",
@@ -68,10 +64,9 @@ var add = {
  },
  "vaninwagen": {
   "src": "img/th/vaninwagen.webp",
-  "credit": "Symbol: a chair, for van Inwagen’s view that there are only ‘simples arranged chairwise’ · Photo: erix! · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/68387408@N00/2404195905",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "gstrawson": {
   "src": "img/th/gstrawson.webp",
@@ -82,17 +77,15 @@ var add = {
  },
  "pereboom": {
   "src": "img/th/pereboom.webp",
-  "credit": "Symbol: a marionette, for Pereboom’s hard incompatibilism · Photo: Dominic's pics · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/64097751@N00/4704705307",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "street": {
   "src": "img/th/street.webp",
-  "credit": "Symbol: a Darwin’s finch, for Street’s Darwinian dilemma · Photo: Andy Morffew · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/66020093@N03/15419148063",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "goff": {
   "src": "img/th/goff.webp",
@@ -294,10 +287,9 @@ var add = {
  },
  "carnap": {
   "src": "img/th/carnap.webp",
-  "credit": "Symbol: a toolbox, for Carnap’s view of philosophical frameworks as tools to be judged by usefulness · Photo: chimpwithcan · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/188454520@N02/49921066491",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "williamson": {
   "src": "img/th/williamson.webp",
@@ -1705,10 +1697,9 @@ var add = {
  },
  "smart": {
   "src": "img/th/smart.webp",
-  "credit": "Symbol: a brain model, for Smart’s ‘sensations are brain processes’ · Photo: GreenFlames09 · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/46179909@N00/100782013",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "hooker": {
   "src": "img/th/hooker.webp",
@@ -1726,10 +1717,9 @@ var add = {
  },
  "unger": {
   "src": "img/th/unger.webp",
-  "credit": "Symbol: a lifebuoy, for Unger’s ‘Living High and Letting Die’ · Photo: Inge Brattaas · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/137261203@N03/27310112970",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "hick": {
   "src": "img/th/hick.webp",
