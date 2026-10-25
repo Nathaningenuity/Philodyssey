@@ -1,0 +1,322 @@
+{
+ "id": "freewill",
+ "title": "Free Will and Responsibility",
+ "question": "If every choice has a cause, can any choice be yours?",
+ "topic": "freewill",
+ "topicName": "Free will",
+ "minutes": 40,
+ "basis": "Draws on themes from Robert Kane, A Contemporary Introduction to Free Will, and Daniel Dennett and Gregg Caruso, Just Deserts",
+ "cover": "fork",
+ "images": {
+  "billiard": {
+   "src": "img/deck/freewill/billiard.webp",
+   "credit": "Billiard balls · Rennett Stowe · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/10393601@N08/3208843018",
+   "pos": "50% 40%"
+  },
+  "fork": {
+   "src": "img/deck/freewill/fork.webp",
+   "credit": "A fork in the road · Curtis Gregory Perry · CC BY-NC-SA 2.0",
+   "file": "https://www.flickr.com/photos/33124677@N00/22781687833",
+   "pos": "50% 40%"
+  },
+  "path": {
+   "src": "img/deck/freewill/path.webp",
+   "credit": "Paths dividing · Wonderlane · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/71401718@N00/13067014944",
+   "pos": "50% 40%"
+  },
+  "neurons": {
+   "src": "img/deck/freewill/neurons.webp",
+   "credit": "Neurons under a microscope · CodonAUG · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/63450246@N03/6884698095",
+   "pos": "50% 40%"
+  },
+  "gavel": {
+   "src": "img/deck/freewill/gavel.webp",
+   "credit": "Judge’s gavel · weiss_paarz_photos · CC BY-SA 2.0",
+   "file": "https://www.flickr.com/photos/141290938@N03/27256508896",
+   "pos": "50% 40%"
+  },
+  "prison": {
+   "src": "img/deck/freewill/prison.webp",
+   "credit": "Window with bars · Fernando Silveira · CC BY-NC-SA 2.0",
+   "file": "https://www.flickr.com/photos/12193845@N00/421888962",
+   "pos": "50% 40%"
+  }
+ },
+ "slides": [
+  {
+   "layout": "title",
+   "kicker": "PUBLIC LECTURE · CHOICE AND BLAME",
+   "title": "Free Will and Responsibility",
+   "question": "If every choice has a cause, can any choice be yours?",
+   "sub": "Determinism, libertarianism, compatibilism and scepticism, and what they mean for blame and punishment",
+   "tags": [
+    "DETERMINISM",
+    "CHOICE",
+    "RESPONSIBILITY",
+    "PUNISHMENT"
+   ],
+   "img": "fork",
+   "notes": "Think of a choice you made today: what to eat, what to say. It felt open; you could have done otherwise. Now think about where that choice came from: your desires, your beliefs, your mood, your upbringing, your genes, your brain chemistry, all shaped by things that happened before you were born.\nIf every event has causes that fix it, was your choice really up to you? And if it wasn’t, can anyone deserve praise or blame? That is the free will problem, and it matters every time we punish, reward, regret or forgive.\nNext: the threat."
+  },
+  {
+   "layout": "split",
+   "section": "The threat",
+   "title": "Determinism: given the past and the laws of nature, only one future is possible",
+   "sub": "Laplace’s demon, 1814",
+   "challenge": {
+    "title": "The idea",
+    "text": "An intellect that knew the position of every particle and every law could predict everything, including what you’ll choose tomorrow."
+   },
+   "answer": {
+    "title": "Why it threatens freedom",
+    "text": "If the state of the universe before you were born, plus the laws, fixes every move you make, then ‘you could have done otherwise’ seems false. Your choices are the next domino in a chain that started long ago."
+   },
+   "open": {
+    "title": "What about physics?",
+    "text": "Quantum mechanics may make some events random. But random isn’t free either: a choice that happens by chance is no more under your control."
+   },
+   "img": "billiard",
+   "bottom": "Determined or random: neither, on its face, sounds like a choice that’s up to you.",
+   "notes": "Pierre-Simon Laplace imagined an intellect that knows every particle and every law: for it, ‘nothing would be uncertain, and the future, like the past, would be present to its eyes’. Think of billiard balls: once the cue strikes, every collision follows.\nIf the universe is like that, your choice was settled before you were born. Modern physics may include genuine randomness. But that doesn’t obviously help: if my decision depends on a random quantum event, it’s luck, not control.\nThis is the dilemma. Determined choices seem not to be up to us. Undetermined ones seem to be chance.\nNext: four responses."
+  },
+  {
+   "layout": "grid",
+   "section": "The map",
+   "title": "Four positions come from two questions",
+   "sub": "Is determinism true? Is free will compatible with it?",
+   "cols": [
+    "Determinism true",
+    "Determinism false"
+   ],
+   "rows": [
+    {
+     "label": "Compatible with free will",
+     "cells": [
+      {
+       "title": "Compatibilism",
+       "text": "We’re free in the everyday sense, even though determined"
+      },
+      {
+       "title": "Compatibilism too",
+       "text": "Freedom never needed indeterminism"
+      }
+     ]
+    },
+    {
+     "label": "Incompatible with free will",
+     "cells": [
+      {
+       "title": "Hard determinism / scepticism",
+       "text": "No free will, because we’re determined",
+       "bad": true
+      },
+      {
+       "title": "Libertarianism",
+       "text": "We’re free, because we’re not determined"
+      }
+     ]
+    }
+   ],
+   "note": "Hard incompatibilists (Pereboom) say: determined or not, we lack the kind of freedom that makes us deserve blame.",
+   "bottom": "The real fight is over one question: does freedom require that the past didn’t fix your choice?",
+   "link": "#compass-mind",
+   "linkLabel": "Answer it in the Compass",
+   "notes": "Two questions generate the map. Is determinism true? And is free will compatible with it? Compatibilists say yes to the second: freedom is acting from your own reasons, unforced, whether or not determinism is true. Incompatibilists say no: then either we are not determined and may be free, which is libertarianism, or we are determined and are not free, which is hard determinism. Derk Pereboom’s hard incompatibilism says that even indeterminism wouldn’t give us the freedom needed for real desert.\nNext: each view in turn."
+  },
+  {
+   "layout": "columns",
+   "section": "Three answers",
+   "title": "Three serious views about whether we are free",
+   "sub": "Each has defenders among living philosophers",
+   "cols": [
+    {
+     "label": "Libertarianism",
+     "title": "Yes, the deep kind",
+     "text": "Some choices are not fixed by the past; we are their originating source (Kane; agent causation: Reid, Chisholm).",
+     "note": "Problem: is an undetermined choice just luck?",
+     "img": "th:kane"
+    },
+    {
+     "label": "Compatibilism",
+     "title": "Yes, in the sense that matters",
+     "text": "A choice is free when it flows from your own reasons and values without coercion, even if those were caused (Hume, Frankfurt, Dennett).",
+     "note": "Not the power to choose otherwise in exactly the same situation",
+     "img": "th:dennett"
+    },
+    {
+     "label": "Free will scepticism",
+     "title": "No, not the kind for blame",
+     "text": "Neither determinism nor chance gives the control needed to deserve praise or blame (Pereboom, Caruso, Galen Strawson).",
+     "note": "Not fatalism: choices still matter and have effects",
+     "img": "th:pereboom"
+    }
+   ],
+   "bottom": "Compatibilism doesn’t say you could have done otherwise with the past exactly the same; it says that’s not what freedom needs.",
+   "link": "#codex-freewill",
+   "linkLabel": "Check your view in My Positions",
+   "notes": "Libertarians like Robert Kane say some of our choices are genuinely undetermined, especially in moments of struggle, and in those we make ourselves. The worry is the luck objection: if nothing about the past settled the choice, what made it yours rather than a coin toss?\nCompatibilists, the majority of philosophers, say freedom is about the right kind of causes: your own reasons and values, not compulsion, addiction or coercion. Be careful: compatibilism does not claim you could have chosen differently with the past exactly the same. It denies that freedom requires that.\nSceptics say neither picture gives us the deep control needed to deserve blame. That does not mean nothing matters: choices still have effects, and we can still hold people to account for the future.\nNext: a famous case against the idea that you need alternatives."
+  },
+  {
+   "layout": "split",
+   "section": "A famous case",
+   "title": "Frankfurt cases: you can be responsible even if you couldn’t have done otherwise",
+   "sub": "Harry Frankfurt, 1969",
+   "challenge": {
+    "title": "The case",
+    "text": "Black secretly implants a device in Jones’s brain. If Jones starts to decide not to vote for Smith, the device will make him vote for Smith. But Jones decides to vote for Smith all on his own; the device never acts."
+   },
+   "answer": {
+    "title": "The lesson",
+    "text": "Jones couldn’t have done otherwise. Yet he seems fully responsible, because he acted for his own reasons. So responsibility may depend on how you acted, not on whether alternatives were open."
+   },
+   "open": {
+    "title": "The debate",
+    "text": "Libertarians reply that Jones still had a flicker of freedom: the start of a decision the other way. The argument about these cases has run for fifty years."
+   },
+   "img": "th:frankfurt",
+   "bottom": "If Frankfurt is right, the question isn’t ‘could you have done otherwise?’ but ‘did it come from you?’",
+   "notes": "Harry Frankfurt’s case changed the debate. Jones votes for Smith on his own. Unknown to him, a neuroscientist would have forced him to if he had wavered. So he couldn’t have done otherwise. Is he responsible? Most people say yes: he did it for his own reasons. If so, being able to do otherwise isn’t what responsibility requires.\nLibertarians push back: there must have been some moment where Jones could have begun to waver, a flicker of freedom. Frankfurt cases are still argued over today.\nNext: what neuroscience has added."
+  },
+  {
+   "layout": "split",
+   "section": "Science",
+   "title": "Does neuroscience show the brain decides before you do?",
+   "sub": "Benjamin Libet, 1983, and later studies",
+   "challenge": {
+    "title": "The experiment",
+    "text": "People flexed a wrist whenever they felt like it and reported when they felt the urge. Brain activity (the ‘readiness potential’) began about a third of a second before the reported urge."
+   },
+   "answer": {
+    "title": "The sceptical reading",
+    "text": "The brain started the action before ‘you’ consciously decided; conscious will is a late report, not the cause (Wegner)."
+   },
+   "open": {
+    "title": "Why many aren’t convinced",
+    "text": "The readiness potential may be background noise building up, not a decision (Schurger, 2012). Flicking a wrist at random is not a deliberate choice. And compatibilists never claimed choices are uncaused."
+   },
+   "img": "neurons",
+   "bottom": "Brain science shows choices have physical causes; whether that rules out freedom is a philosophical question.",
+   "notes": "Benjamin Libet asked people to flex their wrist when they felt like it, and to note the moment of the urge on a clock. Their brains showed a build-up of activity before the moment they reported. Some concluded that our sense of deciding is an after-the-fact story.\nBut later work, especially by Aaron Schurger, suggests the build-up is ordinary neural noise crossing a threshold, not a hidden decision. And a random wrist flick is a long way from deciding whom to marry. Above all, finding that choices have brain causes is exactly what compatibilists expected.\nNext: what changes if we lack free will?"
+  },
+  {
+   "layout": "columns",
+   "section": "Responsibility",
+   "title": "Blame without ultimate desert: what changes, and what stays",
+   "sub": "P. F. Strawson’s reactive attitudes, and the sceptics’ alternative",
+   "cols": [
+    {
+     "label": "Strawson · 1962",
+     "title": "Our attitudes are not optional",
+     "text": "Resentment, gratitude, love and indignation are part of human relationships. No metaphysical theory could make us give them up.",
+     "img": "th:pfstrawson"
+    },
+    {
+     "label": "Sceptics",
+     "title": "Keep accountability, drop retribution",
+     "text": "We can still protect people, deter crime and help offenders change, without saying anyone deserves to suffer (Pereboom, Caruso).",
+     "img": "prison"
+    },
+    {
+     "label": "Courts",
+     "title": "What the law assumes",
+     "text": "Legal responsibility asks about intent, understanding and control, not about determinism.",
+     "img": "gavel"
+    }
+   ],
+   "bottom": "Your view of free will matters most for punishment: is it about desert, or only about the future?",
+   "link": "#agora-freewill",
+   "linkLabel": "Debate: free will",
+   "notes": "P. F. Strawson argued that our practice of holding each other responsible is built into human relationships: resentment when wronged, gratitude when helped. It doesn’t wait on physics.\nSceptics like Gregg Caruso agree we should keep holding people accountable, but think we should stop punishing to make people suffer as they deserve. Instead, they propose a public-health model: protect society the way we quarantine a dangerous disease, as humanely as possible.\nNext: the whole field on one page."
+  },
+  {
+   "layout": "table",
+   "section": "The whole field",
+   "title": "Free will is a map of competing costs",
+   "sub": "Every position has a hard case to answer",
+   "head": [
+    "View",
+    "Its strength",
+    "Its hard case"
+   ],
+   "rows": [
+    [
+     "Libertarianism",
+     "Fits how choosing feels",
+     "The luck objection; fit with physics"
+    ],
+    [
+     "Compatibilism",
+     "Fits science and everyday blame",
+     "Manipulation cases: a brainwashed person acts on ‘their’ reasons"
+    ],
+    [
+     "Free will scepticism",
+     "Takes the threat seriously",
+     "Can we live without desert and resentment?"
+    ],
+    [
+     "Agnosticism",
+     "Honest about the evidence",
+     "We must still decide how to punish"
+    ]
+   ],
+   "bottom": "Nearly everyone agrees on the science; the disagreement is about what freedom means.",
+   "notes": "Every view pays a price. Libertarians face the luck objection. Compatibilists face manipulation cases: if neuroscientists engineered your values from birth, you would act on ‘your own’ reasons, but would you be free? Sceptics must explain how to live without desert. And the agnostic still has to decide what prison is for.\nNext: a toolkit."
+  },
+  {
+   "layout": "steps",
+   "section": "Take it with you",
+   "title": "Four questions to ask about any claim that someone ‘chose’",
+   "sub": "A toolkit for responsibility",
+   "steps": [
+    {
+     "title": "Whose reasons?",
+     "text": "Did the act come from their own values and reasons?"
+    },
+    {
+     "title": "Any force?",
+     "text": "Was there coercion, compulsion or manipulation?"
+    },
+    {
+     "title": "Could they understand?",
+     "text": "Did they know what they were doing and why it mattered?"
+    },
+    {
+     "title": "What is blame for?",
+     "text": "Desert, protection, repair or prevention?"
+    }
+   ],
+   "bottom": "These questions work whatever you think about determinism, which is why courts can use them.",
+   "notes": "Whatever your view, four questions help in real cases: did it come from their own reasons? Were they forced? Did they understand? And what is the blame for? Notice that none of these require settling the metaphysics, which is why the law can function.\nNext: what the field leaves us with."
+  },
+  {
+   "layout": "closing",
+   "title": "Free will leaves us with questions we can’t stop living by",
+   "sub": "Better questions",
+   "questions": [
+    "What would it take for a choice to be truly yours?",
+    "Can anyone deserve to suffer for what they did?",
+    "Would you live differently if you were sure you had no free will?"
+   ],
+   "line": "Whatever the answer, we still have to choose what to do with it.",
+   "notes": "Even if every choice has a cause, you still have to make them. The question is what that means for how we praise, blame and forgive."
+  },
+  {
+   "layout": "discussion",
+   "title": "Discussion: bring the theory back to real life",
+   "sub": "Three questions for debate",
+   "questions": [
+    "Should someone with a brain tumour that caused violent urges be punished?",
+    "If a person had a terrible childhood, does that lessen their blame?",
+    "Should prisons aim at punishment, protection or rehabilitation?"
+   ],
+   "line": "Say first what you think freedom requires, then answer.",
+   "link": "#codex-freewill",
+   "linkLabel": "Free will in My Positions",
+   "notes": "Three real cases. Start by saying what you think freedom requires, then see whether your answers stay consistent."
+  }
+ ]
+}
