@@ -154,10 +154,9 @@ var add = {
  },
  "gibbard": {
   "src": "img/th/gibbard.webp",
-  "credit": "Symbol: a road sign stating a norm, for Gibbard’s norm-expressivism · Photo: Richard Masoner / Cyclelicious · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/99247795@N00/5465305209",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "hart": {
   "src": "img/th/hart.webp",
@@ -263,10 +262,9 @@ var add = {
  },
  "shapiro": {
   "src": "img/th/shapiro.webp",
-  "credit": "Symbol: a chessboard, for Shapiro’s structuralism (a number is a position in a pattern) · Photo: Anothernumber6 · Public domain",
-  "file": "https://www.flickr.com/photos/133462939@N07/30188401426",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "bonjour": {
   "src": "img/th/bonjour.webp",
@@ -372,10 +370,9 @@ var add = {
  },
  "estlund": {
   "src": "img/th/estlund.webp",
-  "credit": "Symbol: a ballot going into a ballot box, for Estlund’s epistemic proceduralism · Photo: knezovjb · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/14876615@N08/2931790897",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "christiano": {
   "src": "img/th/christiano.webp",
@@ -529,10 +526,9 @@ var add = {
  },
  "smilansky": {
   "src": "img/th/smilansky.webp",
-  "credit": "Symbol: a theatre mask, for Smilansky’s illusionism about free will · Photo: Tilemahos Efthimiadis · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/64379474@N00/3471623168",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "pascal": {
   "src": "img/th/pascal.webp",
@@ -560,10 +556,9 @@ var add = {
  },
  "salmon": {
   "src": "img/th/salmon.webp",
-  "credit": "Symbol: billiard balls, for Salmon’s causal-process account of explanation · Photo: Puddin Tain · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/155396095@N08/51843163981",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "einstein": {
   "src": "img/th/einstein.webp",
@@ -579,10 +574,9 @@ var add = {
  },
  "leng": {
   "src": "img/th/leng.webp",
-  "credit": "Symbol: a book of fairy tales, for Leng’s mathematical fictionalism · Photo: crackdog · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/88645472@N00/4634049347",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "duff": {
   "src": "img/th/duff.webp",
@@ -827,10 +821,9 @@ var add = {
  },
  "zangwill": {
   "src": "img/th/zangwill.webp",
-  "credit": "Symbol: a rose, for Zangwill’s realism about beauty · Photo: szeke · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/43355249@N00/34309202136",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "sibley": {
   "src": "img/th/sibley.webp",
@@ -1063,10 +1056,9 @@ var add = {
  },
  "caruso": {
   "src": "img/th/caruso.webp",
-  "credit": "Symbol: a stethoscope, for Caruso’s public-health model of crime · Photo: medisave · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/107621760@N03/10668832073",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "waller": {
   "src": "img/th/waller.webp",
@@ -1101,10 +1093,9 @@ var add = {
  },
  "widerker": {
   "src": "img/th/widerker.webp",
-  "credit": "Symbol: a signpost at a choice point, for Widerker’s defence of alternative possibilities · Photo: ccPixs.com · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/86530412@N02/8225380711",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "watson": {
   "src": "img/th/watson.webp",
@@ -1199,10 +1190,9 @@ var add = {
  },
  "savitt": {
   "src": "img/th/savitt.webp",
-  "credit": "Symbol: the Milky Way, for Savitt’s work on time in Minkowski spacetime · Photo: skyseeker · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/40422902@N00/35157555392",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "dorato": {
   "src": "img/th/dorato.webp",
@@ -1266,10 +1256,9 @@ var add = {
  },
  "dowe": {
   "src": "img/th/dowe.webp",
-  "credit": "Symbol: Newton’s cradle, for Dowe’s conserved-quantity theory of causation · Photo: ccPixs.com · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/86530412@N02/7984171587",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "whitehead": {
   "src": "img/th/whitehead.webp",
@@ -1297,10 +1286,9 @@ var add = {
  },
  "hasker": {
   "src": "img/th/hasker.webp",
-  "credit": "Symbol: a crystal ball, for Hasker’s argument that the free future cannot be foreknown · Photo: Jeffrey Beall · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/31437555@N00/8476744869",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "ramanuja": {
   "src": "img/th/ramanuja.webp",
@@ -1594,10 +1582,9 @@ var add = {
  },
  "arneson": {
   "src": "img/th/arneson.webp",
-  "credit": "Symbol: a coin toss, for Arneson’s luck egalitarianism · Photo: ICMA Photos · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/31418530@N02/3635981474",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "henry_george": {
   "src": "img/th/henry_george.webp",
@@ -1661,10 +1648,9 @@ var add = {
  },
  "berker": {
   "src": "img/th/berker.webp",
-  "credit": "Symbol: a brain scan, for Berker’s ‘normative insignificance of neuroscience’ · Photo: Patrick Denker · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/61993185@N00/74684051",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  }
 };
 for (var k in add) if (!I.th[k]) I.th[k] = add[k]; })();
