@@ -614,10 +614,9 @@ var add = {
  },
  "michael_moore": {
   "src": "img/th/michael_moore.webp",
-  "credit": "Symbol: scales of justice, for Moore’s retributivism · Photo: ccPixs.com · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/86530412@N02/7953227784",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "sandel": {
   "src": "img/th/sandel.webp",
