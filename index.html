@@ -2162,6 +2162,101 @@ html{background:var(--bg)}
 .pm-k{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
 .pm-bar{display:block;height:8px;border-radius:8px;background:var(--line-2);overflow:hidden}.pm-bar i{display:block;height:100%;background:var(--c);border-radius:8px;min-width:4px}
 .pm-n{font-size:.84rem;color:var(--ink-2)}.pm-note{margin:0;font-size:.78rem;color:var(--ink-3)}
+/* tours: lecture slide decks (fixed 1280x720 slide, scaled to fit) */
+.dk-page{display:grid;gap:12px;padding-top:4px;max-width:1180px}
+.dk-top{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}.dk-title{font-family:var(--font-display);font-weight:500}
+.dk-stage{position:relative;width:100%;overflow:hidden;border-radius:14px;box-shadow:0 2px 6px rgba(20,30,25,.08),0 20px 50px rgba(20,30,25,.14);background:#F6F2E8}
+.dk-stage:fullscreen{display:grid;place-items:center;background:#0f1f1b;border-radius:0}
+.dk-stage:fullscreen .dslide{position:relative}
+.dslide{--ink:#173A31;--ink2:#41564F;--brass:#B07A2C;--paper:#F6F2E8;--rule:#C9B48C;position:absolute;left:0;top:0;width:1280px;height:720px;transform-origin:0 0;background:var(--paper);color:var(--ink);padding:44px 64px 40px;display:flex;flex-direction:column;gap:14px;font-family:var(--font-ui);overflow:hidden}
+.dk-stage:fullscreen .dslide{transform-origin:center}
+.zk-head{display:grid;gap:4px;border-bottom:1.5px solid var(--rule);padding-bottom:14px}
+.zk-deck{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--brass)}.zk-sec{font-size:13px;color:var(--ink2)}
+.zk-head h2{font-family:var(--font-display);font-weight:600;font-size:40px;line-height:1.12;color:var(--ink);margin:4px 0 0;letter-spacing:-.01em}
+.zk-sub{margin:0;color:var(--brass);font-size:16px}
+.zk-main{flex:1;display:flex;gap:28px;min-height:0;width:100%}.zk-body>*{width:100%}.zk-body{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.zk-pic{margin:0;width:330px;flex:none;border-radius:6px;overflow:hidden}.zk-pic img{width:100%;height:100%;object-fit:cover}
+.zk-cols{display:grid;gap:26px}.zk-cols.n2{grid-template-columns:1fr 1fr}.zk-cols.n3{grid-template-columns:repeat(3,1fr)}.zk-cols.n4{grid-template-columns:repeat(4,1fr)}.zk-cols.n5{grid-template-columns:repeat(5,1fr)}
+.zk-col{border-top:2px solid var(--rule);padding-top:14px;display:grid;gap:8px;align-content:start}
+.zk-col h3{font-size:20px;font-weight:700;margin:0;color:var(--ink);line-height:1.25}.zk-col p,.zk-col li{margin:0;font-size:16px;line-height:1.5;color:var(--ink2)}
+.zk-col ul{margin:0;padding-left:18px;display:grid;gap:4px}
+.zk-lab{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--brass)}
+.zk-note{color:var(--brass)!important;font-weight:600;font-size:14.5px!important}
+.zk-num{font-family:var(--font-display);font-size:34px;color:var(--brass);line-height:1}
+.zk-rows{display:grid;align-content:center}.zk-row{display:grid;grid-template-columns:60px 1.1fr 1.4fr 1fr;gap:16px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--rule)}
+.zk-row .zk-num{font-size:22px}.zk-row b{font-size:19px}.zk-row span{font-size:17px;color:var(--ink2)}.zk-row small{font-size:14px;color:var(--brass)}
+.zk-split{display:grid;grid-template-columns:1fr 1.3fr;gap:36px}.zk-ch{border-right:2px solid var(--rule);padding-right:30px}.zk-big{font-family:var(--font-display);font-size:28px;line-height:1.3;margin:8px 0 0}
+.zk-ans h3{margin:0 0 6px;font-size:20px}.zk-ans p{font-size:16.5px;line-height:1.55;color:var(--ink2);margin:0 0 16px}.zk-warn{color:#A0522D}
+.zk-flow{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:26px;font-family:var(--font-display);font-size:28px}.zk-arrow{font-family:var(--font-ui);font-size:14px;font-weight:700;color:var(--brass);letter-spacing:.06em}.zk-arrow::after{content:" →"}
+.zk-table{width:100%;border-collapse:collapse;font-size:16.5px}.zk-table th,.zk-table td{text-align:left;padding:11px 14px;vertical-align:top}.zk-table thead th{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brass);border-bottom:1.5px solid var(--rule)}
+.zk-table tbody tr:nth-child(odd){background:rgba(23,58,49,.05)}.zk-table tbody th{font-weight:700}.zk-table td{color:var(--ink2)}
+.zk-quote{margin:0;display:grid;gap:18px;padding:0 40px}.zk-quote p{font-family:var(--font-display);font-size:38px;line-height:1.3;margin:0;font-style:italic}.zk-quote cite{font-style:normal;font-weight:700;color:var(--brass);font-size:17px;display:grid;gap:2px}.zk-quote cite span{font-weight:400;color:var(--ink2);font-size:15px}
+.zk-bottom{margin:0;font-weight:700;font-size:19px;color:var(--ink);background:rgba(176,122,44,.12);padding:12px 18px;border-radius:4px}
+.zk-pg{position:absolute;right:30px;bottom:14px;font-size:11px;color:var(--ink2);opacity:.7}
+.zk-dark{--paper:#173A31;--ink:#F3EDDD;--ink2:#C9D3CC;--rule:rgba(243,237,221,.25);--brass:#D8A75A}
+.zk-qs{margin:20px 0 0;padding-left:0;list-style:none;display:grid;gap:26px;counter-reset:q}.zk-qs li{font-family:var(--font-display);font-size:30px;line-height:1.3;color:var(--ink)}
+.zk-line{margin-top:auto;border-top:1.5px solid var(--rule);padding-top:16px;font-weight:700;color:var(--ink);font-size:18px}
+.zk-L-closing .zk-body,.zk-L-discussion .zk-body{justify-content:flex-start}
+.zk-title{display:grid;grid-template-columns:1.15fr 1fr;gap:44px;height:100%;align-items:center}
+.zk-tt{display:grid;gap:14px;border-top:2px solid var(--brass);padding-top:22px}.zk-kick{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--brass)}
+.zk-tt h1{font-family:var(--font-display);font-weight:600;font-size:60px;line-height:1.05;margin:0;color:var(--ink)}.zk-q{font-family:var(--font-display);font-size:26px;margin:0;color:var(--ink2)}
+.zk-en{margin:0;color:var(--brass);font-size:17px}.zk-basis{margin:18px 0 0;font-size:13px;color:var(--ink2)}.zk-tags{margin:0;font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--ink)}
+.zk-cover{margin:0;height:560px;border-radius:6px;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.18)}.zk-cover img{width:100%;height:100%;object-fit:cover}
+.zk-L-image{padding:0}.zk-image{position:absolute;inset:0}.zk-image img{width:100%;height:100%;object-fit:cover}
+.zk-image-tx{position:absolute;left:0;right:0;bottom:0;padding:60px 64px 34px;background:linear-gradient(transparent,rgba(10,20,17,.85));color:#F3EDDD;display:grid;gap:8px}.zk-image-tx p{margin:0;font-size:20px;line-height:1.5;max-width:900px}.zk-image-tx .zk-lab{color:#E7BE76}
+.zk-image-h{position:absolute;left:0;top:0;right:0;padding:36px 64px 60px;background:linear-gradient(rgba(10,20,17,.75),transparent);color:#fff}.zk-image-h h2{font-family:var(--font-display);font-size:40px;margin:0;font-weight:600}.zk-image-h p{margin:6px 0 0;color:#E7BE76;font-size:16px}
+.zk-cimg{display:block;height:130px;border-radius:5px;overflow:hidden;margin-bottom:4px}.zk-cimg img{width:100%;height:100%;object-fit:cover}.zk-cols.n2 .zk-cimg{height:190px}
+.zk-gal{display:grid;gap:14px;height:100%}.zk-gal.n2{grid-template-columns:repeat(2,1fr)}.zk-gal.n3{grid-template-columns:repeat(3,1fr)}.zk-gal.n4{grid-template-columns:repeat(4,1fr)}.zk-gal.n5,.zk-gal.n6{grid-template-columns:repeat(3,1fr)}.zk-gal.n7,.zk-gal.n8{grid-template-columns:repeat(4,1fr)}
+.zk-gal figure{margin:0;display:flex;flex-direction:column;gap:6px;min-height:0}.zk-gal img{flex:1;min-height:0;width:100%;object-fit:cover;border-radius:5px}.zk-gal figcaption{display:grid;font-size:14px;line-height:1.35}.zk-gal figcaption span{color:var(--ink2);font-size:13px}
+.dg-pyr{display:grid;gap:10px}.dg-pyr-row{display:grid;grid-template-columns:110px 1fr 1fr;gap:18px;align-items:center}
+.dg-pyr-tag{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);text-align:right}
+.dg-pyr-band{justify-self:center;width:var(--w);min-height:calc(78px * var(--h));display:grid;place-items:center;text-align:center;background:linear-gradient(180deg,rgba(176,122,44,.28),rgba(176,122,44,.14));border:1.5px solid var(--brass);clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);padding:8px 14px}
+.dg-pyr-row:first-child .dg-pyr-band{clip-path:polygon(50% 0,100% 100%,0 100%);padding-top:26px}
+.dg-pyr-band b{font-size:18px}.dg-pyr-row p{margin:0;font-size:15.5px;line-height:1.45;color:var(--ink2)}
+.dg-tl{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:12px;position:relative;padding-top:26px}.dg-tl::before{content:"";position:absolute;left:0;right:0;top:9px;height:2px;background:var(--rule)}
+.dg-tl-e{position:relative;display:grid;gap:5px;align-content:start}.dg-tl-e::before{content:"";position:absolute;top:-23px;left:0;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--brass)}
+.dg-tl-e.key::before{background:var(--brass)}.dg-tl-d{font-size:13px;font-weight:700;color:var(--brass)}.dg-tl-e b{font-size:16px;line-height:1.25}.dg-tl-e p{margin:0;font-size:14px;line-height:1.4;color:var(--ink2)}.dg-tl .zk-cimg{height:110px}
+.dg-map{display:grid;grid-template-columns:1fr 70px 1fr;gap:10px 0;align-items:stretch}
+.dg-map-a,.dg-map-b{border:1.5px solid var(--rule);border-radius:6px;padding:12px 16px;display:grid;gap:2px;background:rgba(255,255,255,.35)}.dg-map-a{border-color:var(--brass)}
+.dg-map-a b,.dg-map-b b{font-size:18px}.dg-map small{font-size:14px;color:var(--ink2)}.dg-map-link{display:grid;place-items:center;color:var(--brass);font-weight:700;font-size:20px}
+.dg-note{margin:14px 0 0;font-style:italic;font-family:var(--font-display);font-size:18px;color:var(--ink2)}
+.dg-mean td,.dg-mean th{text-align:center}.dg-mean .mid{font-weight:700;color:var(--ink);background:rgba(176,122,44,.16)}.dg-mean td:not(.mid){color:#8E4B3A}
+.dg-grid{display:grid;grid-template-columns:150px repeat(var(--c),1fr);gap:8px;align-items:stretch}.dg-grid>.zk-lab{text-align:center;align-self:end}
+.dg-grid-h{font-weight:700;font-size:15px;align-self:center}.dg-grid-c{border:1.5px solid var(--rule);border-radius:6px;padding:10px 12px;display:grid;gap:2px;text-align:center;background:rgba(255,255,255,.35)}
+.dg-grid-c b{font-size:17px}.dg-grid-c small{font-size:13px;color:var(--ink2)}.dg-grid-c.bad{border-color:#B5675A;background:rgba(181,103,90,.08)}
+.dg-lad{display:grid;gap:10px}.dg-lad-r{display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center;margin-left:calc(var(--i) * 34px);border-left:3px solid var(--brass);padding:6px 0 6px 14px}
+.dg-lad-r .zk-cimg{width:110px;height:70px;margin:0}.dg-lad-r b{font-size:18px}.dg-lad-r p{margin:2px 0 0;font-size:15px;color:var(--ink2)}
+.dslide:not(.zk-has-img) .zk-col h3{font-size:23px}.dslide:not(.zk-has-img) .zk-col p{font-size:18px}.zk-L-steps .zk-num{font-size:44px}
+.zk-qs li{font-size:34px}.zk-L-closing .zk-body,.zk-L-discussion .zk-body{justify-content:center}.zk-row b{font-size:21px}.zk-row span{font-size:18px}.zk-table{font-size:18px}
+.dk-nav{display:flex;align-items:center;justify-content:space-between;gap:12px}.dk-count{font-weight:600;color:var(--ink-2)}.dk-nav .btn{min-width:130px}
+.dk-link{margin:0}.dk-credit{margin:0;font-size:.74rem;color:var(--ink-3)}
+.dk-notes{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--c-voyage);border-radius:12px;padding:16px 20px;display:grid;gap:8px}.dk-notes p{margin:0;font-family:var(--font-read);font-size:1.04rem;line-height:1.65}
+.dk-thumbs{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 10px;scrollbar-width:thin}.dk-thumbs a{flex:none;width:150px;font-size:.74rem;line-height:1.3;padding:8px 10px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);text-decoration:none;display:grid;gap:3px}
+.dk-thumbs a span{font-weight:700;color:var(--c-voyage)}.dk-thumbs a.on{border-color:var(--c-voyage);box-shadow:0 0 0 2px color-mix(in srgb,var(--c-voyage) 25%,transparent);color:var(--ink)}
+/* tours: card decks */
+.tc-row{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr))}
+.tc-tile{position:relative;display:flex;flex-direction:column;border-radius:var(--r-lg);overflow:hidden;background:var(--card);border:1px solid var(--line);text-decoration:none;color:var(--ink);box-shadow:var(--shadow-1);transition:transform var(--dur-2) var(--ease)}
+.tc-tile:hover{transform:translateY(-3px)}
+.tc-img{display:block;aspect-ratio:16/9;background:linear-gradient(135deg,var(--c-voyage),#123);overflow:hidden}.tc-img img{width:100%;height:100%;object-fit:cover}
+.tc-tx{display:grid;gap:4px;padding:12px 14px 14px}.tc-tx b{font-family:var(--font-display);font-size:1.12rem;line-height:1.25}.tc-tx small{color:var(--ink-2);font-size:.85rem;line-height:1.4}.tc-tx em{font-style:normal;font-weight:600;font-size:.8rem;color:var(--c-voyage);margin-top:2px}
+.tc-meter{position:absolute;left:0;right:0;bottom:0;height:4px;background:transparent}.tc-meter i{display:block;height:100%;background:var(--go)}
+.tc-page{max-width:760px;display:grid;gap:14px;padding-top:6px}
+.tc-top{display:flex;gap:12px;align-items:baseline;justify-content:space-between}.tc-name{font-weight:600;color:var(--ink-2);font-size:.9rem;text-align:center;flex:1}
+.tc-dots{display:flex;gap:5px}.tc-dots a{flex:1;height:5px;border-radius:5px;background:var(--line)}.tc-dots a.past{background:color-mix(in srgb,var(--c-voyage) 50%,var(--line))}.tc-dots a.on{background:var(--c-voyage)}
+.tc-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;box-shadow:0 2px 6px rgba(38,35,25,.05),0 18px 44px rgba(38,35,25,.10);animation:tcIn .35s var(--ease) both}
+@keyframes tcIn{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.tc-card{animation:none}}
+.tc-fig{margin:0;position:relative;aspect-ratio:16/8;overflow:hidden;background:#111}.tc-fig img{width:100%;height:100%;object-fit:cover}
+.tc-fig figcaption{position:absolute;right:8px;bottom:6px;font-size:.62rem;color:#fff;opacity:.85;text-shadow:0 1px 2px rgba(0,0,0,.7);max-width:80%;text-align:right}
+.tc-body{display:grid;gap:12px;padding:22px 26px 26px}.tc-body h1{font-size:clamp(1.6rem,3.6vw,2.2rem);line-height:1.15;font-weight:600;margin:0}
+.tc-text{margin:0;font-size:1.06rem;line-height:1.65;color:var(--ink-2)}.tc-go{justify-self:start}
+.tc-k-hook .tc-body h1,.tc-k-close .tc-body h1{color:var(--c-voyage)}
+.tc-vote{display:grid;gap:8px}.tc-opt{text-align:left;padding:12px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;cursor:pointer}
+.tc-opt:hover{border-color:var(--c-voyage)}.tc-opt.on{border-color:var(--c-voyage);background:color-mix(in srgb,var(--c-voyage) 10%,var(--card));font-weight:600}
+.tc-reveal{margin:0;padding:12px 14px;border-radius:12px;background:color-mix(in srgb,var(--c-voyage) 8%,var(--card));line-height:1.55}
+.tc-nav{display:flex;justify-content:space-between;gap:12px}.tc-nav .btn{min-width:120px}
+.tc-end{padding:30px;display:grid;gap:14px}.tc-end h1{margin:0}
+@media (max-width:600px){.tc-body{padding:18px}.tc-nav .btn{flex:1}}
+.tc-row{grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}.tc-tx .eyebrow{font-size:.66rem}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -10338,7 +10433,7 @@ window.ATLAS_EXTRAS = {
 </script>
 <script src="data/atlas-arguments.js"></script>
 <script src="data/atlas-profiles.js"></script>
-<script src="data/atlas-voyage.js"></script><script src="data/atlas-links.js"></script><script src="data/atlas-images.js"></script><script src="data/atlas-images-th2.js"></script>
+<script src="data/atlas-voyage.js"></script><script src="data/atlas-links.js"></script><script src="data/decks/index.js"></script><script src="data/atlas-images.js"></script><script src="data/atlas-images-th2.js"></script>
 <script>(function () {
 "use strict";
 
@@ -10662,11 +10757,11 @@ function crowdCounts(qid) {
 const VIEWS = {};
 let after = [];
 let lastRoute = "";
-const ROUTE_ALIAS = { seminars: "seminar", discussion: "seminar", discuss: "seminar", philosophers: "thinkers", people: "thinkers", logbook: "codex", stargazing: "firmament", shipyard: "lab", timeline: "stoa", dictionary: "library", archive: "works", books: "works" };
+const ROUTE_ALIAS = { tours: "voyage", guided: "voyage", seminars: "seminar", discussion: "seminar", discuss: "seminar", philosophers: "thinkers", people: "thinkers", logbook: "codex", stargazing: "firmament", shipyard: "lab", timeline: "stoa", dictionary: "library", archive: "works", books: "works" };
 function route() { const h = decodeURIComponent(location.hash.slice(1)) || "home"; const i = h.indexOf("-"); const r = i < 0 ? { name: h, arg: "" } : { name: h.slice(0, i), arg: h.slice(i + 1) }; r.name = ROUTE_ALIAS[r.name] || r.name; return r; }
 // the five helm slots on phones; every other route lights "More"
 // the colour family each route belongs to (see the --c-* tokens)
-const SEC_OF = { tours: "voyage", quick: "compass", position: "compass", duel: "agora", thinker: "thinkers", dictionary: "library", experiment: "library", tide: "study", log: "study" };
+const SEC_OF = { tour: "voyage", quick: "compass", position: "compass", duel: "agora", thinker: "thinkers", dictionary: "library", experiment: "library", tide: "study", log: "study" };
 function hudNow() {
   const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
   try { set("hudStreak", typeof window.philoStreak === "function" ? window.philoStreak() : 0); } catch (e) { }
@@ -10675,7 +10770,7 @@ function hudNow() {
   try { const n = answeredCount(), b = document.getElementById("myposN"); if (b) { b.textContent = n; b.hidden = !n; b.title = n + " positions taken"; } } catch (e) { }
 }
 addEventListener("load", () => hudNow()); // the streak and the Tide come from js/study.js, which loads after the first render
-const HELM_SLOT = { voyage: "voyage", tours: "voyage", compass: "compass", quick: "compass", position: "compass", agora: "agora", codex: "codex" }; // Seminars and Duel live in the More drawer, so they light More
+const HELM_SLOT = { voyage: "voyage", tour: "voyage", compass: "compass", quick: "compass", position: "compass", agora: "agora", codex: "codex" }; // Seminars and Duel live in the More drawer, so they light More
 // navigate: a page change cross-fades through the View Transitions API where it exists (header held still);
 // in-place re-renders (keepScroll), same-route renders and reduced motion swap at once
 function render(keepScroll, nav) {
@@ -10709,7 +10804,7 @@ function renderNow(keepScroll) {
   document.title = tt ? tt + " · Philodyssey" : "Philodyssey: a voyage through philosophy";
   view.classList.toggle("flush", r.name === "home" || r.name === "voyage" || (r.name === "seminar" && !!r.arg && !/\.all$/.test(r.arg)) || r.name === "thinker" || (r.name === "works" && !!WK[r.arg]) || !VIEWS[r.name]);
   { const lib = ["thinkers", "works", "library", "quiz", "thinker", "dictionary"].includes(r.name) || (innerWidth <= 1480 && r.name === "seminar") || (innerWidth <= 1180 && r.name === "stoa"); const b = $(".navlib-btn"); if (b) { b.classList.toggle("cur", lib); b.setAttribute("aria-expanded", "false"); } if ($(".navlib-menu")) navLibClose(false); }
-  $$("#nav a, .top .mypos, .navlib-menu a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (r.name === "position" ? "compass" : r.name === "tours" ? "voyage" : r.name) ? "page" : "false"));
+  $$("#nav a, .top .mypos, .navlib-menu a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (r.name === "position" ? "compass" : r.name === "tour" ? "voyage" : r.name) ? "page" : "false"));
   { const slot = HELM_SLOT[r.name] || (r.name === "home" ? "" : "more"); $$(".helm [data-slot]").forEach(a => a.setAttribute("aria-current", a.dataset.slot === slot ? "page" : "false")); }
   document.body.classList.toggle("in-deck", !!view.querySelector("[data-deck]"));
   document.body.dataset.sec = SEC_OF[r.name] || r.name;
@@ -15179,7 +15274,7 @@ VIEWS.home = () => {
   const thOk = id => TH[id] ? [TH[id].name, "#thinker-" + id] : null;
   const agOk = q => [q.short || q.title, "#agora-" + q.id];
   const chips = {
-    voyage: [nextIsland() ? ["Next: " + nextIsland().name, "#voyage-" + nextIsland().id] : null, VIEWS.tours ? ["Guided tours on the map", "#tours"] : null, ["Sea I chart", "#voyage-u1"]],
+    voyage: [nextIsland() ? ["Next: " + nextIsland().name, "#voyage-" + nextIsland().id] : null, ["Sea I chart", "#voyage-u1"]],
     compass: [["Quick Compass", "#quick-start"], ["Full Compass", "#compass"], secs ? ["Your portrait", "#compass-results"] : null],
     agora: AG.questions.slice(0, 3).map(agOk),
     seminar: (typeof SEM_LIST !== "undefined" ? SEM_LIST : []).slice(0, 2).map(x => [x.short || x.title, "#seminar-" + String(x.id || "").replace(/^sem_/, "")]).filter(x => x[0]),
@@ -15205,7 +15300,7 @@ VIEWS.home = () => {
   // the collage: famous pictures of the big questions, floating on the night sky
   const HERO = (IMG.hero || []).slice(0, 6);
   // one label per picture, in the order of data/atlas-images.js: School of Athens, Death of Socrates, Wanderer, Flammarion, Gauguin, Snow Storm
-  const TILE = [["Debates", "#agora", "agora"], ["Ethics", "#tours-greece.6", "voyage"], ["The self", "#compass", "compass"], ["Reality", "#stoa", "stoa"], ["Meaning", "#seminar", "seminar"], ["Fate", "#lab", "lab"]];
+  const TILE = [["Debates", "#agora", "agora"], ["Ethics", "#agora-lying", "voyage"], ["The self", "#compass", "compass"], ["Reality", "#stoa", "stoa"], ["Meaning", "#seminar", "seminar"], ["Fate", "#lab", "lab"]];
   const collage = '<div class="hx-art"><canvas id="heroSky" aria-hidden="true"></canvas><div class="hx-tiles">' + TILE.map((t, i) => { const h = HERO[i];
     return '<a class="hx-tile" href="' + (h && h.href || t[1]) + '" style="--c:var(--c-' + t[2] + ')">' + (h ? '<img src="' + esc(h.src) + '" alt="' + esc(h.caption || "") + '" style="object-position:' + esc(h.pos || "50% 40%") + '">' : em(ICON[t[2]] || "compass")) + '<span class="hx-pill">' + esc(h && h.label || t[0]) + "</span></a>"; }).join("") + "</div></div>";
   const nIsl = nextIsland(), due = typeof window.tideDue === "function" ? window.tideDue() : 0;
@@ -15387,15 +15482,81 @@ function forYouHTML() {
     picks.map(p => '<a class="vy-fy' + (islDone(p.i.id) ? " done" : "") + '" href="#voyage-' + p.i.id + '"><span class="vy-faces">' + (p.i.cast || []).slice(0, 3).map(c => portraitHTML(c, "pt-s")).join("") + '</span><b>' + esc(p.i.name) + '</b><span class="vy-q">' + esc(p.i.question || "") + '</span><span class="faint" style="font-size:.86rem">' + esc(p.why) + "</span>" + (islDone(p.i.id) ? '<span class="vy-tick" aria-label="Charted">✓</span>' : "") + "</a>").join("") + "</div></section>";
 }
 /* ---- home: the whole voyage */
-// the guided map tours (js/tours.js) live inside the Voyage: one strip of cards, each opening a tour
-function voyToursHTML() {
-  const TT = window.ATLAS_TOURS; if (!VIEWS.tours || !Array.isArray(TT) || !TT.length) return "";
-  const V = (S.tours && S.tours.v) || {}, D = (S.tours && S.tours.done) || {};
-  return '<section class="stack vy-tours" style="--g:12px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>Guided tours on the map</h2><a class="linkish" href="#tours">All ' + TT.length + ' tours →</a></div>' +
-    '<p class="muted" style="margin:0">Short trips across a real map: each stop is a place, a moment and one idea. ' + TT.reduce((n, t) => n + t.stops.length, 0) + " stops in all.</p>" +
-    '<div class="vy-tour-row">' + TT.map(t => { const n = (V[t.id] || []).length, of = t.stops.length, pct = Math.round(100 * Math.min(1, n / of));
-      return '<a class="vy-tour" href="#tours-' + t.id + '"><span class="eyebrow">' + esc(t.span || "") + " · " + of + " stops</span><b>" + esc(t.title) + "</b><small>" + esc(t.sub || "") + '</small><span class="xc-meter"><i style="width:' + pct + '%"></i></span><em>' + (D[t.id] ? "Finished" : n ? n + " of " + of + " visited · continue" : "Start the tour") + " →</em></a>"; }).join("") + "</div></section>";
-}
+/* ---- Tours: lecture slide decks on the big areas of philosophy, at the top of the Voyage.
+   data/decks/index.js lists them; each deck (data/decks/<id>.js) loads only when opened. */
+const DECKIX = window.ATLAS_DECK_INDEX || [];
+function deckImg(D, r) { if (!r) return null; if (D && D.images && D.images[r]) return D.images[r];
+  const [k, id] = String(r).split(":"), I = window.ATLAS_IMAGES || {}; if (k === "hero") return (I.hero || [])[+id - 1] || null; return ((I[k] || {})[id]) || null; }
+function tourState() { S.tourc = S.tourc || {}; return S.tourc; }
+function tourStripHTML() { if (!DECKIX.length) return "";
+  const T = tourState();
+  return '<section class="tc-strip stack" style="--g:12px"><div class="row" style="justify-content:space-between;align-items:baseline;flex-wrap:wrap"><h2>Tours: illustrated lectures</h2><span class="faint">One big area of philosophy, slide by slide, with a script to read along</span></div><div class="tc-row">' +
+    DECKIX.map(t => { const st = T[t.id] || {}, n = t.n || 1, at = Math.min(st.at || 0, n - 1), done = !!st.done;
+      return '<a class="tc-tile" href="#tour-' + esc(t.id) + (at && !done ? "." + (at + 1) : "") + '"><span class="tc-img">' + (t.cover ? '<img src="' + esc(t.cover) + '" alt="" loading="lazy" style="object-position:' + esc(t.pos || "50% 40%") + '">' : "") + '</span><span class="tc-tx"><span class="eyebrow">' + esc(t.topicName || t.topic || "") + "</span><b>" + esc(t.title) + "</b><small>" + esc(t.question || t.sub || "") + '</small><em>' + (done ? "✓ Finished · view again" : at ? "Slide " + (at + 1) + " of " + n + " · continue" : n + " slides · about " + (t.minutes || 30) + " min") + "</em></span>" +
+        '<span class="tc-meter"><i style="width:' + Math.round(100 * (done ? 1 : at / n)) + '%"></i></span></a>'; }).join("") + "</div></section>"; }
+const DK_ = id => (window.ATLAS_DECKS || {})[id];
+function deckWait(id) { need("deck-" + id, "data/decks/" + id + ".js").then(() => { if (route().name === "tour") render(true); }, () => { const b = $("#deckWait"); if (b) b.textContent = "Couldn’t load this tour. Check your connection."; });
+  return '<div class="wrap"><p class="muted" id="deckWait" style="padding:60px 0">Opening the tour…</p></div>'; }
+const TL = { // slide layouts: each returns the inner HTML of the slide body
+  title: (s, D) => { const im = deckImg(D, s.img || D.cover);
+    return '<div class="zk-title"><div class="zk-tt"><span class="zk-kick">' + esc(s.kicker || "PHILODYSSEY · A TOUR") + '</span><h1>' + esc(s.title || D.title) + '</h1><p class="zk-q">' + esc(s.question || D.question || "") + "</p>" + (s.sub ? '<p class="zk-en">' + esc(s.sub) + "</p>" : "") + (D.basis ? '<p class="zk-basis">' + esc(D.basis) + "</p>" : "") + ((s.tags || []).length ? '<p class="zk-tags">' + s.tags.map(esc).join("  ·  ") + "</p>" : "") + "</div>" +
+      (im ? '<figure class="zk-cover"><img src="' + esc(im.src) + '" alt="" style="object-position:' + esc(im.pos || "50% 40%") + '"></figure>' : "") + "</div>"; },
+  columns: (s, D) => '<div class="zk-cols n' + (s.cols || []).length + '">' + (s.cols || []).map(c => '<div class="zk-col">' + colImg(D, c.img) + (c.label ? '<span class="zk-lab">' + esc(c.label) + "</span>" : "") + "<h3>" + esc(c.title || "") + "</h3><p>" + esc(c.text || "") + "</p>" + (c.note ? '<p class="zk-note">' + esc(c.note) + "</p>" : "") + "</div>").join("") + "</div>",
+  steps: (s, D) => '<div class="zk-cols n' + (s.steps || []).length + '">' + (s.steps || []).map((c, i) => '<div class="zk-col">' + colImg(D, c.img) + '<span class="zk-num">' + String(i + 1).padStart(2, "0") + "</span><h3>" + esc(c.title || "") + "</h3><p>" + esc(c.text || "") + "</p></div>").join("") + "</div>",
+  rows: s => '<div class="zk-rows">' + (s.rows || []).map((r, i) => '<div class="zk-row"><span class="zk-num">' + String(i + 1).padStart(2, "0") + "</span><b>" + esc(r.title || "") + "</b><span>" + esc(r.q || "") + '</span><small>' + esc(r.note || "") + "</small></div>").join("") + "</div>",
+  compare: (s, D) => '<div class="zk-cols n2 zk-cmp">' + ["a", "b"].map(k => { const c = s[k] || {}; return '<div class="zk-col">' + colImg(D, c.img) + '<h3>' + esc(c.name || "") + (c.label ? ' <span class="zk-lab">' + esc(c.label) + "</span>" : "") + "</h3>" + (c.lead ? "<p>" + esc(c.lead) + "</p>" : "") + "<ul>" + (c.points || []).map(p => "<li>" + esc(p) + "</li>").join("") + "</ul>" + (c.focus ? '<p class="zk-note">' + esc(c.focus) + "</p>" : "") + "</div>"; }).join("") + "</div>",
+  split: s => '<div class="zk-split"><div class="zk-ch"><span class="zk-lab">' + esc((s.challenge || {}).title || "The challenge") + "</span><p class=\"zk-big\">" + esc((s.challenge || {}).text || "") + '</p></div><div class="zk-ans"><h3>' + esc((s.answer || {}).title || "The answer") + "</h3><p>" + esc((s.answer || {}).text || "") + '</p><span class="zk-lab zk-warn">' + esc((s.open || {}).title || "Still unresolved") + "</span><p>" + esc((s.open || {}).text || "") + "</p></div></div>",
+  flow: (s, D) => '<div class="zk-flow">' + (s.chain || []).map((x, i) => '<span class="' + (i % 2 ? "zk-arrow" : "zk-node") + '">' + esc(x) + "</span>").join("") + "</div>" + TL.columns({ cols: s.cols || [] }, D),
+  gallery: (s, D) => '<div class="zk-gal n' + Math.min(8, (s.items || []).length) + '">' + (s.items || []).map(it => { const im = deckImg(D, it.img); return '<figure>' + (im ? '<img src="' + esc(im.src) + '" alt="" style="object-position:' + esc(im.pos || "50% 40%") + '">' : "") + '<figcaption><b>' + esc(it.caption || "") + "</b>" + (it.text ? "<span>" + esc(it.text) + "</span>" : "") + "</figcaption></figure>"; }).join("") + "</div>",
+  table: s => '<table class="zk-table"><thead><tr>' + (s.head || []).map(h => "<th>" + esc(h) + "</th>").join("") + "</tr></thead><tbody>" + (s.rows || []).map(r => "<tr>" + r.map((c, i) => (i ? "<td>" : "<th>") + esc(c) + (i ? "</td>" : "</th>")).join("") + "</tr>").join("") + "</tbody></table>",
+  image: (s, D) => { const im = deckImg(D, s.img); return '<div class="zk-image">' + (im ? '<img src="' + esc(im.src) + '" alt="' + esc(s.caption || "") + '" style="object-position:' + esc(im.pos || "50% 40%") + '">' : "") + '<div class="zk-image-tx">' + (s.caption ? '<span class="zk-lab">' + esc(s.caption) + "</span>" : "") + (s.text ? "<p>" + esc(s.text) + "</p>" : "") + "</div></div>"; },
+  quote: s => '<blockquote class="zk-quote"><p>“' + esc(String(s.quote || "").replace(/^[“"]|[”"]$/g, "")) + '”</p><cite>' + esc(s.who || "") + (s.context ? '<span>' + esc(s.context) + "</span>" : "") + "</cite></blockquote>",
+  closing: s => '<ol class="zk-qs">' + (s.questions || []).map(q => "<li>" + esc(q) + "</li>").join("") + "</ol>" + (s.line ? '<p class="zk-line">' + esc(s.line) + "</p>" : ""),
+};
+TL.discussion = TL.closing;
+// diagrams
+TL.pyramid = (s, D) => { const L = s.levels || [], n = L.length || 1;
+  return '<div class="dg-pyr">' + L.map((l, i) => '<div class="dg-pyr-row"><span class="dg-pyr-tag">' + esc(l.tag || "") + '</span><div class="dg-pyr-band" style="--w:' + Math.round(34 + 66 * (i + 1) / n) + '%;--h:' + (0.55 + 0.45 * (n - i) / n) + '"><b>' + esc(l.title || "") + "</b></div><p>" + esc(l.text || "") + "</p></div>").join("") + "</div>"; };
+TL.timeline = (s, D) => '<div class="dg-tl">' + (s.events || []).map(e => '<div class="dg-tl-e' + (e.key ? " key" : "") + '">' + colImg(D, e.img) + '<span class="dg-tl-d">' + esc(e.date || "") + "</span><b>" + esc(e.title || "") + "</b>" + (e.text ? "<p>" + esc(e.text) + "</p>" : "") + "</div>").join("") + "</div>";
+TL.mapping = s => '<div class="dg-map"><span class="zk-lab">' + esc((s.heads || [])[0] || "") + '</span><span></span><span class="zk-lab">' + esc((s.heads || [])[1] || "") + "</span>" + (s.pairs || []).map(p => '<div class="dg-map-a"><b>' + esc(p.a || "") + "</b>" + (p.at ? "<small>" + esc(p.at) + "</small>" : "") + '</div><span class="dg-map-link">' + esc(p.link || "↔") + '</span><div class="dg-map-b"><b>' + esc(p.b || "") + "</b>" + (p.bt ? "<small>" + esc(p.bt) + "</small>" : "") + "</div>").join("") + "</div>" + (s.note ? '<p class="dg-note">' + esc(s.note) + "</p>" : "");
+TL.mean = s => '<table class="zk-table dg-mean"><thead><tr><th>' + esc((s.head || [])[0] || "Too little") + '</th><th class="mid">' + esc((s.head || [])[1] || "The mean") + "</th><th>" + esc((s.head || [])[2] || "Too much") + "</th>" + (s.area ? "<th>Area</th>" : "") + "</tr></thead><tbody>" + (s.rows || []).map(r => "<tr><td>" + esc(r[0]) + '</td><td class="mid">' + esc(r[1]) + "</td><td>" + esc(r[2]) + "</td>" + (s.area ? "<td>" + esc(r[3] || "") + "</td>" : "") + "</tr>").join("") + "</tbody></table>";
+TL.grid = s => '<div class="dg-grid" style="--c:' + ((s.cols || []).length || 3) + '"><span></span>' + (s.cols || []).map(c => '<span class="zk-lab">' + esc(c) + "</span>").join("") + (s.rows || []).map(r => '<span class="dg-grid-h">' + esc(r.label || "") + "</span>" + (r.cells || []).map(c => '<div class="dg-grid-c' + (c && c.bad ? " bad" : "") + '"><b>' + esc((c && c.title) || c || "") + "</b>" + (c && c.text ? "<small>" + esc(c.text) + "</small>" : "") + "</div>").join("")).join("") + "</div>" + (s.note ? '<p class="dg-note">' + esc(s.note) + "</p>" : "");
+TL.ladder = (s, D) => '<div class="dg-lad">' + (s.rungs || []).map((r, i) => '<div class="dg-lad-r" style="--i:' + i + '">' + colImg(D, r.img) + "<div><b>" + esc(r.title || "") + "</b>" + (r.text ? "<p>" + esc(r.text) + "</p>" : "") + "</div>" + (r.tag ? '<span class="zk-lab">' + esc(r.tag) + "</span>" : "") + "</div>").join("") + "</div>";
+function colImg(D, r) { const im = deckImg(D, r); return im ? '<span class="zk-cimg"><img src="' + esc(im.src) + '" alt="" style="object-position:' + esc(im.pos || "50% 40%") + '"></span>' : ""; }
+function deckSlideHTML(D, s, i) {
+  const L = s.layout || "columns", dark = L === "closing" || L === "discussion", im = !["title", "image"].includes(L) && deckImg(D, s.img);
+  if (L === "title") return '<div class="dslide zk-L-title">' + TL.title(s, D) + "</div>";
+  if (L === "image") return '<div class="dslide zk-L-image">' + TL.image(s, D) + (s.title ? '<div class="zk-image-h"><h2>' + esc(s.title) + "</h2>" + (s.sub ? "<p>" + esc(s.sub) + "</p>" : "") + "</div>" : "") + '<span class="zk-pg">' + String(i + 1).padStart(2, "0") + "</span></div>";
+  return '<div class="dslide zk-L-' + esc(L) + (dark ? " zk-dark" : "") + (im ? " zk-has-img" : "") + '"><header class="zk-head"><span class="zk-deck">' + esc(D.title) + '</span><span class="zk-sec">' + esc(s.section || "") + "</span><h2>" + esc(s.title || "") + "</h2>" + (s.sub ? '<p class="zk-sub">' + esc(s.sub) + "</p>" : "") + "</header>" +
+    '<div class="zk-main"><div class="zk-body">' + (TL[L] || TL.columns)(s, D) + "</div>" + (im ? '<figure class="zk-pic"><img src="' + esc(im.src) + '" alt="" style="object-position:' + esc(im.pos || "50% 40%") + '"></figure>' : "") + "</div>" +
+    (s.bottom ? '<p class="zk-bottom">' + esc(s.bottom) + "</p>" : "") + '<span class="zk-pg">' + String(i + 1).padStart(2, "0") + "</span></div>"; }
+VIEWS.tour = arg => {
+  const [id, n0] = String(arg || "").split("."), meta = DECKIX.find(x => x.id === id);
+  if (!meta && !DK_(id)) { after.push(() => { location.hash = "#voyage"; }); return ""; }
+  const D = DK_(id); if (!D) return deckWait(id);
+  const n = D.slides.length, T = tourState(), st = T[id] = T[id] || {};
+  const i = n0 === "done" ? n - 1 : Math.max(0, Math.min(n - 1, (parseInt(n0, 10) || 1) - 1));
+  if (n0 === "done") st.done = 1; st.at = Math.max(st.at || 0, i); save();
+  const s = D.slides[i], notesOn = !!S.deckNotes, im = s.img && deckImg(D, s.img);
+  after.push(() => { document.title = (s.title || D.title) + " · " + D.title + " · Philodyssey"; fitSlide(); const th = $(".dk-thumbs .on"); if (th) th.scrollIntoView({ block: "nearest", inline: "center" }); });
+  const nav = '<div class="dk-nav"><a class="btn" href="' + (i ? "#tour-" + esc(id) + "." + i : "#voyage") + '">← ' + (i ? "Back" : "Tours") + '</a><span class="dk-count">' + (i + 1) + " / " + n + '</span><a class="btn primary" href="#tour-' + esc(id) + "." + (i + 1 >= n ? "done" : i + 2) + '">' + (i + 1 >= n ? "Finish ✓" : "Next →") + "</a></div>";
+  return '<div class="wrap dk-page"><div class="dk-top"><a class="linkish" href="#voyage">← All tours</a><b class="dk-title">' + esc(D.title) + '</b><span class="row" style="--g:8px"><button class="btn small ghost" data-act="deckNotes" aria-pressed="' + notesOn + '">' + (notesOn ? "Hide" : "Show") + ' speaker notes</button><button class="btn small" data-act="deckPresent">⛶ Present</button></span></div>' +
+    '<div class="dk-stage" id="dkStage">' + deckSlideHTML(D, s, i) + "</div>" + nav +
+    (s.link ? '<p class="dk-link"><a class="btn small" href="' + esc(s.link) + '">' + esc(s.linkLabel || "Go deeper on Philodyssey") + " →</a></p>" : "") +
+    (notesOn && s.notes ? '<section class="dk-notes"><span class="eyebrow">Speaker notes</span>' + String(s.notes).split(/\n+/).map(p => "<p>" + esc(p) + "</p>").join("") + "</section>" : "") +
+    (im && im.credit ? '<p class="dk-credit">Picture: ' + esc(im.credit) + "</p>" : "") +
+    '<div class="dk-thumbs" aria-label="All slides">' + D.slides.map((x, k) => '<a href="#tour-' + esc(id) + "." + (k + 1) + '" class="' + (k === i ? "on" : "") + '" title="' + esc(x.title || "") + '"><span>' + (k + 1) + "</span>" + esc(x.title || D.title) + "</a>").join("") + "</div></div>";
+};
+// scale the fixed 1280x720 slide to the stage width
+function fitSlide() { const st = $("#dkStage"), sl = st && $(".dslide", st); if (!sl) return; const w = st.clientWidth, h = document.fullscreenElement === st ? st.clientHeight : Infinity;
+  const k = Math.min(w / 1280, h / 720); sl.style.transform = "scale(" + k + ")"; st.style.height = document.fullscreenElement === st ? "" : 720 * k + "px"; }
+addEventListener("resize", () => { if (route().name === "tour") fitSlide(); });
+document.addEventListener("fullscreenchange", () => { if (route().name === "tour") fitSlide(); });
+ACT.deckNotes = () => { S.deckNotes = !S.deckNotes; save(); render(true); };
+ACT.deckPresent = () => { const st = $("#dkStage"); if (!st) return; if (document.fullscreenElement) document.exitFullscreen(); else if (st.requestFullscreen) st.requestFullscreen().catch(() => toast("Full screen isn’t available here.")); };
+document.addEventListener("keydown", e => { const r = route(); if (r.name !== "tour" || /INPUT|TEXTAREA|SELECT/.test((e.target || {}).tagName || "")) return;
+  const a = ["ArrowRight", "PageDown", " "].includes(e.key) ? ".dk-nav .primary" : ["ArrowLeft", "PageUp"].includes(e.key) ? ".dk-nav .btn:not(.primary)" : null;
+  if (a && $(a)) { e.preventDefault(); const h = $(a).getAttribute("href"); if (h === "#voyage" && document.fullscreenElement) return; history.replaceState(null, "", h); render(true); fitSlide(); } });
 function voyHome() {
   const V = voyState();
   const all = VOY.units.flatMap(u => islandsOf(u));
@@ -15412,7 +15573,7 @@ function voyHome() {
     "</div></section>";
   h += '<div class="wrap stack" style="--g:34px;padding-block:34px">';
   h += forYouHTML();
-  h += voyToursHTML();
+  h += tourStripHTML();
   const byQ = S.vyView === "q";
   h += '<div class="row vy-viewsw" role="group" aria-label="Browse the Voyage"><button class="chip" data-act="vyView" data-v="sea" aria-pressed="' + !byQ + '">By sea, in order</button><button class="chip" data-act="vyView" data-v="q" aria-pressed="' + byQ + '">By question</button></div>';
   if (byQ) return h + byQuestionHTML() + "</div></div>";
@@ -16106,6 +16267,6 @@ window.PHILO = { VIEWS, ACT, save, render, esc, $, $$, labShell, route, ROUTE_AL
 })();
 </script>
 <script src="js/study.js"></script>
-<script src="js/experiences.js"></script><script src="data/world-map.js"></script><script src="data/atlas-tours.js"></script><script src="js/tours.js"></script>
+<script src="js/experiences.js"></script>
 </body>
 </html>

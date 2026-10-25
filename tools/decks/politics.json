@@ -1,0 +1,595 @@
+{
+ "id": "politics",
+ "title": "An Introduction to Political Philosophy",
+ "question": "What gives anyone the right to rule us?",
+ "topic": "politics",
+ "topicName": "Political philosophy",
+ "minutes": 45,
+ "basis": "Draws on themes from Jonathan Wolff, An Introduction to Political Philosophy, and Will Kymlicka, Contemporary Political Philosophy",
+ "cover": "cover",
+ "images": {
+  "cover": {
+   "src": "img/deck/politics/cover.webp",
+   "credit": "Effects of Good Government in the City, Ambrogio Lorenzetti, 1338–39 · profzucker · CC BY-NC-SA 2.0",
+   "file": "https://www.flickr.com/photos/82032880@N00/52008469477",
+   "pos": "50% 40%"
+  },
+  "badgov": {
+   "src": "img/deck/politics/badgov.webp",
+   "credit": "Allegory of Bad Government (detail), Ambrogio Lorenzetti · profzucker · CC BY-NC-SA 2.0",
+   "file": "https://www.flickr.com/photos/82032880@N00/8330314549",
+   "pos": "50% 40%"
+  },
+  "vote": {
+   "src": "img/deck/politics/vote.webp",
+   "credit": "Queue to vote, India · Al Jazeera English · CC BY-SA 2.0",
+   "file": "https://www.flickr.com/photos/32834977@N03/3447209438",
+   "pos": "50% 40%"
+  },
+  "parl": {
+   "src": "img/deck/politics/parl.webp",
+   "credit": "Reichstag dome over the German parliament, Berlin · Miradortigre · CC BY-NC 2.0",
+   "file": "https://www.flickr.com/photos/68018236@N03/14148094334",
+   "pos": "50% 40%"
+  },
+  "cctv": {
+   "src": "img/deck/politics/cctv.webp",
+   "credit": "CCTV cameras · Mike_fleming · CC BY-SA 2.0",
+   "file": "https://www.flickr.com/photos/33174580@N00/4632603680",
+   "pos": "50% 40%"
+  },
+  "seatbelt": {
+   "src": "img/deck/politics/seatbelt.webp",
+   "credit": "Car seat belt · Mechanic Base · CC BY-ND 2.0",
+   "file": "https://www.flickr.com/photos/194218872@N08/51577136001",
+   "pos": "50% 40%"
+  },
+  "protest": {
+   "src": "img/deck/politics/protest.webp",
+   "credit": "Street protest · david_shankbone · Public domain",
+   "file": "https://www.flickr.com/photos/27865228@N06/6199854848",
+   "pos": "50% 40%"
+  },
+  "hobbes": {
+   "src": "img/deck/politics/hobbes.webp",
+   "credit": "Frontispiece of Hobbes’s Leviathan, Abraham Bosse, 1651 · Public domain",
+   "file": "https://commons.wikimedia.org/wiki/File:Leviathan_by_Thomas_Hobbes.jpg",
+   "pos": "50% 20%"
+  }
+ },
+ "slides": [
+  {
+   "layout": "title",
+   "kicker": "PUBLIC LECTURE · POWER AND PUBLIC LIFE",
+   "title": "An Introduction to Political Philosophy",
+   "question": "What gives anyone the right to rule us?",
+   "sub": "Authority, democracy, liberty and justice: the questions behind every argument about politics",
+   "tags": [
+    "AUTHORITY",
+    "DEMOCRACY",
+    "LIBERTY",
+    "JUSTICE",
+    "INCLUSION"
+   ],
+   "img": "cover",
+   "notes": "Tonight is not a list of famous names to memorise. We are going to step into a field, political philosophy, and see why it exists, which questions it keeps returning to, and how to take part in its arguments yourself.\nThe field starts from an ordinary but sharp fact: we live under shared rules that we did not all choose. The law can stop you doing things. The state can take part of your income. A majority can make decisions that bind a minority. Because these rules are backed by force, habit and efficiency are not enough. They have to be justified to the people who must live under them.\nThe painting behind me is Ambrogio Lorenzetti’s fresco of good government in Siena, painted in the 1330s on the wall of the room where the city council met: a reminder to rulers of what their power was for.\nNext: before the big questions, let’s be clear about what kind of questions these are."
+  },
+  {
+   "layout": "columns",
+   "section": "What the field is",
+   "title": "Three subjects study politics, but ask different questions",
+   "sub": "The difference lies in their questions, aims and methods",
+   "cols": [
+    {
+     "label": "Political science",
+     "title": "How does politics work?",
+     "text": "Studies power, voting, institutions and policy. Aims to describe, explain and sometimes predict, using data, history and comparison.",
+     "note": "Example: which voting systems produce two parties?"
+    },
+    {
+     "label": "Philosophy",
+     "title": "What makes a claim true or reasonable?",
+     "text": "Studies concepts, knowledge, values and reasons. Aims to clarify ideas and test arguments, using logic, counterexamples and thought experiments.",
+     "note": "Example: what exactly is freedom?"
+    },
+    {
+     "label": "Political philosophy",
+     "title": "What makes power legitimate?",
+     "text": "Studies the moral foundations of the state, rights, liberty, democracy and fair shares. Aims to justify or criticise institutions.",
+     "note": "Example: should we have a two-party system?"
+    }
+   ],
+   "bottom": "Political science explains how politics runs; political philosophy asks what would justify it.",
+   "notes": "Three subjects are easy to blur. Political science is a social science: it asks why turnout is higher in some countries, or how an electoral system shapes the number of parties. Its aim is to describe and explain, using data and comparison.\nPhilosophy asks what our words mean and whether our reasons hold up. We all say we value freedom, but is freedom being left alone, or having the real ability to live as you choose? Two people can look at the same facts and reach opposite conclusions simply because they mean different things by one word.\nPolitical philosophy sits between them. It shares political science’s objects, the state, law, markets and voting, and philosophy’s methods. Its task is to ask what ought to be and why. Facts never settle that on their own, but a principle that ignores the facts about people and institutions isn’t worth much either.\nNext: the six questions that organise the whole field."
+  },
+  {
+   "layout": "rows",
+   "section": "A map of the field",
+   "title": "Six questions organise political philosophy",
+   "sub": "Everything that follows hangs on these",
+   "rows": [
+    {
+     "title": "What if there were no state?",
+     "q": "Do we need government at all?",
+     "note": "The state of nature"
+    },
+    {
+     "title": "Why should I obey?",
+     "q": "Does the state have a right to rule me?",
+     "note": "Legitimacy and obligation"
+    },
+    {
+     "title": "Who should rule?",
+     "q": "Why democracy rather than experts or kings?",
+     "note": "Democracy"
+    },
+    {
+     "title": "When may I be stopped?",
+     "q": "How far can the state limit my freedom?",
+     "note": "Liberty"
+    },
+    {
+     "title": "Who should get what?",
+     "q": "How should wealth and opportunity be shared?",
+     "note": "Distributive justice"
+    },
+    {
+     "title": "Who was left out?",
+     "q": "Whose voices did the classic theories ignore?",
+     "note": "Class, gender and inclusion"
+    }
+   ],
+   "bottom": "Each answer shapes the next: your view of human nature decides whether you need a state at all.",
+   "notes": "Here is our map. First: what would life be like without a state? This is a thought experiment, not a history lesson, and it tests whether government is necessary. Second: even if the state is useful, does it have the right to demand our obedience? Third: who should rule, and why do most of us believe in democracy rather than rule by experts? Fourth: liberty. How much of my life is my own business? Fifth: property and fair shares. Sixth: who did the classic theories leave out? Workers, women and colonised peoples all asked this question.\nThe questions are linked. Your view of human nature shapes whether you think we need a state. Your view of the state shapes what you expect from democracy. And your views on freedom and property decide which kind of justice you accept.\nNext: how do we argue about any of this, rather than just state opinions?"
+  },
+  {
+   "layout": "steps",
+   "section": "Method",
+   "title": "A position becomes philosophy only when it is argued",
+   "sub": "Three moves turn an opinion into a case",
+   "steps": [
+    {
+     "title": "Clarify the concepts",
+     "text": "Freedom, equality, rights and fairness each have several meanings. Separate them first, or people argue past each other."
+    },
+    {
+     "title": "State a principle",
+     "text": "Say which values come first and why. A principle must apply to everyone, including when it costs you, and survive counterexamples."
+    },
+    {
+     "title": "Test the institutions",
+     "text": "Bring the principle back to laws, markets, families and taxes. Ask what it would really do, and at what cost."
+    }
+   ],
+   "bottom": "The core move: give reasons, and let others try to knock them down.",
+   "notes": "In public debate people say “I’m for freedom” or “fairness matters most”. Those are positions, not yet philosophy. Philosophy does three things.\nFirst, it clarifies concepts. One person says fairness means the same rules for everyone. Another says fairness must take account of where people start. They seem to disagree about a policy, but first they disagree about a word.\nSecond, it states principles and gives reasons. Why should liberty come before efficiency? Why can’t a majority vote away a minority’s basic rights? A principle you only accept when it suits you isn’t a principle.\nThird, it returns to institutions: what would this principle do if it became law?\nNext: philosophers have a favourite tool for exposing hidden assumptions."
+  },
+  {
+   "layout": "steps",
+   "section": "Method",
+   "title": "Thought experiments expose the assumptions behind political claims",
+   "sub": "Simplify the world to see the structure of an argument",
+   "steps": [
+    {
+     "title": "Remove the institutions",
+     "text": "Imagine no state, no police, no courts. Would people still cooperate?"
+    },
+    {
+     "title": "Propose a rule",
+     "text": "What rules could everyone affected accept?"
+    },
+    {
+     "title": "Stress-test it",
+     "text": "Does the rule survive minorities, extreme cases and scarcity?"
+    },
+    {
+     "title": "Return to reality",
+     "text": "Which real institutions come closest, and what do they cost?"
+    }
+   ],
+   "bottom": "The state of nature is the field’s great stress test: it makes “we need a state” something to prove.",
+   "notes": "A thought experiment isn’t an escape from reality. It simplifies reality so the shape of an argument shows. Take away laws, police and courts. Do people still cooperate? How you answer reveals what you assume about human nature, trust and conflict.\nThen propose a rule, test it on hard cases, and only then come back to the real world to compare institutions.\nThe most famous thought experiment in the field is the state of nature. It lets us ask: what goes wrong without a state, what does the state fix, and does it create new problems of its own?\nNext: four classic answers about life without government."
+  },
+  {
+   "layout": "columns",
+   "section": "The state of nature",
+   "title": "The state of nature tests whether government is necessary",
+   "sub": "One thought experiment, four different verdicts",
+   "cols": [
+    {
+     "label": "Hobbes · 1651",
+     "title": "A war of all against all",
+     "text": "With no common power, fear and mistrust make even peaceful people strike first. Life would be “solitary, poor, nasty, brutish, and short”.",
+     "note": "The state’s first job: order",
+     "img": "hobbes"
+    },
+    {
+     "label": "Locke · 1689",
+     "title": "Rights, but no referee",
+     "text": "People already have natural rights to life, liberty and property, but everyone judges their own case, and bias breeds conflict.",
+     "note": "The state’s job: protect rights",
+     "img": "th:locke"
+    },
+    {
+     "label": "Rousseau · 1755",
+     "title": "Society corrupts",
+     "text": "Conflict comes less from human nature than from property, comparison and inequality. Institutions can create the very problems they solve.",
+     "note": "Institutions can be the problem",
+     "img": "th:rousseau"
+    },
+    {
+     "label": "Anarchism",
+     "title": "Prove it first",
+     "text": "Kropotkin and others: people cooperate by mutual aid. The state’s right to command must be proven, not assumed.",
+     "note": "Coercion needs justification",
+     "img": "th:kropotkin"
+    }
+   ],
+   "bottom": "The same thought experiment leads to four different political judgements.",
+   "notes": "Thomas Hobbes, writing after the English Civil War, imagined people with roughly equal strength, scarce resources and no way to know each other’s intentions. Even if no one is wicked, it is rational to strike first. Think of a football match with no referee: the problem isn’t that everyone wants to cheat, but that nobody can be sure the others won’t. So the first gift of the state is order.\nJohn Locke is gentler. People already have rights in the state of nature, but each of us is judge in our own case, and we are biased. The state is a neutral referee that protects rights we already had.\nJean-Jacques Rousseau turns this around: competition and envy are not fixed parts of human nature. They grow with property and comparison. Institutions can make things worse.\nAnarchists go furthest: the state must prove its right to rule.\nNext: suppose a state is useful. Does that give it the right to rule?"
+  },
+  {
+   "layout": "columns",
+   "section": "Legitimacy",
+   "title": "A state that works is not yet a state with the right to rule",
+   "sub": "Three classic arguments for a duty to obey the law",
+   "cols": [
+    {
+     "label": "Consent",
+     "title": "We agreed to it",
+     "text": "Rule is legitimate if the governed consent, as in a social contract.",
+     "note": "Problem: most people never signed anything"
+    },
+    {
+     "label": "Benefit",
+     "title": "It makes life better",
+     "text": "The state reduces violence and provides roads, health and schools, so obeying produces the best results.",
+     "note": "Problem: do good results justify force against anyone?"
+    },
+    {
+     "label": "Fair play",
+     "title": "You share the benefits",
+     "text": "If you enjoy law, safety and public services, you should carry your share of the costs.",
+     "note": "Problem: benefits we never chose may not bind us"
+    }
+   ],
+   "bottom": "The question of legitimacy: why should anyone accept being coerced by shared rules?",
+   "img": "parl",
+   "notes": "Political obligation asks why we have a moral reason to obey the law. The first answer is consent: the state is legitimate because we agreed to it. But when did you sign? Living somewhere, voting or using roads may not amount to real consent; David Hume compared it to a man carried onto a ship asleep who is told he consented to the captain by not jumping overboard.\nThe second answer is about good results: the state keeps the peace and provides public goods. But do good results justify coercing everyone, and what if harming a few raised the total?\nThe third is fair play: if you take the benefits of a cooperative scheme, you should share its burdens. But you never chose most of these benefits.\nNone of these settles the matter, which is why the question stays alive.\nNext: what a legitimate state has to answer."
+  },
+  {
+   "layout": "mapping",
+   "section": "Legitimacy",
+   "title": "Legitimate rule must answer three questions: source, limits, and to whom",
+   "sub": "From “do we need a state?” to “which state deserves obedience?”",
+   "heads": [
+    "The question",
+    "What it asks"
+   ],
+   "pairs": [
+    {
+     "a": "Source",
+     "at": "Where does power come from?",
+     "link": "→",
+     "b": "Consent, authorisation, the common good or fair cooperation?"
+    },
+    {
+     "a": "Limits",
+     "at": "Where does power stop?",
+     "link": "→",
+     "b": "Basic rights, the rule of law and the right to appeal."
+    },
+    {
+     "a": "Audience",
+     "at": "To whom must it justify itself?",
+     "link": "→",
+     "b": "To every person it coerces, treated as an equal citizen."
+    }
+   ],
+   "note": "Confucius added a fourth test: rulers must govern by virtue and example, or they lose the Mandate of Heaven.",
+   "bottom": "The question has changed: not whether we need a state, but what kind of state is worth obeying.",
+   "notes": "If no single argument settles obligation, we can still say what a legitimate state needs. A source: where its power comes from. Limits: where that power stops, set by rights, law and the possibility of appeal. And an audience: it owes reasons to every person it coerces, as an equal.\nThe Confucian tradition adds something Western contract theory often misses: legitimacy also depends on the ruler’s character and conduct. Mencius said that a ruler who brutalises the people has lost the Mandate of Heaven, and the people may rightly overthrow him.\nNext: who should rule?"
+  },
+  {
+   "layout": "split",
+   "section": "Who should rule?",
+   "title": "Democracy is more than majority rule",
+   "sub": "Plato’s challenge, and the democratic reply",
+   "challenge": {
+    "title": "The challenge",
+    "text": "Governing needs knowledge. Why should the many, rather than the wise, decide?"
+   },
+   "answer": {
+    "title": "The democratic answer",
+    "text": "Everyone who must obey the laws deserves an equal say in making them. Voting doesn’t just pick policies; it expresses that citizens are equals. And large groups often decide well (Aristotle, Condorcet)."
+   },
+   "open": {
+    "title": "Still unresolved",
+    "text": "How do we protect minorities from majorities? Are representatives really accountable? Can one person, one vote survive huge inequalities of money and information?"
+   },
+   "img": "vote",
+   "bottom": "Democracy is a way of making decisions and a relationship between equals.",
+   "notes": "Plato’s challenge is still the strongest. In the Republic he compares the state to a ship: would you let the passengers vote on who steers, or would you want a trained navigator? Crowds can be swayed by flattery and fear; Athens itself voted to execute Socrates.\nDemocrats reply on two levels. First, equality: everyone bound by the law has an equal claim to shape it, whatever the outcome. Second, competence: Aristotle thought a crowd could judge better than one expert, like a feast to which many contribute, and Condorcet showed mathematically that a large group of better-than-chance voters is very likely to get the right answer.\nBut questions remain. Majorities can trample minorities. And formal equality can coexist with huge inequality of influence.\nNext: we don’t vote on everything ourselves. What does representation change?"
+  },
+  {
+   "layout": "flow",
+   "section": "Who should rule?",
+   "title": "Representation makes democracy workable, and distant",
+   "sub": "Millions of citizens can’t debate every law",
+   "chain": [
+    "Citizens",
+    "authorise",
+    "Representatives",
+    "decide",
+    "Laws and policy"
+   ],
+   "cols": [
+    {
+     "title": "The mandate problem",
+     "text": "Does one vote every few years mean you consent to every decision made in between?"
+    },
+    {
+     "title": "The expertise problem",
+     "text": "Complex policy needs experts, but expertise can’t replace accountability."
+    },
+    {
+     "title": "The equality problem",
+     "text": "One person, one vote, yet money, media and lobbying spread influence very unevenly."
+    }
+   ],
+   "bottom": "Representation solves the problem of scale, but opens a gap between citizens and power.",
+   "notes": "Ancient Athens could gather its citizens on a hillside. A modern country cannot, so we elect representatives. That solves the problem of scale, but it creates distance. If you voted four years ago, did you agree to everything since? Should representatives follow what voters want, or use their own judgement, as Edmund Burke told his voters in Bristol? And formally equal votes sit alongside very unequal influence. Some democracies now experiment with citizens’ assemblies chosen by lot, an idea Athens would have recognised.\nNext: liberty. When may anyone interfere with you?"
+  },
+  {
+   "layout": "compare",
+   "section": "Liberty",
+   "title": "Liberty asks when interference can be justified",
+   "sub": "Two concepts of freedom (Isaiah Berlin, 1958)",
+   "a": {
+    "name": "Negative liberty",
+    "label": "Freedom from",
+    "lead": "Being left alone: an area where no one, including the state, interferes with your choices.",
+    "points": [
+     "Clear limits on power",
+     "Suspicious of paternalism",
+     "But a starving person may be ‘free’ to buy a holiday"
+    ],
+    "focus": "Risk: hides real powerlessness",
+    "img": "th:berlin"
+   },
+   "b": {
+    "name": "Positive liberty",
+    "label": "Freedom to",
+    "lead": "Being master of your own life: having the means and ability to act on your own considered goals.",
+    "points": [
+     "Cares about education, health, income",
+     "Freedom from addiction or manipulation",
+     "But ‘your true self’ can be decided for you"
+    ],
+    "focus": "Risk: slides into paternalism"
+   },
+   "bottom": "Freedom isn’t the absence of rules; it’s a demand that every interference give good reasons.",
+   "notes": "Isaiah Berlin’s famous lecture distinguished two ideas of freedom. Negative liberty is freedom from interference: a protected space where nobody may stop you. It draws clear lines around power, but it can ignore the fact that someone with no money, education or health is not really free to do much.\nPositive liberty is freedom to: actually being able to steer your own life. It pays attention to capability, but Berlin warned of a danger: once the state decides what your true, rational self wants, it can force you to be ‘free’. Many twentieth-century tyrannies spoke this language.\nPhilip Pettit adds a third idea: freedom as non-domination. A slave with a kind master is still unfree, because the master could interfere at will.\nNext: John Stuart Mill’s famous test for when the state may step in."
+  },
+  {
+   "layout": "columns",
+   "section": "Liberty",
+   "title": "Arguments about liberty usually turn on what counts as harm",
+   "sub": "Mill: power may be used against anyone only to prevent harm to others",
+   "cols": [
+    {
+     "label": "Harm to self",
+     "title": "Seat belts and helmets",
+     "text": "Can the state force you to protect yourself?",
+     "img": "seatbelt"
+    },
+    {
+     "label": "Offence",
+     "title": "Hateful but harmless?",
+     "text": "Should speech that disgusts but doesn’t directly hurt be limited?",
+     "img": "protest"
+    },
+    {
+     "label": "Spill-over",
+     "title": "Private choices, public costs",
+     "text": "If your risks fill hospitals, is it still your business?"
+    },
+    {
+     "label": "Capacity",
+     "title": "Who can truly choose?",
+     "text": "Children, addicts, people deceived: how autonomous are their choices?",
+     "img": "cctv"
+    }
+   ],
+   "bottom": "A test for any restriction: who is affected, how badly, and is the limit necessary and proportionate?",
+   "notes": "In On Liberty, John Stuart Mill proposed one principle: the only purpose for which power can rightly be used against anyone, against their will, is to prevent harm to others. Their own good is not enough.\nBut almost everything turns on the word harm. Is not wearing a seat belt only your business, when others pay for the hospital? Is offensive speech harmful, or only unpleasant? What about choices made under addiction or manipulation? And the camera on the right raises a newer question: how far may a state watch us in order to prevent harm?\nA useful test: who is affected, how seriously, and is the restriction really necessary and proportionate?\nNext: property. Who owns what, and why?"
+  },
+  {
+   "layout": "columns",
+   "section": "Property",
+   "title": "Property is not a fact of nature but a set of social rules",
+   "sub": "Property rights settle much more than who owns what",
+   "cols": [
+    {
+     "label": "Acquisition",
+     "title": "How did it become yours?",
+     "text": "Work, first possession, or general agreement? Locke: by mixing your labour with unowned land."
+    },
+    {
+     "label": "Transfer",
+     "title": "Is free exchange enough?",
+     "text": "If every trade is voluntary, is the result fair even if starting points differed?"
+    },
+    {
+     "label": "Use",
+     "title": "What may owners do?",
+     "text": "Exclude others? Leave land empty? Pollute?"
+    },
+    {
+     "label": "Redistribution",
+     "title": "Theft or fairness?",
+     "text": "Is taxation an attack on property, or a condition of fair cooperation?"
+    }
+   ],
+   "bottom": "The real dispute: where personal rights end and the fruits of social cooperation begin.",
+   "img": "badgov",
+   "notes": "We often treat property as natural: this is mine. But every legal system has to decide how things can be acquired, transferred, used and taxed. Locke argued that you come to own something by mixing your labour with it, as long as you leave enough and as good for others. That proviso does a lot of work.\nEven if every transfer is voluntary, differences in starting points can snowball over generations. And owners’ choices affect others: a factory owner’s smoke lands on the neighbours.\nSo the real argument is about boundaries: which of what I have is truly mine, and which is the product of a cooperative society that may claim a share?\nNext: the most famous modern debate about this."
+  },
+  {
+   "layout": "compare",
+   "section": "Justice",
+   "title": "Rawls and Nozick disagree about what makes a distribution just",
+   "sub": "Pattern versus history",
+   "a": {
+    "name": "John Rawls",
+    "label": "Justice as fairness · 1971",
+    "lead": "Choose principles behind a “veil of ignorance”, not knowing who you will be:",
+    "points": [
+     "Equal basic liberties for all",
+     "Fair equality of opportunity",
+     "Inequalities allowed only if they benefit the worst-off"
+    ],
+    "focus": "Looks at the results institutions produce",
+    "img": "th:rawls"
+   },
+   "b": {
+    "name": "Robert Nozick",
+    "label": "Entitlement theory · 1974",
+    "lead": "Justice depends on how holdings came about:",
+    "points": [
+     "Just acquisition",
+     "Just transfer",
+     "Rectification of past injustice"
+    ],
+    "focus": "If the history is clean, any outcome is just",
+    "img": "th:nozick"
+   },
+   "bottom": "The crux: should the state secure a fair background, or mainly protect individual rights?",
+   "link": "#lab-veil",
+   "linkLabel": "Play Behind the Veil",
+   "notes": "John Rawls asked us to choose the principles of a society from behind a veil of ignorance: you don’t know whether you’ll be rich or poor, talented or not, which religion you’ll hold. He argued you’d choose equal basic liberties, fair equality of opportunity, and allow inequalities only when they help the worst-off.\nRobert Nozick replied with the basketball star Wilt Chamberlain. Suppose we start from your favourite fair distribution. A million fans each freely pay Chamberlain 25 cents to watch him play. He ends up far richer. Every step was voluntary, so how can the result be unjust? Nozick concluded that justice is about history, how holdings arose, not about matching a pattern. Taxation to fit a pattern, he said, is on a par with forced labour.\nYou can try designing a society from behind the veil in the Shipyard game.\nNext: critics who said both sides missed something."
+  },
+  {
+   "layout": "columns",
+   "section": "Who was left out?",
+   "title": "Justice must also look at power hidden in ordinary life",
+   "sub": "Critics widened the circle of people owed reasons",
+   "cols": [
+    {
+     "label": "Marx",
+     "title": "Free exchange, unequal power",
+     "text": "Formal rights can coexist with material dependence. A worker with nothing to sell but labour is not freely bargaining.",
+     "img": "th:marx"
+    },
+    {
+     "label": "Feminist critique",
+     "title": "The personal is political",
+     "text": "Wollstonecraft, Beauvoir and Okin: classic theories treated the family as private, ignoring unpaid care and power between the sexes.",
+     "img": "th:wollstonecraft"
+    },
+    {
+     "label": "Anti-colonial critique",
+     "title": "Whose ‘man’?",
+     "text": "Fanon and Du Bois: theories of universal rights coexisted with slavery and empire.",
+     "img": "th:fanon"
+    }
+   ],
+   "bottom": "The field grows by widening the circle of people to whom power must justify itself.",
+   "notes": "Karl Marx argued that the freedom of the market can be formal rather than real. If you own nothing but your ability to work, you are free to sign a contract, but not free not to.\nFeminist philosophers, from Mary Wollstonecraft in 1792 to Susan Moller Okin, pointed out that classic theories treated the household as a private sphere, outside justice, even though unpaid care work, and the power that comes with it, shapes who can take part in public life as an equal.\nAnti-colonial thinkers such as Frantz Fanon and W. E. B. Du Bois noted that the language of universal rights was written by societies that held empires and enslaved people.\nThe common lesson: the abstract ‘individual’ always has a body, a class, a sex and a history.\nNext: let’s put the whole field on one page."
+  },
+  {
+   "layout": "table",
+   "section": "The whole field",
+   "title": "Political philosophy is a map of competing reasons",
+   "sub": "Every position has reasons for it and objections it must answer",
+   "head": [
+    "Question",
+    "Reasons for",
+    "Objections to answer"
+   ],
+   "rows": [
+    [
+     "Authority",
+     "Order and public goods",
+     "Consent, and civil disobedience"
+    ],
+    [
+     "Democracy",
+     "Equal standing",
+     "Expertise, representation, tyranny of the majority"
+    ],
+    [
+     "Liberty",
+     "Personal autonomy",
+     "Harm, risk and capacity"
+    ],
+    [
+     "Justice",
+     "Fair cooperation",
+     "Rights, incentives and history"
+    ],
+    [
+     "Inclusion",
+     "Equal status for all",
+     "Class, gender and hidden domination"
+    ]
+   ],
+   "bottom": "Know the reasons on both sides of each row, and you know the field.",
+   "notes": "Here is the whole field as a table. For each question there are strong reasons on one side and objections that must be answered. If you can explain both columns for each row, you understand political philosophy better than most people who argue about politics.\nNext: a toolkit to take with you."
+  },
+  {
+   "layout": "steps",
+   "section": "Take it with you",
+   "title": "Any public controversy can be unpacked in four steps",
+   "sub": "A toolkit for political argument",
+   "steps": [
+    {
+     "title": "Define",
+     "text": "What exactly do the key words mean here?"
+    },
+    {
+     "title": "Find the principle",
+     "text": "Is freedom, fairness, rights or the common good doing the work?"
+    },
+    {
+     "title": "Check assumptions",
+     "text": "What is being assumed about people, institutions and consequences?"
+    },
+    {
+     "title": "Count the cost",
+     "text": "Accepting this answer means giving up which other value?"
+    }
+   ],
+   "bottom": "The aim isn’t instant agreement, but finding exactly which reason we disagree about.",
+   "notes": "Next time you argue about tax, immigration, free speech or policing, try this. Define the key words. Find the principle actually doing the work. Check the assumptions about human nature and consequences. And count the cost: every answer gives up something.\nYou probably won’t agree at the end. But you’ll know exactly where you disagree, which is how arguments make progress.\nNext: what the field leaves us with."
+  },
+  {
+   "layout": "closing",
+   "section": "",
+   "title": "Political philosophy doesn’t leave us a set of answers",
+   "sub": "It leaves us with better questions",
+   "questions": [
+    "What kind of power deserves to be obeyed?",
+    "What kinds of freedom can live alongside each other?",
+    "What inequalities can be justified to everyone?"
+   ],
+   "line": "When politics asks us to obey shared rules, philosophy asks those rules to answer to us.",
+   "notes": "We end where we began. Political philosophy doesn’t hand out answers. It leaves sharper questions: which power deserves obedience, which freedoms can coexist, which inequalities could be justified to each person who lives with them.\nWhen politics demands that we obey common rules, philosophy demands that those rules answer to all of us."
+  },
+  {
+   "layout": "discussion",
+   "section": "",
+   "title": "Discussion: bring the theory back to real life",
+   "sub": "Three questions for debate",
+   "questions": [
+    "If experts usually decide better, should big decisions still go to a public vote?",
+    "May the government force you to do something ‘for your own good’?",
+    "If someone earns a fortune by their own effort, may the state take some to give to others?"
+   ],
+   "line": "There are no set answers. State your principle first, then the price you’re willing to pay for it.",
+   "link": "#agora",
+   "linkLabel": "Argue it in Debates",
+   "notes": "Three questions to argue about. Before you answer, say which principle you’re relying on, and what you’d have to give up if you were wrong. You can carry these arguments on in the Debates section."
+  }
+ ]
+}
