@@ -69,10 +69,9 @@ var add = {
  },
  "gstrawson": {
   "src": "img/th/gstrawson.webp",
-  "credit": "Symbol: an ouroboros, for Strawson’s argument that no one can be the cause of themselves · Photo: rezendi · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/12601730@N00/9659240077",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "pereboom": {
   "src": "img/th/pereboom.webp",
@@ -312,10 +311,9 @@ var add = {
  },
  "sider": {
   "src": "img/th/sider.webp",
-  "credit": "Symbol: light trails, for Sider’s four-dimensionalism (objects stretched through time) · Photo: MDB Images · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/70762468@N04/10342607224",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "hirsch": {
   "src": "img/th/hirsch.webp",
@@ -540,10 +538,9 @@ var add = {
  },
  "kane": {
   "src": "img/th/kane.webp",
-  "credit": "Symbol: a forking path, for Kane’s ‘self-forming’ free choices · Photo: Wonderlane · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/71401718@N00/13067014944",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "fischer": {
   "src": "img/th/fischer.webp",
@@ -688,10 +685,9 @@ var add = {
  },
  "scheffler": {
   "src": "img/th/scheffler.webp",
-  "credit": "Symbol: a garden, for Scheffler’s room for personal projects (and the lives that come after us) · Photo: lakelou · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/56719340@N00/6060083264",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "kagan": {
   "src": "img/th/kagan.webp",
@@ -1350,10 +1346,9 @@ var add = {
  },
  "hartshorne": {
   "src": "img/th/hartshorne.webp",
-  "credit": "Symbol: a songbird, for Hartshorne (process theologian and birdsong scholar) · Photo: moonjazz · Public domain",
-  "file": "https://www.flickr.com/photos/8398907@N02/3969196329",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "krause": {
   "src": "img/th/krause.webp",
