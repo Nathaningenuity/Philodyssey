@@ -230,10 +230,9 @@ var add = {
  },
  "shoemaker": {
   "src": "img/th/shoemaker.webp",
-  "credit": "Symbol: an anatomical brain engraving, for Shoemaker’s brain-transplant cases · Photo: brain_blogger · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/33711502@N06/3138247450",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "worrall": {
   "src": "img/th/worrall.webp",
@@ -243,10 +242,9 @@ var add = {
  },
  "van_fraassen": {
   "src": "img/th/van_fraassen.webp",
-  "credit": "Symbol: a telescope, for van Fraassen’s constructive empiricism about the observable · Photo: gnuckx · CC0",
-  "file": "https://www.flickr.com/photos/34409164@N06/8076464389",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "godel": {
   "src": "img/th/godel.webp",
@@ -423,10 +421,9 @@ var add = {
  },
  "feinberg": {
   "src": "img/th/feinberg.webp",
-  "credit": "Symbol: a stop sign, for Feinberg’s harm principle · Photo: Free Grunge Textures - www.freestock.ca · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/80497449@N04/10011701674",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "sunstein": {
   "src": "img/th/sunstein.webp",
@@ -774,10 +771,9 @@ var add = {
  },
  "beardsley": {
   "src": "img/th/beardsley.webp",
-  "credit": "Symbol: an orchestra, for Beardsley’s aesthetic-experience theory of art · Photo: Meredith Bell · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/76731057@N03/13789301574",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "wimsatt": {
   "src": "img/th/wimsatt.webp",
@@ -948,10 +944,9 @@ var add = {
  },
  "finnis": {
   "src": "img/th/finnis.webp",
-  "credit": "Symbol: an olive branch, for Finnis’s natural-law account of basic human goods · Photo: Nick Kenrick.. · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/33363480@N05/15583901876",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "bostrom": {
   "src": "img/th/bostrom.webp",
