@@ -51,8 +51,8 @@ var add = {
  },
  "rorty": {
   "src": "img/th/rorty.webp",
-  "credit": "Richard Rorty, drawing, 2013 · Manuelredondoduenas · CC BY-SA 3.0",
-  "file": "https://commons.wikimedia.org/wiki/File:Richard_McKay_Rorty.png",
+  "credit": "Photo via lamaletadeportbou.com · used with attribution",
+  "file": "https://lamaletadeportbou.com/wp-content/uploads/2017/06/RORTRY.jpg",
   "pos": "50% 30%"
  },
  "jackson": {
@@ -136,10 +136,9 @@ var add = {
  },
  "wong": {
   "src": "img/th/wong.webp",
-  "credit": "Symbol: yin and yang, for Wong’s pluralistic relativism and comparative ethics · Photo: DonkeyHotey · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/47422005@N04/5727907084",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via duke.edu · used with attribution",
+  "file": "https://sites.duke.edu/centerforcomparativephilosophy/files/2016/06/wong_david.jpg",
+  "pos": "50% 30%"
  },
  "joyce": {
   "src": "img/th/joyce.webp",
@@ -180,17 +179,15 @@ var add = {
  },
  "feldman": {
   "src": "img/th/feldman.webp",
-  "credit": "Symbol: an hourglass, for Feldman’s deprivation account of the badness of death · Photo: Tijs Zwinkels · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/41668395@N04/3988939596",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via alchetron.com · used with attribution",
+  "file": "https://alchetron.com/cdn/fred-feldman-philosopher-7bf1739d-8ddf-4821-bd3b-fa7258b7bd1-resize-750.jpg",
+  "pos": "50% 30%"
  },
  "mcmahan": {
   "src": "img/th/mcmahan.webp",
-  "credit": "Symbol: a soldier’s helmet, for McMahan’s revisionist ethics of war · Photo: veteranscallusa · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/143709845@N08/28116689060",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via unibuc.ro · used with attribution",
+  "file": "https://filosofie.unibuc.ro/wp-content/uploads/Jeff-McMahan.jpeg",
+  "pos": "50% 30%"
  },
  "protagoras": {
   "src": "img/th/protagoras.webp",
@@ -273,10 +270,9 @@ var add = {
  },
  "bonjour": {
   "src": "img/th/bonjour.webp",
-  "credit": "Symbol: a geometer’s compass, for BonJour’s defence of a priori insight · Photo: unknown photographer · CC0",
-  "file": "https://www.rawpixel.com/image/6820778/png-sticker-vintage",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via alchetron.com · used with attribution",
+  "file": "https://alchetron.com/cdn/laurence-bonjour-341e191c-e91f-4187-84ca-cdc8e656503-resize-750.jpg",
+  "pos": "50% 30%"
  },
  "carnap": {
   "src": "img/th/carnap.webp",
@@ -292,17 +288,15 @@ var add = {
  },
  "kit_fine": {
   "src": "img/th/kit_fine.webp",
-  "credit": "Symbol: trees in fog, for Fine’s theory of vagueness · Photo: rrrtem · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/33756516@N07/5693153816",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via iep.utm.edu · used with attribution",
+  "file": "https://iep.utm.edu/wp-content/media/Fine_Kit_small.jpg",
+  "pos": "50% 30%"
  },
  "edgington": {
   "src": "img/th/edgington.webp",
-  "credit": "Symbol: a heap of sand, for Edgington’s degree theory of vagueness (the sorites heap) · Photo: lofidelion · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/145468477@N06/34991794063",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via britishacademy.ac.uk · used with attribution",
+  "file": "https://www.thebritishacademy.ac.uk/media/images/dorothy-edgington.2e16d0ba.fill-1200x675.jpg",
+  "pos": "50% 30%"
  },
  "sider": {
   "src": "img/th/sider.webp",
@@ -312,10 +306,9 @@ var add = {
  },
  "hirsch": {
   "src": "img/th/hirsch.webp",
-  "credit": "Symbol: a dictionary, for Hirsch’s view that many ontology debates are verbal · Photo: flazingo_photos · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/124247024@N07/14090440354",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via brandeis.edu · used with attribution",
+  "file": "https://www.brandeis.edu/philosophy/images/faculty-staff/hirsch-eli.jpg",
+  "pos": "50% 30%"
  },
  "prior": {
   "src": "img/th/prior.webp",
@@ -337,17 +330,15 @@ var add = {
  },
  "mumford": {
   "src": "img/th/mumford.webp",
-  "credit": "Symbol: iron filings around a magnet, for Mumford’s metaphysics of powers · Photo: oskay · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/17425845@N00/4581193346",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via durham.ac.uk · used with attribution",
+  "file": "https://www.durham.ac.uk/media/durham-university/departments-/philosophy/news/Stephen-Mumford3.jpg",
+  "pos": "50% 30%"
  },
  "woodward": {
   "src": "img/th/woodward.webp",
-  "credit": "Symbol: a light switch, for Woodward’s interventionist account of causation · Photo: Dean Hochman · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/17997843@N02/27882707399",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via pitt.edu · used with attribution",
+  "file": "https://www.hps.pitt.edu/sites/default/files/styles/person_image/public/person-img/Woodward.jpg",
+  "pos": "50% 30%"
  },
  "armstrong": {
   "src": "img/th/armstrong.webp",
@@ -388,17 +379,15 @@ var add = {
  },
  "christiano": {
   "src": "img/th/christiano.webp",
-  "credit": "Symbol: raised hands in a vote, for Christiano’s egalitarian defence of democracy · Photo: Fibonacci Blue · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/44550450@N04/9583677583",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via arizona.edu · used with attribution",
+  "file": "https://philosophy.arizona.edu/sites/default/files/styles/az_medium/public/images/people/Christiano.jpg.webp",
+  "pos": "50% 30%"
  },
  "landemore": {
   "src": "img/th/landemore.webp",
-  "credit": "Symbol: a crowd, for Landemore’s ‘democratic reason’ (the wisdom of the many) · Photo: sonstroem · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/96964826@N05/10955401155",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via ox.ac.uk · used with attribution",
+  "file": "https://www.oxford-aiethics.ox.ac.uk/sites/default/files/50-50-images/Profile%20Image%20of%20Helene%20Landemore.png",
+  "pos": "50% 30%"
  },
  "brennan": {
   "src": "img/th/brennan.webp",
@@ -408,10 +397,9 @@ var add = {
  },
  "daniel_bell": {
   "src": "img/th/daniel_bell.webp",
-  "credit": "Symbol: the Temple of Heaven, Beijing, for Bell’s Confucian political meritocracy · Photo: kevinpoh · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/7679455@N03/4506894149",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via YouTube (video still) · used with attribution",
+  "file": "https://i.ytimg.com/vi/88ZoorMNMIk/maxresdefault.jpg",
+  "pos": "50% 30%"
  },
  "waldron": {
   "src": "img/th/waldron.webp",
@@ -433,10 +421,9 @@ var add = {
  },
  "conly": {
   "src": "img/th/conly.webp",
-  "credit": "Symbol: a no-smoking sign, for Conly’s coercive paternalism · Photo: Jonathan Rolande · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/110671496@N06/14173694962",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via bowdoin.edu · used with attribution",
+  "file": "https://www.bowdoin.edu/profiles/faculty/sconly/images/sarah-o-conly-bowdoin.jpg",
+  "pos": "50% 30%"
  },
  "burke": {
   "src": "img/th/burke.webp",
@@ -494,10 +481,9 @@ var add = {
  },
  "olson_jonas": {
   "src": "img/th/olson_jonas.webp",
-  "credit": "Symbol: a question mark, for Olson’s moral error theory · Photo: ryanmilani · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/51029297@N00/5275403364",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via umontreal.ca · used with attribution",
+  "file": "https://www.lecre.umontreal.ca/wp-content/uploads/2013/04/olson.jpg",
+  "pos": "50% 30%"
  },
  "bell": {
   "src": "img/th/bell.webp",
@@ -556,8 +542,8 @@ var add = {
  },
  "derose": {
   "src": "img/th/derose.webp",
-  "credit": "Keith DeRose, 2021 · Photo: Steven Hause · CC0",
-  "file": "https://commons.wikimedia.org/wiki/File:KeithDeRose.png",
+  "credit": "Photo via yale.edu · used with attribution",
+  "file": "https://philosophy.yale.edu/sites/default/files/styles/2_3_480/public/2024-10/2024_09_24%20Yale%20Keith%20DeRose_Lavitt_NZ8_6953_R.jpg",
   "pos": "50% 30%"
  },
  "alston": {
@@ -587,10 +573,9 @@ var add = {
  },
  "sorensen": {
   "src": "img/th/sorensen.webp",
-  "credit": "Symbol: a blindfolded head, for Sorensen’s epistemicism (sharp but unknowable boundaries) · Photo: Gastev · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/12148520@N00/2960556197",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via utexas.edu · used with attribution",
+  "file": "https://lifeandletters.la.utexas.edu/wp-content/uploads/2019/08/Sorensen-copy.jpg",
+  "pos": "50% 30%"
  },
  "leng": {
   "src": "img/th/leng.webp",
@@ -601,10 +586,9 @@ var add = {
  },
  "duff": {
   "src": "img/th/duff.webp",
-  "credit": "Symbol: a judge’s gavel, for Duff’s communicative theory of punishment · Photo: ccPixs.com · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/86530412@N02/8213432552",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via stir.ac.uk · used with attribution",
+  "file": "https://www.stir.ac.uk/research/hub/image/256371",
+  "pos": "50% 30%"
  },
  "christie": {
   "src": "img/th/christie.webp",
@@ -644,24 +628,21 @@ var add = {
  },
  "fish": {
   "src": "img/th/fish.webp",
-  "credit": "Symbol: a megaphone (Constructivist poster design), for Fish’s ‘There’s No Such Thing as Free Speech’ · Photo: Κλούτσις Γκ., Klutsis G. · CC BY-SA 4.0",
-  "file": "https://www.momus.gr/collections/0013477",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via alchetron.com · used with attribution",
+  "file": "https://alchetron.com/cdn/stanley-fish-8c53e655-5496-4ad9-b4dd-760498e4ae0-resize-750.png",
+  "pos": "50% 30%"
  },
  "richard_taylor": {
   "src": "img/th/richard_taylor.webp",
-  "credit": "Symbol: Sisyphus and his boulder, for Taylor’s essay on the meaning of life · Photo: Dreaming in the deep south · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/22519875@N08/7328405210",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via slideserve.com · used with attribution",
+  "file": "https://image.slideserve.com/199794/richard-taylor-fatalism-l.jpg",
+  "pos": "50% 30%"
  },
  "norcross": {
   "src": "img/th/norcross.webp",
-  "credit": "Symbol: a thermometer’s scale, for Norcross’s scalar consequentialism · Photo: matsuyuki · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/12173213@N00/4057428737",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via colorado.edu · used with attribution",
+  "file": "https://www.colorado.edu/philosophy/sites/default/files/styles/large_image_style/public/people/20240306-d77a5543_dxo-3.jpg",
+  "pos": "50% 30%"
  },
  "hursthouse": {
   "src": "img/th/hursthouse.webp",
@@ -689,10 +670,9 @@ var add = {
  },
  "hurka": {
   "src": "img/th/hurka.webp",
-  "credit": "Symbol: a climber on a summit, for Hurka’s perfectionism · Photo: Paxson Woelber · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/59306007@N08/5434541912",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via cbc.ca · used with attribution",
+  "file": "https://i.cbc.ca/1.4151845.1496943481!/fileImage/httpImage/image.jpg_gen/derivatives/original_780/thomas-hurka-2017-killam-prize.jpg",
+  "pos": "50% 30%"
  },
  "driver": {
   "src": "img/th/driver.webp",
@@ -720,10 +700,9 @@ var add = {
  },
  "slote": {
   "src": "img/th/slote.webp",
-  "credit": "Symbol: an adult’s hand holding a baby’s, for Slote’s ethics of empathy and care · Photo: Richard Welter · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/84774987@N00/5698180775",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via miami.edu · used with attribution",
+  "file": "https://people.miami.edu/_assets-profiles/acad-as/images/michael-slote-240x320.jpg",
+  "pos": "50% 30%"
  },
  "scheler": {
   "src": "img/th/scheler.webp",
@@ -757,10 +736,9 @@ var add = {
  },
  "gaut": {
   "src": "img/th/gaut.webp",
-  "credit": "Symbol: a painter’s palette, for Gaut’s cluster account of art and ethicism · Photo: Valerie Everett · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/66742614@N00/4018381856",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via st-andrews.ac.uk · used with attribution",
+  "file": "https://portal.st-andrews.ac.uk/staff-photos/bng/medium",
+  "pos": "50% 30%"
  },
  "goodman": {
   "src": "img/th/goodman.webp",
@@ -776,10 +754,9 @@ var add = {
  },
  "wimsatt": {
   "src": "img/th/wimsatt.webp",
-  "credit": "Symbol: quill pens, for Wimsatt’s ‘intentional fallacy’ · Photo: Free Public Domain Illustrations by rawpixel · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/153584064@N07/46733126582",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via english.yale.edu · used with attribution",
+  "file": "https://english.yale.edu/sites/default/files/images/DWG%20pics/Wimsatt%2C%20William%20Kurtz%201939-1975_web.jpg",
+  "pos": "50% 30%"
  },
  "barthes": {
   "src": "img/th/barthes.webp",
@@ -826,10 +803,9 @@ var add = {
  },
  "eaton": {
   "src": "img/th/eaton.webp",
-  "credit": "Symbol: a film reel, for Eaton’s robust immoralism about fiction and film · Photo: Sally E J Hunter · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/38891164@N02/4267356010",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via politicalphilosopher.net · used with attribution",
+  "file": "https://politicalphilosopher.net/wp-content/uploads/2015/05/eaton.jpg",
+  "pos": "50% 30%"
  },
  "hanslick": {
   "src": "img/th/hanslick.webp",
@@ -845,10 +821,9 @@ var add = {
  },
  "weitz": {
   "src": "img/th/weitz.webp",
-  "credit": "Symbol: an open gate, for Weitz’s view of art as an ‘open concept’ · Photo: FriaLOve · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/24518795@N07/2919598610",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via factsnippet.com · used with attribution",
+  "file": "https://www.factsnippet.com/webp-licensed-images/morris-weitz.webp",
+  "pos": "50% 30%"
  },
  "zangwill": {
   "src": "img/th/zangwill.webp",
@@ -890,17 +865,15 @@ var add = {
  },
  "shusterman": {
   "src": "img/th/shusterman.webp",
-  "credit": "Symbol: a boombox, for Shusterman’s ‘The Fine Art of Rap’ · Photo: ThreeDee912 · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/9051339@N05/1323006352",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via deakin.edu.au · used with attribution",
+  "file": "https://blogs.deakin.edu.au/philosophy/wp-content/uploads/sites/36/2016/03/richard-schusterman.jpg",
+  "pos": "50% 30%"
  },
  "kelly_sd": {
   "src": "img/th/kelly_sd.webp",
-  "credit": "Symbol: a candle flame, for Kelly’s ‘All Things Shining’ and human creativity · Photo: Tim Ereneta · Public domain",
-  "file": "https://www.flickr.com/photos/44124372600@N01/5374189877",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via news.harvard.edu · used with attribution",
+  "file": "https://news.harvard.edu/gazette/wp-content/uploads/2006/05/3-kelly1-450-1.jpg",
+  "pos": "50% 30%"
  },
  "chiang": {
   "src": "img/th/chiang.webp",
@@ -910,24 +883,21 @@ var add = {
  },
  "hertzmann": {
   "src": "img/th/hertzmann.webp",
-  "credit": "Symbol: a vintage camera, for Hertzmann’s view of computers as artists’ tools, like the camera · Photo: kevin dooley · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/12836528@N00/5312655473",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via dgp.toronto.edu (his homepage) · used with attribution",
+  "file": "https://www.dgp.toronto.edu/~hertzman/pics/portrait-small.jpg",
+  "pos": "50% 30%"
  },
  "colton": {
   "src": "img/th/colton.webp",
-  "credit": "Symbol: a robot mural, for Colton’s computational creativity · Photo: bdungeon76 · Public domain",
-  "file": "https://www.flickr.com/photos/130413646@N05/19465853892",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via qmul.ac.uk · used with attribution",
+  "file": "https://www.qmul.ac.uk/eecs/media/eecs/staff-profile-images/59771.jpg",
+  "pos": "50% 30%"
  },
  "metz": {
   "src": "img/th/metz.webp",
-  "credit": "Symbol: people joined hand in hand, for Metz’s relational account of meaning and harmony · Photo: guano · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/97838323@N00/5043855736",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via academia.edu · used with attribution",
+  "file": "https://0.academia-photos.com/64453288/16751205/28207051/s200_thaddeus.metz.jpeg",
+  "pos": "50% 30%"
  },
  "craig": {
   "src": "img/th/craig.webp",
@@ -955,10 +925,9 @@ var add = {
  },
  "mbiti": {
   "src": "img/th/mbiti.webp",
-  "credit": "Symbol: a baobab tree, for Mbiti’s account of African community and ancestry · Photo: wallygrom · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/33037982@N04/3450546907",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via ed.ac.uk · used with attribution",
+  "file": "http://www.cswc.div.ed.ac.uk/wp-content/uploads/2019/10/Mbiti.jpg",
+  "pos": "50% 30%"
  },
  "narveson": {
   "src": "img/th/narveson.webp",
@@ -986,17 +955,15 @@ var add = {
  },
  "frankish": {
   "src": "img/th/frankish.webp",
-  "credit": "Symbol: an optical illusion, for Frankish’s illusionism about consciousness · Photo: fdecomite · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/21649179@N00/5447437733",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via creativeprocess.info · used with attribution",
+  "file": "http://static1.squarespace.com/static/5745d9f137013b9d0a627c60/608fb072df42846165f61343/666707c55f393a5f7ee0e6c6/1718028257966/keith-frankish-the-creative-process-podcast-SQ.jpg",
+  "pos": "50% 30%"
  },
  "mcginn": {
   "src": "img/th/mcginn.webp",
-  "credit": "Symbol: a padlock, for McGinn’s mysterianism · Photo: außerirdische sind gesund · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/88249458@N00/4241490395",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via alchetron.com · used with attribution",
+  "file": "https://alchetron.com/cdn/colin-mcginn-4c0bf0a3-3cb8-4253-b95f-ae4333d558f-resize-750.jpeg",
+  "pos": "50% 30%"
  },
  "pinker": {
   "src": "img/th/pinker.webp",
@@ -1006,10 +973,9 @@ var add = {
  },
  "papineau": {
   "src": "img/th/papineau.webp",
-  "credit": "Symbol: a neuron, for Papineau’s physicalism about consciousness · Photo: MikeBlogs · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/31477768@N00/3101400087",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via davidpapineau.co.uk · used with attribution",
+  "file": "https://www.davidpapineau.co.uk/uploads/1/8/5/5/18551740/budapest_orig.jpg",
+  "pos": "50% 30%"
  },
  "block": {
   "src": "img/th/block.webp",
@@ -1043,10 +1009,9 @@ var add = {
  },
  "schwitzgebel": {
   "src": "img/th/schwitzgebel.webp",
-  "credit": "Symbol: a toy robot, for Schwitzgebel’s questions about machine minds · Photo: smaedli · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/75264768@N00/336498925",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via ucr.edu · used with attribution",
+  "file": "https://news.ucr.edu/sites/default/files/2019-10/Eric%20Schwitzgebel.jpg",
+  "pos": "50% 30%"
  },
  "santayana": {
   "src": "img/th/santayana.webp",
@@ -1068,10 +1033,9 @@ var add = {
  },
  "schechtman": {
   "src": "img/th/schechtman.webp",
-  "credit": "Symbol: an open book, for Schechtman’s narrative view of the self · Photo: Dave Dugdale · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/37387065@N05/5099718716",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via uic.edu · used with attribution",
+  "file": "https://phil.uic.edu/wp-content/uploads/sites/281/2018/07/marya-profile-157x180.jpg",
+  "pos": "50% 30%"
  },
  "harris": {
   "src": "img/th/harris.webp",
@@ -1081,10 +1045,9 @@ var add = {
  },
  "wegner": {
   "src": "img/th/wegner.webp",
-  "credit": "Symbol: a magician’s floating cards, for Wegner’s ‘illusion of conscious will’ · Photo: Bohman · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/79729522@N00/4394901689",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via alchetron.com · used with attribution",
+  "file": "https://alchetron.com/cdn/daniel-wegner-baa53a20-9b74-4f74-bdcb-e05a9633d62-resize-750.jpg",
+  "pos": "50% 30%"
  },
  "holbach": {
   "src": "img/th/holbach.webp",
@@ -1094,10 +1057,9 @@ var add = {
  },
  "levy": {
   "src": "img/th/levy.webp",
-  "credit": "Symbol: a die, for Levy’s ‘hard luck’ view of responsibility · Photo: Steve A Johnson · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/14529257@N03/5650007098",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via sentientism.info · used with attribution",
+  "file": "https://sentientism.info/wp-content/uploads/2022/09/neil_levy_resized.jpg",
+  "pos": "50% 30%"
  },
  "caruso": {
   "src": "img/th/caruso.webp",
@@ -1108,17 +1070,15 @@ var add = {
  },
  "waller": {
   "src": "img/th/waller.webp",
-  "credit": "Symbol: a chain, for Waller’s case against moral responsibility · Photo: Brian Smithson (Old Geordie) · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/15636379@N00/3870653508",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via YouTube (video still) · used with attribution",
+  "file": "https://i.ytimg.com/vi/2XGkd9Rf5oM/maxresdefault.jpg",
+  "pos": "50% 30%"
  },
  "balaguer": {
   "src": "img/th/balaguer.webp",
-  "credit": "Symbol: a fractal spiral, for Balaguer’s view of free will as an open scientific question · Photo: kevin dooley · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/12836528@N00/35388675155",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via closertotruth.com · used with attribution",
+  "file": "https://closertotruth.com/wp-content/uploads/BalMa_Web_Still.jpg",
+  "pos": "50% 30%"
  },
  "chisholm": {
   "src": "img/th/chisholm.webp",
@@ -1135,10 +1095,9 @@ var add = {
  },
  "mccann": {
   "src": "img/th/mccann.webp",
-  "credit": "Symbol: a raised hand, for McCann’s view of deciding as a free, uncaused act · Photo: kevin dooley · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/12836528@N00/3364591795",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via closertotruth.com · used with attribution",
+  "file": "https://closertotruth.com/wp-content/uploads/MccHu_Web_Still.jpg",
+  "pos": "50% 30%"
  },
  "widerker": {
   "src": "img/th/widerker.webp",
@@ -1149,10 +1108,9 @@ var add = {
  },
  "watson": {
   "src": "img/th/watson.webp",
-  "credit": "Symbol: a compass, for Watson’s view of free agency as acting from what one values · Photo: Matt Biddulph · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/51035707449@N01/3087388964",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via aristoteliansociety.org.uk · used with attribution",
+  "file": "https://www.aristoteliansociety.org.uk/wp-content/themes/aristoteliansociety/images/watson_main.jpg",
+  "pos": "50% 30%"
  },
  "wallace": {
   "src": "img/th/wallace.webp",
@@ -1211,24 +1169,21 @@ var add = {
  },
  "markosian": {
   "src": "img/th/markosian.webp",
-  "credit": "Symbol: a clock face, for Markosian’s presentism · Photo: sammydavisdog · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/25559122@N06/4244796152",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via philpeople.org · used with attribution",
+  "file": "https://philpeople.org/assets/storage/bt/8N/variants/bt8NUNPHSqAQbTQteXLga8h5/315ff44855809d54a726e8c586da6618910c4812e16ad3eacc2580fe3adba825",
+  "pos": "50% 30%"
  },
  "korman": {
   "src": "img/th/korman.webp",
-  "credit": "Symbol: a cat, for Korman’s defence of ordinary objects · Photo: ign0me · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/54106299@N00/3749161609",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via ucsb.edu · used with attribution",
+  "file": "https://korman.faculty.philosophy.ucsb.edu/DZK.jpg",
+  "pos": "50% 30%"
  },
  "crispin_wright": {
   "src": "img/th/crispin_wright.webp",
-  "credit": "Symbol: a door hinge, for Wright’s ‘hinge’ entitlements · Photo: kattekrab · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/94814114@N00/6208632955",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via stir.ac.uk · used with attribution",
+  "file": "https://www.stir.ac.uk/research/hub/image/257138",
+  "pos": "50% 30%"
  },
  "lynch": {
   "src": "img/th/lynch.webp",
@@ -1238,10 +1193,9 @@ var add = {
  },
  "schaffer": {
   "src": "img/th/schaffer.webp",
-  "credit": "Symbol: a spiral galaxy, for Schaffer’s priority monism (the cosmos as the one basic whole) · Photo: Raven Vasquez · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/44206105@N06/5171449480",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via jonathanschaffer.org (his homepage) · used with attribution",
+  "file": "http://www.jonathanschaffer.org/JS-WebPic2.jpg",
+  "pos": "50% 30%"
  },
  "savitt": {
   "src": "img/th/savitt.webp",
@@ -1252,10 +1206,9 @@ var add = {
  },
  "dorato": {
   "src": "img/th/dorato.webp",
-  "credit": "Symbol: a sundial, for Dorato’s philosophy of time · Photo: archer10 (Dennis) · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/22490717@N02/16064051871",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via uniroma3.it · used with attribution",
+  "file": "https://dgasi.uniroma3.it/curriculum/foto/1722014400_a0e0d96c-831e-4a4e-89fc-e9c293aa7619_crop.JPG",
+  "pos": "50% 30%"
  },
  "kuhn": {
   "src": "img/th/kuhn.webp",
@@ -1283,38 +1236,33 @@ var add = {
  },
  "sosa": {
   "src": "img/th/sosa.webp",
-  "credit": "Symbol: an archery target, for Sosa’s archer model of knowledge · Photo: NJ Tech Teacher · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/11249246@N04/7564364494",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via derechoprobatorio.cl · used with attribution",
+  "file": "https://derechoprobatorio.cl/wp-content/uploads/2018/09/ErnestSosa.png",
+  "pos": "50% 30%"
  },
  "zagzebski": {
   "src": "img/th/zagzebski.webp",
-  "credit": "Symbol: an owl, for Zagzebski’s virtue epistemology · Photo: DIVA007 · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/23975018@N04/3675503072",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via scientificandmedical.net · used with attribution",
+  "file": "https://scientificandmedical.net/wp-content/uploads/2021/04/LZ-photo-scaled.jpg",
+  "pos": "50% 30%"
  },
  "lehrer": {
   "src": "img/th/lehrer.webp",
-  "credit": "Symbol: dominoes, for Lehrer’s defeasibility theory of knowledge · Photo: mckinney75402 · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/30791749@N07/12174539434",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via utah.edu · used with attribution",
+  "file": "https://philosophy.utah.edu/_resources/images/colloquium/2020-2021/keith.jpg",
+  "pos": "50% 30%"
  },
  "weatherson": {
   "src": "img/th/weatherson.webp",
-  "credit": "Symbol: a magnifying glass, for Weatherson’s work on counterexamples · Photo: Todd Chandler · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/46864401@N07/10120260443",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via umich.edu · used with attribution",
+  "file": "https://lsa.umich.edu/philosophy/people/faculty/weath.lsa-image-servlet.jpg",
+  "pos": "50% 30%"
  },
  "cameron_r": {
   "src": "img/th/cameron_r.webp",
-  "credit": "Symbol: a spotlight, for Cameron’s moving-spotlight theory of time · Photo: kjeik · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/37622685@N02/3948536721",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via virginia.edu · used with attribution",
+  "file": "https://philosophy.virginia.edu/sites/philosophy.as.virginia.edu/files/styles/large/public/2022-09/CameronRoss.png",
+  "pos": "50% 30%"
  },
  "dowe": {
   "src": "img/th/dowe.webp",
@@ -1490,10 +1438,9 @@ var add = {
  },
  "draper": {
   "src": "img/th/draper.webp",
-  "credit": "Symbol: a storm front, for Draper’s evidential argument from suffering · Photo: Sheba Also 18 Million Views · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/34534185@N00/8653961011",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via sandwalk.blogspot.com · used with attribution",
+  "file": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjYI3ubZsuyEa6rOBkU8EUlF4KzGuQBnI-P0bf24PlOeTCN5O90NDreJdtEvFn97rt5ppm3D0A9tOfaR-XE_qyfBhl9LwOzjnOkpEnyDVTwmZqTqzu6nJcJMJ5iO17qBLifeEqE/s1600/Paul+Draper.png",
+  "pos": "50% 30%"
  },
  "kenny": {
   "src": "img/th/kenny.webp",
@@ -1503,10 +1450,9 @@ var add = {
  },
  "feldman_r": {
   "src": "img/th/feldman_r.webp",
-  "credit": "Symbol: a balance, for Feldman’s ‘suspend judgment’ view of peer disagreement · Photo: winnifredxoxo · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/61056899@N06/5751301741",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via rochester.edu · used with attribution",
+  "file": "https://www.sas.rochester.edu/phl/people/faculty/feldman_richard/assets/images/RFeldman.jpg",
+  "pos": "50% 30%"
  },
  "rothbard": {
   "src": "img/th/rothbard.webp",
@@ -1642,10 +1588,9 @@ var add = {
  },
  "casal": {
   "src": "img/th/casal.webp",
-  "credit": "Symbol: a loaf of bread, for Casal’s sufficientarianism (everyone having enough) · Photo: Teuobk · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/13261823@N05/2104039823",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via philpeople.org · used with attribution",
+  "file": "https://philpeople.org/rails/active_storage/representations/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBCUEhpWmdFPSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--67b47968dc659f8724963684956f5884a2e96c7a/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaDdCam9MY21WemFYcGxTU0lNTkRBd2VEUXdNQVk2QmtWVSIsImV4cCI6bnVsbCwicHVyIjoidmFyaWF0aW9uIn19--2422306b323f3aba93f01c757930e31db82d5d38/blob",
+  "pos": "50% 30%"
  },
  "arneson": {
   "src": "img/th/arneson.webp",
@@ -1662,10 +1607,9 @@ var add = {
  },
  "steiner": {
   "src": "img/th/steiner.webp",
-  "credit": "Symbol: a globe, for Steiner’s left-libertarian view that the earth’s resources belong to all · Photo: empiredude1 · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/38104654@N00/3369547134",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via arizona.edu · used with attribution",
+  "file": "https://freedomcenter.arizona.edu/wp-content/uploads/2024/11/hillel-steiner.jpg",
+  "pos": "50% 30%"
  },
  "smart": {
   "src": "img/th/smart.webp",
@@ -1675,10 +1619,9 @@ var add = {
  },
  "hooker": {
   "src": "img/th/hooker.webp",
-  "credit": "Symbol: traffic lights, for Hooker’s rule consequentialism · Photo: Tilemahos Efthimiadis · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/64379474@N00/2788591239",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via reading.ac.uk · used with attribution",
+  "file": "https://research.reading.ac.uk/social-licence-for-business/wp-content/uploads/sites/171/Unorganized/hooker-headshot-bw.jpg",
+  "pos": "50% 30%"
  },
  "rachels": {
   "src": "img/th/rachels.webp",
@@ -1700,17 +1643,15 @@ var add = {
  },
  "olson": {
   "src": "img/th/olson.webp",
-  "credit": "Symbol: footprints in sand, for Olson’s animalism (you are a human animal) · Photo: zbigphotography (1M+ views) · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/45098669@N06/8559321112",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via filozofuj.eu · used with attribution",
+  "file": "https://filozofuj.eu/wp-content/uploads/2017/04/olson.jpg",
+  "pos": "50% 30%"
  },
  "enoch": {
   "src": "img/th/enoch.webp",
-  "credit": "Symbol: a mountain, for Enoch’s robust moral realism · Photo: TheMuuj · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/84311706@N00/2198720349",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo via ox.ac.uk · used with attribution",
+  "file": "https://users.ox.ac.uk/~moralps/photos/enoch_files/enoch1.jpg",
+  "pos": "50% 30%"
  },
  "pfstrawson": {
   "src": "img/th/pfstrawson.webp",
