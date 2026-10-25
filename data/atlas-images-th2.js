@@ -761,10 +761,9 @@ var add = {
  },
  "levinson": {
   "src": "img/th/levinson.webp",
-  "credit": "Symbol: an empty gilt frame, for Levinson’s historical definition of art · Photo: eriwst · CC BY-SA 2.0",
-  "file": "https://www.flickr.com/photos/37977505@N00/2303608353",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "gaut": {
   "src": "img/th/gaut.webp",
@@ -775,10 +774,9 @@ var add = {
  },
  "goodman": {
   "src": "img/th/goodman.webp",
-  "credit": "Symbol: a copyist painting in a gallery, for Goodman’s question of why a perfect forgery matters · Photo: cangaroojack · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/56116019@N00/2746764674",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "beardsley": {
   "src": "img/th/beardsley.webp",
@@ -1551,10 +1549,9 @@ var add = {
  },
  "ga_cohen": {
   "src": "img/th/ga_cohen.webp",
-  "credit": "Symbol: a tent, for Cohen’s camping-trip argument in ‘Why Not Socialism?’ · Photo: OakleyOriginals · CC BY 2.0",
-  "file": "https://www.flickr.com/photos/47264866@N00/14858631766",
-  "pos": "50% 50%",
-  "sym": true
+  "credit": "Photo supplied by the site editor · source and licence not recorded",
+  "file": "",
+  "pos": "50% 30%"
  },
  "filmer": {
   "src": "img/th/filmer.webp",
