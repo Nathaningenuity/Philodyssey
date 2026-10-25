@@ -557,7 +557,7 @@ window.ATLAS_IMAGES = {
   },
   "smith": {
    "src": "img/th/smith.webp",
-   "credit": "Adam Smith, the Muir portrait · Unknown artist · Public domain",
+   "credit": "Adam Smith, the Muir portrait · Unknown artist, c. 1800 · Public domain",
    "file": "https://commons.wikimedia.org/wiki/File:Adam_Smith_The_Muir_portrait.jpg",
    "pos": "50% 30%"
   },
