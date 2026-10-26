@@ -2261,6 +2261,66 @@ html{background:var(--bg)}
 .tc-end{padding:30px;display:grid;gap:14px}.tc-end h1{margin:0}
 @media (max-width:600px){.tc-body{padding:18px}.tc-nav .btn{flex:1}}
 .tc-row{grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}.tc-tx .eyebrow{font-size:.66rem}
+/* Voyage home: slim header, two modes, an explorable map with an illustrated sea panel, a timeline of the seas, illustrated sea cards */
+.vy-top{background:radial-gradient(120% 160% at 85% 0%,var(--night-2),var(--night) 62%);color:var(--night-ink);padding-top:22px;border-bottom:1px solid var(--night-line)}
+.vy-top-in{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;padding-bottom:16px}
+.vy-top-t{display:flex;gap:14px;align-items:center;min-width:0}.vy-top-t h1{margin:0;font-size:clamp(1.6rem,3vw,2.1rem);color:var(--night-ink)}.vy-top-t p{margin:2px 0 0;color:var(--night-mute);font-size:.95rem;max-width:56ch}
+.vy-emblem-s{width:40px;height:40px;flex:none;color:var(--brass)}
+.vy-top-r{display:flex;align-items:center;gap:14px;flex-wrap:wrap}.vy-top-r .vy-count{color:var(--night-mute);font-size:.88rem}.vy-top-r .vy-count b{color:var(--night-ink)}
+.vy-modes{display:flex;gap:6px;margin-bottom:-1px}
+.vy-mode{appearance:none;border:1px solid var(--night-line);border-bottom:none;background:rgba(255,255,255,.04);color:var(--night-mute);border-radius:12px 12px 0 0;padding:10px 18px 12px;text-align:left;cursor:pointer;display:grid;gap:2px;font:inherit}
+.vy-mode b{font-size:.98rem;color:var(--night-ink)}.vy-mode span{font-size:.8rem}
+.vy-mode[aria-selected="true"]{background:var(--paper);color:var(--ink-2);border-color:var(--line)}.vy-mode[aria-selected="true"] b{color:var(--c-voyage)}
+.vy-mode:hover:not([aria-selected="true"]){background:rgba(255,255,255,.09)}
+.vy-explore{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(300px,1fr);gap:18px;align-items:stretch}
+.vy-map{position:relative}.vy-map .chart{display:block;width:100%;height:auto}
+.vy-map .ch-stop{cursor:pointer}.vy-map .ch-num{font-size:8.5px;letter-spacing:-.04em}
+.vy-map .ch-stop.sel circle:not(.ch-pulse){fill:var(--lamp);stroke:var(--ink);stroke-width:2.5}.vy-map .ch-stop.sel .ch-num{fill:#fff}
+.vy-map-hint{position:absolute;left:14px;top:12px;font-size:.78rem;padding:4px 10px;border-radius:999px;background:var(--raised);border:1px solid var(--line);color:var(--ink)}
+.vy-panel{border:1px solid var(--line);border-radius:14px;background:var(--raised);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.vsp-cover{position:relative;aspect-ratio:16/8;background:var(--night)}.vsp-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.vsp-num{position:absolute;left:14px;bottom:10px;font-family:var(--font-display);font-size:2rem;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.vsp-nav{position:absolute;right:10px;top:10px;display:flex;gap:6px}
+.vsp-step{width:34px;height:34px;border-radius:50%;border:none;background:rgba(14,26,54,.7);color:#fff;font-size:1rem;cursor:pointer}.vsp-step:disabled{opacity:.3;cursor:default}.vsp-step:hover:not(:disabled){background:var(--c-voyage)}
+.vsp-body{padding:14px 18px 16px;display:flex;flex-direction:column;gap:8px}.vsp-body h2{margin:0;font-size:1.45rem}
+.vsp-intro{margin:0;font-size:.9rem;color:var(--ink-2);line-height:1.5}
+.vsp-isls{list-style:none;margin:2px 0 0;padding:0;display:grid;gap:6px}
+.vsp-isl{display:flex;gap:10px;align-items:center;padding:6px;border:1px solid var(--line);border-radius:10px;text-decoration:none;color:var(--ink);position:relative;transition:border-color .15s,background .15s}
+.vsp-isl:hover{border-color:var(--c-voyage);background:var(--paper)}.vsp-isl.cur{border-color:var(--lamp)}
+.vsp-isl img{width:64px;height:48px;object-fit:cover;border-radius:6px;flex:none;background:var(--line)}
+.vsp-it{display:grid;gap:1px;min-width:0}.vsp-it b{font-size:.92rem}.vsp-it span{font-size:.8rem;color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vsp-go{gap:8px;flex-wrap:wrap;margin-top:4px}.vsp-cr{font-size:.7rem}
+.vy-time-box{border:1px solid var(--line);border-radius:12px;background:var(--raised);padding:10px 8px 6px;overflow-x:auto}
+.vy-time{display:block;width:100%;min-width:720px;height:auto}
+.vt-grid{stroke:var(--line);stroke-width:1}.vt-tick{font-family:var(--font-mono);font-size:10px;fill:var(--ink-3);text-anchor:middle}
+.vt-bar{cursor:pointer}.vt-bar rect{fill:var(--c-voyage);opacity:.78;transition:opacity .15s}.vt-bar text{font-family:var(--font-ui);font-size:12px;font-weight:600;fill:#fff;pointer-events:none}
+.vt-bar.s1 rect{fill:#2E6F8E}.vt-bar.s2 rect{fill:#8E4A2E}.vt-bar.s3 rect{fill:#5B6E2E}.vt-bar.s4 rect{fill:#6E2E6A}.vt-bar.s5 rect{fill:#A0752A}.vt-bar.s6 rect{fill:#2E8E7A}.vt-bar.s0 rect{fill:#4A4F8E}
+.vt-bar:hover rect,.vt-bar.sel rect{opacity:1}.vt-bar.sel rect:first-of-type{stroke:var(--ink);stroke-width:2}.vt-bar rect.vt-done{fill:#fff!important;opacity:.85}
+.vy-seacards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:14px}
+.vy-seacard{display:flex;flex-direction:column;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--raised);text-decoration:none;color:var(--ink);transition:transform .15s,border-color .15s,box-shadow .15s}
+.vy-seacard:hover{transform:translateY(-2px);border-color:var(--c-voyage);box-shadow:var(--shadow)}.vy-seacard.cur{border-color:var(--lamp)}
+.vy-sc-img{position:relative;aspect-ratio:16/8;background:var(--night)}.vy-sc-img img{width:100%;height:100%;object-fit:cover;display:block}
+.vy-sc-num{position:absolute;left:12px;bottom:8px;font-family:var(--font-display);font-size:1.6rem;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.vy-sc-body{display:flex;flex-direction:column;gap:5px;padding:12px 14px 14px}.vy-sc-body b{font-size:1.1rem}
+.vy-sc-dates{font-family:var(--font-mono);font-size:.74rem;color:var(--brass)}.vy-sc-sub{font-size:.84rem;color:var(--ink-2)}
+.vy-sc-isl{display:flex;gap:4px;margin-top:4px}.vy-sc-isl img{width:42px;height:32px;object-fit:cover;border-radius:5px;background:var(--line)}
+.vyq{padding:0 0 14px;overflow:hidden}.vyq>span{padding-inline:16px}.vyq-img{width:100%;aspect-ratio:16/8;object-fit:cover;display:block;background:var(--line);margin-bottom:6px}
+@media (max-width:900px){.vy-explore{grid-template-columns:1fr}.vy-mode{padding:8px 12px 10px}.vy-mode span{display:none}.vy-top-t p{display:none}}
+.vy-explore{height:560px}.vy-map{display:flex;align-items:center}.vy-map .chart{width:100%;height:100%}.vy-panel{overflow:auto}.vsp-cover{flex:none;aspect-ratio:16/6.5}
+.vy-far{position:absolute;left:12px;bottom:12px;border:1px solid var(--line);background:var(--raised);color:var(--ink);border-radius:999px;padding:6px 12px;font:inherit;font-size:.82rem;font-weight:600;cursor:pointer}.vy-far i{font-weight:400;color:var(--ink-3)}.vy-far.sel,.vy-far:hover{border-color:var(--lamp);background:var(--lamp-soft)}
+.vyq{flex-direction:row;align-items:center;gap:12px;padding:8px}.vyq>span{padding:0}.vyq-img{width:96px;height:72px;aspect-ratio:auto;border-radius:8px;flex:none;margin:0}.vyq .vyq-tx{display:flex;flex-direction:column;gap:4px;min-width:0}
+@media (max-width:900px){.vy-explore{height:auto}.vy-map{height:380px}.vy-map-hint{font-size:.7rem;right:12px}.vy-panel{max-height:none}}
+.vy-sc-img::after,.vsp-cover::after{content:"";position:absolute;inset:55% 0 0;background:linear-gradient(transparent,rgba(10,16,30,.7));pointer-events:none}.vy-sc-num,.vsp-num{z-index:1}
+.vy-seahero{position:relative;min-height:300px;display:flex;align-items:flex-end;background:var(--night);color:#fff;overflow:hidden}
+.vy-seahero .vsh-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vy-seahero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,16,30,.35),rgba(10,16,30,.25) 40%,rgba(10,16,30,.88))}
+.vsh-in{position:relative;z-index:1;padding-block:22px 26px;width:100%;box-sizing:border-box}.vy-seahero h1{color:#fff;margin:0;font-size:clamp(2rem,5vw,3.2rem);text-shadow:0 2px 14px rgba(0,0,0,.5)}.vy-seahero .vy-sub{color:#E8E2D2;margin:0}
+.vsh-nav{gap:14px;flex-wrap:wrap}.vsh-nav .vy-back{color:#E8E2D2}.vsh-cr{font-size:.7rem;color:rgba(255,255,255,.65)}
+.vy-ipic{position:relative;flex:none;width:112px;height:84px;border-radius:9px;overflow:hidden;background:var(--line)}.vy-ipic img{width:100%;height:100%;object-fit:cover;display:block}
+.vy-ipic .vy-inum{position:absolute;left:6px;top:6px;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:rgba(14,26,54,.82);color:#fff;font-size:.8rem;margin:0}
+.vy-lives{display:block;width:100%;min-width:640px;height:auto}.vl-name{font-family:var(--font-ui);font-size:12.5px;fill:var(--ink);text-anchor:end}
+.vl-row rect{fill:var(--c-voyage);opacity:.75}.vl-row:hover rect{opacity:1}.vl-row:hover .vl-name{font-weight:700}.vl-row rect.vl-alive{opacity:.45}
+.vl-row.s1 rect{fill:#2E6F8E}.vl-row.s2 rect{fill:#8E4A2E}.vl-row.s3 rect{fill:#5B6E2E}.vl-row.s4 rect{fill:#6E2E6A}.vl-row.s5 rect{fill:#A0752A}.vl-row.s6 rect{fill:#2E8E7A}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -15471,13 +15531,14 @@ function chartSVG(key, stops, opt) {
   const marks = pts.map((p, i) => { const d = p.s.done, cur = p.s.current, pl = place[i];
     const lab = pl ? '<text class="ch-lab" x="' + pl[0].toFixed(1) + '" y="' + pl[1].toFixed(1) + '"' + (pl[2] !== "start" ? ' text-anchor="' + pl[2] + '"' : "") + ">" + esc(p.s.label) + "</text>" : "";
     const spoke = p.hx != null ? '<line class="ch-spoke" x1="' + p.hx + '" y1="' + p.hy + '" x2="' + p.x.toFixed(1) + '" y2="' + p.y.toFixed(1) + '"/>' : "";
-    return spoke + '<a href="' + p.s.href + '" class="ch-stop' + (d ? " done" : "") + (cur ? " cur" : "") + (p.s.fog ? " fog" : "") + '" aria-label="' + esc((i + 1) + ". " + (p.s.title || p.s.label || "")) + '">' +
+    return spoke + '<a href="' + p.s.href + '"' + (p.s.act ? ' data-act="' + p.s.act + '" data-n="' + p.s.n + '"' : "") + ' class="ch-stop' + (d ? " done" : "") + (cur ? " cur" : "") + (p.s.sel ? " sel" : "") + (p.s.fog ? " fog" : "") + '" aria-label="' + esc((i + 1) + ". " + (p.s.title || p.s.label || "")) + '">' +
       (p.s.tip ? "<title>" + esc(p.s.tip) + "</title>" : "") + (cur ? '<circle class="ch-pulse" cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + ((opt.r || 11) + 4) + '"/>' : "") +
       '<circle cx="' + p.x.toFixed(1) + '" cy="' + p.y.toFixed(1) + '" r="' + (opt.r || 11) + '"/><text class="ch-num" x="' + p.x.toFixed(1) + '" y="' + (p.y + 4).toFixed(1) + '">' + (p.s.num || i + 1) + "</text>" + lab + "</a>"; }).join("");
   const rose = '<g class="ch-rose" transform="translate(' + (M.W - 70) + "," + (M.H - 70) + ')"><circle r="34"/><circle r="26"/><path d="M0 -44 L6 -6 L0 0 L-6 -6Z M0 44 L-6 6 L0 0 L6 6Z M-44 0 L-6 -6 L0 0 L-6 6Z M44 0 L6 6 L0 0 L6 -6Z"/><text y="-48">N</text></g>';
   let vb = "0 0 " + M.W + " " + M.H;
   if (opt.focus && P[opt.focus]) { const fw = opt.fw || 440, fh = Math.round(fw * 0.62); const [fx, fy] = P[opt.focus]; const x0 = Math.max(0, Math.min(M.W - fw, fx - fw / 2)), y0 = Math.max(0, Math.min(M.H - fh, fy - fh / 2)); vb = x0.toFixed(0) + " " + y0.toFixed(0) + " " + fw + " " + fh; }
-  return '<svg class="chart" viewBox="' + vb + '" role="img" aria-label="' + esc(opt.aria || "Sea chart") + '">' +
+  if (opt.vb) vb = opt.vb;
+  return '<svg class="chart" viewBox="' + vb + '"' + (opt.vb ? ' preserveAspectRatio="xMidYMid meet"' : "") + ' role="img" aria-label="' + esc(opt.aria || "Sea chart") + '">' +
     '<rect class="ch-sea" width="' + M.W + '" height="' + M.H + '"/><path class="ch-grat" d="' + M.grat + '"/><path class="ch-land" d="' + M.d + '"/>' + labels +
     (route ? '<path class="ch-route" d="' + route + '"/>' : "") + harbours + marks + (opt.focus ? "" : rose) + "</svg>";
 }
@@ -15574,31 +15635,57 @@ ACT.deckPresent = () => { const st = $("#dkStage"); if (!st) return; if (documen
 document.addEventListener("keydown", e => { const r = route(); if (r.name !== "tour" || /INPUT|TEXTAREA|SELECT/.test((e.target || {}).tagName || "")) return;
   const a = ["ArrowRight", "PageDown", " "].includes(e.key) ? ".dk-nav .primary" : ["ArrowLeft", "PageUp"].includes(e.key) ? ".dk-nav .btn:not(.primary)" : null;
   if (a && $(a)) { e.preventDefault(); const h = $(a).getAttribute("href"); if (h === "#voyage" && document.fullscreenElement) return; history.replaceState(null, "", h); render(true); fitSlide(); } });
+/* ---- Voyage pictures for charts and lists: each island's landfall picture and a cover per sea, in one small file */
+function vth(kind, key) { const T = window.ATLAS_VOYTHUMB; return T && T[kind] && T[kind][key] || ""; }
+function vthImg(kind, key, cls, alt) { const src = vth(kind, key); return '<img class="' + (cls || "") + '" data-vth="' + kind + ":" + esc(String(key)) + '" src="' + (src || BLANK_IMG) + '" alt="' + esc(alt || "") + '" loading="lazy">'; }
+function vthFill() { need("voythumb", "data/voyimg/thumbs.js").then(() => { $$("img[data-vth]").forEach(im => { const [k, key] = im.dataset.vth.split(":"); const src = vth(k, key); if (src && im.src !== src) im.src = src; }); $$("[data-vcr]").forEach(e => { e.textContent = ((window.ATLAS_VOYTHUMB || {}).seaCredit || {})[e.dataset.vcr] || ""; }); }, () => {}); }
+// a sea's years, from the tail of its subtitle ("c. 400 BCE to 270 CE", "1651 to 1797", "1900 to today")
+function seaYears(u) { const t = String(u.sub || "").split(" · ").slice(-1)[0].replace(/^c\.\s*/, ""); const m = t.match(/(\d+)\s*(BCE|CE)?\s*to\s*(\d+|today)\s*(BCE|CE)?/); if (!m) return null;
+  const bce = m[4] === "BCE", a = +m[1] * ((m[2] === "BCE" || (bce && !m[2])) ? -1 : 1), b = m[3] === "today" ? 2026 : +m[3] * (bce ? -1 : 1); return [a, b]; }
+// the chronology of the seas as a diagram: one bar per sea on a time axis that stretches the crowded modern centuries
+function seaTimelineSVG(sel) {
+  const W = 1000, X0 = 30, X1 = 970, segs = [[-850, -300, 0], [-300, 400, .22], [400, 1500, .4], [1500, 1800, .56], [1800, 2030, .8], [2030, 2030, 1]];
+  const sx = y => { for (let i = 0; i < segs.length - 1; i++) { const [a, , fa] = segs[i], [b, , fb] = [segs[i + 1][0], 0, segs[i + 1][2]]; if (y <= b) return X0 + (X1 - X0) * (fa + (fb - fa) * (y - a) / (b - a)); } return X1; };
+  const lanes = [], bars = VOY.units.map(u => { const y = seaYears(u); if (!y) return null; const x0 = sx(y[0]), x1 = Math.max(sx(y[1]), x0 + 26); let L = lanes.findIndex(e => e < x0 - 6); if (L < 0) { L = lanes.length; lanes.push(0); } lanes[L] = x1 + 30; return { u, x0, x1, L, y }; }).filter(Boolean);
+  const H = 46 + lanes.length * 34;
+  const ticks = [-800, -500, -200, 0, 500, 1000, 1500, 1600, 1700, 1800, 1900, 2000].map(t => '<line x1="' + sx(t).toFixed(1) + '" y1="22" x2="' + sx(t).toFixed(1) + '" y2="' + (H - 8) + '" class="vt-grid"/><text x="' + sx(t).toFixed(1) + '" y="15" class="vt-tick">' + (t < 0 ? -t + " BCE" : t === 0 ? "1 CE" : t) + "</text>").join("");
+  return '<svg class="vy-time" viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="When each sea’s thinkers lived">' + ticks + bars.map(b => { const yy = 30 + b.L * 34, w = b.x1 - b.x0, nx = nextIsland(), isl = islandsOf(b.u), dn = isl.filter(i => islDone(i.id)).length;
+    return '<a href="#voyage-u' + b.u.id + '" data-act="vySea" data-n="' + b.u.id + '" class="vt-bar s' + (b.u.id % 7) + (sel === b.u.id ? " sel" : "") + (nx && nx.unit === b.u.id ? " cur" : "") + '"><title>' + esc(ROMANV[b.u.id] + " · " + b.u.title + " · " + String(b.u.sub).split(" · ").slice(-1)[0]) + '</title><rect x="' + b.x0.toFixed(1) + '" y="' + yy + '" width="' + w.toFixed(1) + '" height="24" rx="6"/>' + (dn ? '<rect class="vt-done" x="' + b.x0.toFixed(1) + '" y="' + (yy + 20) + '" width="' + (w * dn / (isl.length || 1)).toFixed(1) + '" height="4" rx="2"/>' : "") +
+      '<text x="' + (b.x0 + 8).toFixed(1) + '" y="' + (yy + 16.5) + '">' + ROMANV[b.u.id] + (w > 90 ? " " + esc(b.u.title) : "") + "</text></a>"; }).join("") + "</svg>";
+}
+// the panel beside the map: one sea, illustrated, with its islands
+function seaPanelHTML(n) {
+  const u = VOY.units.find(x => x.id === n) || VOY.units[0]; const isl = islandsOf(u), dn = isl.filter(i => islDone(i.id)).length, nx = nextIsland();
+  const first = isl.find(i => !islDone(i.id)) || isl[0], prev = VOY.units.find(x => x.id === u.id - 1), next = VOY.units.find(x => x.id === u.id + 1);
+  const intro = String(u.sub || "").split(" · ").slice(0, -1).join(" · ");
+  return '<div class="vsp-cover">' + vthImg("sea", u.id, "", u.title) + '<span class="vsp-num">' + ROMANV[u.id] + '</span><div class="vsp-nav"><button class="vsp-step" data-act="vySea" data-n="' + (prev ? prev.id : u.id) + '"' + (prev ? "" : " disabled") + ' aria-label="Previous sea">←</button><button class="vsp-step" data-act="vySea" data-n="' + (next ? next.id : u.id) + '"' + (next ? "" : " disabled") + ' aria-label="Next sea">→</button></div></div>' +
+    '<div class="vsp-body"><span class="eyebrow">Sea ' + ROMANV[u.id] + " · " + esc(String(u.sub).split(" · ").slice(-1)[0]) + '</span><h2>' + esc(u.title) + '</h2><p class="vsp-intro">' + esc(intro) + '</p>' +
+    '<ol class="vsp-isls">' + isl.map(i => '<li><a class="vsp-isl' + (islDone(i.id) ? " done" : "") + (nx && nx.id === i.id ? " cur" : "") + '" href="#voyage-' + i.id + '">' + vthImg("isl", i.id, "", i.name) + '<span class="vsp-it"><b>' + esc(i.name) + '</b><span>' + esc(i.question || "") + '</span></span>' + (islDone(i.id) ? '<span class="vy-tick" aria-label="Charted">✓</span>' : "") + "</a></li>").join("") + "</ol>" +
+    '<div class="row vsp-go">' + (first ? '<a class="btn primary" href="#voyage-' + first.id + '">' + (dn ? "Continue: " : "Begin: ") + esc(first.name) + " →</a>" : "") + '<a class="btn ghost" href="#voyage-u' + u.id + '">Sea chart</a></div><span class="faint vsp-cr">' + (dn ? dn + " of " + isl.length + " islands charted · " : "") + "Picture: <span data-vcr=\"" + u.id + "\">" + esc(((window.ATLAS_VOYTHUMB || {}).seaCredit || {})[u.id] || "") + "</span></span></div>";
+}
+ACT.vySea = el => { const n = +el.dataset.n; S.vySea = n; save(); const P = $("#vyPanel"); if (!P) return; P.innerHTML = seaPanelHTML(n); vthFill();
+  $$(".vy-map .ch-stop, .vy-time .vt-bar, .vy-far").forEach(a => a.classList.toggle("sel", +a.dataset.n === n)); if (innerWidth < 900) P.scrollIntoView({ behavior: "smooth", block: "start" }); };
 function voyHome() {
-  const V = voyState();
-  const all = VOY.units.flatMap(u => islandsOf(u));
-  const done = all.filter(i => islDone(i.id)).length;
-  const nx = nextIsland();
-  const stops = VOY.units.map(u => { const isl = islandsOf(u); const dn = isl.filter(i => islDone(i.id)).length; return { place: "sea" + u.id, href: "#voyage-u" + u.id, done: isl.length && dn === isl.length, current: nx && nx.unit === u.id, title: u.title, num: u.id, tip: ROMANV[u.id] + " · " + u.title + (VOY.seaCity && VOY.seaCity[u.id] ? " · " + VOY.seaCity[u.id] : "") }; });
-  let h = '<div class="voy">';
-  h += '<section class="vy-hero"><div class="wrap vy-hero-in"><div class="stack" style="--g:14px">' + em("ship", "emblem vy-emblem") + '<span class="eyebrow vy-eb">The Voyage · a course in fourteen seas</span><h1>Sail the history of philosophy, island by island</h1>' +
-    '<p class="vy-lede">Each island is an illustrated lesson of 25 to 35 cards (about a quarter of an hour) that you tap through one idea at a time, with quick questions along the way. A landfall story opens it; a crossing tells you why the next thinker set sail.</p>' +
-    '<div class="row">' + (nx ? '<a class="btn primary" href="#voyage-' + nx.id + '">' + (done ? "Continue: " : "Begin: ") + esc(nx.name) + "</a>" : "") + '<a class="btn ghost vy-ghost" href="#voyage-u1">Sea I chart</a></div>' +
-    '<p class="vy-count"><b>' + done + "</b> of " + all.length + " islands charted so far" + (missedAll().length ? ' · <a href="#voyage-review" style="color:inherit">' + missedAll().length + " missed checks to review</a>" : "") + "</p></div>" +
-    // the next landfall, waiting on the right of the hero
-    (nx ? (() => { const u = unitOf(nx); return '<a class="vy-next" href="#voyage-' + nx.id + '"><span class="eyebrow vy-eb">' + (done ? "Next landfall" : "First landfall") + " · Sea " + ROMANV[nx.unit] + (u ? " · " + esc(u.title) : "") + '</span><span class="vy-faces">' + (nx.cast || []).slice(0, 3).map(c => portraitHTML(c, "pt-m")).join("") + '</span><b class="vy-next-name">' + esc(nx.name) + '</b><span class="vy-next-q">' + esc(nx.question || "") + '</span><span class="vy-next-meta">' + esc((nx.cast || []).map(c => c.name).slice(0, 3).join(", ")) + " · " + deckSlides(nx).length + " cards · about " + (nx.minutes || 12) + " min</span><span class=\"vy-next-go\">Set sail →</span></a>"; })() : "") +
-    "</div></section>";
-  h += '<div class="wrap stack" style="--g:34px;padding-block:34px">';
+  const all = VOY.units.flatMap(u => islandsOf(u)), done = all.filter(i => islDone(i.id)).length, nx = nextIsland();
+  const theme = S.vyView === "q" || S.vyView === "theme";
+  const sel = S.vySea || (nx ? nx.unit : 1);
+  const stops = VOY.units.map(u => { const isl = islandsOf(u); const dn = isl.filter(i => islDone(i.id)).length; return { place: "sea" + u.id, href: "#voyage-u" + u.id, act: "vySea", n: u.id, sel: u.id === sel, done: isl.length && dn === isl.length, current: nx && nx.unit === u.id, title: u.title, num: ROMANV[u.id], tip: ROMANV[u.id] + " · " + u.title + (VOY.seaCity && VOY.seaCity[u.id] ? " · " + VOY.seaCity[u.id] : "") }; });
+  after.push(vthFill);
+  let h = '<div class="voy"><section class="vy-top"><div class="wrap vy-top-in"><div class="vy-top-t">' + em("ship", "emblem vy-emblem-s") + '<div><h1>The Voyage</h1><p>Fourteen seas, 68 illustrated islands: the history of philosophy, one quarter-hour landfall at a time.</p></div></div>' +
+    '<div class="vy-top-r"><span class="vy-count"><b>' + done + "</b> of " + all.length + " islands charted" + (missedAll().length ? ' · <a href="#voyage-review" style="color:inherit">' + missedAll().length + " checks to review</a>" : "") + "</span>" + (nx ? '<a class="btn primary" href="#voyage-' + nx.id + '">' + (done ? "Continue: " : "Begin: ") + esc(nx.name) + " →</a>" : "") + "</div></div>" +
+    '<div class="wrap"><div class="vy-modes" role="tablist" aria-label="How to explore"><button role="tab" class="vy-mode" data-act="vyView" data-v="sea" aria-selected="' + !theme + '"><b>1 · Chronological</b><span>Sail the seas in order, on the map</span></button><button role="tab" class="vy-mode" data-act="vyView" data-v="theme" aria-selected="' + theme + '"><b>2 · By theme</b><span>Illustrated tours and the big questions</span></button></div></div></section>';
+  h += '<div class="wrap stack" style="--g:34px;padding-block:26px 40px">';
+  if (theme) {
+    h += tourStripHTML() + byQuestionHTML();
+    return h + "</div></div>";
+  }
+  const far = VOY.units.find(u => u.id === 14);
+  h += '<section class="vy-explore"><div class="vy-map chart-box">' + chartSVG("world", stops, { aria: "Chart of the voyage: choose a sea", r: 11, vb: "360 108 520 280" }) + '<span class="vy-map-hint">Choose a numbered sea · arrows step through them in order</span>' +
+    (far ? '<button class="vy-far' + (sel === 14 ? " sel" : "") + '" data-act="vySea" data-n="14"><span>←</span> XIV · ' + esc(far.title) + ' <i>across the Atlantic</i></button>' : "") + '</div><aside class="vy-panel" id="vyPanel" aria-live="polite">' + seaPanelHTML(sel) + "</aside></section>";
+  h += '<section class="stack" style="--g:10px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2 class="sec-h">The seas in time</h2><span class="faint">When each sea’s thinkers lived · choose a bar</span></div><div class="vy-time-box">' + seaTimelineSVG(sel) + "</div></section>";
   h += forYouHTML();
-  h += tourStripHTML();
-  const byQ = S.vyView === "q";
-  h += '<div class="row vy-viewsw" role="group" aria-label="Browse the Voyage"><button class="chip" data-act="vyView" data-v="sea" aria-pressed="' + !byQ + '">By sea, in order</button><button class="chip" data-act="vyView" data-v="q" aria-pressed="' + byQ + '">By question</button></div>';
-  if (byQ) return h + byQuestionHTML() + "</div></div>";
-  h += '<section class="stack" style="--g:12px"><div class="chart-box">' + chartSVG("world", stops, { aria: "Chart of the whole voyage", r: 9.5 }) + "</div><p class=\"faint vy-cap\">Fourteen seas on a modern coastline, in the order of the course. Tap a sea to open its chart.</p></section>";
-  h += '<section class="stack" style="--g:14px"><h2 class="sec-h">The seas</h2><div class="vy-units">' +
-    (VOY.plan || []).map(p => { const u = VOY.units.find(x => x.id === p.id); const isl = u ? islandsOf(u) : []; const dn = isl.filter(i => islDone(i.id)).length;
-      return u ? '<a class="vy-unit" href="#voyage-u' + u.id + '"><span class="vy-unum">' + ROMANV[u.id] + '</span><span class="stack" style="--g:4px;min-width:0"><b>' + esc(u.title) + '</b><span class="faint">' + esc(u.sub) + '</span>' + (dn ? '<span class="vy-bar"><i style="width:' + (isl.length ? 100 * dn / isl.length : 0) + '%"></i></span><span class="cq-mono">' + dn + " of " + isl.length + " islands charted</span>" : '<span class="cq-mono">' + isl.length + " islands</span>") + "</span></a>"
-        : '<div class="vy-unit fog" aria-disabled="true"><span class="vy-unum">' + ROMANV[p.id] + '</span><span class="stack" style="--g:4px;min-width:0"><b>' + esc(p.title) + '</b><span class="faint">' + esc(p.sub) + '</span><span class="cq-mono">Uncharted · in preparation</span></span></div>'; }).join("") + "</div></section>";
+  h += '<section class="stack" style="--g:14px"><h2 class="sec-h">The fourteen seas</h2><div class="vy-seacards">' + VOY.units.map(u => { const isl = islandsOf(u), dn = isl.filter(i => islDone(i.id)).length;
+    return '<a class="vy-seacard' + (nx && nx.unit === u.id ? " cur" : "") + '" href="#voyage-u' + u.id + '"><span class="vy-sc-img">' + vthImg("sea", u.id, "", u.title) + '<span class="vy-sc-num">' + ROMANV[u.id] + '</span></span><span class="vy-sc-body"><b>' + esc(u.title) + '</b><span class="vy-sc-dates">' + esc(String(u.sub).split(" · ").slice(-1)[0]) + '</span><span class="vy-sc-sub">' + esc(String(u.sub).split(" · ").slice(0, -1).join(" · ")) + '</span><span class="vy-sc-isl">' + isl.slice(0, 5).map(i => vthImg("isl", i.id, "", i.name)).join("") + '</span><span class="cq-mono">' + (dn ? dn + " of " : "") + isl.length + " islands" + (dn ? " charted" : "") + "</span>" + (dn ? '<span class="vy-bar"><i style="width:' + 100 * dn / (isl.length || 1) + '%"></i></span>' : "") + "</span></a>"; }).join("") + "</div></section>";
   return h + "</div></div>";
 }
 
@@ -15613,19 +15700,42 @@ function islandsForTopic(t) { return Object.values(VOY.islands).filter(i => isla
 function byQuestionHTML() { const placed = new Set();
   const groups = VY_QGROUPS.map(([id, title, tops]) => { const L = Object.values(VOY.islands).filter(i => { const T = islandTopics(i.id); return T.length && tops.includes(T[0]) && !placed.has(i.id); }).sort((a, b) => a.unit - b.unit || a.order - b.order); L.forEach(i => placed.add(i.id)); return [id, title, L]; });
   const rest = Object.values(VOY.islands).filter(i => !placed.has(i.id)); if (rest.length) groups.push(["other", "And more", rest]);
-  return '<section class="stack" style="--g:26px"><p class="muted read" style="margin:0;max-width:62ch">Start from a question you care about. Each card is a fifteen-minute island; the names come second. The route in order is still there under “By sea”.</p>' +
-    groups.filter(g => g[2].length).map(([id, title, L]) => '<div class="vyq-group" id="vyq-' + id + '"><h2>' + esc(title) + '</h2><div class="vyq-grid">' + L.map(i => '<a class="vyq' + (islDone(i.id) ? " done" : "") + '" href="#voyage-' + esc(i.id) + '"><span class="vyq-q">' + esc(i.question || i.name) + '</span><span class="vyq-meta">' + esc(i.name) + " · " + esc((i.cast || []).map(c => c.name.split(/\s+/).slice(-1)[0]).slice(0, 3).join(", ")) + '</span><span class="vyq-sea">Sea ' + ROMANV[i.unit] + (islDone(i.id) ? " · ✓ charted" : "") + "</span></a>").join("") + "</div></div>").join("") + "</section>"; }
+  return '<section class="stack" style="--g:26px"><div class="stack" style="--g:6px"><h2 class="sec-h">The big questions</h2><p class="muted read" style="margin:0;max-width:62ch">Start from a question you care about. Each card is a fifteen-minute island; the names come second. The route in order is under “Chronological”.</p></div>' +
+    groups.filter(g => g[2].length).map(([id, title, L]) => '<div class="vyq-group" id="vyq-' + id + '"><h2>' + esc(title) + '</h2><div class="vyq-grid">' + L.map(i => '<a class="vyq' + (islDone(i.id) ? " done" : "") + '" href="#voyage-' + esc(i.id) + '">' + vthImg("isl", i.id, "vyq-img", i.name) + '<span class="vyq-tx"><span class="vyq-q">' + esc(i.question || i.name) + '</span><span class="vyq-meta">' + esc(i.name) + " · " + esc((i.cast || []).map(c => c.name.replace(/\s*\(.*?\)/g, "").split(/\s+/).slice(-1)[0]).slice(0, 3).join(", ")) + '</span><span class="vyq-sea">Sea ' + ROMANV[i.unit] + (islDone(i.id) ? " · ✓ charted" : "") + "</span></span></a>").join("") + "</div></div>").join("") + "</section>"; }
 ACT.vyView = el => { S.vyView = el.dataset.v; save(); render(true); };
 
 /* ---- a unit: its chart, its islands, its arena and its trial */
+// a thinker's life from the cast's date line: "c. 624–546 BCE", "1561–1626", "b. 1959", "born c. 515 BCE, died after 450 BCE"
+function lifeSpan(dates) { const t = String(dates || "").replace(/\(.*?\)/g, ""); const era = /BCE/.test(t) ? -1 : 1;
+  let m = t.match(/(\d{2,4})\s*(BCE|CE)?\s*[–-]\s*(\d{2,4})\s*(BCE|CE)?/); if (m) { const e2 = m[4] === "BCE" ? -1 : m[4] === "CE" ? 1 : era, e1 = m[2] === "BCE" ? -1 : m[2] === "CE" ? 1 : e2; return [+m[1] * e1, +m[3] * e2]; }
+  m = t.match(/b\.\s*(\d{4})/); if (m) return [+m[1], 2026, true];
+  m = t.match(/born c?\.?\s*(\d+)\s*BCE.*?(\d+)\s*BCE/); if (m) return [-m[1], -m[2]];
+  m = t.match(/(\d+)(st|nd|rd|th) century\s*(BCE|CE)?/); if (m) { const c = +m[1], e = m[3] === "BCE" ? -1 : 1; return e < 0 ? [-c * 100, -c * 100 + 80] : [(c - 1) * 100 + 10, (c - 1) * 100 + 90]; }
+  return null; }
+// a sea's thinkers as overlapping lifelines: who could have met whom
+function seaLivesSVG(u) {
+  const seen = new Set(), rows = [];
+  islandsOf(u).forEach(I => (I.cast || []).forEach(c => { if (seen.has(c.id || c.name)) return; seen.add(c.id || c.name); const L = lifeSpan(c.dates); if (L) rows.push({ c, L, I }); }));
+  if (rows.length < 2) return "";
+  rows.sort((a, b) => a.L[0] - b.L[0]);
+  let lo = Math.min(...rows.map(r => r.L[0])), hi = Math.max(...rows.map(r => r.L[1])); const span = hi - lo, step = span > 600 ? 100 : span > 250 ? 50 : span > 100 ? 25 : 10; lo = Math.floor(lo / step) * step; hi = Math.ceil(hi / step) * step;
+  const W = 1000, X0 = 210, X1 = 980, rh = 26, H = 34 + rows.length * rh, sx = y => X0 + (X1 - X0) * (y - lo) / (hi - lo || 1);
+  const yl = y => y < 0 ? -y + " BCE" : y + "";
+  let g = ""; for (let t = lo; t <= hi; t += step) g += '<line x1="' + sx(t).toFixed(1) + '" y1="20" x2="' + sx(t).toFixed(1) + '" y2="' + (H - 4) + '" class="vt-grid"/><text x="' + sx(t).toFixed(1) + '" y="13" class="vt-tick">' + yl(t) + "</text>";
+  return '<svg class="vy-lives" viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Lifespans of this sea’s thinkers">' + g + rows.map((r, k) => { const y = 26 + k * rh, x0 = sx(r.L[0]), x1 = sx(r.L[1]);
+    return '<a href="#voyage-' + r.I.id + '" class="vl-row s' + (r.I.order % 7) + '"><title>' + esc(r.c.name + " · " + r.c.dates + " · " + r.I.name) + '</title><text x="' + (X0 - 10) + '" y="' + (y + 13) + '" class="vl-name">' + esc(r.c.name.replace(/\s*\(.*?\)/g, "").replace(/ of [A-Z].*$/, "")) + '</text><rect x="' + x0.toFixed(1) + '" y="' + (y + 2) + '" width="' + Math.max(4, x1 - x0).toFixed(1) + '" height="15" rx="7"' + (r.L[2] ? ' class="vl-alive"' : "") + "/></a>"; }).join("") + "</svg>";
+}
 function unitPage(n) {
   const u = VOY.units.find(x => x.id === n); if (!u) return voyHome();
   const isl = islandsOf(u); const nx = nextIsland();
   const stops = isl.map(i => ({ place: i.placeKey, href: "#voyage-" + i.id, done: islDone(i.id), current: nx && nx.id === i.id, title: i.name, label: i.name, num: i.order }));
-  let h = '<div class="voy"><section class="vy-hero vy-hero-sm"><div class="wrap stack" style="--g:10px"><a class="vy-back" href="#voyage">← The Voyage</a><span class="eyebrow vy-eb">Sea ' + ROMANV[u.id] + "</span><h1>" + esc(u.title) + '</h1><p class="vy-sub">' + esc(u.sub) + "</p></div></section>";
+  after.push(vthFill);
+  const pu = VOY.units.find(x => x.id === n - 1), nu0 = VOY.units.find(x => x.id === n + 1);
+  let h = '<div class="voy"><section class="vy-seahero">' + vthImg("sea", u.id, "vsh-img", u.title) + '<div class="wrap stack vsh-in" style="--g:8px"><div class="row vsh-nav"><a class="vy-back" href="#voyage">← The Voyage</a>' + (pu ? '<a class="vy-back" href="#voyage-u' + pu.id + '">‹ ' + ROMANV[pu.id] + " " + esc(pu.title) + "</a>" : "") + (nu0 ? '<a class="vy-back" href="#voyage-u' + nu0.id + '">' + ROMANV[nu0.id] + " " + esc(nu0.title) + " ›</a>" : "") + '</div><span class="eyebrow vy-eb">Sea ' + ROMANV[u.id] + " · " + esc(String(u.sub).split(" · ").slice(-1)[0]) + "</span><h1>" + esc(u.title) + '</h1><p class="vy-sub">' + esc(String(u.sub).split(" · ").slice(0, -1).join(" · ")) + '</p><span class="vsh-cr" data-vcr="' + u.id + '"></span></div></section>';
   h += '<div class="wrap stack" style="--g:34px;padding-block:30px">';
   h += '<div class="vy-unit-top"><div class="chart-box">' + chartSVG(u.map || ("u" + u.id), stops, { aria: "Chart of " + u.title }) + '</div>' + (() => { const t = u.intro || "", parts = t.match(/[^.!?]+[.!?]+(\s+|$)/g) || [t]; let head = ""; for (const p of parts) { if (head.length >= 260) break; head += p; } const m = [null, head]; return t.length > head.length + 80 ? '<div class="vy-intro read"><p>' + rich(m[1].trim()) + '</p><details><summary class="linkish">Read the rest of the introduction</summary><p>' + rich(t.slice(m[1].length)) + "</p></details></div>" : '<p class="read vy-intro">' + rich(t) + "</p>"; })() + "</div>";
-  h += '<section class="stack" style="--g:12px"><h2>Islands</h2><ol class="vy-isls">' + isl.map(i => '<li><a class="vy-isl' + (islDone(i.id) ? " done" : "") + '" href="#voyage-' + i.id + '"><span class="vy-inum">' + i.order + '</span><span class="vy-faces">' + (i.cast || []).slice(0, 3).map(c => portraitHTML(c, "pt-s")).join("") + '</span><span class="stack" style="--g:3px;min-width:0"><b>' + esc(i.name) + '</b><span class="vy-q">' + esc(i.question) + '</span><span class="faint">' + esc((i.cast || []).map(c => c.name).join(", ")) + " · " + esc(i.placeName || "") + '</span><span class="vy-len">' + deckSlides(i).length + " cards · about " + (i.minutes || Math.round(deckSlides(i).length / 2.4)) + " min</span></span>" + (islDone(i.id) ? '<span class="vy-tick" aria-label="Charted">✓</span>' : "") + "</a></li>").join("") + "</ol></section>";
+  h += '<section class="stack" style="--g:12px"><h2>Islands</h2><ol class="vy-isls">' + isl.map(i => '<li><a class="vy-isl' + (islDone(i.id) ? " done" : "") + '" href="#voyage-' + i.id + '"><span class="vy-ipic">' + vthImg("isl", i.id, "", i.name) + '<span class="vy-inum">' + i.order + '</span></span><span class="vy-faces">' + (i.cast || []).slice(0, 3).map(c => portraitHTML(c, "pt-s")).join("") + '</span><span class="stack" style="--g:3px;min-width:0"><b>' + esc(i.name) + '</b><span class="vy-q">' + esc(i.question) + '</span><span class="faint">' + esc((i.cast || []).map(c => c.name).join(", ")) + " · " + esc(i.placeName || "") + '</span><span class="vy-len">' + deckSlides(i).length + " cards · about " + (i.minutes || Math.round(deckSlides(i).length / 2.4)) + " min</span></span>" + (islDone(i.id) ? '<span class="vy-tick" aria-label="Charted">✓</span>' : "") + "</a></li>").join("") + "</ol></section>";
+  { const lv = seaLivesSVG(u); if (lv) h += '<section class="stack" style="--g:10px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>Who could have met whom</h2><span class="faint">Lifespans of this sea’s thinkers · choose one to open their island</span></div><div class="vy-time-box">' + lv + "</div></section>"; }
   h += seaShelf(u);
   if (u.arena) h += arenaHTML(u);
   if (u.trial && u.trial.length) h += '<section class="stack" style="--g:14px"><div class="row" style="justify-content:space-between"><h2>Sea trial</h2><span class="cq-mono">' + trialScore("u" + u.id, u.trial) + " / " + u.trial.length + "</span></div>" + trialHTML("u" + u.id, u.trial) + "</section>";
