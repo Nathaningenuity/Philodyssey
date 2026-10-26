@@ -1,0 +1,532 @@
+{
+ "id": "east",
+ "title": "Philosophy in India and China",
+ "question": "How should we live, and who are we really?",
+ "topic": "life",
+ "topicName": "World philosophy",
+ "minutes": 45,
+ "basis": "Draws on the Upanishads, the Pali Canon, the Analects, the Daodejing and the Zhuangzi, and Bryan Van Norden, Introduction to Classical Chinese Philosophy",
+ "cover": "scroll",
+ "images": {
+  "axial": {
+   "src": "img/deck/east/axial.webp",
+   "credit": "Map by Philodyssey; coastline from Natural Earth",
+   "pos": "50% 50%"
+  },
+  "butterfly": {
+   "src": "img/deck/knowledge/butterfly.webp",
+   "credit": "Chinese painting with butterflies · themet · CC0",
+   "file": "https://www.rawpixel.com/image/8054225/cat-and-butterfly",
+   "pos": "50% 40%"
+  },
+  "scroll": {
+   "src": "img/voy/u4/scroll.webp",
+   "credit": "Mountains in a Chinese ink painting · profzucker · CC BY-NC-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "kamakura": {
+   "src": "img/voy/u4/kamakura.webp",
+   "credit": "The Great Buddha of Kamakura · Jim Epler · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "bangles": {
+   "src": "img/voy/u4/bangles.webp",
+   "credit": "Gold: rings, bangles, coins · denn · CC BY-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "eye": {
+   "src": "img/voy/u14/eye.webp",
+   "credit": "An eye · orangeacid · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "seeds": {
+   "src": "img/voy/u4/seeds.webp",
+   "credit": "Sowing seeds · CIMMYT · CC BY-NC-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "rivermouth": {
+   "src": "img/voy/u4/rivermouth.webp",
+   "credit": "A river reaching the sea · Gabriel GM · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "leaves": {
+   "src": "img/voy/u4/leaves.webp",
+   "credit": "Fallen leaves · Dave_S. · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "lastsunset": {
+   "src": "img/voy/u4/lastsunset.webp",
+   "credit": "The last evening · snowpeak · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "forest": {
+   "src": "img/voy/u4/forest.webp",
+   "credit": "A forest is just trees · Carlos el hormigo · CC BY-NC-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "sitar": {
+   "src": "img/voy/u4/sitar.webp",
+   "credit": "A sitar · aplumb · CC BY-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "family": {
+   "src": "img/voy/u4/family.webp",
+   "credit": "Three generations · Arian Zwegers · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "tea": {
+   "src": "img/voy/u4/tea.webp",
+   "credit": "A tea ceremony · logatfer · CC BY-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "bambooslips": {
+   "src": "img/voy/u4/bambooslips.webp",
+   "credit": "Texts on bamboo slips · ghknsg548 · CC BY-NC-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "sprout": {
+   "src": "img/voy/u4/sprout.webp",
+   "credit": "A sprout · aarongunnar · CC BY-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "crooked": {
+   "src": "img/voy/u4/crooked.webp",
+   "credit": "Crooked wood · jacilluch · CC BY-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "rocks": {
+   "src": "img/voy/u4/rocks.webp",
+   "credit": "Water around the rock · ShinyPhotoScotland · CC BY-NC-ND 2.0",
+   "pos": "50% 45%"
+  },
+  "plank": {
+   "src": "img/voy/u4/plank.webp",
+   "credit": "Uncarved wood · bernhard.friess · CC BY-ND 2.0",
+   "pos": "50% 45%"
+  },
+  "terracotta": {
+   "src": "img/voy/u4/terracotta.webp",
+   "credit": "The terracotta army · John Ramatsui · CC BY-NC-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "bells": {
+   "src": "img/voy/u4/bells.webp",
+   "credit": "A bronze bell · Silk Road Collection · CC BY-NC-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "dewweb": {
+   "src": "img/voy/u4/dewweb.webp",
+   "credit": "Dew on a web · Tybo. · CC BY-NC-ND 2.0",
+   "pos": "50% 45%"
+  },
+  "smoke": {
+   "src": "img/voy/u4/smoke.webp",
+   "credit": "A flame blown out · .robbie · CC BY-NC 2.0",
+   "pos": "50% 45%"
+  }
+ },
+ "slides": [
+  {
+   "layout": "title",
+   "kicker": "PUBLIC LECTURE · WORLD PHILOSOPHY",
+   "title": "Philosophy in India and China",
+   "question": "How should we live, and who are we really?",
+   "sub": "The Upanishads and the Buddha; Confucius, Laozi and the Hundred Schools",
+   "tags": [
+    "SELF",
+    "SUFFERING",
+    "HARMONY",
+    "THE WAY",
+    "HUMAN NATURE"
+   ],
+   "img": "scroll",
+   "notes": "Philosophy did not begin only in Greece. At almost the same time, thinkers in India and China asked equally deep questions, often with very different emphases. Indian philosophy asked what the self really is and how to escape suffering. Chinese philosophy asked how people can live together in harmony, in families and states.\nTonight we visit both traditions, see where they agree and differ, and ask what they still offer us.\nNext: a surprising coincidence in world history."
+  },
+  {
+   "layout": "image",
+   "map": true,
+   "img": "axial",
+   "title": "The Axial Age: many beginnings at once",
+   "sub": "Karl Jaspers’ name for c. 800–200 BCE",
+   "caption": "Separate, but similar",
+   "text": "In a few centuries, with little or no contact, Greece, Israel, Persia, India and China produced the traditions that still shape most of humanity. Each moved from myth and ritual towards argument, ethics and inner reflection.",
+   "notes": "The German philosopher Karl Jaspers called the period from about 800 to 200 BCE the Axial Age, because so much of human thought turns on it. Socrates, the Hebrew prophets, Zoroaster, the authors of the Upanishads, the Buddha, Mahavira, Confucius and Laozi all lived or were remembered in roughly this window.\nHistorians debate how real the pattern is, and there was little contact between these regions. But the parallel is striking: in each place, thinkers turned from ritual and myth towards argument, ethics and the inner life.\nNext: three different starting questions."
+  },
+  {
+   "layout": "columns",
+   "section": "Three starting points",
+   "title": "Three traditions, three starting questions",
+   "sub": "A simplification, but a useful one",
+   "cols": [
+    {
+     "label": "Greece",
+     "title": "What is the world made of?",
+     "text": "From nature to knowledge to the good life, by argument.",
+     "img": "th:socrates"
+    },
+    {
+     "label": "India",
+     "title": "What is the self, and how do we escape suffering?",
+     "text": "Philosophy as a path to liberation.",
+     "img": "th:buddha"
+    },
+    {
+     "label": "China",
+     "title": "How should we live together?",
+     "text": "Philosophy as the art of family, government and harmony.",
+     "img": "th:confucius"
+    }
+   ],
+   "bottom": "All three ask about the good life; they differ in where they look first.",
+   "notes": "This is a simplification, but it helps. Greek philosophy often started from nature and argument. Indian philosophy usually treated philosophy as a path to liberation from suffering and rebirth. Chinese philosophy was intensely practical and social: how should a ruler govern, how should children treat parents, how can a society be in harmony?\nAll three cared about the good life. They simply began from different questions.\nNext: India’s oldest philosophical texts."
+  },
+  {
+   "layout": "columns",
+   "section": "India",
+   "title": "The Upanishads: four ideas that shaped India",
+   "sub": "c. 800–300 BCE: ‘sitting down near’ a teacher",
+   "cols": [
+    {
+     "label": "Brahman",
+     "title": "One ultimate reality",
+     "text": "Behind all things is one reality, as gold lies behind ring, bangle and coin.",
+     "img": "bangles"
+    },
+    {
+     "label": "Ātman",
+     "title": "The true self",
+     "text": "Not the body or the mind, but the witness that can never be seen, as the eye can’t see itself.",
+     "img": "eye"
+    },
+    {
+     "label": "Karma",
+     "title": "You become what you do",
+     "text": "Actions shape character and future lives.",
+     "img": "seeds"
+    },
+    {
+     "label": "Mokṣa",
+     "title": "Liberation",
+     "text": "Freedom from the cycle of rebirth, as a river reaches the sea.",
+     "img": "rivermouth"
+    }
+   ],
+   "bottom": "‘Tat tvam asi’: you are that. The deepest self and ultimate reality are one.",
+   "notes": "The Upanishads are dialogues and teachings attached to India’s oldest scriptures, the Vedas. Four ideas run through them. Brahman, the one reality behind everything. Ātman, the true self, the seer that can never be seen. Karma, the law that actions shape what we become. And mokṣa, liberation from the cycle of rebirth.\nIn the Chāndogya Upaniṣad a father asks his son to dissolve salt in water: the salt is invisible yet everywhere. ‘You are that,’ he says: your true self is identical with ultimate reality. Later, Śaṅkara built his Advaita, or non-dual, philosophy on this.\nNext: a prince who left home."
+  },
+  {
+   "layout": "steps",
+   "section": "India",
+   "title": "The Buddha’s Four Noble Truths",
+   "sub": "The first sermon at Sarnath, c. 5th century BCE",
+   "steps": [
+    {
+     "title": "Suffering (dukkha)",
+     "text": "Life is unsatisfying: even good things change and end.",
+     "img": "lastsunset"
+    },
+    {
+     "title": "Its cause",
+     "text": "Craving: grasping at pleasure, existence and self.",
+     "img": "leaves"
+    },
+    {
+     "title": "Its end",
+     "text": "Nirvana: the fire of craving blown out.",
+     "img": "smoke"
+    },
+    {
+     "title": "The path",
+     "text": "The Eightfold Path: right view, speech, action, livelihood, effort, mindfulness, concentration.",
+     "img": "kamakura"
+    }
+   ],
+   "bottom": "Like a doctor: diagnosis, cause, prognosis, treatment.",
+   "notes": "Siddhārtha Gautama, the Buddha, taught as a doctor treats a patient. First, the diagnosis: life is dukkha, unsatisfying, because everything we hold changes. Second, the cause: craving and grasping. Third, the prognosis: suffering can end; nirvana literally means ‘blowing out’, like a flame. Fourth, the treatment: the Eightfold Path of wisdom, ethics and meditation.\nNext: three marks of existence."
+  },
+  {
+   "layout": "columns",
+   "section": "India",
+   "title": "The three marks of existence",
+   "sub": "Everything conditioned shares them",
+   "cols": [
+    {
+     "label": "Anicca",
+     "title": "Impermanence",
+     "text": "Everything changes: leaves, bodies, moods, empires.",
+     "img": "leaves"
+    },
+    {
+     "label": "Dukkha",
+     "title": "Unsatisfactoriness",
+     "text": "Even the best holiday has its last evening.",
+     "img": "lastsunset"
+    },
+    {
+     "label": "Anattā",
+     "title": "No fixed self",
+     "text": "A forest is just trees; a person is five changing ‘heaps’ with no owner behind them.",
+     "img": "forest"
+    }
+   ],
+   "bottom": "Compare Hume, 2,200 years later: looking inward, he found only a bundle of perceptions.",
+   "notes": "The Buddha taught that all conditioned things share three marks. They are impermanent. They are unsatisfying, because they don’t last. And they lack a fixed self: a person is made of five ‘heaps’ of body, feelings, perceptions, mental formations and consciousness, with no hidden owner. This directly challenged the Upanishads’ ātman.\nDavid Hume reached a strikingly similar view in the 1730s, when he looked inward for his self and found only a bundle of perceptions.\nNext: the middle way."
+  },
+  {
+   "layout": "split",
+   "section": "India",
+   "title": "The Middle Way: not too tight, not too loose",
+   "sub": "Between indulgence and self-torture",
+   "challenge": {
+    "title": "Two dead ends",
+    "text": "Chasing pleasure doesn’t free you. Years of starving himself as an ascetic didn’t free the Buddha either."
+   },
+   "answer": {
+    "title": "The middle",
+    "text": "A lute string tuned too tight snaps; too loose, it won’t play. The mind needs the right tension."
+   },
+   "open": {
+    "title": "Compare Aristotle",
+    "text": "Virtue as a mean between extremes appears in both traditions, with different goals: liberation versus flourishing."
+   },
+   "img": "sitar",
+   "bottom": "Nāgārjuna later extended the middle way to metaphysics: things neither simply exist nor simply don’t.",
+   "notes": "Before his awakening, the Buddha tried both extremes: a prince’s luxury and an ascetic’s starvation. Neither worked. The middle way is like tuning a stringed instrument: neither too tight nor too loose.\nThis invites comparison with Aristotle’s doctrine of the mean. Both see virtue between extremes, but the Buddha aims at liberation, Aristotle at flourishing in a city. Later, the philosopher Nāgārjuna applied the middle way to existence itself: things are empty of independent existence, yet not nothing.\nNext: the variety of Indian schools."
+  },
+  {
+   "layout": "gallery",
+   "section": "India",
+   "title": "A rich family of schools, arguing for centuries",
+   "sub": "Indian philosophy was a debate, not a single view",
+   "items": [
+    {
+     "img": "kamakura",
+     "caption": "Buddhism",
+     "text": "No self; liberation through insight"
+    },
+    {
+     "img": "th:mahavira",
+     "caption": "Jainism (Mahāvīra)",
+     "text": "Non-violence to all living things"
+    },
+    {
+     "img": "th:shankara",
+     "caption": "Advaita (Śaṅkara)",
+     "text": "Self and Brahman are one"
+    },
+    {
+     "img": "th:akshapada",
+     "caption": "Nyāya",
+     "text": "Logic and the sources of knowledge"
+    },
+    {
+     "img": "th:nagarjuna",
+     "caption": "Madhyamaka (Nāgārjuna)",
+     "text": "Everything is empty of fixed essence"
+    },
+    {
+     "img": "th:patanjali",
+     "caption": "Yoga (Patañjali)",
+     "text": "Stilling the movements of the mind"
+    }
+   ],
+   "bottom": "Even the materialist Cārvāka school, which denied rebirth and God, was argued with seriously.",
+   "notes": "Indian philosophy is often imagined as one mystical view. In fact it was a long, sharp debate among schools. Buddhists denied a lasting self; Advaita Vedānta said the self is Brahman; Jains taught radical non-violence and that truth has many sides; the Nyāya school developed logic and a theory of the sources of knowledge; Nāgārjuna argued that everything is empty of fixed essence; Patañjali’s Yoga taught disciplined stilling of the mind. The materialist Cārvākas rejected the whole idea of rebirth.\nNext: China, and Confucius."
+  },
+  {
+   "layout": "columns",
+   "section": "China",
+   "title": "Confucius: becoming fully human through relationships",
+   "sub": "The Analects, 5th century BCE",
+   "cols": [
+    {
+     "label": "Ren",
+     "title": "Humaneness",
+     "text": "‘Do not impose on others what you would not want yourself’ (15.24).",
+     "img": "family"
+    },
+    {
+     "label": "Li",
+     "title": "Ritual and courtesy",
+     "text": "Bowing, mourning, greeting: forms that shape feeling.",
+     "img": "tea"
+    },
+    {
+     "label": "Xiao",
+     "title": "Filial piety",
+     "text": "Goodness starts at home, with care for parents.",
+     "img": "bells"
+    },
+    {
+     "label": "Junzi",
+     "title": "The exemplary person",
+     "text": "Learns all life and leads by example, not force.",
+     "img": "bambooslips"
+    }
+   ],
+   "bottom": "‘Govern by virtue and the people will gather round you, like the stars round the pole star’ (2.1).",
+   "notes": "Confucius taught in the small state of Lu during an age of disorder. His goal was to restore harmony by cultivating good people. Ren, humaneness, is the central virtue, summed up in his version of the golden rule. Li, ritual, includes all respectful forms of behaviour that shape our feelings. Xiao, filial piety, makes the family the school of virtue. And the junzi, the exemplary person, leads by example rather than punishment.\nNext: a great debate about human nature."
+  },
+  {
+   "layout": "compare",
+   "section": "China",
+   "title": "Is human nature good or bad?",
+   "sub": "The great debate of the Confucian school",
+   "a": {
+    "name": "Mencius",
+    "label": "Nature is good",
+    "lead": "Everyone would feel alarm seeing a child about to fall into a well. We have four sprouts of virtue.",
+    "points": [
+     "Virtue grows like a sprout",
+     "Bad environments stunt it, like a bare mountain"
+    ],
+    "focus": "Cultivate what is there",
+    "img": "sprout"
+   },
+   "b": {
+    "name": "Xunzi",
+    "label": "Nature is bad",
+    "lead": "We are born with selfish desires. Goodness is made, like straightening crooked wood.",
+    "points": [
+     "Ritual and teachers reshape us",
+     "Effort, not nature, makes us good"
+    ],
+    "focus": "Reshape what is there",
+    "img": "crooked"
+   },
+   "bottom": "Both agree anyone can become a sage; they disagree about whether the work is growing or carving.",
+   "notes": "Mencius, a century after Confucius, argued that human nature is good. Anyone who sees a toddler about to fall into a well feels alarm, without thinking about reward. That shows we have ‘sprouts’ of compassion, shame, respect and right judgment, which grow if nourished. Bad people are like Ox Mountain, whose forests were cut and grazed bare.\nXunzi replied that our nature is bad: we are born wanting gain and pleasure. Goodness is an achievement, made through ritual and teachers, as crooked wood is straightened with steam. Both agree that anyone can become a sage.\nNext: a very different path, the Dao."
+  },
+  {
+   "layout": "columns",
+   "section": "China",
+   "title": "Daoism: follow the Way, don’t force it",
+   "sub": "The Daodejing and the Zhuangzi",
+   "cols": [
+    {
+     "label": "Dao",
+     "title": "The Way",
+     "text": "‘The Dao that can be spoken is not the constant Dao.’ The nameless source of all things.",
+     "img": "scroll"
+    },
+    {
+     "label": "Wu wei",
+     "title": "Effortless action",
+     "text": "Water is soft, yet wears away rock by flowing around it.",
+     "img": "rocks"
+    },
+    {
+     "label": "Pu",
+     "title": "The uncarved block",
+     "text": "Return to simplicity before society carves us into shapes.",
+     "img": "plank"
+    },
+    {
+     "label": "Zhuangzi",
+     "title": "The butterfly dream",
+     "text": "Am I a man dreaming of a butterfly, or a butterfly dreaming of a man?",
+     "img": "butterfly"
+    }
+   ],
+   "bottom": "‘The best rulers, the people barely know they exist’ (Daodejing 17).",
+   "notes": "Daoists criticised Confucians for too much effort and too many rules. The Daodejing, traditionally by Laozi, speaks of the Dao, the Way, the nameless source of all things. Its key practice is wu wei, effortless action: like water, which is soft yet carves rock. Pu, the uncarved block, is the simplicity we had before society shaped us.\nZhuangzi added humour and scepticism: his butterfly dream asks how we know which state is real. Compare the Confucian who carves himself with the Daoist who returns to the uncarved block.\nNext: the Hundred Schools."
+  },
+  {
+   "layout": "table",
+   "section": "China",
+   "title": "The Hundred Schools: four answers to disorder",
+   "sub": "Warring States period, 5th–3rd centuries BCE",
+   "head": [
+    "School",
+    "Key idea",
+    "How to govern"
+   ],
+   "rows": [
+    [
+     "Confucian (Confucius, Mencius, Xunzi)",
+     "Cultivate virtue through ritual and relationships",
+     "By example and moral education"
+    ],
+    [
+     "Daoist (Laozi, Zhuangzi)",
+     "Follow the natural Way; don’t force",
+     "By doing little; simplicity"
+    ],
+    [
+     "Mohist (Mozi)",
+     "Impartial care; benefit to all",
+     "By merit and frugality"
+    ],
+    [
+     "Legalist (Han Feizi)",
+     "People follow self-interest",
+     "By clear laws, rewards and harsh punishments"
+    ]
+   ],
+   "bottom": "The Legalists united China in 221 BCE; the Han dynasty then made Confucianism official, for two thousand years.",
+   "notes": "In the Warring States period, seven states fought for survival and many thinkers offered cures. Confucians stressed virtue and ritual. Daoists urged simplicity. Mohists taught impartial care and judged every custom by its benefit. Legalists like Han Feizi said people only respond to reward and punishment.\nThe state of Qin used Legalism to unify China in 221 BCE, building the terracotta army along the way. But the Qin collapsed quickly, and the Han dynasty adopted Confucianism, which shaped Chinese government for two thousand years.\nNext: how these ideas travelled."
+  },
+  {
+   "layout": "timeline",
+   "section": "Legacy",
+   "title": "Ideas on the move",
+   "sub": "How the traditions met each other and the world",
+   "events": [
+    {
+     "date": "1st c. CE",
+     "title": "Buddhism reaches China",
+     "text": "Along the Silk Road; it blends with Daoism into Chan (Zen).",
+     "img": "kamakura"
+    },
+    {
+     "date": "1100s",
+     "title": "Neo-Confucianism",
+     "text": "Zhu Xi answers Buddhism with li and qi; his commentaries rule the exams.",
+     "img": "th:zhuxi",
+     "key": true
+    },
+    {
+     "date": "1200s",
+     "title": "Dōgen and Zen in Japan",
+     "text": "Practice is not a ladder but enlightenment itself.",
+     "img": "th:dogen"
+    },
+    {
+     "date": "1800s",
+     "title": "The Upanishads reach Europe",
+     "text": "Schopenhauer reads them nightly: ‘the consolation of my life’.",
+     "img": "th:schopenhauer",
+     "key": true
+    }
+   ],
+   "bottom": "Philosophy has always been a conversation across cultures.",
+   "notes": "These traditions did not stay put. Buddhism travelled from India to China in the first century CE, where it met Daoism and became Chan, known in Japan as Zen. Dōgen brought it to Japan in the 1200s. Neo-Confucians like Zhu Xi answered Buddhism with their own metaphysics of pattern and energy, li and qi. In the nineteenth century the Upanishads reached Europe in translation, and Schopenhauer read them every night.\nNext: what we can learn."
+  },
+  {
+   "layout": "closing",
+   "title": "Different starting points, shared questions",
+   "sub": "Better questions",
+   "questions": [
+    "Is there a true self behind your thoughts and feelings?",
+    "Is goodness grown from nature, or carved by effort?",
+    "Should we strive harder, or learn when not to force?"
+   ],
+   "line": "Philosophy is a world conversation, not a Greek monologue.",
+   "notes": "The traditions of India and China ask the same big questions as Greece, about the self, goodness and the good life, but from different angles. Studying them side by side shows which of our own assumptions are really universal."
+  },
+  {
+   "layout": "discussion",
+   "title": "Discussion: bring the theory back to real life",
+   "sub": "Three questions for debate",
+   "questions": [
+    "Which of the Four Noble Truths do you find most convincing, and which least?",
+    "Are people basically good, like Mencius says, or made good, like Xunzi says?",
+    "When is ‘not forcing it’ wise, and when is it just lazy?"
+   ],
+   "line": "Give an example from your own life first.",
+   "link": "#voyage-buddha",
+   "linkLabel": "Sail to the Tree of Waking",
+   "notes": "Three questions. The second makes a good class vote before and after discussion."
+  }
+ ]
+}

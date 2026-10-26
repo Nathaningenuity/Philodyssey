@@ -3,7 +3,7 @@
 const fs = require("fs"), path = require("path"), R = path.join(__dirname, ".."), SRC = path.join(__dirname, "decks");
 global.window = {}; require(path.join(R, "data/atlas-images.js")); require(path.join(R, "data/atlas-images-th2.js"));
 const IMG = window.ATLAS_IMAGES, index = [], errs = [];
-const ORDER = ["politics", "ethics", "plato", "aristotle", "mind", "freewill", "god", "knowledge", "meaning", "beauty"];
+const ORDER = ["politics", "ethics", "plato", "aristotle", "east", "mind", "freewill", "god", "knowledge", "meaning", "beauty"];
 const files = fs.readdirSync(SRC).filter(f => f.endsWith(".json")).sort((a, b) => ORDER.indexOf(a.slice(0, -5)) - ORDER.indexOf(b.slice(0, -5)));
 for (const f of files) {
   const D = JSON.parse(fs.readFileSync(path.join(SRC, f), "utf8"));
