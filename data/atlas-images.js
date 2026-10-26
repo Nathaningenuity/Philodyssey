@@ -780,6 +780,21 @@ window.ATLAS_IMAGES = {
    "credit": "The Gutenberg Bible, New York Public Library · Photo: Kevin Eng · CC BY-SA 2.0",
    "file": "https://commons.wikimedia.org/wiki/File:Gutenberg_Bible,_Lenox_Copy,_New_York_Public_Library,_2009._Pic_01.jpg",
    "pos": "50% 50%"
+  },
+  "duel": {
+   "src": "img/sec/duel.webp",
+   "credit": "A lion · Tambako the Jaguar · CC BY-ND 2.0",
+   "pos": "50% 45%"
+  },
+  "tide": {
+   "src": "img/sec/tide.webp",
+   "credit": "Waves · ustung · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "log": {
+   "src": "img/sec/log.webp",
+   "credit": "A handwritten notebook · Joanna Bourne · CC BY 2.0",
+   "pos": "50% 45%"
   }
  },
  "ag": {
