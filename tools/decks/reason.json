@@ -1,0 +1,441 @@
+{
+ "id": "reason",
+ "title": "Critical Thinking: How to Argue Well",
+ "question": "How can you tell a good reason from a bad one?",
+ "topic": "reality",
+ "topicName": "Logic and reasoning",
+ "minutes": 40,
+ "basis": "Draws on Anthony Weston, A Rulebook for Arguments, and Bacon’s Novum Organum",
+ "cover": "lens",
+ "images": {
+  "lens": {
+   "src": "img/deck/reason/lens.webp",
+   "credit": "Looking closely · Cayusa · CC BY-NC 2.0",
+   "file": "https://www.flickr.com/photos/17731548@N00/2159980025",
+   "pos": "50% 40%"
+  },
+  "scarecrow": {
+   "src": "img/deck/reason/scarecrow.webp",
+   "credit": "A straw man · xomiele · CC BY-NC-ND 2.0",
+   "file": "https://www.flickr.com/photos/16446663@N03/2506976489",
+   "pos": "50% 40%"
+  },
+  "slope": {
+   "src": "img/deck/reason/slope.webp",
+   "credit": "A slippery slope · jjay69 · CC BY-NC-SA 2.0",
+   "file": "https://www.flickr.com/photos/13408725@N03/8408310465",
+   "pos": "50% 40%"
+  },
+  "chain": {
+   "src": "img/deck/reason/chain.webp",
+   "credit": "A chain is only as strong as its weakest link · small world · CC BY-NC-SA 2.0",
+   "file": "https://www.flickr.com/photos/36875686@N00/8734717",
+   "pos": "50% 40%"
+  },
+  "papers": {
+   "src": "img/deck/reason/papers.webp",
+   "credit": "Newspaper headlines · m01229 · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/39908901@N06/6923408938",
+   "pos": "50% 40%"
+  },
+  "billboard": {
+   "src": "img/deck/reason/billboard.webp",
+   "credit": "An advertising billboard · Steven Pisano · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/45776673@N04/19401249094",
+   "pos": "50% 40%"
+  },
+  "puzzle": {
+   "src": "img/deck/reason/puzzle.webp",
+   "credit": "Puzzle pieces · Electric-Eye · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/35111587@N00/4054093512",
+   "pos": "50% 40%"
+  },
+  "whiteswans": {
+   "src": "img/deck/reason/whiteswans.webp",
+   "credit": "White swans · djidji.perroto · CC BY-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "blackswan": {
+   "src": "img/deck/reason/blackswan.webp",
+   "credit": "A black swan · Bernard Spragg · CC0",
+   "pos": "50% 45%"
+  },
+  "courtroom": {
+   "src": "img/deck/reason/courtroom.webp",
+   "credit": "A courtroom · ictyphotos · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "crowd": {
+   "src": "img/deck/reason/crowd.webp",
+   "credit": "A crowd · dview.us · CC BY-NC-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "specs": {
+   "src": "img/deck/reason/specs.webp",
+   "credit": "Glasses · mayeesherr. · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "dice": {
+   "src": "img/deck/reason/dice.webp",
+   "credit": "Dice · mary hodder · CC BY-NC-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "glassware": {
+   "src": "img/deck/reason/glassware.webp",
+   "credit": "An experiment · euthman · CC BY-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "fork": {
+   "src": "img/deck/reason/fork.webp",
+   "credit": "A fork in the path · Wonderlane · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "feather": {
+   "src": "img/deck/reason/feather.webp",
+   "credit": "A feather · Sharon Mollerus · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "score": {
+   "src": "img/deck/reason/score.webp",
+   "credit": "A scoreboard · North Charleston · CC BY-SA 2.0",
+   "pos": "50% 45%"
+  }
+ },
+ "slides": [
+  {
+   "layout": "title",
+   "kicker": "PUBLIC LECTURE · THINKING WELL",
+   "title": "Critical Thinking: How to Argue Well",
+   "question": "How can you tell a good reason from a bad one?",
+   "sub": "Arguments, validity and soundness, evidence, fallacies, and the biases in our own heads",
+   "tags": [
+    "ARGUMENTS",
+    "VALIDITY",
+    "EVIDENCE",
+    "FALLACIES",
+    "BIAS"
+   ],
+   "img": "lens",
+   "notes": "Every day you are asked to believe things: by friends, teachers, advertisers, politicians and social media. Philosophy’s oldest tool for sorting good reasons from bad ones is logic, and its everyday form is critical thinking.\nTonight we take arguments apart, learn the difference between valid and sound, look at how evidence supports a claim, meet the most common fallacies, and finish with the biases that make all of us worse thinkers than we think.\nNext: what an argument is."
+  },
+  {
+   "layout": "steps",
+   "section": "Arguments",
+   "title": "An argument is reasons offered for a conclusion",
+   "sub": "Not a quarrel: a structure you can inspect",
+   "steps": [
+    {
+     "title": "Find the conclusion",
+     "text": "What are they trying to get you to believe? Look for ‘so’, ‘therefore’, ‘that’s why’."
+    },
+    {
+     "title": "Find the premises",
+     "text": "What reasons are given? Look for ‘because’, ‘since’, ‘given that’."
+    },
+    {
+     "title": "Find what’s hidden",
+     "text": "Most arguments skip a step. Say the unstated premise out loud."
+    },
+    {
+     "title": "Test both",
+     "text": "Are the premises true? Do they really support the conclusion?"
+    }
+   ],
+   "bottom": "‘You should buy this phone because everyone has one’ hides the premise ‘you should do what everyone does’.",
+   "notes": "In philosophy an argument is not a fight. It is a set of reasons, the premises, offered in support of a claim, the conclusion. The first skill is simply to find these parts. Words like ‘therefore’ and ‘so’ signal a conclusion; ‘because’ and ‘since’ signal premises.\nThe most useful move of all is to find the hidden premise. ‘You should buy this phone because everyone has one’ only works if you also accept ‘you should do whatever everyone does’. Once it’s said out loud, it looks much weaker.\nNext: the two questions to ask of every argument."
+  },
+  {
+   "layout": "grid",
+   "section": "Arguments",
+   "title": "Valid and sound: two different tests",
+   "sub": "Is the reasoning good? Are the premises true?",
+   "cols": [
+    "Premises true",
+    "Premises false"
+   ],
+   "rows": [
+    {
+     "label": "Valid form",
+     "cells": [
+      {
+       "title": "Sound",
+       "text": "All humans are mortal; Socrates is human; so Socrates is mortal."
+      },
+      {
+       "title": "Valid, unsound",
+       "text": "All fish can fly; a shark is a fish; so a shark can fly.",
+       "bad": true
+      }
+     ]
+    },
+    {
+     "label": "Invalid form",
+     "cells": [
+      {
+       "title": "Invalid",
+       "text": "Some birds fly; penguins are birds; so penguins fly.",
+       "bad": true
+      },
+      {
+       "title": "Invalid",
+       "text": "Nothing follows; even true conclusions are luck.",
+       "bad": true
+      }
+     ]
+    }
+   ],
+   "note": "Valid: if the premises were true, the conclusion would have to be. Sound: valid and the premises really are true.",
+   "notes": "Logicians separate two questions. Validity is about form: if the premises were true, would the conclusion have to be true? Soundness adds the second test: are the premises actually true?\nA valid argument can have a ridiculous conclusion if a premise is false: all fish can fly, a shark is a fish, so a shark can fly. That is perfectly valid and completely unsound. An invalid argument can stumble on a true conclusion by luck. Aristotle was the first to study these forms systematically.\nNext: forms you will meet again and again."
+  },
+  {
+   "layout": "table",
+   "section": "Arguments",
+   "title": "Four forms to recognise: two good, two bad",
+   "sub": "The bad ones look like the good ones",
+   "head": [
+    "Form",
+    "Pattern",
+    "Example"
+   ],
+   "rows": [
+    [
+     "Modus ponens (valid)",
+     "If P then Q. P. So Q.",
+     "If it rains, the pitch is wet. It’s raining. So it’s wet."
+    ],
+    [
+     "Modus tollens (valid)",
+     "If P then Q. Not Q. So not P.",
+     "If he’d left, his coat would be gone. It isn’t. So he hasn’t left."
+    ],
+    [
+     "Affirming the consequent (invalid)",
+     "If P then Q. Q. So P.",
+     "If it rains, the pitch is wet. It’s wet. So it rained. (Sprinklers?)"
+    ],
+    [
+     "Denying the antecedent (invalid)",
+     "If P then Q. Not P. So not Q.",
+     "If you study, you’ll pass. You didn’t study. So you’ll fail. (Luck?)"
+    ]
+   ],
+   "bottom": "Test a form by finding a case with true premises and a false conclusion. One counterexample is enough.",
+   "notes": "Here are four patterns built on ‘if… then’. Modus ponens and modus tollens are valid. Their look-alikes, affirming the consequent and denying the antecedent, are not.\nThe trick for testing any form: try to imagine the premises true and the conclusion false. The pitch is wet, and it rains whenever it’s wet... but the sprinklers were on. One counterexample shows the form is invalid.\nNext: arguments that can’t be valid, but can still be good."
+  },
+  {
+   "layout": "compare",
+   "section": "Evidence",
+   "title": "Deduction guarantees; induction only supports",
+   "sub": "Most real reasoning is inductive",
+   "a": {
+    "name": "Deduction",
+    "label": "Certain if the premises are",
+    "lead": "The conclusion is already contained in the premises.",
+    "points": [
+     "Mathematics and logic",
+     "Valid or invalid, no middle"
+    ],
+    "focus": "Proof",
+    "img": "puzzle"
+   },
+   "b": {
+    "name": "Induction",
+    "label": "Probable, never certain",
+    "lead": "From many observed cases to a general rule or prediction.",
+    "points": [
+     "Science, medicine, everyday life",
+     "Stronger or weaker, never proof"
+    ],
+    "focus": "Support",
+    "img": "whiteswans"
+   },
+   "bottom": "Every swan Europeans had seen was white, until black swans were found in Australia in 1697.",
+   "notes": "Deductive arguments aim at certainty: if the premises are true, the conclusion must be. Inductive arguments go beyond their premises: every swan I’ve seen is white, so all swans are white. They can be strong or weak, but never certain.\nHume showed that induction can’t be proved without assuming it. Popper drew the lesson that a single black swan can refute a rule that a thousand white swans can’t prove. Black swans were in fact found in Australia in 1697.\nNext: how to weigh evidence."
+  },
+  {
+   "layout": "columns",
+   "section": "Evidence",
+   "title": "Four questions to ask of any evidence",
+   "sub": "Before you share it",
+   "cols": [
+    {
+     "label": "Source",
+     "title": "Who says so?",
+     "text": "Do they know? Do they gain if you believe them?",
+     "img": "papers"
+    },
+    {
+     "label": "Sample",
+     "title": "How many, and which?",
+     "text": "One story isn’t data. Was the sample big and fair?",
+     "img": "crowd"
+    },
+    {
+     "label": "Cause",
+     "title": "Correlation or cause?",
+     "text": "Ice-cream sales and drownings rise together: summer causes both.",
+     "img": "glassware"
+    },
+    {
+     "label": "Alternatives",
+     "title": "What else explains it?",
+     "text": "Look for the explanation that fits all the facts with fewest assumptions.",
+     "img": "lens"
+    }
+   ],
+   "bottom": "‘A wise man proportions his belief to the evidence’ (Hume).",
+   "notes": "Four questions. Who is the source, and could they be biased? How big and how fair is the sample: a single dramatic case can’t show a trend. Is it a correlation or a cause? Ice-cream sales and drownings both rise in summer, but ice cream doesn’t cause drowning. And what are the alternative explanations? Philosophers call the last one inference to the best explanation; Ockham’s razor says to prefer the explanation with fewest extra assumptions.\nNext: the most common fallacies."
+  },
+  {
+   "layout": "gallery",
+   "section": "Fallacies",
+   "title": "Six fallacies you’ll meet this week",
+   "sub": "Arguments that feel persuasive but aren’t",
+   "items": [
+    {
+     "img": "scarecrow",
+     "caption": "Straw man",
+     "text": "Attack a weaker version of the view instead of the real one"
+    },
+    {
+     "img": "slope",
+     "caption": "Slippery slope",
+     "text": "One step must lead to disaster, without showing why"
+    },
+    {
+     "img": "crowd",
+     "caption": "Bandwagon",
+     "text": "Everyone believes it, so it must be true"
+    },
+    {
+     "img": "courtroom",
+     "caption": "Ad hominem",
+     "text": "Attack the person, not the argument"
+    },
+    {
+     "img": "billboard",
+     "caption": "False authority",
+     "text": "A celebrity says so, outside their expertise"
+    },
+    {
+     "img": "chain",
+     "caption": "Circular reasoning",
+     "text": "The conclusion is hidden in a premise"
+    }
+   ],
+   "bottom": "Naming a fallacy isn’t winning: show why the reasoning fails in this case.",
+   "notes": "A fallacy is a pattern of reasoning that seems persuasive but doesn’t support its conclusion. A straw man attacks a weaker version of an opponent’s view. A slippery slope claims one step leads inevitably to disaster without showing why. The bandwagon says everyone believes it, so it’s true. Ad hominem attacks the person rather than the argument. False authority appeals to someone outside their expertise. Circular reasoning hides the conclusion in the premises.\nA warning: shouting the name of a fallacy isn’t an argument either. Show why the reasoning fails here.\nNext: more subtle traps."
+  },
+  {
+   "layout": "columns",
+   "section": "Fallacies",
+   "title": "Subtler traps: when good-looking reasoning goes wrong",
+   "sub": "These catch clever people too",
+   "cols": [
+    {
+     "label": "False dilemma",
+     "title": "Only two options?",
+     "text": "‘You’re either with us or against us’ ignores the middle.",
+     "img": "fork"
+    },
+    {
+     "label": "Equivocation",
+     "title": "One word, two meanings",
+     "text": "‘A feather is light; what is light can’t be dark; so a feather can’t be dark.’",
+     "img": "feather"
+    },
+    {
+     "label": "Gambler’s fallacy",
+     "title": "‘It’s due’",
+     "text": "After five heads, tails is no more likely. Dice have no memory.",
+     "img": "dice"
+    },
+    {
+     "label": "Post hoc",
+     "title": "After, so because",
+     "text": "I wore my lucky socks and we won, so the socks did it.",
+     "img": "score"
+    }
+   ],
+   "bottom": "Each of these feels natural: that’s exactly why they work.",
+   "notes": "A false dilemma pretends there are only two options. Equivocation slides between two meanings of one word, here ‘light’. The gambler’s fallacy treats independent events as if they had memory: after five heads in a row, the next toss is still fifty-fifty. Post hoc ergo propter hoc, ‘after this, therefore because of this’, mistakes sequence for cause.\nNext: the problem isn’t only other people’s arguments. It’s our own minds."
+  },
+  {
+   "layout": "split",
+   "section": "Bias",
+   "title": "The biggest problem is in our own heads",
+   "sub": "Francis Bacon’s ‘idols of the mind’ (1620), and modern psychology",
+   "challenge": {
+    "title": "Confirmation bias",
+    "text": "We notice evidence that fits what we already believe and ignore what doesn’t. Bacon saw it in 1620; psychologists have measured it since."
+   },
+   "answer": {
+    "title": "The remedy",
+    "text": "Look for the evidence that would prove you wrong. Argue the other side at its strongest before you reject it."
+   },
+   "open": {
+    "title": "Other traps",
+    "text": "Motivated reasoning (believing what we want), the anchoring effect (first numbers stick), and the overconfidence of beginners."
+   },
+   "img": "specs",
+   "bottom": "‘The human understanding, once it has adopted an opinion, draws all things else to support it’ (Bacon, Novum Organum I.46).",
+   "notes": "Francis Bacon warned in 1620 about ‘idols of the mind’, habits that distort our thinking. His description of confirmation bias is almost word for word what modern psychologists report: once we hold an opinion, we seize on supporting evidence and ignore the rest.\nThe remedy is uncomfortable: deliberately look for what would prove you wrong, and state the other side’s view so well that they would accept your summary. That is the principle of charity.\nNext: a toolkit."
+  },
+  {
+   "layout": "steps",
+   "section": "Take it with you",
+   "title": "A five-step check for any claim",
+   "sub": "Before you believe it, share it, or argue with it",
+   "steps": [
+    {
+     "title": "State it clearly",
+     "text": "What exactly is being claimed?"
+    },
+    {
+     "title": "Find the reasons",
+     "text": "Premises, evidence, and the hidden premise."
+    },
+    {
+     "title": "Test the link",
+     "text": "Valid? Strong? Any fallacy?"
+    },
+    {
+     "title": "Steelman",
+     "text": "State the other side at its best."
+    },
+    {
+     "title": "Proportion",
+     "text": "How confident should you be, really?"
+    }
+   ],
+   "bottom": "Good thinkers aren’t people who are never wrong. They change their minds for good reasons.",
+   "notes": "Five steps. Get the claim clear. Find the reasons and the hidden premises. Test whether the reasons really support the claim. Steelman the opposing view, the opposite of a straw man. And proportion your confidence to the evidence.\nNext: closing."
+  },
+  {
+   "layout": "closing",
+   "title": "Critical thinking is philosophy’s gift to everyday life",
+   "sub": "Better questions",
+   "questions": [
+    "What would change your mind about something you believe strongly?",
+    "When is it reasonable to trust an expert you can’t check?",
+    "Is it ever right to win an argument with a fallacy?"
+   ],
+   "line": "‘The unexamined life is not worth living’: neither is the unexamined argument.",
+   "notes": "Socrates questioned his fellow citizens to see whether their beliefs held up. Critical thinking is the same practice made into everyday habits."
+  },
+  {
+   "layout": "discussion",
+   "title": "Discussion: bring the theory back to real life",
+   "sub": "Three questions for debate",
+   "questions": [
+    "Find an advert or headline this week. What is its hidden premise?",
+    "Should schools teach fallacies, or does that just make people better at winning arguments?",
+    "Describe a time you changed your mind. What did it?"
+   ],
+   "line": "Steelman before you criticise.",
+   "link": "#quiz",
+   "linkLabel": "Try a Quiz round",
+   "notes": "Three questions. The first is a good homework task: bring in an advert and find the hidden premise."
+  }
+ ]
+}
