@@ -1,0 +1,588 @@
+{
+ "id": "aristotle",
+ "title": "Aristotle: The Philosopher of Everything",
+ "question": "How should we understand the world, and how should we live in it?",
+ "topic": "ethics",
+ "topicName": "Great thinkers",
+ "minutes": 45,
+ "basis": "Draws on Aristotle’s Physics, De Anima, Nicomachean Ethics and Politics, and Jonathan Barnes, Aristotle: A Very Short Introduction",
+ "cover": "statue",
+ "images": {
+  "statue": {
+   "src": "img/deck/aristotle/statue.webp",
+   "credit": "Statue of Aristotle at Stagira · Artform Canada · CC BY-NC-ND 2.0",
+   "file": "https://www.flickr.com/photos/34289491@N03/26914969874",
+   "pos": "50% 40%"
+  },
+  "athens": {
+   "src": "img/deck/aristotle/athens.webp",
+   "credit": "Pythagoras and Heraclitus, from Raphael’s School of Athens · Gloria Chang · CC BY-NC-ND 2.0",
+   "file": "https://www.flickr.com/photos/35084175@N00/2101730620",
+   "pos": "50% 40%"
+  },
+  "octopus": {
+   "src": "img/deck/aristotle/octopus.webp",
+   "credit": "An octopus · Greenstone Girl · CC BY-NC 2.0",
+   "file": "https://www.flickr.com/photos/19368730@N03/3813549229",
+   "pos": "50% 40%"
+  },
+  "acorns": {
+   "src": "img/deck/aristotle/acorns.webp",
+   "credit": "Acorns on the oak · tomylees · CC BY-NC-SA 2.0",
+   "file": "https://www.flickr.com/photos/71256895@N00/22255993106",
+   "pos": "50% 40%"
+  },
+  "stagira": {
+   "src": "img/deck/aristotle/stagira.webp",
+   "credit": "The ruins of ancient Stagira · dimsis · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/62001345@N00/30808242235",
+   "pos": "50% 40%"
+  },
+  "friends": {
+   "src": "img/deck/aristotle/friends.webp",
+   "credit": "Friends · Ahsan Saeed · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/27310159@N03/8404288423",
+   "pos": "50% 40%"
+  },
+  "journeys": {
+   "src": "img/deck/aristotle/journeys.webp",
+   "credit": "Map by Philodyssey; coastline from Natural Earth",
+   "pos": "50% 50%"
+  },
+  "archer": {
+   "src": "img/voy/u2/archer.webp",
+   "credit": "An archer aims at the target · PeterThoeny · CC BY-NC-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "flower": {
+   "src": "img/voy/u2/flower.webp",
+   "credit": "A flower in full bloom · Flower's.Lover · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "bee": {
+   "src": "img/voy/u2/bee.webp",
+   "credit": "A honeybee · Thomas Leuthard · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "bronzehorse": {
+   "src": "img/voy/u2/bronzehorse.webp",
+   "credit": "A horse in bronze · wsilver · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "horses": {
+   "src": "img/voy/u2/horses.webp",
+   "credit": "Horses running · Carol M Highsmith · CC0",
+   "pos": "50% 45%"
+  },
+  "feather": {
+   "src": "img/voy/u2/feather.webp",
+   "credit": "A feather on stones · Sharon Mollerus · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "athens2": {
+   "src": "img/voy/u2/athens2.webp",
+   "credit": "Athens below the Acropolis · isawnyu · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "colonnade": {
+   "src": "img/voy/u2/colonnade.webp",
+   "credit": "A covered walkway (peripatos) · Beth M527 · CC BY-NC 2.0",
+   "pos": "50% 45%"
+  },
+  "doughnuts": {
+   "src": "img/voy/u2/doughnuts.webp",
+   "credit": "Temptation · philip.mallis · CC BY-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "potter": {
+   "src": "img/voy/u4/potter.webp",
+   "credit": "Shaping clay · Walt Stoneburner · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "stars": {
+   "src": "img/voy/u11/stars.webp",
+   "credit": "The heavens · vsfmag · CC BY-NC-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "stones": {
+   "src": "img/voy/u1/stones.webp",
+   "credit": "Stone, the raw material · Kaensu · CC BY-NC-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "applause": {
+   "src": "img/voy/u10/applause.webp",
+   "credit": "Applause · European Parliament · CC BY-NC-ND 2.0",
+   "pos": "50% 45%"
+  },
+  "money": {
+   "src": "img/voy/u12/banknotes.webp",
+   "credit": "Money · HowardLake · CC BY-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "groupwork": {
+   "src": "img/voy/u12/groupwork.webp",
+   "credit": "Working together · hackNY · CC BY-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "dancers": {
+   "src": "img/voy/u6/dancers.webp",
+   "credit": "Dancing · simpleinsomnia · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "academy_pl": {
+   "src": "img/deck/aristotle/academy_pl.webp",
+   "credit": "The Academy of Athens, with statues of Plato and Socrates · dullhunk · CC BY-NC-SA 2.0",
+   "file": "https://www.flickr.com/photos/14829735@N00/337472534",
+   "pos": "50% 40%"
+  }
+ },
+ "slides": [
+  {
+   "layout": "title",
+   "kicker": "PUBLIC LECTURE · THE GREAT THINKERS",
+   "title": "Aristotle: The Philosopher of Everything",
+   "question": "How should we understand the world, and how should we live in it?",
+   "sub": "Logic, nature, the soul, the good life and the city",
+   "tags": [
+    "LOGIC",
+    "NATURE",
+    "SOUL",
+    "VIRTUE",
+    "POLITICS"
+   ],
+   "img": "statue",
+   "notes": "For about 1,500 years, writers in Arabic, Latin and Hebrew simply called him ‘the Philosopher’. Aristotle wrote on logic, physics, biology, astronomy, the soul, ethics, politics, poetry and rhetoric, and in several of these he was the first to treat the subject systematically.\nHe was Plato’s student for twenty years, and his greatest critic. Where Plato looked up, to perfect Forms beyond the world, Aristotle looked around: at animals, plants, cities and people. Tonight we follow both halves of his work: how to understand the world, and how to live well in it.\nNext: a life on the move."
+  },
+  {
+   "layout": "image",
+   "map": true,
+   "img": "journeys",
+   "title": "A life on the move",
+   "sub": "384–322 BCE: from northern Greece to Athens and back again",
+   "caption": "Six journeys",
+   "text": "Born in Stagira, son of a court doctor, Aristotle studied at Plato’s Academy for twenty years, did field biology on Lesbos, tutored the young Alexander the Great at Pella, then founded his own school, the Lyceum, in Athens.",
+   "notes": "Aristotle was born in 384 BCE in Stagira in northern Greece; his father was physician to the king of Macedon. At seventeen he went to Plato’s Academy and stayed twenty years. When Plato died he left Athens, first for Assos on the Turkish coast, then the island of Lesbos, where he studied marine life in the lagoon.\nAround 343 King Philip invited him to Pella to tutor his son, the future Alexander the Great. In 335 he returned to Athens and opened the Lyceum. When Alexander died in 323, anti-Macedonian feeling rose, and Aristotle left for Chalcis, saying he would not let Athens ‘sin twice against philosophy’. He died there a year later.\nNext: two minds that shaped an age."
+  },
+  {
+   "layout": "compare",
+   "section": "Plato and Aristotle",
+   "title": "Two minds that shaped an age: up to the Forms, or around at the world?",
+   "sub": "Raphael painted Plato pointing up and Aristotle holding his hand flat",
+   "a": {
+    "name": "Plato",
+    "label": "Teacher",
+    "lead": "Real things are the perfect, eternal Forms; the world we see is a copy.",
+    "points": [
+     "Knowledge comes from reason",
+     "Start from ideals",
+     "Mathematics is the model"
+    ],
+    "focus": "Look up",
+    "img": "academy_pl"
+   },
+   "b": {
+    "name": "Aristotle",
+    "label": "Student",
+    "lead": "Forms exist only in things: ‘horse’ lives in horses, not in a separate world.",
+    "points": [
+     "Knowledge starts from the senses",
+     "Start from observation",
+     "Biology is the model"
+    ],
+    "focus": "Look around",
+    "img": "horses"
+   },
+   "bottom": "‘Plato is dear to me, but dearer still is truth’ (a later paraphrase of Nicomachean Ethics I.6).",
+   "notes": "In Raphael’s School of Athens, Plato points upward and Aristotle holds his palm flat towards the ground. That gesture sums up their disagreement. Plato thought the true reality was the realm of Forms. Aristotle agreed that things have forms, but said the form of a horse exists only in actual horses. There is no separate ‘Horse itself’.\nSo knowledge begins with the senses and observation, then rises to general principles. Aristotle respected his teacher, but famously put truth first.\nNext: Aristotle the scientist."
+  },
+  {
+   "layout": "gallery",
+   "section": "Nature",
+   "title": "The first great field scientist",
+   "sub": "About a quarter of his surviving work is biology",
+   "items": [
+    {
+     "img": "octopus",
+     "caption": "The octopus",
+     "text": "He described its mating arm correctly; zoologists only confirmed it in the 1850s"
+    },
+    {
+     "img": "bee",
+     "caption": "Bees",
+     "text": "He watched hives and puzzled over how bees reproduce"
+    },
+    {
+     "img": "stagira",
+     "caption": "Stagira",
+     "text": "His birthplace, in the north of Greece"
+    },
+    {
+     "img": "feather",
+     "caption": "Falling bodies",
+     "text": "Heavy things fall faster, he thought: wrong, but a testable claim"
+    },
+    {
+     "img": "stars",
+     "caption": "The heavens",
+     "text": "Perfect circles of unchanging ether, he believed"
+    },
+    {
+     "img": "athens2",
+     "caption": "158 constitutions",
+     "text": "His school collected the laws of 158 Greek cities"
+    }
+   ],
+   "bottom": "‘In all things of nature there is something of the marvellous’ (Parts of Animals I.5).",
+   "notes": "Aristotle dissected animals, classified over 500 species and studied embryos. Some of his observations, like the octopus’s specialised mating arm, were not confirmed until the nineteenth century. He was also wrong about many things: he thought heavier bodies fall faster, and that the heavens were made of an unchanging fifth element.\nBut his method mattered: collect many observations, then look for causes. His school even gathered the constitutions of 158 Greek cities before he wrote about politics.\nNext: the tool he invented for reasoning."
+  },
+  {
+   "layout": "steps",
+   "section": "Logic",
+   "title": "Logic: the tool for all knowledge",
+   "sub": "The Organon: the first system of formal logic",
+   "steps": [
+    {
+     "title": "All humans are mortal",
+     "text": "A general premise: what belongs to every member of a group."
+    },
+    {
+     "title": "Socrates is a human",
+     "text": "A particular premise: this individual is in the group."
+    },
+    {
+     "title": "So Socrates is mortal",
+     "text": "The conclusion follows by form alone, whatever the content."
+    },
+    {
+     "title": "Check the form",
+     "text": "‘All A are B; all B are C; so all A are C’ is valid for any A, B and C."
+    }
+   ],
+   "bottom": "Aristotle’s logic was taught almost unchanged until the 19th century; Kant thought it was complete.",
+   "notes": "Before Aristotle, no one had written down the rules of valid reasoning. He noticed that some arguments are valid purely because of their form. The syllogism is the classic example: all humans are mortal; Socrates is a human; therefore Socrates is mortal. Swap in any terms and the pattern still works.\nHis logical works were later collected as the Organon, the ‘tool’. They were the backbone of education in the Islamic world and in medieval Europe. Kant, in 1787, thought logic had not needed to change since Aristotle. Frege, a century later, would prove him wrong.\nNext: what makes a thing what it is."
+  },
+  {
+   "layout": "columns",
+   "section": "Metaphysics",
+   "title": "The four causes: four answers to ‘why?’",
+   "sub": "Physics II.3: to explain anything, ask four questions",
+   "cols": [
+    {
+     "label": "Material",
+     "title": "What is it made of?",
+     "text": "The bronze of a statue; the stone of a temple.",
+     "img": "stones"
+    },
+    {
+     "label": "Formal",
+     "title": "What shape or structure?",
+     "text": "The design that makes bronze a horse rather than a lump.",
+     "img": "bronzehorse"
+    },
+    {
+     "label": "Efficient",
+     "title": "What made it?",
+     "text": "The sculptor at work; for a child, its parents.",
+     "img": "potter"
+    },
+    {
+     "label": "Final",
+     "title": "What is it for?",
+     "text": "Its purpose or end (telos): a statue to honour, an eye to see.",
+     "img": "acorns"
+    }
+   ],
+   "bottom": "Modern science mostly drops final causes, but biology still asks what an organ is for.",
+   "notes": "For Aristotle, to understand something is to know its causes, and there are four kinds. The material cause is what it is made of. The formal cause is its structure or design. The efficient cause is what brought it about: the sculptor, the parents. The final cause is what it is for, its telos.\nThe final cause is the most controversial. Since Galileo and Newton, physics has done without purposes. But biologists still ask what the heart is for, and Aristotle would say they are asking his fourth question.\nNext: how things change."
+  },
+  {
+   "layout": "split",
+   "section": "Metaphysics",
+   "title": "Potential and actual: how change is possible",
+   "sub": "Physics and Metaphysics IX",
+   "challenge": {
+    "title": "The old puzzle",
+    "text": "Parmenides said change is impossible: something can’t come from nothing, and what already is can’t become."
+   },
+   "answer": {
+    "title": "Aristotle’s solution",
+    "text": "An acorn is potentially an oak. Change is the actualising of a potential: neither from nothing, nor already complete."
+   },
+   "open": {
+    "title": "Why it matters",
+    "text": "Every living thing has a nature, an inner drive to become its best form. That idea runs through his ethics and politics."
+   },
+   "img": "acorns",
+   "bottom": "A thing’s nature is what it grows towards when nothing gets in its way.",
+   "notes": "The philosopher Parmenides had argued that change is impossible. Aristotle answered with a pair of concepts. An acorn is not an oak, but it isn’t nothing either: it is potentially an oak. Growth is the potential becoming actual.\nThis idea is everywhere in Aristotle. Natural things have an inner tendency to become their full, actual form. A human being’s full form is a life of reason and virtue, which is where his ethics will start.\nNext: the soul as the form of a living body."
+  },
+  {
+   "layout": "pyramid",
+   "section": "The soul",
+   "title": "Three kinds of soul: the ladder of living things",
+   "sub": "De Anima II: the soul is the form of a living body",
+   "levels": [
+    {
+     "tag": "HUMANS",
+     "title": "Rational soul",
+     "text": "Thinking, reasoning, choosing. Only humans have it."
+    },
+    {
+     "tag": "ANIMALS",
+     "title": "Sensitive soul",
+     "text": "Perception, desire and movement, plus everything below."
+    },
+    {
+     "tag": "ALL LIFE",
+     "title": "Nutritive soul",
+     "text": "Growth, nourishment and reproduction. Plants have only this."
+    }
+   ],
+   "bottom": "Unlike Plato, Aristotle doesn’t see the soul as a prisoner in the body: it is what makes the body alive.",
+   "notes": "For Plato the soul is a separate thing trapped in the body. For Aristotle the soul is the form of a living body, as the shape is the form of a statue. ‘If the eye were an animal, sight would be its soul.’\nLiving things form a ladder. All life has a nutritive soul: growth and reproduction. Animals add a sensitive soul: perception, desire and movement. Humans add reason. Each level includes the ones below. This sets up the question of the next slide: what is distinctive about a good human life?\nNext: happiness."
+  },
+  {
+   "layout": "columns",
+   "section": "Ethics",
+   "title": "Eudaimonia: happiness as a whole life lived well",
+   "sub": "Nicomachean Ethics I: the function argument",
+   "cols": [
+    {
+     "label": "Not pleasure",
+     "title": "Pleasure alone",
+     "text": "A life fit for grazing cattle, says Aristotle.",
+     "img": "doughnuts"
+    },
+    {
+     "label": "Not honour",
+     "title": "Fame or status",
+     "text": "Depends on others; we want honour for being good.",
+     "img": "applause"
+    },
+    {
+     "label": "Not wealth",
+     "title": "Money",
+     "text": "Only a means to something else.",
+     "img": "money"
+    },
+    {
+     "label": "Eudaimonia",
+     "title": "Flourishing",
+     "text": "Activity of the soul in accordance with virtue, over a complete life.",
+     "img": "flower"
+    }
+   ],
+   "bottom": "‘One swallow does not make a spring, nor does one day make a person happy’ (I.7).",
+   "notes": "Everyone agrees the highest good is eudaimonia, usually translated happiness but better ‘flourishing’. They disagree about what it is. Pleasure? That’s a life for cattle. Honour? It depends on others. Money? It is only a tool.\nAristotle’s argument: a good knife cuts well, a good eye sees well; so a good human does well what humans distinctively do, which is to reason. Happiness is the activity of the soul in accordance with virtue, over a whole life. It is something you do, not something you feel for a moment.\nNext: what virtue is."
+  },
+  {
+   "layout": "mean",
+   "section": "Ethics",
+   "title": "The doctrine of the mean: virtue between two vices",
+   "sub": "Nicomachean Ethics II: ‘we become just by doing just acts’",
+   "head": [
+    "Too little",
+    "The virtue",
+    "Too much"
+   ],
+   "area": true,
+   "rows": [
+    [
+     "Cowardice",
+     "Courage",
+     "Recklessness",
+     "Facing danger"
+    ],
+    [
+     "Meanness",
+     "Generosity",
+     "Extravagance",
+     "Money"
+    ],
+    [
+     "Self-deprecation",
+     "Truthfulness",
+     "Boastfulness",
+     "Talking about yourself"
+    ],
+    [
+     "Boorishness",
+     "Wit",
+     "Buffoonery",
+     "Humour"
+    ],
+    [
+     "Insensitivity",
+     "Temperance",
+     "Self-indulgence",
+     "Pleasure"
+    ]
+   ],
+   "bottom": "The mean is ‘relative to us’: the right feeling, at the right time, towards the right people, for the right reason.",
+   "notes": "Virtue is a habit of choosing well, built by practice: you become brave by doing brave things, as you become a harpist by playing the harp. Each virtue is a mean between two vices: courage lies between cowardice and recklessness, generosity between meanness and extravagance.\nThe mean is not mediocrity or always being moderate. Sometimes great anger is right. It means hitting the target: the right response, at the right time, to the right person, in the right way. Like an archer, the person of practical wisdom, phronesis, learns to aim.\nNext: why we sometimes fail even when we know better."
+  },
+  {
+   "layout": "split",
+   "section": "Ethics",
+   "title": "Akrasia: knowing better and doing worse",
+   "sub": "Nicomachean Ethics VII: weakness of will",
+   "challenge": {
+    "title": "Socrates’ puzzle",
+    "text": "No one does wrong knowingly. If you really knew it was bad, you wouldn’t do it."
+   },
+   "answer": {
+    "title": "Aristotle’s reply",
+    "text": "You can know something without it being active in your mind. Desire takes over, like a drunk reciting poetry he doesn’t understand."
+   },
+   "open": {
+    "title": "Four characters",
+    "text": "The virtuous want the right thing. The self-controlled resist bad desires. The weak-willed give in. The vicious don’t even see the problem."
+   },
+   "img": "doughnuts",
+   "bottom": "Moral growth is training desire, not just learning rules.",
+   "notes": "Socrates argued that weakness of will is impossible: whoever truly knows the good does it. Aristotle says that ignores obvious facts. His solution: knowledge can be possessed but not used, as a sleeping or drunk person ‘knows’ things. When desire is strong, the knowledge isn’t active in the moment.\nHe describes four characters. The virtuous person wants the right thing anyway. The self-controlled person wants the wrong thing but resists. The weak-willed person gives in and regrets it. The vicious person doesn’t think there’s anything wrong. Which are you, about that third doughnut?\nNext: friendship."
+  },
+  {
+   "layout": "columns",
+   "section": "Ethics",
+   "title": "Friendship: ‘no one would choose to live without friends’",
+   "sub": "Nicomachean Ethics VIII–IX: three kinds of philia",
+   "cols": [
+    {
+     "label": "Utility",
+     "title": "Useful to each other",
+     "text": "Business partners, classmates on a project. Ends when the use ends.",
+     "img": "groupwork"
+    },
+    {
+     "label": "Pleasure",
+     "title": "Fun to be with",
+     "text": "Common among the young. Fades when tastes change.",
+     "img": "dancers"
+    },
+    {
+     "label": "Virtue",
+     "title": "Loving the person for who they are",
+     "text": "Rare, slow to form, lasting. ‘A friend is another self.’",
+     "img": "friends"
+    }
+   ],
+   "bottom": "Aristotle gives friendship two whole books of the Ethics, more than any single virtue.",
+   "notes": "Aristotle spends two books of the Nicomachean Ethics on friendship. Friendships based on usefulness or pleasure are real but fragile: they end when the benefit stops. The best friendship is between good people who love each other for their character. Such friends want good things for each other’s sake, and each is ‘another self’ to the other.\nThis is part of his ethics, not an add-on: we flourish together, not alone.\nNext: politics."
+  },
+  {
+   "layout": "grid",
+   "section": "Politics",
+   "title": "Who rules, and for whom? Six kinds of constitution",
+   "sub": "Politics III.7: humans are political animals",
+   "cols": [
+    "Rule by one",
+    "Rule by the few",
+    "Rule by the many"
+   ],
+   "rows": [
+    {
+     "label": "For the common good",
+     "cells": [
+      {
+       "title": "Monarchy",
+       "text": "One wise ruler"
+      },
+      {
+       "title": "Aristocracy",
+       "text": "The best few"
+      },
+      {
+       "title": "Polity",
+       "text": "Citizens with a stake, under law"
+      }
+     ]
+    },
+    {
+     "label": "For the rulers’ own good",
+     "cells": [
+      {
+       "title": "Tyranny",
+       "text": "One rules for himself",
+       "bad": true
+      },
+      {
+       "title": "Oligarchy",
+       "text": "The rich rule for the rich",
+       "bad": true
+      },
+      {
+       "title": "Democracy",
+       "text": "The poor majority for itself",
+       "bad": true
+      }
+     ]
+    }
+   ],
+   "note": "In practice he favours polity: a mixed constitution resting on a strong middle class.",
+   "notes": "‘The human being is by nature a political animal’: we can only flourish in a community, and only we have speech to discuss what is just. Aristotle classifies constitutions by two questions: how many rule, and in whose interest. Good forms serve the common good; corrupt forms serve the rulers.\nNote that ‘democracy’ is on the bad row: he means rule by the poor majority in its own interest. His practical favourite is polity, a mix of democracy and oligarchy, stabilised by a large middle class. He also defended slavery and excluded women from politics, views that his own principles about human reason can be turned against.\nNext: his long afterlife."
+  },
+  {
+   "layout": "timeline",
+   "section": "Legacy",
+   "title": "Aristotle’s long afterlife",
+   "sub": "Read, translated and argued over for 2,300 years",
+   "events": [
+    {
+     "date": "9th–12th c.",
+     "title": "Baghdad and Córdoba",
+     "text": "Translated into Arabic; al-Fārābī, Avicenna and Averroes build on him.",
+     "img": "th:averroes",
+     "key": true
+    },
+    {
+     "date": "13th c.",
+     "title": "Aquinas",
+     "text": "Joins Aristotle with Christian theology; ‘the Philosopher’ in the universities.",
+     "img": "th:aquinas"
+    },
+    {
+     "date": "17th c.",
+     "title": "The scientific revolution",
+     "text": "Galileo and Newton overturn his physics.",
+     "img": "stars"
+    },
+    {
+     "date": "20th c.",
+     "title": "Virtue ethics returns",
+     "text": "Anscombe, Foot and MacIntyre revive his ethics.",
+     "img": "th:anscombe",
+     "key": true
+    }
+   ],
+   "bottom": "Wrong about falling stones, right about friendship: both have shaped the world.",
+   "notes": "After antiquity, Aristotle’s works travelled east. In Baghdad they were translated into Arabic, and philosophers like al-Fārābī, called the Second Teacher, Avicenna and Averroes, known in Europe simply as the Commentator, built on them. Through Arabic and Greek they returned to Latin Europe, where Thomas Aquinas made Aristotle the backbone of university learning.\nThe scientific revolution overturned his physics. But in the twentieth century Elizabeth Anscombe, Philippa Foot and Alasdair MacIntyre revived his ethics, and virtue ethics is now one of the three main approaches.\nNext: what he leaves us."
+  },
+  {
+   "layout": "closing",
+   "title": "Aristotle teaches us to look closely, then think hard",
+   "sub": "Better questions",
+   "questions": [
+    "Does everything have a purpose, or only the things we make?",
+    "Is happiness a feeling, or a way of living?",
+    "Who should rule, and in whose interest?"
+   ],
+   "line": "‘We are what we repeatedly do’ (a modern summary of Ethics II).",
+   "notes": "Aristotle’s method is still a good one: observe carefully, collect what others think, find the puzzles, and reason towards an answer. Many of his answers have been overturned. His questions have not."
+  },
+  {
+   "layout": "discussion",
+   "title": "Discussion: bring the theory back to real life",
+   "sub": "Three questions for debate",
+   "questions": [
+    "Pick a virtue you care about. What are its two vices?",
+    "Are most of your friendships of utility, pleasure, or virtue?",
+    "Can you be happy without being good?"
+   ],
+   "line": "Give an example from your own life first.",
+   "link": "#voyage-nicomachean",
+   "linkLabel": "Sail to the Good Life island",
+   "notes": "Three questions. Encourage examples from everyday life; Aristotle always started from what people actually do."
+  }
+ ]
+}

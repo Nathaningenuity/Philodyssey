@@ -55,6 +55,11 @@
    "credit": "Frontispiece of Hobbes’s Leviathan, Abraham Bosse, 1651 · Public domain",
    "file": "https://commons.wikimedia.org/wiki/File:Leviathan_by_Thomas_Hobbes.jpg",
    "pos": "50% 20%"
+  },
+  "hospital": {
+   "src": "img/voy/u11/hospital.webp",
+   "credit": "A hospital · cmh2315fl · CC BY-NC 2.0",
+   "pos": "50% 45%"
   }
  },
  "slides": [
@@ -392,7 +397,8 @@
     {
      "label": "Spill-over",
      "title": "Private choices, public costs",
-     "text": "If your risks fill hospitals, is it still your business?"
+     "text": "If your risks fill hospitals, is it still your business?",
+     "img": "hospital"
     },
     {
      "label": "Capacity",

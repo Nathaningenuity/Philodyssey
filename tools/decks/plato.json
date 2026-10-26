@@ -1,0 +1,530 @@
+{
+ "id": "plato",
+ "title": "Plato: The Ascent Toward Truth",
+ "question": "What is real, what is just, and who should rule?",
+ "topic": "reality",
+ "topicName": "Great thinkers",
+ "minutes": 45,
+ "basis": "Draws on Plato’s Republic, Phaedo and Phaedrus, and Julia Annas, An Introduction to Plato’s Republic",
+ "cover": "academy",
+ "images": {
+  "academy": {
+   "src": "img/deck/plato/academy.webp",
+   "credit": "The Academy of Athens, with statues of Plato and Socrates · dullhunk · CC BY-NC-SA 2.0",
+   "file": "https://www.flickr.com/photos/14829735@N00/337472534",
+   "pos": "50% 40%"
+  },
+  "cave": {
+   "src": "img/deck/plato/cave.webp",
+   "credit": "Light at a cave mouth · Coconino NF Photography · public domain",
+   "file": "https://www.flickr.com/photos/42034606@N05/20145428313",
+   "pos": "50% 40%"
+  },
+  "sun": {
+   "src": "img/deck/plato/sun.webp",
+   "credit": "The sun · skyseeker · CC BY 2.0",
+   "file": "https://www.flickr.com/photos/40422902@N00/45962658",
+   "pos": "50% 40%"
+  },
+  "ring": {
+   "src": "img/deck/plato/ring.webp",
+   "credit": "A gold ring · Kotomi_ · CC BY-NC 2.0",
+   "file": "https://www.flickr.com/photos/23586209@N03/2553732710",
+   "pos": "50% 40%"
+  },
+  "syracuse": {
+   "src": "img/deck/plato/syracuse.webp",
+   "credit": "The Greek theatre at Syracuse · Davide Simonetti · CC BY-NC 2.0",
+   "file": "https://www.flickr.com/photos/21779222@N00/5017887937",
+   "pos": "50% 40%"
+  },
+  "ship": {
+   "src": "img/deck/plato/ship.webp",
+   "credit": "A sailing ship and its crew · Don McCullough · CC BY-NC 2.0",
+   "file": "https://www.flickr.com/photos/69214385@N04/8640462360",
+   "pos": "50% 40%"
+  },
+  "sicily": {
+   "src": "img/deck/plato/sicily.webp",
+   "credit": "Map by Philodyssey; coastline from Natural Earth",
+   "pos": "50% 50%"
+  },
+  "compass": {
+   "src": "img/voy/u2/compass.webp",
+   "credit": "A drawn circle, never perfect · jesse1dog · CC BY-NC-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "prison": {
+   "src": "img/voy/u2/prison.webp",
+   "credit": "The so-called Prison of Socrates, Athens · neilalderney123 · CC BY-NC 2.0",
+   "pos": "50% 45%"
+  },
+  "teacher": {
+   "src": "img/voy/u2/teacher.webp",
+   "credit": "Teaching as turning · Ethan Woods · CC BY-ND 2.0",
+   "pos": "50% 45%"
+  },
+  "horses": {
+   "src": "img/voy/u2/horses.webp",
+   "credit": "Horses running · Carol M Highsmith · CC0",
+   "pos": "50% 45%"
+  },
+  "pnyx": {
+   "src": "img/voy/u1/pnyx.webp",
+   "credit": "The Pnyx, where Athens’ Assembly met · microbe · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "lion": {
+   "src": "img/voy/u7/lion.webp",
+   "credit": "A lion · Tambako the Jaguar · CC BY-ND 2.0",
+   "pos": "50% 45%"
+  },
+  "coins": {
+   "src": "img/voy/u6/coins.webp",
+   "credit": "Coins: paying what you owe · visual.dichotomy · CC BY 2.0",
+   "pos": "50% 45%"
+  },
+  "sword": {
+   "src": "img/voy/u9/sword.webp",
+   "credit": "A sword · Jack.Loomes · CC BY-NC-SA 2.0",
+   "pos": "50% 45%"
+  },
+  "king": {
+   "src": "img/voy/u9/chessking.webp",
+   "credit": "The king · violscraper · CC BY-NC 2.0",
+   "pos": "50% 45%"
+  },
+  "manuscript": {
+   "src": "img/voy/u8/manuscript.webp",
+   "credit": "A handwritten page · Archives Branch, USMC History Division · CC BY 2.0",
+   "pos": "50% 45%"
+  }
+ },
+ "slides": [
+  {
+   "layout": "title",
+   "kicker": "PUBLIC LECTURE · THE GREAT THINKERS",
+   "title": "Plato: The Ascent Toward Truth",
+   "question": "What is real, what is just, and who should rule?",
+   "sub": "Forms, the cave, the three-part soul and the ideal city",
+   "tags": [
+    "FORMS",
+    "CAVE",
+    "SOUL",
+    "JUSTICE",
+    "THE CITY"
+   ],
+   "img": "academy",
+   "notes": "Alfred North Whitehead once said that the whole of European philosophy is a series of footnotes to Plato. That is an exaggeration, but not a big one. Plato asked what is truly real, how we can know it, what justice is, and who should govern, and he answered all four with one connected vision.\nIn front of the modern Academy of Athens stand statues of Plato and his teacher Socrates. Tonight we follow the path Plato called the ascent: from shadows on a cave wall up to the sunlight of understanding, and then back down into the city.\nNext: a life shaped by one death."
+  },
+  {
+   "layout": "timeline",
+   "section": "His life",
+   "title": "A life shaped by tragedy",
+   "sub": "From an aristocrat headed for politics to the founder of the first academy",
+   "events": [
+    {
+     "date": "428 BCE",
+     "title": "Born in Athens",
+     "text": "Into one of the city’s grandest families; expected to enter politics.",
+     "img": "th:plato"
+    },
+    {
+     "date": "399 BCE",
+     "title": "Socrates executed",
+     "text": "His teacher is condemned by a democratic jury. Plato turns away from politics.",
+     "img": "prison",
+     "key": true
+    },
+    {
+     "date": "c. 388 BCE",
+     "title": "Sicily",
+     "text": "Visits the court of Syracuse; meets Dion; perhaps sold into slavery on the way home.",
+     "img": "syracuse"
+    },
+    {
+     "date": "c. 387 BCE",
+     "title": "The Academy",
+     "text": "Founds a school in a grove outside Athens. It will last about 300 years.",
+     "img": "academy",
+     "key": true
+    },
+    {
+     "date": "348 BCE",
+     "title": "Dies, aged about 80",
+     "text": "Still writing; his last work, the Laws, is unfinished.",
+     "img": "manuscript"
+    }
+   ],
+   "bottom": "‘Plato is philosophy, and philosophy Plato’ (Emerson).",
+   "notes": "Plato was born around 428 BCE into an aristocratic family; two relatives were among the Thirty Tyrants who briefly ruled Athens. As a young man he followed Socrates. In 399 BCE the restored democracy put Socrates to death for impiety and corrupting the young. Plato concluded that existing cities could not be trusted with justice.\nHe travelled, including to Syracuse in Sicily, and around 387 founded the Academy, often called the first university. Aristotle studied there for twenty years. Plato died around 348, still working.\nNext: his trips to Sicily."
+  },
+  {
+   "layout": "image",
+   "map": true,
+   "img": "sicily",
+   "title": "Three voyages to Syracuse",
+   "sub": "Plato tried to turn a tyrant into a philosopher-king",
+   "caption": "Theory meets practice",
+   "text": "Plato sailed to Syracuse three times, hoping to educate its rulers. Each attempt failed: he was reportedly sold as a slave once and held prisoner later, escaping with help from the Pythagorean Archytas of Taras.",
+   "notes": "According to the Seventh Letter, which may or may not be by Plato, he sailed three times to Syracuse, the richest Greek city in the west. His friend Dion hoped the young ruler Dionysius II could be educated into a philosopher-king. It went badly. Dionysius was flattered by philosophy but not changed by it, and Plato ended up as a virtual prisoner until the mathematician Archytas, ruler of Taras in southern Italy, sent a ship to fetch him.\nKeep this map in mind when we reach the Republic: Plato knew how hard it was to make power wise.\nNext: why he wrote in dialogues."
+  },
+  {
+   "layout": "columns",
+   "section": "How he wrote",
+   "title": "Plato wrote conversations, not treatises",
+   "sub": "Almost every dialogue stars his teacher, Socrates",
+   "cols": [
+    {
+     "label": "Early",
+     "title": "Socrates questioning",
+     "text": "Short dialogues where Socrates asks ‘What is courage?’ or ‘What is piety?’ and no answer survives.",
+     "note": "Euthyphro, Apology, Crito",
+     "img": "th:socrates"
+    },
+    {
+     "label": "Middle",
+     "title": "Plato’s own system",
+     "text": "The Forms, the immortal soul and the ideal city appear, still in Socrates’ mouth.",
+     "note": "Phaedo, Symposium, Republic",
+     "img": "teacher"
+    },
+    {
+     "label": "Late",
+     "title": "Self-criticism",
+     "text": "Plato attacks his own theory of Forms and turns to cosmology and law.",
+     "note": "Parmenides, Timaeus, Laws",
+     "img": "th:plato"
+    }
+   ],
+   "bottom": "The dialogue form invites you to argue back: Plato never speaks in his own voice.",
+   "notes": "Plato never writes ‘I think’. Everything comes as conversation, usually with Socrates leading. Scholars group the dialogues roughly as early, middle and late. In the early ones Socrates refutes definitions and leaves everyone puzzled. In the middle ones, like the Republic, big theories appear. In the late ones Plato criticises those theories himself.\nWhy dialogues? Perhaps because Plato thought philosophy lives in questioning, not in memorising conclusions. He even complains in the Phaedrus that written words can’t answer back.\nNext: the theory of Forms."
+  },
+  {
+   "layout": "split",
+   "section": "Metaphysics",
+   "title": "The theory of Forms: the perfect originals behind every copy",
+   "sub": "Phaedo, Republic",
+   "challenge": {
+    "title": "The puzzle",
+    "text": "Draw a circle. It is never perfectly round. Yet you know what a perfect circle is. Where did you get that idea?"
+   },
+   "answer": {
+    "title": "Plato’s answer",
+    "text": "Behind every imperfect circle, beautiful face or just act is a Form: perfect, eternal and unchanging. Things in the world copy or ‘share in’ the Forms."
+   },
+   "open": {
+    "title": "The hardest question",
+    "text": "How do changing things relate to unchanging Forms? Plato’s own Parmenides raises the ‘third man’ objection, and Aristotle will press it hard."
+   },
+   "img": "compass",
+   "bottom": "For Plato the Forms are more real than the world we see, not less.",
+   "notes": "Here is the core idea. Every circle you draw is lumpy, every beautiful thing fades, every just person sometimes acts unjustly. Yet we judge them against standards: perfect roundness, beauty itself, justice itself. Plato concluded that these standards really exist, as Forms, outside space and time. We grasp them by reason, not by the senses.\nThe theory raises a hard question that Plato himself pressed in the Parmenides: how can a changing thing ‘share in’ an unchanging Form? Aristotle will make this his main objection.\nNext: Plato’s map of knowledge."
+  },
+  {
+   "layout": "ladder",
+   "section": "Metaphysics",
+   "title": "The divided line: four levels of the mind",
+   "sub": "Republic VI, 509d–511e: climbing from shadows to the Forms",
+   "rungs": [
+    {
+     "title": "Understanding (noesis)",
+     "text": "Grasping the Forms themselves, up to the Form of the Good.",
+     "tag": "KNOWLEDGE"
+    },
+    {
+     "title": "Thought (dianoia)",
+     "text": "Mathematics: reasoning from assumptions, with the help of diagrams.",
+     "tag": "KNOWLEDGE"
+    },
+    {
+     "title": "Belief (pistis)",
+     "text": "Opinions about the visible things around us.",
+     "tag": "OPINION"
+    },
+    {
+     "title": "Imagining (eikasia)",
+     "text": "Taking shadows and reflections for the real thing.",
+     "tag": "OPINION"
+    }
+   ],
+   "bottom": "Each level is to the next as a reflection is to the thing reflected.",
+   "notes": "Plato divides a line into two unequal parts, the visible and the intelligible, then divides each again. At the bottom is imagining: mistaking images for reality. Then belief about physical things. Then mathematical thought, which still leans on drawn figures. At the top, understanding: reason grasping the Forms directly, culminating in the Form of the Good.\nThe line is a map; the next image, the cave, is the same journey told as a story.\nNext: the allegory of the cave."
+  },
+  {
+   "layout": "image",
+   "img": "cave",
+   "title": "The allegory of the cave",
+   "sub": "Republic VII, 514a–520a",
+   "caption": "Are we the prisoners?",
+   "text": "Prisoners chained since birth watch shadows on a wall and think them real. One is freed, turns, climbs out, is dazzled by the sun, and finally sees the world as it is. When he returns to tell the others, they mock him, and would kill him if they could.",
+   "notes": "This is perhaps the most famous image in philosophy. Prisoners sit chained in a cave, facing a wall. Behind them is a fire, and people carry objects whose shadows fall on the wall. The prisoners think the shadows are everything.\nOne prisoner is freed. Turning to the fire hurts his eyes. Dragged up into the sunlight, he is blinded at first, then sees reflections, then things, and finally the sun itself, which stands for the Form of the Good. Pitying his friends, he goes back down, can’t see in the dark, and is laughed at. If he tries to free them, they would kill him: a clear reference to Socrates.\nNext: the stages of the climb."
+  },
+  {
+   "layout": "flow",
+   "section": "Metaphysics",
+   "title": "The cave is a story of education",
+   "sub": "Each stage matches a level of the divided line",
+   "chain": [
+    "Shadows",
+    "turn",
+    "Fire and objects",
+    "climb",
+    "Sunlit world",
+    "look up",
+    "The sun"
+   ],
+   "cols": [
+    {
+     "title": "Education is turning",
+     "text": "Teaching doesn’t pour sight into blind eyes; it turns the whole soul towards the light (518c).",
+     "img": "teacher"
+    },
+    {
+     "title": "The sun is the Good",
+     "text": "As the sun makes things visible and alive, the Good makes the Forms knowable and real.",
+     "img": "sun"
+    },
+    {
+     "title": "The duty to return",
+     "text": "Those who see must go back down and govern, though they would rather stay in the light.",
+     "img": "pnyx"
+    }
+   ],
+   "bottom": "Freedom hurts at first: every stage of the climb begins with pain and confusion.",
+   "notes": "Plato tells us directly how to read the cave. The shadows are the level of imagining. The fire and objects are ordinary belief. The world outside is the realm of Forms, and the sun is the Form of the Good.\nThree lessons. Education is not filling an empty vessel but turning the soul around. The Good is the source of both knowledge and being, as the sun is of sight and growth. And those who escape have a duty to return and rule, which leads us to Plato’s politics.\nNext: the ethical problem that drives the Republic."
+  },
+  {
+   "layout": "columns",
+   "section": "Justice",
+   "title": "What is justice? Three answers that fail, and a ring that tempts",
+   "sub": "Republic, Books I–II",
+   "cols": [
+    {
+     "label": "Cephalus",
+     "title": "Pay your debts",
+     "text": "Tell the truth and give back what you owe.",
+     "note": "But not a weapon to a friend gone mad.",
+     "img": "coins"
+    },
+    {
+     "label": "Polemarchus",
+     "title": "Help friends, harm enemies",
+     "text": "Give each what is due.",
+     "note": "But making anyone worse can’t be just.",
+     "img": "sword"
+    },
+    {
+     "label": "Thrasymachus",
+     "title": "The interest of the stronger",
+     "text": "Justice is whatever benefits those in power.",
+     "note": "The challenge Plato spends the book answering.",
+     "img": "king"
+    },
+    {
+     "label": "Glaucon",
+     "title": "The ring of Gyges",
+     "text": "Given a ring of invisibility, wouldn’t anyone do wrong?",
+     "img": "ring"
+    }
+   ],
+   "bottom": "Plato must show that justice is good in itself, not just a deal we accept from fear.",
+   "notes": "The Republic opens with an old man, Cephalus, who says justice is telling the truth and paying debts. Socrates asks: should you return a weapon to a friend who has gone mad? His son Polemarchus says justice is helping friends and harming enemies; Socrates replies that a just person makes no one worse.\nThen the sophist Thrasymachus bursts in: justice is just the interest of the stronger. Plato’s brother Glaucon sharpens the challenge with the ring of Gyges: if you could become invisible, would you still be just? Most people, he says, would not. Plato must show that justice is worth having for its own sake.\nNext: Plato’s answer, starting with the soul."
+  },
+  {
+   "layout": "pyramid",
+   "section": "The soul",
+   "title": "The tripartite soul: reason, spirit and appetite",
+   "sub": "Republic IV, 435b–441c",
+   "levels": [
+    {
+     "tag": "RULES",
+     "title": "Reason",
+     "text": "Loves truth and wisdom; sees what is best for the whole person. Its virtue: wisdom."
+    },
+    {
+     "tag": "SUPPORTS",
+     "title": "Spirit",
+     "text": "Loves honour; feels anger at injustice; the ally of reason. Its virtue: courage."
+    },
+    {
+     "tag": "OBEYS",
+     "title": "Appetite",
+     "text": "Wants food, drink, money and pleasure. Largest part, never satisfied. Its virtue: moderation."
+    }
+   ],
+   "bottom": "Justice in the soul is each part doing its own job, with reason in charge. The tyrant is appetite on the throne.",
+   "notes": "How do we know the soul has parts? Because we feel inner conflict. A thirsty man may refuse a drink he knows is poisoned: something in him wants it and something else forbids it. Plato also tells of Leontius, who wanted to look at corpses and was angry with himself for looking.\nSo the soul has three parts. Reason, small but wise, should rule. Spirit, the seat of anger and honour, should back reason up. Appetite, the largest part, wants endless food, money and pleasure. Justice is harmony: each part doing its own job under reason. Injustice is civil war in the soul, and the worst case is a person ruled by appetite.\nNext: the same structure in the city."
+  },
+  {
+   "layout": "mapping",
+   "section": "The city",
+   "title": "The just city mirrors the just soul",
+   "sub": "‘Read the large letters first’ (368d)",
+   "heads": [
+    "In the soul",
+    "In the city"
+   ],
+   "pairs": [
+    {
+     "a": "Reason",
+     "at": "wisdom",
+     "link": "→",
+     "b": "Guardians, the philosopher-rulers"
+    },
+    {
+     "a": "Spirit",
+     "at": "courage",
+     "link": "→",
+     "b": "Auxiliaries, the soldiers"
+    },
+    {
+     "a": "Appetite",
+     "at": "moderation",
+     "link": "→",
+     "b": "Producers: farmers, craftspeople, traders"
+    }
+   ],
+   "note": "Justice in both is the same: each part doing its own work. Rulers and soldiers own no property and have no private families, so nothing pulls them from the common good.",
+   "notes": "Justice is hard to see in one person, so Socrates looks first at a whole city, as you would read large letters before small ones. The ideal city has three classes matching the three parts of the soul: guardians who rule by wisdom, auxiliaries who defend it with courage, and producers who provide for it. A just city is one where each class does its own work.\nPlato goes further: guardians may own nothing and live without private families, and women can be guardians on equal terms with men, a radical claim in fourth-century Athens.\nNext: how the soul moves, in another famous image."
+  },
+  {
+   "layout": "split",
+   "section": "The soul",
+   "title": "The charioteer: reason driving two horses",
+   "sub": "Phaedrus, 246a–254e",
+   "challenge": {
+    "title": "The image",
+    "text": "The soul is a chariot. Reason is the driver. One horse is noble and obedient (spirit); the other is unruly and drags towards pleasure (appetite)."
+   },
+   "answer": {
+    "title": "The lesson",
+    "text": "A good life isn’t having no desires. It is training both horses so they pull together under a skilled driver."
+   },
+   "open": {
+    "title": "Is it true?",
+    "text": "Modern psychology also finds conflict between fast impulse and slow reflection. But is reason really a separate ‘driver’, or just one more desire?"
+   },
+   "img": "horses",
+   "bottom": "The same three parts as the Republic, now in motion.",
+   "notes": "In the Phaedrus Plato pictures the soul as a winged chariot. The driver is reason. One horse is beautiful and obedient, the other ugly and violent. When the driver sees something beautiful, the bad horse lunges towards it and the driver must pull back hard.\nThe point is not to kill desire but to train it. Students sometimes connect this with modern ideas of fast and slow thinking. A good discussion question: is reason really in the driver’s seat, or is it, as Hume would later say, the slave of the passions?\nNext: training a philosopher-king."
+  },
+  {
+   "layout": "steps",
+   "section": "The city",
+   "title": "Forging a philosopher-king takes fifty years",
+   "sub": "Republic VII: the education of the guardians",
+   "steps": [
+    {
+     "title": "To 18",
+     "text": "Music, poetry and physical training to shape character."
+    },
+    {
+     "title": "20–30",
+     "text": "Mathematics, geometry and astronomy, to turn the mind towards what doesn’t change."
+    },
+    {
+     "title": "30–35",
+     "text": "Dialectic, the art of reasoning back to first principles and the Good."
+    },
+    {
+     "title": "35–50, then rule",
+     "text": "Fifteen years of practical service back in the cave; then rule, in turn, as a duty."
+    }
+   ],
+   "bottom": "‘Until philosophers rule as kings, cities will never have rest from their evils’ (473c).",
+   "notes": "Plato’s rulers are not born but made, over a lifetime. Children learn music, poetry and gymnastics to form character. Young adults study mathematics and astronomy, which train the mind to think about unchanging truths. At thirty the best begin dialectic. Then they go back down into the cave for fifteen years of practical work. Only at fifty, having seen the Good, do they rule, and they rule reluctantly, as a duty.\nThis is the background to the famous line that cities will never be free of evils until philosophers become kings or kings become philosophers.\nNext: why cities decay."
+  },
+  {
+   "layout": "flow",
+   "section": "The city",
+   "title": "How cities fall: from the best to the worst",
+   "sub": "Republic VIII–IX: each regime breeds the next",
+   "chain": [
+    "Aristocracy",
+    "honour",
+    "Timocracy",
+    "wealth",
+    "Oligarchy",
+    "freedom",
+    "Democracy",
+    "fear",
+    "Tyranny"
+   ],
+   "cols": [
+    {
+     "title": "Each regime has a soul",
+     "text": "A city ruled by the love of honour, money or freedom matches a person ruled by the same love."
+    },
+    {
+     "title": "Democracy’s danger",
+     "text": "Freedom without limits lets every desire count equally, and the crowd falls for a flatterer."
+    },
+    {
+     "title": "The tyrant is the most miserable",
+     "text": "Ruled by his worst desires, surrounded by enemies, he is the least free person in the city."
+    }
+   ],
+   "bottom": "Plato’s answer to Thrasymachus: the unjust ruler gains power and loses himself.",
+   "notes": "In Books VIII and IX Plato tells how the ideal city decays. Rule by the wise gives way to rule by lovers of honour, then of wealth, then to democracy, where every desire is free. Finally a demagogue promises to protect the people and becomes a tyrant.\nEach type of city matches a type of person. The tyrant, ruled by appetite, is the most enslaved person of all. That is Plato’s final answer to Thrasymachus and Glaucon: injustice may bring power, but it ruins the soul. Justice is good in itself, as health is.\nNext: should we believe him?"
+  },
+  {
+   "layout": "compare",
+   "section": "Critics",
+   "title": "Blueprint for tyranny, or a mirror for the soul?",
+   "sub": "How to read the Republic today",
+   "a": {
+    "name": "A dangerous blueprint",
+    "label": "Karl Popper, 1945",
+    "lead": "Plato designs a closed society ruled by an unaccountable elite.",
+    "points": [
+     "Censorship of poets",
+     "Noble lies to keep order",
+     "No way to remove bad rulers"
+    ],
+    "focus": "An enemy of the open society",
+    "img": "lion"
+   },
+   "b": {
+    "name": "A thought experiment",
+    "label": "Many modern readers",
+    "lead": "The city is a model of the soul, not a political plan.",
+    "points": [
+     "Women as rulers was radical",
+     "Leaders without wealth or family ties",
+     "Asks what power is for"
+    ],
+    "focus": "A mirror for self-government",
+    "img": "ship"
+   },
+   "bottom": "Plato’s ship of state: should the ship be steered by the crew’s votes or by the navigator who knows the stars?",
+   "notes": "In 1945 Karl Popper called Plato an enemy of the open society: the Republic censors poetry, uses ‘noble lies’ and offers no way to remove bad rulers. Others reply that the city is mainly an image of the soul, and that some of its ideas, like women rulers and leaders with no private wealth, were remarkably progressive.\nPlato’s own image is the ship of state: the crew squabble and flatter the owner, while the true navigator, who studies the stars and winds, is called a useless stargazer. Is that a fair picture of democracy? That is a good question to leave open.\nNext: what Plato leaves us."
+  },
+  {
+   "layout": "closing",
+   "title": "Plato’s questions are still our questions",
+   "sub": "Better questions",
+   "questions": [
+    "Is there something more real than what we can see and touch?",
+    "Is justice good in itself, or just a deal we put up with?",
+    "Should the wise rule, or the many, and who decides who is wise?"
+   ],
+   "line": "‘Justice is having and doing what is one’s own’ (433e).",
+   "notes": "Plato asks us to look beyond appearances, to treat justice as the health of the soul, and to ask what makes rulers fit to rule. You don’t have to accept his answers to find that his questions have followed philosophy ever since."
+  },
+  {
+   "layout": "discussion",
+   "title": "Discussion: bring the theory back to real life",
+   "sub": "Three questions for debate",
+   "questions": [
+    "What are the ‘shadows on the wall’ in your own life: social media, advertising, rumours?",
+    "Would you use the ring of Gyges? What does your answer say about why you’re honest?",
+    "Should leaders need training or a test before they can rule?"
+   ],
+   "line": "Say which part of your soul is answering.",
+   "link": "#voyage-republic",
+   "linkLabel": "Sail to the Republic island",
+   "notes": "Three questions. Encourage students to connect the cave to their own information diet, and to be honest about the ring of Gyges."
+  }
+ ]
+}
