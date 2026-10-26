@@ -2363,6 +2363,15 @@ html{background:var(--bg)}
 .chart.pirate .ch-seal{fill:#9e2418;stroke:#5a140c;stroke-width:.8;filter:drop-shadow(0 1px 1px rgba(60,20,10,.4))}.chart.pirate .ch-seal-r{fill:none;stroke:rgba(255,215,195,.5);stroke-width:1}
 .chart.pirate .ch-stop.done .ch-num{fill:#ffe9dc}.ch-prog{fill:none;stroke:#9c2b1c;stroke-width:2.6;stroke-linecap:round}
 .ch-seal,.ch-seal-r{pointer-events:none}
+.ws{max-width:800px;padding-block:24px 60px;font-family:var(--font-read);color:var(--ink)}.ws-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+.ws-head{border-bottom:2px solid var(--ink);padding-bottom:12px;margin-bottom:18px}.ws-head h1{margin:4px 0}.ws-q{font-style:italic;font-size:1.15rem;margin:0}.ws-meta{color:var(--ink-2);font-size:.9rem;margin:4px 0 10px}
+.ws-name{display:flex;gap:10px;font-family:var(--font-ui);font-size:.9rem}.ws-name span{flex:1;border-bottom:1px solid var(--ink-3);min-width:120px}
+.ws section{margin-bottom:22px}.ws h2{font-size:1.2rem;border-bottom:1px solid var(--line);padding-bottom:4px}.ws h3{font-size:1rem;margin:10px 0 2px}.ws p{margin:0 0 8px;line-height:1.55}
+.ws-words{display:grid;gap:6px}.ws-words dt{font-weight:600}.ws-words dd{margin:0 0 4px 16px}
+.ws-quiz>li{margin-bottom:12px;break-inside:avoid}.ws-quiz ol{margin:4px 0}.ws-open{break-inside:avoid;margin-bottom:12px}
+.ws-lines i{display:block;height:28px;border-bottom:1px solid #999}
+.ws-key{break-before:page;border-top:2px dashed var(--line);padding-top:12px}
+@media print{body{background:#fff!important}.ws{max-width:none;padding:0;color:#000}.no-print,.helm,footer,.foot{display:none!important}#view{padding:0!important}}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -16024,6 +16033,23 @@ ACT.voyTrial = el => {
 };
 ACT.voyRetry = el => { const V = voyState(); delete V.trial[el.dataset.k]; save(); render(true); };
 
+/* ---- a printable worksheet for an island: story, key ideas, words, questions with space to answer, and an answer key on its own page */
+function stripRich(t) { return esc(String(t || "").replace(/\*\*?|__/g, "")); }
+VIEWS.worksheet = arg => {
+  const I = VOY.islands[arg]; if (!I) return VIEWS.voyage("");
+  const L = I.slides || [], u = unitOf(I), qs = L.filter(s => s.t === "quiz"), pr = L.filter(s => s.t === "predict" || s.t === "puzzle");
+  const story = L.find(s => s.t === "story"), ideas = L.filter(s => s.t === "idea").slice(0, 8), words = L.filter(s => s.t === "words").flatMap(s => s.items || []), sum = (L.find(s => s.t === "summary") || {}).items || [];
+  let h = '<div class="wrap ws"><div class="ws-bar no-print"><a class="vy-back" href="#voyage-' + esc(I.id) + '">← Back to the island</a><button class="btn primary" onclick="window.print()">Print worksheet</button></div>';
+  h += '<header class="ws-head"><span class="eyebrow">Philodyssey worksheet · Sea ' + ROMANV[I.unit] + (u ? " · " + esc(u.title) : "") + '</span><h1>' + esc(I.name) + '</h1><p class="ws-q">' + esc(I.question || "") + '</p><p class="ws-meta">' + esc((I.cast || []).map(c => c.name).join(", ")) + '</p><div class="ws-name">Name: <span></span> Date: <span></span></div></header>';
+  if (story) h += '<section><h2>1 · The story</h2><h3>' + esc(story.title || "") + '</h3><p>' + stripRich(story.text) + "</p></section>";
+  h += '<section><h2>2 · Key ideas</h2>' + ideas.map(s => '<div class="ws-idea"><h3>' + esc(s.title || "") + "</h3><p>" + stripRich(s.text) + "</p></div>").join("") + "</section>";
+  if (words.length) h += '<section><h2>3 · Words to know</h2><dl class="ws-words">' + words.map(w => "<div><dt>" + esc(w.term) + (w.orig ? " <i>(" + esc(w.orig) + ")</i>" : "") + "</dt><dd>" + esc(w.meaning) + "</dd></div>").join("") + "</dl></section>";
+  h += '<section><h2>4 · Check your understanding</h2><ol class="ws-quiz">' + qs.map(q => "<li><p>" + stripRich(q.q) + '</p><ol type="A">' + (q.options || []).map(o => "<li>" + stripRich(o) + "</li>").join("") + "</ol></li>").join("") + "</ol></section>";
+  if (pr.length) h += '<section><h2>5 · What do you think?</h2>' + pr.map(q => '<div class="ws-open"><p>' + stripRich(q.q) + '</p><div class="ws-lines"><i></i><i></i><i></i></div></div>').join("") + "</section>";
+  if (sum.length) h += '<section><h2>6 · Summary</h2><ul>' + sum.map(t => "<li>" + stripRich(t) + "</li>").join("") + "</ul></section>";
+  h += '<section class="ws-key"><h2>Answer key</h2><ol>' + qs.map(q => "<li><b>" + "ABCDE"[q.answer] + ".</b> " + stripRich(q.why || "") + "</li>").join("") + "</ol></section></div>";
+  return h;
+};
 VIEWS.voyage = arg => {
   if (!arg) return voyHome();
   if (/^u\d+$/.test(arg)) return unitPage(+arg.slice(1));
@@ -16192,7 +16218,7 @@ function deckPage(id) {
     return '<button class="dk-dot' + cls + '" data-act="dkGo" data-id="' + esc(id) + '" data-i="' + k + '"' + (k > V.max[id] + 1 || (k > i && slideLocked(I, i)) ? " disabled" : "") + ' aria-label="Slide ' + (k + 1) + '"></button>'; }).join("");
   let h = '<article class="voy deck' + (I.sem ? " sem" + (semDisc() ? " disc" : "") : "") + '" data-deck="' + esc(id) + '">';
   if (I.sem) h += semHeadHTML(I, i, L, dots); else
-  h += '<header class="dk-head"><div class="wrap dk-head-in"><a class="vy-back" href="#voyage-u' + I.unit + '">← Sea ' + ROMANV[I.unit] + " · " + esc(u ? u.title : "") + '</a><div class="dk-title">' + (I.cast || []).slice(0, 3).map(c => c.id && TH[c.id] ? '<a class="dk-face" href="#thinker-' + esc(c.id) + '" title="' + esc(c.name) + ': full profile">' + portraitHTML(c, "pt-s") + "</a>" : portraitHTML(c, "pt-s")).join("") + '<span class="stack" style="--g:1px;min-width:0"><b>' + esc(I.name) + '</b><span class="faint">' + esc(I.question) + '</span></span></div><span class="dk-side">' + ((I.cast || []).some(c => c.id && TH[c.id] && TH[c.id].born != null) ? '<a class="dk-sky" href="#firmament-isl.' + esc(I.id) + '" title="See this island’s thinkers in Stargazing">✦ In the sky</a>' : "") + '<span class="cq-mono dk-count">' + (i + 1) + " / " + L.length + '</span></span></div><div class="wrap"><div class="dk-route">' + dots + "</div></div></header>";
+  h += '<header class="dk-head"><div class="wrap dk-head-in"><a class="vy-back" href="#voyage-u' + I.unit + '">← Sea ' + ROMANV[I.unit] + " · " + esc(u ? u.title : "") + '</a><div class="dk-title">' + (I.cast || []).slice(0, 3).map(c => c.id && TH[c.id] ? '<a class="dk-face" href="#thinker-' + esc(c.id) + '" title="' + esc(c.name) + ': full profile">' + portraitHTML(c, "pt-s") + "</a>" : portraitHTML(c, "pt-s")).join("") + '<span class="stack" style="--g:1px;min-width:0"><b>' + esc(I.name) + '</b><span class="faint">' + esc(I.question) + '</span></span></div><span class="dk-side">' + ((I.cast || []).some(c => c.id && TH[c.id] && TH[c.id].born != null) ? '<a class="dk-sky" href="#firmament-isl.' + esc(I.id) + '" title="See this island’s thinkers in Stargazing">✦ In the sky</a>' : "") + '<a class="dk-sky" href="#worksheet-' + esc(I.id) + '" title="A printable worksheet with questions and an answer key">⎙ Worksheet</a><span class="cq-mono dk-count">' + (i + 1) + " / " + L.length + '</span></span></div><div class="wrap"><div class="dk-route">' + dots + "</div></div></header>";
   h += '<div class="wrap"><div class="dk-stage" id="dkStage">' + slideHTML(I, L[i], i) + (I.sem && semDisc() && L[i].note && L[i].t !== "source" ? '<aside class="sem-fnote"><b>Facilitator</b> ' + rich(L[i].note) + "</aside>" : "") + "</div>";
   h += '<nav class="dk-nav"><button class="btn ghost" data-act="dkPrev" data-id="' + esc(id) + '"' + (i ? "" : " disabled") + '>← Back</button>' +
     (L[i].t === "finish" ? "" : '<button class="btn primary' + (locked ? " is-off" : "") + '" data-act="dkNext" data-id="' + esc(id) + '">' + (locked ? "Answer to continue" : i === L.length - 2 ? "Finish" : "Next →") + "</button>") + "</nav></div>";
@@ -16291,7 +16317,7 @@ function islandByName(nm) { const n = String(nm || "").toLowerCase().trim(); ret
 function semHeadHTML(I, i, L, dots) {
   const disc = semDisc();
   return '<header class="dk-head"><div class="wrap dk-head-in"><a class="vy-back" href="#seminar">← Seminars</a><div class="dk-title"><span class="sem-badge" title="This deck works as a group discussion or as a lesson alone">' + (disc ? "Discussion" : "Solo") + '</span><span class="stack" style="--g:1px;min-width:0"><b>' + esc(I.title) + '</b><span class="faint">' + esc(I.question) + '</span></span></div><span class="dk-side"><span class="sem-seg" role="group" aria-label="Mode"><button data-act="semMode" data-m="solo" aria-pressed="' + !disc + '">Solo</button><button data-act="semMode" data-m="disc" aria-pressed="' + disc + '">Discussion</button></span>' +
-    '<button class="sem-pres" data-act="semPresent" title="Present full screen (arrow keys move; Esc leaves)">⛶<span> Present</span></button><span class="cq-mono dk-count">' + (i + 1) + " / " + L.length + '</span></span></div><div class="wrap"><div class="dk-route">' + dots + "</div></div></header>";
+    '<button class="sem-pres" data-act="semPresent" title="Present full screen (arrow keys move; Esc leaves)">⛶<span> Present</span></button><a class="dk-sky" href="#worksheet-' + esc(I.id) + '" title="A printable worksheet with questions and an answer key">⎙ Worksheet</a><span class="cq-mono dk-count">' + (i + 1) + " / " + L.length + '</span></span></div><div class="wrap"><div class="dk-route">' + dots + "</div></div></header>";
 }
 ACT.semMode = el => { S.semMode = el.dataset.m; save(); render(true); };
 ACT.semPresent = () => { const v = $("#view"); if (document.fullscreenElement) { document.exitFullscreen().catch(() => {}); return; } if (v && v.requestFullscreen) v.requestFullscreen().catch(() => toast("Full screen isn’t available here")); else toast("Full screen isn’t available here"); };
