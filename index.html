@@ -2354,6 +2354,12 @@ html{background:var(--bg)}
 :root[data-theme="dark"] .vy-panel,:root[data-theme="dark"] .vy-seacard,:root[data-theme="dark"] .vy-time-box,:root[data-theme="dark"] .vy-isl{background:var(--raised);border-color:var(--line)}
 :root[data-theme="dark"] .vsp-isl{background:transparent;border-color:var(--line)}:root[data-theme="dark"] .vy-panel .eyebrow,:root[data-theme="dark"] .vy-sc-dates{color:var(--lamp)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .vy-panel,:root:not([data-theme="light"]) .vy-seacard,:root:not([data-theme="light"]) .vy-time-box,:root:not([data-theme="light"]) .vy-isl{background:var(--raised);border-color:var(--line)}:root:not([data-theme="light"]) .vsp-isl{background:transparent;border-color:var(--line)}}
+/* lecture slides on faint chart paper with a fine brass rule round the edge */
+.dslide:not(.zk-L-image):not(.zk-L-map):not(.zk-dark){background:linear-gradient(rgba(246,242,232,.82),rgba(246,242,232,.82)),url(img/paper.webp) 0 0/420px}
+.dslide:not(.zk-L-image):not(.zk-L-map):not(.zk-L-title)::after{content:"";position:absolute;inset:12px;border:1px solid rgba(176,122,44,.28);pointer-events:none}
+.tc-tile{background:linear-gradient(rgba(246,236,210,.6),rgba(246,236,210,.6)),url(img/paper.webp) 0 0/380px;border-color:#c9b48c}.tc-tile b,.tc-tile h3{font-family:"IM Fell English",var(--font-display),serif;font-weight:400}
+:root[data-theme="dark"] .tc-tile{background:var(--card);border-color:var(--line)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .tc-tile{background:var(--card);border-color:var(--line)}}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
