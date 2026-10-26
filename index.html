@@ -2321,6 +2321,8 @@ html{background:var(--bg)}
 .vy-lives{display:block;width:100%;min-width:640px;height:auto}.vl-name{font-family:var(--font-ui);font-size:12.5px;fill:var(--ink);text-anchor:end}
 .vl-row rect{fill:var(--c-voyage);opacity:.75}.vl-row:hover rect{opacity:1}.vl-row:hover .vl-name{font-weight:700}.vl-row rect.vl-alive{opacity:.45}
 .vl-row.s1 rect{fill:#2E6F8E}.vl-row.s2 rect{fill:#8E4A2E}.vl-row.s3 rect{fill:#5B6E2E}.vl-row.s4 rect{fill:#6E2E6A}.vl-row.s5 rect{fill:#A0752A}.vl-row.s6 rect{fill:#2E8E7A}
+.sl-dia{grid-template-columns:minmax(0,1fr) minmax(0,1.2fr)}.sl-dia.wide{grid-template-columns:1fr}.sl-dia.wide .sl-diafig{border-left:none;border-top:1px solid var(--line)}.sl-dia .sl-diafig{margin:0;padding:18px 18px 12px;display:flex;flex-direction:column;justify-content:center;gap:8px;background:color-mix(in srgb,var(--paper) 70%,var(--surface));border-left:1px solid var(--line)}.sl-diafig .dg{width:100%;height:auto;max-height:420px}
+@media (max-width:760px){.sl-dia{grid-template-columns:1fr}.sl-dia .sl-diafig{border-left:none;border-top:1px solid var(--line)}}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -15778,6 +15780,7 @@ function blockHTML(b) {
 /* ---- diagrams, drawn in the chart's own ink so they read in both themes */
 function diagramSVG(kind, D) {
   const T = (x, y, s, c, a) => '<text x="' + x + '" y="' + y + '" class="' + (c || "dg-t") + '"' + (a ? ' text-anchor="' + a + '"' : "") + ">" + esc(s) + "</text>";
+  const wrapT = (str, x, y, w) => { const out = []; let line = ""; String(str).split(/\s+/).forEach(wd => { if ((line + " " + wd).trim().length > w) { out.push(line); line = wd; } else line = (line + " " + wd).trim(); }); if (line) out.push(line); return out.map((l, i) => T(x, y + i * 15, l, "dg-s", "start")).join(""); };
   if (kind === "achilles") {
     const xs = [40, 400, 580, 670, 715, 737, 748]; let s = '<svg viewBox="0 0 800 210" class="dg" role="img" aria-label="Achilles never catches the tortoise: each gap he closes leaves a smaller one">';
     s += '<line x1="30" y1="120" x2="780" y2="120" class="dg-line"/>';
@@ -15817,6 +15820,16 @@ function diagramSVG(kind, D) {
     s += T(100, 140, "always the same four,", "dg-s", "middle") + T(100, 160, "only mixed and unmixed", "dg-s", "middle") + T(700, 140, "a cycle with", "dg-s", "middle") + T(700, 160, "no beginning", "dg-s", "middle");
     return s + "</svg>";
   }
+  if (kind === "pyramid") { // levels from the narrow top to the broad base; each level can carry a short note
+    const L = D.levels || [], n = L.length, H = 64 * n + 20; let g = '<svg viewBox="0 0 540 ' + H + '" class="dg" role="img" aria-label="' + esc(L.map(l => l.title).join(", ")) + '">';
+    L.forEach((l, k) => { const y0 = 10 + k * 64, y1 = y0 + 58, a = 18 + 150 * k / n, b = 18 + 150 * (k + 1) / n;
+      g += '<polygon points="' + [175 - a, y0, 175 + a, y0, 175 + b, y1, 175 - b, y1].join(",") + '" class="dg-box b' + (k % 3) + '"/>' + T(175, y0 + (k ? 35 : 42), l.title, "dg-h", "middle") + (l.note ? T(352, y0 + 20, l.tag || "", "dg-k", "start") + wrapT(l.note, 352, y0 + 38, 24) : ""); });
+    return g + "</svg>"; }
+  if (kind === "rings") { // concentric circles, innermost first
+    const R = D.rings || [], n = R.length; let g = '<svg viewBox="0 0 540 380" class="dg" role="img" aria-label="' + esc(R.map(r => r.title).join(" inside ")) + '">';
+    for (let k = n - 1; k >= 0; k--) { const r = 40 + 140 * k / Math.max(1, n - 1); g += '<circle cx="190" cy="190" r="' + r.toFixed(1) + '" class="dg-box b' + (k % 3) + '"/>'; }
+    R.forEach((x, k) => { const r = 40 + 140 * k / Math.max(1, n - 1), ty = k ? 190 - r + 20 : 195; g += T(190, ty, x.title, "dg-h", "middle") + (x.note ? '<line x1="' + (190 + (k ? r * .7 : 30)).toFixed(1) + '" y1="' + (190 - (k ? r * .7 : 0)).toFixed(1) + '" x2="384" y2="' + (60 + k * 74) + '" class="dg-pl" style="stroke-width:1"/>' + T(390, 64 + k * 74, x.title, "dg-k", "start") + wrapT(x.note, 390, 82 + k * 74, 19) : ""); });
+    return g + "</svg>"; }
   if (kind === "soul-city") {
     // the tripartite soul as a pyramid: reason a small ruling peak, appetite the broad base, and the city's classes and virtues alongside
     const R = [["Reason", "Rulers", "Wisdom"], ["Spirit", "Auxiliaries", "Courage"], ["Appetite", "Producers", "Moderation"]], ys = [34, 120, 206, 292], hw = y => 230 * (y - 34) / 258;
@@ -15988,6 +16001,7 @@ function slideHTML(I, s, i) {
   const head = (k, t) => (k ? '<span class="sl-k">' + esc(k) + "</span>" : "") + (t ? "<h2>" + esc(t) + "</h2>" : "");
   switch (s.t) {
     case "story": return '<div class="sl sl-night sl-split' + (s.img ? "" : " noimg") + '"><div class="sl-body">' + head(I.sem ? "The case" : "Landfall", s.title) + '<p class="sl-lead dropcap">' + rich(s.text) + "</p></div>" + slideImg(s.img, "tall") + "</div>";
+    case "idea": if (s.dia) return '<div class="sl sl-split sl-dia' + (["spectrum", "mean", "regimes"].includes(s.dia.kind) ? " wide" : "") + '"><div class="sl-body">' + head(s.kicker, s.title) + (s.term ? '<span class="gk">' + esc(s.term) + "</span>" : "") + '<p class="sl-lead">' + rich(s.text) + "</p>" + (s.eg ? '<p class="sl-eg">' + rich(s.eg) + "</p>" : "") + '</div><figure class="vdia sl-diafig">' + diagramSVG(s.dia.kind, s.dia.data || {}) + (s.dia.caption ? '<figcaption class="sl-cap">' + esc(s.dia.caption) + "</figcaption>" : "") + "</figure></div>";
     case "idea": return '<div class="sl' + (s.img ? " sl-split" : "") + '"><div class="sl-body">' + head(s.kicker, s.title) + (s.term ? '<span class="gk">' + esc(s.term) + "</span>" : "") + '<p class="sl-lead">' + rich(s.text) + "</p>" + (s.eg ? '<p class="sl-eg">' + rich(s.eg) + "</p>" : "") + "</div>" + slideImg(s.img) + "</div>";
     case "cards": case "versus": case "steps": case "flow": case "ladder": case "table": case "timeline":
       return '<div class="sl"><div class="sl-body wide">' + head(s.kicker || "", s.title) + blockHTML(Object.assign({}, s, { type: s.t, label: "" })) + "</div></div>";
