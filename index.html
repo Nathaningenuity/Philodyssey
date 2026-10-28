@@ -2465,6 +2465,8 @@ button.on .faint,button[aria-pressed="true"] .faint,.chip.on .faint{color:rgba(2
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .vy-panel .eyebrow,:root:not([data-theme="light"]) .vy-sc-dates{color:var(--lamp)}:root:not([data-theme="light"]) .dk-thumbs a span{color:color-mix(in srgb,var(--c-voyage) 45%,#fff)}}
 :root[data-theme="dark"] .dk-thumbs a span{color:color-mix(in srgb,var(--c-voyage) 45%,#fff)}
 @media (min-width:1600px){.top .wrap{max-width:1580px}}
+.pc-fold{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:0 14px}.pc-fold>summary{display:flex;gap:10px;align-items:baseline;padding:10px 0;cursor:pointer;list-style:none}.pc-fold>summary::-webkit-details-marker{display:none}.pc-fold[open]{padding-bottom:12px}
+.pc-fold .pc-reach-l{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:6px}.pc-fold .pc-reach-i{padding:6px 10px;gap:10px;border-radius:10px;background:var(--raised)}.pc-fold .pc-reach-i b{font-size:.88rem}.pc-fold .pc-reach-i small{font-size:.76rem}.pc-fold .pc-reach-pts .pt{width:28px;height:28px}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -15080,7 +15082,7 @@ function pcReach() { const own = S.pcards || {}, out = [], lock = id => PC[id] &
   const tc = tourState(); DECKIX.filter(d => (tc[d.id] || {}).at && !(tc[d.id] || {}).done).forEach(d => { const ids = [...new Set((d.thinkers || []).map(x => String(x).replace(/^th:/, "")))].filter(lock); if (ids.length) out.push({ href: "#tour-" + d.id + "." + ((tc[d.id].at || 0) + 1), t: "Finish the tour " + d.title, ids }); });
   const L = PC_IDS.filter(id => lock(id) && TH[id].tagline), r = pcSeed("day" + pcDay()), pick = [];
   while (pick.length < 3 && L.length) pick.push(L.splice(Math.floor(r() * L.length), 1)[0]);
-  pick.forEach(id => out.push({ href: "#thinker-" + id, t: "Win " + shortName(TH[id]) + "’s card on their page", ids: [id], jump: 1 }));
+  pick.forEach(id => out.push({ href: "#thinker-" + id, t: "Win " + shortName(TH[id]) + "’s card", ids: [id], jump: 1 }));
   return out.slice(0, 5); }
 function pcFanHTML() { const own = S.pcards || {}; let ids = PC_IDS.filter(id => own[id]).sort((a, b) => PC_R.indexOf(PC[a].r) - PC_R.indexOf(PC[b].r)).slice(0, 3);
   if (ids.length < 3) ids = ids.concat(["legendary", "epic", "rare"].map(r => PC_IDS.find(id => PC[id].r === r && !own[id] && !ids.includes(id))).filter(Boolean)).slice(0, 3);
@@ -15099,7 +15101,7 @@ VIEWS.cards = arg => {
   const F = S.pcF || "all", reach = pcReach();
   const how = '<section class="pc-how-sec stack" style="--g:12px"><h2>How to earn cards</h2><p class="muted">There are eight ways in. Any one of them earns the card. A thinker with many ways in is Common; one you can meet only once or twice is Legendary.</p><div class="pc-how-grid">' +
     PC_HOW.map(([k, ic, t, d, h]) => '<a class="pc-how-i" href="' + h + '"><span class="pc-how-ic">' + em(ic, "emblem") + "</span><span><b>" + t + "</b><small>" + d + "</small></span></a>").join("") + "</div></section>";
-  const within = reach.length ? '<section class="pc-reach stack" style="--g:10px"><h2>Within reach</h2><div class="pc-reach-l">' + reach.map(x => '<a class="pc-reach-i" href="' + esc(x.href) + '"><span class="pc-reach-pts">' + x.ids.slice(0, 4).map(id => portraitHTML(Object.assign({ tid: id }, castOf(id) || { name: TH[id].name }), "pt-s")).join("") + '</span><span><b>' + esc(x.t) + "</b><small>" + (x.jump ? PC_RN[PC[x.ids[0]].r] + " card" : "Earns " + x.ids.length + " card" + (x.ids.length === 1 ? "" : "s") + ": " + esc(x.ids.slice(0, 4).map(id => shortName(TH[id])).join(", ")) + (x.ids.length > 4 ? "…" : "")) + "</small></span><span class=\"pc-reach-go\">→</span></a>").join("") + "</div></section>" : "";
+  const within = reach.length ? '<details class="pc-fold"' + (n ? "" : " open") + '><summary><b>Within reach</b><span class="faint">' + reach.length + " quick cards to earn next</span></summary><div class=\"pc-reach-l\">" + reach.map(x => '<a class="pc-reach-i" href="' + esc(x.href) + '"><span class="pc-reach-pts">' + x.ids.slice(0, 4).map(id => portraitHTML(Object.assign({ tid: id }, castOf(id) || { name: TH[id].name }), "pt-s")).join("") + '</span><span><b>' + esc(x.t) + "</b><small>" + (x.jump ? PC_RN[PC[x.ids[0]].r] + " · challenge on their page" : "Earns " + x.ids.length + " card" + (x.ids.length === 1 ? "" : "s") + ": " + esc(x.ids.slice(0, 4).map(id => shortName(TH[id])).join(", ")) + (x.ids.length > 4 ? "…" : "")) + "</small></span></a>").join("") + "</div></details>" : "";
   const ids = PC_IDS.filter(id => F === "all" || (F === "got" ? own[id] : F === "locked" ? !own[id] : PC[id].r === F))
     .sort((a, b) => (!!own[b] - !!own[a]) || PC_R.indexOf(PC[a].r) - PC_R.indexOf(PC[b].r) || ((TH[a].born ?? 0) - (TH[b].born ?? 0)));
   const chip = (k, l) => '<button class="chip' + (F === k ? " on" : "") + '" data-act="pcFilter" data-k="' + k + '" aria-pressed="' + (F === k) + '">' + l + "</button>";
