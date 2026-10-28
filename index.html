@@ -2407,6 +2407,10 @@ html{background:var(--bg)}
 .hub-ban::after{content:"";position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(10,16,30,.65))}.hub-ban i{position:absolute;right:14px;bottom:2px;z-index:1;font:italic 3rem/1 "IM Fell English",Georgia,serif;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.5)}
 .hub-card.locked .hub-ban img{filter:grayscale(.85) brightness(.85)}
 @media (max-width:760px){.hub-ban{margin:0 -18px 4px;height:96px}}
+.qz-cards>.panel{position:relative;overflow:hidden;padding-top:118px;border-top:0}
+.qz-cards>.panel::before{content:"";position:absolute;left:0;right:0;top:0;height:100px;background:var(--qb) center/cover,var(--night);border-bottom:4px solid var(--qc,var(--lamp))}
+.qz-cards>.panel:nth-child(1){--qb:url(img/hero/2.webp);--qc:#9c2b1c}.qz-cards>.panel:nth-child(2){--qb:url(img/sec/compass.webp);--qc:#2E6F8E}
+.qz-cards>.panel:nth-child(3){--qb:url(img/sec/quiz.webp);--qc:var(--lamp)}.qz-cards>.panel:nth-child(4){--qb:url(img/sec/thinkers.webp);--qc:#5B6E2E}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -15218,7 +15222,7 @@ function quizStartScreen() {
   const best = S.quiz.best || 0, bestS = S.quiz.bestStand || 0;
   const card = (mode, t, d, b) => '<div class="panel stack" style="--g:10px;flex:1 1 260px"><span class="eyebrow">' + t + '</span><p class="muted">' + d + '</p><div class="row" style="justify-content:space-between"><span class="faint" style="font-size:.86rem">' + (b ? 'Best round: <b style="color:var(--ink)">' + b + "</b> of 10" : "Not played yet") + "</span><button class=\"btn primary\" data-act=\"quizStart\" data-mode=\"" + mode + '">Play</button></div></div>';
   return '<div class="wrap"><div class="col stack" style="--g:18px">' + pageHead("light", "The Quiz", "Who thinks what?", "Ten questions a round, four thinkers each. No quotations, only ideas in plain words, and every answer comes with an explanation.") +
-    '<div class="row" style="align-items:stretch">' + card("classic", "Who held this idea?", "A famous idea in plain words. Pick the thinker it belongs to.", best) +
+    '<div class="row qz-cards" style="align-items:stretch">' + card("classic", "Who held this idea?", "A famous idea in plain words. Pick the thinker it belongs to.", best) +
     card("stand", "Where do they stand?", "A position on one of the Compass questions. Pick the thinker who holds it; the others answered differently. New questions every round.", bestS) + quizDailyCard() + "</div></div></div>";
 }
 VIEWS.quiz = () => {
