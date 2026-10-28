@@ -44,7 +44,7 @@ textarea,input[type=text],input[type=search],input[type=email],select{border-col
   --lamp-ink:#7C6130;
   --lamp-soft:#F0E6CC;
   --thread:#8A754A;
-  --crack:#B5452F;
+  --crack:#AB412C;
   --crack-soft:#F5E0D9;
   --ok:#4C7A5A;
   --sky:#1B1F27;         /* the firmament and the observatory are always night */
@@ -1685,7 +1685,7 @@ html,body{overflow-x:clip}
 .lb-tab2{display:flex;flex-direction:column;gap:4px;min-width:0;padding:7px 12px 6px;border:1.5px solid var(--line);border-radius:12px;text-decoration:none;color:var(--ink-2);background:var(--raised);font-size:.9rem;line-height:1.2}
 .lb-tab2:hover{border-color:var(--lamp)}
 .lb-tab2.set .lb-tab2-n{color:var(--ink)}
-.lb-tab2.on{background:var(--lamp);border-color:var(--lamp);color:var(--surface,#fff)}
+.lb-tab2.on{background:var(--lamp);border-color:var(--lamp);color:var(--on-lamp)}
 .lb-tab2.on .lb-tab2-n{color:inherit;font-weight:600}
 .lb-tab2-p{display:block;height:3px;border-radius:2px;background:var(--line);overflow:hidden;min-width:48px}
 .lb-tab2-p i{display:block;height:100%;background:var(--lamp)}
@@ -2020,8 +2020,8 @@ details[open]>summary:not(:where(.answers summary,.fits-more summary,.nb-more2>s
 /* ===== design v3: a colour for every section, friendlier shapes, progress in the top bar ===== */
 :root{
   --c-home:#8C6A2A;--c-voyage:#1F7A78;--c-compass:#2F5D9E;--c-agora:#B03A4B;--c-seminar:#87509B;--c-firmament:#4A4FA6;--c-stoa:#9A6224;
-  --c-lab:#C45A24;--c-thinkers:#2C7D5F;--c-works:#5E7D2A;--c-library:#6A52A6;--c-quiz:#A87A12;--c-codex:#A1486B;--c-tours:#2672A8;--c-study:#3B7F9C;
-  --go:#C4571F;--go-hi:#A9471A;--on-go:#FFFFFF;
+  --c-lab:#BA5522;--c-thinkers:#2C7D5F;--c-works:#5E7D2A;--c-library:#6A52A6;--c-quiz:#A87A12;--c-codex:#A1486B;--c-tours:#2672A8;--c-study:#3B7F9C;
+  --go:#BE541E;--go-hi:#A9471A;--on-go:#FFFFFF;
   --r:10px;--r-md:16px;--r-lg:22px;
   --sec:var(--c-home);
   --sec-ink:color-mix(in srgb,var(--sec) 82%,#000);
@@ -2458,6 +2458,12 @@ body:has(.pj) .top,body:has(.pj) .helm{display:none}
 .pc-reach-l{display:grid;gap:8px}.pc-reach-i{display:flex;align-items:center;gap:14px;padding:10px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);text-decoration:none;color:inherit}.pc-reach-i:hover{border-color:#b8860b}.pc-reach-i b{display:block}.pc-reach-i small{color:var(--ink-3)}.pc-reach-pts{display:flex;flex:none}.pc-reach-pts .pt{width:36px;height:36px;margin-right:-10px;border:2px solid var(--card)}.pc-reach-pts{padding-right:10px}.pc-reach-go{margin-left:auto;font-weight:700;color:#b8860b}
 .pc-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 12px;border-radius:999px;font-size:.8rem;font-weight:700;text-decoration:none;color:var(--ink);border:1.5px solid var(--pcr);background:color-mix(in srgb,var(--pcr2) 25%,var(--card))}.pc-badge i{width:9px;height:9px;transform:rotate(45deg);border-radius:2px;background:var(--pcr)}
 .pc-fan{position:relative;width:100%;height:100%;min-height:200px;background:radial-gradient(circle at 50% 120%,#3a2d5c,#141a33 70%);overflow:hidden}.pc-fan .pcard{position:absolute;width:104px;left:50%;top:18px;pointer-events:none}.pc-fan .pcard:nth-child(1){transform:translateX(-128%) rotate(-11deg);top:30px}.pc-fan .pcard:nth-child(2){transform:translateX(-50%) scale(1.06);z-index:2}.pc-fan .pcard:nth-child(3){transform:translateX(28%) rotate(11deg);top:30px}.pc-fan .pc-tag,.pc-fan .pc-how{display:none}.pc-fan .pc-body b{font-size:.8rem}.pc-fan .pc-meta{font-size:.6rem}
+:root[data-theme="light"] .hx-eyebrow{color:color-mix(in srgb,var(--c-voyage) 88%,#000)}@media (prefers-color-scheme:light){:root:not([data-theme="dark"]) .hx-eyebrow{color:color-mix(in srgb,var(--c-voyage) 88%,#000)}}
+.pcard.locked .pc-how{color:#4d5260}.pcard.locked .pc-gem{background:color-mix(in srgb,var(--pcr) 72%,#000)}
+button.on .faint,button[aria-pressed="true"] .faint,.chip.on .faint{color:rgba(255,255,255,.9)}
+.ag-filter .chip[aria-pressed="true"] .faint{color:inherit;opacity:.92}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .vy-panel .eyebrow,:root:not([data-theme="light"]) .vy-sc-dates{color:var(--lamp)}:root:not([data-theme="light"]) .dk-thumbs a span{color:color-mix(in srgb,var(--c-voyage) 45%,#fff)}}
+:root[data-theme="dark"] .dk-thumbs a span{color:color-mix(in srgb,var(--c-voyage) 45%,#fff)}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -15476,7 +15482,7 @@ VIEWS.duel = arg => {
     pool.forEach(t => { if (t === A) return; let d = 0; Object.keys(A.positions).forEach(q => { const p = t.positions[q]; if (p && JSON.stringify(p.a) !== JSON.stringify(A.positions[q].a)) d++; }); if (d > bs) { bs = d; best = t; } });
     B = best || pool[1];
   }
-  const sel = (id, cur) => '<select id="' + id + '" style="border:1.5px solid var(--line);border-radius:10px;padding:9px;background:var(--raised);max-width:100%">' + pool.map(t => '<option value="' + esc(t.id) + '"' + (t === cur ? " selected" : "") + ">" + esc(t.name) + "</option>").join("") + "</select>";
+  const sel = (id, cur) => '<select id="' + id + '" aria-label="' + (id === "duelA" ? "First thinker" : "Second thinker") + '" style="border:1.5px solid var(--line);border-radius:10px;padding:9px;background:var(--raised);max-width:100%">' + pool.map(t => '<option value="' + esc(t.id) + '"' + (t === cur ? " selected" : "") + ">" + esc(t.name) + "</option>").join("") + "</select>";
   after.push(() => { ["duelA", "duelB"].forEach(x => { const el = $("#" + x); if (el) el.addEventListener("change", () => { location.hash = "#duel-" + $("#duelA").value + "." + $("#duelB").value; }); }); });
   const qs = ORDER.filter(q => A.positions[q] || B.positions[q]);
   // Agree / Close / Clash on the site's own similarity scale (the same one the drawer and matching use)
@@ -15934,7 +15940,7 @@ function chartSVG(key, stops, opt) {
   if (opt.focus && P[opt.focus]) { const fw = opt.fw || 440, fh = Math.round(fw * 0.62); const [fx, fy] = P[opt.focus]; const x0 = Math.max(0, Math.min(M.W - fw, fx - fw / 2)), y0 = Math.max(0, Math.min(M.H - fh, fy - fh / 2)); vb = x0.toFixed(0) + " " + y0.toFixed(0) + " " + fw + " " + fh; }
   if (opt.vb) vb = opt.vb;
   const V4 = vb.split(" ").map(Number), pir = pirateChart(key, M, V4, opt);
-  return '<svg class="chart pirate" viewBox="' + vb + '"' + (opt.vb ? ' preserveAspectRatio="xMidYMid meet"' : "") + ' role="img" aria-label="' + esc(opt.aria || "Sea chart") + '">' +
+  return '<svg class="chart pirate" viewBox="' + vb + '"' + (opt.vb ? ' preserveAspectRatio="xMidYMid meet"' : "") + ' role="group" aria-label="' + esc(opt.aria || "Sea chart") + '">' +
     pir.under + labels + (route ? '<path class="ch-route" d="' + route + '"/>' : "") + harbours + marks + pir.over + "</svg>";
 }
 function placeName(k) { return String(k || "").replace(/^\w/, m => m.toUpperCase()); }
@@ -16044,7 +16050,7 @@ function seaTimelineSVG(sel) {
   const lanes = [], bars = VOY.units.map(u => { const y = seaYears(u); if (!y) return null; const x0 = sx(y[0]), x1 = Math.max(sx(y[1]), x0 + 26); let L = lanes.findIndex(e => e < x0 - 6); if (L < 0) { L = lanes.length; lanes.push(0); } lanes[L] = x1 + 30; return { u, x0, x1, L, y }; }).filter(Boolean);
   const H = 46 + lanes.length * 34;
   const ticks = [-800, -500, -200, 0, 500, 1000, 1500, 1600, 1700, 1800, 1900, 2000].map(t => '<line x1="' + sx(t).toFixed(1) + '" y1="22" x2="' + sx(t).toFixed(1) + '" y2="' + (H - 8) + '" class="vt-grid"/><text x="' + sx(t).toFixed(1) + '" y="15" class="vt-tick">' + (t < 0 ? -t + " BCE" : t === 0 ? "1 CE" : t) + "</text>").join("");
-  return '<svg class="vy-time" viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="When each sea’s thinkers lived">' + ticks + bars.map(b => { const yy = 30 + b.L * 34, w = b.x1 - b.x0, nx = nextIsland(), isl = islandsOf(b.u), dn = isl.filter(i => islDone(i.id)).length;
+  return '<svg class="vy-time" viewBox="0 0 ' + W + " " + H + '" role="group" aria-label="When each sea’s thinkers lived">' + ticks + bars.map(b => { const yy = 30 + b.L * 34, w = b.x1 - b.x0, nx = nextIsland(), isl = islandsOf(b.u), dn = isl.filter(i => islDone(i.id)).length;
     return '<a href="#voyage-u' + b.u.id + '" data-act="vySea" data-n="' + b.u.id + '" class="vt-bar s' + (b.u.id % 7) + (sel === b.u.id ? " sel" : "") + (nx && nx.unit === b.u.id ? " cur" : "") + '"><title>' + esc(ROMANV[b.u.id] + " · " + b.u.title + " · " + String(b.u.sub).split(" · ").slice(-1)[0]) + '</title><rect x="' + b.x0.toFixed(1) + '" y="' + yy + '" width="' + w.toFixed(1) + '" height="24" rx="6"/>' + (dn ? '<rect class="vt-done" x="' + b.x0.toFixed(1) + '" y="' + (yy + 20) + '" width="' + (w * dn / (isl.length || 1)).toFixed(1) + '" height="4" rx="2"/>' : "") +
       '<text x="' + (b.x0 + 8).toFixed(1) + '" y="' + (yy + 16.5) + '">' + ROMANV[b.u.id] + (w > 90 ? " " + esc(b.u.title) : "") + "</text></a>"; }).join("") + "</svg>";
 }
@@ -16130,7 +16136,7 @@ function seaLivesSVG(u) {
   const W = 1000, X0 = 210, X1 = 980, rh = 26, H = 34 + rows.length * rh, sx = y => X0 + (X1 - X0) * (y - lo) / (hi - lo || 1);
   const yl = y => y < 0 ? -y + " BCE" : y + "";
   let g = ""; for (let t = lo; t <= hi; t += step) g += '<line x1="' + sx(t).toFixed(1) + '" y1="20" x2="' + sx(t).toFixed(1) + '" y2="' + (H - 4) + '" class="vt-grid"/><text x="' + sx(t).toFixed(1) + '" y="13" class="vt-tick">' + yl(t) + "</text>";
-  return '<svg class="vy-lives" viewBox="0 0 ' + W + " " + H + '" role="img" aria-label="Lifespans of this sea’s thinkers">' + g + rows.map((r, k) => { const y = 26 + k * rh, x0 = sx(r.L[0]), x1 = sx(r.L[1]);
+  return '<svg class="vy-lives" viewBox="0 0 ' + W + " " + H + '" role="group" aria-label="Lifespans of this sea’s thinkers">' + g + rows.map((r, k) => { const y = 26 + k * rh, x0 = sx(r.L[0]), x1 = sx(r.L[1]);
     return '<a href="#voyage-' + r.I.id + '" class="vl-row s' + (r.I.order % 7) + '"><title>' + esc(r.c.name + " · " + r.c.dates + " · " + r.I.name) + '</title><text x="' + (X0 - 10) + '" y="' + (y + 13) + '" class="vl-name">' + esc(r.c.name.replace(/\s*\(.*?\)/g, "").replace(/ of [A-Z].*$/, "")) + '</text><rect x="' + x0.toFixed(1) + '" y="' + (y + 2) + '" width="' + Math.max(4, x1 - x0).toFixed(1) + '" height="15" rx="7"' + (r.L[2] ? ' class="vl-alive"' : "") + "/></a>"; }).join("") + "</svg>";
 }
 function unitPage(n) {
