@@ -762,7 +762,7 @@ a.poslink.title{text-decoration-thickness:2px}
 .review-row.done .rv-st{color:var(--ok)}.review-row.missing .rv-st{color:var(--crack)}
 .review-row.missing{border:1.5px dashed var(--crack);background:var(--crack-soft)}.review-row.missing .ra{color:var(--crack);font-style:italic}
 .rv-unstarted{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--line);border-radius:12px}
-.gap-bar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;border:1.5px dashed var(--crack);background:var(--crack-soft);border-radius:14px;padding:12px 16px}
+.gap-bar{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;justify-content:space-between;border:1.5px dashed var(--line);background:var(--card);border-radius:14px;padding:12px 16px}
 /* Logbook tabs */
 .lb-tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:thin;border-bottom:1px solid var(--line);padding-bottom:2px;position:sticky;top:var(--top-h,58px);z-index:5;background:var(--bg);margin:0 -4px;padding-inline:4px}
 .lb-tabs a{flex:none;padding:8px 12px;border-radius:10px 10px 0 0;text-decoration:none;color:var(--ink-2);font-size:.92rem;border-bottom:2px solid transparent}
@@ -2476,6 +2476,14 @@ button.on .faint,button[aria-pressed="true"] .faint,.chip.on .faint{color:rgba(2
 .ag-daily{display:flex;gap:0;border-radius:16px;overflow:hidden;border:1.5px solid color-mix(in srgb,var(--c-agora) 40%,var(--line));background:var(--card);text-decoration:none;color:inherit;box-shadow:var(--shadow-1)}.ag-daily:hover{border-color:var(--c-agora)}.ag-daily-img{flex:0 0 34%;min-height:200px;position:relative}.ag-daily-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.ag-daily-tx{display:grid;gap:8px;padding:18px 22px;align-content:center}.ag-daily-tx>b{font-family:var(--font-display);font-size:1.5rem;line-height:1.15}.ag-daily-tx>span:not(.eyebrow):not(.btn):not(.ag-daily-sides){color:var(--ink-2)}.ag-daily-sides{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.ag-daily-sides i{font-style:normal;font-size:.8rem;font-weight:600;padding:3px 10px;border-radius:999px}.ag-daily-sides .y{background:color-mix(in srgb,var(--ok) 16%,var(--card));color:var(--ink)}.ag-daily-sides .n{background:color-mix(in srgb,var(--no) 16%,var(--card));color:var(--ink)}.ag-daily-sides small{color:var(--ink-3)}.ag-daily .btn{justify-self:start}@media (max-width:640px){.ag-daily{flex-direction:column}.ag-daily-img{min-height:150px}}
 .odd .mb-after{margin-top:14px}.odd-q{padding:18px 22px;border-radius:14px;background:var(--card);border:1px solid var(--line)}.odd-q p{margin:6px 0 0;font-family:var(--font-display);font-size:1.3rem;line-height:1.3}
 .odd-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:12px}.odd-opt{display:grid;justify-items:center;gap:6px;padding:16px 10px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:inherit;font:inherit;cursor:pointer;text-align:center;transition:transform .15s,border-color .15s}.odd-opt:hover:not([disabled]){transform:translateY(-2px);border-color:var(--c-lab)}.odd-opt .pt{width:72px;height:72px}.odd-opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,var(--card))}.odd-opt.wrong{border-color:var(--crack);background:color-mix(in srgb,var(--crack) 10%,var(--card))}.odd-opt.same{opacity:.75}.odd-ans{font-style:normal;font-size:.82rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--raised)}@media (max-width:640px){.odd-opts{grid-template-columns:1fr 1fr;gap:8px}.odd-opt{padding:10px 6px}.odd-opt .pt{width:52px;height:52px}.odd-q p{font-size:1.1rem}}
+.needle{display:flex;align-items:center;gap:12px;margin:2px 0 14px;padding:8px 14px 8px 8px;border-radius:999px;border:1px solid var(--line);background:var(--card);text-decoration:none;color:inherit;box-shadow:var(--shadow-1);flex-wrap:wrap}.needle:hover{border-color:var(--c-compass)}.needle .pt{width:36px;height:36px}.needle-tx{display:grid;line-height:1.2}.needle-k{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}.needle-tx b{font-family:var(--font-display);font-size:1.02rem}.needle-tx em{font-style:normal;font-family:var(--font-ui);font-size:.82rem;font-weight:600;color:var(--c-compass)}.needle-d{font-size:.78rem;font-weight:700}.needle-d.up{color:var(--ok)}.needle-d.down{color:var(--ink-3)}.needle-next{margin-left:auto;font-size:.8rem;color:var(--ink-3)}
+.needle-new{font-size:.74rem;font-weight:700;padding:3px 10px;border-radius:999px;background:var(--c-compass);color:#fff}.needle.moved{border-color:var(--c-compass);animation:needleIn .7s cubic-bezier(.2,1.4,.4,1)}@keyframes needleIn{0%{transform:scale(.96);box-shadow:0 0 0 0 color-mix(in srgb,var(--c-compass) 50%,transparent)}60%{box-shadow:0 0 0 10px transparent}100%{transform:none}}
+.needle-wait{border-style:dashed;color:var(--ink-2);font-size:.9rem}.needle-dial{width:30px;height:30px;border-radius:50%;border:2px solid var(--c-compass);position:relative;flex:none;margin-left:4px}.needle-dial i{position:absolute;left:50%;top:3px;width:2px;height:11px;background:var(--c-compass);transform-origin:50% 100%;animation:needleSpin 2.4s ease-in-out infinite}@keyframes needleSpin{0%,100%{transform:translateX(-50%) rotate(-50deg)}50%{transform:translateX(-50%) rotate(60deg)}}
+@media (prefers-reduced-motion:reduce){.needle-dial i,.needle.moved{animation:none}}@media (max-width:640px){.needle-next{display:none}}
+.cq-promise{display:grid;gap:12px;padding:20px 22px;border-radius:16px;border:1px solid var(--line);background:linear-gradient(120deg,color-mix(in srgb,var(--c-compass) 9%,var(--card)),var(--card) 70%)}.cq-promise-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.cq-promise-i{display:flex;gap:10px;align-items:flex-start}.cq-promise-i svg{width:34px;height:34px;flex:none}.cq-promise-i b{display:block}.cq-promise-i small{color:var(--ink-2);font-size:.84rem}.cq-promise .faint{margin:0;font-size:.84rem}
+.cq-resume{display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:center;padding:16px 20px;border-radius:16px;text-decoration:none;color:inherit;border:1.5px solid color-mix(in srgb,var(--c-compass) 45%,var(--line));background:linear-gradient(120deg,color-mix(in srgb,var(--c-compass) 12%,var(--card)),var(--card) 70%)}.cq-resume .eyebrow,.cq-resume b,.cq-resume small,.cq-resume-m{grid-column:1}.cq-resume b{font-family:var(--font-display);font-size:1.35rem}.cq-resume .btn{grid-column:2;grid-row:1/span 4}.cq-resume-m{height:6px;border-radius:9px;background:var(--line);overflow:hidden;max-width:420px}.cq-resume-m i{display:block;height:100%;background:var(--c-compass)}.cq-resume small{color:var(--ink-2)}
+.ptype{display:grid;gap:12px;padding:22px 24px;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 0 0,color-mix(in srgb,var(--c-compass) 14%,var(--card)),var(--card) 60%)}.ptype h2{margin:0;font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2rem);line-height:1.15}
+.pt-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}.pt-slot{display:grid;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);text-decoration:none;color:inherit}.pt-slot:hover{border-color:var(--c-compass)}.pt-slot b{font-family:var(--font-display);font-size:1.02rem;line-height:1.2}.pt-slot small{color:var(--ink-3);font-size:.78rem}.pt-slot.locked{border-style:dashed;background:transparent}.pt-slot.locked b{color:var(--ink-3)}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -11584,6 +11592,15 @@ VIEWS.compass = arg => {
 function goSec(sec) { const h = "#compass-" + sec; if (location.hash === h) render(false); else location.hash = h; }
 
 /* ------------------------------------------------------------- the hub */
+const minsFor = k => Math.max(1, Math.round(k * 0.45 + 0.5)); // about 25 seconds a question, plus the odd follow-up
+function hubHeadHTML() { const any = Object.keys(S.answers || {}).some(isAnswered);
+  if (!any) return '<section class="cq-promise"><span class="eyebrow">What you’ll find out</span><div class="cq-promise-g">' +
+    [["bust", "Your closest philosopher", "Who, across 2,600 years, answers like you do"], ["scales", "Your sharpest opponent", "The thinker who would argue with you hardest"], ["quill", "The cracks in your views", "Answers of yours that pull against each other"], ["compass", "Where you stand", "Your view next to how 1,800 philosophers voted"]]
+      .map(([i, t, d]) => '<div class="cq-promise-i">' + em(i, "emblem") + "<span><b>" + t + "</b><small>" + d + "</small></span></div>").join("") + '</div><p class="faint">No sign-up. Answer from the gut; you can change any answer later. Most chapters take 3 to 5 minutes.</p></section>';
+  const cur = C.sections.find(x => secOpen(x.id) && !secDone(x.id) && answeredCount(x.id) > 0);
+  if (!cur) return "";
+  const qs = visibleQs(cur.id), k = qs.filter(q => isAnswered(q.id)).length;
+  return '<a class="cq-resume" href="#compass-' + cur.id + '"><span class="eyebrow">Pick up where you left off</span><b>' + esc(cur.name) + '</b><span class="cq-resume-m"><i style="width:' + Math.round(100 * k / Math.max(1, qs.length)) + '%"></i></span><small>' + k + " of " + qs.length + " answered · about " + minsFor(qs.length - k) + ' min to your chapter result</small><span class="btn small primary">Continue →</span></a>'; }
 function hubHTML() {
   const dn = doneCount();
   const cards = C.sections.map((s, i) => {
@@ -11591,18 +11608,31 @@ function hubHTML() {
     let act;
     if (!open) act = '<span class="cq-mono">Opens after ' + s.locked + " of the 4 main chapters · " + dn + " of " + s.locked + " done</span>";
     else if (done) act = '<a class="btn small primary" href="#compass-done.' + s.id + '">See your result</a><a class="btn small ghost" href="#compass-' + s.id + '">Revisit</a>';
-    else if (n) act = '<a class="btn small primary" href="#compass-' + s.id + '">Continue</a><span class="faint" style="font-size:.84rem">' + n + " answered so far</span>";
-    else act = '<a class="btn small" href="#compass-' + s.id + '">Start</a><span class="faint" style="font-size:.84rem">' + qs.length + " questions to start</span>";
+    else if (n) act = '<a class="btn small primary" href="#compass-' + s.id + '">Continue</a><span class="faint" style="font-size:.84rem">' + n + " answered · about " + minsFor(qs.length - n) + " min left</span>";
+    else act = '<a class="btn small" href="#compass-' + s.id + '">Start</a><span class="faint" style="font-size:.84rem">' + qs.length + " questions · about " + minsFor(qs.length) + " min</span>";
     const HUBDECK = { ethics: "ethics", mind: "mind", reality: "knowledge", society: "politics", god: "god", art: "beauty", life: "meaning" }, hd = DECKIX.find(d => d.id === HUBDECK[s.id]);
     return '<article class="hub-card has-ban' + (open ? "" : " locked") + (done ? " done" : "") + '">' + (hd && hd.cover ? '<span class="hub-ban"><img src="' + esc(hd.cover) + '" alt="" loading="lazy" style="object-position:' + esc(hd.pos || "50% 40%") + '"><i>' + (ROMAN[i] || i + 1) + "</i></span>" : "") + '<span class="hub-num">' + (open ? "" : ic("lock")) + 'Chapter ' + (ROMAN[i] || i + 1) + (s.locked ? " · the last stop" : "") + (done ? " · done" : "") + "</span><h3>" + esc(s.name) + "</h3><p>" + esc(s.blurb) + "</p>" +
       (open ? '<div class="hub-meter" aria-hidden="true"><i style="width:' + Math.round(100 * (qs.length ? n / qs.length : 0)) + '%"></i></div>' : "") + '<div class="row">' + act + "</div></article>";
   }).join("");
   const any = Object.keys(S.answers).some(isAnswered);
   return '<div class="wrap stack" style="--g:28px">' + pageHead("compass", "The Compass", "Test your intuitions", "A quick tour of the big questions: answer from the gut, and see which philosophers your intuitions point you towards. Every answer is saved to My Positions, where the deep check begins. Six chapters in any order; the seventh, Life and death, opens once you finish any two of Ethics, Mind and self, Knowledge and reality, and Society and politics.",
-    any ? '<div class="row ph-actions"><a class="btn" href="#compass-results">Your whole portrait</a><button class="btn ghost" data-act="review">Review all answers</button></div>' : "") + (any ? portraitMeterHTML("compass") : "") + (() => { const g = gapCandidates(); return g.length ? '<div class="gap-bar"><span><b>' + g.length + (g.length === 1 ? " question" : " questions") + "</b> left open in chapters you’ve started.</span><button class=\"btn small primary\" data-act=\"gapsStart\">Answer the unanswered questions →</button></div>" : ""; })() + '<a class="qk-promo" href="#quick-start"><span class="eyebrow">New here?</span><b>The Quick Compass: twenty-one quick questions</b><span>Short questions with plain answers, then your closest thinkers, a sharp opponent and where to go deeper. Your answers carry over into the chapters.</span><span class="qk-go">Start →</span></a><div class="hub">' + cards + "</div></div>";
+    any ? '<div class="row ph-actions"><a class="btn" href="#compass-results">Your whole portrait</a><button class="btn ghost" data-act="review">Review all answers</button></div>' : "") + hubHeadHTML() + (any ? portraitMeterHTML("compass") : "") + (() => { const g = gapCandidates(); return g.length ? '<div class="gap-bar"><span><b>' + g.length + (g.length === 1 ? " question" : " questions") + "</b> left open in chapters you’ve started.</span><button class=\"btn small primary\" data-act=\"gapsStart\">Answer the unanswered questions →</button></div>" : ""; })() + (any ? "" : '<a class="qk-promo" href="#quick-start"><span class="eyebrow">New here?</span><b>The Quick Compass: twenty-one quick questions</b><span>Short questions with plain answers, then your closest thinkers, a sharp opponent and where to go deeper. Your answers carry over into the chapters.</span><span class="qk-go">Start →</span></a>') + '<div class="hub">' + cards + "</div></div>";
 }
 
 /* ------------------------------------------------------- one question */
+// The needle: after every answer, who your answers point to right now. A new leader gets a moment of its own;
+// before there is enough to go on, it says how many answers are left before you meet them.
+function needleHTML() {
+  const n = Object.keys(S.answers || {}).filter(isAnswered).length, NEED = 3;
+  if (n < NEED) return '<a class="needle needle-wait" href="#compass-results"><span class="needle-dial" aria-hidden="true"><i></i></span><span><b>' + (NEED - n) + " more answer" + (NEED - n === 1 ? "" : "s") + "</b> and your compass needle settles on a philosopher</span></a>";
+  const M = matches(); if (!M.length) return "";
+  const top = M[0], N = S.needle = S.needle || {};
+  if (N.n !== n) { N.prevId = N.id; N.prevPct = N.pct; N.id = top.t.id; N.pct = top.pct; N.n = n; }
+  const changed = N.prevId && N.prevId !== N.id && TH[N.prevId], d = !changed && N.prevPct != null ? top.pct - N.prevPct : 0;
+  const ch = changed ? '<span class="needle-new">New closest · overtook ' + esc(shortName(TH[N.prevId])) + "</span>" : d ? '<span class="needle-d ' + (d > 0 ? "up" : "down") + '">' + (d > 0 ? "▲ " : "▼ ") + Math.abs(d) + "%</span>" : "";
+  const nx = M[1] ? '<span class="needle-next">close behind: ' + esc(shortName(M[1].t)) + "</span>" : "";
+  return '<a class="needle' + (changed ? " moved" : "") + '" href="#compass-results" title="Your closest thinker so far, from ' + n + ' answers">' + portraitHTML(Object.assign({ tid: top.t.id }, castOf(top.t.id) || { name: top.t.name }), "pt-s") +
+    '<span class="needle-tx"><span class="needle-k">Your needle points to</span><b>' + esc(top.t.name) + " <em>" + top.pct + "% alike</em></b></span>" + ch + nx + "</a>"; }
 function questionHTML(sec, qid) {
   const s = SEC[sec];
   if (!secOpen(sec)) return '<div class="wrap"><div class="col panel stack" style="--g:12px"><span class="eyebrow">Chapter locked</span><h2>' + esc(s.name) + '</h2><p class="muted">This chapter opens once you have finished any ' + s.locked + ' others.</p><a class="btn primary" href="#compass" style="align-self:flex-start">Choose a chapter</a></div></div>';
@@ -11672,6 +11702,7 @@ function questionHTML(sec, qid) {
     '<span class="cq-tools"><a class="iconbtn" href="#compass" title="All chapters" aria-label="All chapters"><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><rect x="2" y="2" width="5" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="9" y="2" width="5" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="2" y="9" width="5" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/><rect x="9" y="9" width="5" height="5" rx="1" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></a>' +
     (q.quick ? "" : '<button class="iconbtn' + (flagged ? " on" : "") + '" data-act="flag" data-q="' + q.id + '" aria-pressed="' + flagged + '" title="' + (flagged ? "Remove bookmark" : "Bookmark to come back to") + '" aria-label="Bookmark this question"><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2h8v12l-4-3-4 3z" fill="' + (flagged ? "currentColor" : "none") + '" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></button>') +
     '<button class="iconbtn" data-act="review" title="Review all answers" aria-label="Review all answers"><svg width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 4h10M3 8h10M3 12h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></span></div>' +
+    needleHTML() +
     (par && S.answers[par.id] ? followCtxHTML(par, tapped) : follow ? '<span class="cq-follow">' + esc(follow) + "</span>" : "") +
     (q.intro && idx === 0 ? '<p class="cq-intro">' + esc(q.intro) + "</p>" : "") +
     '<h1 class="cq-text">' + rich(q.text) + "</h1>" +
@@ -12306,6 +12337,16 @@ function skySVG(M) {
 }
 
 /* ------------------------------------------------- the whole portrait */
+// "Your philosophical type": the named view each chapter's answers add up to, gathered in one place,
+// with the chapters still to do shown as locked slots (a reason to finish them)
+const PTYPE = [["ethics", "ethics", "Right and wrong"], ["meta", "ethics", "What morality is"], ["mind", "mind", "Mind and self"], ["reality", "reality", "Knowledge and reality"], ["god", "god", "God"], ["society", "society", "Society"], ["aesthetics", "art", "Art"], ["life", "life", "Life and death"]];
+function ptypeHTML() { const got = PTYPE.map(([k, sec, lab]) => ({ k, sec, lab, p: firstPattern((C.patterns || {})[k], S.answers) })).filter(x => SEC[x.sec]);
+  const have = got.filter(x => x.p); if (!have.length) return "";
+  const cap1 = t => t.charAt(0).toUpperCase() + t.slice(1), head = have.slice(0, 3).map(x => cap1(x.p.name)).join(" · ");
+  const slot = x => { if (!x.p) return '<a class="pt-slot locked" href="#compass-' + esc(x.sec) + '"><span class="eyebrow">' + esc(x.lab) + "</span><b>?</b><small>" + (secOpen(x.sec) ? "Answer this chapter to reveal" : "Opens later") + "</small></a>";
+    const who = arr(x.p.who).filter(id => TH[id])[0], href = patHref(x.k, x.p) || "#compass-done." + x.sec;
+    return '<a class="pt-slot" href="' + esc(href) + '"><span class="eyebrow">' + esc(x.lab) + "</span><b>" + esc(cap1(x.p.name)) + "</b>" + (who ? "<small>like " + esc(TH[who].name) + "</small>" : "") + "</a>"; };
+  return '<section class="ptype"><span class="eyebrow">Your philosophical type · ' + have.length + " of " + got.length + ' revealed</span><h2>' + esc(head) + '</h2><div class="pt-slots">' + got.map(slot).join("") + "</div></section>"; }
 function compassChangesHTML() { const runs = S.runs || []; if (!runs.length) return "";
   const last = runs[runs.length - 1], A = last.answers || {}, val = u => u == null ? null : typeof u === "object" && "a" in u ? u.a : u;
   const ch = [], same = [];
@@ -12344,6 +12385,7 @@ function resultsHTML() {
   const tabs = [["closest", "r-close", "Closest"], far.length ? ["opponents", "r-opp", "Opponents"] : null, shelf.length >= 2 ? ["reading", "r-read", "Reading"] : null, ["fits", "r-fits", "Fits"], ["cracks", "r-cracks", "Cracks"], ["chapters", "r-ch", "By chapter"]].filter(Boolean);
   const rt = tabs.some(x => x[0] === S.rtab) ? S.rtab : "closest", on = k => ' data-rtab="' + k + '"';
   after.push(() => $$("#view [data-rtab]").forEach(x => x.classList.toggle("on", x.dataset.rtab === rt)));
+  h += ptypeHTML();
   h += compassChangesHTML();
   h += '<nav class="rtoc" aria-label="Parts of your portrait">' + tabs.map(x => '<button data-act="rtab" data-k="' + x[0] + '" data-t="' + x[1] + '" aria-pressed="' + (x[0] === rt) + '">' + x[2] + "</button>").join("") + "</nav>";
   h += '<section class="stack' + (rt === "closest" ? " on" : "") + '" data-rtab="closest" id="r-close"><div class="row" style="justify-content:space-between"><h2>Closest to you</h2><span class="cq-mono">Ranked by views strongly shared × how alike overall</span></div>' +
