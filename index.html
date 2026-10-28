@@ -2402,6 +2402,7 @@ html{background:var(--bg)}
 .vy-routes{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:-14px}.vy-routes-l{font-family:"IM Fell English",var(--font-read),serif;font-style:italic;color:var(--ink-2);margin-right:4px}
 .vy-rchip[aria-pressed="true"]{background:#9c2b1c;color:#fff;border-color:#9c2b1c}
 .vrp-list{max-height:330px;overflow:auto;padding-right:4px}.vrp-sea{font-family:"IM Fell English SC",Georgia,serif;color:#9c2b1c;margin-right:2px}
+.tn-shores{margin:2px 0 0;font-size:.88rem;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline}.tn-shores span{font-family:"IM Fell English",var(--font-read),serif;font-style:italic;color:var(--ink-2)}.tn-shores a{color:var(--c-voyage);font-weight:600;text-decoration:none}.tn-shores a:hover{text-decoration:underline}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -11940,11 +11941,19 @@ const RES_PH = { bite: "Accept the strange-sounding result, and say why it’s a
 function resBoxHTML(key) { const d = (S.resDraft || {})[key];
   return '<div class="stack" data-resolve="' + esc(key) + '"' + (d ? ' data-mode="' + esc(d.mode || "distinguish") + '"' : " hidden") + ' style="--g:8px"><textarea data-resdraft="' + esc(key) + '" placeholder="' + esc(RES_PH[(d && d.mode) || "distinguish"] || "Explain in a sentence or two") + '">' + esc((d && d.note) || "") + '</textarea><div class="row"><button class="btn small primary" data-act="resolveSave" data-k="' + esc(key) + '">Save</button></div></div>'; }
 document.addEventListener("input", e => { const k = e.target.dataset && e.target.dataset.resdraft; if (!k) return; const box = e.target.closest("[data-resolve]"); S.resDraft = S.resDraft || {}; S.resDraft[k] = { mode: (box && box.dataset.mode) || "distinguish", note: e.target.value }; clearTimeout(nbT); nbT = setTimeout(save, 400); });
+// where to go with a crack: the islands and debates that take up the questions it comes from
+function crackShores(qs) { const CI = (window.ATLAS_MAP || {}).compassIslands || {}, R = (qs || []).filter(Boolean).flatMap(q => [q, rootOf(q)]);
+  const per = (qs || []).filter(Boolean).map(q => (CI[q] || CI[rootOf(q)] || []).slice()), ids = [];
+  for (let k = 0; ids.length < 2 && per.some(l => l.length); k = (k + 1) % per.length) { const id = per[k].shift(); if (id && !ids.includes(id)) ids.push(id); }
+  const isl = ids.map(id => VOY.islands[id]).filter(Boolean);
+  const deb = AG.questions.filter(q => q.compass && R.includes(rootOf(q.compass))).slice(0, 1);
+  if (!isl.length && !deb.length) return "";
+  return '<p class="tn-shores"><span>Explore this crack:</span> ' + isl.map(i => '<a href="#voyage-' + i.id + '">⛵ ' + esc(i.name) + "</a>").concat(deb.map(q => '<a href="#agora-' + q.id + '">⚖ ' + esc(q.title) + "</a>")).join(" · ") + "</p>"; }
 function tensionHTML(t) {
   const res = S.resolutions[t.key];
   const TY = { contradiction: ["Contradiction", "crack", "These two cannot both be true as worded."], conditional: ["Conflict if…", "crack soft", "These clash only if you also accept a further premise."], tension: ["Tension", "lamp", "Not an error: they can be held together, but it takes an explanation."] }[t.kind === "cards" ? "conditional" : t.type || "tension"];
   let body = '<div class="row" style="justify-content:space-between"><b class="read" style="font-size:1.08rem">' + esc(t.title) + "</b>" + (res ? '<span class="chip" style="color:var(--ok)">Resolved</span>' : t.challenge ? '<span class="chip lamp">Challenge</span>' : '<span class="chip ' + TY[1] + '" title="' + esc(TY[2]) + '">' + TY[0] + '</span>') + "</div>" +
-    '<p class="muted">' + esc(t.why) + "</p>" + (t.premise ? '<p class="tn-prem"><b>Only if you accept:</b> ' + esc(t.premise) + "</p>" : "") + (!res && t.type === "tension" && t.kind === "compass" ? '<p class="faint" style="font-size:.86rem;margin:0">Not an error. Holding both is possible; say how they fit.</p>' : "");
+    '<p class="muted">' + esc(t.why) + "</p>" + (t.premise ? '<p class="tn-prem"><b>Only if you accept:</b> ' + esc(t.premise) + "</p>" : "") + (!res && t.type === "tension" && t.kind === "compass" ? '<p class="faint" style="font-size:.86rem;margin:0">Not an error. Holding both is possible; say how they fit.</p>' : "") + (res ? "" : crackShores(t.qs));
   if (res) {
     body += '<p class="read" style="font-size:.98rem"><b>' + ({ drop: "Gave up a position", bite: "Bit the bullet", distinguish: "Drew a distinction", premise: "Rejected the premise" }[res.mode] || "Resolved") + ":</b> " + esc(res.note || "") + '</p><div><button class="linkish" data-act="unresolve" data-k="' + esc(t.key) + '">Edit or reopen</button></div>';
   } else {
@@ -12669,6 +12678,7 @@ function crackHTML(t) {
   const res = S.resolutions[t.key];
   let body = '<div class="row" style="justify-content:space-between"><b class="read" style="font-size:1.08rem">' + esc(t.title) + "</b>" + (res ? '<span class="chip" style="color:var(--ok)">Resolved</span>' : '<span class="chip crack">Crack</span>') + "</div>" +
     '<p class="muted">' + esc(t.why) + "</p>";
+  if (!res) body += crackShores([t.q]);
   if (res) body += '<p class="read" style="font-size:.98rem"><b>' + ({ drop: "Gave up a position", bite: "Bit the bullet", distinguish: "Drew a distinction", premise: "Rejected the premise" }[res.mode] || "Resolved") + ":</b> " + esc(res.note || "") + '</p><div><button class="linkish" data-act="unresolve" data-k="' + esc(t.key) + '">Edit or reopen</button></div>';
   else body += '<ul style="margin:0;padding-left:1.2em" class="muted">' + t.ways.map(w => "<li>" + esc(w) + "</li>").join("") + "</ul>" +
     '<div class="row"><a class="btn small" href="#compass-' + esc(t.q) + '">Change “' + esc(SHORT[t.q]) + '”</a><button class="btn small" data-act="dropCard" data-id="' + esc(t.card) + '" data-k="' + esc(t.key) + '">Reject “' + esc(CARDS[t.card].title) + '”</button>' +
