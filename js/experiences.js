@@ -34,7 +34,7 @@
   const T = [].concat(W.ATLAS_THINKERS_A || [], W.ATLAS_THINKERS_B || [], W.ATLAS_THINKERS_C || [], W.ATLAS_THINKERS_D || [], W.ATLAS_THINKERS_E || [], W.ATLAS_PEOPLE_EXTRA || []);
   const TH = {}; T.forEach(t => { if (t && t.id && !TH[t.id]) TH[t.id] = t; });
   const CORE = new Set([].concat(W.ATLAS_THINKERS_A || [], W.ATLAS_THINKERS_B || []).map(t => t.id));
-  const PX = W.ATLAS_PROFILES_EXT || {};
+  let PX = W.ATLAS_PROFILES_EXT || {}; // thinker profiles load on demand (P.pxLoad); Myth or truth waits for them
   const LIB = Object.assign({ glossary: [], experiments: [], eras: [] }, W.ATLAS_LIBRARY || {});
   const GLOSS = Array.isArray(W.ATLAS_DICT) && W.ATLAS_DICT.length ? W.ATLAS_DICT : LIB.glossary;
   const AGQ = ((W.ATLAS_AGORA || {}).questions) || [];
@@ -663,9 +663,11 @@
   // a truth is a sentence from the same profile's "ideas" that names what the thinker actually argued.
   // Pairing the two as side-by-side options would give the answer away (the corrections run 2.5 times longer
   // than the myths), so the player judges one statement at a time.
-  const MYTH_POOL = Object.keys(PX).filter(id => TH[id] && PX[id].misconception && PX[id].misconception.myth && PX[id].misconception.truth);
+  let MYTH_POOL = [];
   const VERB = /^(argued|held|thought|believed|claimed|taught|insisted|maintained|defended|proposed|denied|rejected|wrote|saw|said|urged|warned|treated|called|described|distinguished|developed|introduced|showed)\b/;
   const TRUTHS = {};
+  function mythPrep() { if (MYTH_POOL.length || !W.ATLAS_PROFILES_EXT) return; PX = W.ATLAS_PROFILES_EXT;
+  MYTH_POOL = Object.keys(PX).filter(id => TH[id] && PX[id].misconception && PX[id].misconception.myth && PX[id].misconception.truth);
   MYTH_POOL.forEach(id => {
     const t = TH[id], sn = shortName(t), names = [sn, t.name, capFirst(sn)].filter(Boolean);
     const out = [];
@@ -680,7 +682,7 @@
       if (body && !/[:;"“”]/.test(body)) out.push({ text: body, head: idea.head || "" });
     }));
     if (out.length) TRUTHS[id] = out;
-  });
+  }); }
   let MYTH = null;
   const MYTH_N = 10;
   function mythNew() {
@@ -694,6 +696,8 @@
   }
   const mythPts = streak => 100 + Math.min(100, 20 * Math.max(0, streak - 1));
   XV.myths = () => {
+    if (!W.ATLAS_PROFILES_EXT && P && P.pxLoad) { P.pxLoad().then(() => mount(true), () => {}); return '<div class="wrap"><p class="muted" role="status">Gathering the myths…</p></div>'; }
+    mythPrep();
     const L = st("myths");
     const ey = "The Shipyard · a game";
     if (!MYTH || !MYTH.started) {

@@ -7878,7 +7878,7 @@ window.ATLAS_LIBRARY = {
 <script>window.ATLAS_MAP = {"islandTopics": {"academy": ["metaphysics", "knowledge"], "agora": ["knowledge", "ethics"], "anselm": ["religion", "logic"], "aquinas": ["religion", "metaphysics"], "augustine": ["religion", "ethics"], "bacon": ["science", "knowledge"], "berkeley": ["metaphysics", "knowledge"], "boethius": ["meaning", "freewill"], "buddha": ["identity", "eastern"], "confucius": ["ethics", "eastern"], "critical": ["politics", "knowledge"], "cynics": ["ethics", "meaning"], "dao": ["meaning", "eastern"], "descartes": ["skepticism", "mind"], "eastlight": ["knowledge", "eastern"], "elea": ["metaphysics", "time"], "existentialists": ["existentialism", "freewill"], "falsafa": ["mind", "religion"], "garden": ["ethics", "death"], "hegel": ["politics", "metaphysics"], "hemlock": ["ethics", "politics"], "hobbes": ["politics"], "hume": ["causation", "knowledge"], "incoherence": ["causation", "religion"], "justice": ["politics"], "kant": ["knowledge", "ethics"], "kierkegaard": ["existentialism", "religion"], "leibniz": ["religion", "metaphysics"], "locke": ["knowledge", "identity"], "logic": ["mathematics", "logic"], "lyceum": ["metaphysics", "science"], "machiavelli": ["politics", "ethics"], "maimonides": ["religion", "language"], "margins": ["politics"], "marx": ["politics"], "miletus": ["metaphysics", "science"], "mill": ["politics", "ethics"], "mind": ["mind"], "montaigne": ["skepticism"], "mozi_xunzi": ["ethics", "eastern"], "nagarjuna": ["metaphysics", "eastern"], "nicomachean": ["ethics", "meaning"], "nietzsche": ["metaethics", "existentialism"], "ockham": ["metaphysics", "language"], "parfit": ["identity", "death"], "pascal": ["religion"], "phenomenology": ["existentialism", "mind"], "plotinus": ["metaphysics", "religion"], "polis": ["politics"], "pragmatists": ["knowledge", "religion"], "reformation": ["religion", "freewill"], "republic": ["ethics", "politics"], "rousseau": ["politics"], "sceptics": ["skepticism"], "schopenhauer": ["meaning", "aesthetics"], "singer": ["ethics"], "sophists": ["metaethics", "knowledge"], "spinoza": ["freewill", "religion"], "stoa": ["ethics", "death"], "structures": ["language", "meaning"], "upanishads": ["identity", "eastern"], "vienna": ["language", "science"], "virtue": ["ethics"], "wittgenstein": ["language"], "wollstonecraft": ["politics", "ethics"], "gettier": ["knowledge", "skepticism"], "beauty": ["aesthetics"], "design": ["religion", "science"]}, "compassIslands": {"e1": ["virtue", "mill", "kant"], "e2": ["virtue", "kant", "mill"], "e2a": ["virtue", "kant"], "e3": ["singer", "mill"], "e6": ["singer"], "e4": ["kant", "mill", "nicomachean"], "e5": ["vienna", "sophists", "nietzsche"], "a1": ["beauty", "plotinus", "schopenhauer", "academy"], "a4": ["beauty", "schopenhauer", "nietzsche"], "a9": ["schopenhauer", "mind"], "a5": ["structures", "wittgenstein"], "a7": ["academy", "schopenhauer"], "a2": ["schopenhauer", "nietzsche", "plotinus"], "a8": ["schopenhauer", "nietzsche"], "a3": ["republic", "schopenhauer"], "m1": ["mind", "descartes", "falsafa"], "m6": ["mind"], "m2": ["buddha", "hume", "upanishads"], "m4": ["parfit", "locke", "buddha"], "m3": ["spinoza", "reformation", "existentialists"], "k4": ["gettier", "descartes", "sceptics", "montaigne"], "k11": ["gettier", "agora", "descartes"], "k3": ["kant", "locke", "academy"], "k13": ["pragmatists", "vienna", "wittgenstein"], "k1": ["vienna", "bacon", "pragmatists"], "k2": ["logic", "academy", "miletus"], "k12": ["nagarjuna", "buddha", "lyceum"], "k7": ["elea", "augustine"], "k8": ["hume", "incoherence"], "s7": ["hemlock", "hobbes"], "s8": ["justice"], "s10": ["mill", "rousseau", "existentialists"], "s3": ["polis", "republic", "rousseau"], "s4": ["mill"], "s5": ["mill"], "s13": ["mill", "justice"], "s12": ["singer", "justice"], "s1": ["hobbes", "structures", "mill"], "s6": ["marx", "hegel", "vienna"], "k9": ["design", "anselm", "aquinas", "pascal"], "k9k": ["augustine", "leibniz"], "k9l": ["pragmatists", "plotinus"], "k9g": ["design", "aquinas", "hume", "leibniz"], "k9h": ["design", "anselm", "aquinas", "pascal"], "k9i": ["pascal", "pragmatists", "kierkegaard"], "k9j": ["reformation", "maimonides", "pragmatists"], "l1": ["existentialists", "schopenhauer", "nicomachean"], "l3": ["nicomachean", "garden"], "l2": ["garden", "stoa"], "l5": ["hemlock", "buddha", "upanishads"], "l7": ["phenomenology", "garden"], "l8": ["schopenhauer"], "l6": ["stoa", "garden", "phenomenology"]}};
 </script>
 <script src="data/atlas-seminars.js"></script>
-<script src="data/atlas-profiles-ext.js"></script>
+
 <script>// Philodyssey — extras: "Who said it?" quiz, question of the day, and 2020 PhilPapers Survey results.
 // Quiz items are paraphrases, not quotations. PhilPapers figures are the "accept or lean toward" (inclusive)
 // percentages for the survey's target population, as shown at survey2020.philpeople.org/survey/results/all.
@@ -10634,7 +10634,7 @@ window.ATLAS_EXTRAS = {
 };
 </script>
 <script src="data/atlas-arguments.js"></script>
-<script src="data/atlas-profiles.js"></script>
+
 <script src="data/atlas-voyage.js"></script><script src="data/atlas-links.js"></script><script src="data/decks/index.js"></script><script src="data/cards.js"></script><script src="data/atlas-images.js"></script><script src="data/atlas-images-th2.js"></script>
 <script>(function () {
 "use strict";
@@ -12338,7 +12338,11 @@ ACT.rtab = el => { S.rtab = el.dataset.k; save();
 // An encyclopedia-style page for every Compass answer (#position-q.o) and every named result (#position-p.key.index):
 // written summaries from data/profiles.js, plus the case and pushback cards, holders on record, survey figures,
 // and neighbouring positions, all from data the site already has.
-const PROF = window.ATLAS_PROFILES || { options: {}, patterns: {} };
+// data/atlas-profiles.js (1.5 MB) is only needed here, so it loads the first time a position page opens
+let PROF = window.ATLAS_PROFILES || null;
+function lazyPage(get, load, title) { load().then(() => { if (route().name === title) render(true); }, () => { if (route().name === title) render(true); });
+  return '<div class="wrap stack" style="--g:14px" role="status" aria-live="polite"><div class="lb-loading"><div class="bar" style="width:40%"></div><div class="bar" style="width:72%"></div><div class="bar"></div><div class="bar" style="width:86%"></div></div></div>'; }
+function profLoad() { return PROF ? Promise.resolve() : need("profiles", "data/atlas-profiles.js").then(() => { PROF = window.ATLAS_PROFILES || { options: {}, patterns: {} }; }, e => { PROF = { options: {}, patterns: {} }; throw e; }); }
 function posHref(q, o) { return "#position-" + q + "." + o; }
 function patHref(key, p) {
   // a named view that is just one answer opens that answer's full profile
@@ -12441,6 +12445,7 @@ document.addEventListener("click", e => {
 });
 document.addEventListener("click", e => { const a = e.target.closest && e.target.closest('#drawer a[data-full]'); if (a) ACT.closeDrawer(); });
 VIEWS.position = arg => {
+  if (!PROF) return lazyPage(null, profLoad, "position");
   const a = String(arg || "");
   if (a.indexOf("p.") === 0) { const rest = a.slice(2), i = rest.lastIndexOf("."); return patternProfile(rest.slice(0, i), rest.slice(i + 1)); }
   const i = a.indexOf("."); return optionProfile(a.slice(0, i), a.slice(i + 1));
@@ -13850,9 +13855,11 @@ function skyYourPath() {
 let skyFocus = "";
 ACT.skyOpen = el => { const b = document.getElementById(el.dataset.w); if (b) setTimeout(() => b.click(), 0); };
 // #thinker-hume: a shareable address for a thinker's card (opens over the Library)
-VIEWS.thinker = (arg) => thinkerPage(arg);
+VIEWS.thinker = (arg) => PX ? thinkerPage(arg) : lazyPage(null, pxLoad, "thinker");
 /* ---- the full profile page: life, ideas, works, myths, critics, and every place this thinker appears on the site ---- */
-const PX = window.ATLAS_PROFILES_EXT || {};
+// data/atlas-profiles-ext.js (1.4 MB of life stories, ideas and myths) loads the first time a thinker page or Myth or truth opens
+let PX = window.ATLAS_PROFILES_EXT || null;
+function pxLoad() { return PX ? Promise.resolve() : need("px", "data/atlas-profiles-ext.js").then(() => { PX = window.ATLAS_PROFILES_EXT || {}; }, e => { PX = {}; throw e; }); }
 let CASTP = null; // thinker id -> a Voyage cast entry with a portrait (built on first use)
 function castOf(id) { if (!CASTP) { CASTP = {}; Object.values(VOY.islands || {}).forEach(i => (i.cast || []).forEach(c => { if (c.id && (!CASTP[c.id] || (!CASTP[c.id].portrait && c.portrait))) CASTP[c.id] = c; })); } return CASTP[id]; }
 function islandsWith(id) { return Object.values(VOY.islands || {}).filter(i => (i.cast || []).some(c => c.id === id)).sort((a, b) => a.unit - b.unit || a.order - b.order); }
@@ -13889,7 +13896,7 @@ function thinkerPage(id) {
   const rootShort = q => { let z = QM[q]; while (z && z.when && z.when.q && QM[z.when.q]) z = QM[z.when.q]; return z && z.id !== q ? SHORT[z.id] + " · " + SHORT[q] : SHORT[q]; };
   if (pos.length) { sec.push(["stances", "Stances"]); main += '<section id="tp-stances" class="tp-sec"><h2>Where ' + esc(shortName(t)) + " stands</h2>" + (mine ? '<p class="muted">You agree on ' + mine.pct + "% of the questions you both answered.</p>" : '<p class="muted"><a href="#compass">Take the Compass</a> to see where you agree.</p>') + '<div class="tp-pos">' + pos.map(([q, p], pi) => {
       const u = S.answers[q], sv = u && u.a != null && u.a !== "undecided" && u.a !== "other" ? simOf(q, u.a, p.a) : null;
-      return '<a class="tp-posrow" href="#position-' + esc(q) + '"><span class="faint">' + esc(rootShort(q) || q) + "</span><b>" + esc(labelOf(q, p.a)) + (p.c === "likely" ? ' <i class="faint">(likely reading)</i>' : "") + "</b>" + (sv == null ? "" : '<span class="chip' + (sv >= .999 ? " lamp" : "") + '">' + (sv >= .999 ? "Same as you" : sv >= .5 ? "Close to you" : "You differ") + "</span>") + "</a>" + (pi === 7 && pos.length > 9 ? '<details class="tp-more"><summary class="linkish">' + (pos.length - 8) + " more stances</summary>" : ""); }).join("") + (pos.length > 9 ? "</details>" : "") + "</div></section>"; }
+      return '<a class="tp-posrow" href="' + esc(p.a == null ? "#compass-" + (QM[q].section || "") : posHref(q, Array.isArray(p.a) ? p.a[0] : p.a)) + '"><span class="faint">' + esc(rootShort(q) || q) + "</span><b>" + esc(labelOf(q, p.a)) + (p.c === "likely" ? ' <i class="faint">(likely reading)</i>' : "") + "</b>" + (sv == null ? "" : '<span class="chip' + (sv >= .999 ? " lamp" : "") + '">' + (sv >= .999 ? "Same as you" : sv >= .5 ? "Close to you" : "You differ") + "</span>") + "</a>" + (pi === 7 && pos.length > 9 ? '<details class="tp-more"><summary class="linkish">' + (pos.length - 8) + " more stances</summary>" : ""); }).join("") + (pos.length > 9 ? "</details>" : "") + "</div></section>"; }
   const cards = AG.cards.filter(c => c.author === id);
   if (cards.length) main += '<section class="tp-sec"><h3>Arguments in Debates</h3><div class="row" style="--g:6px">' + cards.map(c => '<a class="chip lapis" href="#agora-' + esc(c.q) + '">' + esc(c.title) + "</a>").join("") + "</div></section>";
   // side column
@@ -14483,7 +14490,7 @@ ACT.stoaStep = el => { const row = $("#stoaRow"); if (!row) return; const era = 
 let thkTrad = "", thkQuery = "", thkSort = "era";
 const THK_FOLD = 12; // each era shows its first twelve cards; search and the tradition filter still see every card
 const THK_ERAS = [["Born before 500 CE", -9999, 500], ["Born 500–1500", 500, 1500], ["Born 1500–1800", 1500, 1800], ["Born 1800–1900", 1800, 1900], ["Born 1900–1935", 1900, 1935], ["Born 1935–1950", 1935, 1950], ["Born after 1950", 1950, 9999]];
-function thkCard(t, more, pct) { const tr = tradOf(t), x = PX[t.id], c = castOf(t.id);
+function thkCard(t, more, pct) { const tr = tradOf(t), c = castOf(t.id);
   return '<a class="thk" href="#thinker-' + esc(t.id) + '"' + (more ? " data-more" : "") + ' data-tr="' + (tr ? tr.id : "") + '" data-s="' + esc(dKey(t.name + " " + (t.tagline || "") + " " + (t.region || "") + " " + (t.schools || []).join(" "))) + '">' + portraitHTML(Object.assign({ tid: t.id }, c || { name: t.name }), "thk-pt") +
     '<span class="thk-tx"><b>' + esc(t.name) + '</b><span class="faint">' + esc(life(t) || "dates unknown") + "</span>" + (t.tagline ? "<i>" + esc(t.tagline) + "</i>" : "") + (pct != null ? '<span class="thk-pct">' + pct + "% alike</span>" : "") + "</span>" + (tr ? '<span class="thk-dot" style="background:' + tr.color + '" title="' + esc(tr.name) + '"></span>' : "") + "</a>"; }
 VIEWS.thinkers = () => {
@@ -16787,7 +16794,7 @@ initCaps();
 // prefetch the logbook when the browser is idle, five seconds after the first paint, so My Positions rarely waits
 setTimeout(() => (window.requestIdleCallback || (f => setTimeout(f, 1)))(() => lbLoad().catch(() => { })), 5000);
 // a small bridge for add-on modules (js/*.js), which load after this script and cannot see its closure
-window.PHILO = { VIEWS, ACT, save, render, esc, $, $$, labShell, route, ROUTE_ALIAS, TH, LIB, WORKS, WK, AG, AGQ, CARDS, QM, C, SEC, EX, thinkerChip, nameOf, slugT, LABK,
+window.PHILO = { need, pxLoad, VIEWS, ACT, save, render, esc, $, $$, labShell, route, ROUTE_ALIAS, TH, LIB, WORKS, WK, AG, AGQ, CARDS, QM, C, SEC, EX, thinkerChip, nameOf, slugT, LABK,
   get S() { return S; }, get after() { return after; }, toast: (...a) => toast(...a),
   get openDrawer() { return typeof openDrawer !== "undefined" ? openDrawer : undefined; },
   get rich() { return typeof rich !== "undefined" ? rich : undefined; },
