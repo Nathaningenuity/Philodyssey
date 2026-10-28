@@ -2411,6 +2411,21 @@ html{background:var(--bg)}
 .qz-cards>.panel::before{content:"";position:absolute;left:0;right:0;top:0;height:100px;background:var(--qb) center/cover,var(--night);border-bottom:4px solid var(--qc,var(--lamp))}
 .qz-cards>.panel:nth-child(1){--qb:url(img/hero/2.webp);--qc:#9c2b1c}.qz-cards>.panel:nth-child(2){--qb:url(img/sec/compass.webp);--qc:#2E6F8E}
 .qz-cards>.panel:nth-child(3){--qb:url(img/sec/quiz.webp);--qc:var(--lamp)}.qz-cards>.panel:nth-child(4){--qb:url(img/sec/thinkers.webp);--qc:#5B6E2E}
+.pj{position:fixed;inset:0;z-index:60;background:radial-gradient(120% 120% at 20% 0%,#1d2b4a,#0e1a36 70%);color:#EDE6D2;display:grid;grid-template-rows:auto 1fr auto;padding:18px clamp(18px,5vw,64px);overflow:auto}
+.pj-bar-top{display:flex;justify-content:space-between;align-items:center;gap:12px;font-family:var(--font-mono);font-size:.85rem;color:#AEB4C4}.pj-bar-top a{color:#AEB4C4}.pj-reset{background:none;border:1px solid rgba(237,230,210,.25);color:#AEB4C4;border-radius:999px;padding:4px 12px;cursor:pointer}
+.pj-stage{align-self:center;max-width:1100px;margin:0 auto;width:100%;display:grid;gap:18px;padding-block:20px}
+.pj-k{font-family:var(--font-mono);letter-spacing:.14em;text-transform:uppercase;font-size:.9rem;color:#E2C27A}.pj-side.yes{color:#8fc7a0}.pj-side.no{color:#e59a86}
+.pj h1{margin:0;font-family:var(--font-display);font-size:clamp(2.2rem,5vw,4rem);line-height:1.08;color:#fff}
+.pj-intro{margin:0;font-family:var(--font-read);font-size:clamp(1.2rem,2.2vw,1.75rem);line-height:1.5;color:#E8E2D2;max-width:55ch}
+.pj-prem{margin:0;padding-left:1.4em;font-size:clamp(1.05rem,1.8vw,1.4rem);line-height:1.5;display:grid;gap:8px;color:#D9D3C3}.pj-conc{margin:0;font-size:clamp(1.1rem,2vw,1.5rem);font-weight:600;color:#fff}
+.pj-src{margin:0;font-size:.9rem;color:#AEB4C4;font-style:italic}.pj-ask{margin:6px 0 0;font-family:"IM Fell English",var(--font-read),serif;font-style:italic;font-size:1.3rem;color:#E2C27A}
+.pj-vote h2{font-size:1.6rem;margin:10px 0 12px;color:#fff}.pj-bars{display:grid;gap:12px}
+.pj-bar{display:grid;grid-template-columns:52px 1fr 52px;gap:10px;align-items:center}.pj-b{height:52px;border-radius:12px;border:1px solid rgba(237,230,210,.3);background:rgba(255,255,255,.06);color:#fff;font-size:1.6rem;cursor:pointer}.pj-b:hover{background:rgba(255,255,255,.14)}
+.pj-fill{position:relative;height:52px;border-radius:12px;background:rgba(255,255,255,.06);overflow:hidden;display:flex;align-items:center;justify-content:space-between;padding:0 16px;font-size:1.2rem}
+.pj-fill i{position:absolute;left:0;top:0;bottom:0;transition:width .3s}.pj-fill span,.pj-fill b{position:relative}.pj-bar.yes i{background:rgba(110,180,130,.55)}.pj-bar.no i{background:rgba(214,110,90,.55)}.pj-bar.unsure i{background:rgba(201,162,75,.5)}
+.pj-hint,.pj-shift{color:#AEB4C4;margin:10px 0 0}.pj-shift{font-size:1.1rem;color:#E2C27A}
+.pj-nav{display:flex;justify-content:space-between;gap:12px;max-width:1100px;width:100%;margin:0 auto}
+body:has(.pj) .top,body:has(.pj) .helm{display:none}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -10915,7 +10930,7 @@ const ROUTE_ALIAS = { tours: "voyage", guided: "voyage", seminars: "seminar", di
 function route() { const h = decodeURIComponent(location.hash.slice(1)) || "home"; const i = h.indexOf("-"); const r = i < 0 ? { name: h, arg: "" } : { name: h.slice(0, i), arg: h.slice(i + 1) }; r.name = ROUTE_ALIAS[r.name] || r.name; return r; }
 // the five helm slots on phones; every other route lights "More"
 // the colour family each route belongs to (see the --c-* tokens)
-const SEC_OF = { tour: "voyage", quick: "compass", position: "compass", duel: "agora", thinker: "thinkers", dictionary: "library", experiment: "library", tide: "study", log: "study" };
+const SEC_OF = { project: "agora", tour: "voyage", quick: "compass", position: "compass", duel: "agora", thinker: "thinkers", dictionary: "library", experiment: "library", tide: "study", log: "study" };
 function hudNow() {
   const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
   try { set("hudStreak", typeof window.philoStreak === "function" ? window.philoStreak() : 0); } catch (e) { }
@@ -12428,6 +12443,24 @@ function qRoot(q) { const c = qComp(q); return c ? rootOf(c) : null; }
 function agoraSemStrip() { if (typeof SEM_LIST === "undefined" || !SEM_LIST.length) return "";
   return '<section class="panel stack sem-strip" style="--g:10px"><div class="row" style="justify-content:space-between"><span class="stack" style="--g:2px"><span class="eyebrow">Discussion decks</span><b>Take a debate to your club or class</b></span><a class="btn small" href="#seminar">All ' + SEM_LIST.length + ' seminars</a></div><p class="muted" style="font-size:.92rem;margin:0">Slide decks for a 50-minute session: votes, “ask the room” prompts, criticism cards and facilitator notes. Each one also works alone as a lesson.</p><div class="row" style="--g:6px">' + SEM_LIST.slice(0, 8).map(x => '<a class="chip lapis" href="#seminar-' + esc(x.sid) + '">' + esc(x.title) + "</a>").join("") + "</div></section>"; }
 function teaser(s) { s = String(s || "").trim(); const m = s.match(/^(.+?[.?!])(\s|$)/); if (!m) return s; if (m[1].length >= 70) return m[1]; const m2 = s.slice(m[0].length).match(/^(.+?[.?!])(\s|$)/); return m2 ? m[1] + " " + m2[1] : m[1]; }
+/* ---- projector mode for a debate: a vote, then one argument per screen in big type, then a second vote */
+function projState(id) { S.proj = S.proj || {}; const P = S.proj[id] = S.proj[id] || { i: 0, v1: { yes: 0, no: 0, unsure: 0 }, v2: { yes: 0, no: 0, unsure: 0 } }; return P; }
+VIEWS.project = arg => {
+  const q = AGQ[arg]; if (!q) return VIEWS.agora("");
+  const P = projState(q.id), cs = (() => { const all = AG.cards.filter(c => c.q === q.id), Y = all.filter(c => c.side === "yes"), N = all.filter(c => c.side !== "yes"), o = []; while (Y.length || N.length) { if (Y.length) o.push(Y.shift()); if (N.length) o.push(N.shift()); } return o; })(), sides = q.sides || {}, nm = k => k === "unsure" ? "Not sure" : sides[k] || k, n = cs.length + 2, i = Math.max(0, Math.min(n - 1, P.i));
+  const tally = (key, title) => { const V = P[key], tot = V.yes + V.no + V.unsure || 1;
+    return '<div class="pj-vote"><h2>' + esc(title) + '</h2><div class="pj-bars">' + ["yes", "no", "unsure"].map(k => '<div class="pj-bar ' + k + '"><button class="pj-b" data-act="pjVote" data-q="' + esc(q.id) + '" data-k="' + key + '" data-v="' + k + '" data-d="-1" aria-label="One fewer">−</button><div class="pj-fill"><i style="width:' + Math.round(100 * V[k] / tot) + '%"></i><span>' + esc(nm(k)) + "</span><b>" + V[k] + '</b></div><button class="pj-b" data-act="pjVote" data-q="' + esc(q.id) + '" data-k="' + key + '" data-v="' + k + '" data-d="1" aria-label="One more">+</button></div>').join("") + "</div>" +
+      (key === "v2" ? '<p class="pj-shift">' + ["yes", "no", "unsure"].map(k => { const d = P.v2[k] - P.v1[k]; return esc(nm(k)) + ": " + (d > 0 ? "+" : "") + d; }).join(" · ") + " since the start</p>" : '<p class="pj-hint">Count a show of hands, then tap + for each.</p>') + "</div>"; };
+  let body;
+  if (i === 0) body = '<span class="pj-k">The debate</span><h1>' + esc(q.title) + '</h1><p class="pj-intro">' + esc(q.intro || "") + "</p>" + tally("v1", "Where do you stand right now?");
+  else if (i === n - 1) body = '<span class="pj-k">After the arguments</span><h1>' + esc(q.title) + "</h1>" + tally("v2", "Where do you stand now?");
+  else { const c = cs[i - 1]; body = '<span class="pj-k pj-side ' + c.side + '">' + esc(nm(c.side)) + " · argument " + i + " of " + cs.length + '</span><h1 class="pj-claim">' + esc(c.title) + '</h1><p class="pj-intro">' + esc(c.plain || c.claim || "") + '</p>' + (c.premises && c.premises.length ? '<ol class="pj-prem">' + c.premises.map(x => "<li>" + esc(x) + "</li>").join("") + "</ol>" : "") + (c.conclusion ? '<p class="pj-conc">So: ' + esc(c.conclusion) + "</p>" : "") + (c.source ? '<p class="pj-src">' + esc(c.source) + "</p>" : "") + '<p class="pj-ask">Convinced? Which premise would you push back on?</p>'; }
+  return '<div class="pj"><div class="pj-bar-top"><a href="#agora-' + esc(q.id) + '">← Back to the debate</a><span>' + (i + 1) + " / " + n + '</span><button class="pj-reset" data-act="pjReset" data-q="' + esc(q.id) + '">Reset votes</button></div><div class="pj-stage">' + body + '</div><div class="pj-nav"><button class="btn" data-act="pjGo" data-q="' + esc(q.id) + '" data-d="-1"' + (i ? "" : " disabled") + '>← Back</button><button class="btn primary" data-act="pjGo" data-q="' + esc(q.id) + '" data-d="1"' + (i < n - 1 ? "" : " disabled") + ">Next →</button></div></div>";
+};
+ACT.pjGo = el => { const P = projState(el.dataset.q); P.i = Math.max(0, P.i + +el.dataset.d); save(); render(true); };
+ACT.pjVote = el => { const V = projState(el.dataset.q)[el.dataset.k]; V[el.dataset.v] = Math.max(0, V[el.dataset.v] + +el.dataset.d); save(); render(true); };
+ACT.pjReset = el => { delete S.proj[el.dataset.q]; save(); render(true); };
+document.addEventListener("keydown", e => { if (route().name !== "project" || e.target.closest("input,textarea")) return; const d = e.key === "ArrowRight" || e.key === " " ? 1 : e.key === "ArrowLeft" ? -1 : 0; if (!d) return; e.preventDefault(); const P = projState(route().arg); P.i = Math.max(0, P.i + d); save(); render(true); });
 function agoraQuestion(q) {
   after.push(() => { const r = $(".dq-head p.read"); if (r) glossify(r); }); // dictionary pop-ups for the debate's framing
   const cs = AG.cards.filter(c => c.q === q.id);
@@ -12435,7 +12468,7 @@ function agoraQuestion(q) {
   const pred = S.predictions[q.id];
   const stance = (S.stance || {})[q.id], sides = q.sides || {};
   const sideName = k => sides[k] || (k === "yes" ? "Yes" : "No");
-  let h = '<div class="wrap stack dq" style="--g:14px"><div class="dq-head"><a class="linkish" href="#agora">← All debates</a><h1>' + esc(q.title) + '</h1><p class="read">' + esc(q.intro || "") + "</p>" +
+  let h = '<div class="wrap stack dq" style="--g:14px"><div class="dq-head"><div class="row" style="justify-content:space-between;gap:10px"><a class="linkish" href="#agora">← All debates</a><a class="btn small ghost" href="#project-' + esc(q.id) + '" title="Big text for a classroom screen, with a show-of-hands tally">▣ Project for a class</a></div><h1>' + esc(q.title) + '</h1><p class="read">' + esc(q.intro || "") + "</p>" +
     (() => { const sq = sameQHTML(qComp(q), ["debate"], { debate: q.id }); return sq ? '<div class="dq-sameq">' + sq + "</div>" :
     '<div class="dq-links">' + semsFor("agora", q.id).map(x => '<a href="#seminar-' + esc(x.sid) + '">Run it as a class discussion →</a>').join("") +
     (q.compass && QM[q.compass] ? '<a href="#compass-' + q.compass + '">Your Compass answer: ' + esc(deepest(q.compass) ? deepest(q.compass).label : S.answers[q.compass] ? labelOf(q.compass, S.answers[q.compass].a) : "not answered yet") + "</a>" : "") + "</div>"; })() + "</div>";
