@@ -2474,6 +2474,8 @@ button.on .faint,button[aria-pressed="true"] .faint,.chip.on .faint{color:rgba(2
 .g-today{display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:16px;text-decoration:none;color:inherit;border:1.5px solid color-mix(in srgb,var(--c-lab) 45%,var(--line));background:linear-gradient(110deg,color-mix(in srgb,var(--c-lab) 14%,var(--card)),var(--card) 70%)}.g-today:hover{border-color:var(--c-lab)}.g-today-ic{flex:none;width:52px;height:52px;display:grid;place-items:center;border-radius:14px;background:color-mix(in srgb,var(--c-lab) 18%,var(--card));color:var(--c-lab)}.g-today-ic svg{width:30px;height:30px}.g-today b{display:block;font-family:var(--font-display);font-size:1.25rem}.g-today small{display:block;color:var(--ink-2);font-size:.86rem}.g-today-go{margin-left:auto;flex:none;font-weight:700;color:var(--c-lab);white-space:nowrap}@media (max-width:640px){.g-today{flex-wrap:wrap}.g-today-go{margin-left:68px}}
 .cmp-l{list-style:none;margin:0;padding:0;display:grid;gap:6px}.cmp-l li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:baseline;padding:8px 12px;border-radius:10px;background:var(--raised);font-size:.9rem}.cmp-was{color:var(--ink-3);text-decoration:line-through}.cmp-arr{color:var(--ink-3)}@media (max-width:640px){.cmp-l li{grid-template-columns:1fr auto 1fr}.cmp-l li a{grid-column:1/-1}}
 .ag-daily{display:flex;gap:0;border-radius:16px;overflow:hidden;border:1.5px solid color-mix(in srgb,var(--c-agora) 40%,var(--line));background:var(--card);text-decoration:none;color:inherit;box-shadow:var(--shadow-1)}.ag-daily:hover{border-color:var(--c-agora)}.ag-daily-img{flex:0 0 34%;min-height:200px;position:relative}.ag-daily-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.ag-daily-tx{display:grid;gap:8px;padding:18px 22px;align-content:center}.ag-daily-tx>b{font-family:var(--font-display);font-size:1.5rem;line-height:1.15}.ag-daily-tx>span:not(.eyebrow):not(.btn):not(.ag-daily-sides){color:var(--ink-2)}.ag-daily-sides{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.ag-daily-sides i{font-style:normal;font-size:.8rem;font-weight:600;padding:3px 10px;border-radius:999px}.ag-daily-sides .y{background:color-mix(in srgb,var(--ok) 16%,var(--card));color:var(--ink)}.ag-daily-sides .n{background:color-mix(in srgb,var(--no) 16%,var(--card));color:var(--ink)}.ag-daily-sides small{color:var(--ink-3)}.ag-daily .btn{justify-self:start}@media (max-width:640px){.ag-daily{flex-direction:column}.ag-daily-img{min-height:150px}}
+.odd .mb-after{margin-top:14px}.odd-q{padding:18px 22px;border-radius:14px;background:var(--card);border:1px solid var(--line)}.odd-q p{margin:6px 0 0;font-family:var(--font-display);font-size:1.3rem;line-height:1.3}
+.odd-opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-top:12px}.odd-opt{display:grid;justify-items:center;gap:6px;padding:16px 10px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:inherit;font:inherit;cursor:pointer;text-align:center;transition:transform .15s,border-color .15s}.odd-opt:hover:not([disabled]){transform:translateY(-2px);border-color:var(--c-lab)}.odd-opt .pt{width:72px;height:72px}.odd-opt.right{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 12%,var(--card))}.odd-opt.wrong{border-color:var(--crack);background:color-mix(in srgb,var(--crack) 10%,var(--card))}.odd-opt.same{opacity:.75}.odd-ans{font-style:normal;font-size:.82rem;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--raised)}@media (max-width:640px){.odd-opts{grid-template-columns:1fr 1fr;gap:8px}.odd-opt{padding:10px 6px}.odd-opt .pt{width:52px;height:52px}.odd-q p{font-size:1.1rem}}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -15169,6 +15171,29 @@ function pcChallengeHTML(id) { const t = TH[id]; if (!PC[id] || !t || !t.tagline
 ACT.pcAnswer = el => { const id = el.dataset.id;
   if (el.dataset.o === id) { S.cardWon = S.cardWon || {}; S.cardWon[id] = Date.now(); save(); render(true); }
   else { S.pcTry = S.pcTry || {}; S.pcTry[id] = (S.pcTry[id] || 0) + 1; save(); el.classList.add("wrong"); el.disabled = true; toast("Not that one: that line belongs to " + nameOf(el.dataset.o) + ". Try again."); setTimeout(() => render(true), 1400); } };
+/* ---- Odd one out: four thinkers, three answer a Compass question the same way, one doesn't. Spot the dissenter. */
+function oddPool() { if (oddPool.L) return oddPool.L; const by = {}, famous = id => !!(castOf(id) || (window.ATLAS_IMAGES && (window.ATLAS_IMAGES.th || {})[id]));
+  T.forEach(t => { if (TH[t.id] !== t) return; Object.entries(t.positions || {}).forEach(([q, v]) => { if (!QM[q] || !v || v.a == null || Array.isArray(v.a) || v.c === "likely" || !famous(t.id)) return; ((by[q] = by[q] || {})[v.a] = by[q][v.a] || []).push(t.id); }); });
+  const L = []; Object.entries(by).forEach(([q, o]) => { const ks = Object.keys(o); ks.forEach(a => { if (o[a].length < 3) return; const others = ks.filter(k => k !== a).flatMap(k => o[k].map(id => ({ id, a: k }))); if (others.length) L.push({ q, a, same: o[a], others }); }); });
+  return (oddPool.L = L); }
+function oddRound() { const P = oddPool().slice(), out = [], usedQ = new Set(), pick = a => a.splice(Math.floor(Math.random() * a.length), 1)[0];
+  while (out.length < 8 && P.length) { const x = pick(P); if (usedQ.has(x.q)) continue; usedQ.add(x.q);
+    const same = x.same.slice(), three = [pick(same), pick(same), pick(same)], odd = x.others[Math.floor(Math.random() * x.others.length)];
+    const four = three.map(id => ({ id, a: x.a })).concat([odd]).sort(() => Math.random() - .5); out.push({ q: x.q, a: x.a, four, ans: four.indexOf(odd) }); }
+  return out; }
+function labOdd() { const O = S.odd = S.odd || {}; if (!O.round || O.i == null) { O.round = oddRound(); O.i = 0; O.score = 0; O.pick = null; }
+  const head = pageHead("scales", "Odd one out", "Three agree. Who doesn’t?", "Four philosophers face the same question. Three give the same answer; one breaks ranks. Find the dissenter, then see where each of them stands.");
+  if (O.i >= O.round.length) { const best = Math.max(O.best || 0, O.score); O.best = best; S.lab.odd = { done: 1, best }; save();
+    return '<div class="wrap stack" style="--g:22px">' + head + '<div class="mb-end panel stack" style="--g:12px"><span class="eyebrow">Round over</span><h2>' + O.score + " of " + O.round.length + ' spotted</h2><p class="muted">Best round: ' + best + " of 8.</p><div class=\"row\"><button class=\"btn primary\" data-act=\"oddAgain\">Play another round</button><a class=\"btn ghost\" href=\"#lab\">All games</a></div></div></div>"; }
+  const R = O.round[O.i], done = O.pick != null, Q = QM[R.q];
+  return '<div class="wrap stack" style="--g:22px">' + head + '<div class="odd"><div class="mb-top"><span class="cq-mono">Question ' + (O.i + 1) + " of " + O.round.length + '</span><span class="cq-mono">' + O.score + ' spotted</span></div>' +
+    '<div class="odd-q"><span class="eyebrow">' + esc(SHORT[R.q] || "") + "</span><p>" + esc(plain(Q.text)) + "</p></div>" +
+    '<div class="odd-opts">' + R.four.map((x, j) => { const t = TH[x.id], cls = done ? (j === R.ans ? " right" : j === O.pick ? " wrong" : " same") : "";
+      return '<button class="odd-opt' + cls + '" data-act="oddPick" data-j="' + j + '"' + (done ? " disabled" : "") + ">" + portraitHTML(Object.assign({ tid: x.id }, castOf(x.id) || { name: t.name }), "pt-m") + "<b>" + esc(shortName(t)) + '</b><span class="faint">' + esc(life(t)) + "</span>" + (done ? '<i class="odd-ans">' + esc(labelOf(R.q, x.a)) + "</i>" : "") + "</button>"; }).join("") + "</div>" +
+    (done ? '<div class="mb-after"><p><b>' + (O.pick === R.ans ? "Spotted." : "Not quite.") + "</b> " + esc(shortName(TH[R.four[R.ans].id])) + " answers <b>" + esc(labelOf(R.q, R.four[R.ans].a)) + "</b>; the other three say <b>" + esc(labelOf(R.q, R.a)) + '</b>.</p><div class="row"><a class="btn ghost" href="' + esc(posHref(R.q, R.a)) + '">Read about “' + esc(labelOf(R.q, R.a)) + '”</a><button class="btn primary" data-act="oddNext">' + (O.i + 1 < O.round.length ? "Next question →" : "See your score") + "</button></div></div>" : "") + "</div></div>"; }
+ACT.oddPick = el => { const O = S.odd; if (O.pick != null) return; O.pick = +el.dataset.j; if (O.pick === O.round[O.i].ans) O.score++; save(); render(true); };
+ACT.oddNext = () => { const O = S.odd; O.i++; O.pick = null; save(); render(true); };
+ACT.oddAgain = () => { const O = S.odd; O.round = null; O.i = null; save(); render(); };
 function labBottle() {
   const B = S.bottle = S.bottle || {}; if (!B.round || B.i == null) { B.round = bottleRound(); B.i = 0; B.score = 0; B.pick = null; }
   const head = pageHead("ship", "Message in a bottle", "Who wrote this?", "A line of philosophy has washed ashore. Pick its author from four faces; each answer opens the island where it comes from.");
@@ -15194,12 +15219,14 @@ VIEWS.lab = arg => {
   if (arg === "gauntlet") return labGauntlet();
   if (arg === "pd") return labPD();
   if (arg === "bottle") return labBottle();
+  if (arg === "odd") return labOdd();
   if (arg) noSuch("game", arg, "are all the games");
   const games = [
     { k: "odyssey", t: "The Odyssey", e: "ship", d: "Sail home from Troy through twelve of Homer’s islands. Every choice costs or saves your crew, and swings your heart between mercy and ruthlessness.", by: "Homer; inspired by EPIC: The Musical" },
     { k: "gauntlet", t: "The trolley gauntlet", e: "trolley", d: "Ten trolley cases, from the switch to the surgeon. Drag the lever, count the cost, then see which principles your choices follow.", by: "Foot, Thomson, Greene and others" },
     { k: "pd", t: "The harbour bargain", e: "handshake", d: "Two captains, a hundred meetings: trade fair or cheat? Design a strategy, take on Tit for Tat in a tournament, and unmask a mystery captain.", by: "Hobbes; Robert Axelrod, 1984" },
     { k: "bottle", t: "Message in a bottle", e: "ship", d: "Bottles wash up with a line of philosophy inside. Guess who wrote it from four faces, then sail to their island. Ten bottles a round.", by: "Quotations from the Voyage’s 68 islands" },
+    { k: "odd", t: "Odd one out", e: "scales", d: "Four philosophers, one question. Three give the same answer and one breaks ranks. Spot the dissenter, eight times a round.", by: "Built from the stances of the site’s thinkers" },
     { k: "veil", t: "Behind the veil", e: "die", d: "Drag the bars to design a society, then be born into it at random. Did you protect the poorest, or gamble on being rich?", by: "John Rawls, 1971; John Harsanyi" }
   ];
   const tiles = [
@@ -15208,7 +15235,7 @@ VIEWS.lab = arg => {
     { k: "machine", t: "The experience machine", d: "Would you plug into a perfect simulated life? Then: would you unplug from one?", by: "Robert Nozick, 1974; Felipe De Brigard, 2010" },
     { k: "trolley", t: "The trolley ladder", d: "Five versions of the trolley case. We’ll find the principle your answers follow.", by: "Philippa Foot, 1967; Judith Jarvis Thomson, 1976–85" }
   ];
-  const MIN = { odyssey: 20, gauntlet: 10, pd: 12, bottle: 5, veil: 6, heap: 3, ship: 4, machine: 4, trolley: 5 };
+  const MIN = { odd: 5, odyssey: 20, gauntlet: 10, pd: 12, bottle: 5, veil: 6, heap: 3, ship: 4, machine: 4, trolley: 5 };
   const meta = k => { const st = S.lab[k] || {}, b = typeof st.best === "number" ? st.best : null; return '<span class="g-meta"><span>⏱ ' + (MIN[k] || 5) + " min</span>" + (b != null ? "<span>★ best " + b + (k === "bottle" ? " / 10" : "") + "</span>" : "") + "</span>"; };
   const TE = { heap: "die", ship: "ship", machine: "die", trolley: "trolley" }; tiles.forEach(x => { x.e = x.e || TE[x.k]; });
   const all = games.concat(tiles), today = all[pcDay() % all.length];
@@ -15647,7 +15674,7 @@ function sealsNow() {
 // "Your next heading": the one thing to do next, chosen by the first rule that matches (fallback: the next Start-here step)
 const mins = n => "about " + Math.max(1, Math.round(n)) + " min";
 // every Shipyard game, for "N of M games played" (Home and the Captain's Log share this list through PHILO.LABK)
-const LABK = ["odyssey", "gauntlet", "pd", "veil", "bottle", "heap", "ship", "machine", "trolley", "drop", "myths", "marys"];
+const LABK = ["odyssey", "gauntlet", "pd", "veil", "bottle", "odd", "heap", "ship", "machine", "trolley", "drop", "myths", "marys"];
 function nextHeading(fallback) {
   const V = voyState(), pos = V.pos || {}, done = V.done || {}, last = V.last || {}, seen = V.seen || {};
   // 1. an island in progress, the most recently visited first
@@ -16603,7 +16630,7 @@ function semNotes(id) { S.semNotes = S.semNotes || {}; return S.semNotes[id] = S
 function semsFor(kind, key) { return SEM_LIST.filter(s => kind === "agora" ? s.related && s.related.agora === key : s.related && (s.related[kind] || []).includes(key)); }
 /* ---- "Same question, elsewhere": one Compass question lives in the Compass, Debates, Seminars, Voyage islands, the Shipyard and the Works */
 const LAB_Q = { gauntlet: ["e2"], trolley: ["e2"], machine: ["e4c", "l1"], ship: ["m4"], heap: [], veil: ["s8"], pd: ["s1"], odyssey: ["e4"], marys: ["m1"] };
-const LAB_NAMES = { odyssey: "The Odyssey", gauntlet: "The trolley gauntlet", pd: "The harbour bargain", veil: "Behind the veil", heap: "The vanishing heap", ship: "Theseus’ ship", machine: "The experience machine", trolley: "The trolley ladder", marys: "Mary’s Room" };
+const LAB_NAMES = { odyssey: "The Odyssey", gauntlet: "The trolley gauntlet", pd: "The harbour bargain", veil: "Behind the veil", heap: "The vanishing heap", ship: "Theseus’ ship", machine: "The experience machine", trolley: "The trolley ladder", marys: "Mary’s Room", bottle: "Message in a bottle", odd: "Odd one out" };
 const labHref = k => "#lab-" + (k === "marys" ? "mary" : k);
 // qid may be a follow-up question; matches on the same question come first, then anything under the same root.
 // On a debate page (opts.debate), the debate's own seminar and that seminar's islands lead, and nothing that belongs
