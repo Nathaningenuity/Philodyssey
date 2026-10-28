@@ -2467,6 +2467,13 @@ button.on .faint,button[aria-pressed="true"] .faint,.chip.on .faint{color:rgba(2
 @media (min-width:1600px){.top .wrap{max-width:1580px}}
 .pc-fold{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:0 14px}.pc-fold>summary{display:flex;gap:10px;align-items:baseline;padding:10px 0;cursor:pointer;list-style:none}.pc-fold>summary::-webkit-details-marker{display:none}.pc-fold[open]{padding-bottom:12px}
 .pc-fold .pc-reach-l{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:6px}.pc-fold .pc-reach-i{padding:6px 10px;gap:10px;border-radius:10px;background:var(--raised)}.pc-fold .pc-reach-i b{font-size:.88rem}.pc-fold .pc-reach-i small{font-size:.76rem}.pc-fold .pc-reach-pts .pt{width:28px;height:28px}
+.sl-cards{display:grid;gap:8px;justify-items:center;margin:6px 0}.sl-cards-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}.sl-card{display:flex;align-items:center;gap:8px;padding:5px 12px 5px 5px;border-radius:999px;border:1.5px solid var(--pcr);background:color-mix(in srgb,var(--pcr) 18%,transparent);text-decoration:none;color:inherit}.sl-card .pt{width:30px;height:30px}.sl-card span{display:grid;line-height:1.15;text-align:left}.sl-card b{font-size:.85rem}.sl-card i{font-style:normal;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
+.deck-ring{fill:none;stroke:#cfa6f2;stroke-opacity:.9;pointer-events:none}
+.alive-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:4px 0 10px}.alive-y{font-family:var(--font-display);font-size:1.5rem;min-width:110px}.alive-top input{flex:1;min-width:200px;accent-color:var(--c-stoa,#a9822e)}.alive-l{display:flex;flex-wrap:wrap;gap:6px}.alive-p{display:flex;align-items:center;gap:7px;padding:4px 10px 4px 4px;border-radius:999px;border:1px solid var(--line);background:var(--raised);text-decoration:none;color:inherit}.alive-p .pt{width:28px;height:28px}.alive-p span{display:grid;line-height:1.1}.alive-p b{font-size:.82rem}.alive-p i{font-style:normal;font-size:.7rem;color:var(--ink-3)}
+.g-meta{display:flex;gap:10px;margin-top:6px;font-size:.76rem;font-weight:600;color:var(--ink-3)}
+.g-today{display:flex;align-items:center;gap:16px;padding:16px 20px;border-radius:16px;text-decoration:none;color:inherit;border:1.5px solid color-mix(in srgb,var(--c-lab) 45%,var(--line));background:linear-gradient(110deg,color-mix(in srgb,var(--c-lab) 14%,var(--card)),var(--card) 70%)}.g-today:hover{border-color:var(--c-lab)}.g-today-ic{flex:none;width:52px;height:52px;display:grid;place-items:center;border-radius:14px;background:color-mix(in srgb,var(--c-lab) 18%,var(--card));color:var(--c-lab)}.g-today-ic svg{width:30px;height:30px}.g-today b{display:block;font-family:var(--font-display);font-size:1.25rem}.g-today small{display:block;color:var(--ink-2);font-size:.86rem}.g-today-go{margin-left:auto;flex:none;font-weight:700;color:var(--c-lab);white-space:nowrap}@media (max-width:640px){.g-today{flex-wrap:wrap}.g-today-go{margin-left:68px}}
+.cmp-l{list-style:none;margin:0;padding:0;display:grid;gap:6px}.cmp-l li{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) auto minmax(0,1fr);gap:10px;align-items:baseline;padding:8px 12px;border-radius:10px;background:var(--raised);font-size:.9rem}.cmp-was{color:var(--ink-3);text-decoration:line-through}.cmp-arr{color:var(--ink-3)}@media (max-width:640px){.cmp-l li{grid-template-columns:1fr auto 1fr}.cmp-l li a{grid-column:1/-1}}
+.ag-daily{display:flex;gap:0;border-radius:16px;overflow:hidden;border:1.5px solid color-mix(in srgb,var(--c-agora) 40%,var(--line));background:var(--card);text-decoration:none;color:inherit;box-shadow:var(--shadow-1)}.ag-daily:hover{border-color:var(--c-agora)}.ag-daily-img{flex:0 0 34%;min-height:200px;position:relative}.ag-daily-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.ag-daily-tx{display:grid;gap:8px;padding:18px 22px;align-content:center}.ag-daily-tx>b{font-family:var(--font-display);font-size:1.5rem;line-height:1.15}.ag-daily-tx>span:not(.eyebrow):not(.btn):not(.ag-daily-sides){color:var(--ink-2)}.ag-daily-sides{display:flex;flex-wrap:wrap;gap:6px;align-items:center}.ag-daily-sides i{font-style:normal;font-size:.8rem;font-weight:600;padding:3px 10px;border-radius:999px}.ag-daily-sides .y{background:color-mix(in srgb,var(--ok) 16%,var(--card));color:var(--ink)}.ag-daily-sides .n{background:color-mix(in srgb,var(--no) 16%,var(--card));color:var(--ink)}.ag-daily-sides small{color:var(--ink-3)}.ag-daily .btn{justify-self:start}@media (max-width:640px){.ag-daily{flex-direction:column}.ag-daily-img{min-height:150px}}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -12297,6 +12304,16 @@ function skySVG(M) {
 }
 
 /* ------------------------------------------------- the whole portrait */
+function compassChangesHTML() { const runs = S.runs || []; if (!runs.length) return "";
+  const last = runs[runs.length - 1], A = last.answers || {}, val = u => u == null ? null : typeof u === "object" && "a" in u ? u.a : u;
+  const ch = [], same = [];
+  Object.keys(S.answers || {}).forEach(q => { if (!QM[q] || !isAnswered(q) || !(q in A)) return; const a = val(S.answers[q]), b = val(A[q]); if (a == null || b == null) return; (JSON.stringify(a) === JSON.stringify(b) ? same : ch).push([q, b, a]); });
+  if (!ch.length && !same.length) return "";
+  const top0 = (last.top || [])[0], top1 = matches()[0], when = new Date(last.at).toLocaleDateString(undefined, { day: "numeric", month: "long", year: "numeric" });
+  const lab = (q, v) => esc(Array.isArray(v) ? v.map(x => labelOf(q, x)).join(", ") : labelOf(q, v));
+  return '<details class="pc-fold cmp-ch"' + (ch.length ? " open" : "") + '><summary><b>How your views changed</b><span class="faint">since your attempt on ' + esc(when) + ": " + (ch.length ? ch.length + " changed, " + same.length + " held" : "all " + same.length + " held steady") + "</span></summary>" +
+    (top0 && top1 && TH[top0.id] && top0.id !== top1.t.id ? '<p class="read">Your closest thinker was <a href="#thinker-' + esc(top0.id) + '">' + esc(TH[top0.id].name) + '</a>; now it is <a href="#thinker-' + esc(top1.t.id) + '">' + esc(top1.t.name) + "</a>.</p>" : "") +
+    (ch.length ? '<ul class="cmp-l">' + ch.slice(0, 12).map(([q, b, a]) => '<li><a href="#position-' + esc(q) + "." + esc(Array.isArray(a) ? a[0] : a) + '">' + esc(SHORT[q] || q) + '</a><span class="cmp-was">' + lab(q, b) + '</span><span class="cmp-arr">→</span><b>' + lab(q, a) + "</b></li>").join("") + "</ul>" : '<p class="muted">Every answer you gave again matches what you said before. Steady views, or time to test them in Debates?</p>') + "</details>"; }
 function resultsHTML() {
   const all = visibleQs().filter(q => secOpen(q.section));
   const ans = all.filter(q => isAnswered(q.id)).length, tot = all.length;
@@ -12325,6 +12342,7 @@ function resultsHTML() {
   const tabs = [["closest", "r-close", "Closest"], far.length ? ["opponents", "r-opp", "Opponents"] : null, shelf.length >= 2 ? ["reading", "r-read", "Reading"] : null, ["fits", "r-fits", "Fits"], ["cracks", "r-cracks", "Cracks"], ["chapters", "r-ch", "By chapter"]].filter(Boolean);
   const rt = tabs.some(x => x[0] === S.rtab) ? S.rtab : "closest", on = k => ' data-rtab="' + k + '"';
   after.push(() => $$("#view [data-rtab]").forEach(x => x.classList.toggle("on", x.dataset.rtab === rt)));
+  h += compassChangesHTML();
   h += '<nav class="rtoc" aria-label="Parts of your portrait">' + tabs.map(x => '<button data-act="rtab" data-k="' + x[0] + '" data-t="' + x[1] + '" aria-pressed="' + (x[0] === rt) + '">' + x[2] + "</button>").join("") + "</nav>";
   h += '<section class="stack' + (rt === "closest" ? " on" : "") + '" data-rtab="closest" id="r-close"><div class="row" style="justify-content:space-between"><h2>Closest to you</h2><span class="cq-mono">Ranked by views strongly shared × how alike overall</span></div>' +
     (top.length ? '<div class="stack" style="--g:8px">' + top.map((m, i) => matchRow(m, false, i + 1)).join("") + "</div>" : '<p class="muted">Answer a few more questions; each match needs at least four question areas in common.</p>') +
@@ -12486,7 +12504,7 @@ VIEWS.agora = arg => {
   const order = C.sections.map(x => x.id).concat(["_more"]).filter(k => groups[k]);
   const nStarted = AG.questions.filter(q => agStarted(q.id)).length;
   const fchip = (k, t, n) => '<button class="chip" data-act="agFilter" data-k="' + k + '" aria-pressed="' + (F === k) + '">' + t + ' <span class="faint">' + n + "</span></button>";
-  return '<div class="wrap stack" style="--g:26px">' + pageHead("scales", "Debates", cap(numWord(AG.questions.length)) + " questions that never went away", "Each debate is a set of short arguments. Some support each other, some crack each other. Say where you stand, then read, then decide which arguments you can live with.", '<a class="cta-link" href="#duel">Or put two thinkers in the ring: Duel →</a>') +
+  return '<div class="wrap stack" style="--g:26px">' + pageHead("scales", "Debates", cap(numWord(AG.questions.length)) + " questions that never went away", "Each debate is a set of short arguments. Some support each other, some crack each other. Say where you stand, then read, then decide which arguments you can live with.", '<a class="cta-link" href="#duel">Or put two thinkers in the ring: Duel →</a>') + agDailyHTML() +
     '<div class="ag-filter row" role="group" aria-label="Show debates">' + fchip("all", "All", AG.questions.length) + fchip("new", "Not started", AG.questions.length - nStarted) + fchip("open", "In progress", nStarted) + "</div>" +
     (order.length ? order.map(k => { const L = groups[k].slice().sort((a, b) => (agStarted(b.id) ? 1 : 0) - (agStarted(a.id) ? 1 : 0));
       return '<section class="stack ag-group" style="--g:12px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2>' + esc(k === "_more" ? "More" : SEC[k].name || SEC[k].short) + '</h2><span class="faint">' + L.length + (L.length === 1 ? " debate" : " debates") + "</span></div>" + '<div class="qlist">' + L.map(tile).join("") + "</div></section>"; }).join("")
@@ -12671,6 +12689,12 @@ ACT.steelSave = el => { const id = el.dataset.id, box = document.querySelector('
   if (v.split(/\s+/).length < 6) { toast("Give it a full sentence: at least six words."); return; }
   S.steel = S.steel || {}; S.steel[id] = v; S.cards[id] = "reject"; save(); toast("Rejected, after a fair hearing"); render(true); };
 // a debate counts as started once you take a stance or judge any of its arguments
+// one debate a day, the same for everyone on that date; untouched debates first
+function agDailyHTML() { const L = AG.questions.filter(q => !agStarted(q.id)), P = L.length ? L : AG.questions; if (!P.length) return "";
+  const q = P[pcDay() % P.length], cs = AG.cards.filter(c => c.q === q.id), qi = ((window.ATLAS_IMAGES || {}).ag || {})[q.id], sd = q.sides || {};
+  const intro = String(q.intro || ""), t = intro.length > 200 ? intro.slice(0, 198).replace(/\s+\S*$/, "") + "…" : intro;
+  return '<a class="ag-daily" href="#agora-' + esc(q.id) + '">' + (qi ? '<span class="ag-daily-img"><img src="' + esc(qi.src) + '" alt="" loading="lazy" style="object-position:' + esc(qi.pos || "50% 40%") + '"></span>' : "") +
+    '<span class="ag-daily-tx"><span class="eyebrow">Debate of the day</span><b>' + esc(q.title) + "</b><span>" + esc(t) + '</span><span class="ag-daily-sides"><i class="y">' + esc(sd.yes || "Yes") + '</i><i class="n">' + esc(sd.no || "No") + "</i><small>" + cs.length + " arguments · about " + Math.max(5, Math.round(cs.length * 1.2)) + ' min</small></span><span class="btn small primary">Weigh it today →</span></span></a>'; }
 function agStarted(qid) { const st = (S.stance || {})[qid]; return !!(st && st !== "skip") || AG.cards.some(c => c.q === qid && S.cards[c.id]); }
 ACT.predict = el => { S.predictions[el.dataset.q] = +el.dataset.i; save(); render(true); };
 ACT.card = el => {
@@ -13856,6 +13880,7 @@ const SKY_STORIES = [
 ];
 // stars you have charted: everyone in the cast of a Voyage island you finished
 function chartedStars() { const V = voyState(), out = new Set(); Object.keys(V.done || {}).forEach(id => { const I = VOY.islands[id]; ((I && I.cast) || []).forEach(c => { if (c.id && TH[c.id] && TH[c.id].born != null) out.add(c.id); }); }); return out; }
+function skyDeck() { return new Set(Object.keys(S.pcards || {}).filter(id => TH[id] && TH[id].born != null)); }
 function skyStarTotal() { return T.filter(t => t.born != null && TH[t.id] === t).length; }
 // "Your path": a story assembled from your own Compass answers, one chapter at a time
 function skyYourPath() {
@@ -13965,7 +13990,7 @@ VIEWS.firmament = (arg) => {
   return '<div class="wrap stack" style="--g:16px"><header class="page-head">' + em("astrolabe") + '<span class="eyebrow">Stargazing</span><h1>The night sky of philosophy</h1><p class="lede">Each star is a thinker, and each tradition a constellation. Drag and zoom to explore; point at or tap a star to see who it learned from and argued with. Try a <button class="linkbtn" data-act="skyOpen" data-w="skyStories">Story</button>, watch history unfold <button class="linkbtn" data-act="skyOpen" data-w="skyTime">Through time</button>, test yourself with <button class="linkbtn" data-act="skyOpen" data-w="skyGame">Name the stars</button>, or <button class="linkbtn" data-act="skyOpen" data-w="skyTrace">trace a lineage</button> between any two thinkers.</p></header>' +
     '<div class="sky" id="sky"><div class="sky-tools"><input type="search" id="skySearch" placeholder="Find a thinker" aria-label="Find a thinker">' +
     '<button class="sky-btn" id="skyStories" aria-expanded="false">✦ Stories</button><button class="sky-btn" id="skyTime">⏵ Through time</button><button class="sky-btn" id="skyGame">? Name the stars</button><button class="sky-btn" id="skyTrace">⇝ Trace a lineage</button>' +
-    (matches().length ? '<button class="sky-btn" id="skyMine">☉ My star</button>' : "") + (ch.size ? '<button class="sky-btn" id="skyCharted" title="Stars from the Voyage islands you have finished">✧ Charted ' + ch.size + " of " + skyStarTotal() + "</button>" : "") + '<span id="skyMsg" class="sky-msg" role="status" aria-live="polite"></span></div>' +
+    (matches().length ? '<button class="sky-btn" id="skyMine">☉ My star</button>' : "") + (skyDeck().size ? '<button class="sky-btn" id="skyDeck" title="Stars whose philosopher card is in your deck">◆ My cards ' + skyDeck().size + "</button>" : "") + (ch.size ? '<button class="sky-btn" id="skyCharted" title="Stars from the Voyage islands you have finished">✧ Charted ' + ch.size + " of " + skyStarTotal() + "</button>" : "") + '<span id="skyMsg" class="sky-msg" role="status" aria-live="polite"></span></div>' +
     '<div class="sky-menu" id="skyMenu" hidden>' + (yp ? [yp] : []).concat(SKY_STORIES).map(st => '<button data-s="' + st.id + '"' + (st.mine ? ' class="mine"' : "") + '><b>' + esc(st.title) + "</b><span>" + esc(st.sub) + " · " + st.stops.length + " stars</span></button>").join("") + "</div>" +
     '<div class="sky-panel" id="skyStory" hidden></div>' +
     '<div class="sky-panel sky-lore" id="skyLore" hidden></div>' +
@@ -14070,6 +14095,7 @@ function drawSky() {
     lab.attr("font-size", 12.5 / K).attr("y", d => (R0[d.mag] * g) + 15 / K);
     fig.attr("stroke-width", .9 / K); hot.selectAll("line").attr("stroke-width", 1.3 / K);
     starG.select(".charted-ring").attr("r", d => R0[d.mag] * g * 2.6).attr("stroke-width", 1 / K);
+    starG.select(".deck-ring").attr("r", d => R0[d.mag] * g * 3.4).attr("stroke-width", 1.4 / K).attr("stroke-dasharray", (3 / K) + " " + (2 / K));
     youSizes(); storyG.selectAll("line").attr("stroke-width", 2 / K); storyG.selectAll("circle").attr("r", 14 / K).attr("stroke-width", 1.5 / K);
     cLab.attr("font-size", Math.max(18, 30 / Math.sqrt(K))).attr("opacity", Math.max(0, Math.min(.85, (2.8 - K / K0) / 1.4)));
     paint();
@@ -14420,6 +14446,10 @@ function drawSky() {
   /* ---- charted stars: islands you finished leave a ring of gold round their thinkers ---- */
   const charted = chartedStars();
   starG.filter(d => charted.has(d.id)).insert("circle", ".core").attr("class", "charted-ring");
+  const deck = skyDeck();
+  starG.filter(d => deck.has(d.id)).insert("circle", ".core").attr("class", "deck-ring");
+  const dkB = $("#skyDeck");
+  if (dkB) dkB.onclick = () => { closeStory(); timeOff(); const on = !dkB.classList.contains("on"); dkB.classList.toggle("on", on); const cB = $("#skyCharted"); if (cB) cB.classList.remove("on"); cur = on ? new Set(deck) : null; paint(); const m = $("#skyMsg"); if (m) m.textContent = on ? "Your deck: " + deck.size + " card" + (deck.size === 1 ? "" : "s") + " in the sky" : ""; };
   const chB = $("#skyCharted");
   if (chB) chB.onclick = () => { closeStory(); timeOff(); const on = !chB.classList.contains("on"); chB.classList.toggle("on", on); cur = on ? new Set(charted) : null; paint(); };
 
@@ -14463,6 +14493,18 @@ const ERA_MORE = (() => {
   return out;
 })();
 const byBorn = ids => ids.filter(id => TH[id]).sort((a, b) => (TH[a].born == null ? 1e4 : TH[a].born) - (TH[b].born == null ? 1e4 : TH[b].born) || TH[a].name.localeCompare(TH[b].name));
+// "Who was alive in…": a year slider over the whole timeline, listing every thinker alive that year
+const yrLabel = y => y < 0 ? (-y) + " BCE" : y + " CE";
+function aliveIn(y) { return T.filter(t => TH[t.id] === t && t.born != null && t.born <= y && (t.died != null ? t.died >= y : y - t.born <= 85)).sort((a, b) => a.born - b.born); }
+function stoaAliveList(y) { const L = aliveIn(y);
+  return (L.length ? '<div class="alive-l">' + L.slice(0, 30).map(t => '<a class="alive-p" href="#thinker-' + esc(t.id) + '">' + portraitHTML(Object.assign({ tid: t.id }, castOf(t.id) || { name: t.name }), "pt-s") + "<span><b>" + esc(shortName(t)) + "</b><i>aged " + (y - t.born) + "</i></span></a>").join("") + (L.length > 30 ? '<span class="faint">and ' + (L.length - 30) + " more</span>" : "") + "</div>"
+    : '<p class="muted">No philosopher on the site was alive in ' + yrLabel(y) + ". Slide on.</p>"); }
+function stoaAliveHTML() { const y = S.stoaYear != null ? S.stoaYear : -399;
+  after.push(() => { const r = $("#aliveYr"); if (!r) return; r.addEventListener("input", () => { const v = +r.value; S.stoaYear = v; $("#aliveY").textContent = yrLabel(v); $("#aliveN").textContent = aliveIn(v).length; $("#aliveBox").innerHTML = stoaAliveList(v); });
+    r.addEventListener("change", () => save()); const d = $("#aliveFold"); if (d) d.addEventListener("toggle", () => { S.stoaAliveOpen = d.open; save(); }); });
+  return '<details class="pc-fold alive" id="aliveFold"' + (S.stoaAliveOpen ? " open" : "") + '><summary><b>Who was alive in…</b><span class="faint">slide through 2,600 years and see who shared the world</span></summary>' +
+    '<div class="alive-top"><b class="alive-y" id="aliveY">' + yrLabel(y) + '</b><input type="range" id="aliveYr" min="-620" max="2020" step="5" value="' + y + '" aria-label="Year"><span class="faint"><b id="aliveN">' + aliveIn(y).length + "</b> alive</span></div>" +
+    '<div id="aliveBox">' + stoaAliveList(y) + "</div></details>"; }
 VIEWS.stoa = arg => {
   const school = arg ? LIB.schools.find(s => s.id === arg) : null;
   after.push(markEras);
@@ -14476,6 +14518,7 @@ VIEWS.stoa = arg => {
     h += '<div class="panel raised stack col" style="--g:12px;width:100%"><span class="eyebrow">' + esc((school.era || "").replace("_", " ")) + " · " + esc(school.region || "") + "</span><h2>" + esc(school.name) + '</h2><p class="read">' + esc(school.summary || "") + '</p><p class="read" style="font-style:italic">' + esc(school.keyIdea || "") + '</p><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr))">' + byBorn(arr(school.members)).map(id => statue(id, true)).join("") + "</div>" + (arr(school.members).filter(id => TH[id]).length ? "" : '<p class="faint">No members profiled yet.</p>') + "</div>";
     return h + "</div>";
   }
+  h += stoaAliveHTML();
   h += '<div class="stoa" id="stoaRow">' + LIB.eras.map(e => {
     // columns stay a similar height: at most eight statues stand up front, the rest wait behind "more"
     const feat = byBorn(arr(e.thinkers)), front = feat.slice(0, 8), more = byBorn(feat.slice(8).concat(ERA_MORE[e.id] || []));
@@ -15165,9 +15208,14 @@ VIEWS.lab = arg => {
     { k: "machine", t: "The experience machine", d: "Would you plug into a perfect simulated life? Then: would you unplug from one?", by: "Robert Nozick, 1974; Felipe De Brigard, 2010" },
     { k: "trolley", t: "The trolley ladder", d: "Five versions of the trolley case. We’ll find the principle your answers follow.", by: "Philippa Foot, 1967; Judith Jarvis Thomson, 1976–85" }
   ];
-  return '<div class="wrap stack" style="--g:22px">' + pageHead("slipway", "The Shipyard", "Thought experiments you can play", "Philosophers test ideas by imagining cases. Here you run the experiment yourself, then see what your answer commits you to.") + '<div class="labgames">' +
-    games.map(x => '<a class="gtile" href="#lab-' + x.k + '"><span class="gemo">' + ic(x.e) + "</span><h3>" + x.t + (S.lab[x.k] && S.lab[x.k].done ? ' <span class="chip lamp">Played</span>' : "") + "</h3><p>" + x.d + '</p><span class="faint" style="font-size:.8rem">' + x.by + "</span></a>").join("") + '</div><h2 style="margin-top:8px">Quick experiments</h2><div class="labgrid">' +
-    tiles.map(x => '<a class="mod" href="#lab-' + x.k + '"><h3><span>' + x.t + "</span>" + (S.lab[x.k] && S.lab[x.k].done ? '<span class="chip lamp">Done</span>' : "") + "</h3><p>" + x.d + '</p><span class="faint" style="font-size:.8rem">' + x.by + "</span></a>").join("") + "</div>" +
+  const MIN = { odyssey: 20, gauntlet: 10, pd: 12, bottle: 5, veil: 6, heap: 3, ship: 4, machine: 4, trolley: 5 };
+  const meta = k => { const st = S.lab[k] || {}, b = typeof st.best === "number" ? st.best : null; return '<span class="g-meta"><span>⏱ ' + (MIN[k] || 5) + " min</span>" + (b != null ? "<span>★ best " + b + (k === "bottle" ? " / 10" : "") + "</span>" : "") + "</span>"; };
+  const TE = { heap: "die", ship: "ship", machine: "die", trolley: "trolley" }; tiles.forEach(x => { x.e = x.e || TE[x.k]; });
+  const all = games.concat(tiles), today = all[pcDay() % all.length];
+  const todayHTML = '<a class="g-today" href="#lab-' + today.k + '"><span class="g-today-ic">' + ic(today.e || "slipway") + '</span><span><span class="eyebrow">Today in the Shipyard</span><b>' + today.t + "</b><small>" + today.d + '</small></span><span class="g-today-go">' + (S.lab[today.k] && S.lab[today.k].done ? "Play again" : "Play") + " · " + (MIN[today.k] || 5) + " min →</span></a>";
+  return '<div class="wrap stack" style="--g:22px">' + pageHead("slipway", "The Shipyard", "Thought experiments you can play", "Philosophers test ideas by imagining cases. Here you run the experiment yourself, then see what your answer commits you to.") + todayHTML + '<div class="labgames">' +
+    games.map(x => '<a class="gtile" href="#lab-' + x.k + '"><span class="gemo">' + ic(x.e) + "</span><h3>" + x.t + (S.lab[x.k] && S.lab[x.k].done ? ' <span class="chip lamp">Played</span>' : "") + "</h3><p>" + x.d + '</p><span class="faint" style="font-size:.8rem">' + x.by + "</span>" + meta(x.k) + "</a>").join("") + '</div><h2 style="margin-top:8px">Quick experiments</h2><div class="labgrid">' +
+    tiles.map(x => '<a class="mod" href="#lab-' + x.k + '"><h3><span>' + x.t + "</span>" + (S.lab[x.k] && S.lab[x.k].done ? '<span class="chip lamp">Done</span>' : "") + "</h3><p>" + x.d + '</p><span class="faint" style="font-size:.8rem">' + x.by + "</span>" + meta(x.k) + "</a>").join("") + "</div>" +
     '<p class="muted">' + (games.length + tiles.length) + ' you can play, and ' + LIB.experiments.length + ' more thought experiments to read: <a href="#library" data-act="libExperiments">the thought experiments in the Dictionary →</a></p></div>';
 };
 // the Library menu: a press anywhere outside it or Escape closes it (Escape hands focus back to the button);
@@ -16418,6 +16466,9 @@ function deckSlides(I) {
 }
 function deckState(id) { const V = voyState(); V.pos = V.pos || {}; V.quiz = V.quiz || {}; V.max = V.max || {}; V.quiz[id] = V.quiz[id] || {}; return V; }
 function slideLocked(I, i) { const s = deckSlides(I)[i]; const V = deckState(I.id); if (I.sem && semDisc()) return false; return s && (s.t === "quiz" || s.t === "predict" || (I.sem && s.t === "vote")) && V.quiz[I.id][i] == null; }
+// the philosopher cards this island earns (charting it is one of the ways in)
+function islCardsLine(I) { const ids = [...new Set((I.cast || []).map(c => c.id))].filter(id => PC[id] && TH[id]); if (!ids.length) return "";
+  return '<div class="sl-cards"><span class="eyebrow">' + (ids.length === 1 ? "A card for your deck" : ids.length + " cards for your deck") + '</span><div class="sl-cards-row">' + ids.map(id => '<a class="sl-card" data-r="' + PC[id].r + '" href="#cards-' + esc(id) + '">' + portraitHTML(Object.assign({ tid: id }, castOf(id) || { name: TH[id].name }), "pt-s") + "<span><b>" + esc(shortName(TH[id])) + "</b><i>" + PC_RN[PC[id].r] + "</i></span></a>").join("") + "</div></div>"; }
 function deckScore(I) { const V = deckState(I.id); const L = deckSlides(I); let n = 0, ok = 0; L.forEach((s, i) => { if (s.t === "quiz") { n++; if (V.quiz[I.id][i] === s.answer) ok++; } }); return { n, ok }; }
 // a picture heading one side of a versus card
 function vsImg(x) { return x && x.img && x.img.file ? '<figure class="vs-img"><img src="' + imgURL(x.img.file, 700) + '" alt="' + esc(x.img.credit || "") + '" loading="lazy" referrerpolicy="no-referrer" onerror="this.closest(\'figure\').remove()">' + (x.img.credit ? "<figcaption>" + esc(x.img.credit) + "</figcaption>" : "") + "</figure>" : ""; }
@@ -16457,7 +16508,7 @@ function slideHTML(I, s, i) {
     case "finish": {
       const sc = deckScore(I); const u = unitOf(I); const list = u ? islandsOf(u) : []; const to = (I.crossing && I.crossing.to && VOY.islands[I.crossing.to]) || list[list.indexOf(I) + 1];
       return '<div class="sl sl-night"><div class="sl-body center">' + head("Island charted", I.name) + (sc.n ? '<p class="sl-score"><b>' + sc.ok + "</b> of " + sc.n + " quick checks right</p>" + missedHTML(I) : "") + (I.log ? '<p class="sl-log">“' + rich(I.log) + '”<br><span class="faint">Saved to My Positions</span></p>' : "") +
-        (I.crossing && I.crossing.text ? '<p class="sl-lead">' + rich(I.crossing.text) + "</p>" : "") + skyChartLine(I) + originalsLine(I) + wordsLine(I) + sameQHTML(islandRoot(I), ["island"], { center: 1 }) + semLine(I) + (to && !I.sem ? (setTimeout(vthFill, 0), '<a class="sl-nextisl" href="#voyage-' + to.id + '">' + vthImg("isl", to.id, "", to.name) + '<span><span class="eyebrow">Next landfall' + (to.unit !== I.unit ? " · Sea " + ROMANV[to.unit] : "") + "</span><b>" + esc(to.name) + "</b><i>" + esc(to.question || "") + "</i><small>" + esc((to.cast || []).map(c => c.name).slice(0, 3).join(", ")) + "</small></span></a>") : "") + '<div class="row" style="justify-content:center">' + (to ? '<a class="btn primary" href="#voyage-' + to.id + '">Sail on to ' + esc(to.name) + " →</a>" : "") + (u ? '<a class="btn ghost vy-ghost" href="#voyage-u' + u.id + '">' + esc(u.title) + " chart</a>" : "") + '<button class="btn ghost vy-ghost" data-act="dkRestart" data-id="' + esc(I.id) + '">Start again</button></div></div></div>';
+        (I.crossing && I.crossing.text ? '<p class="sl-lead">' + rich(I.crossing.text) + "</p>" : "") + skyChartLine(I) + islCardsLine(I) + originalsLine(I) + wordsLine(I) + sameQHTML(islandRoot(I), ["island"], { center: 1 }) + semLine(I) + (to && !I.sem ? (setTimeout(vthFill, 0), '<a class="sl-nextisl" href="#voyage-' + to.id + '">' + vthImg("isl", to.id, "", to.name) + '<span><span class="eyebrow">Next landfall' + (to.unit !== I.unit ? " · Sea " + ROMANV[to.unit] : "") + "</span><b>" + esc(to.name) + "</b><i>" + esc(to.question || "") + "</i><small>" + esc((to.cast || []).map(c => c.name).slice(0, 3).join(", ")) + "</small></span></a>") : "") + '<div class="row" style="justify-content:center">' + (to ? '<a class="btn primary" href="#voyage-' + to.id + '">Sail on to ' + esc(to.name) + " →</a>" : "") + (u ? '<a class="btn ghost vy-ghost" href="#voyage-u' + u.id + '">' + esc(u.title) + " chart</a>" : "") + '<button class="btn ghost vy-ghost" data-act="dkRestart" data-id="' + esc(I.id) + '">Start again</button></div></div></div>';
     }
   }
   return '<div class="sl"><div class="sl-body"><p>' + esc(s.text || "") + "</p></div></div>";
