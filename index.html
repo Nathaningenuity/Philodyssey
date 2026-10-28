@@ -2484,6 +2484,7 @@ button.on .faint,button[aria-pressed="true"] .faint,.chip.on .faint{color:rgba(2
 .cq-resume{display:grid;grid-template-columns:1fr auto;gap:4px 16px;align-items:center;padding:16px 20px;border-radius:16px;text-decoration:none;color:inherit;border:1.5px solid color-mix(in srgb,var(--c-compass) 45%,var(--line));background:linear-gradient(120deg,color-mix(in srgb,var(--c-compass) 12%,var(--card)),var(--card) 70%)}.cq-resume .eyebrow,.cq-resume b,.cq-resume small,.cq-resume-m{grid-column:1}.cq-resume b{font-family:var(--font-display);font-size:1.35rem}.cq-resume .btn{grid-column:2;grid-row:1/span 4}.cq-resume-m{height:6px;border-radius:9px;background:var(--line);overflow:hidden;max-width:420px}.cq-resume-m i{display:block;height:100%;background:var(--c-compass)}.cq-resume small{color:var(--ink-2)}
 .ptype{display:grid;gap:12px;padding:22px 24px;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 0 0,color-mix(in srgb,var(--c-compass) 14%,var(--card)),var(--card) 60%)}.ptype h2{margin:0;font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2rem);line-height:1.15}
 .pt-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}.pt-slot{display:grid;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);text-decoration:none;color:inherit}.pt-slot:hover{border-color:var(--c-compass)}.pt-slot b{font-family:var(--font-display);font-size:1.02rem;line-height:1.2}.pt-slot small{color:var(--ink-3);font-size:.78rem}.pt-slot.locked{border-style:dashed;background:transparent}.pt-slot.locked b{color:var(--ink-3)}
+.sr-sum{font-family:var(--font-read);font-size:1.12rem;line-height:1.55;color:var(--ink-2);max-width:62ch;margin:4px 0 6px}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -12211,7 +12212,7 @@ function ethicsResult(done, n, tot) {
   const others = M.slice(0, 5).map(m => ({ t: m.t, b: baryOf(m.t.positions) })).filter(o => o.b);
   const ET = pat ? chapterTitle("ethics", pat, title) : { title, from: [] };
   let h = '<section class="sr-head"><span class="eyebrow">Chapter I result · Ethics</span><h1>' + (pat && patHref("ethics", pat) ? '<a class="poslink title" href="' + patHref("ethics", pat) + '">' + esc(ET.title) + "</a>" : esc(ET.title)) + "</h1>" + (pat && pat.subtitle && !/^Still/.test(ET.title) ? '<p class="sr-sub">' + esc(pat.subtitle) + "</p>" : "") + (line ? '<p class="lede-i">' + esc(line) + "</p>" : "") + progressNote(done, n, tot, "ethics") +
-    (pat && pat.who && pat.who.some(id => TH[id]) ? '<div class="stack" style="--g:6px"><span class="cq-mono">Classic holders of this view</span><div class="whos">' + whoChips(pat.who) + "</div></div>" : "") + "</section>";
+    patSumHTML("ethics", pat) + (pat && pat.who && pat.who.some(id => TH[id]) ? '<div class="stack" style="--g:6px"><span class="cq-mono">Classic holders of this view</span><div class="whos">' + whoChips(pat.who) + "</div></div>" : "") + "</section>";
   h += '<section class="sr-grid"><div class="panel stack" style="--g:12px"><span class="cq-mono">What makes an act right</span>' +
     (A.e4 && A.e4.a === "nothing" ? '<p class="read">You placed yourself outside the triangle: no action is really right or wrong.</p>' :
       A.e4 && A.e4.a === "exist" ? '<p class="read">You placed yourself outside the triangle. For an existentialist, results, duties and character are not given in advance: what counts is what you choose to stand for.</p>' : triSVG(me, kind, others)) +
@@ -12229,6 +12230,7 @@ function artResult(done, n, tot) {
   let h = '<section class="sr-head"><span class="eyebrow">Chapter ' + ROMAN[i] + " result · Beauty and art</span><h1>" + (pat && patHref("aesthetics", pat) ? '<a class="poslink title" href="' + patHref("aesthetics", pat) + '">' + esc(T.title) + "</a>" : esc(T.title)) + "</h1>" + (pat && pat.subtitle && !/^Still/.test(T.title) ? '<p class="sr-sub">' + esc(pat.subtitle) + "</p>" : "") + progressNote(done, n, tot, "art") + "</section>";
   h += topicStrip("art", T.from);
   h += '<section class="aes">';
+  h += patSumHTML("aesthetics", pat);
   if (pat && pat.who && pat.who.some(id => TH[id])) h += '<div class="stack" style="--g:6px"><span class="cq-mono">Classic holders of this view</span><div class="whos">' + whoChips(pat.who) + "</div></div>";
   if (A.a1 && A.a1.a === "thing" && A.e5 && A.e5.a === "no") h += '<p class="faint" style="font-size:.88rem">Beauty is objective for you, but morality isn\'t. See the challenge below.</p>';
   h += "</section>";
@@ -12311,7 +12313,7 @@ function genericResult(sec, done, n, tot) {
   const pat = firstPattern((C.patterns || {})[sec], S.answers);
   const T = chapterTitle(sec, pat, "Your view of " + (s.short === "God" ? "God" : s.short.toLowerCase()));
   let h = '<section class="sr-head"><span class="eyebrow">Chapter ' + ROMAN[i] + " result · " + esc(s.name) + "</span><h1>" + (pat && patHref(patKeyOfSec(sec), pat) ? '<a class="poslink title" href="' + patHref(patKeyOfSec(sec), pat) + '">' + esc(T.title) + "</a>" : esc(T.title)) + "</h1>" + (pat && pat.subtitle && !/^Still/.test(T.title) ? '<p class="sr-sub">' + esc(pat.subtitle) + "</p>" : "") + progressNote(done, n, tot, sec) +
-    (pat && pat.who && pat.who.some(id => TH[id]) ? '<div class="stack" style="--g:6px"><span class="cq-mono">Classic holders of this view</span><div class="whos">' + whoChips(pat.who) + "</div></div>" : "") + "</section>";
+    patSumHTML(patKeyOfSec(sec), pat) + (pat && pat.who && pat.who.some(id => TH[id]) ? '<div class="stack" style="--g:6px"><span class="cq-mono">Classic holders of this view</span><div class="whos">' + whoChips(pat.who) + "</div></div>" : "") + "</section>";
   h += '<section class="stack"><h2>Your position on each topic</h2><div class="stances">' + roots.filter(r => shown(QM[r], S.answers)).map(r => stanceCard(r, sec, T.from.includes(r))).join("") + "</div>" +
     (T.from.length ? '<p class="faint tp-note">Outlined: the topic' + (T.from.length > 1 ? "s" : "") + " your title comes from.</p>" : "") + "</section>";
   h += '<section class="stack"><div class="row" style="justify-content:space-between"><h2>Closest to you here</h2><span class="cq-mono">Ranked by strongly shared views × how alike</span></div>' +
@@ -12428,6 +12430,9 @@ function patHref(key, p) {
   const e = Object.entries((p && p.when) || {}); if (e.length === 1 && arr(e[0][1]).length === 1) return posHref(e[0][0], arr(e[0][1])[0]);
   const i = ((C.patterns || {})[key] || []).indexOf(p); return i < 0 ? null : "#position-p." + key + "." + i;
 }
+// the plain-words summary of a named view ("You believe…"), from the position profiles, which load on first use
+function patSumHTML(key, pat) { if (!pat) return ""; if (!PROF) { profLoad().then(() => { if (route().name === "compass") render(true); }, () => {}); return ""; }
+  const P = (PROF.patterns || {})[key + ":" + pat.name]; return P && P.summary ? '<p class="sr-sum">' + esc(P.summary) + "</p>" : ""; }
 function patKeyOfSec(sec) { return sec === "art" ? "aesthetics" : sec; }
 function holdersOf(q, o) {
   return T.filter(t => { const p = (t.positions || {})[q]; return p && p.a != null && arr(p.a).includes(o); })
