@@ -2399,6 +2399,9 @@ html{background:var(--bg)}
 .vy-top-r .vy-count{font-family:var(--font-display)}.vy-top-r .vy-count b{font-size:1.4rem}
 :root[data-theme="dark"] .chart.pirate{filter:brightness(.86) sepia(.08)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .chart.pirate{filter:brightness(.86) sepia(.08)}}
+.vy-routes{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:-14px}.vy-routes-l{font-family:"IM Fell English",var(--font-read),serif;font-style:italic;color:var(--ink-2);margin-right:4px}
+.vy-rchip[aria-pressed="true"]{background:#9c2b1c;color:#fff;border-color:#9c2b1c}
+.vrp-list{max-height:330px;overflow:auto;padding-right:4px}.vrp-sea{font-family:"IM Fell English SC",Georgia,serif;color:#9c2b1c;margin-right:2px}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -15853,11 +15856,23 @@ function seaPanelHTML(n) {
 }
 ACT.vySea = el => { const n = +el.dataset.n; S.vySea = n; save(); const P = $("#vyPanel"); if (!P) return; P.innerHTML = seaPanelHTML(n); vthFill();
   $$(".vy-map .ch-stop, .vy-time .vt-bar, .vy-far").forEach(a => a.classList.toggle("sel", +a.dataset.n === n)); if (innerWidth < 900) P.scrollIntoView({ behavior: "smooth", block: "start" }); };
+// theme routes: follow one question across the centuries; the map keeps only the seas where it comes up
+const VY_ROUTE_DECK = { ethics: "ethics", politics: "politics", religion: "god", mind: "mind", freewill: "freewill", knowledge: "knowledge", meaning: "meaning", aesthetics: "beauty", metaphysics: "plato", language: "reason" };
+function routeIslands(id) { const g = VY_QGROUPS.find(x => x[0] === id); if (!g) return []; return Object.values(VOY.islands).filter(i => islandTopics(i.id).some(t => g[2].includes(t))).sort((a, b) => a.unit - b.unit || a.order - b.order); }
+function routePanelHTML(id) {
+  const g = VY_QGROUPS.find(x => x[0] === id), L = routeIslands(id), dn = L.filter(i => islDone(i.id)).length, first = L.find(i => !islDone(i.id)) || L[0], dk = VY_ROUTE_DECK[id] && DECKIX.find(d => d.id === VY_ROUTE_DECK[id]);
+  return '<div class="vsp-body vrp"><span class="eyebrow">A route through the centuries · ' + L.length + " islands</span><h2>" + esc(g[1]) + '</h2><p class="vsp-intro">Follow one question from sea to sea, in order. ' + (dn ? dn + " of " + L.length + " charted." : "The red line on the chart is your route.") + '</p>' +
+    '<ol class="vsp-isls vrp-list">' + L.map(i => '<li><a class="vsp-isl' + (islDone(i.id) ? " done" : "") + '" href="#voyage-' + i.id + '">' + vthImg("isl", i.id, "", i.name) + '<span class="vsp-it"><b><span class="vrp-sea">' + ROMANV[i.unit] + "</span> " + esc(i.name) + '</b><span>' + esc(i.question || "") + '</span></span>' + (islDone(i.id) ? '<span class="vy-tick" aria-label="Charted">✓</span>' : "") + "</a></li>").join("") + "</ol>" +
+    '<div class="row vsp-go">' + (first ? '<a class="btn primary" href="#voyage-' + first.id + '">' + (dn ? "Continue: " : "Begin: ") + esc(first.name) + " →</a>" : "") + (dk ? '<a class="btn ghost" href="#tour-' + dk.id + '">Lecture: ' + esc(dk.title.split(":")[0]) + "</a>" : "") + '<button class="btn ghost" data-act="vyRoute" data-r="">Clear route</button></div></div>';
+}
+ACT.vyRoute = el => { S.vyRoute = el.dataset.r || ""; save(); render(true); };
 function voyHome() {
   const all = VOY.units.flatMap(u => islandsOf(u)), done = all.filter(i => islDone(i.id)).length, nx = nextIsland();
   const theme = S.vyView === "q" || S.vyView === "theme";
   const sel = S.vySea || (nx ? nx.unit : 1);
   const stops = VOY.units.map(u => { const isl = islandsOf(u); const dn = isl.filter(i => islDone(i.id)).length; return { place: "sea" + u.id, href: "#voyage-u" + u.id, act: "vySea", n: u.id, sel: u.id === sel, frac: isl.length ? dn / isl.length : 0, done: isl.length && dn === isl.length, current: nx && nx.unit === u.id, title: u.title, num: ROMANV[u.id], tip: ROMANV[u.id] + " · " + u.title + (VOY.seaCity && VOY.seaCity[u.id] ? " · " + VOY.seaCity[u.id] : "") }; });
+  const rt = S.vyRoute && VY_QGROUPS.find(x => x[0] === S.vyRoute) ? S.vyRoute : "", rIs = rt ? routeIslands(rt) : [];
+  if (rt) { const seas = new Set(rIs.map(i => i.unit)); stops.forEach(st => { const k = rIs.filter(i => i.unit === st.n).length; st.tip = st.tip + (k ? " · " + k + " island" + (k > 1 ? "s" : "") + " on this route" : ""); }); for (let j = stops.length - 1; j >= 0; j--) if (!seas.has(stops[j].n)) stops.splice(j, 1); }
   after.push(vthFill);
   let h = '<div class="voy"><section class="vy-top"><div class="wrap vy-top-in"><div class="vy-top-t">' + em("ship", "emblem vy-emblem-s") + '<div><h1>The Voyage</h1><p>Fourteen seas, 68 illustrated islands: the history of philosophy, one quarter-hour landfall at a time.</p></div></div>' +
     '<div class="vy-top-r"><span class="vy-count"><b>' + done + "</b> of " + all.length + " islands charted" + (missedAll().length ? ' · <a href="#voyage-review" style="color:inherit">' + missedAll().length + " checks to review</a>" : "") + "</span>" + (nx ? '<a class="btn primary" href="#voyage-' + nx.id + '">' + (done ? "Continue: " : "Begin: ") + esc(nx.name) + " →</a>" : "") + "</div></div>" +
@@ -15868,8 +15883,9 @@ function voyHome() {
     return h + "</div></div>";
   }
   const far = VOY.units.find(u => u.id === 14);
+  h += '<div class="vy-routes" role="group" aria-label="Follow a question"><span class="vy-routes-l">Follow a question:</span>' + VY_QGROUPS.filter(g => routeIslands(g[0]).length >= 3).map(g => '<button class="chip vy-rchip" data-act="vyRoute" data-r="' + g[0] + '" aria-pressed="' + (rt === g[0]) + '">' + esc(g[1]) + "</button>").join("") + "</div>";
   h += '<section class="vy-explore"><div class="vy-map chart-box">' + chartSVG("world", stops, { aria: "Chart of the voyage: choose a sea", r: 11, vb: "376 96 480 400", cart: ["A Chart of the", "SEAS OF PHILOSOPHY", "as sailed by the good ship Philodyssey", done + " of " + all.length + " islands charted"] }) + '<span class="vy-map-hint">Choose a numbered sea · arrows step through them in order</span>' +
-    (far ? '<button class="vy-far' + (sel === 14 ? " sel" : "") + '" data-act="vySea" data-n="14"><span>←</span> XIV · ' + esc(far.title) + ' <i>across the Atlantic</i></button>' : "") + '</div><aside class="vy-panel" id="vyPanel" aria-live="polite">' + seaPanelHTML(sel) + "</aside></section>";
+    (far ? '<button class="vy-far' + (sel === 14 ? " sel" : "") + '" data-act="vySea" data-n="14"><span>←</span> XIV · ' + esc(far.title) + ' <i>across the Atlantic</i></button>' : "") + '</div><aside class="vy-panel" id="vyPanel" aria-live="polite">' + (rt ? routePanelHTML(rt) : seaPanelHTML(sel)) + "</aside></section>";
   h += '<section class="stack" style="--g:10px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2 class="sec-h">The seas in time</h2><span class="faint">When each sea’s thinkers lived · choose a bar</span></div><div class="vy-time-box">' + seaTimelineSVG(sel) + "</div></section>";
   h += forYouHTML();
   h += '<section class="stack" style="--g:14px"><h2 class="sec-h">The fourteen seas</h2><div class="vy-seacards">' + VOY.units.map(u => { const isl = islandsOf(u), dn = isl.filter(i => islDone(i.id)).length;
