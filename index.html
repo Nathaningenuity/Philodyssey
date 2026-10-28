@@ -7873,7 +7873,7 @@ window.ATLAS_LIBRARY = {
   ]
 };
 </script>
-<script src="data/atlas-dict.js"></script>
+
 <script src="data/atlas-works.js"></script>
 <script>window.ATLAS_MAP = {"islandTopics": {"academy": ["metaphysics", "knowledge"], "agora": ["knowledge", "ethics"], "anselm": ["religion", "logic"], "aquinas": ["religion", "metaphysics"], "augustine": ["religion", "ethics"], "bacon": ["science", "knowledge"], "berkeley": ["metaphysics", "knowledge"], "boethius": ["meaning", "freewill"], "buddha": ["identity", "eastern"], "confucius": ["ethics", "eastern"], "critical": ["politics", "knowledge"], "cynics": ["ethics", "meaning"], "dao": ["meaning", "eastern"], "descartes": ["skepticism", "mind"], "eastlight": ["knowledge", "eastern"], "elea": ["metaphysics", "time"], "existentialists": ["existentialism", "freewill"], "falsafa": ["mind", "religion"], "garden": ["ethics", "death"], "hegel": ["politics", "metaphysics"], "hemlock": ["ethics", "politics"], "hobbes": ["politics"], "hume": ["causation", "knowledge"], "incoherence": ["causation", "religion"], "justice": ["politics"], "kant": ["knowledge", "ethics"], "kierkegaard": ["existentialism", "religion"], "leibniz": ["religion", "metaphysics"], "locke": ["knowledge", "identity"], "logic": ["mathematics", "logic"], "lyceum": ["metaphysics", "science"], "machiavelli": ["politics", "ethics"], "maimonides": ["religion", "language"], "margins": ["politics"], "marx": ["politics"], "miletus": ["metaphysics", "science"], "mill": ["politics", "ethics"], "mind": ["mind"], "montaigne": ["skepticism"], "mozi_xunzi": ["ethics", "eastern"], "nagarjuna": ["metaphysics", "eastern"], "nicomachean": ["ethics", "meaning"], "nietzsche": ["metaethics", "existentialism"], "ockham": ["metaphysics", "language"], "parfit": ["identity", "death"], "pascal": ["religion"], "phenomenology": ["existentialism", "mind"], "plotinus": ["metaphysics", "religion"], "polis": ["politics"], "pragmatists": ["knowledge", "religion"], "reformation": ["religion", "freewill"], "republic": ["ethics", "politics"], "rousseau": ["politics"], "sceptics": ["skepticism"], "schopenhauer": ["meaning", "aesthetics"], "singer": ["ethics"], "sophists": ["metaethics", "knowledge"], "spinoza": ["freewill", "religion"], "stoa": ["ethics", "death"], "structures": ["language", "meaning"], "upanishads": ["identity", "eastern"], "vienna": ["language", "science"], "virtue": ["ethics"], "wittgenstein": ["language"], "wollstonecraft": ["politics", "ethics"], "gettier": ["knowledge", "skepticism"], "beauty": ["aesthetics"], "design": ["religion", "science"]}, "compassIslands": {"e1": ["virtue", "mill", "kant"], "e2": ["virtue", "kant", "mill"], "e2a": ["virtue", "kant"], "e3": ["singer", "mill"], "e6": ["singer"], "e4": ["kant", "mill", "nicomachean"], "e5": ["vienna", "sophists", "nietzsche"], "a1": ["beauty", "plotinus", "schopenhauer", "academy"], "a4": ["beauty", "schopenhauer", "nietzsche"], "a9": ["schopenhauer", "mind"], "a5": ["structures", "wittgenstein"], "a7": ["academy", "schopenhauer"], "a2": ["schopenhauer", "nietzsche", "plotinus"], "a8": ["schopenhauer", "nietzsche"], "a3": ["republic", "schopenhauer"], "m1": ["mind", "descartes", "falsafa"], "m6": ["mind"], "m2": ["buddha", "hume", "upanishads"], "m4": ["parfit", "locke", "buddha"], "m3": ["spinoza", "reformation", "existentialists"], "k4": ["gettier", "descartes", "sceptics", "montaigne"], "k11": ["gettier", "agora", "descartes"], "k3": ["kant", "locke", "academy"], "k13": ["pragmatists", "vienna", "wittgenstein"], "k1": ["vienna", "bacon", "pragmatists"], "k2": ["logic", "academy", "miletus"], "k12": ["nagarjuna", "buddha", "lyceum"], "k7": ["elea", "augustine"], "k8": ["hume", "incoherence"], "s7": ["hemlock", "hobbes"], "s8": ["justice"], "s10": ["mill", "rousseau", "existentialists"], "s3": ["polis", "republic", "rousseau"], "s4": ["mill"], "s5": ["mill"], "s13": ["mill", "justice"], "s12": ["singer", "justice"], "s1": ["hobbes", "structures", "mill"], "s6": ["marx", "hegel", "vienna"], "k9": ["design", "anselm", "aquinas", "pascal"], "k9k": ["augustine", "leibniz"], "k9l": ["pragmatists", "plotinus"], "k9g": ["design", "aquinas", "hume", "leibniz"], "k9h": ["design", "anselm", "aquinas", "pascal"], "k9i": ["pascal", "pragmatists", "kierkegaard"], "k9j": ["reformation", "maimonides", "pragmatists"], "l1": ["existentialists", "schopenhauer", "nicomachean"], "l3": ["nicomachean", "garden"], "l2": ["garden", "stoa"], "l5": ["hemlock", "buddha", "upanishads"], "l7": ["phenomenology", "garden"], "l8": ["schopenhauer"], "l6": ["stoa", "garden", "phenomenology"]}};
 </script>
@@ -10677,7 +10677,15 @@ const CARDS = {}; AG.cards.forEach(c => { CARDS[c.id] = c; });
 const AGQ = {}; AG.questions.forEach(q => { AGQ[q.id] = q; });
 const LIB = Object.assign({ glossary: [], experiments: [], schools: [], eras: [] }, window.ATLAS_LIBRARY || {});
 // the expanded dictionary replaces the original glossary; the original 150 stay marked as core (they drive the pop-ups in lessons)
-if (Array.isArray(window.ATLAS_DICT) && window.ATLAS_DICT.length) { const core = new Set(LIB.glossary.map(g => g.term.toLowerCase())); LIB.glossary = window.ATLAS_DICT; LIB.glossary.forEach(g => { if (core.has(g.term.toLowerCase())) g.core = true; }); }
+// data/atlas-dict.js (2 MB) arrives after the first paint; until then the 150 core terms stand in
+const DICT_N = 2184; // shown before the full dictionary has arrived
+function dictApply() { if (!Array.isArray(window.ATLAS_DICT) || !window.ATLAS_DICT.length || LIB.glossary === window.ATLAS_DICT) return false;
+  const core = new Set(LIB.glossary.map(g => g.term.toLowerCase())); LIB.glossary = window.ATLAS_DICT; LIB.glossary.forEach(g => { if (core.has(g.term.toLowerCase())) g.core = true; }); return true; }
+dictApply();
+function dictLoad() { return need("dict", "data/atlas-dict.js").then(() => { if (!dictApply()) return;
+  GL_RE = null; D_IDX = null; DGROUPS = null; try { FIND.addTerms(); } catch (e) { }
+  const r = route().name; if (["thinker", "library", "dictionary", "home"].includes(r) && !(document.activeElement && document.activeElement.matches("input,textarea,select"))) render(true); }); }
+function dictReady() { return LIB.glossary === window.ATLAS_DICT; }
 const EX = Object.assign({ quiz: [], daily: [], philpapers: { items: [] } }, window.ATLAS_EXTRAS || {});
 const QM = {}; C.questions.forEach(q => { QM[q.id] = q; });
 const ORDER = C.questions.map(q => q.id);
@@ -10973,7 +10981,7 @@ function hudNow() {
     if (b) { b.textContent = n; b.hidden = !n; } if (a) { a.classList.toggle("new", n > (S.pcSeen || 0)); a.title = n ? n + " of " + PC_IDS.length + " philosopher cards" + (n > (S.pcSeen || 0) ? " · new ones to see" : "") : "Philosopher cards: earn one by doing something with a thinker"; } } catch (e) { }
   try { const n = answeredCount(), b = document.getElementById("myposN"); if (b) { b.textContent = n; b.hidden = !n; b.title = n + " positions taken"; } } catch (e) { }
 }
-addEventListener("load", () => hudNow()); // the streak and the Tide come from js/study.js, which loads after the first render
+addEventListener("load", () => { hudNow(); setTimeout(() => dictLoad().catch(() => { }), 500); }); // the streak and the Tide come from js/study.js, which loads after the first render
 const HELM_SLOT = { voyage: "voyage", tour: "voyage", compass: "compass", quick: "compass", position: "compass", agora: "agora", codex: "codex" }; // Seminars and Duel live in the More drawer, so they light More
 // navigate: a page change cross-fades through the View Transitions API where it exists (header held still);
 // in-place re-renders (keepScroll), same-route renders and reduced motion swap at once
@@ -14670,6 +14678,7 @@ function workPage(w) {
 let libTab = "glossary", libQuery = "";
 VIEWS.experiment = arg => { libTab = "experiments"; libQuery = ""; after.push(() => { const el = document.getElementById("x-" + arg); if (!el) return; el.classList.add("d-hit"); setTimeout(() => window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 90 }), 30); }); return VIEWS.library(); };
 VIEWS.library = (arg) => {
+  if (!dictReady()) return lazyPage(null, dictLoad, route().name);
   let body = "";
   if (arg) { const g = LIB.glossary.find(x => slugT(x.term) === arg);
     if (g) { libTab = "glossary"; libQuery = ""; dField = ""; libLetter = dKey(g.term)[0].toUpperCase();
@@ -15622,7 +15631,7 @@ VIEWS.home = () => {
     { href: "#lab", g: "IX", t: "Shipyard", p: "Play philosophy: sail the Odyssey, run the trolley gauntlet, design a society behind the veil, out-trade Tit for Tat.", m: labs / LABK.length, s: labs + " of " + LABK.length + " games played" },
     { href: "#thinkers", g: "X", t: "Thinkers", p: "Every philosopher on the site, with a full page each: life, big ideas, myths, critics and where to start reading.", m: null, s: T.filter(t => TH[t.id] === t).length + " thinkers" },
     { href: "#works", g: "XI", t: "Works", p: "The archive: the books that moved the argument, what each one says, and exactly where to start reading.", m: null, s: WORKS.length + " works" + (Object.keys(S.books || {}).length ? " · " + Object.keys(S.books).length + " on your shelf" : "") },
-    { href: "#library", g: "XII", t: "Dictionary", p: "Every word philosophers use, in plain English, with where it comes from and what it is often confused with.", m: null, s: LIB.glossary.length + " terms · " + LIB.experiments.length + " thought experiments" },
+    { href: "#library", g: "XII", t: "Dictionary", p: "Every word philosophers use, in plain English, with where it comes from and what it is often confused with.", m: null, s: (dictReady() ? LIB.glossary.length : DICT_N).toLocaleString("en") + " terms · " + LIB.experiments.length + " thought experiments" },
     { href: "#quiz", g: "XIII", t: "Quiz", p: "Who held this idea, and who holds this view? Ten questions a round, every answer explained.", m: null, s: (S.quiz.best ? "Best: " + S.quiz.best + " of 10" : "Not played yet") + (quizStreak() > 1 ? " · daily round " + quizStreak() + " days in a row" : "") },
     { href: "#cards", g: "XIV", t: "Philosopher cards", p: "One card for every thinker, earned only by doing something with them. Rarer cards hide behind fewer doors.", m: null, s: Object.keys(S.pcards || {}).length + " of " + PC_IDS.length + " collected" }
   ];
@@ -16732,7 +16741,8 @@ const FIND = (() => {
   Object.values(VOY.islands || {}).forEach(i => add("Island", i.name, i.question + " · " + (i.cast || []).map(c => c.name).join(", "), "#voyage-" + i.id, i.placeName));
   T.forEach(t => { if (TH[t.id] === t) add("Thinker", t.name, (life(t) || t.era || "") + (t.tagline ? " · " + t.tagline : ""), "#thinker-" + t.id, (t.schools || []).join(" ") + " " + (t.tradition || "") + " " + (t.region || "")); });
   AG.questions.forEach(q => add("Debate", q.title, teaserF(q.intro), "#agora-" + q.id));
-  LIB.glossary.forEach(g => add("Term", g.term, g.def, "#dictionary-" + slugT(g.term), g.etym || ""));
+  const termsIn = new Set(); const addTerms = () => LIB.glossary.forEach(g => { if (termsIn.has(g.term)) return; termsIn.add(g.term); add("Term", g.term, g.def, "#dictionary-" + slugT(g.term), g.etym || ""); });
+  addTerms();
   (window.ATLAS_WORKS || []).forEach(w => add("Work", w.title, (w.author && TH[w.author] ? TH[w.author].name : w.authorName || "") + " · " + yrTxt(w.year), "#works-" + w.id, (w.original || "") + " " + (w.authorName || "")));
   LIB.experiments.forEach(x => add("Experiment", x.name, x.source ? String(x.source).split(",")[0] : "", "#experiment-" + x.id, x.setup || ""));
   function teaserF(s) { s = String(s || ""); return s.length > 110 ? s.slice(0, 108).replace(/\s+\S*$/, "") + "…" : s; }
@@ -16778,7 +16788,7 @@ const FIND = (() => {
     if ((e.key === "k" || e.key === "K") && (e.metaKey || e.ctrlKey) && !e.altKey) { e.preventDefault(); box && !box.hidden ? close(true) : open(); return; }
     if (e.key === "/" && !e.metaKey && !e.ctrlKey && !e.altKey && !(e.target.closest && e.target.closest("input,textarea,select,[contenteditable]")) && (!box || box.hidden) && $("#modal").hidden) { e.preventDefault(); open(); } });
   const b = $("#findBtn"); if (b) b.addEventListener("click", open);
-  return { open, close, search };
+  return { open, close, search, addTerms };
 })();
 // Stall guard: where the image server is blocked (e.g. Wikimedia in mainland China) requests hang instead of failing,
 // so onerror never fires and frames stay blank. After 12 s, treat a still-pending remote picture as failed.
@@ -16794,7 +16804,7 @@ initCaps();
 // prefetch the logbook when the browser is idle, five seconds after the first paint, so My Positions rarely waits
 setTimeout(() => (window.requestIdleCallback || (f => setTimeout(f, 1)))(() => lbLoad().catch(() => { })), 5000);
 // a small bridge for add-on modules (js/*.js), which load after this script and cannot see its closure
-window.PHILO = { need, pxLoad, VIEWS, ACT, save, render, esc, $, $$, labShell, route, ROUTE_ALIAS, TH, LIB, WORKS, WK, AG, AGQ, CARDS, QM, C, SEC, EX, thinkerChip, nameOf, slugT, LABK,
+window.PHILO = { need, pxLoad, dictLoad, VIEWS, ACT, save, render, esc, $, $$, labShell, route, ROUTE_ALIAS, TH, LIB, WORKS, WK, AG, AGQ, CARDS, QM, C, SEC, EX, thinkerChip, nameOf, slugT, LABK,
   get S() { return S; }, get after() { return after; }, toast: (...a) => toast(...a),
   get openDrawer() { return typeof openDrawer !== "undefined" ? openDrawer : undefined; },
   get rich() { return typeof rich !== "undefined" ? rich : undefined; },

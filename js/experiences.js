@@ -67,7 +67,8 @@
   function life(t) { if (!t || t.born == null) return ""; if (t.died == null) return "born " + yr(t.born, t.approximate); return yr(t.born, t.approximate) + " – " + yr(t.died, t.approximate && t.died < 1500); }
   const fame = t => (CORE.has(t.id) ? 100 : 0) + Object.keys(t.positions || {}).length;
   const slugT = s => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
-  const GSET = new Set(GLOSS.map(g => slugT(g.term)));
+  let GSET_ = null, GSET_N = 0; // rebuilt once the full dictionary has arrived
+  const gset = () => { const G = Array.isArray(W.ATLAS_DICT) && W.ATLAS_DICT.length ? W.ATLAS_DICT : GLOSS; if (!GSET_ || GSET_N !== G.length) { GSET_ = new Set(G.map(g => slugT(g.term))); GSET_N = G.length; } return GSET_; };
 
   /* -------------------------------------------------------------- icons */
   const svg = (body, cls, vb) => '<svg class="' + (cls || "xp-ic") + '" viewBox="' + (vb || "0 0 24 24") + '" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">' + body + "</svg>";
@@ -91,7 +92,7 @@
 
   /* ---------------------------------------------------------- link helpers */
   const chip = (href, label, icon, extra) => '<a class="xp-link' + (extra ? " " + extra : "") + '" href="' + esc(href) + '">' + (icon || "") + "<span>" + label + "</span></a>";
-  const dictChip = (term, label) => { const s = slugT(term); return GSET.has(s) ? chip("#library-" + s, esc(label || term), IC.book()) : ""; };
+  const dictChip = (term, label) => { const s = slugT(term); return gset().has(s) ? chip("#library-" + s, esc(label || term), IC.book()) : ""; };
   const thinkerChipX = (id, label) => TH[id] ? chip("#thinker-" + id, esc(label || TH[id].name), IC.person()) : "";
   const debateChip = id => { const q = AGQ.find(x => x.id === id); return q ? chip("#agora-" + id, "Debate: " + esc(q.title), IC.scales()) : ""; };
   const compassChip = (qid, label) => COMPASS_Q.some(q => q.id === qid) ? chip("#compass-" + qid, esc(label), IC.compass()) : "";
