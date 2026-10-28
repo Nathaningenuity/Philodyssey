@@ -2426,6 +2426,27 @@ html{background:var(--bg)}
 .pj-hint,.pj-shift{color:#AEB4C4;margin:10px 0 0}.pj-shift{font-size:1.1rem;color:#E2C27A}
 .pj-nav{display:flex;justify-content:space-between;gap:12px;max-width:1100px;width:100%;margin:0 auto}
 body:has(.pj) .top,body:has(.pj) .helm{display:none}
+.pc-tally{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}.pc-tot{display:grid;padding:10px 16px;border-radius:12px;background:var(--ink);color:var(--bg);min-width:110px}.pc-tot b{font-size:1.9rem;line-height:1;font-family:var(--font-display)}.pc-tot span{font-size:.8rem;opacity:.8}
+.pc-rt{display:grid;grid-template-columns:auto 1fr;column-gap:8px;padding:8px 14px;border-radius:12px;border:1px solid var(--line,#ddd);background:var(--card,#fff);align-items:center;min-width:112px}.pc-rt i{grid-row:span 2;width:12px;height:12px;border-radius:3px;transform:rotate(45deg);background:var(--pcr)}.pc-rt b{font-size:1rem}.pc-rt span{font-size:.75rem;color:var(--ink-3)}
+[data-r=common]{--pcr:#8a8f98;--pcr2:#c5c9d0}[data-r=uncommon]{--pcr:#3e8a4f;--pcr2:#9fd3a5}[data-r=rare]{--pcr:#2f62b8;--pcr2:#93b6f0}[data-r=epic]{--pcr:#7a3fb5;--pcr2:#cfa6f2}[data-r=legendary]{--pcr:#b8860b;--pcr2:#f6d77a}
+.pc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:16px}
+.pcard{position:relative;display:grid;grid-template-rows:auto 1fr auto;aspect-ratio:5/7.4;border-radius:14px;padding:7px;text-decoration:none;color:inherit;background:linear-gradient(150deg,var(--pcr2),var(--pcr) 55%,var(--pcr2));box-shadow:0 2px 8px rgba(0,0,0,.14);transition:transform .2s,box-shadow .2s;overflow:hidden}
+.pcard:hover{transform:translateY(-3px) rotate(-.6deg);box-shadow:0 10px 24px rgba(0,0,0,.22)}
+.pcard>*{position:relative;z-index:1}.pc-art{display:grid;place-items:center;aspect-ratio:1/.92;border-radius:9px 9px 4px 4px;background:radial-gradient(circle at 50% 40%,#fffaf0,#e9dfc8);overflow:hidden}
+.pc-art .pt{width:100%;height:100%;border-radius:0;font-size:2.2rem}.pc-art .pt img{width:100%;height:100%;object-fit:cover;object-position:50% 25%}
+.pc-body{display:grid;align-content:start;gap:3px;padding:8px 6px 4px;margin-top:5px;border-radius:4px;background:#fffdf7;color:#1d2433;min-height:0;overflow:hidden}.pc-body b{font-family:var(--font-display);font-size:1rem;line-height:1.15}
+.pc-meta{font-size:.7rem;color:#5d6472;line-height:1.25}.pc-tag{font-size:.74rem;line-height:1.3;color:#2e3442;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;font-style:italic}
+.pc-gem{justify-self:center;margin-top:6px;padding:1px 10px;border-radius:999px;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#fff;background:rgba(0,0,0,.28)}
+.pcard[data-r=legendary]::after,.pcard[data-r=epic]::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.55) 50%,transparent 65%);background-size:250% 100%;animation:pcShine 4.5s ease-in-out infinite}
+@keyframes pcShine{0%,60%{background-position:130% 0}100%{background-position:-60% 0}}
+.pcard.locked{background:repeating-linear-gradient(45deg,#d9d4c7 0 6px,#cfc9bb 6px 12px);box-shadow:none;border:2px dashed var(--pcr)}.pcard.locked .pc-art{background:#d6cfbf;position:relative}.pcard.locked .pc-art .pt{filter:grayscale(1) sepia(.5) blur(7px) opacity(.55);transform:scale(1.15)}.pcard.locked .pc-art .pt b{display:none}.pcard.locked .pc-q{position:absolute;inset:0;display:grid;place-items:center;font:700 3rem/1 var(--font-display);color:#fffaf0;opacity:.9;text-shadow:0 1px 6px rgba(0,0,0,.35)}.pcard.locked .pc-body{background:#f1ede3;color:#666}.pcard.locked .pc-gem{background:var(--pcr)}
+.pc-one{display:grid;grid-template-columns:minmax(200px,260px) 1fr;gap:28px;align-items:start}.pc-one .pcard{max-width:260px}@media (max-width:640px){.pc-one{grid-template-columns:1fr}.pc-one .pcard{max-width:220px;margin:auto}}
+.pc-ways{display:grid;gap:10px}.pc-way{display:grid;gap:6px;padding:12px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card)}.pc-way p{margin:0;color:var(--ink-2)}.pc-way.got{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 10%,var(--card))}.pc-way.got .eyebrow{color:var(--ok)}.pc-way>a{font-weight:600}
+.pc-chal{border:2px solid var(--pcr);border-radius:16px;padding:18px 20px;background:linear-gradient(135deg,color-mix(in srgb,var(--pcr2) 22%,transparent),transparent 60%)}.pc-chal-h .eyebrow{color:var(--pcr)}.pc-chal h2{margin:2px 0 6px}
+.pc-opts{display:grid;gap:8px;margin-top:10px}.pc-opt{text-align:left;padding:12px 14px;border-radius:10px;border:1px solid var(--line,#ccc);background:var(--card,#fff);color:inherit;font:inherit;cursor:pointer}.pc-opt:hover{border-color:var(--pcr)}.pc-opt.wrong{border-color:#b33;background:rgba(187,51,51,.1);text-decoration:line-through}
+.pcpop{position:fixed;left:50%;bottom:22px;z-index:90;display:flex;align-items:center;gap:12px;padding:10px 18px 10px 10px;border-radius:14px;text-decoration:none;color:#1d2433;background:#fffdf7;border:3px solid var(--pcr);box-shadow:0 12px 32px rgba(0,0,0,.3);transform:translate(-50%,160%);transition:transform .45s cubic-bezier(.2,1.4,.4,1)}.pcpop.in{transform:translate(-50%,0)}
+.pcpop .pt{width:52px;height:52px}.pcpop-tx{display:grid;line-height:1.25}.pcpop-tx i{font-style:normal;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--pcr);font-weight:700}.pcpop-tx b{font-family:var(--font-display);font-size:1.05rem}.pcpop-tx span{font-size:.78rem;color:#5d6472}
+@media print{.pc-chal,.pcpop{display:none}}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -10602,7 +10623,7 @@ window.ATLAS_EXTRAS = {
 </script>
 <script src="data/atlas-arguments.js"></script>
 <script src="data/atlas-profiles.js"></script>
-<script src="data/atlas-voyage.js"></script><script src="data/atlas-links.js"></script><script src="data/decks/index.js"></script><script src="data/atlas-images.js"></script><script src="data/atlas-images-th2.js"></script>
+<script src="data/atlas-voyage.js"></script><script src="data/atlas-links.js"></script><script src="data/decks/index.js"></script><script src="data/cards.js"></script><script src="data/atlas-images.js"></script><script src="data/atlas-images-th2.js"></script>
 <script>(function () {
 "use strict";
 
@@ -10930,7 +10951,7 @@ const ROUTE_ALIAS = { tours: "voyage", guided: "voyage", seminars: "seminar", di
 function route() { const h = decodeURIComponent(location.hash.slice(1)) || "home"; const i = h.indexOf("-"); const r = i < 0 ? { name: h, arg: "" } : { name: h.slice(0, i), arg: h.slice(i + 1) }; r.name = ROUTE_ALIAS[r.name] || r.name; return r; }
 // the five helm slots on phones; every other route lights "More"
 // the colour family each route belongs to (see the --c-* tokens)
-const SEC_OF = { project: "agora", tour: "voyage", quick: "compass", position: "compass", duel: "agora", thinker: "thinkers", dictionary: "library", experiment: "library", tide: "study", log: "study" };
+const SEC_OF = { cards: "thinkers", project: "agora", tour: "voyage", quick: "compass", position: "compass", duel: "agora", thinker: "thinkers", dictionary: "library", experiment: "library", tide: "study", log: "study" };
 function hudNow() {
   const set = (id, v) => { const e = document.getElementById(id); if (e) e.textContent = v; };
   try { set("hudStreak", typeof window.philoStreak === "function" ? window.philoStreak() : 0); } catch (e) { }
@@ -10968,11 +10989,11 @@ function renderNow(keepScroll) {
   const view = $("#view");
   const y = window.scrollY;
   view.innerHTML = fn(r.arg);
-  const TITLES = { home: "", voyage: "Voyage", compass: "Compass", agora: "Debates", codex: "My Positions", firmament: "Stargazing", stoa: "Timeline", lab: "Shipyard", library: "Dictionary", quiz: "Quiz", duel: "Duel", works: WK[r.arg] ? WK[r.arg].title : "Works", thinkers: "Thinkers", quick: "Quick Compass", seminar: r.arg && typeof SEM !== "undefined" && SEM["sem_" + r.arg.replace(/\.all$/, "")] ? SEM["sem_" + r.arg.replace(/\.all$/, "")].title : "Seminars", experiment: "Thought experiments", thinker: TH[r.arg] ? TH[r.arg].name : "Thinker" };
+  const TITLES = { home: "", cards: "Philosopher cards", voyage: "Voyage", compass: "Compass", agora: "Debates", codex: "My Positions", firmament: "Stargazing", stoa: "Timeline", lab: "Shipyard", library: "Dictionary", quiz: "Quiz", duel: "Duel", works: WK[r.arg] ? WK[r.arg].title : "Works", thinkers: "Thinkers", quick: "Quick Compass", seminar: r.arg && typeof SEM !== "undefined" && SEM["sem_" + r.arg.replace(/\.all$/, "")] ? SEM["sem_" + r.arg.replace(/\.all$/, "")].title : "Seminars", experiment: "Thought experiments", thinker: TH[r.arg] ? TH[r.arg].name : "Thinker" };
   const tt = r.name === "voyage" && r.arg && VOY.islands[r.arg] ? VOY.islands[r.arg].name : TITLES[r.name];
   document.title = tt ? tt + " · Philodyssey" : "Philodyssey: a voyage through philosophy";
   view.classList.toggle("flush", r.name === "home" || r.name === "voyage" || (r.name === "seminar" && !!r.arg && !/\.all$/.test(r.arg)) || r.name === "thinker" || (r.name === "works" && !!WK[r.arg]) || !VIEWS[r.name]);
-  { const lib = ["thinkers", "works", "library", "quiz", "thinker", "dictionary"].includes(r.name) || (innerWidth <= 1480 && r.name === "seminar") || (innerWidth <= 1180 && r.name === "stoa"); const b = $(".navlib-btn"); if (b) { b.classList.toggle("cur", lib); b.setAttribute("aria-expanded", "false"); } if ($(".navlib-menu")) navLibClose(false); }
+  { const lib = ["thinkers", "works", "library", "quiz", "thinker", "dictionary", "cards"].includes(r.name) || (innerWidth <= 1480 && r.name === "seminar") || (innerWidth <= 1180 && r.name === "stoa"); const b = $(".navlib-btn"); if (b) { b.classList.toggle("cur", lib); b.setAttribute("aria-expanded", "false"); } if ($(".navlib-menu")) navLibClose(false); }
   $$("#nav a, .top .mypos, .navlib-menu a").forEach(a => a.setAttribute("aria-current", a.getAttribute("href") === "#" + (r.name === "position" ? "compass" : r.name === "tour" ? "voyage" : r.name) ? "page" : "false"));
   { const slot = HELM_SLOT[r.name] || (r.name === "home" ? "" : "more"); $$(".helm [data-slot]").forEach(a => a.setAttribute("aria-current", a.dataset.slot === slot ? "page" : "false")); }
   document.body.classList.toggle("in-deck", !!view.querySelector("[data-deck]"));
@@ -10982,6 +11003,7 @@ function renderNow(keepScroll) {
   const nv = $("#nav"), cur = $('#nav a[aria-current="page"]');
   if (nv && cur && nv.scrollWidth > nv.clientWidth + 1) { const a = cur.getBoundingClientRect(), b = nv.getBoundingClientRect(); nv.scrollLeft += (a.left + a.width / 2) - (b.left + b.width / 2); }
   after.forEach(f => { try { f(); } catch (e) { console.error(e); } });
+  try { pcSync(); } catch (e) { console.error(e); }
   const key = r.name + "-" + r.arg;
   if (keepScroll) window.scrollTo(0, y); else if (key !== lastRoute) window.scrollTo(0, 0);
   lastRoute = key;
@@ -11094,7 +11116,7 @@ ACT.closeAndGo = el => { ACT.closeDrawer(); location.hash = el.getAttribute("hre
 // phones: the helm's "More" opens every other section as a sheet of emblems
 ACT.helmMore = () => {
   const L = [["#seminar", "amph", "Seminars", "Discussion decks"], ["#firmament", "astrolabe", "Stargazing", "The sky of thinkers"], ["#stoa", "columns", "Timeline", "2,600 years, era by era"], ["#lab", "slipway", "Shipyard", "Play thought experiments"],
-    ["#thinkers", "bust", "Thinkers", "Every philosopher"], ["#works", "books", "Works", "The archive of books"], ["#library", "quill", "Dictionary", "Words philosophers use"], ["#quiz", "light", "Quiz", "Test yourself"], ["#duel", "scales", "Duel", "Two thinkers in the ring"]]
+    ["#thinkers", "bust", "Thinkers", "Every philosopher"], ["#works", "books", "Works", "The archive of books"], ["#library", "quill", "Dictionary", "Words philosophers use"], ["#quiz", "light", "Quiz", "Test yourself"], ["#cards", "bust", "Cards", "Your philosopher deck"], ["#duel", "scales", "Duel", "Two thinkers in the ring"]]
     .concat(VIEWS.tide ? [["#tide", "tide", "The Tide", "Spaced review"]] : []).concat(VIEWS.log ? [["#log", "logbook", "Captain’s log", "Your progress"]] : []);
   const cur = "#" + route().name;
   openDrawer('<div class="stack" style="--g:14px"><span class="eyebrow">All sections</span><h2>Where to next?</h2><nav class="helm-more" aria-label="All sections">' + L.map(([h, e, t, d]) => '<a href="' + h + '" data-act="closeAndGo"' + (h === cur ? ' aria-current="page"' : "") + ">" + em(e) + "<b>" + t + "</b><small>" + d + "</small></a>").join("") + "</nav></div>");
@@ -13875,7 +13897,8 @@ function thinkerPage(id) {
       (inspired.length ? '<div><span class="eyebrow">Inspired</span><div class="row" style="--g:6px">' + inspired.map(z => '<a class="chip" href="#thinker-' + z + '">' + esc(nameOf(z)) + "</a>").join("") + "</div></div>" : "") +
       (opp.length ? '<div><span class="eyebrow">Argued against</span><div class="row" style="--g:6px">' + opp.map(z => '<a class="chip crack" href="#thinker-' + z + '">' + esc(nameOf(z)) + "</a>").join("") + "</div></div>" : "") + "</div></section>"; }
   const toc = sec.length > 2 ? '<nav class="tp-toc" aria-label="On this page">' + sec.map(([k, n]) => '<a href="#thinker-' + esc(id) + '" data-act="tpJump" data-k="' + k + '">' + n + "</a>").join("") + "</nav>" : "";
-  return h + '<div class="wrap">' + toc + '<div class="tp-grid"><div class="tp-main">' + main + web + '</div><aside class="tp-side">' + side + "</aside></div></div>";
+  if (PC[id] && t.tagline) sec.push(["card", "Card"]);
+  return h + '<div class="wrap">' + toc + '<div class="tp-grid"><div class="tp-main">' + main + web + pcChallengeHTML(id) + '</div><aside class="tp-side">' + side + "</aside></div></div>";
 }
 // "You and this thinker": how far you agree, straight under the name (reuses the page's one matchOne result)
 function tpYouHTML(t, mine) {
@@ -14967,6 +14990,78 @@ function bottleRound() { const P = bottlePool().slice(), out = [], used = new Se
     for (const src of [near, others]) while (pick.length < 3 && src.length) { const x = src.splice(Math.floor(Math.random() * src.length), 1)[0]; if (!names.has(x.c.name)) { names.add(x.c.name); pick.push(x.c); } }
     const opts = [q.c, ...pick].sort(() => Math.random() - .5); out.push({ q, opts: opts.map(c => c.name), ans: opts.indexOf(q.c) }); }
   return out; }
+/* ---- philosopher cards: one per thinker, earned only by doing something with that thinker
+   (charting an island they appear on, accepting their argument, reading their book, finishing a tour that features them,
+   holding their position, naming them in the Quiz or the bottle game, or winning the challenge on their page).
+   Rarity follows how few ways there are to meet them: data/cards.js, built by tools/build-cards.js */
+const PC = window.ATLAS_CARDS || {}, PC_IDS = Object.keys(PC).filter(id => TH[id]);
+const PC_R = ["legendary", "epic", "rare", "uncommon", "common"], PC_RN = { legendary: "Legendary", epic: "Epic", rare: "Rare", uncommon: "Uncommon", common: "Common" };
+const pcBottle = id => bottlePool().some(q => q.c.id === id);
+function pcWays(id) { const c = PC[id] || {}, out = [], tc = tourState(), lb = (S.lb && S.lb.q) || {};
+  (c.isl || []).forEach(i => { if (VOY.islands[i]) out.push({ k: "isl", got: islDone(i), href: "#voyage-" + i, t: "Chart the island " + VOY.islands[i].name }); });
+  (c.arg || []).forEach(a => { const C = CARDS[a]; if (C) out.push({ k: "arg", got: S.cards[a] === "accept", href: "#agora-" + C.q, t: "Accept the argument “" + C.title + "”" }); });
+  (c.book || []).forEach(b => { if (WK[b]) out.push({ k: "book", got: (S.books || {})[b] === "read", href: "#works-" + b, t: "Mark " + WK[b].title + " as read" }); });
+  (c.deck || []).forEach(d => { const D = DECKIX.find(x => x.id === d); if (D) out.push({ k: "deck", got: !!(tc[d] || {}).done, href: "#tour-" + d, t: "Finish the tour " + D.title }); });
+  (c.hold || []).forEach(h => { const [q, o] = h.split("|"); out.push({ k: "hold", got: (lb[q] || {}).hold === o, href: "#codex", t: "Hold their position in My Positions" + (SHORT[q] ? " (" + SHORT[q] + ")" : "") }); });
+  if (c.quiz) out.push({ k: "quiz", got: !!((S.quiz || {}).got || {})[id], href: "#quiz", t: "Name them correctly in the Quiz" });
+  if (pcBottle(id)) out.push({ k: "bottle", got: !!(S.bottleHits || {})[id], href: "#lab-bottle", t: "Spot their words in Message in a Bottle" });
+  out.push({ k: "won", got: !!(S.cardWon || {})[id], href: "#thinker-" + id, t: "Win the challenge on their page" });
+  // one entry per kind of hold is enough on the card back
+  return out.filter((w, i) => w.k !== "hold" || out.findIndex(z => z.k === "hold") === i || w.got); }
+const PC_KN = { isl: ["Voyage", "Chart an island they sail on"], arg: ["Debates", "Accept one of their arguments"], book: ["Works", "Mark one of their books as read"], deck: ["Tours", "Finish a tour that features them"], hold: ["My Positions", "Hold one of their positions"], quiz: ["Quiz", "Name them correctly in the Quiz"], bottle: ["Shipyard", "Spot their words in Message in a Bottle"], won: ["Their page", "Win the challenge on their page"] };
+function pcWaysHTML(ways) { const g = {}; ways.forEach(w => (g[w.k] = g[w.k] || []).push(w));
+  return '<div class="pc-ways">' + Object.keys(g).map(k => { const L = g[k], got = L.some(w => w.got), one = L.length === 1 && ["quiz", "bottle", "won", "hold"].includes(k);
+    return '<div class="pc-way' + (got ? " got" : "") + '"><span class="eyebrow">' + (got ? "✓ " : "") + PC_KN[k][0] + "</span>" + (one ? '<a href="' + esc(L[0].href) + '">' + esc(PC_KN[k][1]) + " →</a>" :
+      "<p>" + esc(PC_KN[k][1]) + ':</p><div class="row" style="--g:6px;flex-wrap:wrap">' + L.map(w => '<a class="chip' + (w.got ? " on" : "") + '" href="' + esc(w.href) + '">' + esc(w.t.replace(/^(Chart the island|Accept the argument|Mark|Finish the tour) /, "").replace(/ as read$/, "").replace(/^“|”$/g, "")) + "</a>").join("") + "</div>") + "</div>"; }).join("") + "</div>"; }
+function pcEarned(id) { return pcWays(id).some(w => w.got); }
+function pcSync() { if (!PC_IDS.length) return; const first = !S.pcards; S.pcards = S.pcards || {};
+  const fresh = PC_IDS.filter(id => !S.pcards[id] && pcEarned(id));
+  if (!fresh.length) return; const now = Date.now(); fresh.forEach(id => { S.pcards[id] = now; }); save();
+  if (first && fresh.length > 1) return pcPop(null, fresh.length);
+  fresh.sort((a, b) => PC_R.indexOf(PC[a].r) - PC_R.indexOf(PC[b].r)); pcPop(fresh[0], fresh.length); }
+let pcPopT;
+function pcPop(id, n) { let el = $("#pcpop"); if (!el) { el = document.createElement("a"); el.id = "pcpop"; el.className = "pcpop"; el.href = "#cards"; el.setAttribute("role", "status"); document.body.appendChild(el); }
+  if (!id) el.innerHTML = '<span class="pcpop-tx"><b>You hold ' + n + " philosopher cards</b><span>Earned by what you have already done. Open your deck →</span></span>", el.dataset.r = "rare";
+  else { const t = TH[id], r = PC[id].r; el.dataset.r = r;
+    el.innerHTML = portraitHTML(Object.assign({ tid: id }, castOf(id) || { name: t.name }), "pcpop-pt") + '<span class="pcpop-tx"><i>New ' + PC_RN[r] + " card" + (n > 1 ? " · +" + (n - 1) + " more" : "") + "</i><b>" + esc(t.name) + "</b><span>Open your deck →</span></span>"; }
+  el.classList.remove("in"); void el.offsetWidth; el.classList.add("in"); clearTimeout(pcPopT); pcPopT = setTimeout(() => el.classList.remove("in"), 4200); }
+function pcCardHTML(id, big) { const t = TH[id], c = PC[id], got = S.pcards && S.pcards[id], tr = tradOf(t);
+  if (!got) return '<a class="pcard locked" data-r="' + c.r + '" href="#cards-' + esc(id) + '"><span class="pc-art">' + portraitHTML(Object.assign({ tid: id }, castOf(id) || { name: t.name }), "pc-pt") + '<span class="pc-q">?</span></span><span class="pc-body"><b>' + esc(t.name) + '</b><span class="pc-meta">' + esc(life(t)) + '</span></span><span class="pc-gem">' + PC_RN[c.r] + "</span></a>";
+  return '<a class="pcard" data-r="' + c.r + '" href="' + (big ? "#thinker-" : "#cards-") + esc(id) + '"><span class="pc-art">' + portraitHTML(Object.assign({ tid: id }, castOf(id) || { name: t.name }), "pc-pt") + '</span><span class="pc-body"><b>' + esc(t.name) + '</b><span class="pc-meta">' + esc([life(t), tr ? tr.name : ""].filter(Boolean).join(" · ")) + "</span>" + (t.tagline ? '<span class="pc-tag">' + esc(t.tagline) + "</span>" : "") + '</span><span class="pc-gem">' + PC_RN[c.r] + "</span></a>"; }
+VIEWS.cards = arg => {
+  const own = S.pcards || {}, cnt = {}, tot = {}; PC_R.forEach(r => { cnt[r] = 0; tot[r] = 0; });
+  PC_IDS.forEach(id => { tot[PC[id].r]++; if (own[id]) cnt[PC[id].r]++; });
+  const n = PC_IDS.filter(id => own[id]).length;
+  if (arg && PC[arg] && TH[arg]) { const t = TH[arg], ways = pcWays(arg);
+    return '<div class="wrap stack" style="--g:22px"><a class="linkish wk-back" href="#cards">← Your deck</a><div class="pc-one">' + pcCardHTML(arg, true) +
+      '<div class="stack" style="--g:12px"><span class="eyebrow">' + PC_RN[PC[arg].r] + " card</span><h1>" + esc(t.name) + "</h1>" +
+      (own[arg] ? '<p class="muted">In your deck since ' + new Date(own[arg]).toLocaleDateString(undefined, { day: "numeric", month: "long", year: "numeric" }) + ".</p>" : '<p class="muted">Not in your deck yet. Do any one of these to earn it:</p>') +
+      pcWaysHTML(ways) + '<div><a class="btn small ghost" href="#thinker-' + esc(arg) + '">Read about ' + esc(shortName(t)) + " →</a></div></div></div></div>"; }
+  const F = S.pcF || "all";
+  const ids = PC_IDS.filter(id => F === "all" || (F === "got" ? own[id] : F === "locked" ? !own[id] : PC[id].r === F))
+    .sort((a, b) => (!!own[b] - !!own[a]) || PC_R.indexOf(PC[a].r) - PC_R.indexOf(PC[b].r) || ((TH[a].born ?? 0) - (TH[b].born ?? 0)));
+  const chip = (k, l) => '<button class="chip' + (F === k ? " on" : "") + '" data-act="pcFilter" data-k="' + k + '" aria-pressed="' + (F === k) + '">' + l + "</button>";
+  return '<div class="wrap stack" style="--g:22px">' + pageHead("bust", "Philosopher cards", "Your deck of thinkers", "One card for every philosopher on the site. You can’t buy or flip for them: each one is earned by doing something with that thinker. Chart an island they sail on, accept their argument, read their book, finish a tour, hold their view, or name them in a game. The rarer the card, the fewer the ways to meet them.") +
+    '<div class="pc-tally">' + '<div class="pc-tot"><b>' + n + "</b><span>of " + PC_IDS.length + " cards</span></div>" + PC_R.map(r => '<div class="pc-rt" data-r="' + r + '"><i></i><b>' + cnt[r] + " / " + tot[r] + "</b><span>" + PC_RN[r] + "</span></div>").join("") + "</div>" +
+    '<div class="row" style="--g:6px;flex-wrap:wrap">' + chip("all", "All") + chip("got", "Earned") + chip("locked", "Still to find") + PC_R.map(r => chip(r, PC_RN[r])).join("") + "</div>" +
+    (n ? "" : '<p class="muted">Your deck is empty. The quickest first card: open any thinker’s page and win the challenge at the bottom, or chart your first island on the <a href="#voyage">Voyage</a>.</p>') +
+    '<div class="pc-grid">' + ids.map(id => pcCardHTML(id)).join("") + "</div></div>"; };
+ACT.pcFilter = el => { S.pcF = el.dataset.k; save(); render(true); };
+// the challenge on each thinker page: which of three lines is theirs?
+function pcSeed(s) { let h = 2166136261; for (const ch of s) h = Math.imul(h ^ ch.charCodeAt(0), 16777619); return () => ((h = Math.imul(h ^ (h >>> 13), 1597334677)) >>> 0) / 4294967296; }
+function pcChallengeHTML(id) { const t = TH[id]; if (!PC[id] || !t || !t.tagline) return "";
+  const won = (S.cardWon || {})[id], own = S.pcards && S.pcards[id], tries = (S.pcTry || {})[id] || 0;
+  const head = '<section id="tp-card" class="tp-sec pc-chal" data-r="' + PC[id].r + '"><div class="pc-chal-h"><span class="eyebrow">' + PC_RN[PC[id].r] + " card</span><h2>" + (own || won ? "In your deck" : "Win " + esc(shortName(t)) + "’s card") + "</h2></div>";
+  if (won || own) return head + '<p class="muted">' + (won ? "You won this card here." : "You earned this card already.") + ' <a href="#cards-' + esc(id) + '">See it in your deck →</a></p></section>';
+  const rnd = pcSeed(id + ":" + tries), nm = new RegExp(String(t.name).split(/\s+/).filter(w => w.length > 3).map(w => w.replace(/[^\w]/g, "")).filter(Boolean).join("|") || "^$", "i");
+  const pool = T.filter(z => TH[z.id] === z && z.id !== id && z.tagline && !nm.test(z.tagline) && PC[z.id]);
+  const opts = [{ id, line: t.tagline }]; while (opts.length < 3 && pool.length) { const z = pool.splice(Math.floor(rnd() * pool.length), 1)[0]; opts.push({ id: z.id, line: z.tagline }); }
+  opts.sort(() => rnd() - .5);
+  return head + '<p class="muted">Which of these sums up ' + esc(shortName(t)) + "? Read the page first if you like. Get it right to add the card to your deck.</p>" +
+    '<div class="pc-opts">' + opts.map(o => '<button class="pc-opt" data-act="pcAnswer" data-id="' + esc(id) + '" data-o="' + esc(o.id) + '">' + esc(o.line.replace(new RegExp(String(TH[o.id].name).split(/\s+/).pop(), "g"), "…")) + "</button>").join("") + "</div></section>"; }
+ACT.pcAnswer = el => { const id = el.dataset.id;
+  if (el.dataset.o === id) { S.cardWon = S.cardWon || {}; S.cardWon[id] = Date.now(); save(); render(true); }
+  else { S.pcTry = S.pcTry || {}; S.pcTry[id] = (S.pcTry[id] || 0) + 1; save(); el.classList.add("wrong"); el.disabled = true; toast("Not that one: that line belongs to " + nameOf(el.dataset.o) + ". Try again."); setTimeout(() => render(true), 1400); } };
 function labBottle() {
   const B = S.bottle = S.bottle || {}; if (!B.round || B.i == null) { B.round = bottleRound(); B.i = 0; B.score = 0; B.pick = null; }
   const head = pageHead("ship", "Message in a bottle", "Who wrote this?", "A line of philosophy has washed ashore. Pick its author from four faces; each answer opens the island where it comes from.");
@@ -14979,7 +15074,7 @@ function labBottle() {
     '<div class="mb-opts">' + R.opts.map((n, j) => '<button class="mb-opt' + (done && j === R.ans ? " right" : "") + (done && j === B.pick && j !== R.ans ? " wrong" : "") + '" data-act="mbPick" data-j="' + j + '"' + (done ? " disabled" : "") + ">" + portraitHTML(castOf(n), "pt-m") + "<span>" + esc(n) + "</span></button>").join("") + "</div>" +
     (done ? '<div class="mb-after"><p><b>' + (B.pick === R.ans ? "Right." : "Not quite.") + "</b> This washed up from <b>" + esc(R.q.I.name) + "</b>, Sea " + ROMANV[R.q.I.unit] + ': <i>' + esc(R.q.I.question || "") + '</i></p><div class="row"><a class="btn ghost" href="#voyage-' + esc(R.q.I.id) + '">Sail to the island</a><button class="btn primary" data-act="mbNext">Next bottle →</button></div></div>' : "") + "</div></div>";
 }
-ACT.mbPick = el => { const B = S.bottle; if (B.pick != null) return; B.pick = +el.dataset.j; if (B.pick === B.round[B.i].ans) B.score++; save(); render(true); };
+ACT.mbPick = el => { const B = S.bottle; if (B.pick != null) return; B.pick = +el.dataset.j; if (B.pick === B.round[B.i].ans) { B.score++; const c = B.round[B.i].q.c; if (c.id) { S.bottleHits = S.bottleHits || {}; S.bottleHits[c.id] = 1; } } save(); render(true); };
 ACT.mbNext = () => { const B = S.bottle; B.i++; B.pick = null; save(); render(true); };
 ACT.mbAgain = () => { const B = S.bottle; B.round = null; B.i = null; save(); render(); };
 VIEWS.lab = arg => {
@@ -15304,7 +15399,7 @@ ACT.quizStart = el => {
 };
 ACT.quizRetry = () => { if (!QZ) return; const items = QZ.items.filter(it => it.got === false).map(it => Object.assign({}, it, { got: undefined, picked: undefined, opts: shuffle(it.opts) })); QZ = { mode: QZ.mode, items, i: 0, score: 0, picked: null, retry: true }; render(false); };
 ACT.quizHome = () => { QZ = null; render(false); };
-ACT.quizPick = el => { const it = QZ.items[QZ.i]; if (QZ.picked) return; QZ.picked = el.dataset.id; it.picked = QZ.picked; it.got = QZ.picked === it.answer; if (it.got) QZ.score++; S.quiz.met = S.quiz.met || {}; S.quiz.met[it.answer] = 1; save(); render(true); };
+ACT.quizPick = el => { const it = QZ.items[QZ.i]; if (QZ.picked) return; QZ.picked = el.dataset.id; it.picked = QZ.picked; it.got = QZ.picked === it.answer; if (it.got) { QZ.score++; S.quiz.got = S.quiz.got || {}; S.quiz.got[it.answer] = 1; } S.quiz.met = S.quiz.met || {}; S.quiz.met[it.answer] = 1; save(); render(true); };
 ACT.quizNext = () => {
   QZ.i++; QZ.picked = null;
   if (QZ.mode === "daily") {
@@ -15482,7 +15577,8 @@ VIEWS.home = () => {
     { href: "#thinkers", g: "X", t: "Thinkers", p: "Every philosopher on the site, with a full page each: life, big ideas, myths, critics and where to start reading.", m: null, s: T.filter(t => TH[t.id] === t).length + " thinkers" },
     { href: "#works", g: "XI", t: "Works", p: "The archive: the books that moved the argument, what each one says, and exactly where to start reading.", m: null, s: WORKS.length + " works" + (Object.keys(S.books || {}).length ? " · " + Object.keys(S.books).length + " on your shelf" : "") },
     { href: "#library", g: "XII", t: "Dictionary", p: "Every word philosophers use, in plain English, with where it comes from and what it is often confused with.", m: null, s: LIB.glossary.length + " terms · " + LIB.experiments.length + " thought experiments" },
-    { href: "#quiz", g: "XIII", t: "Quiz", p: "Who held this idea, and who holds this view? Ten questions a round, every answer explained.", m: null, s: (S.quiz.best ? "Best: " + S.quiz.best + " of 10" : "Not played yet") + (quizStreak() > 1 ? " · daily round " + quizStreak() + " days in a row" : "") }
+    { href: "#quiz", g: "XIII", t: "Quiz", p: "Who held this idea, and who holds this view? Ten questions a round, every answer explained.", m: null, s: (S.quiz.best ? "Best: " + S.quiz.best + " of 10" : "Not played yet") + (quizStreak() > 1 ? " · daily round " + quizStreak() + " days in a row" : "") },
+    { href: "#cards", g: "XIV", t: "Philosopher cards", p: "One card for every thinker, earned only by doing something with them. Rarer cards hide behind fewer doors.", m: null, s: Object.keys(S.pcards || {}).length + " of " + PC_IDS.length + " collected" }
   ];
   const steps = [
     { n: 1, href: "#voyage", t: "Land on your first island", d: "A quarter-hour lesson: the first Greek question, with quick checks.", done: Object.keys(voyState().done || {}).length > 0, s: Object.keys(voyState().done || {}).length ? Object.keys(voyState().done).length + " charted" : "Start here" },
