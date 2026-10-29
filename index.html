@@ -2485,6 +2485,12 @@ button.on .faint,button[aria-pressed="true"] .faint,.chip.on .faint{color:rgba(2
 .ptype{display:grid;gap:12px;padding:22px 24px;border-radius:18px;border:1px solid var(--line);background:radial-gradient(circle at 0 0,color-mix(in srgb,var(--c-compass) 14%,var(--card)),var(--card) 60%)}.ptype h2{margin:0;font-family:var(--font-display);font-size:clamp(1.4rem,3vw,2rem);line-height:1.15}
 .pt-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}.pt-slot{display:grid;gap:2px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--card);text-decoration:none;color:inherit}.pt-slot:hover{border-color:var(--c-compass)}.pt-slot b{font-family:var(--font-display);font-size:1.02rem;line-height:1.2}.pt-slot small{color:var(--ink-3);font-size:.78rem}.pt-slot.locked{border-style:dashed;background:transparent}.pt-slot.locked b{color:var(--ink-3)}
 .sr-sum{font-family:var(--font-read);font-size:1.12rem;line-height:1.55;color:var(--ink-2);max-width:62ch;margin:4px 0 6px}
+.user-lines line{stroke:#FFD98A;stroke-opacity:.85;stroke-linecap:round;filter:drop-shadow(0 0 3px rgba(255,217,138,.6))}.sky.drawing .user-lines line{cursor:pointer}.sky.drawing .user-lines line:hover{stroke:#ff9b8a}.user-rubber{stroke:#FFD98A;stroke-opacity:.55;stroke-dasharray:4 4;pointer-events:none}.pen-ring{fill:none;stroke:#FFD98A;pointer-events:none;animation:penPulse 1.4s ease-in-out infinite}@keyframes penPulse{50%{stroke-opacity:.35}}
+.sky.drawing svg{cursor:crosshair}.sky.drawing .star{cursor:copy}
+.sky .sky-panel.sky-drawbar{left:16px!important;right:auto!important;transform:none!important;bottom:56px;top:auto;max-width:min(380px,calc(100% - 90px));width:auto}.sky-drawbar p{margin:4px 0 8px;font-size:.88rem}
+.sky:fullscreen,.sky.sky-full{height:100vh!important;max-height:none;border-radius:0;width:100vw}.sky.sky-full{position:fixed;inset:0;z-index:200}.sky:fullscreen .sky-legend,.sky.sky-full .sky-legend{position:absolute;bottom:10px;left:16px;right:80px;transform:none;max-width:none;flex-wrap:wrap;justify-content:center}
+.sky-story.autorun::after,#skyStory.autorun::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:#E8B04A;transform-origin:0 50%;animation:autoBar var(--auto) linear forwards}@keyframes autoBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}#skyStory{position:absolute}
+.ss-auto.on{background:#E8B04A;color:#1F1A0E}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -13883,6 +13889,43 @@ function skyConstOf(t) {
 }
 // Star stories: guided voyages across the sky, one idea handed from star to star
 const SKY_STORIES = [
+  { id: "west", title: "The Western tradition", sub: "Socrates to today in 36 stars: the long thread, unbroken", long: true, stops: [
+    ["socrates", "Athens, about 400 BCE. Socrates writes nothing and asks everything: what is justice, what is courage? The thread of Western philosophy starts with a man who said he knew only that he knew nothing."],
+    ["plato", "Plato turns his teacher’s conversations into dialogues and founds the Academy. Real knowledge, he argues, is of unchanging Forms that the senses only shadow."],
+    ["aristotle", "Aristotle spends twenty years at the Academy, then brings the Forms down to earth. Logic, biology, ethics, politics: he maps nearly every field we still teach."],
+    ["epicurus", "After Alexander the Great, philosophy becomes a way to live. Epicurus: death is nothing to us, and a simple life free of fear is the happy one."],
+    ["zeno_citium", "Zeno of Citium teaches from a painted porch, the Stoa: virtue is the only good, and we control our judgements, not the world."],
+    ["marcus_aurelius", "Five centuries on, a Roman emperor writes Stoic notes to himself in his tent on the Danube frontier. We call them the Meditations."],
+    ["plotinus", "Plotinus reworks Plato into a ladder of being, from the One down to matter. Through him Plato reaches the Christian world."],
+    ["augustine", "Augustine, steeped in Plotinus, asks what time is, why we do evil and how the will can be free. Faith seeking understanding begins here."],
+    ["boethius", "Awaiting execution in 524, Boethius writes The Consolation of Philosophy and translates Aristotle’s logic, which carries the Middle Ages."],
+    ["anselm", "Anselm tries to prove God exists from the very idea of God: that than which nothing greater can be thought."],
+    ["aquinas", "Aristotle returns to Latin Europe through Arabic scholars. Aquinas fuses him with Christian theology in the Summa Theologiae."],
+    ["ockham", "Ockham cuts back: do not multiply entities beyond necessity. Universals are names, not things, and God’s will is free of reason’s rules."],
+    ["machiavelli", "The Renaissance looks at power as it is. Machiavelli advises princes on how to keep a state, not how to be good."],
+    ["montaigne", "Montaigne retreats to his tower and invents the essay: what do I know? Doubt becomes a way of looking honestly at oneself."],
+    ["descartes", "Descartes doubts everything that can be doubted and finds one certainty: I think, therefore I am. Modern philosophy starts from the self."],
+    ["hobbes", "Hobbes builds politics like geometry from fear: without a sovereign, life is solitary, poor, nasty, brutish and short."],
+    ["spinoza", "Spinoza: one substance, God or Nature, and freedom lies in understanding the necessity of everything that happens."],
+    ["locke", "Locke: the mind begins as a blank slate written on by experience, and government rests on the consent of the governed."],
+    ["leibniz", "Leibniz answers Locke point by point, invents calculus alongside Newton, and argues this is the best of all possible worlds."],
+    ["hume", "Hume follows experience to the end: we never see causes, only habits of expectation. Reason is the slave of the passions."],
+    ["kant", "Hume wakes Kant from his “dogmatic slumber”. His answer: the mind shapes experience, and morality is the law reason gives itself."],
+    ["hegel", "Hegel sets Kant in motion: history is reason unfolding through conflict, each stage overturned and preserved by the next."],
+    ["mill", "Mill refines utilitarianism and defends liberty: the only reason to restrain someone against their will is to prevent harm to others."],
+    ["marx", "Marx turns Hegel upside down: material conditions, not ideas, drive history. Philosophers have interpreted the world; the point is to change it."],
+    ["kierkegaard", "Kierkegaard rebels against Hegel’s system: truth is subjectivity, and faith is a leap no argument can make for you."],
+    ["nietzsche", "Nietzsche announces that God is dead and asks what values can survive it. Become who you are."],
+    ["frege", "Frege invents modern logic and asks what meaning is. A new tradition, analytic philosophy, grows from his work."],
+    ["russell", "Russell turns Frege’s logic on philosophy’s old problems, from numbers to the meaning of “the present king of France”."],
+    ["wittgenstein", "Wittgenstein first pictures language as a mirror of facts, then tears that up: the meaning of a word is its use."],
+    ["heidegger", "On the other branch of the river, Heidegger asks what it means to be at all, starting from beings who live toward death."],
+    ["sartre", "Sartre: existence precedes essence. No nature is given in advance, so we are condemned to be free."],
+    ["beauvoir", "Beauvoir turns existentialism on gender: one is not born, but rather becomes, a woman."],
+    ["quine", "Quine dissolves the old wall between truths of meaning and truths of fact; knowledge meets experience as a whole web."],
+    ["rawls", "Rawls revives political philosophy in 1971: choose society’s rules behind a veil of ignorance, not knowing who you will be."],
+    ["parfit", "Parfit asks what matters in survival and in our duties to future people, and concludes that personal identity is not what matters."],
+    ["singer", "Singer brings the thread to today’s arguments: animals, global poverty and how much we owe strangers. The questions Socrates asked in the market are still open."] ] },
   { id: "chain", title: "The Socratic chain", sub: "How one Athenian’s questions reached a medieval friar", stops: [
     ["socrates", "Socrates wrote nothing. He questioned Athenians about justice and courage until their confident answers fell apart."],
     ["plato", "His pupil Plato turned those conversations into dialogues and founded the Academy, betting that true knowledge is of unchanging Forms."],
@@ -14038,7 +14081,7 @@ VIEWS.firmament = (arg) => {
   const yp = skyYourPath(), ch = chartedStars();
   return '<div class="wrap stack" style="--g:16px"><header class="page-head">' + em("astrolabe") + '<span class="eyebrow">Stargazing</span><h1>The night sky of philosophy</h1><p class="lede">Each star is a thinker, and each tradition a constellation. Drag and zoom to explore; point at or tap a star to see who it learned from and argued with. Try a <button class="linkbtn" data-act="skyOpen" data-w="skyStories">Story</button>, watch history unfold <button class="linkbtn" data-act="skyOpen" data-w="skyTime">Through time</button>, test yourself with <button class="linkbtn" data-act="skyOpen" data-w="skyGame">Name the stars</button>, or <button class="linkbtn" data-act="skyOpen" data-w="skyTrace">trace a lineage</button> between any two thinkers.</p></header>' +
     '<div class="sky" id="sky"><div class="sky-tools"><input type="search" id="skySearch" placeholder="Find a thinker" aria-label="Find a thinker">' +
-    '<button class="sky-btn" id="skyStories" aria-expanded="false">✦ Stories</button><button class="sky-btn" id="skyTime">⏵ Through time</button><button class="sky-btn" id="skyGame">? Name the stars</button><button class="sky-btn" id="skyTrace">⇝ Trace a lineage</button>' +
+    '<button class="sky-btn" id="skyStories" aria-expanded="false">✦ Stories</button><button class="sky-btn" id="skyTime">⏵ Through time</button><button class="sky-btn" id="skyGame">? Name the stars</button><button class="sky-btn" id="skyDraw" aria-pressed="false" title="Draw your own constellations">✎ Draw</button><button class="sky-btn" id="skyTrace">⇝ Trace a lineage</button>' +
     (matches().length ? '<button class="sky-btn" id="skyMine">☉ My star</button>' : "") + (skyDeck().size ? '<button class="sky-btn" id="skyDeck" title="Stars whose philosopher card is in your deck">◆ My cards ' + skyDeck().size + "</button>" : "") + (ch.size ? '<button class="sky-btn" id="skyCharted" title="Stars from the Voyage islands you have finished">✧ Charted ' + ch.size + " of " + skyStarTotal() + "</button>" : "") + '<span id="skyMsg" class="sky-msg" role="status" aria-live="polite"></span></div>' +
     '<div class="sky-menu" id="skyMenu" hidden>' + (yp ? [yp] : []).concat(SKY_STORIES).map(st => '<button data-s="' + st.id + '"' + (st.mine ? ' class="mine"' : "") + '><b>' + esc(st.title) + "</b><span>" + esc(st.sub) + " · " + st.stops.length + " stars</span></button>").join("") + "</div>" +
     '<div class="sky-panel" id="skyStory" hidden></div>' +
@@ -14047,7 +14090,7 @@ VIEWS.firmament = (arg) => {
     '<datalist id="skyNames">' + T.filter(t => t.born != null && TH[t.id] === t).map(t => '<option value="' + esc(t.name) + '">').join("") + '</datalist>' +
     '<div class="sky-panel sky-time" id="skyTimeBar" hidden><button class="sky-btn" id="skyPlay" aria-label="Pause">❚❚</button><input type="range" id="skyYear" min="0" max="1000" value="0" aria-label="Year"><div class="sky-yr"><b id="skyYr"></b><span id="skyTick"></span></div><button class="sky-btn" id="skyTimeX" aria-label="Close">×</button></div>' +
     '<svg id="skySvg" aria-label="A star map of philosophers"></svg><div class="sky-tip" id="skyTip" hidden></div>' +
-    '<div class="sky-zoom"><button class="sky-btn" id="skyIn" aria-label="Zoom in">+</button><button class="sky-btn" id="skyOut" aria-label="Zoom out">−</button><button class="sky-btn" id="skyHome" aria-label="Whole sky">⌂</button></div>' +
+    '<div class="sky-panel sky-drawbar" id="skyDrawBar" hidden></div><div class="sky-zoom"><button class="sky-btn" id="skyFull" aria-label="Full screen" title="Full screen (F)">⛶</button><button class="sky-btn" id="skyIn" aria-label="Zoom in">+</button><button class="sky-btn" id="skyOut" aria-label="Zoom out">−</button><button class="sky-btn" id="skyHome" aria-label="Whole sky">⌂</button></div>' +
     '<nav class="sky-legend" aria-label="Constellations">' + SKY_CONST.map(c => '<button class="sky-const" data-c="' + c.id + '">' + esc(c.name) + "</button>").join("") + '<span class="sky-key"><i class="k-l"></i>learned from</span><span class="sky-key"><i class="k-t"></i>inspired</span><span class="sky-key"><i class="k-a"></i>argued with</span></nav></div>' +
     (() => { const und = T.filter(t => t.born == null && TH[t.id] === t).sort((a, b) => a.name.localeCompare(b.name)); return und.length ? '<details class="sky-und"><summary class="faint" style="font-size:.86rem">' + und.length + " thinkers are not in the sky yet (no reliable birth year)</summary><div class=\"row\" style=\"--g:6px;margin-top:8px\">" + und.map(t => thinkerChip(t.id)).join("") + "</div></details>" : ""; })() + "</div>";
 };
@@ -14138,6 +14181,7 @@ function drawSky() {
   function sizes() {
     // stars grow a little as you zoom (not in proportion); names keep their screen size
     const g = gK();
+    world.selectAll(".user-lines line").attr("stroke-width", 2.2 / K); world.selectAll(".pen-ring").attr("r", 12 / K).attr("stroke-width", 1.6 / K);
     starG.select(".core").attr("r", d => R0[d.mag] * g * (d.mag === 3 && K / K0 > 2.2 ? 1.25 : 1));
     starG.select(".halo").attr("r", d => R0[d.mag] * (d.mag === 1 ? 5.5 : 3.5) * g);
     starG.select(".spike").attr("transform", "scale(" + g + ")");
@@ -14190,7 +14234,7 @@ function drawSky() {
   const fly = (x, y, k) => svg.transition().duration(900).call(zoom.transform, d3.zoomIdentity.translate(W / 2 - x * k, H / 2 - y * k).scale(k));
   let tapped = null;
   starG.on("mouseenter", (ev, d) => { if (!game) light(d); }).on("mouseleave", unlight).on("focus", (ev, d) => { if (!game) light(d); }).on("blur", unlight)
-    .on("click", (ev, d) => { if (game) return; if (ev.pointerType === "touch" && tapped !== d.id) { tapped = d.id; light(d); return; } tapped = null; openThinker(d.id); })
+    .on("click", (ev, d) => { if (draw) { ev.stopPropagation(); drawClick(d); return; } if (game) return; if (ev.pointerType === "touch" && tapped !== d.id) { tapped = d.id; light(d); return; } tapped = null; openThinker(d.id); })
     .on("keydown", (ev, d) => { if (ev.key === "Enter" || ev.key === " ") { ev.preventDefault(); openThinker(d.id); } });
   svg.on("click", ev => { if (!ev.target.closest(".star,.you-star")) { tapped = null; unlight(); } });
   $("#skyIn").onclick = () => svg.transition().duration(300).call(zoom.scaleBy, 1.6);
@@ -14341,7 +14385,9 @@ function drawSky() {
   /* ---- stories: guided voyages from star to star ---- */
   let story = null;
   const storyG = world.insert("g", ".sky-hot").attr("class", "story-path");
+  let autoT = null;
   function showStop() {
+    clearTimeout(autoT);
     const st = story.s, i = story.i, stops = st.stops.filter(x => byId[x[0]]), d = byId[stops[i][0]], prev = i ? byId[stops[i - 1][0]] : null;
     unlight(); cur = new Set(stops.slice(0, i + 1).map(x => x[0])); paint();
     storyG.selectAll("*").remove();
@@ -14356,12 +14402,17 @@ function drawSky() {
     svg.transition().duration(1100).call(zoom.transform, d3.zoomIdentity.translate(W / 2 - cx * k, top + band / 2 - cy * k).scale(k));
     $("#skyStory").innerHTML = '<div class="ss-head"><span class="eyebrow">' + esc(st.title) + " · " + (i + 1) + " of " + stops.length + '</span><button class="sky-btn ss-x" aria-label="Close story">×</button></div><h3>' + esc(d.t.name) + ' <small>' + esc(life(d.t)) + "</small></h3><p>" + String(stops[i][1]).split("\n").map(esc).join('</p><p class="ss-tag">') + '</p><div class="ss-nav"><button class="sky-btn ss-prev"' + (i ? "" : " disabled") + '>← Back</button><button class="sky-btn ss-meet">Meet ' + esc(shortName(d.t)) + '</button><button class="sky-btn ss-next primary">' + (i < stops.length - 1 ? "Next →" : "Finish") + "</button></div>";
     $("#skyStory").hidden = false;
+    $(".ss-nav").insertAdjacentHTML("afterbegin", '<button class="sky-btn ss-auto' + (story.auto ? " on" : "") + '" aria-pressed="' + !!story.auto + '" title="Play the story by itself">' + (story.auto ? "❚❚ Pause" : "▶ Play") + "</button>");
+    $(".ss-auto").onclick = () => { story.auto = !story.auto; showStop(); };
+    if (story.auto) { const ms = 3200 + String(stops[i][1]).length * 42; $("#skyStory").style.setProperty("--auto", ms + "ms"); $("#skyStory").classList.remove("autorun"); void $("#skyStory").offsetWidth; $("#skyStory").classList.add("autorun");
+      autoT = setTimeout(() => { if (!story) return; if (story.i < stops.length - 1) { story.i++; showStop(); } else storyEnd(); }, ms); } else $("#skyStory").classList.remove("autorun");
     $(".ss-x").onclick = closeStory; $(".ss-prev").onclick = () => { story.i--; showStop(); };
     $(".ss-next").onclick = () => { if (story.i < stops.length - 1) { story.i++; showStop(); } else storyEnd(); };
     $(".ss-meet").onclick = () => openThinker(d.id);
   }
   // the end of a story: a short wrap-up, the whole path lit, and the next story one tap away
   function storyEnd() {
+    clearTimeout(autoT); $("#skyStory").classList.remove("autorun");
     const st = story.s, list = (yp => (yp ? [yp] : []).concat(SKY_STORIES))(skyYourPath()), i = list.findIndex(x => x.id === st.id), nx = list[(i + 1) % list.length];
     const P = st.stops.map(x => byId[x[0]]).filter(Boolean), n = P.length;
     // keep the whole path lit and framed while the wrap-up is shown
@@ -14379,6 +14430,7 @@ function drawSky() {
   }
   function openStory(id) { showSky(); gameOff(); timeOff(); traceOff(); $("#skyMsg").textContent = ""; $("#skyLore").hidden = true; story = { s: typeof id === "object" ? id : id === "you" ? skyYourPath() : SKY_STORIES.find(x => x.id === id), i: 0 }; $("#skyMenu").hidden = true; $("#skyStories").setAttribute("aria-expanded", "false"); showStop(); }
   function closeStory(done) {
+    clearTimeout(autoT); $("#skyStory").classList.remove("autorun");
     if (!story) return; const ids = done ? new Set(story.s.stops.map(x => x[0])) : null; story = null;
     $("#skyStory").hidden = true; storyG.selectAll("line").transition().duration(done ? 2500 : 300).attr("opacity", 0).remove(); storyG.selectAll("circle").remove();
     cur = ids; paint(); if (done) setTimeout(() => { if (!story && cur === ids) { cur = null; paint(); } }, 3500);
@@ -14495,6 +14547,35 @@ function drawSky() {
   /* ---- charted stars: islands you finished leave a ring of gold round their thinkers ---- */
   const charted = chartedStars();
   starG.filter(d => charted.has(d.id)).insert("circle", ".core").attr("class", "charted-ring");
+  /* ---- your own constellations: click star after star to draw lines; they stay in your sky ---- */
+  const userG = world.insert("g", ".sky-hot").attr("class", "user-lines"), rubber = world.append("line").attr("class", "user-rubber").style("display", "none");
+  let draw = null;
+  const UL = () => (S.skyLines = S.skyLines || []);
+  function drawUser() { userG.selectAll("line").data(UL().filter(l => byId[l[0]] && byId[l[1]]), l => l.join("|")).join("line").attr("x1", l => byId[l[0]].x).attr("y1", l => byId[l[0]].y).attr("x2", l => byId[l[1]].x).attr("y2", l => byId[l[1]].y).attr("stroke-width", 2.2 / K)
+      .on("click", (ev, l) => { if (!draw) return; ev.stopPropagation(); S.skyLines = UL().filter(x => x !== l); save(); drawUser(); drawBar(); }); }
+  function drawBar() { const b = $("#skyDrawBar"); if (!b || !draw) return; const n = UL().length;
+    b.innerHTML = '<span class="eyebrow">Drawing · ' + n + " line" + (n === 1 ? "" : "s") + "</span><p>" + (draw.last ? "From <b>" + esc(shortName(byId[draw.last].t)) + "</b>: click the next star, or lift the pen to start somewhere new." : "Click a star to put the pen down, then click star after star. Click a line of yours to erase it.") +
+      '</p><div class="ss-nav"><button class="sky-btn" data-d="lift"' + (draw.last ? "" : " disabled") + '>Lift pen</button><button class="sky-btn" data-d="undo"' + (n ? "" : " disabled") + '>Undo</button><button class="sky-btn" data-d="clear"' + (n ? "" : " disabled") + '>Clear all</button><button class="sky-btn primary" data-d="done">Done</button></div>';
+    b.querySelectorAll("[data-d]").forEach(x => x.onclick = ev => { ev.stopPropagation(); const k = x.dataset.d;
+      if (k === "lift") { draw.last = null; penAt(null); } if (k === "undo") { S.skyLines = UL().slice(0, -1); const l = UL()[UL().length - 1]; draw.last = l ? l[1] : null; penAt(draw.last); save(); drawUser(); }
+      if (k === "clear" && confirm("Erase every line you have drawn?")) { S.skyLines = []; draw.last = null; penAt(null); save(); drawUser(); } if (k === "done") return drawOff(); drawBar(); }); }
+  function penAt(id) { world.selectAll(".pen-ring").remove(); rubber.style("display", "none"); if (id && byId[id]) world.append("circle").attr("class", "pen-ring").attr("cx", byId[id].x).attr("cy", byId[id].y).attr("r", 12 / K).attr("stroke-width", 1.6 / K); }
+  function drawClick(d) { if (draw.last && draw.last !== d.id && !UL().some(l => (l[0] === draw.last && l[1] === d.id) || (l[1] === draw.last && l[0] === d.id))) { S.skyLines = UL().concat([[draw.last, d.id]]); save(); drawUser(); }
+    draw.last = d.id; penAt(d.id); drawBar(); }
+  function drawOn() { closeStory(); gameOff(); timeOff(); traceOff(); draw = { last: null }; const b = $("#skyDraw"); b.classList.add("on"); b.setAttribute("aria-pressed", "true"); host.classList.add("drawing"); $("#skyDrawBar").hidden = false; $("#skyMsg").textContent = ""; drawBar(); }
+  function drawOff() { if (!draw) return; draw = null; const b = $("#skyDraw"); if (b) { b.classList.remove("on"); b.setAttribute("aria-pressed", "false"); } host.classList.remove("drawing"); $("#skyDrawBar").hidden = true; penAt(null); }
+  $("#skyDraw").onclick = () => draw ? drawOff() : drawOn();
+  svg.on("mousemove.draw", ev => { if (!draw || !draw.last) return; const [x, y] = d3.pointer(ev, world.node()), a = byId[draw.last]; rubber.style("display", null).attr("x1", a.x).attr("y1", a.y).attr("x2", x).attr("y2", y).attr("stroke-width", 1.4 / K); });
+  drawUser();
+  /* ---- full screen: the sky alone, edge to edge */
+  const fsOn = () => !!(document.fullscreenElement === host || host.classList.contains("sky-full"));
+  function fsSet(on) { if (on) { if (host.requestFullscreen) host.requestFullscreen().catch(() => host.classList.add("sky-full")); else host.classList.add("sky-full"); }
+    else { if (document.fullscreenElement) document.exitFullscreen(); host.classList.remove("sky-full"); } }
+  $("#skyFull").onclick = () => fsSet(!fsOn());
+  const fsSync = () => { const on = fsOn(); svg.attr("preserveAspectRatio", on ? "xMidYMid slice" : null); $("#skyFull").textContent = on ? "✕" : "⛶"; $("#skyFull").setAttribute("aria-label", on ? "Leave full screen" : "Full screen"); document.body.classList.toggle("sky-fs", on); };
+  document.addEventListener("fullscreenchange", fsSync);
+  host.addEventListener("keydown", ev => { if (ev.target.tagName === "INPUT") return; if (ev.key === "f" || ev.key === "F") { ev.preventDefault(); fsSet(!fsOn()); } if (ev.key === "Escape") { drawOff(); if (host.classList.contains("sky-full")) { host.classList.remove("sky-full"); fsSync(); } } });
+  const _fsSet = fsSet; fsSet = on => { _fsSet(on); setTimeout(fsSync, 60); };
   const deck = skyDeck();
   starG.filter(d => deck.has(d.id)).insert("circle", ".core").attr("class", "deck-ring");
   const dkB = $("#skyDeck");
