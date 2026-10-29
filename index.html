@@ -2491,6 +2491,14 @@ button.on .faint,button[aria-pressed="true"] .faint,.chip.on .faint{color:rgba(2
 .sky:fullscreen,.sky.sky-full{height:100vh!important;max-height:none;border-radius:0;width:100vw}.sky.sky-full{position:fixed;inset:0;z-index:200}.sky:fullscreen .sky-legend,.sky.sky-full .sky-legend{position:absolute;bottom:10px;left:16px;right:80px;transform:none;max-width:none;flex-wrap:wrap;justify-content:center}
 .sky-story.autorun::after,#skyStory.autorun::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:100%;background:#E8B04A;transform-origin:0 50%;animation:autoBar var(--auto) linear forwards}@keyframes autoBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}#skyStory{position:absolute}
 .ss-auto.on{background:#E8B04A;color:#1F1A0E}
+.jy{display:grid;gap:12px}.jy-row{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:stretch}.jy-step{display:flex;gap:12px;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:var(--card);text-decoration:none;color:inherit}.jy-step.here{border:1.5px solid var(--c);box-shadow:0 0 0 3px color-mix(in srgb,var(--c) 14%,transparent)}.jy-step:hover{border-color:var(--c)}
+.jy-n{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font-weight:800;color:#fff;background:var(--c)}.jy-tx{display:grid;gap:3px;min-width:0}.jy-k{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);font-weight:700}.jy-k i{font-style:normal;margin-left:6px;padding:1px 8px;border-radius:999px;background:var(--c);color:#fff;letter-spacing:.04em}.jy-tx b{font-family:var(--font-display);font-size:1.12rem}.jy-tx small{color:var(--ink-2);font-size:.84rem;line-height:1.35}.jy-step .pm-bar{display:block;height:5px;border-radius:9px;background:var(--line);overflow:hidden;margin-top:4px}.jy-step .pm-bar i{display:block;height:100%;background:var(--c)}.jy-step .pm-n{font-size:.78rem;color:var(--ink-2)}
+.jy-arrow{display:grid;place-items:center;align-content:center;color:var(--ink-3);font-size:1.4rem;line-height:1}.jy-arrow small{font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;margin-top:4px;text-align:center;max-width:70px}
+.jy-next{display:flex;flex-wrap:wrap;gap:10px;align-items:center}.jy-next .jy-note{margin-left:auto;font-size:.8rem}
+@media (max-width:760px){.jy-row{grid-template-columns:1fr}.jy-arrow{transform:rotate(90deg);height:24px}.jy-arrow small{display:none}.jy-next .jy-note{margin-left:0}}
+.lb-rest{display:grid;gap:8px}.lb-rest-l{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:6px}.lb-rest-i{display:grid;gap:1px;padding:8px 12px;border-radius:10px;border:1px dashed var(--line);text-decoration:none;color:inherit;background:var(--card)}.lb-rest-i:hover{border-color:var(--c-codex);border-style:solid}.lb-rest-i b{font-size:.92rem}.lb-rest-i small{font-size:.76rem;color:var(--ink-3)}
+.crumbs-w{padding-top:10px}.crumbs{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.82rem;color:var(--ink-3)}.crumbs a{color:var(--ink-2);text-decoration:none;border-bottom:1px solid var(--line)}.crumbs a:hover{color:var(--ink);border-color:var(--ink-3)}.crumbs [aria-current]{color:var(--ink);font-weight:600;max-width:40ch;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sky-views select{width:100%;margin:6px 0;padding:7px 10px;border-radius:10px;background:rgba(255,255,255,.08);color:#EDE6D2;border:1px solid rgba(237,230,210,.25);font:inherit;font-size:.88rem}.sky-views select option{color:#111}.sv-q{font-size:.86rem;margin:2px 0 8px;opacity:.85}.sv-opts{display:flex;flex-wrap:wrap;gap:6px}.sv-opts .sky-btn{font-size:.8rem}.sv-opts b{opacity:.7;margin-left:4px}.sv-opts i{font-style:normal;font-size:.68rem;background:#E8B04A;color:#1F1A0E;border-radius:999px;padding:0 6px;margin-left:4px}.sv-opts .on{background:#E8B04A;color:#1F1A0E}.sv-res{font-size:.84rem;margin:8px 0 0}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -11036,6 +11044,21 @@ function lbWaitView() {
   return '<div class="wrap"><div class="stack nb-wide" style="--g:16px"><div class="stack page-head">' + em("logbook") + '<span class="eyebrow">My Positions</span><h1>Your notebook of stances</h1><p class="lede">Unrolling your logbook…</p></div>' +
     '<div class="lb-loading" id="lbWait" role="status" aria-live="polite"><div class="bar" style="width:72%"></div><div class="bar"></div><div class="bar" style="width:86%"></div><div class="bar" style="width:58%"></div></div></div></div>';
 }
+// breadcrumbs for the deep pages that have no way back of their own
+function crumbsFor(r) { const a = String(r.arg || ""), L = [];
+  if (r.name === "position") { if (a.startsWith("p.")) L.push(["#compass", "Compass"], ["#compass-results", "Your portrait"]);
+    else { const q = QM[a.split(".")[0]], sec = q && SEC[q.section]; L.push(["#compass", "Compass"]); if (sec) L.push(["#compass-" + sec.id, sec.name]); if (q) { L.push(["#compass-" + q.id, SHORT[q.id] || "The question"]); const o = a.split(".").slice(1).join("."); if (o) L.push(["", labelOf(q.id, o)]); } } }
+  else if (r.name === "codex" && a) { const [tab, q] = a.split("."), t = LBT[tab]; L.push(["#codex", "My Positions"]); if (t) L.push(["#codex-" + tab, t.name]); if (q && LBQ[q]) L.push(["", LBQ[q].title || "Question"]); }
+  else if (r.name === "compass" && a) { const done = a.startsWith("done."), id = done ? a.slice(5) : a, sec = SEC[id] || (QM[id] && SEC[QM[id].section]);
+    if (a === "results") L.push(["#compass", "Compass"], ["", "Your portrait"]);
+    else if (done && sec) L.push(["#compass", "Compass"], ["#compass-" + sec.id, sec.name], ["", "Chapter result"]);
+    else if (done && id === "quick") L.push(["#compass", "Compass"], ["", "Quick Compass result"]);
+    else return ""; }
+  else if ((r.name === "dictionary" || r.name === "library") && a) L.push(["#library", "Dictionary"], ["", ((LIB.glossary.find(g => slugT(g.term) === a) || {}).term) || a.replace(/-/g, " ")]);
+  else if (r.name === "experiment" && a) L.push(["#library", "Dictionary"], ["#library", "Thought experiments"]);
+  else return "";
+  if (L.length < 2) return "";
+  return '<div class="wrap crumbs-w"><nav class="crumbs" aria-label="You are here">' + L.map(([h, t], i) => (i ? '<span aria-hidden="true">›</span>' : "") + (h && i < L.length - 1 ? '<a href="' + esc(h) + '">' + esc(t) + "</a>" : '<span aria-current="page">' + esc(t) + "</span>")).join("") + "</nav></div>"; }
 function renderNow(keepScroll) {
   const r = route();
   const fn = r.name === "codex" && !lbInit.done ? lbWaitView : VIEWS[r.name] || VIEWS.home;
@@ -11044,6 +11067,7 @@ function renderNow(keepScroll) {
   const view = $("#view");
   const y = window.scrollY;
   view.innerHTML = fn(r.arg);
+  try { const cr = crumbsFor(r); if (cr) view.insertAdjacentHTML("afterbegin", cr); } catch (e) { console.error(e); }
   const TITLES = { home: "", cards: "Philosopher cards", voyage: "Voyage", compass: "Compass", agora: "Debates", codex: "My Positions", firmament: "Stargazing", stoa: "Timeline", lab: "Shipyard", library: "Dictionary", quiz: "Quiz", duel: "Duel", works: WK[r.arg] ? WK[r.arg].title : "Works", thinkers: "Thinkers", quick: "Quick Compass", seminar: r.arg && typeof SEM !== "undefined" && SEM["sem_" + r.arg.replace(/\.all$/, "")] ? SEM["sem_" + r.arg.replace(/\.all$/, "")].title : "Seminars", experiment: "Thought experiments", thinker: TH[r.arg] ? TH[r.arg].name : "Thinker" };
   const tt = r.name === "voyage" && r.arg && VOY.islands[r.arg] ? VOY.islands[r.arg].name : TITLES[r.name];
   document.title = tt ? tt + " · Philodyssey" : "Philodyssey: a voyage through philosophy";
@@ -11529,12 +11553,26 @@ VIEWS.quick = arg => {
   return questionHTML("quick", null);
 };
 // one portrait, two measures: breadth from the Compass (your intuitions), depth from My Positions (do they hold together)
+// The two steps, in one card wherever progress is shown (home, Compass, My Positions):
+// 1 the Compass collects quick gut answers; 2 My Positions tests them. One answer, two places; one next action.
+function lbNextDefend() { if (typeof lbInit === "undefined" || !lbInit.done) return null;
+  for (const q of Object.values(LBQ)) { if (lbApply(q) === "no" || !lbAnswered(q.id)) continue;
+    if ((q.challenges || []).some(c => c.target && c.target.length && lbAny(c.target) && !lbAny(c.exclude)) && !((lbSt(q.id).why || []).length || (lbSt(q.id).mine && lbSt(q.id).mine.why)))
+      return { href: "#codex-" + q.tab + "." + q.id, t: q.title || q.text }; }
+  return null; }
 function portraitMeterHTML(where) {
-  const all = visibleQs(), a = all.filter(q => isAnswered(q.id)).length, D = S.lbD || { held: 0, apps: 774, aimed: 0, def: 0, crack: 0, mend: 0 };
-  const pb = all.length ? Math.round(100 * a / all.length) : 0, pd = D.apps ? Math.round(100 * D.held / D.apps) : 0;
-  return '<section class="pm' + (where ? " pm-" + where : "") + '" aria-label="Your portrait"><div class="pm-row"><a class="pm-part" href="#compass" style="--c:var(--c-compass)"><span class="pm-k">Intuitions · Compass</span><span class="pm-bar"><i style="width:' + pb + '%"></i></span><span class="pm-n">' + a + " of " + all.length + ' answered</span></a>' +
-    '<a class="pm-part" href="#codex" style="--c:var(--c-codex)"><span class="pm-k">Depth · My Positions</span><span class="pm-bar"><i style="width:' + pd + '%"></i></span><span class="pm-n">' + D.held + " stance" + (D.held === 1 ? "" : "s") + (D.aimed ? " · " + D.def + " of " + D.aimed + " defended" : "") + (D.crack ? " · " + D.crack + " crack" + (D.crack > 1 ? "s" : "") + " open" : "") + (D.mend ? " · " + D.mend + " mended" : "") + "</span></a></div>" +
-    '<p class="pm-note">They change together: answer in either place and both update.</p></section>'; }
+  const all = visibleQs(), a = all.filter(q => isAnswered(q.id)).length, D = S.lbD || { held: a, apps: 774, aimed: 0, def: 0, crack: 0, mend: 0 };
+  const held = Math.max(D.held, a), pb = all.length ? Math.round(100 * a / all.length) : 0, wait = Math.max(0, D.aimed - D.def);
+  const nextSec = C.sections.find(x => secOpen(x.id) && !secDone(x.id) && answeredCount(x.id) > 0) || C.sections.find(x => secOpen(x.id) && !secDone(x.id));
+  const step = a < 5 ? 1 : wait || D.crack ? 2 : nextSec ? 1 : 2, nd = lbNextDefend();
+  const go = a === 0 ? ["#quick-start", "Start with the Quick Compass (7 min)"] : a < 5 && nextSec ? ["#compass-" + nextSec.id, (answeredCount(nextSec.id) ? "Finish " : "Next chapter: ") + nextSec.name] : step === 2 && D.crack ? ["#codex", "Mend " + D.crack + " crack" + (D.crack > 1 ? "s" : "") + " in your views"] :
+    step === 2 ? [nd ? nd.href : "#codex", "Defend a view: " + (nd ? "“" + nd.t + "”" : wait + " objection" + (wait > 1 ? "s" : "") + " waiting")] : nextSec ? ["#compass-" + nextSec.id, (answeredCount(nextSec.id) ? "Finish " : "Next chapter: ") + nextSec.name] : ["#codex", "Open My Positions"];
+  const part = (n, cls, href, k, title, desc, bar, stat) => '<a class="jy-step' + (step === n ? " here" : "") + '" href="' + href + '" style="--c:var(--c-' + cls + ')"><span class="jy-n">' + n + '</span><span class="jy-tx"><span class="jy-k">' + k + (step === n ? ' <i>you are here</i>' : "") + "</span><b>" + title + "</b><small>" + desc + '</small><span class="pm-bar"><i style="width:' + bar + '%"></i></span><span class="pm-n">' + stat + "</span></span></a>";
+  return '<section class="pm jy' + (where ? " pm-" + where : "") + '" aria-label="Your progress in two steps"><div class="jy-row">' +
+    part(1, "compass", "#compass", "Step 1 · Compass", "Answer from the gut", all.length + " quick questions in " + C.sections.length + " chapters. Each answer is your stance.", pb, a + " of " + all.length + " answered") +
+    '<span class="jy-arrow" aria-hidden="true">→<small>copied across</small></span>' +
+    part(2, "codex", "#codex", "Step 2 · My Positions", "Test what you said", "Your stances, with the objections aimed at them and the clashes between them. Go deeper with " + (D.apps || 774) + " more questions.", D.aimed ? Math.round(100 * D.def / D.aimed) : 0, held + " stance" + (held === 1 ? "" : "s") + (D.aimed ? " · " + D.def + " of " + D.aimed + " defended" : "") + (D.crack ? " · " + D.crack + " crack" + (D.crack > 1 ? "s" : "") + " open" : "")) +
+    '</div><div class="jy-next"><span class="faint">Your next step</span><a class="btn small primary" href="' + esc(go[0]) + '">' + esc(go[1]) + ' →</a><span class="faint jy-note">Change an answer in either place and the other updates.</span></div></section>'; }
 // the Quick Compass (and a half-finished Compass) is only a first reading: say so, and point to the next chapter (Ethics first, by default)
 function portraitIncompleteHTML(lead) {
   const secs = C.sections.filter(x => !x.locked), tot = secs.reduce((a, x) => a + visibleQs(x.id).length, 0), done = secs.reduce((a, x) => a + Math.min(answeredCount(x.id), visibleQs(x.id).length), 0);
@@ -13466,14 +13504,20 @@ function lbMain(tab, raw) { if (!raw) { const f = lbFrontSecond(tab); if (f) ret
 function lbTotal(t) { return t.v2 ? t.qs.filter(id => LBQ[id] && (lbApply(LBQ[id]) === "yes" && (LBQ[id].forQ || LBQ[id].band !== "clarify")) || (lbAnswered(id) && lbApply(LBQ[id]) !== "no")).length : t.qs.length; }
 function lbTabBar(cur) { const pill = (href, name, on, n, tot, set) => '<a class="lb-tab2' + (on ? " on" : "") + (set ? " set" : "") + '" href="' + href + '"' + (on ? ' aria-current="page"' : "") + '><span class="lb-tab2-n">' + esc(name) + "</span>" + (tot ? '<span class="lb-tab2-p"><i style="width:' + Math.round(100 * n / tot) + '%"></i></span>' : "") + "</a>";
   return '<nav class="lb-tabs2" aria-label="My Positions areas">' + pill("#codex", "Overview", !cur, 0, 0, false) + LB.tabs.map(t => { const n = t.qs.filter(id => lbAnswered(id) && (!t.v2 || lbApply(LBQ[id]) !== "no")).length; return pill("#codex-" + t.id, t.name, cur === t.id, n, lbTotal(t), !!lbMain(t).title); }).join("") + "</nav>"; }
-function lbOverviewHTML() { const rows = LB.tabs.map((t, i) => { const m = lbMain(t), n = t.qs.filter(id => lbAnswered(id) && (!t.v2 || lbApply(LBQ[id]) !== "no")).length, tot = lbTotal(t), P = m.pos && LBP[m.pos], cr = lbCracks(t).length, nx = lbNextUp(t);
+// which Compass chapters feed an area of My Positions (through the questions the two share)
+function lbFedBy(t) { const out = new Set(); t.qs.forEach(id => { const q = LBQ[id]; [q && q.compass].concat((q && q.compassAlso) || []).forEach(c => { c = c && typeof c === "object" ? c.q : c; if (c && QM[c] && SEC[QM[c].section]) out.add(QM[c].section); }); }); return [...out]; }
+function lbOverviewHTML() { const started = t => !!lbMain(t).title || t.qs.some(id => lbAnswered(id)), anyStarted = LB.tabs.some(started);
+  const rows = LB.tabs.filter(t => !anyStarted || started(t)).map((t, i) => { const m = lbMain(t), n = t.qs.filter(id => lbAnswered(id) && (!t.v2 || lbApply(LBQ[id]) !== "no")).length, tot = lbTotal(t), P = m.pos && LBP[m.pos], cr = lbCracks(t).length, nx = lbNextUp(t);
     return '<article class="lb-ocard' + (m.title ? "" : " empty") + '"><a class="lb-ocard-main" href="#codex-' + esc(t.id) + '"><span class="eyebrow">' + esc(t.name) + '</span><b class="lb-ocard-pos">' + (m.title ? esc(m.title) : '<span class="faint">Not set yet</span>') + "</b>" + (m.quals.length ? '<span class="lb-quals">' + esc(m.quals.slice(0, 4).join(", ")) + "</span>" : "") +
       '<span class="lb-ocard-line">' + esc(m.title && P ? P.line : t.sub ? t.sub.charAt(0).toUpperCase() + t.sub.slice(1) + "." : "") + "</span></a>" +
       '<div class="lb-ocard-foot"><span class="lb-tab2-p"><i style="width:' + (tot ? Math.round(100 * n / tot) : 0) + '%"></i></span><span class="faint">' + n + "/" + tot + "</span>" + (cr ? '<span class="lb-ck crack">' + cr + (cr === 1 ? " tension" : " tensions") + "</span>" : "") +
       (nx ? '<a class="btn small" href="#codex-' + esc(t.id) + "." + esc(nx.id) + '">' + (m.title ? "Continue" : "Start") + " →</a>" : "") + "</div></article>"; }).join("");
+  const rest = anyStarted ? LB.tabs.filter(t => !started(t)) : [];
+  const restHTML = rest.length ? '<div class="lb-rest"><span class="eyebrow">Not started yet · ' + rest.length + " areas</span><div class=\"lb-rest-l\">" + rest.map(t => { const f = lbFedBy(t).map(x => SEC[x].name), nx = lbNextUp(t);
+      return '<a class="lb-rest-i" href="#codex-' + esc(t.id) + (nx ? "." + esc(nx.id) : "") + '"><b>' + esc(t.name) + "</b><small>" + (f.length ? "Filled by the Compass chapter " + esc(f.slice(0, 2).join(" and ")) : "Only in My Positions") + "</small></a>"; }).join("") + "</div></div>" : "";
   const core0 = LB.tabs.map(t => { const qs = t.qs.map(id => LBQ[id]).filter(q => q && q.tier === 1 && q.band !== "case" && !q.forQ); return qs.length ? '<div class="lb-core"><div class="row" style="justify-content:space-between;align-items:baseline"><h3>' + esc(t.name) + '</h3><a class="linkish" href="#codex-' + esc(t.id) + '">All ' + t.qs.length + " questions →</a></div>" + qs.map(q => '<div class="lb-coreq"><span class="lb-coreqt">' + esc(q.title) + ' <span class="faint">' + esc(q.text) + '</span></span><div class="lb-pills">' + q.options.map(o => { const a = lbAtt(q.id, o.key); return '<button class="lb-pill' + (a ? " " + a : "") + '" data-act="lbAtt" data-q="' + esc(q.id) + '" data-p="' + esc(o.key) + '" data-k="hold" title="' + esc(o.text) + '" aria-pressed="' + (a === "hold") + '">' + (a === "hold" ? "★ " : "") + esc(o.lead) + ' <small>' + esc((LBP[o.pos] || {}).name || "") + "</small></button>"; }).join("") + "</div></div>").join("") + "</div>" : ""; }).join("");
   return '<section class="stack nb-front" style="--g:12px"><div class="row" style="justify-content:space-between;align-items:baseline"><h2 class="sec-h">Where you stand</h2><span class="faint">' + LB.tabs.filter(t => lbMain(t).title).length + " of " + LB.tabs.length + " areas set</span></div>" +
-    '<div class="lb-search"><input id="lbSearch" type="search" placeholder="Search every question, case and position…" autocomplete="off"><div id="lbSearchRes" class="lb-search-res"></div></div><div class="lb-ogrid">' + rows + "</div>" + nbRecentHTML() +
+    '<div class="lb-search"><input id="lbSearch" type="search" placeholder="Search every question, case and position…" autocomplete="off"><div id="lbSearchRes" class="lb-search-res"></div></div><div class="lb-ogrid">' + rows + "</div>" + restHTML + nbRecentHTML() +
     '<div class="row nb-tools" style="--g:8px"><button class="btn small" data-act="lbCopy">Copy as text</button><button class="btn small ghost" data-act="lbDownload">Download .txt</button></div></section>' +
     ""; }
 // ---- Ethics v2 page: a one-line description, your two main positions, then tabs (Clarify, Fine-tuning, Metaethics, Cases)
@@ -14081,7 +14125,7 @@ VIEWS.firmament = (arg) => {
   const yp = skyYourPath(), ch = chartedStars();
   return '<div class="wrap stack" style="--g:16px"><header class="page-head">' + em("astrolabe") + '<span class="eyebrow">Stargazing</span><h1>The night sky of philosophy</h1><p class="lede">Each star is a thinker, and each tradition a constellation. Drag and zoom to explore; point at or tap a star to see who it learned from and argued with. Try a <button class="linkbtn" data-act="skyOpen" data-w="skyStories">Story</button>, watch history unfold <button class="linkbtn" data-act="skyOpen" data-w="skyTime">Through time</button>, test yourself with <button class="linkbtn" data-act="skyOpen" data-w="skyGame">Name the stars</button>, or <button class="linkbtn" data-act="skyOpen" data-w="skyTrace">trace a lineage</button> between any two thinkers.</p></header>' +
     '<div class="sky" id="sky"><div class="sky-tools"><input type="search" id="skySearch" placeholder="Find a thinker" aria-label="Find a thinker">' +
-    '<button class="sky-btn" id="skyStories" aria-expanded="false">✦ Stories</button><button class="sky-btn" id="skyTime">⏵ Through time</button><button class="sky-btn" id="skyGame">? Name the stars</button><button class="sky-btn" id="skyDraw" aria-pressed="false" title="Draw your own constellations">✎ Draw</button><button class="sky-btn" id="skyTrace">⇝ Trace a lineage</button>' +
+    '<button class="sky-btn" id="skyStories" aria-expanded="false">✦ Stories</button><button class="sky-btn" id="skyTime">⏵ Through time</button><button class="sky-btn" id="skyGame">? Name the stars</button><button class="sky-btn" id="skyDraw" aria-pressed="false" title="Draw your own constellations">✎ Draw</button><button class="sky-btn" id="skyViews" aria-pressed="false" title="Light up everyone who gives an answer">◎ Who thinks…</button><button class="sky-btn" id="skyTrace">⇝ Trace a lineage</button>' +
     (matches().length ? '<button class="sky-btn" id="skyMine">☉ My star</button>' : "") + (skyDeck().size ? '<button class="sky-btn" id="skyDeck" title="Stars whose philosopher card is in your deck">◆ My cards ' + skyDeck().size + "</button>" : "") + (ch.size ? '<button class="sky-btn" id="skyCharted" title="Stars from the Voyage islands you have finished">✧ Charted ' + ch.size + " of " + skyStarTotal() + "</button>" : "") + '<span id="skyMsg" class="sky-msg" role="status" aria-live="polite"></span></div>' +
     '<div class="sky-menu" id="skyMenu" hidden>' + (yp ? [yp] : []).concat(SKY_STORIES).map(st => '<button data-s="' + st.id + '"' + (st.mine ? ' class="mine"' : "") + '><b>' + esc(st.title) + "</b><span>" + esc(st.sub) + " · " + st.stops.length + " stars</span></button>").join("") + "</div>" +
     '<div class="sky-panel" id="skyStory" hidden></div>' +
@@ -14090,7 +14134,7 @@ VIEWS.firmament = (arg) => {
     '<datalist id="skyNames">' + T.filter(t => t.born != null && TH[t.id] === t).map(t => '<option value="' + esc(t.name) + '">').join("") + '</datalist>' +
     '<div class="sky-panel sky-time" id="skyTimeBar" hidden><button class="sky-btn" id="skyPlay" aria-label="Pause">❚❚</button><input type="range" id="skyYear" min="0" max="1000" value="0" aria-label="Year"><div class="sky-yr"><b id="skyYr"></b><span id="skyTick"></span></div><button class="sky-btn" id="skyTimeX" aria-label="Close">×</button></div>' +
     '<svg id="skySvg" aria-label="A star map of philosophers"></svg><div class="sky-tip" id="skyTip" hidden></div>' +
-    '<div class="sky-panel sky-drawbar" id="skyDrawBar" hidden></div><div class="sky-zoom"><button class="sky-btn" id="skyFull" aria-label="Full screen" title="Full screen (F)">⛶</button><button class="sky-btn" id="skyIn" aria-label="Zoom in">+</button><button class="sky-btn" id="skyOut" aria-label="Zoom out">−</button><button class="sky-btn" id="skyHome" aria-label="Whole sky">⌂</button></div>' +
+    '<div class="sky-panel sky-drawbar" id="skyDrawBar" hidden></div><div class="sky-panel sky-drawbar sky-views" id="skyViewsPanel" hidden></div><div class="sky-zoom"><button class="sky-btn" id="skyFull" aria-label="Full screen" title="Full screen (F)">⛶</button><button class="sky-btn" id="skyIn" aria-label="Zoom in">+</button><button class="sky-btn" id="skyOut" aria-label="Zoom out">−</button><button class="sky-btn" id="skyHome" aria-label="Whole sky">⌂</button></div>' +
     '<nav class="sky-legend" aria-label="Constellations">' + SKY_CONST.map(c => '<button class="sky-const" data-c="' + c.id + '">' + esc(c.name) + "</button>").join("") + '<span class="sky-key"><i class="k-l"></i>learned from</span><span class="sky-key"><i class="k-t"></i>inspired</span><span class="sky-key"><i class="k-a"></i>argued with</span></nav></div>' +
     (() => { const und = T.filter(t => t.born == null && TH[t.id] === t).sort((a, b) => a.name.localeCompare(b.name)); return und.length ? '<details class="sky-und"><summary class="faint" style="font-size:.86rem">' + und.length + " thinkers are not in the sky yet (no reliable birth year)</summary><div class=\"row\" style=\"--g:6px;margin-top:8px\">" + und.map(t => thinkerChip(t.id)).join("") + "</div></details>" : ""; })() + "</div>";
 };
@@ -14562,7 +14606,7 @@ function drawSky() {
   function penAt(id) { world.selectAll(".pen-ring").remove(); rubber.style("display", "none"); if (id && byId[id]) world.append("circle").attr("class", "pen-ring").attr("cx", byId[id].x).attr("cy", byId[id].y).attr("r", 12 / K).attr("stroke-width", 1.6 / K); }
   function drawClick(d) { if (draw.last && draw.last !== d.id && !UL().some(l => (l[0] === draw.last && l[1] === d.id) || (l[1] === draw.last && l[0] === d.id))) { S.skyLines = UL().concat([[draw.last, d.id]]); save(); drawUser(); }
     draw.last = d.id; penAt(d.id); drawBar(); }
-  function drawOn() { closeStory(); gameOff(); timeOff(); traceOff(); draw = { last: null }; const b = $("#skyDraw"); b.classList.add("on"); b.setAttribute("aria-pressed", "true"); host.classList.add("drawing"); $("#skyDrawBar").hidden = false; $("#skyMsg").textContent = ""; drawBar(); }
+  function drawOn() { closeStory(); gameOff(); timeOff(); traceOff(); if (typeof viewsOff === "function") try { viewsOff(); } catch (e) { } draw = { last: null }; const b = $("#skyDraw"); b.classList.add("on"); b.setAttribute("aria-pressed", "true"); host.classList.add("drawing"); $("#skyDrawBar").hidden = false; $("#skyMsg").textContent = ""; drawBar(); }
   function drawOff() { if (!draw) return; draw = null; const b = $("#skyDraw"); if (b) { b.classList.remove("on"); b.setAttribute("aria-pressed", "false"); } host.classList.remove("drawing"); $("#skyDrawBar").hidden = true; penAt(null); }
   $("#skyDraw").onclick = () => draw ? drawOff() : drawOn();
   svg.on("mousemove.draw", ev => { if (!draw || !draw.last) return; const [x, y] = d3.pointer(ev, world.node()), a = byId[draw.last]; rubber.style("display", null).attr("x1", a.x).attr("y1", a.y).attr("x2", x).attr("y2", y).attr("stroke-width", 1.4 / K); });
@@ -14576,6 +14620,23 @@ function drawSky() {
   document.addEventListener("fullscreenchange", fsSync);
   host.addEventListener("keydown", ev => { if (ev.target.tagName === "INPUT") return; if (ev.key === "f" || ev.key === "F") { ev.preventDefault(); fsSet(!fsOn()); } if (ev.key === "Escape") { drawOff(); if (host.classList.contains("sky-full")) { host.classList.remove("sky-full"); fsSync(); } } });
   const _fsSet = fsSet; fsSet = on => { _fsSet(on); setTimeout(fsSync, 60); };
+  /* ---- who thinks…? pick a Compass question and an answer; its holders light up across the sky ---- */
+  const VQ = C.questions.filter(q => (q.options || []).length && nodes.filter(n => (n.t.positions || {})[q.id]).length >= 6);
+  let views = null;
+  function holders(qid, o) { return nodes.filter(n => { const p = (n.t.positions || {})[qid]; return p && arr(p.a).includes(o); }).map(n => n.id); }
+  function viewsPanel() { const el = $("#skyViewsPanel"), q = QM[views.q], mine = S.answers[views.q] && !Array.isArray(S.answers[views.q].a) ? S.answers[views.q].a : null;
+    const opts = q.options.map(o => [o.id, holders(q.id, o.id).length]).filter(x => x[1]);
+    el.innerHTML = '<div class="ss-head"><span class="eyebrow">Who thinks…</span><button class="sky-btn ss-x" aria-label="Close">×</button></div><select id="skyVq" aria-label="Question">' + VQ.map(x => '<option value="' + x.id + '"' + (x.id === views.q ? " selected" : "") + ">" + esc(SHORT[x.id] || x.id) + "</option>").join("") + "</select>" +
+      '<p class="sv-q">' + esc(plain(q.text)) + '</p><div class="sv-opts">' + opts.map(([o, n]) => '<button class="sky-btn' + (views.o === o ? " on" : "") + '" data-o="' + esc(o) + '">' + esc(labelOf(q.id, o)) + " <b>" + n + "</b>" + (o === mine ? ' <i>you</i>' : "") + "</button>").join("") + "</div>" +
+      (views.o ? '<p class="sv-res">' + holders(q.id, views.o).length + " stars lit: everyone on the site who answers <b>" + esc(labelOf(q.id, views.o)) + "</b>.</p>" : '<p class="sv-res faint">Pick an answer to light up its holders.</p>');
+    $(".ss-x", el).onclick = viewsOff; $("#skyVq").onchange = e => { views = { q: e.target.value, o: null }; cur = null; paint(); viewsPanel(); };
+    el.querySelectorAll("[data-o]").forEach(b => b.onclick = () => { views.o = b.dataset.o; cur = new Set(holders(views.q, views.o)); paint(); viewsPanel(); }); }
+  function viewsOn() { closeStory(); gameOff(); timeOff(); traceOff(); drawOff(); const ans = VQ.find(q => S.answers[q.id] && !Array.isArray(S.answers[q.id].a) && holders(q.id, S.answers[q.id].a).length);
+    views = { q: (ans || VQ[0]).id, o: ans ? S.answers[ans.id].a : null }; if (views.o) cur = new Set(holders(views.q, views.o)); paint();
+    $("#skyViews").classList.add("on"); $("#skyViews").setAttribute("aria-pressed", "true"); $("#skyViewsPanel").hidden = false; viewsPanel(); }
+  function viewsOff() { if (!views) return; views = null; cur = null; paint(); $("#skyViews").classList.remove("on"); $("#skyViews").setAttribute("aria-pressed", "false"); $("#skyViewsPanel").hidden = true; }
+  $("#skyViews").onclick = () => views ? viewsOff() : viewsOn();
+  host.addEventListener("keydown", ev => { if (ev.key === "Escape") viewsOff(); });
   const deck = skyDeck();
   starG.filter(d => deck.has(d.id)).insert("circle", ".core").attr("class", "deck-ring");
   const dkB = $("#skyDeck");
