@@ -2502,6 +2502,7 @@ button.on .faint,button[aria-pressed="true"] .faint,.chip.on .faint{color:rgba(2
 .sg-list{display:grid;gap:6px;margin-top:10px}.sg-i{display:flex;gap:6px;align-items:flex-start;padding:8px 10px;border-radius:10px;border:1px solid var(--line);text-decoration:none;color:inherit;background:var(--card)}.sg-i:hover{border-color:var(--ink-3)}.sg-i span{display:grid;margin-left:6px}.sg-i small{color:var(--ink-2);font-size:.82rem}
 kbd{display:inline-block;min-width:1.5em;padding:1px 5px;border-radius:5px;border:1px solid var(--line);border-bottom-width:2px;background:var(--raised);font-family:var(--font-mono);font-size:.74rem;text-align:center;color:var(--ink)}.sg-keys{padding-left:18px;display:grid;gap:6px;font-size:.9rem}.shore-guide{color:inherit}
 .sm-done{font-style:normal;font-size:.7rem;font-weight:600;color:#E8B04A;margin-left:6px}
+.lb-aim{margin:-2px 0 8px;font-size:.84rem;color:var(--ink-2);padding:6px 10px;border-left:3px solid var(--c-codex);background:color-mix(in srgb,var(--c-codex) 7%,transparent);border-radius:0 8px 8px 0}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -11577,6 +11578,7 @@ VIEWS.quick = arg => {
 // The two steps, in one card wherever progress is shown (home, Compass, My Positions):
 // 1 the Compass collects quick gut answers; 2 My Positions tests them. One answer, two places; one next action.
 function lbNextDefend() { if (typeof lbInit === "undefined" || !lbInit.done) return null;
+  for (const t of LB.tabs) { const o = lbObjList(t).find(o => !(((S.lb.obj || {})[o.id] || {}).why || []).length); if (o) return { href: "#codex-" + t.id, t: o.title, tab: t.id }; }
   for (const q of Object.values(LBQ)) { if (lbApply(q) === "no" || !lbAnswered(q.id)) continue;
     if ((q.challenges || []).some(c => c.target && c.target.length && lbAny(c.target) && !lbAny(c.exclude)) && !((lbSt(q.id).why || []).length || (lbSt(q.id).mine && lbSt(q.id).mine.why)))
       return { href: "#codex-" + q.tab + "." + q.id, t: q.title || q.text }; }
@@ -11585,15 +11587,15 @@ function portraitMeterHTML(where) {
   const all = visibleQs(), a = all.filter(q => isAnswered(q.id)).length, D = S.lbD || { held: a, apps: 774, aimed: 0, def: 0, crack: 0, mend: 0 };
   const held = Math.max(D.held, a), pb = all.length ? Math.round(100 * a / all.length) : 0, wait = Math.max(0, D.aimed - D.def);
   const nextSec = C.sections.find(x => secOpen(x.id) && !secDone(x.id) && answeredCount(x.id) > 0) || C.sections.find(x => secOpen(x.id) && !secDone(x.id));
-  const step = a < 5 ? 1 : wait || D.crack ? 2 : nextSec ? 1 : 2, nd = lbNextDefend();
-  const go = a === 0 ? ["#quick-start", "Start with the Quick Compass (7 min)"] : a < 5 && nextSec ? ["#compass-" + nextSec.id, (answeredCount(nextSec.id) ? "Finish " : "Next chapter: ") + nextSec.name] : step === 2 && D.crack ? ["#codex", "Mend " + D.crack + " crack" + (D.crack > 1 ? "s" : "") + " in your views"] :
-    step === 2 ? [nd ? nd.href : "#codex", "Defend a view: " + (nd ? "“" + nd.t + "”" : wait + " objection" + (wait > 1 ? "s" : "") + " waiting")] : nextSec ? ["#compass-" + nextSec.id, (answeredCount(nextSec.id) ? "Finish " : "Next chapter: ") + nextSec.name] : ["#codex", "Open My Positions"];
+  const step = a < 5 && !D.held ? 1 : wait || D.crack ? 2 : a < 5 || !nextSec ? 2 : 1, nd = lbNextDefend();
+  const go = a === 0 && !D.held ? ["#quick-start", "Start with the Quick Compass (7 min)"] : a === 0 && !wait && !D.crack ? ["#quick-start", "Take the Quick Compass to see your closest thinkers"] : a < 5 && nextSec && !wait ? ["#compass-" + nextSec.id, (answeredCount(nextSec.id) ? "Finish " : "Next chapter: ") + nextSec.name] : step === 2 && D.crack ? ["#codex", "Mend " + D.crack + " crack" + (D.crack > 1 ? "s" : "") + " in your views"] :
+    step === 2 ? [nd ? nd.href : "#codex", "Answer an objection: " + (nd ? "“" + nd.t + "”" : wait + " waiting")] : nextSec ? ["#compass-" + nextSec.id, (answeredCount(nextSec.id) ? "Finish " : "Next chapter: ") + nextSec.name] : ["#codex", "Open My Positions"];
   const part = (n, cls, href, k, title, desc, bar, stat) => '<a class="jy-step' + (step === n ? " here" : "") + '" href="' + href + '" style="--c:var(--c-' + cls + ')"><span class="jy-n">' + n + '</span><span class="jy-tx"><span class="jy-k">' + k + (step === n ? ' <i>you are here</i>' : "") + "</span><b>" + title + "</b><small>" + desc + '</small><span class="pm-bar"><i style="width:' + bar + '%"></i></span><span class="pm-n">' + stat + "</span></span></a>";
   return '<section class="pm jy' + (where ? " pm-" + where : "") + '" aria-label="Your progress in two steps"><div class="jy-row">' +
-    part(1, "compass", "#compass", "Step 1 · Compass", "Answer from the gut", all.length + " quick questions in " + C.sections.length + " chapters. Each answer is your stance.", pb, a + " of " + all.length + " answered") +
+    part(1, "compass", "#compass", "Step 1 · Compass", "Answer from the gut", "Quick questions in " + C.sections.length + " chapters; follow-ups appear depending on your answers. Each answer is your stance.", pb, a + " answered · " + (all.length - a ? "about " + (all.length - a) + " to go" : "all done")) +
     '<span class="jy-arrow" aria-hidden="true">→<small>copied across</small></span>' +
-    part(2, "codex", "#codex", "Step 2 · My Positions", "Test what you said", "Your stances, with the objections aimed at them and the clashes between them. Go deeper with " + (D.apps || 774) + " more questions.", D.aimed ? Math.round(100 * D.def / D.aimed) : 0, held + " stance" + (held === 1 ? "" : "s") + (D.aimed ? " · " + D.def + " of " + D.aimed + " defended" : "") + (D.crack ? " · " + D.crack + " crack" + (D.crack > 1 ? "s" : "") + " open" : "")) +
-    '</div><div class="jy-next"><span class="faint">Your next step</span><a class="btn small primary" href="' + esc(go[0]) + '">' + esc(go[1]) + ' →</a><span class="faint jy-note">Change an answer in either place and the other updates.</span></div></section>'; }
+    part(2, "codex", "#codex", "Step 2 · My Positions", "Test what you said", "Your stances, with the objections aimed at them and the clashes between them. Go deeper with " + (D.apps || 774) + " more questions.", D.aimed ? Math.round(100 * D.def / D.aimed) : 0, held + " stance" + (held === 1 ? "" : "s") + (D.aimed ? " · " + D.def + " of " + D.aimed + " objections answered" : "") + (D.crack ? " · " + D.crack + " crack" + (D.crack > 1 ? "s" : "") + " open" : "")) +
+    '</div><div class="jy-next"><span class="faint">Your next step</span><a class="btn small primary" href="' + esc(go[0]) + '"' + (step === 2 && nd && nd.tab && go[0] === nd.href ? ' data-act="lbGoCrit" data-t="' + esc(nd.tab) + '"' : "") + '>' + esc(go[1]) + ' →</a><span class="faint jy-note">Change an answer in either place and the other updates.</span></div></section>'; }
 // the Quick Compass (and a half-finished Compass) is only a first reading: say so, and point to the next chapter (Ethics first, by default)
 function portraitIncompleteHTML(lead) {
   const secs = C.sections.filter(x => !x.locked), tot = secs.reduce((a, x) => a + visibleQs(x.id).length, 0), done = secs.reduce((a, x) => a + Math.min(answeredCount(x.id), visibleQs(x.id).length), 0);
@@ -12409,7 +12411,7 @@ function skySVG(M) {
 const PTYPE = [["ethics", "ethics", "Right and wrong"], ["meta", "ethics", "What morality is"], ["mind", "mind", "Mind and self"], ["reality", "reality", "Knowledge and reality"], ["god", "god", "God"], ["society", "society", "Society"], ["aesthetics", "art", "Art"], ["life", "life", "Life and death"]];
 function ptypeHTML() { const got = PTYPE.map(([k, sec, lab]) => ({ k, sec, lab, p: firstPattern((C.patterns || {})[k], S.answers) })).filter(x => SEC[x.sec]);
   const have = got.filter(x => x.p); if (!have.length) return "";
-  const cap1 = t => t.charAt(0).toUpperCase() + t.slice(1), head = have.slice(0, 3).map(x => cap1(x.p.name)).join(" · ");
+  const cap1 = t => t.charAt(0).toUpperCase() + t.slice(1), head = [...new Set(have.map(x => cap1(x.p.name)))].slice(0, 3).join(" · ");
   const slot = x => { if (!x.p) return '<a class="pt-slot locked" href="#compass-' + esc(x.sec) + '"><span class="eyebrow">' + esc(x.lab) + "</span><b>?</b><small>" + (secOpen(x.sec) ? "Answer this chapter to reveal" : "Opens later") + "</small></a>";
     const who = arr(x.p.who).filter(id => TH[id])[0], href = patHref(x.k, x.p) || "#compass-done." + x.sec;
     return '<a class="pt-slot" href="' + esc(href) + '"><span class="eyebrow">' + esc(x.lab) + "</span><b>" + esc(cap1(x.p.name)) + "</b>" + (who ? "<small>like " + esc(TH[who].name) + "</small>" : "") + "</a>"; };
@@ -12443,7 +12445,9 @@ function resultsHTML() {
       '<p class="rhero-score"><b>' + best.pct + "%</b> alike · " + best.strong + " of " + best.n + " shared topics strongly agreed</p>" +
       '<p class="rhero-why">Matches are ranked by how many views you strongly share, then by how alike you are overall, so someone with a higher % on fewer topics can rank lower.</p>' +
       '<div class="row"><a class="btn primary" href="#thinker-' + esc(best.t.id) + '">Meet ' + esc(shortName(best.t)) + "</a>" + (far[0] ? '<a class="btn ghost rhero-ghost" href="#duel-' + esc(best.t.id) + "." + esc(far[0].t.id) + '">Duel: ' + esc(shortName(best.t)) + " vs " + esc(shortName(far[0].t)) + ", your fiercest opponent</a>" : "") + "</div>"
-      : '<h1>Your sky is still dark</h1><p class="rhero-tag">Answer a few more questions. A match needs at least four question areas in common.</p>') +
+      : (() => { const A = Object.values(S.answers || {}).filter(x => x && x.a != null), und = A.filter(x => x.a === "undecided" || x.a === "other").length;
+        return und >= Math.max(4, A.length * .6) ? '<h1>Your sky is still dark</h1><p class="rhero-tag">You chose <b>Undecided</b> on ' + und + " of your " + A.length + ' answers, and an undecided answer can’t match anyone. Go back and pick the answer you lean towards, even slightly: set “How sure?” to the lowest level and nothing is lost.</p><p><button class="btn primary" data-act="review">Review my undecided answers</button></p>'
+          : '<h1>Your sky is still dark</h1><p class="rhero-tag">Answer a few more questions. A match needs at least four question areas in common.</p>'; })()) +
     '</div><div class="rhero-sky">' + skySVG(M) + "</div>" +
     '<div class="rhero-stats"><span><b>' + ans + "</b>answered</span><span><b>" + open + "</b>open " + (open === 1 ? "crack" : "cracks") + "</span><span><b>" + M.length + "</b>thinkers compared</span>" +
     '<span class="rhero-actions"><a href="#firmament-you">Your star in the sky</a><a href="#compass">Chapters</a><button data-act="review">Review answers</button><a href="#codex">My Positions</a></span></div></section>';
@@ -13291,6 +13295,7 @@ function lbMatchSync() { if (!lbInit.done) return; const M = {};
   Object.values(LBQ).forEach(q => { if (lbApply(q) === "no") return; apps++; if (!lbAnswered(q.id)) return; held++;
     if ((q.challenges || []).some(c => c.target && c.target.length && lbAny(c.target) && !lbAny(c.exclude))) { aimed++; if ((lbSt(q.id).why || []).length || (lbSt(q.id).mine && lbSt(q.id).mine.why)) def++; }
     if (q.checks) lbChecksOf(q).forEach(x => { if (x.status === "crack") crack++; else if (x.status === "resolved") mend++; }); });
+  LB.tabs.forEach(t => lbObjList(t).forEach(o => { aimed++; const st = (S.lb.obj || {})[o.id]; if (st && (st.why || []).length) def++; }));
   S.lbD = { held, apps, aimed, def, crack, mend }; }
 // a notebook answer writes every Compass question it is linked to: parents first (compassAlso), then its own (compass),
 // so a follow-up the notebook fills is actually shown in the Compass
@@ -13563,6 +13568,7 @@ function lbMainTile(t, qid, label) { const q = LBQ[qid]; if (!q) return ""; cons
        : '<span class="lb-mt-line">' + esc(q.text) + '</span><span class="lb-mt-none">Not set yet</span>') +
     '<span class="row" style="--g:8px;margin-top:auto">' + (r ? parts.map(btn).join("") + nameBtn : '<button class="btn small primary" data-act="lbOpenQ" data-q="' + esc(qid) + '">Choose</button>') + "</span></div>"; }
 const LB_SUB = {};
+ACT.lbGoCrit = (el, ev) => { LB_SUB[el.dataset.t] = "crit"; try { LBS().sub = Object.assign(LBS().sub || {}, { [el.dataset.t]: "crit" }); save(); } catch (e) { } if (ev) ev.preventDefault(); location.hash = el.getAttribute("href"); };
 ACT.lbSub = el => { LB_SUB[el.dataset.t] = el.dataset.s; try { LBS().sub = Object.assign(LBS().sub || {}, { [el.dataset.t]: el.dataset.s }); save(); } catch (e) { } render(true); };
 // what "Pinning down your view" holds, in order, for each framework (and, for consequentialists, for each answer to "Whose good counts?")
 // each list ends with the framework's most famous thought experiment(s)
@@ -13828,11 +13834,17 @@ ACT.lbNameSave = el => { const box = el.closest(".lb-nameed"), v = box.querySele
 function lbObjSt(id) { const L = LBS(); L.obj = L.obj || {}; return L.obj[id] = L.obj[id] || {}; }
 function lbObjList(t) { if (!t.obj || !t.obj.length || !lbHeadQ(t) || !lbHeld(lbHeadQ(t).id).pos) return []; const seen = new Set();
   return t.obj.filter(o => o.target && o.target.length && lbAny(o.target) && !lbAny(o.exclude) && !seen.has(o.title) && seen.add(o.title)); }
+// when an objection is named after another view (“the paradox of deontology”) but reaches yours too, say why it is here
+function lbAimNote(o) { const t = LBT[o.tab] || LB.tabs.find(x => (x.obj || []).includes(o)), hq = t && lbHeadQ(t); if (!hq) return "";
+  const held = lbHeldLabel(hq.id); if (!held) return ""; const title = String(o.title).toLowerCase(), h = held.toLowerCase();
+  const other = Object.values(LBP).map(p => p.name).find(n => n && n.length > 5 && title.includes(n.toLowerCase().replace(/ (theory|view)$/, "")) && !h.includes(n.toLowerCase().replace(/ (theory|view)$/, "")));
+  const fam = /deontolog/.test(title) ? "a duty-based view: it forbids some acts whatever the results" : /consequential|utilitar/.test(title) ? "it judges acts by their results" : /dualis/.test(title) ? "it treats the mind as more than the body" : /physicalis|materialis/.test(title) ? "it makes the mind physical" : /soul/.test(title) ? "it says something more than matter (a soul or form) makes you who you are" : /realis/.test(title) ? "it is a kind of realism" : /theis|god/.test(title) ? "it involves belief in God" : /egalitar|liberal/.test(title) ? "it shares the commitment this objection targets" : "";
+  return other && fam ? '<p class="lb-aim">Why this is aimed at you: <b>' + esc(held) + "</b> is " + (fam.startsWith("a ") || fam.startsWith("it") ? "" : "") + (fam.startsWith("it ") ? "caught too, because " + esc(fam) : esc(fam)) + ".</p>" : ""; }
 function lbObjCard(o) { const st = lbObjSt(o.id), mine = st.why || [], fw = lbHeld(lbFwQ(LBT[o.tab] || {}) || "").pos;
   const L = (o.reasons || []).filter(r => !r.for || !r.for.length || lbAny(r.for)).map((r, i) => [r, i]).sort((a, b) => ((b[0].standard && lbAny(b[0].standard === true ? b[0].for || [] : b[0].standard)) ? 1 : 0) - ((a[0].standard && lbAny(a[0].standard === true ? a[0].for || [] : a[0].standard)) ? 1 : 0) || a[1] - b[1]).map(x => x[0]);
   const cases = (o.cases || []).filter(id => LBQ[id]);
   return '<article class="lb-crit"><div class="lb-crit-h"><span class="stack" style="--g:2px;min-width:0"><b class="lb-crit-t">' + esc(o.title) + "</b>" + (o.who ? '<span class="faint">' + esc(o.who) + "</span>" : "") + "</span></div>" +
-    '<p class="lb-crit-c">' + esc(o.text) + "</p>" + (cases.length ? '<div class="row" style="--g:6px;flex-wrap:wrap;align-items:center"><span class="faint" style="font-size:.84rem">Pressed by</span>' + cases.map(id => '<button class="btn tiny" data-act="lbOpenQ" data-q="' + esc(id) + '">' + esc(LBQ[id].title) + (lbAnswered(id) ? " ✓" : "") + "</button>").join("") + "</div>" : "") +
+    '<p class="lb-crit-c">' + esc(o.text) + "</p>" + lbAimNote(o) + (cases.length ? '<div class="row" style="--g:6px;flex-wrap:wrap;align-items:center"><span class="faint" style="font-size:.84rem">Pressed by</span>' + cases.map(id => '<button class="btn tiny" data-act="lbOpenQ" data-q="' + esc(id) + '">' + esc(LBQ[id].title) + (lbAnswered(id) ? " ✓" : "") + "</button>").join("") + "</div>" : "") +
     (L.length ? '<details class="lb-crit-d"' + (lbObjCard.n++ < 2 || mine.length ? " open" : "") + '><summary class="btn small ghost">Defences open to you (' + L.length + ": " + Object.entries(L.reduce((c, r) => (c[r.kind] = (c[r.kind] || 0) + 1, c), {})).map(([k, n]) => (LB_KINDS[k] || [k])[0].replace(/^(\w+).*/, "$1") + (n > 1 ? " ×" + n : "")).join(", ") + ")</summary>" +
       '<div class="lb-why-grid">' + L.map(r => { const on = mine.includes(r.id), K = LB_KINDS[r.kind]; return '<div class="lb-why-r' + (on ? " on" : "") + '" role="checkbox" tabindex="0" aria-checked="' + on + '" data-act="lbObjWhy" data-o="' + esc(o.id) + '" data-r="' + esc(r.id) + '"><span class="row" style="--g:6px;align-items:center">' + (K ? '<button class="lb-why-k k-' + esc(r.kind) + '" data-act="lbKinds" data-k="' + esc(r.kind) + '">' + esc(K[0]) + "</button>" : "") + (r.standard ? '<span class="lb-why-std">Standard move</span>' : "") + "</span><b>" + esc(r.lead) + "</b><p>" + esc(r.text) + "</p></div>"; }).join("") + "</div></details>" : '<p class="faint lb-why-none">No listed defences yet.</p>') +
     lbObjMyWhy(o) + "</article>"; }
