@@ -64,7 +64,7 @@
   const capFirst = s => s.charAt(0).toUpperCase() + s.slice(1);
   function initials(n) { const w = String(n).replace(/\(.*?\)/g, "").replace(/\s+of\s+.*$/, "").split(/\s+/).filter(x => x && /^[A-ZÀ-ɏ]/.test(x)); return (w.length > 1 ? w[0][0] + w[w.length - 1][0] : (w[0] || "?").slice(0, 2)).toUpperCase(); }
   const yr = (n, approx) => n == null ? "" : (approx ? "c. " : "") + (n < 0 ? (-n) + " BCE" : String(n));
-  function life(t) { if (!t || t.born == null) return ""; if (t.died == null) return "born " + yr(t.born, t.approximate); return yr(t.born, t.approximate) + " – " + yr(t.died, t.approximate && t.died < 1500); }
+  function life(t) { if (!t || t.born == null) return ""; if (t.died == null) return "born " + yr(t.born, t.approximate) + (t.born < 1900 ? ", death unknown" : ""); return yr(t.born, t.approximate) + " – " + yr(t.died, t.approximate && t.died < 1500); }
   const fame = t => (CORE.has(t.id) ? 100 : 0) + Object.keys(t.positions || {}).length;
   const slugT = s => String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   let GSET_ = null, GSET_N = 0; // rebuilt once the full dictionary has arrived
