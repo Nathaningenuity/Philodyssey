@@ -2501,6 +2501,7 @@ button.on .faint,button[aria-pressed="true"] .faint,.chip.on .faint{color:rgba(2
 .sky-views select{width:100%;margin:6px 0;padding:7px 10px;border-radius:10px;background:rgba(255,255,255,.08);color:#EDE6D2;border:1px solid rgba(237,230,210,.25);font:inherit;font-size:.88rem}.sky-views select option{color:#111}.sv-q{font-size:.86rem;margin:2px 0 8px;opacity:.85}.sv-opts{display:flex;flex-wrap:wrap;gap:6px}.sv-opts .sky-btn{font-size:.8rem}.sv-opts b{opacity:.7;margin-left:4px}.sv-opts i{font-style:normal;font-size:.68rem;background:#E8B04A;color:#1F1A0E;border-radius:999px;padding:0 6px;margin-left:4px}.sv-opts .on{background:#E8B04A;color:#1F1A0E}.sv-res{font-size:.84rem;margin:8px 0 0}
 .sg-list{display:grid;gap:6px;margin-top:10px}.sg-i{display:flex;gap:6px;align-items:flex-start;padding:8px 10px;border-radius:10px;border:1px solid var(--line);text-decoration:none;color:inherit;background:var(--card)}.sg-i:hover{border-color:var(--ink-3)}.sg-i span{display:grid;margin-left:6px}.sg-i small{color:var(--ink-2);font-size:.82rem}
 kbd{display:inline-block;min-width:1.5em;padding:1px 5px;border-radius:5px;border:1px solid var(--line);border-bottom-width:2px;background:var(--raised);font-family:var(--font-mono);font-size:.74rem;text-align:center;color:var(--ink)}.sg-keys{padding-left:18px;display:grid;gap:6px;font-size:.9rem}.shore-guide{color:inherit}
+.sm-done{font-style:normal;font-size:.7rem;font-weight:600;color:#E8B04A;margin-left:6px}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -14147,7 +14148,7 @@ VIEWS.firmament = (arg) => {
     '<div class="sky" id="sky"><div class="sky-tools"><input type="search" id="skySearch" placeholder="Find a thinker" aria-label="Find a thinker">' +
     '<button class="sky-btn" id="skyStories" aria-expanded="false">✦ Stories</button><button class="sky-btn" id="skyTime">⏵ Through time</button><button class="sky-btn" id="skyGame">? Name the stars</button><button class="sky-btn" id="skyDraw" aria-pressed="false" title="Draw your own constellations">✎ Draw</button><button class="sky-btn" id="skyViews" aria-pressed="false" title="Light up everyone who gives an answer">◎ Who thinks…</button><button class="sky-btn" id="skyTrace">⇝ Trace a lineage</button>' +
     (matches().length ? '<button class="sky-btn" id="skyMine">☉ My star</button>' : "") + (skyDeck().size ? '<button class="sky-btn" id="skyDeck" title="Stars whose philosopher card is in your deck">◆ My cards ' + skyDeck().size + "</button>" : "") + (ch.size ? '<button class="sky-btn" id="skyCharted" title="Stars from the Voyage islands you have finished">✧ Charted ' + ch.size + " of " + skyStarTotal() + "</button>" : "") + '<span id="skyMsg" class="sky-msg" role="status" aria-live="polite"></span></div>' +
-    '<div class="sky-menu" id="skyMenu" hidden>' + (yp ? [yp] : []).concat(SKY_STORIES).map(st => '<button data-s="' + st.id + '"' + (st.mine ? ' class="mine"' : "") + '><b>' + esc(st.title) + "</b><span>" + esc(st.sub) + " · " + st.stops.length + " stars</span></button>").join("") + "</div>" +
+    '<div class="sky-menu" id="skyMenu" hidden>' + (yp ? [yp] : []).concat(SKY_STORIES).map(st => '<button data-s="' + st.id + '"' + (st.mine ? ' class="mine"' : "") + '><b>' + esc(st.title) + ((S.skyDone || {})[st.id] ? ' <i class="sm-done">✓ seen</i>' : "") + "</b><span>" + esc(st.sub) + " · " + st.stops.length + " stars</span></button>").join("") + "</div>" +
     '<div class="sky-panel" id="skyStory" hidden></div>' +
     '<div class="sky-panel sky-lore" id="skyLore" hidden></div>' +
     '<div class="sky-panel" id="skyGamePanel" hidden></div><div class="sky-panel sky-trace" id="skyTracePanel" hidden></div>' +
@@ -14477,6 +14478,7 @@ function drawSky() {
   // the end of a story: a short wrap-up, the whole path lit, and the next story one tap away
   function storyEnd() {
     clearTimeout(autoT); $("#skyStory").classList.remove("autorun");
+    if (story.s && story.s.id && !story.s.trace) { S.skyDone = S.skyDone || {}; S.skyDone[story.s.id] = Date.now(); save(); const mb = $('#skyMenu button[data-s="' + story.s.id + '"] b'); if (mb && !mb.querySelector(".sm-done")) mb.insertAdjacentHTML("beforeend", ' <i class="sm-done">✓ seen</i>'); }
     const st = story.s, list = (yp => (yp ? [yp] : []).concat(SKY_STORIES))(skyYourPath()), i = list.findIndex(x => x.id === st.id), nx = list[(i + 1) % list.length];
     const P = st.stops.map(x => byId[x[0]]).filter(Boolean), n = P.length;
     // keep the whole path lit and framed while the wrap-up is shown
