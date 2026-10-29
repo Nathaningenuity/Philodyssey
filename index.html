@@ -2520,6 +2520,13 @@ kbd{display:inline-block;min-width:1.5em;padding:1px 5px;border-radius:5px;borde
 .ostop .ochoice{background:#fffaf0;color:#2a2016;border-color:#d9c9a3}.ostop .ochoice:hover{border-color:#9c2b1c}.ostop .ochoice span{color:#4a3a26}.ostop .oout,.ostop .olens{background:#f4ead0;border-color:#d9c9a3}.ostop .ofx span{color:#2a2016}
 .obar .og-needle{stroke:#3a2a18;stroke-width:3}.obar .og-arc{stroke:url(#ogg)}.obar text{fill:#7a5a2a}
 @media (max-width:640px){.obar{position:static!important}.obar .ogauge{max-width:110px}.omen i{width:4px;height:7px}}
+.shipwrap{border-radius:12px;overflow:hidden;background:linear-gradient(#f7f1e3,#efe4ca);border:1px solid #d9c9a3}.shipsvg{display:block;width:100%;height:auto}.shipsvg .sea{fill:#7aa6b8}.shipsvg .wave{fill:none;stroke:#e9f2f4;stroke-width:1.2;opacity:.7}.shipsvg .slip{stroke:#8a6a3e;stroke-width:3;fill:none}
+.shipsvg .pk{stroke:#3a2a18;stroke-width:.7;transition:fill .5s}.shipsvg .pk.old{fill:#6b4a2b}.shipsvg .pk.new{fill:#e8c98e}.shipsvg .pk.ghost{fill:none;stroke-dasharray:3 3;stroke:#a08a62}.shipsvg .hull-o,.shipsvg .hull-l{fill:none;stroke:#3a2a18;stroke-width:1.6;stroke-linecap:round}
+.shipsvg .mast{stroke:#3a2a18;stroke-width:3}.shipsvg .sail{fill:#2b2b2b;stroke:#3a2a18}.shipsvg .oar{stroke:#5a4426;stroke-width:1.6}.shipsvg .eye{fill:#fff;stroke:#3a2a18}
+.machsvg{display:block;width:100%;height:auto;border-radius:14px;margin:4px 0 12px}.machsvg .mbg{fill:#0f1730}.machsvg .wire{stroke:#2b3b66;stroke-width:1.2}.machsvg .base{fill:#26324f}.machsvg .pod{fill:rgba(120,200,255,.16);stroke:#6fc6ff;stroke-width:1.5}.machsvg .lid{fill:none;stroke:#bfe8ff;stroke-width:2}
+.machsvg .sleeper circle,.machsvg .sleeper path{fill:#c9d6ee}.machsvg .thread{fill:none;stroke:#E8B04A;stroke-width:1.4;stroke-dasharray:3 4;animation:thr 1.6s linear infinite}@keyframes thr{to{stroke-dashoffset:-14}}
+.machsvg .md{opacity:0;animation:dreamCycle 9s infinite}.machsvg .md1{animation-delay:3s}.machsvg .md2{animation-delay:6s}@keyframes dreamCycle{0%,30%{opacity:1}36%,100%{opacity:0}}.machsvg .mdb{fill:rgba(232,176,74,.18);stroke:#E8B04A}.machsvg .mdi{fill:#f4ead0}.machsvg .mdline{stroke:#3a2a18;stroke-width:1.6;fill:none}.machsvg .md1 .mdline{stroke:#f4ead0}.machsvg .mdh{fill:#e05a6a}.machsvg .mdl,.machsvg .mdq{fill:#f4ead0;font:600 10px var(--font-ui);text-anchor:middle}.machsvg .mdq{font:700 40px var(--font-display);fill:#9aa6c0}
+.machsvg.awake .pod{stroke:#9aa6c0}.machsvg.awake .thread{stroke:#5a6584;animation:none}@media (prefers-reduced-motion:reduce){.machsvg .md{animation:none}.machsvg .md0{opacity:1}}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -15591,14 +15598,29 @@ ACT.heapNo = () => {
 ACT.heapReset = () => { S.lab.heap = { n: 10000, steps: 0, lastYes: 10000, done: true }; save(); render(true); };
 
 // Theseus’ ship
+// a Greek galley drawn plank by plank: 20 strakes in two rows along a curved hull
+function shipSVG(n, mode) { const N = 20, X0 = 52, W = 316, cw = W / 10, cx = X0 + W / 2;
+  const top = x => 74 - .00052 * (x - cx) * (x - cx), dep = x => 36 - .00062 * (x - cx) * (x - cx), bot = (x, r) => top(x) + dep(x) * (r ? 1 : .46);
+  let g = "";
+  for (let i = 0; i < N; i++) { const r = i < 10 ? 0 : 1, c = i % 10, xa = X0 + c * cw + .6, xb = X0 + (c + 1) * cw - .6;
+    const y1 = x => r ? bot(x, 0) + .6 : top(x) + .6, y2 = x => bot(x, r) - .6;
+    const cls = mode === "pile" ? (i < n ? "pk old" : "pk ghost") : (i < n ? "pk new" : "pk old");
+    g += '<path class="' + cls + '" d="M' + xa.toFixed(1) + " " + y1(xa).toFixed(1) + " L" + xb.toFixed(1) + " " + y1(xb).toFixed(1) + " L" + xb.toFixed(1) + " " + y2(xb).toFixed(1) + " L" + xa.toFixed(1) + " " + y2(xa).toFixed(1) + 'Z"><title>Plank ' + (i + 1) + (cls.includes("new") ? ": new" : cls.includes("ghost") ? ": not yet here" : ": original") + "</title></path>"; }
+  const xl = X0, xr = X0 + W, stem = "M" + xl + " " + top(xl) + " Q" + (xl - 22) + " " + (top(xl) + 8) + " " + (xl - 30) + " " + (top(xl) - 22), stern = "M" + xr + " " + top(xr) + " Q" + (xr + 24) + " " + (top(xr) + 4) + " " + (xr + 22) + " " + (top(xr) - 30) + " q-4 -8 4 -12";
+  const full = mode !== "pile" || n >= N, sea = mode !== "pile";
+  return '<svg class="shipsvg ' + mode + '" viewBox="0 0 420 ' + (sea ? 150 : 130) + '" role="img" aria-label="' + (mode === "pile" ? n + " old planks gathered on the shore" : n + " of 20 planks replaced") + '">' +
+    (sea ? '<rect y="100" width="420" height="50" class="sea"/><path class="wave" d="M0 102 q10 -5 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"/>' : '<path class="slip" d="M20 118 H400"/><path class="slip" d="M60 118 L80 104 M160 118 L172 104 M260 118 L272 104 M350 118 L362 104"/>') +
+    (full && sea ? '<line class="mast" x1="' + cx + '" y1="74" x2="' + cx + '" y2="6"/><path class="sail" d="M' + (cx - 46) + ' 12 H' + (cx + 46) + ' Q' + (cx + 40) + ' 40 ' + (cx + 44) + ' 56 H' + (cx - 44) + ' Q' + (cx - 40) + ' 40 ' + (cx - 46) + ' 12Z"/>' + Array.from({ length: 7 }, (_, k) => { const x = X0 + 40 + k * 40; return '<line class="oar" x1="' + x + '" y1="' + (top(x) + 14) + '" x2="' + (x - 18) + '" y2="122"/>'; }).join("") : "") +
+    '<path class="hull-l" d="' + stem + '"/><path class="hull-l" d="' + stern + '"/>' + g + '<path class="hull-o" d="M' + xl + " " + top(xl) + Array.from({ length: 21 }, (_, k) => { const x = xl + k * W / 20; return " L" + x.toFixed(1) + " " + top(x).toFixed(1); }).join("") + '"/>' +
+    (mode !== "pile" ? '<path class="eye" d="M' + (xl + 14) + " " + (top(xl + 14) + 9) + ' q6 -5 12 0 q-6 5 -12 0Z"/>' : "") + "</svg>"; }
 function labShip() {
   const P = S.lab.ship = S.lab.ship || { replaced: 0 };
   const N = 20;
   const planks = n => Array.from({ length: N }, (_, i) => '<i class="' + (i < n ? "new" : "") + '"></i>').join("");
   const old = n => Array.from({ length: n }, () => "<i></i>").join("");
   let h = '<p class="read">The Athenians kept the ship of the hero Theseus for centuries. As planks rotted, they replaced them, one by one, until no original plank was left. Meanwhile a shipwright quietly saved every old plank.</p>' +
-    '<div class="panel stack" style="--g:12px"><div class="row" style="justify-content:space-between"><b>The ship in the harbour</b><span class="faint">' + P.replaced + " of " + N + ' planks new</span></div><div class="ship">' + planks(P.replaced) + "</div>" +
-    '<div class="row" style="justify-content:space-between"><b>The shipwright\'s pile</b><span class="faint">' + P.replaced + ' old planks</span></div><div class="ship old">' + old(P.replaced) + "</div>" +
+    '<div class="panel stack" style="--g:12px"><div class="row" style="justify-content:space-between"><b>The ship in the harbour</b><span class="faint">' + P.replaced + " of " + N + ' planks new</span></div><div class="shipwrap">' + shipSVG(P.replaced, "harbour") + "</div>" +
+    '<div class="row" style="justify-content:space-between"><b>The shipwright\'s pile</b><span class="faint">' + P.replaced + ' old planks</span></div><div class="shipwrap">' + (P.replaced ? shipSVG(P.replaced, "pile") : '<p class="faint" style="margin:0">Nothing yet: the old planks will gather here.</p>') + "</div>" +
     (P.replaced < N ? (pendingCheck(P) ? '<div class="stack" style="--g:8px"><b class="read" style="font-size:1.1rem">' + P.replaced + " of " + N + ' planks are new. Is the ship in the harbour still Theseus\' ship?</b><div class="row"><button class="btn primary" data-act="shipCheck" data-v="yes">Yes, still his ship</button><button class="btn" data-act="shipCheck" data-v="no">No, not any more</button></div></div>'
       : '<div class="row"><button class="btn primary" data-act="shipStep">Replace a plank</button>' + (P.replaced >= 1 && P.replaced < 10 ? '<button class="btn" data-act="shipTo" data-n="10">Replace up to 10</button>' : P.replaced >= 10 && P.replaced < 19 ? '<button class="btn" data-act="shipTo" data-n="19">Replace up to 19</button>' : "") + "</div>") : "") + "</div>";
   if (P.replaced >= N) {
@@ -15640,9 +15662,21 @@ ACT.shipVerdict = el => { S.lab.ship.verdict = el.dataset.v; S.lab.ship.done = t
 ACT.shipReset = () => { S.lab.ship = { replaced: 0, done: true, check: {} }; save(); render(true); };
 
 // Experience machine
+// the experience machine: a sleeper in a pod, dreaming; at the twist the lid cracks and the dreams go grey
+function machineSVG(stage) { const awake = stage === 2;
+  const dream = (k, body, lab) => '<g class="md md' + k + '"><circle cx="300" cy="60" r="38" class="mdb"/>' + body + '<text x="300" y="112" class="mdl">' + lab + "</text></g>";
+  return '<svg class="machsvg' + (awake ? " awake" : "") + '" viewBox="0 0 420 170" role="img" aria-label="' + (awake ? "The pod opens: you were in the machine all along" : "A sleeper in a glowing pod, dreaming a perfect life") + '">' +
+    '<rect width="420" height="170" class="mbg"/>' + Array.from({ length: 9 }, (_, k) => '<line x1="' + (20 + k * 12) + '" y1="0" x2="' + (60 + k * 22) + '" y2="128" class="wire"/>').join("") +
+    '<rect x="30" y="118" width="240" height="14" rx="4" class="base"/><path d="M40 118 Q150 52 260 118Z" class="pod"/><path d="' + (awake ? "M40 118 Q100 70 150 62 L148 40 Q90 50 38 112Z" : "M40 118 Q150 52 260 118") + '" class="lid"/>' +
+    '<g class="sleeper"><circle cx="78" cy="106" r="9"/><path d="M88 108 Q150 96 230 112 L230 118 L88 118Z"/></g>' +
+    '<path d="M100 92 Q170 60 255 70" class="thread"/>' +
+    (awake ? '<text x="300" y="66" class="mdq">?</text><text x="300" y="112" class="mdl">your real life</text>' :
+      dream(0, '<rect x="284" y="44" width="32" height="34" rx="2" class="mdi"/><path d="M290 54h20M290 61h20M290 68h14" class="mdline"/>', "writing a great novel") +
+      dream(1, '<circle cx="288" cy="56" r="6" class="mdi"/><circle cx="312" cy="56" r="6" class="mdi"/><path d="M278 80 q10 -16 20 0 M302 80 q10 -16 20 0" class="mdline"/>', "making friends") +
+      dream(2, '<path d="M300 82 C278 66 282 44 300 56 C318 44 322 66 300 82Z" class="mdh"/>', "falling in love")) + "</svg>"; }
 function labMachine() {
   const M = S.lab.machine = S.lab.machine || {};
-  let h = '<p class="read">Neuroscientists can plug you into a machine that gives you any experiences you want: writing a great novel, making friends, falling in love. Inside, it all feels completely real. You would not know you were plugged in.</p>';
+  let h = machineSVG(M.first && !M.second ? 2 : 1) + '<p class="read">Neuroscientists can plug you into a machine that gives you any experiences you want: writing a great novel, making friends, falling in love. Inside, it all feels completely real. You would not know you were plugged in.</p>';
   if (!M.first) {
     h += '<div class="panel raised stack" style="--g:10px"><b class="read" style="font-size:1.15rem">Would you plug in for the rest of your life?</b><div class="opts"><button class="opt" data-act="mach1" data-v="in"><span class="box"></span><span>Yes, plug me in</span></button><button class="opt" data-act="mach1" data-v="out"><span class="box"></span><span>No, I\'ll stay in real life</span></button></div><p class="faint" style="font-size:.85rem">Robert Nozick, <i>Anarchy, State, and Utopia</i> (1974)</p></div>';
   } else if (!M.second) {
