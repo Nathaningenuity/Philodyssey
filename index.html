@@ -2528,6 +2528,10 @@ kbd{display:inline-block;min-width:1.5em;padding:1px 5px;border-radius:5px;borde
 .machsvg .md{opacity:0;animation:dreamCycle 9s infinite}.machsvg .md1{animation-delay:3s}.machsvg .md2{animation-delay:6s}@keyframes dreamCycle{0%,30%{opacity:1}36%,100%{opacity:0}}.machsvg .mdb{fill:rgba(232,176,74,.18);stroke:#E8B04A}.machsvg .mdi{fill:#f4ead0}.machsvg .mdline{stroke:#3a2a18;stroke-width:1.6;fill:none}.machsvg .md1 .mdline{stroke:#f4ead0}.machsvg .mdh{fill:#e05a6a}.machsvg .mdl,.machsvg .mdq{fill:#f4ead0;font:600 10px var(--font-ui);text-anchor:middle}.machsvg .mdq{font:700 40px var(--font-display);fill:#9aa6c0}
 .machsvg.awake .pod{stroke:#9aa6c0}.machsvg.awake .thread{stroke:#5a6584;animation:none}@media (prefers-reduced-motion:reduce){.machsvg .md{animation:none}.machsvg .md0{opacity:1}}
 [id^="x-"].d-hit{margin-inline:0;padding-inline:18px;background:var(--card);box-shadow:0 0 0 3px var(--lamp);animation:xHit 2.4s ease-out 1 forwards}@keyframes xHit{0%,40%{box-shadow:0 0 0 4px var(--lamp)}100%{box-shadow:0 0 0 1px var(--line)}}
+.trolley-row{display:grid;grid-template-columns:200px 1fr;column-gap:20px;align-items:start}.trolley-row>:not(.tfig){grid-column:2}.tfig{grid-row:1/span 3;width:200px;height:auto;background:var(--raised);border-radius:10px;border:1px solid var(--line)}
+.tf-rail{fill:none;stroke:var(--ink-2);stroke-width:2}.tf-p circle{fill:var(--ink)}.tf-p path{stroke:var(--ink);stroke-width:1.6;fill:none;stroke-linecap:round}.tf-p.big circle{fill:var(--crack)}.tf-p.big path{stroke:var(--crack)}
+.tf-tram rect{fill:var(--c-lab)}.tf-tram circle{fill:var(--ink)}.tf-speed{stroke:var(--ink-3);stroke-width:1.2}.tf-bridge{fill:none;stroke:var(--ink-2);stroke-width:2.2}.tf-trap{stroke:var(--crack);stroke-width:3;stroke-dasharray:3 2}.tf-hot{fill:var(--lamp)}.tf-t{font:600 7.5px var(--font-ui);fill:var(--ink-3);text-anchor:middle}.tf-bed{fill:none;stroke:var(--ink-2);stroke-width:2}
+@media (max-width:640px){.trolley-row{grid-template-columns:1fr}.trolley-row>:not(.tfig){grid-column:1}.tfig{grid-row:auto;width:100%;max-width:300px}}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -15715,11 +15719,22 @@ const PRINCIPLES = [
   { n: "Never kill an innocent person", by: "Absolutist deontology", p: { switch: ["wrong"], footbridge: ["wrong"], loop: ["wrong"], trapdoor: ["wrong"], transplant: ["wrong"] }, d: "Letting five die is a tragedy; killing one is a wrong. You keep your hands clean in every case." }
 ];
 const VERDICT = { req: "Required", allow: "Allowed", wrong: "Wrong" };
+// a small line drawing for each trolley case: the trolley comes from the left; five on the main line, one where the case puts him
+const TROL_FIG = (() => { const fig = (x, y, big) => '<g class="tf-p' + (big ? " big" : "") + '"><circle cx="' + x + '" cy="' + (y - (big ? 15 : 12)) + '" r="' + (big ? 3.4 : 2.6) + '"/><path d="M' + x + " " + (y - (big ? 11 : 9)) + "V" + (y - 3) + "M" + (x - 3) + " " + (y - 7) + "H" + (x + 3) + "M" + x + " " + (y - 3) + "l-2.6 3M" + x + " " + (y - 3) + 'l2.6 3"' + (big ? ' stroke-width="2.4"' : "") + "/></g>";
+  const five = (x, y) => [0, 1, 2, 3, 4].map(k => fig(x + k * 7, y)).join(""), tram = (x, y) => '<g class="tf-tram"><rect x="' + x + '" y="' + (y - 13) + '" width="26" height="11" rx="2"/><circle cx="' + (x + 6) + '" cy="' + (y - 1) + '" r="2"/><circle cx="' + (x + 20) + '" cy="' + (y - 1) + '" r="2"/><path d="M' + (x - 8) + " " + (y - 7) + "h-8M" + (x - 6) + " " + (y - 3) + 'h-10" class="tf-speed"/></g>';
+  const rail = d => '<path class="tf-rail" d="' + d + '"/>';
+  return {
+    switch: rail("M4 52H196") + rail("M86 52 Q110 52 128 30 H196") + tram(24, 52) + five(150, 52) + fig(170, 30) + '<circle cx="86" cy="52" r="3.5" class="tf-hot"/><text x="86" y="66" class="tf-t">switch</text>',
+    footbridge: rail("M4 56H196") + '<path class="tf-bridge" d="M96 30H156M100 30V56M152 30V56"/>' + tram(24, 56) + five(162, 56) + fig(118, 30, true) + fig(134, 30) + '<text x="176" y="24" class="tf-t">push?</text>',
+    loop: rail("M4 52H190") + rail("M80 52 Q100 52 112 30 H160 Q182 30 186 46") + tram(24, 52) + five(150, 52) + fig(136, 30) + '<circle cx="80" cy="52" r="3.5" class="tf-hot"/><text x="80" y="66" class="tf-t">switch</text>',
+    trapdoor: rail("M4 56H196") + '<path class="tf-bridge" d="M96 30H156M100 30V56M152 30V56"/><path class="tf-trap" d="M118 30H132"/>' + tram(24, 56) + five(162, 56) + fig(125, 30, true) + '<circle cx="146" cy="24" r="3" class="tf-hot"/><text x="146" y="16" class="tf-t">lever</text>',
+    transplant: '<path class="tf-bed" d="M14 52H70M14 52V44M70 52V46M14 46H70"/>' + fig(42, 44) + [0, 1, 2, 3, 4].map(k => '<path class="tf-bed" d="M' + (96 + k * 20) + " 52H" + (112 + k * 20) + '"/>' + fig(104 + k * 20, 50)).join("") + '<text x="42" y="66" class="tf-t">healthy patient</text><text x="140" y="66" class="tf-t">five who need organs</text>'
+  }; })();
 function labTrolley() {
   const L = S.lab.trolley = S.lab.trolley || { v: {} };
   const done = TROLLEY.every(c => L.v[c.id]);
   let h = '<p class="read">Five cases. The numbers never change: one dies, or five die. Mark each one as required, allowed or wrong. Then we\'ll find the principle your answers follow.</p><div class="panel" style="padding-block:4px">' +
-    TROLLEY.map(c => '<div class="trolley-row"><b class="read" style="font-size:1.1rem">' + c.t + '</b><p class="muted">' + c.d + '</p><div class="seg" role="group" aria-label="' + c.t + '">' + [["req", "Required"], ["allow", "Allowed"], ["wrong", "Wrong"]].map(o => '<button data-act="trol" data-c="' + c.id + '" data-v="' + o[0] + '" aria-pressed="' + (L.v[c.id] === o[0]) + '">' + o[1] + "</button>").join("") + "</div></div>").join("") + "</div>";
+    TROLLEY.map(c => '<div class="trolley-row">' + (TROL_FIG[c.id] ? '<svg class="tfig" viewBox="0 0 200 72" aria-hidden="true">' + TROL_FIG[c.id] + "</svg>" : "") + '<b class="read" style="font-size:1.1rem">' + c.t + '</b><p class="muted">' + c.d + '</p><div class="seg" role="group" aria-label="' + c.t + '">' + [["req", "Required"], ["allow", "Allowed"], ["wrong", "Wrong"]].map(o => '<button data-act="trol" data-c="' + c.id + '" data-v="' + o[0] + '" aria-pressed="' + (L.v[c.id] === o[0]) + '">' + o[1] + "</button>").join("") + "</div></div>").join("") + "</div>";
   if (done) {
     // A case fits when your verdict is one the principle accepts; "Allowed" and "Required" are different answers.
     // Near misses (allowed vs required) break ties, so the closest principle comes first.
