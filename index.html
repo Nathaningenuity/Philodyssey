@@ -2533,6 +2533,7 @@ kbd{display:inline-block;min-width:1.5em;padding:1px 5px;border-radius:5px;borde
 .tf-tram rect{fill:var(--c-lab)}.tf-tram circle{fill:var(--ink)}.tf-speed{stroke:var(--ink-3);stroke-width:1.2}.tf-bridge{fill:none;stroke:var(--ink-2);stroke-width:2.2}.tf-trap{stroke:var(--crack);stroke-width:3;stroke-dasharray:3 2}.tf-hot{fill:var(--lamp)}.tf-t{font:600 7.5px var(--font-ui);fill:var(--ink-3);text-anchor:middle}.tf-bed{fill:none;stroke:var(--ink-2);stroke-width:2}
 @media (max-width:640px){.trolley-row{grid-template-columns:1fr}.trolley-row>:not(.tfig){grid-column:1}.tfig{grid-row:auto;width:100%;max-width:300px}}
 .needle-wait{flex-wrap:nowrap;border-radius:16px;padding:8px 14px}.needle-wait>span:last-child{min-width:0}@media (max-width:640px){.needle{border-radius:16px;font-size:.86rem}}
+.dk-short{font:600 .78rem var(--font-ui);padding:3px 10px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--ink-2);cursor:pointer}.dk-short.on{background:var(--c-voyage);border-color:var(--c-voyage);color:#fff}.dk-dot.skip{opacity:.25;transform:scale(.7)}
 .xc-meter{height:5px;border-radius:5px;background:var(--line-2);overflow:hidden}.xc-meter i{display:block;height:100%;background:var(--c);border-radius:5px}
 /* today strip */
 .today{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
@@ -16803,6 +16804,13 @@ function voyLogHTML() {
 }
 
 /* ---- an island is a deck: one idea per slide, quick questions along the way */
+// the short route: the story, the ideas, the quick checks and the summary (about 17 slides instead of 29);
+// slides keep their numbers, Next and Back just step over the rest, so answers and progress stay where they are
+const SHORT_KEEP = new Set(["story", "idea", "quiz", "summary", "checkpoint", "finish"]);
+const isShort = I => !!(S.voyShort && I && !I.sem);
+function shortStep(I, i, d) { const L = deckSlides(I); let k = i + d; while (k > 0 && k < L.length - 1 && !SHORT_KEEP.has(L[k].t)) k += d; return Math.max(0, Math.min(L.length - 1, k)); }
+function shortCount(I) { return deckSlides(I).filter(s => SHORT_KEEP.has(s.t)).length; }
+ACT.voyShort = () => { S.voyShort = !S.voyShort; save(); toast(S.voyShort ? "Short route: story, ideas, quick checks and summary" : "Full route: every slide"); render(true); };
 function deckSlides(I) {
   if (I.sem) return I._L || (I._L = I.slides.concat([{ t: "finish" }]));
   const L = (I.slides || []).slice();
@@ -16901,11 +16909,11 @@ function deckPage(id) {
   if (L[i].t === "finish" && V.done[id] == null) { V.done[id] = deckScore(I).ok; save(); } }
   V.max[id] = Math.max(V.max[id] || 0, i);
   const u = unitOf(I); const locked = slideLocked(I, i);
-  const dots = L.map((s, k) => { const q = s.t === "quiz", ans = I.sem && semDisc() ? discOf(id)[k] : V.quiz[id][k]; const cls = (k === i ? " cur" : "") + (k <= V.max[id] ? " seen" : "") + (q ? " q" + (ans == null ? "" : ans === s.answer ? " ok" : " no") : "") + (s.t === "finish" ? " end" : "");
+  const dots = L.map((s, k) => { const q = s.t === "quiz", ans = I.sem && semDisc() ? discOf(id)[k] : V.quiz[id][k]; const cls = (k === i ? " cur" : "") + (k <= V.max[id] ? " seen" : "") + (q ? " q" + (ans == null ? "" : ans === s.answer ? " ok" : " no") : "") + (s.t === "finish" ? " end" : "") + (isShort(I) && !SHORT_KEEP.has(s.t) ? " skip" : "");
     return '<button class="dk-dot' + cls + '" data-act="dkGo" data-id="' + esc(id) + '" data-i="' + k + '"' + (k > V.max[id] + 1 || (k > i && slideLocked(I, i)) ? " disabled" : "") + ' aria-label="Slide ' + (k + 1) + '"></button>'; }).join("");
   let h = '<article class="voy deck' + (I.sem ? " sem" + (semDisc() ? " disc" : "") : "") + '" data-deck="' + esc(id) + '">';
   if (I.sem) h += semHeadHTML(I, i, L, dots); else
-  h += '<header class="dk-head"><div class="wrap dk-head-in"><a class="vy-back" href="#voyage-u' + I.unit + '">← Sea ' + ROMANV[I.unit] + " · " + esc(u ? u.title : "") + '</a><div class="dk-title">' + (I.cast || []).slice(0, 3).map(c => c.id && TH[c.id] ? '<a class="dk-face" href="#thinker-' + esc(c.id) + '" title="' + esc(c.name) + ': full profile">' + portraitHTML(c, "pt-s") + "</a>" : portraitHTML(c, "pt-s")).join("") + '<span class="stack" style="--g:1px;min-width:0"><b>' + esc(I.name) + '</b><span class="faint">' + esc(I.question) + '</span></span></div><span class="dk-side">' + ((I.cast || []).some(c => c.id && TH[c.id] && TH[c.id].born != null) ? '<a class="dk-sky" href="#firmament-isl.' + esc(I.id) + '" title="See this island’s thinkers in Stargazing">✦ In the sky</a>' : "") + '<a class="dk-sky" href="#worksheet-' + esc(I.id) + '" title="A printable worksheet with questions and an answer key">⎙ Worksheet</a><span class="cq-mono dk-count">' + (i + 1) + " / " + L.length + '</span></span></div><div class="wrap"><div class="dk-route">' + dots + "</div></div></header>";
+  h += '<header class="dk-head"><div class="wrap dk-head-in"><a class="vy-back" href="#voyage-u' + I.unit + '">← Sea ' + ROMANV[I.unit] + " · " + esc(u ? u.title : "") + '</a><div class="dk-title">' + (I.cast || []).slice(0, 3).map(c => c.id && TH[c.id] ? '<a class="dk-face" href="#thinker-' + esc(c.id) + '" title="' + esc(c.name) + ': full profile">' + portraitHTML(c, "pt-s") + "</a>" : portraitHTML(c, "pt-s")).join("") + '<span class="stack" style="--g:1px;min-width:0"><b>' + esc(I.name) + '</b><span class="faint">' + esc(I.question) + '</span></span></div><span class="dk-side">' + ((I.cast || []).some(c => c.id && TH[c.id] && TH[c.id].born != null) ? '<a class="dk-sky" href="#firmament-isl.' + esc(I.id) + '" title="See this island’s thinkers in Stargazing">✦ In the sky</a>' : "") + '<a class="dk-sky" href="#worksheet-' + esc(I.id) + '" title="A printable worksheet with questions and an answer key">⎙ Worksheet</a><button class="linkish-quiet dk-short' + (S.voyShort ? " on" : "") + '" data-act="voyShort" aria-pressed="' + !!S.voyShort + '" title="Short route: about ' + shortCount(I) + ' slides instead of ' + L.length + '">⏱ ' + (S.voyShort ? "Short route" : "Full route") + '</button><span class="cq-mono dk-count">' + (isShort(I) ? (L.slice(0, i + 1).filter(x => SHORT_KEEP.has(x.t)).length) + " / " + shortCount(I) : (i + 1) + " / " + L.length) + '</span></span></div><div class="wrap"><div class="dk-route">' + dots + "</div></div></header>";
   h += '<div class="wrap"><div class="dk-stage" id="dkStage">' + slideHTML(I, L[i], i) + (I.sem && semDisc() && L[i].note && L[i].t !== "source" ? '<aside class="sem-fnote"><b>Facilitator</b> ' + rich(L[i].note) + "</aside>" : "") + "</div>";
   h += '<nav class="dk-nav"><button class="btn ghost" data-act="dkPrev" data-id="' + esc(id) + '"' + (i ? "" : " disabled") + '>← Back</button>' +
     (L[i].t === "finish" ? "" : '<button class="btn primary' + (locked ? " is-off" : "") + '" data-act="dkNext" data-id="' + esc(id) + '">' + (locked ? "Answer to continue" : i === L.length - 2 ? "Finish" : "Next →") + "</button>") + "</nav></div>";
@@ -16915,8 +16923,8 @@ function deckPage(id) {
 function dkGoTo(id, i) { const V = deckState(id); V.pos[id] = i; if (VOY.islands[id]) { V.last = V.last || {}; V.last[id] = Date.now(); } save(); render(true); const st = $("#dkStage"); if (!st) return;
   const head = ($(".top") ? $(".top").offsetHeight : 0) + ($(".dk-head") && getComputedStyle($(".dk-head")).position === "sticky" ? $(".dk-head").offsetHeight : 0);
   const y = st.getBoundingClientRect().top + scrollY - head - 10; if (Math.abs(scrollY - y) > 4 && (scrollY > y || st.getBoundingClientRect().top > innerHeight * .5)) window.scrollTo({ top: Math.max(0, y) }); }
-ACT.dkNext = el => { const id = el.dataset.id, I = DK(id), V = deckState(id), i = V.pos[id] || 0; if (slideLocked(I, i)) { const o = $(".sl-opts"); if (o) { o.classList.remove("nudge"); void o.offsetWidth; o.classList.add("nudge"); } return; } dkGoTo(id, Math.min(deckSlides(I).length - 1, i + 1)); };
-ACT.dkPrev = el => { const id = el.dataset.id, V = deckState(id); dkGoTo(id, Math.max(0, (V.pos[id] || 0) - 1)); };
+ACT.dkNext = el => { const id = el.dataset.id, I = DK(id), V = deckState(id), i = V.pos[id] || 0; if (slideLocked(I, i)) { const o = $(".sl-opts"); if (o) { o.classList.remove("nudge"); void o.offsetWidth; o.classList.add("nudge"); } return; } dkGoTo(id, isShort(I) ? shortStep(I, i, 1) : Math.min(deckSlides(I).length - 1, i + 1)); };
+ACT.dkPrev = el => { const id = el.dataset.id, V = deckState(id), I = DK(id); dkGoTo(id, isShort(I) ? shortStep(I, V.pos[id] || 0, -1) : Math.max(0, (V.pos[id] || 0) - 1)); };
 ACT.dkGo = el => dkGoTo(el.dataset.id, +el.dataset.i);
 ACT.dkAnswer = el => { const id = el.dataset.id, V = deckState(id), i = +el.dataset.i; if (DK(id) && DK(id).sem && semDisc()) { const D = discOf(id); if (D[i] != null) return; D[i] = +el.dataset.j; render(true); return; } if (V.quiz[id][i] != null) return; V.quiz[id][i] = +el.dataset.j; save(); render(true);
   // bring the explanation into view (on phones it can sit under the fixed Back/Next bar)
