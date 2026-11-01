@@ -13601,6 +13601,14 @@ function lbMainTile(t, qid, label) { const q = LBQ[qid]; if (!q) return ""; cons
     '<span class="row" style="--g:8px;margin-top:auto">' + (r ? parts.map(btn).join("") + nameBtn : '<button class="btn small primary" data-act="lbOpenQ" data-q="' + esc(qid) + '">Choose</button>') + "</span></div>"; }
 const LB_SUB = {};
 ACT.lbGoCrit = (el, ev) => { LB_SUB[el.dataset.t] = "crit"; try { LBS().sub = Object.assign(LBS().sub || {}, { [el.dataset.t]: "crit" }); save(); } catch (e) { } if (ev) ev.preventDefault(); location.hash = el.getAttribute("href"); };
+// an answer key: "qid=A; qid2=C" (letters index the question's answers in order) sets many held answers at once
+ACT.keyOpen = () => { const b = $("#keyBox"); if (b) { b.hidden = !b.hidden; if (!b.hidden) $("#keyTxt").focus(); } };
+ACT.keyLoad = () => { const t = ($("#keyTxt") || {}).value || ""; let n = 0, bad = 0;
+  (t.replace(/^\s*PHILO-KEY\s*/i, "").match(/[a-z0-9_]+\s*=\s*[A-Za-z]{1,2}/g) || []).forEach(p => { const [qid, L] = p.split("=").map(x => x.trim()), q = LBQ[qid];
+    const i = L.toUpperCase().split("").reduce((a, c) => a * 26 + c.charCodeAt(0) - 64, 0) - 1, o = q && q.options[i];
+    if (!o) { bad++; return; } const e = lbEnsure(qid); e.hold = o.key || o.id; e.holdC = lbAnsSig(q); e.chg = { by: "key", t: Date.now() }; n++; });
+  if (n) { lbMatchSync(); save(); }
+  toast(n ? "Loaded " + n + " answer" + (n > 1 ? "s" : "") + (bad ? " (" + bad + " not recognised)" : "") : "No answers found. Lines should look like eth_framework=A."); if (n) render(true); };
 ACT.lbSub = el => { LB_SUB[el.dataset.t] = el.dataset.s; try { LBS().sub = Object.assign(LBS().sub || {}, { [el.dataset.t]: el.dataset.s }); save(); } catch (e) { } render(true); };
 // what "Pinning down your view" holds, in order, for each framework (and, for consequentialists, for each answer to "Whose good counts?")
 // each list ends with the framework's most famous thought experiment(s)
@@ -13933,7 +13941,7 @@ VIEWS.codex = arg => {
   if (steel.length) h += '<section class="stack"><h2 class="sec-h">Rejected after a fair hearing</h2><div class="book">' + steel.map(k => '<div class="page-line"><div><div class="faint" style="font-size:.8rem">' + esc(CARDS[k].title) + '</div><div class="read">“' + esc(S.steel[k]) + '”</div></div><a class="linkish" href="#agora-' + esc(CARDS[k].q) + '" data-act="gotoCard" data-card="' + esc(k) + '" style="font-size:.84rem">Revisit</a></div>').join("") + "</div></section>";
   h += voyLogHTML();
   h += bookshelfLogHTML();
-  h += '<section class="panel stack" style="--g:10px"><span class="eyebrow">Keep a copy</span><p class="muted" style="font-size:.9rem">Your positions live in this browser' + (CAP.db && CAP.uid ? " and in your account" : "") + '. Copy a backup code to move it to another device, or paste one to restore.</p><div class="row"><button class="btn small" data-act="exportCode">Copy backup code</button><button class="btn small ghost" data-act="importOpen">Restore from code</button></div><div id="importBox" class="stack" style="--g:8px" hidden><textarea id="importTxt" placeholder="Paste a backup code"></textarea><button class="btn small primary" data-act="importSave" style="align-self:flex-start">Restore</button></div></section>';
+  h += '<section class="panel stack" style="--g:10px"><span class="eyebrow">Keep a copy</span><p class="muted" style="font-size:.9rem">Your positions live in this browser' + (CAP.db && CAP.uid ? " and in your account" : "") + '. Copy a backup code to move it to another device, or paste one to restore.</p><div class="row"><button class="btn small" data-act="exportCode">Copy backup code</button><button class="btn small ghost" data-act="importOpen">Restore from code</button><button class="btn small ghost" data-act="keyOpen">Load an answer key</button></div><div id="keyBox" class="stack" style="--g:8px" hidden><p class="faint" style="font-size:.84rem;margin:0">An answer key sets the answer you hold on many questions at once: one <code>question=letter</code> per question, A for the first answer, B for the second, and so on. It replaces those answers and leaves the rest alone.</p><textarea id="keyTxt" rows="4" placeholder="PHILO-KEY eth_framework=A; eth_hybrid=G; …"></textarea><button class="btn small primary" data-act="keyLoad" style="align-self:flex-start">Load answers</button></div><div id="importBox" class="stack" style="--g:8px" hidden><textarea id="importTxt" placeholder="Paste a backup code"></textarea><button class="btn small primary" data-act="importSave" style="align-self:flex-start">Restore</button></div></section>';
   return h + "</div></div>";
 };
 let sparTurns = [];
